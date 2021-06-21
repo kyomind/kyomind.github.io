@@ -110,6 +110,9 @@ template {
 a {
   background-color: transparent; }
 
+.post .post-content a {
+  font-weight: bolder; }
+
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
@@ -484,7 +487,7 @@ h6 {
     clear: both; }
   .header .logo-wrapper {
     float: left;
-    padding-top: 10px; }
+    padding-top: 7px; }
     .header .logo-wrapper .logo {
       font-size: 30px;
       font-family: lobster, "Chancery", cursive, LiSu, sans-serif; }
@@ -687,11 +690,16 @@ h6 {
     .post .post-content table th, .post .post-content table td {
       padding: 5px 15px;
       border: 1px double #f4efe1; }
-  .post .post-content code, .post .post-content pre {
+  .post .post-content pre {
     padding: 7px;
     font-size: 16px;
-    font-family: firacode, Menlo, Consolas, monospace;
+    font-family: firacode, Menlo, Consolas, monospace, sans-serif;
     background: #f8f5ec; }
+  .post .post-content code {
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: firacode, Menlo, Consolas, monospace, sans-serif;
+    background: #e6e6e6; }
   .post .post-content code {
     padding: 3px 5px;
     border-radius: 4px;
