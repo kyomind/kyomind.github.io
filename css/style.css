@@ -701,8 +701,8 @@ h6 {
     font-family: firacode, Menlo, Consolas, monospace, sans-serif;
     background: #e6e6e6; }
   .post .post-content code {
-    padding: 3px 5px;
-    border-radius: 4px;
+    padding: 2px 3px 2px 3px;
+    border-radius: 3px;
     color: #c7254e;
     word-break: normal;
     white-space: pre-warp;
