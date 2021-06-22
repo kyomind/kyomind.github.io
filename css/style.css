@@ -698,7 +698,9 @@ h6 {
     font-family: firacode, Menlo, Consolas, monospace, sans-serif;
     background: #e6e6e6; }
   .post .post-content code {
-    padding: 2px 3px 2px 3px;
+    border: 1px solid;
+    border-color: #ddd;
+    padding: 1px 3px 1px 3px;
     border-radius: 3px;
     color: #c7254e;
     word-break: normal;
@@ -895,11 +897,12 @@ h6 {
       border-collapse: collapse; }
     .post .post-content .highlight .code .comment,
     .post .post-content .highlight .code .quote {
-      color: #93a1a1; }
+      color: #999; }
     .post .post-content .highlight .code .keyword,
     .post .post-content .highlight .code .selector-tag,
     .post .post-content .highlight .code .addition {
-      color: #859900; }
+      color: SteelBlue;
+      font-weight: bold; }
     .post .post-content .highlight .code .number,
     .post .post-content .highlight .code .string,
     .post .post-content .highlight .code .meta .meta-string,
@@ -931,7 +934,8 @@ h6 {
       color: #cb4b16; }
     .post .post-content .highlight .code .built_in,
     .post .post-content .highlight .code .deletion {
-      color: #dc322f; }
+      color: #dc322f;
+      font-weight: bold; }
   .post .post-content .read-more .read-more-link {
     color: #c05b4d;
     font-size: 1.1em;
