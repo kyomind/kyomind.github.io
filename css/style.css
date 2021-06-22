@@ -639,7 +639,7 @@ h6 {
     font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h3 {
-    color: DarkCyan; }
+    color: #707f8d; }
   .post .post-content .headerlink:hover {
     border-bottom: 0; }
   .post .post-content a {
@@ -917,7 +917,7 @@ h6 {
     .post .post-content .highlight .code .template-variable,
     .post .post-content .highlight .code .class .title,
     .post .post-content .highlight .code .type {
-      color: #b58900; }
+      color: #cc7000; }
     .post .post-content .highlight .code .symbol,
     .post .post-content .highlight .code .bullet,
     .post .post-content .highlight .code .subst,
@@ -929,7 +929,7 @@ h6 {
       color: #cb4b16; }
     .post .post-content .highlight .code .built_in,
     .post .post-content .highlight .code .deletion {
-      color: #dc322f;
+      color: #c05b4d;
       font-weight: bold; }
   .post .post-content .read-more .read-more-link {
     color: #c05b4d;
