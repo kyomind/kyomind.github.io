@@ -915,7 +915,7 @@ h6 {
     .post .post-content .highlight .code .name,
     .post .post-content .highlight .code .selector-id,
     .post .post-content .highlight .code .selector-class {
-      color: #268bd2; }
+      color: DodgerBlue; }
     .post .post-content .highlight .code .attribute,
     .post .post-content .highlight .code .attr,
     .post .post-content .highlight .code .variable,
@@ -1077,7 +1077,7 @@ h6 {
     .footer .copyright .copyright-year {
       display: block; }
       .footer .copyright .copyright-year .heart {
-        font-size: 14px; }
+        font-size: 13px; }
 
 .archive {
   margin: 2em 0px;
