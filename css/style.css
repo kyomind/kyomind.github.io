@@ -426,15 +426,15 @@ a {
   text-decoration: none; }
 
 h1 {
-  font-size: 32px;
+  font-size: 30px;
   font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h2 {
-  font-size: 27px;
+  font-size: 25px;
   font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h3 {
-  font-size: 22px;
+  font-size: 21px;
   font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h4 {
@@ -547,7 +547,7 @@ h6 {
     margin-bottom: 20px; }
     .post .post-header .post-title {
       margin: 0;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: bold;
       font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .post .post-header .post-link {
