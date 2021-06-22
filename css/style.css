@@ -426,11 +426,11 @@ a {
   text-decoration: none; }
 
 h1 {
-  font-size: 26px;
+  font-size: 30px;
   font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h2 {
-  font-size: 24px;
+  font-size: 26px;
   font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h3 {
@@ -628,23 +628,25 @@ h6 {
     .post .post-toc {
       display: none; } }
   .post .post-content h1 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h2 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h3 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h4 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h5 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h6 {
-    font-weight: bolder;
+    font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .post .post-content h3 {
+    color: #5a7c9f; }
   .post .post-content .headerlink:hover {
     border-bottom: 0; }
   .post .post-content a {
