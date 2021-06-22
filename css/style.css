@@ -101,7 +101,7 @@ a {
   background-color: transparent; }
 
 .post .post-content a {
-  font-weight: bolder; }
+  font-weight: bold; }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
@@ -146,7 +146,7 @@ mark {
   background: #ff0;
   color: #000; }
 
-/**
+/** 
  * Address inconsistent and variable font size in all browsers.
  */
 small {
@@ -689,7 +689,7 @@ h6 {
     background: #f8f5ec; }
   .post .post-content code {
     font-size: 16px;
-    font-weight: bolder;
+    font-weight: bold;
     font-family: firacode, Menlo, Consolas, monospace, sans-serif;
     background: #ececec; }
   .post .post-content code {
