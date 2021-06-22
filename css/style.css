@@ -646,7 +646,7 @@ h6 {
     font-weight: bold;
     font-family: "nunito", system-ui, 微軟正黑體, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .post .post-content h3 {
-    color: #5a7c9f; }
+    color: CadetBlue; }
   .post .post-content .headerlink:hover {
     border-bottom: 0; }
   .post .post-content a {
@@ -903,7 +903,7 @@ h6 {
     .post .post-content .highlight .code .keyword,
     .post .post-content .highlight .code .selector-tag,
     .post .post-content .highlight .code .addition {
-      color: SteelBlue;
+      color: MediumSlateBlue;
       font-weight: bold; }
     .post .post-content .highlight .code .number,
     .post .post-content .highlight .code .string,
