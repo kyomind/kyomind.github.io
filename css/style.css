@@ -896,7 +896,7 @@ h6 {
     .post .post-content .highlight .code .keyword,
     .post .post-content .highlight .code .selector-tag,
     .post .post-content .highlight .code .addition {
-      color: MediumSlateBlue;
+      color: CadetBlue;
       font-weight: bold; }
     .post .post-content .highlight .code .number,
     .post .post-content .highlight .code .string,
@@ -904,7 +904,7 @@ h6 {
     .post .post-content .highlight .code .literal,
     .post .post-content .highlight .code .doctag,
     .post .post-content .highlight .code .regexp {
-      color: #2aa198; }
+      color: MediumSlateBlue; }
     .post .post-content .highlight .code .title,
     .post .post-content .highlight .code .section,
     .post .post-content .highlight .code .name,
