@@ -210,10 +210,13 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  border: 1px solid darkcyan;
+  border: 1px solid MediumAquamarine;
   border-radius: 1px;
-  width: 100px;
-  margin: 30px auto; }
+  height: 2px;
+  width: 20%;
+  margin: 30px auto;
+  border-left: none;
+  border-right: none; }
 
 /**
  * Contain overflow in all browsers.
