@@ -36,7 +36,7 @@
 
 li {
   padding-top: 2px;
-  padding-bottom: 3px; }
+  padding-bottom: 2px; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -621,7 +621,7 @@ h6 {
     padding: 10px;
     font-family: "nunito", 微軟正黑體, sans-serif;
     border-radius: 5px;
-    background: rgba(248, 245, 236, 0.6);
+    background: #e1e5e9;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
     word-wrap: break-word;
     box-sizing: border-box; }
