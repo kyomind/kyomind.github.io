@@ -35,7 +35,7 @@
   padding-top: 5px; }
 
 li {
-  padding-top: 3px;
+  padding-top: 2px;
   padding-bottom: 3px; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -214,7 +214,7 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  border: 1px solid MediumAquamarine;
+  border: 1px solid #aaa;
   border-radius: 1px;
   height: 2px;
   width: 150px;
