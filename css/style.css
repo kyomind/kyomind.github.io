@@ -213,7 +213,8 @@ hr {
   border: 1px solid MediumAquamarine;
   border-radius: 1px;
   height: 2px;
-  width: 20%;
+  width: 150px;
+  max-width: 35%;
   margin: 30px auto;
   border-left: none;
   border-right: none; }
