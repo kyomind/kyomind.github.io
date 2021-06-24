@@ -16,7 +16,7 @@
 <link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
 <link rel="canonical" href="https://blog.kyomind.tw/"/>
 
-
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -42,7 +42,7 @@
 })();
 </script>
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":false,"pjax":"","latex":false};
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
     <title>Code and Me</title>
@@ -106,87 +106,24 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/hexo-blog/">Hexo：不離開Medium，我的自架blog選擇</a>
+      <h1 class="post-title"><a class="post-link" href="/my-own-blog-part-one/">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2021-06-23
-        </span></div>
-    </header>
-
-    <div class="post-content"><h1 id="開篇詞"><a href="#開篇詞" class="headerlink" title="開篇詞"></a>開篇詞</h1><p>下面的幾個場景，都是我周圍同事的實際感受，你是否也在工作中遇到過這樣的困惑呢？你能把它們都解釋清楚嗎？</p>
-<p><img src="https://i.imgur.com/4DUMRO8.png"></p>
-<p>我把這種 HTTP 學習的現狀歸納為三點：正式資料“少”、網上資料“雜”、權威資料“難”</p>
-<p>由於 HTTP 應用得非常廣泛，幾乎涉及到所有的領域，所以我會在廣度上從 HTTP 盡量向外擴展，不只講協議本身，與它相關的 TCP/IP、DNS、SSL/TLS、Web Server 等都會講到，而且會把它們打通串聯在一起，形成知識鏈，讓你知道它們之間是怎麼聯系、怎麼運行的</p>
-<h1 id="02-HTTP是什麼？HTTP又不是什麼？"><a href="#02-HTTP是什麼？HTTP又不是什麼？" class="headerlink" title="02 | HTTP是什麼？HTTP又不是什麼？"></a>02 | HTTP是什麼？HTTP又不是什麼？</h1><h3 id="HTTP-是什麼"><a href="#HTTP-是什麼" class="headerlink" title="HTTP 是什麼"></a>HTTP 是什麼</h3><p>先看一下 HTTP 的名字：“超文本傳輸協議”，它可以拆成三個部分，分別是：“超文本”“傳輸”和“協議”。我們從後往前來逐個解析，理解了這三個詞，我們也就明白了什麼是 HTTP</p>
-<h3 id="首先，HTTP-是一個協議。不過，協議又是什麼呢？有什麼特點呢？"><a href="#首先，HTTP-是一個協議。不過，協議又是什麼呢？有什麼特點呢？" class="headerlink" title="首先，HTTP 是一個協議。不過，協議又是什麼呢？有什麼特點呢？"></a>首先，HTTP 是一個協議。不過，協議又是什麼呢？有什麼特點呢？</h3><p>第一點，協議必須要有兩個或多個參與者，也就是“協”</p>
-<p>第二點，協議是對參與者的一種行為約定和規范，也就是“議”</p>
-<p>協議意味著有多個參與者為了達成某個共同的目的而站在了一起，除了要無疑義地溝通交流之外，還必須明確地規定各方的“責、權、利”，約定該做什麼不該做什麼，先做什麼後做什麼，做錯了怎麼辦，有沒有補救措施等等</p>
-<p>例如，“租房協議”裡就約定了，租期多少個月，每月租金多少，押金是多少，水電費誰來付，違約應如何處理等等</p>
-<p>好，到這裡，你應該能夠明白 HTTP 的第一層含義了：</p>
-<blockquote>
-<p>HTTP 是一個用在計算機世界裡的協議。它使用計算機能夠理解的語言確立了一種計算機之間交流通信的規范，以及相關的各種控制和錯誤處理方式</p>
-</blockquote>
-<h3 id="接下來我們看-HTTP-字面裡的第二部分：“傳輸”"><a href="#接下來我們看-HTTP-字面裡的第二部分：“傳輸”" class="headerlink" title="接下來我們看 HTTP 字面裡的第二部分：“傳輸”"></a>接下來我們看 HTTP 字面裡的第二部分：“傳輸”</h3><p>HTTP 是一個“傳輸協議”，所謂的“傳輸”（Transfer）其實很好理解，就是把一堆東西從 A 點搬到 B 點，或者從 B 點搬到 A 點，即“A&lt;===&gt;B”</p>
-<p>別小看了這個簡單的動作，它也至少包含了兩項重要的信息</p>
-<ul>
-<li>第一點，HTTP 協議是一個“雙向協議”</li>
-</ul>
-
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/%E4%BD%A0%E5%A5%BD%E5%97%8E%EF%BC%9F/">你好嗎？Ken桑的美髮小教室</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2021-06-21
+          2021-06-24
         </span><span class="post-category">
-            <a href="/categories/Diary/">Diary</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
             </span>
         </div>
     </header>
 
-    <div class="post-content"><h2 id="Ken桑的美髮小教室"><a href="#Ken桑的美髮小教室" class="headerlink" title="Ken桑的美髮小教室"></a>Ken桑的美髮小教室</h2><h3 id="😈不愛整理頭髮要留什麼髮型？！手棒燙讓你不用整理也有型！"><a href="#😈不愛整理頭髮要留什麼髮型？！手棒燙讓你不用整理也有型！" class="headerlink" title="😈不愛整理頭髮要留什麼髮型？！手棒燙讓你不用整理也有型！"></a>😈不愛整理頭髮要留什麼髮型？！手棒燙讓你不用整理也有型！</h3><p>藉口推客人：這個不適合燙這個造型test favo<br>剪頭髮還是<code>最強</code>的地基有見到情況的再說<br>哈哈哈，<code>Permanent Redirect</code>無法連結<br>git test</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MethodViewType</span>(<span class="params"><span class="built_in">type</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Metaclass for :class:`MethodView` that determines what methods the view</span></span><br><span class="line"><span class="string">    defines.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">cls, name, bases, d</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(name, bases, d)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;methods&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> d:</span><br><span class="line">            methods = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> base <span class="keyword">in</span> bases:</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">getattr</span>(base, <span class="string">&quot;methods&quot;</span>, <span class="literal">None</span>):</span><br><span class="line">                    methods.update(base.methods)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> key <span class="keyword">in</span> http_method_funcs:</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">hasattr</span>(cls, key):</span><br><span class="line">                    methods.add(key.upper())</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>髮雕燙，燙髮跟雕刻真的很像</p>
-<h3 id="知名重金屬樂團主唱大改造！非主流男人的浪漫中長捲髮！｜KEN桑の美髮小教室"><a href="#知名重金屬樂團主唱大改造！非主流男人的浪漫中長捲髮！｜KEN桑の美髮小教室" class="headerlink" title="知名重金屬樂團主唱大改造！非主流男人的浪漫中長捲髮！｜KEN桑の美髮小教室"></a>知名重金屬樂團主唱大改造！非主流男人的浪漫中長捲髮！｜KEN桑の美髮小教室</h3>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/hello-world/">Hello</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2021-06-20
-        </span></div>
-    </header>
-
-    <div class="post-content"><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post @.@&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</span><br><span class="line"><span class="keyword">from</span> books.models <span class="keyword">import</span> Book</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookListView</span>(<span class="params">ListView</span>):</span></span><br><span class="line">    model = Book</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">head</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        last_book = self.get_queryset().latest(<span class="string">&#x27;publication_date&#x27;</span>)</span><br><span class="line">        response = HttpResponse(</span><br><span class="line">            <span class="comment"># RFC 1123 date format.</span></span><br><span class="line">            headers=&#123;<span class="string">&#x27;Last-Modified&#x27;</span>: last_book.publication_date.strftime(<span class="string">&#x27;%a, %d %b %Y %H:%M:%S GMT&#x27;</span>)&#125;,</span><br><span class="line">        )</span><br><span class="line">        res_data = json.loads(res.get_data(as_text=<span class="literal">True</span>))</span><br><span class="line">        self.assertEqual(res.status_code, <span class="number">200</span>)</span><br><span class="line">        self.assertEqual(res_data[<span class="string">&#x27;email&#x27;</span>], <span class="string">&#x27;newemail@new.com&#x27;</span>)</span><br><span class="line">        number = <span class="number">222</span> + <span class="number">222</span> + <span class="number">333</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
-
-
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+    <div class="post-content"><p><img src="https://i.imgur.com/OXSzwob.jpg" alt="illustration by Hokyoung Kim">  </p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>早在去年 9 月 Medium 迎來一波大改版後，改版之初對中文的不友好 bug 與首頁演算法對中文文章的不利調整，讓我第一次感受到寄身於平台的風險，並忍不住開始認真考慮是否真的要自己來架一個 blog。</p>
+<p>否則在改版不久前，我才剛剛下了一些決心，<a target="_blank" rel="noopener" href="https://medium.com/code-and-me/small-island-498e9869c8fc">打算好好在上面發文</a>哩！這波改版多多少少影響了我的創作士氣，讓我內心產生動搖，而且幅度還不小。</p>
+          <div class="read-more">
+            <a href="/my-own-blog-part-one/" class="read-more-link">閱讀更多</a>
+          </div>
         </div></article>
       <nav class="pagination"></nav></section></div></div>
       </main>
@@ -216,6 +153,7 @@
       </div>
     </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
 </body>
 </html>

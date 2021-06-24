@@ -437,7 +437,7 @@ h1 {
   font-family: "nunito", 微軟正黑體, sans-serif; }
 
 h2 {
-  font-size: 25px;
+  font-size: 27px;
   font-family: "nunito", 微軟正黑體, sans-serif; }
 
 h3 {
@@ -652,8 +652,6 @@ h6 {
   .post .post-content h6 {
     font-weight: bold;
     font-family: "nunito", 微軟正黑體, sans-serif; }
-  .post .post-content h3 {
-    color: #707f8d; }
   .post .post-content .headerlink:hover {
     border-bottom: 0; }
   .post .post-content a {
