@@ -210,7 +210,10 @@ figure {
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0; }
+  border: 1px solid darkcyan;
+  border-radius: 1px;
+  width: 100px;
+  margin: 30px auto; }
 
 /**
  * Contain overflow in all browsers.
@@ -445,7 +448,7 @@ h3 {
   font-family: "nunito", 微軟正黑體, sans-serif; }
 
 h4 {
-  font-size: 16px;
+  font-size: 18px;
   font-family: "nunito", 微軟正黑體, sans-serif; }
 
 h5 {
