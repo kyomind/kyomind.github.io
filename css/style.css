@@ -35,7 +35,8 @@
   padding-top: 5px; }
 
 li {
-  line-height: 1.8; }
+  padding-top: 3px;
+  padding-bottom: 3px; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -416,7 +417,7 @@ body {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #34495e;
   background: #f3f3f3;
   scroll-behavior: smooth;
