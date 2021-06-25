@@ -42,8 +42,8 @@
   padding-top: 5px; }
 
 li {
-  padding-top: 2px;
-  padding-bottom: 2px; }
+  padding-top: 3px;
+  padding-bottom: 3px; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -574,7 +574,8 @@ h6 {
       margin: 0;
       font-size: 30px;
       font-weight: bold;
-      font-family: "nunito", 微軟正黑體, sans-serif; }
+      font-family: "nunito", 微軟正黑體, sans-serif;
+      line-height: 1.5; }
     .post .post-header .post-link {
       display: inline-block;
       vertical-align: middle;
