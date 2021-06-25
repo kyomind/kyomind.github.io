@@ -131,7 +131,7 @@
 <li>安裝套件<code>hexo-generator-sitemap</code>，讓你在使用<code>hexo generate</code>指令時同時幫你產生當前網站版本的 sitemap.xml。</li>
 <li>在 blog 目錄的<code>_config.yml</code>設定 sitemap 的路徑。</li>
 <li>使用<code>hexo generate</code>指令產生頁面，此時應該就能看到套件幫你產生的 sitemap.xml 檔了，使用<code>hexo deploy</code>部署到 Github 即大功告成！此時你的 Github 的 repo 根目錄應該也要能夠看到那份 sitemap.xml。</li>
-<li>部署完後要確認是否成功設定，可以打「<code>https://&lt;yoursite_domain&gt;/sitemap.xml</code>」查看即可知，正常情況下瀏覽器會顯示你的 sitempa.xml 文件內容。記得 yoursite_domain 是你自己的網址，比如我的就是<code>blog.kyomind.tw</code>。</li>
+<li>部署後要確認是否成功，可以打「<code>https://&lt;yoursite_domain&gt;/sitemap.xml</code>」查看，正常情況下瀏覽器會顯示你的 sitempa.xml 文件內容。記得 yoursite_domain 是你自己的網址，比如我的就是blog.kyomind.tw。</li>
 </ol>
 <p>以上內容孤狗都有，就不細講，再來說說坑點。</p>
 <h2 id="遇到的坑點"><a href="#遇到的坑點" class="headerlink" title="遇到的坑點"></a>遇到的坑點</h2><h3 id="問題研究"><a href="#問題研究" class="headerlink" title="問題研究"></a>問題研究</h3><p>一般而言這樣設定完應該就大功告成了，所以絕大部分的教學也只有講這些。</p>
@@ -148,12 +148,12 @@
 </blockquote>
 <p>此時的思路如下：</p>
 <ol>
-<li>藉由他的發問內容，我也發現我用<code>https://blog.kyomind.tw/sitemap</code>（沒有 .xml 後綴）這個網址是找得到 sitemap 的，從這裡可以知道<strong>他遇到的問題和我高度類似</strong>，解法很可能可以套用。</li>
-<li>其次，他提到「I am not using Jekyll or any other framework.」，所以顯然這不是 Hexo 的問題，而是一個更加普遍的問題——講白了就是 Github Pages 的問題！同時印證了我前述的推測，讓我們離答案更近一步了。</li>
+<li>藉由他的發問內容，我也發現我用<code>https://blog.kyomind.tw/sitemap</code>（沒有 .xml 後綴）這個網址是找得到 sitemap 的，從這裡可以知道<strong>他遇到的問題情境和我高度類似</strong>，所以解法很可能可以套用。</li>
+<li>其次，他提到「I am not using Jekyll or any other framework.」，可以推知顯然這不是 Hexo 的問題，而是一個更加普遍的問題——講白了就是 Github Pages 的問題！同時印證了我前述的推測，讓我們離答案更近一步了。</li>
 </ol>
 <p>而文章中的解法就是在 repo 根目錄底下新增一個<code>.nojekyll</code>檔案。</p>
 <hr>
-<p>在這麼做之前，我還是不免懷疑這樣真的有用嗎？所以先用關鍵字「.nojekyll」搜尋一下，搜尋結果的第一個就是<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac9b54176dbe">這篇文章</a>，裡面有更進一步的解釋：</p>
+<p>在照做之前，我還是不免懷疑這樣真的有用嗎？所以先用關鍵字「.nojekyll」搜尋一下，搜尋結果的第一個就是<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac9b54176dbe">這篇文章</a>，裡面有更進一步的解釋：</p>
 <blockquote>
 <p>Github Pages 默認是基於 Jekyll 構建…（略）</p>
 </blockquote>
@@ -164,8 +164,8 @@
 <p>反之，如果你的網站<strong>不是 Jekyll 構建的</strong>，要部署到 Github Pages ，並且包含下劃線開頭的文件或文件夾，那麼<strong>你就需要在根目錄添加一個 .nojekyll 空文件</strong></p>
 </blockquote>
 <p>雖然 sitemap.xml 並不是文中所謂<code>_</code>開頭的檔案，但從這篇可以更加確信第一篇的解法應該是有效的。</p>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>著手吧！請直接在 Github repo 新增<code>.nojekyll</code>檔案（內容為空）並 commit，且確認已經在 repo 的根目錄底下。</p>
-<p>我這麼做之後確實就可以了。正常情況下，無論是 sitemap 或 sitmemap.xml 這兩個網址端點應該都要能夠看到 sitemap 的內容。</p>
+<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>動手吧！請直接在 Github repo 新增<code>.nojekyll</code>檔案（內容為空）並 commit，且確認已經在 repo 的根目錄底下。</p>
+<p>我這麼做之後確實就可以了。正常情況下，無論是 sitemap 或 sitmemap.xml 這兩個網址應該都要能夠看到 sitemap 的內容。</p>
 <p>附帶一提，在重新<code>hexo deploy</code>後，<code>.nojekyll</code>檔案會被覆寫而從目錄底下消失，但不影響正常運作。</p>
 
       </div>
