@@ -27,6 +27,13 @@
   font-weight: 400;
   font-style: normal; }
 
+@font-face {
+  font-family: 'robotomono';
+  src: url("../fonts/robotomono/robotomono.ttf");
+  src: local("robotomono"), url("../fonts/robotomono/robotomono.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
 .cap {
   color: #777;
   font-size: 16px;
@@ -720,14 +727,14 @@ h6 {
       background: #f8f5ec; }
     .post .post-content code {
       font-size: 16px;
-      font-weight: bold;
-      font-family: firacode, Menlo, Consolas, monospace, sans-serif;
+      font-family: robotomono, monospace;
       background: #ececec; }
     .post .post-content code {
       border: 1px solid;
       border-color: #ddd;
-      padding: 1px 3px 1px 3px;
       border-radius: 3px;
+      padding: 0px 3px 2px 3px;
+      margin: 0px 3px;
       color: #c7254e;
       word-break: normal;
       white-space: pre-warp;
