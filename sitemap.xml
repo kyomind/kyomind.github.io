@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
+    
+    <lastmod>2021-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/categories/index.html</loc>
+    
+    <lastmod>2021-06-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/index.html</loc>
+    
+    <lastmod>2021-06-21</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>https://blog.kyomind.tw/</loc>
+    <lastmod>2021-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/blog/</loc>
+    <lastmod>2021-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/Medium/</loc>
+    <lastmod>2021-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/</loc>
+    <lastmod>2021-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2021-06-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
