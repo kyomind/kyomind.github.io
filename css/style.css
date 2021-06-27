@@ -611,8 +611,8 @@ h6 {
       .post .post-header .post-meta .post-category a {
         color: inherit; }
         .post .post-header .post-meta .post-category a + a::before {
-          content: '◆';
-          margin-right: 3px;
+          content: '/';
+          margin-right: 4px;
           color: #8a8a8a !important; }
         .post .post-header .post-meta .post-category a:hover {
           color: #c05b4d; }
