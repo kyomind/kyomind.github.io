@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
+    
+    <lastmod>2021-06-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
     
     <lastmod>2021-06-29</lastmod>
@@ -51,6 +58,41 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/shell/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/Bash/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/zsh/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/zplug/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/Zinit/</loc>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Hexo/</loc>
@@ -139,14 +181,14 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E8%88%87%E8%B8%A9%E5%9D%91%E8%A8%98%E9%8C%84/</loc>
+    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/just-a-note/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/just-a-note/</loc>
+    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E8%88%87%E8%B8%A9%E5%9D%91%E8%A8%98%E9%8C%84/</loc>
     <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="01 | 計畫更新我的 DigitalOcean VM"/><meta name="keywords" content="DigitalOcean, Ubuntu, Docker, Nginx, Code and Me" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
-<link rel="canonical" href="https://blog.kyomind.tw/update-my-droplet/"/>
+<meta name="description" content="02 | from zplug to Zinit"/><meta name="keywords" content="shell, Bash, zsh, zplug, Zinit, Code and Me" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/from-zplug-to-zinit/"/>
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
@@ -45,7 +45,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>01 | 計畫更新我的 DigitalOcean VM - Code and Me</title>
+    <title>02 | from zplug to Zinit - Code and Me</title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -106,12 +106,12 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">01 | 計畫更新我的 DigitalOcean VM
+      <h1 class="post-title">02 | from zplug to Zinit
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2021-06-29
+          2021-06-30
         </span><span class="post-category">
             <a href="/categories/%E7%A8%8B%E5%BC%8F/">程式</a>
             <a href="/categories/%E7%A8%8B%E5%BC%8F/just-a-note/">just a note</a>
@@ -122,58 +122,35 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#just-a-note-%E8%AA%AA%E6%98%8E"><span class="toc-text">just a note 說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%A8%88%E7%95%AB"><span class="toc-text">更新計畫</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Oh-my-zsh-and-zplug"><span class="toc-text">Oh-my-zsh  and zplug</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zinit"><span class="toc-text">Zinit</span></a></li></ol>
     </div>
-  </div><div class="post-content"><h2 id="just-a-note-說明"><a href="#just-a-note-說明" class="headerlink" title="just a note 說明"></a>just a note 說明</h2><p>總覺得之前在 Medium 寫文章心態上都太過於「慎重」（就像這段說明一樣），沒有 1000 字都不好意思發文，我想這樣的模式對於以「記錄」為目標的寫作相對不利，所以這個系列會偏向「想到就寫」的調性，放在母類別「程式」底下，基本上就是和程式相關的隨手小記，且盡量少於 500 字。</p>
+  </div><div class="post-content"><p>去年入手這台 Macbook Air 2020 Intel 版時，預設的 shell 就已經是 zsh 了，所以當時就不得不研究一下 zsh 的生態與相關套件。老實說，從 2018 年開始接觸程式時，用的都是和大多人一樣的老牌 bash，心理上難免有些先入為主，對於要改用 zsh 還是有幾分抗拒的（雖然也可以改回 bash），不過用過之後，還用說嗎？真香！</p>
 <span id="more"></span>
 
-<h2 id="更新計畫"><a href="#更新計畫" class="headerlink" title="更新計畫"></a>更新計畫</h2><p>DigitalOcean 上的 VM（Linux 執行個體） 官方叫 droplet，我之前是在 GCP 免費一年試用到期後開始物色新選擇，畢竟圖書館的小專案還是要有地方放才行。那時 DigitalOcean 剛好有 2 個月送 100 美元的額度（兩個月內要用完）就開始用了，到期後就一直續租著一個月 5 美元的最低價位 VM。</p>
-<p>目前沒有太多用處，VM 裡就只有一個專案而已，配置大概是：</p>
-<ul>
-<li>Ubuntu 18.04 LTS</li>
-<li>MySQL 5.7（container）</li>
-<li>Nginx</li>
-<li>project：<a target="_blank" rel="noopener" href="https://github.com/kyomind/library-tracker">library-tracker</a><ul>
-<li>使用域名：<code>kyomind.tw</code></li>
-</ul>
-</li>
-</ul>
-<p>想變更成下面這樣：</p>
-<ul>
-<li>Ubuntu 20.04 LTS</li>
-<li>PostgreSQL（container），可晚點再弄<ul>
-<li>版本選擇：未定</li>
-<li>使用 pgAdmin 4（container）</li>
-<li>兩者使用 docker-compose build</li>
-</ul>
-</li>
-<li>Nginx → container</li>
-<li>project：<a target="_blank" rel="noopener" href="https://github.com/kyomind/library-tracker">library-tracker</a><ul>
-<li>變更網址為<code>library-tracker.kyomind.tw</code></li>
-<li>把主域名讓出來，設定 Nginx 讓<code>kyomind.tw</code>暫時作為 blog  轉址</li>
-<li>certbot + SSL</li>
-</ul>
-</li>
-</ul>
-<p>主要是就升級 Ubuntu 和變更專案域名，<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-upgrade-to-ubuntu-20-04-focal-fossa">可以直接升但會有一點風險</a>，我打算開一個新的 droplet 來全部重弄，順便升級為今年才新發表的 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/press/releases/digitalocean-launches-premium-droplets/">Premium Droplets</a> （會選擇 AMD 版本，因為<a target="_blank" rel="noopener" href="https://youtu.be/Doa-fXyd2oI">比較香</a>），並重新溫習一下各項部署的設定，最好把流程都再記錄一次。以前就有記錄，但很零散地放在 Evernote 裡，而現在已經不太用 Evernote 了。</p>
+<h2 id="Oh-my-zsh-and-zplug"><a href="#Oh-my-zsh-and-zplug" class="headerlink" title="Oh-my-zsh  and zplug"></a>Oh-my-zsh  and zplug</h2><p>只要稍稍搜尋一下「zsh mac」即可發現，早在 Apple 把 bash 換成 zsh 之前，一堆用戶就已經自己先改成 zsh 了，大多都是衝著「iTerms 2 + Oh-my-zsh」這個強力組合。然後文章鼓吹你一定要這麼做的最大賣點，就是那精美的終端機界面。（不可否認確實很有吸引力哈哈！）</p>
+<p>稍為再深入了解一下，就能得知很多人都嫌 Oh-my-zsh 太肥太慢，所以改用別的 zsh 套件管理工具，其中一個有力競爭者，就是 zplug。</p>
+<p>而我最終也是選擇 zplug，真的棒！只安裝了十來個必要的套件，就覺得比純 bash 好用非常多，界面的美觀程度也不在話下，當初的心理抗拒真是完全不必要，哈哈哈！</p>
+<p><img src="https://i.imgur.com/4b18Gt9.png" alt="裝上外掛後，終端機也有 syntax highlighting，還有實用的高級指令補完
+"><span class="cap">裝上外掛後，終端機也有 syntax highlighting，還有實用的高級指令補完
+</span>  </p>
+<p>不過 zplug 還是有一個讓我小小在意的點就是：它的啟動速度真的不算快。從叫出終端機到可以輸入指令，有時大概也要 1 秒多，儘管不長但多少還是有感。</p>
+<p>雖然我個人覺得 shell 界面與套件功能的追求宜適可而止，但還是不禁會想考慮一下別的選項，工程師嘛！</p>
+<h2 id="Zinit"><a href="#Zinit" class="headerlink" title="Zinit"></a>Zinit</h2><p>所以又再做了一下功課，尤其在看了<a target="_blank" rel="noopener" href="https://blog.spencerwoo.com/2020/07/remove-nvm-to-speed-up-zsh">這篇文章</a>後，讓我想試試 Zinit。不過它看起來真的又更複雜了一點，也許不一定合我的胃口。</p>
+<p>剛好<a href="https://blog.kyomind.tw/update-my-droplet/">前篇</a>提到要新開 droplet，就想到拿它來試驗不就好了！要我把現在 Mac 上的 zplug 換成 Zinit 可謂誘因不足，但如果是新的 VM 預設用 bash，那嘗試換成 zsh + Zinit 就顯然有動力許多，可以試試看。</p>
 
       </div>
       
       <footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/DigitalOcean/">DigitalOcean</a>
-            <a href="/tags/Ubuntu/">Ubuntu</a>
-            <a href="/tags/Docker/">Docker</a>
-            <a href="/tags/Nginx/">Nginx</a>
+            <a href="/tags/shell/">shell</a>
+            <a href="/tags/Bash/">Bash</a>
+            <a href="/tags/zsh/">zsh</a>
+            <a href="/tags/zplug/">zplug</a>
+            <a href="/tags/Zinit/">Zinit</a>
             </div>
         
-        <nav class="post-nav"><a class="prev" href="/from-zplug-to-zinit/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">02 | from zplug to Zinit</span>
-        <span class="prev-text nav-mobile">上一篇</span>
-      </a>
-    <a class="next" href="/adding-sitemap-issue/">
-        <span class="next-text nav-default">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</span>
+        <nav class="post-nav"><a class="next" href="/update-my-droplet/">
+        <span class="next-text nav-default">01 | 計畫更新我的 DigitalOcean VM</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
