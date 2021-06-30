@@ -2,14 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
-    
-    <lastmod>2021-06-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/404.html</loc>
+    <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
     
     <lastmod>2021-06-30</lastmod>
     
@@ -23,9 +16,16 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
+    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
-    <lastmod>2021-06-29</lastmod>
+    <lastmod>2021-06-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/404.html</loc>
+    
+    <lastmod>2021-06-30</lastmod>
     
   </url>
   
