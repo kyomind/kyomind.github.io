@@ -623,7 +623,7 @@ h6 {
         content: '·'; }
   .post .post-toc {
     position: absolute;
-    width: 200px;
+    width: 220px;
     margin-left: 685px;
     padding: 10px;
     font-family: "nunito", 微軟正黑體, 思源黑體, sans-serif;
@@ -638,7 +638,7 @@ h6 {
       font-weight: 400;
       text-transform: uppercase; }
     .post .post-toc .post-toc-content {
-      font-size: 12px; }
+      font-size: 15px; }
       .post .post-toc .post-toc-content .toc,
       .post .post-toc .post-toc-content .toc-child {
         list-style: square; }
@@ -649,7 +649,7 @@ h6 {
           padding-left: 15px; }
       .post .post-toc .post-toc-content .toc-link.active {
         color: #c05b4d; }
-  @media screen and (max-width: 1085px) {
+  @media screen and (max-width: 1125px) {
     .post .post-toc {
       display: none; } }
   .post .post-content {
