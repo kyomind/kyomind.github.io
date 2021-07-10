@@ -752,7 +752,7 @@ h6 {
       word-wrap: break-word; }
     .post .post-content .highlight {
       margin: 1em 0;
-      border-radius: 5px;
+      border-radius: 3px;
       overflow-x: auto;
       box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
       position: relative; }
@@ -767,7 +767,7 @@ h6 {
           padding: 2px 7px;
           font-size: 16px;
           color: #a98080;
-          background: #f4efe1;
+          background: #f3eddd;
           content: 'Code'; }
       .post .post-content .highlight.html > table::after {
         content: "HTML"; }
