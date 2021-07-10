@@ -766,16 +766,9 @@ h6 {
           left: 0;
           padding: 2px 7px;
           font-size: 16px;
-          font-weight: bold;
-          color: #b1b1b1;
+          color: #a98080;
           background: #f4efe1;
           content: 'Code'; }
-      .post .post-content .highlight.shell > table::after {
-        content: "Shell"; }
-      .post .post-content .highlight.shell > figcaption > span::after {
-        content: " · Shell"; }
-      .post .post-content .highlight.shell figcaption + table::after {
-        display: none; }
       .post .post-content .highlight.html > table::after {
         content: "HTML"; }
       .post .post-content .highlight.html > figcaption > span::after {
@@ -908,6 +901,12 @@ h6 {
         content: " · Kotlin"; }
       .post .post-content .highlight.kotlin figcaption + table::after {
         display: none; }
+      .post .post-content .highlight.ts > table::after {
+        content: "TypeScript"; }
+      .post .post-content .highlight.ts > figcaption > span::after {
+        content: " · TypeScript"; }
+      .post .post-content .highlight.ts figcaption + table::after {
+        display: none; }
       .post .post-content .highlight figcaption {
         position: absolute;
         top: 0;
@@ -934,7 +933,7 @@ h6 {
         padding: 30px 10px 0px; }
       .post .post-content .highlight .gutter {
         width: 10px;
-        color: #aaa; }
+        color: #c29a9a; }
         .post .post-content .highlight .gutter pre {
           margin: 0;
           padding: 30px 7px 0px; }
