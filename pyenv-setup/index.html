@@ -140,7 +140,7 @@
 <p>設定的內容主要是提供正確的 Python PATH，這部分很關鍵。具體要新增什麼內容，各教學或官方的版本沒有完全一致，不過大同小異，在此提供我實際新增的部分：</p>
 <h3 id="zshrc-新增："><a href="#zshrc-新增：" class="headerlink" title=".zshrc 新增："></a>.zshrc 新增：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">command</span> -v pyenv 1&gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-<p>特別說明，官方教學只說需要新增中間的<code>eval &quot;$(pyenv init -)&quot;</code>，但我光這樣設定，會無法切Python 版本，看了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33321312/cannot-switch-python-with-pyenv">這篇</a>之後改成上述的版本。</p>
+<p>特別說明，官方教學只說需要新增中間的<code>eval &quot;$(pyenv init -)&quot;</code>，但我光這樣設定，會無法切換全域 Python 版本，看了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33321312/cannot-switch-python-with-pyenv">這篇</a>之後改成上述的版本。</p>
 <h3 id="zprofile-新增："><a href="#zprofile-新增：" class="headerlink" title=".zprofile 新增："></a>.zprofile 新增：</h3><p>你可能跟我一樣一開始也沒有這個檔，直接用官方給的指令新增就好：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init --path)&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br></pre></td></tr></table></figure>
 
