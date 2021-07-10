@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
+    
+    <lastmod>2021-07-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
     
     <lastmod>2021-07-10</lastmod>
@@ -229,6 +236,34 @@
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/Python/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/pyenv/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/virtualenv/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/Anaconda/</loc>
     <lastmod>2021-07-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
