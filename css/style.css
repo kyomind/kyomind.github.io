@@ -980,10 +980,10 @@ h6 {
       .post .post-content .highlight .code .selector-attr,
       .post .post-content .highlight .code .selector-pseudo,
       .post .post-content .highlight .code .link {
-        color: #cb4b16; }
+        color: #e57e00; }
       .post .post-content .highlight .code .built_in,
       .post .post-content .highlight .code .deletion {
-        color: #c05b4d;
+        color: DeepPink;
         font-weight: bold; }
     .post .post-content .read-more .read-more-link {
       color: #c05b4d;

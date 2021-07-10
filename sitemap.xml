@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
+    
+    <lastmod>2021-07-10</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
     
     <lastmod>2021-07-10</lastmod>
@@ -24,13 +31,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
-    
-    <lastmod>2021-07-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2021-07-10</lastmod>
     
@@ -165,20 +165,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tags/Docker/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/tags/%E5%A4%A9%E7%93%8F%E6%9B%B8%E5%B1%80/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/tags/Podcast/</loc>
     <lastmod>2021-07-10</lastmod>
     <changefreq>daily</changefreq>
@@ -235,6 +221,20 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/tags/Docker/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/%E5%A4%A9%E7%93%8F%E6%9B%B8%E5%B1%80/</loc>
+    <lastmod>2021-07-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/tags/DigitalOcean/</loc>
     <lastmod>2021-07-10</lastmod>
     <changefreq>daily</changefreq>
@@ -279,14 +279,14 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/just-a-note/</loc>
+    <loc>https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2021-07-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/</loc>
+    <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/just-a-note/</loc>
     <lastmod>2021-07-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
