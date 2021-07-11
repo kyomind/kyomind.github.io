@@ -764,7 +764,7 @@ h6 {
           top: 0;
           right: 0;
           left: 0;
-          padding: 2px 7px;
+          padding: 0px 7px;
           font-size: 16px;
           color: #a98080;
           background: #f3eddd;
@@ -930,13 +930,13 @@ h6 {
             border: 0; }
       .post .post-content .highlight .code pre {
         margin: 0;
-        padding: 30px 10px 0px; }
+        padding: 30px 10px 5px; }
       .post .post-content .highlight .gutter {
         width: 10px;
         color: #c29a9a; }
         .post .post-content .highlight .gutter pre {
           margin: 0;
-          padding: 30px 7px 0px; }
+          padding: 30px 7px 5px; }
       .post .post-content .highlight .line {
         height: 24px; }
       .post .post-content .highlight table, .post .post-content .highlight tr, .post .post-content .highlight td {

@@ -4,7 +4,7 @@
   <url>
     <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     
   </url>
   
@@ -81,7 +81,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -89,182 +89,182 @@
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Hexo/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Github-Pages/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/sitemap/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/tags/bash/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/tags/zsh/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/tags/zplug/</loc>
-    <lastmod>2021-07-10</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/tags/zinit/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Canva/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Behance/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Unsplash/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/bash/</loc>
+    <lastmod>2021-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/zsh/</loc>
+    <lastmod>2021-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/zplug/</loc>
+    <lastmod>2021-07-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/tags/zinit/</loc>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Podcast/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E5%BC%B5%E4%BF%AE%E4%BF%AE/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E9%9B%B7%E8%92%99%E4%B8%89%E5%8D%81/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Python/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/pyenv/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/virtualenv/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Anaconda/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Docker/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/%E5%A4%A9%E7%93%8F%E6%9B%B8%E5%B1%80/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/DigitalOcean/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Ubuntu/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Nginx/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/blog/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/tags/Medium/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -273,35 +273,35 @@
   
   <url>
     <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E8%88%87%E8%B8%A9%E5%9D%91%E8%A8%98%E9%8C%84/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/categories/%E7%A8%8B%E5%BC%8F/just-a-note/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/%E9%9B%9C%E8%A8%98/</loc>
-    <lastmod>2021-07-10</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
