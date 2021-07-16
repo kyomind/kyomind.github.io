@@ -735,7 +735,7 @@ h6 {
       padding: 7px;
       font-size: 16px;
       font-family: firacode, Menlo, Consolas, monospace, sans-serif;
-      background: #f8f5ec; }
+      background: #f7f3e8; }
     .post .post-content code {
       font-size: 16px;
       font-family: robotomono, monospace;
@@ -767,7 +767,7 @@ h6 {
           padding: 0px 7px;
           font-size: 16px;
           color: #a98080;
-          background: #f3eddd;
+          background: #f1ebd9;
           content: 'Code'; }
       .post .post-content .highlight.html > table::after {
         content: "HTML"; }
