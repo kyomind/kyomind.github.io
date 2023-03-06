@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="計畫更新我的 DigitalOcean VM"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/update-my-droplet/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>計畫更新我的 DigitalOcean VM - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">計畫更新我的 DigitalOcean VM
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-29
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%A8%88%E7%95%AB"><span class="toc-text">更新計畫</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>總覺得之前在 Medium 寫文章心態上都太過於「慎重」（就像這段說明一樣），沒有 1000 字都不好意思發文，我想這樣的模式對於以「記錄」為目標的寫作相對不利，所以這個系列會偏向「想到就寫」的調性，放在母類別「程式」底下，基本上就是和程式相關的隨手小記，且盡量少於 500 字。</p>
+<span id="more"></span>
+
+<h2 id="更新計畫"><a href="#更新計畫" class="headerlink" title="更新計畫"></a>更新計畫</h2><p>DigitalOcean 上的 VM（Linux 執行個體） 官方叫 droplet，我之前是在 GCP 免費一年試用到期後開始物色新選擇，畢竟圖書館的小專案還是要有地方放才行。那時 DigitalOcean 剛好有 2 個月送 100 美元的額度（兩個月內要用完）就開始用了，到期後就一直續租著一個月 5 美元的最低價位 VM。</p>
+<p>目前沒有太多用處，VM 裡就只有一個專案而已，配置大概是：</p>
+<ul>
+<li>Ubuntu 18.04 LTS</li>
+<li>MySQL 5.7（container）</li>
+<li>Nginx</li>
+<li>project：<a target="_blank" rel="noopener" href="https://github.com/kyomind/library-tracker">library-tracker</a><ul>
+<li>使用域名：<code>kyomind.tw</code></li>
+</ul>
+</li>
+</ul>
+<p>想變更成下面這樣：</p>
+<ul>
+<li>Ubuntu 20.04 LTS</li>
+<li>PostgreSQL（container），可晚點再弄<ul>
+<li>版本選擇：未定</li>
+<li>使用 pgAdmin 4（container）</li>
+<li>兩者使用 docker-compose build</li>
+</ul>
+</li>
+<li>Nginx → container</li>
+<li>project：<a target="_blank" rel="noopener" href="https://github.com/kyomind/library-tracker">library-tracker</a><ul>
+<li>變更網址為<code>library-tracker.kyomind.tw</code></li>
+<li>把主域名讓出來，設定 Nginx 讓<code>kyomind.tw</code>暫時作為 blog  轉址</li>
+<li>certbot + SSL</li>
+</ul>
+</li>
+</ul>
+<p>主要是就升級 Ubuntu 和變更專案域名，<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-upgrade-to-ubuntu-20-04-focal-fossa">可以直接升但會有一點風險</a>，我打算開一個新的 droplet 來全部重弄，順便升級為今年才新發表的 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/press/releases/digitalocean-launches-premium-droplets/">Premium Droplets</a> （會選擇 AMD 版本，因為<a target="_blank" rel="noopener" href="https://youtu.be/Doa-fXyd2oI">比較香</a>），並重新溫習一下各項部署的設定，最好把流程都再記錄一次。以前就有記錄，但很零散地放在 Evernote 裡，而現在已經不太用 Evernote 了。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/DigitalOcean/">DigitalOcean</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/from-zplug-to-zinit/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">將 zsh 套件管理器從 zplug 改為 zinit</span>
+        <span class="prev-text nav-mobile">將 zsh 套件管理器從 zplug 改為 zinit</span>
+      </a>
+    <a class="next" href="/adding-sitemap-issue/">
+        <span class="next-text nav-default">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</span>
+        <span class="prev-text nav-mobile">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

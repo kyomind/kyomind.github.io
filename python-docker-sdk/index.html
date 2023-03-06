@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Python Docker SDK 快速上手"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/python-docker-sdk/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Python Docker SDK 快速上手 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Python Docker SDK 快速上手
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-03-06
+        </span><span class="post-category">
+            <a href="/categories/Docker/">Docker</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Docker-SDK-for-Python"><span class="toc-text">安裝 Docker SDK for Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Docker-client"><span class="toc-text">初始化 Docker client</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOCKER-HOST-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">DOCKER_HOST 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-socket-%E6%AC%8A%E9%99%90%E5%95%8F%E9%A1%8C"><span class="toc-text">Docker socket 權限問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">容器操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/LdJAtZN.jpg"></p>
+<p>在專案中，我們很多時候會需要<strong>透過程式碼</strong>來操作某項服務——比如操作 Google Map 或本文的 Docker——而不是使用相對直覺的 CLI 或更方便的 GUI，畢竟它們都是給人類使用的。</p>
+<p>遇到這樣的需求，腦中第一個浮現的通常是「這服務有沒有官方 API 可以呼叫？」，再進一步想，如果有提供我們 SDK 就更好了！</p>
+<p>本文將介紹 Python Docker SDK 的基本使用方式，大致集中在<strong>初始化連線</strong>及<strong>容器操作</strong>部分，主要參考自<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/"> SDK 官方文件</a>，並會加上一些個人的實作經驗與小提醒。</p>
+<span id="more"></span>
+
+
+<p>一方面是記錄，同時也可以讓剛接觸 Docker SDK 的人看一下常用對應 CLI 指令的套件使用方式。也許你的程式中只需要簡單 Docker 的應用，相信本文可以減少你摸索文件的時間，類似文件中的「<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/#getting-started">getting started</a>」。</p>
+<p>好，讓我們開始。</p>
+<hr>
+<h2 id="安裝-Docker-SDK-for-Python"><a href="#安裝-Docker-SDK-for-Python" class="headerlink" title="安裝 Docker SDK for Python"></a>安裝 Docker SDK for Python</h2><p>我們都知道，SDK 從某個角度來說就是對 API 的封裝，以方便開發者使用，所以 SDK 中的各項函式、類別當然也是一種 API。</p>
+<p>而我們平常講的 API，通常指的是 Web API，單純使用 Web API，任何語言都可以透過 HTTP 輕鬆存取，實現互動與溝通。</p>
+<p>但 SDK 需要配合<strong>相對應的語言</strong>，因為它本質上就是「<strong>給特定語言的 API 懶人包</strong>」，從<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/api/sdk/">這個頁面</a>可以看出，Docker SDK 官方支援的語言總共有兩種：</p>
+<ul>
+<li>Go</li>
+<li>Python</li>
+</ul>
+<p>其餘語言則是社群開發的非官方版本，而這裡我們選用的是 Python，直接從 <a target="_blank" rel="noopener" href="https://pypi.org/project/docker/">PyPI</a> 安裝即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化-Docker-client"><a href="#初始化-Docker-client" class="headerlink" title="初始化 Docker client"></a>初始化 Docker client</h2><p>使用 Python SQL driver 類的套件我們都需要先建立一個「<strong>連線</strong>」，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">connection = pymysql.connect(</span><br><span class="line">    host=<span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">    user=<span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;passwd&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;db&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>同理，要操作 Docker Engine 也需要先建立一個「<strong>客戶端連線</strong>」，畢竟 Docker 是典型的 client&#x2F;server 架構，我們平常使用的 Docker CLI 就是一個 Docker client，而 server 端則是 Docker Engine，又稱為 Docker daemon。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> docker</span><br><span class="line">client = docker.from_env()</span><br></pre></td></tr></table></figure>
+
+<p>絕大部分的 Docker 操作，都是從這個 client 開始。初始化 client 連線非常簡單，只需要<code>from_env()</code>一行解決，不過這裡有一個需要注意的點，那就是 Docker daemon 所在的連線位址——<code>DOCKER_HOST</code>環境變數。</p>
+<p>事實上，<code>from_env()</code>會<strong>自動使用</strong>相關環境變數，來取得 Docker daemon 的連線位址。如果沒有設定，那麼預設會連線到本機上的位址，通常是<code>unix://var/run/docker.sock</code>。</p>
+<p>和 Docker CLI 相同，<code>from_env()</code>會使用這三個環境變數：</p>
+<ul>
+<li><code>DOCKER_HOST</code></li>
+<li><code>DOCKER_TLS_VERIFY</code></li>
+<li><code>DOCKER_CERT_PATH</code></li>
+</ul>
+<p>通常我們只需要關注第一個——<code>DOCKER_HOST</code>——即可。</p>
+<h2 id="DOCKER-HOST-環境變數"><a href="#DOCKER-HOST-環境變數" class="headerlink" title="DOCKER_HOST 環境變數"></a>DOCKER_HOST 環境變數</h2><p>平常我們在本機安裝 Docker，實際上是同時安裝了 Docker CLI 和 Docker Engine，<strong>啟動 Docker Engine 在本機執行一個 process ，即為 Docker daemon。</strong></p>
+<blockquote>
+<p><strong>注意</strong>：一般提到 Docker host，通常指的是 Docker network 中的 host network，和這裡的<code>DOCKER_HOST</code>環境變數所代表的意義並不相同。</p>
+</blockquote>
+<p>因為 Docker client 和 Docker Engine 都安裝在同一台主機上，此時<code>DOCKER_HOST</code>位址通常是像<code>unix://var/run/docker.sock</code>或<code>tcp://127.0.0.1:2375</code>這類的本機路徑，使用<code>from_env()</code>可以輕鬆建立 client 連線。</p>
+<p>當然，Docker Engine 必須先啟動。</p>
+<h3 id="Remote-Docker-daemon"><a href="#Remote-Docker-daemon" class="headerlink" title="Remote Docker daemon"></a>Remote Docker daemon</h3><p>但如果想要連線的 Docker daemon 是位於<strong>遠端主機</strong>，透過<code>from_env()</code>建立連線時，就要先設定<code>DOCKER_HOST</code>這個環境變數，以取代 SDK 提供的連線預設值。換句話說，在連線 localhost 時，這個變數可以不設定，而在連線遠端主機時，就<strong>必須要有</strong>。</p>
+<p>最簡單的方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> docker</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;DOCKER_HOST&quot;</span>] = <span class="string">&#x27;tcp://22.22.22.22:2375&#x27;</span> <span class="comment"># ip 只是舉例</span></span><br><span class="line">client = docker.from_env()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>但最好還是直接在<code>.env</code>之類的環境設定檔案把環境變數值設定好，並在 app 中取得。在程式碼中明示任何帳號、密碼、內部主機位址都不妥，<strong>應盡量避免</strong>。</p>
+</blockquote>
+<p>如果遠端主機要求使用 SSL 連線，則連線位址要設定在<code>DOCKER_TLS_VERIFY</code>。</p>
+<p><code>from_env()</code>是 Docker SDK 提供建立連線的捷徑，如果想使用更完整的參數，則要直接呼叫<code>DockerClient</code>類別來建立連線物件（實例），如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> docker</span><br><span class="line">client = docker.DockerClient(base_url=<span class="string">&#x27;unix://var/run/docker.sock&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>這部分請直接參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/client.html#client-reference">文件</a>，大部分情況使用<code>from_env()</code>應該已經足夠。</p>
+<h2 id="Docker-socket-權限問題"><a href="#Docker-socket-權限問題" class="headerlink" title="Docker socket 權限問題"></a>Docker socket 權限問題</h2><p>即使是透過本機上的 socket 連接本機的 Docker daemon，程式也可能遇到連線問題，通常是程式 app 的<strong>執行權限</strong>不符合主機上 Docker socket 的要求，會出現類似下面的錯誤訊息：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error <span class="keyword">while</span> fetching server API version: (<span class="string">&#x27;Connection aborted.&#x27;</span>, PermissionError(<span class="number">13</span>, <span class="string">&#x27;Permission denied&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>此時可能要修改<code>var/run/docker.sock</code>檔案或 app 本身的權限，而這樣做是否安全，需具體考量，這裡只是點出這個潛在問題。</p>
+<h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><p>Docker 最常見使用的就是容器操作，我們來大概了解一下。</p>
+<h3 id="建立並啟動容器：containers-run"><a href="#建立並啟動容器：containers-run" class="headerlink" title="建立並啟動容器：containers.run"></a>建立並啟動容器：<code>containers.run</code></h3><p>先看個例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, command=<span class="string">&#x27;echo hello world&#x27;</span>, ports=&#123;<span class="string">&#x27;2222/tcp&#x27;</span>: <span class="number">3333</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>方式是使用 SDK 中<code>containers</code>模組的<code>run</code>方法（method），再看一下<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.ContainerCollection.run">文件</a>中<code>run</code>的使用說明：</p>
+<p> <strong>run</strong>(<code>image</code>, <code>command=None</code>, <code>**kwargs</code>)</p>
+<blockquote>
+<p>Run a container. By default, it will wait for the container to finish and return its logs, similar to <code>docker run</code>.</p>
+</blockquote>
+<p>簡單來說，執行<code>run</code>的結果，即是依據給定的參數，來建立相對應的<code>Container</code>物件，和你使用 CLI 執行<code>docker container run</code>指令很類似。</p>
+<p>從文件中可知<code>run</code>方法具有兩個位置參數：<code>image</code>與<code>command</code>。<code>image</code>呼叫時一定不可省略，而<code>command</code>有參數預設值<code>None</code>，呼叫時可以省略，位置參數的特色是可以直接依順序賦值調用，不需使用參數名稱，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, <span class="string">&#x27;echo hello world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>從這上述兩個例子可以輕易看出，這裡的參數就相當於我們使用 CLI 時的 flag（也是參數啦）！很容易理解與轉換，換句話說，本段開頭的第一個例子可以理解為下面的 CLI 指令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container run -p <span class="number">2222</span>:<span class="number">3333</span> alpine echo hello world</span><br></pre></td></tr></table></figure>
+
+<p><code>containers</code>模組的角色相當於 CLI 中的<code>docker container</code>，了解怎麼建立與啟動容器後，剩下就是容器的取得與操作問題了。</p>
+<h3 id="建立時即取得容器物件：detach-True"><a href="#建立時即取得容器物件：detach-True" class="headerlink" title="建立時即取得容器物件：detach=True"></a>建立時即取得容器物件：<code>detach=True</code></h3><p>程式成功執行<code>containers.run</code>方法後，容器就會建立及啟用，但若想要直接取得該容器物件以進行後續操作，則需要在呼叫<code>run</code>方法時加上<code>detach=True</code>參數，類似於 CLI 中的<code>-d</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, detach=True)</span><br><span class="line">&lt;Container <span class="string">&#x27;45e6d2de7c54&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>雖然都是 detach 的意思，但 CLI 使用<code>-d</code>通常是為了不要讓容器的 process 佔用前景，而這裡是程式執行，沒有前景佔用問題，<code>detach=True</code>的主要意義在於取得容器。</p>
+<p>取得容器並存為變數：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container = client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, detach=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>取得容器物件通常是想要進一步存取該容器的相關資訊，比如容器 id、logs 等：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container_id = container.<span class="built_in">id</span></span><br><span class="line">logs = container.logs</span><br></pre></td></tr></table></figure>
+
+<p>容器物件的所有屬性及方法，請參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.Container">文件</a>。</p>
+<h3 id="取得已存在的容器物件：containers-get"><a href="#取得已存在的容器物件：containers-get" class="headerlink" title="取得已存在的容器物件：containers.get"></a>取得已存在的容器物件：<code>containers.get</code></h3><p>上一段講的是建立的時候順便取得容器物件，而如果要取得「已存在」的容器，不論容器是否執行中，都可以透過容器 id 或容器名稱取得——使用<code>get</code>方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 無論 id 或名稱格式皆為「字串」</span></span><br><span class="line">container = client.containers.get(<span class="string">&#x27;&lt;容器id&gt;&#x27;</span>)</span><br><span class="line">container = client.containers.get(<span class="string">&#x27;&lt;容器名稱&gt;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>這裡的容器 id 和使用 CLI 一樣，可以<strong>只取前面幾位</strong>即可，比如只取<code>&#39;45e6&#39;</code>，只要沒有重複的容器 id 就能成功取得，反之則會出 error。不過這畢竟是程式執行，謹慎見起，建議還是不要取太少位，但可以不必是全部。</p>
+<h3 id="常用容器操作例示"><a href="#常用容器操作例示" class="headerlink" title="常用容器操作例示"></a>常用容器操作例示</h3><p>取得特定容器物件後，才能對它進行操作，這裡就稍為演示一下幾個常用的操作即可。</p>
+<p><strong>刪除容器</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container.remove()</span><br><span class="line">container.remove(force=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>相當於<code>docker container rm</code>、<code>docker container rm -f</code>。</p>
+<p><strong>啟動容器</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container.start()</span><br></pre></td></tr></table></figure>
+
+<p>相當於<code>docker container start</code>。</p>
+<p><strong>停止容器</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container.stop()</span><br></pre></td></tr></table></figure>
+
+<p>相當於<code>docker container stop</code>。</p>
+<hr>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>可以看出，只要熟悉 CLI 操作指令，使用 SDK 也會很容易上手。可以想見，平常我們透過 CLI 操作 Docker ，其實也是內部 SDK 幫你把指令轉換為程式碼再與 Docker daemon 進行溝通。</p>
+<p>更多操作請參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/">文件</a>，本文僅稍作演示，希望讓第一次使用的人在心中有個輪廓。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南" rel="bookmark">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/the-quick-python-book/" title="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀" rel="bookmark">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Docker/">Docker</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/hexo-likecoin-button/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">為 Hexo 裝上 LikeCoin 按鈕</span>
+        <span class="prev-text nav-mobile">為 Hexo 裝上 LikeCoin 按鈕</span>
+      </a>
+    <a class="next" href="/gitlens-sourcetree-diff-branches/">
+        <span class="next-text nav-default">VS Code 使用 GitLens 比較不同分支差異 + SourceTree 做法</span>
+        <span class="prev-text nav-mobile">VS Code 使用 GitLens 比較不同分支差異 + SourceTree 做法</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/linux-dev-setup/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-02-19
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">一、設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A8%AD%E5%AE%9A-zsh%E3%80%81zinit%E3%80%81Powerlevel10k"><span class="toc-text">二、設定 zsh、zinit、Powerlevel10k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">三、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">四、設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-Docker"><span class="toc-text">五、安裝 Docker</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/wuqTPvs.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<p>最近為了升級 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu</a> 版本，重建了工作上的 Linux VM（直接升級會怕），所以又得重新設定一次開發環境。</p>
+<p>軟體界有一句名言叫「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%90%83%E8%87%AA%E5%B7%B1%E7%9A%84%E7%8B%97%E7%B2%AE">吃自己的狗糧</a>」，通常指的是自己開發的工具，自己先使用。而每次重設 Linux 開發環境時，我也都在吃自己的狗糧——看自己寫的教學文章。</p>
+<p>不誇張，就是一篇篇看，把指令複製貼上，一步一步將環境設定到位。</p>
+<p>做了好幾次以後，這次不禁想到：「<strong>咦？我乾脆整理成一篇就好了啊！</strong>」</p>
+<span id="more"></span>
+
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>沒錯！本篇講述的是：當我拿到一個<strong>全新的 Linux VM</strong>，為了開發方便，一定會安裝、設定的工具——主要基於「<strong>Python 後端</strong>」角度。</p>
+<p>內容參考自以往數篇文章，且只關注在<strong>建立開發環境的必要步驟</strong>，並適時給出一些額外的提醒與建議。</p>
+<p>如此一來，我們就不必在文章間穿梭，力求節省時間、一步到位！</p>
+<p>本文是以 <strong>Ubuntu 20.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
+<p>話不多說，讓我們開始。</p>
+<hr>
+<h2 id="一、設定-SSH-連線"><a href="#一、設定-SSH-連線" class="headerlink" title="一、設定 SSH 連線"></a>一、設定 SSH 連線</h2><p>這部分我並沒有寫成文章，因為網路上的資源已經非常多，而且步驟也不算太複雜。</p>
+<p>對我而言，主要設定下面兩種 SSH 連線：</p>
+<ol>
+<li>本機電腦與遠端 VM 的連線。</li>
+<li>VM 與 GitHub（或其它 Git 服務）的連線。</li>
+</ol>
+<p>至於具體要怎麼做，還請自行 Google。</p>
+<h2 id="二、設定-zsh、zinit、Powerlevel10k"><a href="#二、設定-zsh、zinit、Powerlevel10k" class="headerlink" title="二、設定 zsh、zinit、Powerlevel10k"></a>二、設定 zsh、zinit、Powerlevel10k</h2><blockquote>
+<p>參考原文：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></li>
+<li><a href="https://blog.kyomind.tw/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></li>
+</ul>
+</blockquote>
+<h3 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;</span><br><span class="line">sudo apt-get upgrade -y;</span><br><span class="line">sudo apt-get install -y zsh;</span><br></pre></td></tr></table></figure>
+
+<h3 id="將-zsh-設為登入時的「預設」shell"><a href="#將-zsh-設為登入時的「預設」shell" class="headerlink" title="將 zsh 設為登入時的「預設」shell"></a>將 zsh 設為登入時的「預設」shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -s /bin/zsh <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+
+<p>提醒：請務必先確認 zsh 本身的安裝、設定沒問題，可以正常使用。否則登入後可能直接卡住，需要透過別的帳號例如 admin 來處理。</p>
+<h3 id="新增-zshrc與-zprofile"><a href="#新增-zshrc與-zprofile" class="headerlink" title="新增.zshrc與.zprofile"></a>新增<code>.zshrc</code>與<code>.zprofile</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> .zshrc</span><br><span class="line"><span class="built_in">touch</span> .zprofile</span><br></pre></td></tr></table></figure>
+
+<h3 id="安裝-zinit-套件管理器"><a href="#安裝-zinit-套件管理器" class="headerlink" title="安裝 zinit 套件管理器"></a>安裝 zinit 套件管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;<span class="subst">$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="設定-zinit-套件"><a href="#設定-zinit-套件" class="headerlink" title="設定 zinit 套件"></a>設定 zinit 套件</h3><p>安裝完後，zinit 已經自動在<code>.zshrc</code>新增部分內容，請接著繼續新增下列內容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zsh 套件四天王</span></span><br><span class="line">zinit light zsh-users/zsh-completions</span><br><span class="line">zinit light zsh-users/zsh-autosuggestions</span><br><span class="line">zinit light zsh-users/zsh-history-substring-search</span><br><span class="line">zinit light zdharma-continuum/fast-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="comment"># Oh My Zsh 功能</span></span><br><span class="line">zinit snippet OMZ::lib/completion.zsh</span><br><span class="line">zinit snippet OMZ::lib/history.zsh</span><br><span class="line">zinit snippet OMZ::lib/key-bindings.zsh</span><br><span class="line">zinit snippet OMZ::lib/theme-and-appearance.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># key binding</span></span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[A&#x27;</span> history-substring-search-up</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[B&#x27;</span> history-substring-search-down</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;,&#x27;</span> autosuggest-accept</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他</span></span><br><span class="line">zinit load djui/alias-tips</span><br></pre></td></tr></table></figure>
+
+<p>存檔後，重啟 shell。（如果要一併安裝 Powerlevel10k，可先不用重啟。）</p>
+<h3 id="安裝-Powerlevel10k-佈景主題"><a href="#安裝-Powerlevel10k-佈景主題" class="headerlink" title="安裝 Powerlevel10k 佈景主題"></a>安裝 Powerlevel10k 佈景主題</h3><p>非常簡單，只要在 zinit 的設定內容後面，再加上這行即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Powerlevel10k</span></span><br><span class="line">zinit ice depth=1; zinit light romkatv/powerlevel10k</span><br></pre></td></tr></table></figure>
+
+<p>存檔，重啟 shell，此時就會開始安裝 Powerlevel10k，隨即會進入「<strong>外觀樣式選擇與設定</strong>」畫面。</p>
+<p>之後如果要重新設定，可使用指令<code>p10k configure</code>。</p>
+<hr>
+<h2 id="三、設定-pyenv"><a href="#三、設定-pyenv" class="headerlink" title="三、設定 pyenv"></a>三、設定 pyenv</h2><blockquote>
+<p>參考原文：<a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></p>
+</blockquote>
+<h3 id="安裝-dependency"><a href="#安裝-dependency" class="headerlink" title="安裝 dependency"></a>安裝 dependency</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;</span><br><span class="line">sudo apt-get install -y --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="安裝-pyenv"><a href="#安裝-pyenv" class="headerlink" title="安裝 pyenv"></a>安裝 pyenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="設定-pyenv"><a href="#設定-pyenv" class="headerlink" title="設定 pyenv"></a>設定 pyenv</h3><p>這裡只講 zsh 的設定，bash 請參見原文。</p>
+<h4 id="zprofile新增內容，使用echo指令，或自行貼上"><a href="#zprofile新增內容，使用echo指令，或自行貼上" class="headerlink" title=".zprofile新增內容，使用echo指令，或自行貼上"></a><code>.zprofile</code>新增內容，使用<code>echo</code>指令，或自行貼上</h4><p>直接使用<code>echo</code>指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init --path)&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br></pre></td></tr></table></figure>
+<p>或自行貼上<code>.zprofile</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init --path)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="zshrc新增，一樣使用echo指令，或自行貼上"><a href="#zshrc新增，一樣使用echo指令，或自行貼上" class="headerlink" title=".zshrc新增，一樣使用echo指令，或自行貼上"></a><code>.zshrc</code>新增，一樣使用<code>echo</code>指令，或自行貼上</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="pyenv-安裝-Python-3-10-10-並設為全域"><a href="#pyenv-安裝-Python-3-10-10-並設為全域" class="headerlink" title="pyenv 安裝 Python 3.10.10 並設為全域"></a>pyenv 安裝 Python 3.10.10 並設為全域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.10</span><br></pre></td></tr></table></figure>
+
+<p>通常需要等待好一段時間，安裝才會完成。🐸</p>
+<p>接著透過 pyenv，將系統全域的 Python 設定為 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-31010/">3.10.10</a>（或其他版本）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.10.10</span><br></pre></td></tr></table></figure>
+
+<h3 id="不再安裝-pyenv-virtualenv"><a href="#不再安裝-pyenv-virtualenv" class="headerlink" title="不再安裝 pyenv-virtualenv"></a>不再安裝 pyenv-virtualenv</h3><p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以我現在<strong>一律只使用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
+<p>這也是我目前覺得<strong>最簡潔</strong>的做法。</p>
+<hr>
+<h2 id="四、設定-Poetry"><a href="#四、設定-Poetry" class="headerlink" title="四、設定 Poetry"></a>四、設定 Poetry</h2><blockquote>
+<p>參考原文：<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a></p>
+</blockquote>
+<h3 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 -</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增poetry指令至-PATH"><a href="#新增poetry指令至-PATH" class="headerlink" title="新增poetry指令至 PATH"></a>新增<code>poetry</code>指令至 PATH</h3><p>在<code>.zshrc</code>新增以下內容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改config，改用專案內的-venv虛擬環境"><a href="#修改config，改用專案內的-venv虛擬環境" class="headerlink" title="修改config，改用專案內的.venv虛擬環境"></a>修改<code>config</code>，改用專案內的<code>.venv</code>虛擬環境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、安裝-Docker"><a href="#五、安裝-Docker" class="headerlink" title="五、安裝 Docker"></a>五、安裝 Docker</h2><p>安裝細節常常隨著 Docker 版本的更新而有所變動，建議直接看<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">官方文件</a>即可。</p>
+<p>這次安裝有兩個發現：</p>
+<ol>
+<li>最新版似乎已經<strong>不需要將使用者加入 Docker 群組了</strong>。</li>
+<li><code>docker compose</code>改以 plugin 的形式安裝，變成 Docker client 的<strong>子命令</strong>，而不再採用舊版的<code>docker-compose</code>。</li>
+</ol>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-zsh-zinit/" title="Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit" rel="bookmark">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-pyenv/" title="Ubuntu 安裝使用 pyenv + pyenv-virtualenv" rel="bookmark">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/powerlevel10k/" title="zsh 透過 zinit 安裝 Powerlevel10k 佈景主題" rel="bookmark">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/Ubuntu/">Ubuntu</a>
+            <a href="/tags/zsh/">zsh</a>
+            <a href="/tags/zinit/">zinit</a>
+            <a href="/tags/Powerlevel10k/">Powerlevel10k</a>
+            <a href="/tags/pyenv/">pyenv</a>
+            <a href="/tags/Poetry/">Poetry</a>
+            <a href="/tags/Docker/">Docker</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weekly-review-12/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">12，blog 新增文章訂閱功能——使用 follow.it——與我的思考</span>
+        <span class="prev-text nav-mobile">12，blog 新增文章訂閱功能——使用 follow.it——與我的思考</span>
+      </a>
+    <a class="next" href="/weekly-review-11/">
+        <span class="next-text nav-default">11，我絕不當資訊的聚合者</span>
+        <span class="prev-text nav-mobile">11，我絕不當資訊的聚合者</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

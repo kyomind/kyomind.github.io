@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="08，年末特輯下：2022 工作與程式學習總結"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/weekly-review-08/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>08，年末特輯下：2022 工作與程式學習總結 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">08，年末特輯下：2022 工作與程式學習總結
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-01-29
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-Poetry-%E7%AE%A1%E7%90%86%E5%B0%88%E6%A1%88%E7%9A%84-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">一、使用 Poetry 管理專案的 Python 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-pytest-%E6%92%B0%E5%AF%AB-API-%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6"><span class="toc-text">二、使用 pytest 撰寫 API 單元測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81MongoEngine-ORM-%E5%AD%98%E5%8F%96-MongoDB"><span class="toc-text">三、MongoEngine ORM 存取 MongoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Linter%E3%80%81Formatter%E3%80%81pyproject-toml%E3%80%81pre-commit"><span class="toc-text">四、Linter、Formatter、pyproject.toml、pre-commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A2023-%E4%B8%8A%E5%8D%8A%E5%B9%B4%E7%9B%AE%E6%A8%99"><span class="toc-text">小結：2023 上半年目標</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/sWgUbzT.png"></p>
+<p>「今天是公司尾牙，也是我進公司剛滿一年半。」——本來要用這兩句作為開頭的🤣。結果年假放起來，一轉眼兩星期過去，驀然回首，2023 年 1 月都快結束了！</p>
+<p>不得不說，2022 才是我身為軟體工程師，覺得自己比較有進步的第一年。儘管不特別勤奮，但對細節還是相當講究的，尤其是「團隊文件文化」的建立，與程式碼可讀性的落實。</p>
+<p>個人部分，寫程式的能力，要說提升多少，可能也沒有——code review 功力倒是明顯提升了，主還是在於一些重要工具的熟悉、應用上。</p>
+<p>這些工具是在 Python 開發工作上佔據一定重要性，有著「應用廣、可延續」的特性，並擔當「讓團隊開發更加高效且健全」的角色。</p>
+<p>可以說，作為一個稱職的 Python 開發者，就應該要使用這些東東！</p>
+<p>其中的一部分，去年已經寫成教學文章。剩下的還沒動筆的，今年也要寫出來。接下來就來盤點一下，它們具體是哪些。</p>
+<span id="more"></span>
+
+
+<hr>
+<h2 id="一、使用-Poetry-管理專案的-Python-虛擬環境"><a href="#一、使用-Poetry-管理專案的-Python-虛擬環境" class="headerlink" title="一、使用 Poetry 管理專案的 Python 虛擬環境"></a>一、使用 Poetry 管理專案的 Python 虛擬環境</h2><p>在〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉中，我並沒有具體提及團隊改採用 Poetry 的理由，但在<a target="_blank" rel="noopener" href="https://www.facebook.com/groups/pythontw/permalink/10162017819458438/">臉書社團的宣傳文</a>中則有這段發言：</p>
+<blockquote>
+<p>前陣子工作專案在新增一個簡單的 feature 後，我赫然發現明明專案規模還不算大，Python 虛擬環境所安裝的套件數量竟然堂堂突破了 200 大關（拜 Azure SDK 所賜），產生的 Docker image 也超過 2 GB，真是太誇張了！</p>
+</blockquote>
+<p>這是不能接受的！</p>
+<p>不過即便用了一段時間，還是難免覺得，Poetry 真的「不算」是個容易上手的工具。有時候我還是會回頭看自己的文章，才能想起來某件事要怎麼下指令。</p>
+<p>但整體而言，絕對值得啦！而且它的套件管理機制，也不像 <a target="_blank" rel="noopener" href="https://blog.marsen.me/2022/09/08/2022/how_to_npm_update_more_smoothly/">npm 那樣，容易過度肥大，甚至會形成黑洞（一個迷因）</a>。</p>
+<h2 id="二、使用-pytest-撰寫-API-單元測試"><a href="#二、使用-pytest-撰寫-API-單元測試" class="headerlink" title="二、使用 pytest 撰寫 API 單元測試"></a>二、使用 pytest 撰寫 API 單元測試</h2><p>可能是去年「第二重要」的事！</p>
+<p>我想，單元測試，或者說寫測試，是「<strong>最有效</strong>」改善一個工程師平時寫程式的「不良習慣」的一種手段——因為它要求你對自己寫下的程式碼的品質，負起責任。</p>
+<p>而且光單元測試本身就很多學問——還真的非常多，比如這篇〈<a target="_blank" rel="noopener" href="https://www.marclittlemore.com/how-to-write-high-quality-unit-tests/">How To Write High Quality Unit Tests</a>〉。不過對剛接觸測試的我們，用一個好工具如 pytest，把基本的測試寫出來，就已經有 60 分了！</p>
+<p>用過 pytest 就能感受到它是如此的<strong>強大而優雅</strong>，優雅的點在於，它能讓測試程式碼本身就盡可能「<strong>有秩序、好讀好維護</strong>」（當然這需要一定深思熟慮的設計與落實），尤其在<strong>專案與測試規模愈來愈大</strong>的時候，pytest 的優勢將會更加突顯。</p>
+<p>難怪 pytest 能在軟體 QA 等各種測試領域都佔據一定地位，更別說對一般的開發者了——不用說，我們要善用它。</p>
+<h2 id="三、MongoEngine-ORM-存取-MongoDB"><a href="#三、MongoEngine-ORM-存取-MongoDB" class="headerlink" title="三、MongoEngine ORM 存取 MongoDB"></a>三、MongoEngine ORM 存取 MongoDB</h2><p>ORM 這東西到底是否必要，<a target="_blank" rel="noopener" href="https://ionutbalosin.com/2021/12/do-we-really-need-an-orm/">向來都有爭論</a>。在存取需求不複雜的情況下，我還是偏好 ORM，這裡就是很好的例子。</p>
+<p>我們只是想把 gateway 的 config（多層且不固定的資料結構）透過 MongoDB 儲存，有了 MongoEngine 這樣的 ORM 工具，就不需要知曉太多 MongoDB 細節，可以減輕一開始的實作負擔。</p>
+<p>不過不可否認，工具本身也需要學習🐸，而學習就是成本！這部分可參考〈<a href="https://blog.kyomind.tw/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a>〉。後續預計會再寫一、兩篇操作教學文。</p>
+<h2 id="四、Linter、Formatter、pyproject-toml、pre-commit"><a href="#四、Linter、Formatter、pyproject-toml、pre-commit" class="headerlink" title="四、Linter、Formatter、pyproject.toml、pre-commit"></a>四、Linter、Formatter、pyproject.toml、pre-commit</h2><p>如果測試是第二重要，那什麼才是最重要的事？——確保程式碼的<strong>規範與一致性</strong>。</p>
+<p>「一致性」在團隊協作的重要程度，容易被輕忽。</p>
+<p>對於相同功能與目標，卻有著（截然）不同的寫法，其中造成的<strong>思考停頓、理解混淆、bug 滋生</strong>等，這些額外的隱性成本，並不容易計算，但確確實實存在。</p>
+<p>你我都知道，這就是一種「<strong>程式碼的不衛生</strong>」。</p>
+<p>本段標題的工具們就是為了落實規範與一致性，降低「程式碼不衛生」的可能，我視它們為程式開發基石，所以自然是第一重要的事。</p>
+<hr>
+<h2 id="小結：2023-上半年目標"><a href="#小結：2023-上半年目標" class="headerlink" title="小結：2023 上半年目標"></a>小結：2023 上半年目標</h2><p>我在今年上半年（除日常開發外）的自訂工作績效，列了下面幾個小目標，供參：</p>
+<ol>
+<li>為全部專案實作完整的 logging。</li>
+<li>大量導入 type hints 與相關工具如 <a target="_blank" rel="noopener" href="https://github.com/python/mypy">mypy</a>。</li>
+<li>增進單元測試品質（增加測試覆蓋率與降低外部耦合）。</li>
+</ol>
+<p>儘管每個目標都不算大，但透過一步步累積與向外擴展，我們應該都能過上踏實的開發人生。🐧</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-mongoengine/" title="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學" rel="bookmark">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學" rel="bookmark">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/snyk-advisor/" title="使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」" rel="bookmark">使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Poetry/">Poetry</a>
+            <a href="/tags/pytest/">pytest</a>
+            <a href="/tags/MongoEngine/">MongoEngine</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weekly-review-09/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">09，我的 Macbook 之旅 + 新的野心</span>
+        <span class="prev-text nav-mobile">09，我的 Macbook 之旅 + 新的野心</span>
+      </a>
+    <a class="next" href="/silver-bullets/">
+        <span class="next-text nav-default">從 WorkFlowy 到 Logseq——我偏愛「清單式筆記」的四大理由</span>
+        <span class="prev-text nav-mobile">從 WorkFlowy 到 Logseq——我偏愛「清單式筆記」的四大理由</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

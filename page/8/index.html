@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="分享程式、寫作、筆記工具與學習心得"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/page/8/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-09-12
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gqhZSo.jpg" alt="by Aleksandar Pasaric from Pexels"></p>
+<blockquote>
+<p>大合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker</a></p>
+</blockquote>
+<p><code>2022/03/18</code>重要更新：</p>
+<blockquote>
+<p>這兩天看到這篇〈<a target="_blank" rel="noopener" href="https://blog.einverne.info/post/2021/10/zinit-author-delete-repository-and-alternative.html">zinit 作者刪庫事件以及後續代替方案</a>〉，才知道原來 zinit 的原作者竟然無預警把 GitHub 上的 repo 刪除了！嚴格來說是把 organization 刪了，所以其下的好多 repo 都變成孤兒，包括一些常用的 zsh 套件。</p>
+</blockquote>
+<blockquote>
+<p>不過原來的 repo 已經有<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">社群的 fork 版</a>並持續維護中，所以本文內容除了 zinit 與部分套件的安裝網址、路徑有修正外，其餘使用上並不受影響，我暫時也沒打算換到新的管理器，因為其實都大同小異。</p>
+</blockquote>
+<hr>
+<p>〈<a href="https://blog.kyomind.tw/from-zplug-to-zinit/">將 zsh 套件管理器從 zplug 改為 zinit</a>〉曾提過要嘗試在自己新開的 VM 上面使用之前沒用過的 zsh 套件管理器——<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a>，取代原來在 Mac 上的 zplug 方案。安裝後也進行了簡單的<a href="https://blog.kyomind.tw/learning-topic/#%E5%9B%9E%E9%A1%A7">回顧</a>。</p>
+<p>後來工作上又開了好幾個 VM，也是裝 Ubuntu，因為覺得設定有點麻煩所以一直使用預設的 bash shell，但操作起來的效率與體驗，和 zsh 完全不能比。</p>
+<p>只能說 zsh 真的<strong>用過就回不去了！</strong>想想還是下定決心，把整個流程寫下來，作為日後重置 VM 時的參考。</p>
+<p>至於為何不選用最常見的套件管理器——<a target="_blank" rel="noopener" href="https://ohmyz.sh/">Oh My Zsh</a>，前述文章已有提及，基本上就是安裝了太多不必要的功能，著實不夠簡潔。</p>
+          <div class="read-more">
+            <a href="/ubuntu-zsh-zinit/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-09-08
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/DjR97t4.jpg" alt="by David Besh from Pexels"></p>
+<blockquote>
+<p>本文最近更新日期：<code>2022/05/05</code></p>
+</blockquote>
+<blockquote>
+<p>大合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker</a></p>
+</blockquote>
+<p>〈<a href="https://blog.kyomind.tw/pyenv-setup/">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a>〉介紹了 pyenv 在 macOS 上的安裝與使用。</p>
+<p>事實上，它更常被使用的場景應該是 Linux，畢竟無論是 Windows 或 macOS 都有功能相仿但更無腦且容易上手的選擇——Anaconda。</p>
+          <div class="read-more">
+            <a href="/ubuntu-pyenv/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/my-way/">中信 My Way 數位帳戶：開戶、升級與使用心得</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-08-29
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/pdcqYmG.jpg" alt="by Brennan Tolman from Pexels"></p>
+<blockquote>
+<p><code>2022/07/05</code>：全文重新編輯，並大幅增補內容，供讀者開戶前參考。</p>
+</blockquote>
+<p>前陣子因為工作薪轉需求，必須到中國信託商業銀行（以下簡稱「中信」）開戶，之前從來沒有用過他們家的金融帳戶或信用卡，所以這算得上是與中信業務往來的初體驗，最後開立了「<strong>My Way 數位存款帳戶</strong>」。</p>
+<p>先說<strong>結論</strong>，如果你也有中信<strong>新戶開戶</strong>的需求，那除非和我一樣是「實體存摺厭惡者」，否則就<strong>完完全全沒必要</strong>在開戶的時候選擇他們家的數位帳戶，<strong>強烈建議開一般戶即可</strong>，千萬不要想不開啊！</p>
+          <div class="read-more">
+            <a href="/my-way/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/riverside/">轉職生活與河濱之於我</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-08-15
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/pdS0XBj.jpg"></p>
+<p>幾年前辭去公職後，從宜蘭來到新北永和租房，直到重新開始工作為止，期間歷經了準備律師、落榜、資策會上課、程式自學等對我的人生有著重大影響的事件。在這段不算短的時光中，每週甚至有時每天陪伴我的地方，就是河濱。</p>
+          <div class="read-more">
+            <a href="/riverside/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/learning-topic/">notes 回顧與每月學習主題</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-08-01
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>前一篇 note 已經是 7&#x2F;5，隔了不算短的時間，在雜記或 note 系列中，我所期待的寫作取向是多表達一點自己<strong>近期</strong>的想法、歸納與打算，並不需要深入細節，可以點到為止。</p>
+<p>在此前提下，發文的頻率是最重要的。</p>
+          <div class="read-more">
+            <a href="/learning-topic/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/my-own-blog-part-two/">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-24
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/xZtuAXe.png" alt="by Elizaveta Rusalskaya on Behance"></p>
+<p>〈<a href="https://blog.kyomind.tw/my-own-blog-part-one/">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a>〉闡述了我自架 blog 的理由，但從萌生這個念頭到真正行動，中間竟也隔了 9 個月之久！</p>
+<p>儘管不滿 Medium 的不便，自己架站卻也要考慮很多，就像在 Medium 上寫文章，想著想著又放在一旁了。</p>
+<p>這篇就來講一下自架有哪些選擇，我怎麼考慮等等。不過我並沒有真的通盤考量、比較所有選項的細節，就當作是自架網站選項參考的收集冊吧！</p>
+<h3 id="系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲"><a href="#系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲" class="headerlink" title="系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲"></a>系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/my-own-blog-part-one/">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a></li>
+<li><strong>不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</strong></li>
+<li><a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></li>
+<li><a href="https://blog.kyomind.tw/a-mind-for-blogs/">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></li>
+</ol>
+</blockquote>
+          <div class="read-more">
+            <a href="/my-own-blog-part-two/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/hard-to-say/">誠實面對自己，真的很難</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-19
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><!-- ![](https://i.imgur.com/OhyXVWU.png)   -->
+<p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>這次要講的是這幾天看的一篇文章和一則 Podcast，兩者的共通點是「自我反省」，和一般反省不同的是，他們的反省是以「公開」的方式為之——寫成文章及錄成 Podcast。</p>
+<p>公開反省也不算新鮮事，真正值得一提的是自剖的犀利度，作為讀者，我都不由自主地為他們感到不好意思了！（身為高敏感人的我同理心總是反射性發動）</p>
+<p>如此的坦誠與赤裸，不禁覺得：「為什麼你能表述到這個程度？你不怕作為讀者的我們討厭你嗎？」只能說，佩服，我也想要有這樣的勇氣。</p>
+          <div class="read-more">
+            <a href="/hard-to-say/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <nav class="pagination"><a class="prev" href="/page/7/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一頁</span>
+      </a>
+    <a class="next" href="/page/9/">
+        <span class="next-text">下一頁</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></section></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

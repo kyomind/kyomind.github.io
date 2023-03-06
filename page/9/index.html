@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="分享程式、寫作、筆記工具與學習心得"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/page/9/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/pyenv-setup/">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-10
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/rnvlF18.jpg" alt="by Koma Zhang on Behance"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></p>
+</blockquote>
+<p>「人生苦短，我用 Python」闡述了 Python 的易用與簡潔，但如果深入到 Python 的套件管理與版本隔離，則是一件十分複雜的事，有興趣的人可以參考下列內容：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@will.wang/90e398bb3785">撥開 Python, pip, site-packages 的藍色蜘蛛網 💢</a></li>
+<li><a target="_blank" rel="noopener" href="https://pythonhunter.org/episodes/ep15">《捕蛇者說》Ep 15. 和 PyPA 的成員聊聊 Python 開發工作流</a>（推薦！）</li>
+<li><a target="_blank" rel="noopener" href="https://josix.tw/pyenv-deep-dive/">建立一個方便開發的 Python 環境 （零）- 使用 Pyenv 管理 Python 版本</a></li>
+<li><a target="_blank" rel="noopener" href="https://shazi.info/pip-pipenv-%E5%92%8C-poetry-%E7%9A%84%E9%81%B8%E6%93%87/">pip, pipenv 和 poetry 的選擇</a></li>
+</ul>
+<h2 id="本文重點"><a href="#本文重點" class="headerlink" title="本文重點"></a>本文重點</h2><p>這次並沒有要細論上述內容，只是想把 Anaconda 移除掉——我現在的 Python 虛擬環境（virtualenv）都是用 Anaconda 附帶的 conda 建立與管理居多。</p>
+<p>而最常見的替代方案，就是 pyenv + virtualenv。</p>
+<p>本篇僅記錄一下設定上的重點，詳細用法請參考 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">pyenv 官方 GitHub</a>。</p>
+          <div class="read-more">
+            <a href="/pyenv-setup/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/learn-from-shosho/">如何活得有存在感？張修修的不正常人生</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-07
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<blockquote>
+<p><code>2022/01/14</code>：兩個系列已合併，請見：<a href="https://blog.kyomind.tw/just-a-note/">合併雜記與 just a note，與我今年的寫作目標頻率</a></p>
+</blockquote>
+<p>又是一個新系列！其實就是「just a note」的日常版，記錄一些生活中的小心得。</p>
+<p>這個系列依舊會遵守下列原則：</p>
+<ul>
+<li><strong>不超過 1000 字</strong>：對我而言，字數的限制對於降低寫作摩擦力有著巨大幫助。</li>
+<li><strong>盡可能和程式無關</strong>：因為已經有「just a note」系列了，兩者區分開來也方便查看。</li>
+<li><strong>使用同一封面圖片</strong>：Canva 萬歲！</li>
+<li><strong>沒有一定格式</strong>：這樣才稱得上雜記。但也許寫多了會有 SOP，倒也沒關係。</li>
+</ul>
+<p>雖然沒有固定的內容或寫法，但我會盡可能「切題」，意思是說文章裡頭要講什麼，會直接在標題就開門見山，節約大家的時間。</p>
+<p>附帶一提，農場標題真是我最討厭的東西之一。</p>
+          <div class="read-more">
+            <a href="/learn-from-shosho/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/tenlong-bookstore/">天瓏書局三訪，兼論我挑程式書的小原則</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-05
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/clean-code-python/">在天瓏買了兩本 Python 新書與一生的追求</a></p>
+</blockquote>
+<p>天瓏書局即使在疫情期間，也是全年 365 天都沒有休息，令人敬佩。這幾次來店裡客人都非常少，加上我通常不超過 3 個人，簡直快要包場了，虧本經營吶！</p>
+<p>想想這應該是這一個月內第三次來天瓏，每次來要看的主題都不盡相同，第一次是為了看 Python 相關，然後是前端（還真的買了幾本前端的書，不過顯然短期內是不太可能會打開來看），這次則是以 Docker 為主，加上一些 IoT 與雲端的書。</p>
+          <div class="read-more">
+            <a href="/tenlong-bookstore/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/just-a-note-cover/">為 just a note 系列做了一個封面，兼論我的文章封面選擇之道</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-01
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<blockquote>
+<p><code>2022/09/18</code>：「<strong>just a note</strong>」分類更名為「<strong>隨筆雜談</strong>」。</p>
+</blockquote>
+<p>這篇和程式的關係較小，但還是放在這系列分類中，因為有高度相關。不過「just a note」系列內容原則上還是會以程式為主。</p>
+<h2 id="Medium-封面的必要"><a href="#Medium-封面的必要" class="headerlink" title="Medium 封面的必要"></a>Medium 封面的必要</h2><p>事情是這樣的，以往只在 Medium 寫作時，任何一篇文章最好都有要一張封面圖片，因為在 publication（publication 的定義<a href="https://blog.kyomind.tw/my-own-blog-part-one/#%E6%88%91%E7%9A%84%E7%9C%8B%E6%B3%95%EF%BC%9AMedium-%E5%85%A9%E5%80%8B%E4%B8%8D%E5%A4%A0%E5%A5%BD%E7%9A%84%E5%9C%B0%E6%96%B9">可見本篇</a>）裡，如果文章沒有封面圖，那排版上會缺一角，視覺上不太協調，也就是醜啦！</p>
+          <div class="read-more">
+            <a href="/just-a-note-cover/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/from-zplug-to-zinit/">將 zsh 套件管理器從 zplug 改為 zinit</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-30
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/FvcjOTd.jpg" alt="by Sergey Pesterev on Unsplash"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></p>
+</blockquote>
+<p>去年入手這台 Macbook Air 2020 Intel 版時，預設的 shell 就已經是 zsh 了，所以當時就不得不研究一下 zsh 的生態與相關套件。老實說，從 2018 年開始接觸程式時起，用的都是和大多人一樣的老牌 bash，心理上難免有些先入為主，對於要改用 zsh 還是有幾分抗拒的（雖然也可以改回 bash），不過用過之後，還用說嗎？真香！</p>
+          <div class="read-more">
+            <a href="/from-zplug-to-zinit/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/update-my-droplet/">計畫更新我的 DigitalOcean VM</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-29
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>總覺得之前在 Medium 寫文章心態上都太過於「慎重」（就像這段說明一樣），沒有 1000 字都不好意思發文，我想這樣的模式對於以「記錄」為目標的寫作相對不利，所以這個系列會偏向「想到就寫」的調性，放在母類別「程式」底下，基本上就是和程式相關的隨手小記，且盡量少於 500 字。</p>
+          <div class="read-more">
+            <a href="/update-my-droplet/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-25
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/ZGvuXVK.png" alt="by Kazia Kalitan-Mlodkowska on Behance"></p>
+<p>為你的網站製作一份 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99%E5%9C%B0%E5%9C%96">sitemap</a> 並提交至 Google Search Console，是常見提升網站 SEO 的手段之一。本文記錄「為 Hexo blog 新增 sitemap」的小坑，但主要的坑點其實是在 Github Pages 身上。</p>
+          <div class="read-more">
+            <a href="/adding-sitemap-issue/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <nav class="pagination"><a class="prev" href="/page/8/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一頁</span>
+      </a>
+    <a class="next" href="/page/10/">
+        <span class="next-text">下一頁</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></section></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

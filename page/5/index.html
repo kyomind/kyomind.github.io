@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="分享程式、寫作、筆記工具與學習心得"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/page/5/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-05-28
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><!-- ![by Sam Chivers on Behance](https://i.imgur.com/Xv6e27P.jpg) -->
+<p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+<p>專案開發難免要使用到 NoSQL，其中最具代表性也最常用的，無疑就是儲存資料結構和 JSON 十分貼近的 MongoDB。</p>
+<p>目前工作專案中，存在著需要大量儲存 IoT gateway config 設定的需求，這些 config 記載著所有連接 gateway 的 sensor 設定狀態，是典型的多層結構，且不同 sensor 的 config，其層級、數量並不完全一致，而不同 gateway 之間的差異更大。</p>
+<p>本來使用 MySQL 儲存，table 間的關係十分凌亂且複雜，ERD 都畫得很辛苦。</p>
+<p>而這種資料特性，正是 MongoDB 擅長的舞台。</p>
+          <div class="read-more">
+            <a href="/django-mongoengine/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/snyk-advisor/">使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-05-27
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/dIhCxZ6.png" alt="snyk.io/advisor/python"></p>
+<p>無論是工作或個人的開發，在為專案實作新的功能時，一個需求可能會有<strong>複數</strong>個套件選項可供選擇。這時候如何取捨，需要考慮的因素很多，而套件的「<strong>健康度</strong>」無疑是重要指標之一。</p>
+<p>在 Python 中，這些套件幾乎都是開源的，而 <a target="_blank" rel="noopener" href="https://snyk.io/advisor/python">Snyk Open Source Advisor</a>（以下簡稱：Snyk Advisor）就是一個幫助你<strong>查詢、確認開源專案健康度</strong>的服務！</p>
+          <div class="read-more">
+            <a href="/snyk-advisor/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-05-08
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/LnNp1ye.png"></p>
+<p>前天看到 iThome 這篇〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/150798">微軟續拆解Python擴充套件，釋出3款獨立新套件</a>〉，才知道原來微軟正在把 VS Code「<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python 擴充套件</a>」中的一些功能陸續獨立拆分出來。</p>
+<p>於是昨天花時間摸索了一下其中和 Python 後端開發息息相關的兩個擴充套件，畢竟無論是 Black 或 isort 都是我一定會用到的工具，我非常想知道新的整合方式能帶來哪些便利。</p>
+<p>不過，這兩個擴充套件目前都只有「<strong>發行前版本</strong>」，可以想成「<strong>測試版</strong>」，如果不是很迫切，可以等正式版發行再安裝使用就可以了，就讓我先來探一探路！</p>
+          <div class="read-more">
+            <a href="/black-and-isort/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/good-vscode-extensions/">Python 後端開發：22 個我最常用的 VS Code「擴充套件」推薦</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-05-02
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/vwMEGGb.jpg" alt="by Brian Gossett on Behance"></p>
+<blockquote>
+<p><code>2022/06/12</code>：新增 2 個套件，分別為第 6 和第 18，並變更標題為 22 個。</p>
+</blockquote>
+<p>很久以前就想寫關於「VS Code 套件（extension）」的推薦文章了，畢竟我曾在不止一篇文章中表示自己就是一個 VS Code 工具控。</p>
+<p>話雖如此，卻遲遲沒有下筆，原因是這類文章網路上已經有不少，要怎麼寫得有個人特色，無疑是一大挑戰。所以我決定累積一定的 VS Code 使用經驗後，再來分享。</p>
+<p>2018 年 4 月左右，是我第一次使用 VS Code，那時它對 Python 的支援還非常陽春，所以在轉職班上課時，我仍以 Jupyter Notebook 和 Spyder 寫 Python。</p>
+<p>然而就在此後的短短一年之內，VS Code 對 Python 支援與易用度就從 50 分急速成長到 80 分，進步之快超乎想像，此後 VS Code 就成為我寫 Python 的主要 IDE 了。</p>
+          <div class="read-more">
+            <a href="/good-vscode-extensions/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/introducing-python/">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-04-26
+        </span><span class="post-category">
+            <a href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/Odq7Yly.png" alt="精通 Python 第二版"></p>
+<p>近年來拜大數據、人工智慧所賜，Python 這門程式語言的能見度得到了驚人的提升。甚至，說誇張一點，光是「寫程式」這件事，其火熱程度就遠遠不是十年前可以比擬，好像不學點程式，在不久的將來就要跟不上時代了？</p>
+<p>未來如何發展，我們尚且無法預料。不過，跟風也好，興趣使然也罷，當你起心動念想要開始學程式並主動 Google 搜尋相關資訊後，可能會發現：<strong>似乎很多人都推薦初學者從 Python 這門語言開始上手與入門。</strong></p>
+<p>所以，Python 真的是程式入門的最佳選擇嗎？</p>
+          <div class="read-more">
+            <a href="/introducing-python/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-04-06
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"></p>
+<blockquote>
+<p>本文最近更新日期：<code>2023/02/18</code></p>
+</blockquote>
+<blockquote>
+<p>大合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker</a></p>
+</blockquote>
+<p>前陣子工作上的專案從原先的 pip 改用 Poetry 管理 Python 套件，由於採用 Poetry 正是我的提議，所以得身先士卒，研究 Poetry 使用上的重點與學習成本，並評估是否真有所值——講白了就是至少要利大於弊，不然會徒增團隊適應上的負擔。</p>
+<p>拜這個機會所賜，我對 Poetry 總算有了一個較為全面的理解。</p>
+<p>習慣後，現在我所有的個人開發也都改用 Poetry 來管理套件及虛擬環境，對於 Poetry 這個略嫌複雜的工具（相較 pip），上手的同時我也感受到它確實存在一些<strong>學習門檻</strong>，間接促使了本文的誕生。</p>
+<h3 id="本文定位：獻給-Poetry-新手的使用說明書"><a href="#本文定位：獻給-Poetry-新手的使用說明書" class="headerlink" title="本文定位：獻給 Poetry 新手的使用說明書"></a>本文定位：獻給 Poetry 新手的使用說明書</h3><p>有鑑於 Poetry 真的有點複雜，如果要推薦別人使用，我想還是有必要好好介紹一下。換句話說，這會是一篇<strong>完整的入門教學</strong>。</p>
+          <div class="read-more">
+            <a href="/python-poetry/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/clean-code-python/">在天瓏買了兩本 Python 新書與一生的追求</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-03-26
+        </span><span class="post-category">
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>藝 FUN 券使用期限到今年 4 月 30 日，身為有中籤的小小幸運兒，我也得把握時間緊趕把它消費掉了。</p>
+<p>對於軟體工程師而言，走一趟天瓏書局無疑是個絕佳的選擇，畢竟書是買不完的。</p>
+<h2 id="買書的考量"><a href="#買書的考量" class="headerlink" title="買書的考量"></a>買書的考量</h2><p>書確實是買不完的，但如果買了也沒怎麼看，大量堆積在房間裡妨礙走路，那可就適得其反了——望向已經累積了 5、6 本的 JavaScript 書籍。</p>
+<p>簡單來說，還是買一些「<strong>近期用得上</strong>」的書吧！</p>
+          <div class="read-more">
+            <a href="/clean-code-python/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <nav class="pagination"><a class="prev" href="/page/4/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一頁</span>
+      </a>
+    <a class="next" href="/page/6/">
+        <span class="next-text">下一頁</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></section></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

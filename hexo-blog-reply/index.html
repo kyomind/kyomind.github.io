@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Hexo 新增 utterances 留言板與方案選擇思路"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/hexo-blog-reply/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Hexo 新增 utterances 留言板與方案選擇思路 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Hexo 新增 utterances 留言板與方案選擇思路
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-01-09
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%99%E8%A8%80%E6%9D%BF%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-text">留言板的必要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-%E5%A6%82%E4%BD%95%E6%96%B0%E5%A2%9E%E7%95%99%E8%A8%80%E6%9D%BF%EF%BC%9F"><span class="toc-text">Hexo 如何新增留言板？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B"><span class="toc-text">安裝與設定流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E6%80%9D%E8%B7%AF"><span class="toc-text">方案選擇思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitalk-%E8%88%87-utterances-%E6%AF%94%E8%BC%83"><span class="toc-text">Gitalk 與 utterances 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%81Gitalk%E3%80%8C%E8%A6%81%E6%B1%82%E6%AC%8A%E9%99%90%E9%81%8E%E5%A4%9A%E3%80%8D%E5%95%8F%E9%A1%8C"><span class="toc-text">注意！Gitalk「要求權限過多」問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo-%E5%A6%82%E4%BD%95%E8%AE%93%E5%88%86%E9%A1%9E%E8%88%87%E6%A8%99%E7%B1%A4%E9%A0%81%E6%B2%92%E6%9C%89%E7%95%99%E8%A8%80%E5%8D%80%EF%BC%9F"><span class="toc-text">Hexo 如何讓分類與標籤頁沒有留言區？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E6%AD%A1%E8%BF%8E%E7%95%99%E8%A8%80"><span class="toc-text">小結：歡迎留言</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/A4XgRTr.png"></p>
+<p>你是否注意到，現在文章底下有留言板了！</p>
+<span id="more"></span>
+
+<h2 id="留言板的必要性"><a href="#留言板的必要性" class="headerlink" title="留言板的必要性"></a>留言板的必要性</h2><p>就我的經驗而言，小型 blog 會有人留言的比例極低，所以本站上線半年以來，雖然考慮過幾回，但始終沒有留言功能。</p>
+<p>這次決定加入它的主要動機有二：</p>
+<ol>
+<li>某日看到〈<a target="_blank" rel="noopener" href="https://haosquare.com/python-type-hints-3-beginner-mistakes/">Python Type Hints 教學：我犯過的 3 個菜鳥錯誤</a>〉這篇文章，覺得寫得很不錯（該站內容都很值得一看），更讓我訝異的是，最底下竟然有<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/">良葛格</a>親自留言指教！著實令人羨慕！</li>
+<li>筆記、教學類文章有可能因為我的能力不足，出現一些內容、概念上的錯誤，如果讀者發現想要指正，卻還得自己寫 email，那肯定讓人興趣缺缺。反之有留言板的話，只要登入一下即可回覆，能顯著提高意願！</li>
+</ol>
+<h2 id="Hexo-如何新增留言板？"><a href="#Hexo-如何新增留言板？" class="headerlink" title="Hexo 如何新增留言板？"></a>Hexo 如何新增留言板？</h2><p>毫無疑問，「讀者留言」乃是部落格功能上的硬需求，所以無論 WordPress 或本站採用的 Hexo 等靜態框架，一定都整合了這類功能，通常是採用「外部服務」的形式。</p>
+<p>以 Hexo 為例，只要去主題（Theme）設定看一下，一定能找到留言板的可選擇方案與相關設定。就我使用的主題——Even——也在設定檔<code>_config.yml</code>中提供了數種常見的留言系統整合方案，包括最常見的三項：</p>
+<ol>
+<li>Disqus</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">Gitalk</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/utterance/utterances">utterances</a></li>
+</ol>
+<p>當然還有其他方案，不過我基本上就是上述三選一，最後選擇了 utterances。</p>
+<h2 id="安裝與設定流程"><a href="#安裝與設定流程" class="headerlink" title="安裝與設定流程"></a>安裝與設定流程</h2><p>如何為 Hexo 新增 utterances 留言板，可以直接參考這三篇文章（擇一已足）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nijialin.com/2021/05/15/hexo-utterances-comment/">在 Hexo 的 Next 樣板中引入 utterances 的留言區 | GitHub Issue</a></li>
+<li><a target="_blank" rel="noopener" href="https://annkuoq.github.io/blog/2020-03-09-add-utterances-comment-widget-to-hexo/">在 Hexo 安裝 utterances 留言版</a></li>
+<li><a target="_blank" rel="noopener" href="https://kidneyweakx.com/2019/19log-1026-hexo-com.html">Hexo Next 主題增加評論系統 utterances</a></li>
+</ul>
+<p>雖然每個 Hexo 用戶採用的主題不盡相同，但畢竟是框架，增加留言板的方式大同小異，差別在於主題是否已經幫你整合，方便你直接設定，在此就不多贅述。</p>
+<p>我使用的 Even 主題有整合，所以大部分的設定只需在<code>_config.yml</code>進行「填空」即可，內容大致如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">kyomind/blog-reply</span></span><br><span class="line">  <span class="attr">issueTerm:</span> <span class="string">title</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br><span class="line">  <span class="attr">label:</span> <span class="string">utterances</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="方案選擇思路"><a href="#方案選擇思路" class="headerlink" title="方案選擇思路"></a>方案選擇思路</h2><p>稍稍講一下選擇上的思路：</p>
+<ul>
+<li>Disqus：登入選擇多，這是一大優點，不過版面也相對雜亂，尤其是「留言的留言」情況下，一層又一層的縮排實在看得很辛苦。它也是外掛留言服務最常見的方案。</li>
+<li>Gitalk &#x2F; utterances：兩者都是基於把你的文章與 <strong>GitHub Issues</strong> 系統綁定，來新增、備份留言的機制。同屬開源，星星數也不相上下，可基於自己對於版面與功能的喜好來選擇。但正因為是以 GitHub Issues 建立留言機制，兩者的共同缺點是<strong>留言者必須有 GitHub 帳號</strong>！畢竟透過這些機制建立留言的本質，其實就是在 GitHub 上發 issue。</li>
+</ul>
+<p>最終我覺得 utterances 的版面更加清爽些，所以採用。</p>
+<h2 id="Gitalk-與-utterances-比較"><a href="#Gitalk-與-utterances-比較" class="headerlink" title="Gitalk 與 utterances 比較"></a>Gitalk 與 utterances 比較</h2><p>Gitalk 在「<strong>引言回覆</strong>」與「<strong>＠用戶</strong>」方面相對便捷很多（這也是留言最常用的兩項功能），因為有把功能整合在界面上，只要按一下留言旁的箭頭即可，可參考 <a target="_blank" rel="noopener" href="https://gitalk.github.io/">demo 頁面</a>。</p>
+<p>相較之下，utterances 就顯得非常陽春，只適合<strong>單純的留言</strong>，如果想引言或@用戶，雖然也可以自己寫 Markdown 實現，但就是有點麻煩！</p>
+<ul>
+<li>此時建議透過留言區上方的「<strong>Comments</strong>」連結，回到 GitHub Issues 的編輯器界面（如下方留言 2 所示），操作上會容易許多。</li>
+<li>有了編輯器的加持，可以輕鬆寫出較複雜的內容——如果需要的話。並且，受益於 GitHub Issues 系統，這些留言完全支援 Markdown，可以無限次修改，並能輕鬆加入圖片或連結。</li>
+</ul>
+<h2 id="注意！Gitalk「要求權限過多」問題"><a href="#注意！Gitalk「要求權限過多」問題" class="headerlink" title="注意！Gitalk「要求權限過多」問題"></a>注意！Gitalk「要求權限過多」問題</h2><p>前述〈<a target="_blank" rel="noopener" href="https://kidneyweakx.com/2019/19log-1026-hexo-com.html">Hexo Next 主題增加評論系統 utterances</a>〉文章中，這部分特別值得留意：</p>
+<blockquote>
+<p>不過我在爬文時又看到這篇<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/535608">建议大家弃用 Gitalk 和 Gitment 等权限过高的 Github OAuth App</a>。</p>
+</blockquote>
+<p>簡言之就是 Gitalk 服務對 GitHub 的 OAuth 授權要求了太多權限，而且<strong>對「全部倉庫」皆適用！這可能帶來一定的資安風險</strong>。不過原作者也在<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/issues/95">相關 issue</a> 解釋這是<a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk/issues/95#issuecomment-405134667">沒有辦法的事</a>。</p>
+<p>utterances 應該也有類似情況，不過它最大的改進是可以讓用戶<strong>僅選擇單一倉庫開放權限</strong>，以縮小範圍方式，有效降低風險，算是一個合理的折衷。</p>
+<p>總之，欲採用 Gitalk 方案的讀者可能需要考慮這方面的潛在問題。</p>
+<hr>
+<h2 id="Hexo-如何讓分類與標籤頁沒有留言區？"><a href="#Hexo-如何讓分類與標籤頁沒有留言區？" class="headerlink" title="Hexo 如何讓分類與標籤頁沒有留言區？"></a>Hexo 如何讓分類與標籤頁沒有留言區？</h2><p>剛加完留言功能後，赫然發現我的<a href="https://blog.kyomind.tw/categories/">分類</a>與<a href="https://blog.kyomind.tw/tags/">標籤</a>頁面下也都有了留言區（現已拿掉），雖然不是不行，但這顯然和我們平常的瀏覽經驗不符。</p>
+<p>最初我修正此問題的方式非常土法煉鋼，就是換掉分類與標籤頁的前端繼承模板，改繼承一個沒有留言區的基底模板。啊不就還好我寫過一點 Flask 與 Django 的前端模板？這實在不太科學。</p>
+<p>爬了一下文後才知道，留言區開關早就納入了 Hexo 內建的<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/front-matter">語法設定</a>了！請在頁面所屬的 Markdown 檔案中，加入下列<code>comments: false</code>標籤，以分類頁為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">layout: categories</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>如此該頁的留言功能便會被關閉，不用自己辛苦造輪子手刻——這告訴了我們看「文件」的重要性。</p>
+<hr>
+<h2 id="小結：歡迎留言"><a href="#小結：歡迎留言" class="headerlink" title="小結：歡迎留言"></a>小結：歡迎留言</h2><p>有了留言板，感覺部落格更加完整了。</p>
+<p>而說了一堆，不就是希望你可以來留言嗎！哈哈哈。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇" rel="bookmark">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2" rel="bookmark">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Hexo/">Hexo</a>
+            <a href="/tags/utterances/">utterances</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/just-a-note/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">合併雜記與 just a note，與我今年的寫作目標頻率</span>
+        <span class="prev-text nav-mobile">合併雜記與 just a note，與我今年的寫作目標頻率</span>
+      </a>
+    <a class="next" href="/notion-bootcamp/">
+        <span class="next-text nav-default">我參加了 Notion 線上訓練營</span>
+        <span class="prev-text nav-mobile">我參加了 Notion 線上訓練營</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

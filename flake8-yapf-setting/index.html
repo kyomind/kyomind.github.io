@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/flake8-yapf-setting/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-01-25
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">前言：場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-linter%EF%BC%9F"><span class="toc-text">什麼是 linter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-linter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-Flake8-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python linter 設定：以 Flake8 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Formatter 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-formatter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-yapf-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python formatter 設定：以 yapf 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-formatter-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">不同 formatter 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E4%BD%BF%E7%94%A8-formatter-%E5%B0%8F%E6%92%87%E6%AD%A5"><span class="toc-text">VS Code 使用 formatter 小撇步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AClean-Code-%E5%9F%BA%E7%9F%B3"><span class="toc-text">結語：Clean Code 基石</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
+<p><code>2022/11/30</code>：若不想透過 VS Code 的<code>settings.json</code>來設定參數，而希望在專案中以「<strong>設定檔</strong>」形式，讓所有專案參與者能<strong>直接共用設定</strong>，則可參考：〈<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a>〉。</p>
+<hr>
+<p>在〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到了 Python 的 linter——pylint 與 Flake8，今天就來說明 linter 與 formatter 的具體設定方法。</p>
+<p>不得不說，善用 linter 與 formatter，無疑是 Python 程式開發的<strong>起手式</strong>。尤其在多人協作的時候，想深入要求每個人的寫作習慣很難，但至少在<strong>排版風格</strong>上，能藉由工具能達到<strong>基本的統一</strong>。</p>
+<span id="more"></span>
+
+<h2 id="前言：場景與需求"><a href="#前言：場景與需求" class="headerlink" title="前言：場景與需求"></a>前言：場景與需求</h2><p>最近幾個月陸續加入了兩位開發同事，開始有了 code review 的需求，說真的在程式寫作習慣差異不小的前提下進行 review，對雙方往往都很辛苦。</p>
+<p>而讓每一位成員的程式碼都起碼合乎 linter 的檢查與 formatter 的格式，則多少可以消彌彼此的差距，降低痛苦，減少不必要的消耗，讓我們可以把 review 的主要精力放在實作邏輯的合理性上。</p>
+<p>所以把 linter 和 formatter 作為團隊開發的標配，再基本不過，於是我把這部分的設定寫成團隊文件供新成員參考，本文即以該文件為基礎並加上大量的文字說明。</p>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>主要介紹 linter 與 formatter 的定義與功能，並闡述如何在 VS Code 中設定好 Python 開發時，所需要的 linter 與 formatter。</p>
+<p>Linter 部分以最常見的 Flake8 為例，介紹其功能與使用方法。Formatter 部分則選用 Google 出品的 yapf，同時會比較和其餘兩個 formatter 在格式化結果上的差異。</p>
+<hr>
+<h2 id="什麼是-linter？"><a href="#什麼是-linter？" class="headerlink" title="什麼是 linter？"></a>什麼是 linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="https://blog.kyomind.tw/flake8-and-isort/">前文</a>的描述：</p>
+<blockquote>
+<p>Linter，就是協助你檢查程式語法正確性的工具，大部分程式語言都有屬於自己的 linter，而 Python 最常見的 linter 不外乎<code>pylint</code>、<code>pep8</code>（現為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>。</p>
+</blockquote>
+<p>上述 linter 都是 Python 的 package，同時也是 CLI 工具，皆可透過命令列，獨立執行與使用。</p>
+<p>而本文闡述的使用情境，是指<strong>整合在 VS Code 中</strong>，讓這些選定的 linter，在不需執行程式的情況下，自動幫你檢查程式碼、發現其中錯誤，並<strong>加以提示</strong>的功能。</p>
+<p>除了語法正確性，linter 還會檢查<strong>排版風格</strong>，比如程式碼是否符合 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> 要求的排版風格，也是上述 linter 檢查的一環，如此才有「排版風格一致」可言。換句話說，所謂的一致，原則上指的是<strong>與 PEP 8 規範一致</strong>。</p>
+<h2 id="VS-Code-Python-linter-設定：以-Flake8-為例"><a href="#VS-Code-Python-linter-設定：以-Flake8-為例" class="headerlink" title="VS Code Python linter 設定：以 Flake8 為例"></a>VS Code Python linter 設定：以 Flake8 為例</h2><p>無論是 pylint 或 Flake8，都必須安裝到專案使用的 Python 虛擬環境才行，因為它們本質上都是把 package 的功能整合進來，藉由 VS Code 在背景呼叫，方便你直接使用。如果沒裝的話，VS Code 會<strong>提醒你安裝</strong>，且不需要安裝額外的 VS Code 套件。</p>
+<p><img src="https://i.imgur.com/Meszj6I.png" alt="VS Code：指定的 Linter 未安裝提示"><span class="cap">VS Code：指定的 Linter 未安裝提示</span></p>
+<p>VS Code 設定 Flake8 只有幾個重要的環節，依序如下：</p>
+<ol>
+<li>開啟 Python Linting：<code>Python › Linting: Enabled</code></li>
+<li>開啟 Flake8 Linting：<code>Python › Linting: Flake8 Enabled</code></li>
+<li>設定 Flake8 Args（非必要）：<code>Python › Linting: Flake8 Args</code></li>
+</ol>
+<p>以上幾個設定，都可以在 VS Code 左下角的「<strong>設定 UI</strong>（macOS 用戶可直接使用快捷鍵<code>cmd</code>+<code>,</code>開啟）」輸入關鍵字比如「Flake8」、「lint」搜尋找到。比如下圖就是 Flake8 的啟動開關：</p>
+<p><img src="https://i.imgur.com/eZpPd9F.png" alt="VS Code Settings UI"><span class="cap">VS Code Settings UI</span></p>
+<p>如果覺得麻煩，可以直接在 VS Code 的<code>settings.json</code>加入以下內容，效果相同：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.linting.enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 預設值即為 true</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--max-line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--ignore=E402,F841,F401,E302,E305,W503&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Linter-重點說明"><a href="#Linter-重點說明" class="headerlink" title="Linter 重點說明"></a>Linter 重點說明</h3><ul>
+<li>VS Code 的 Python linting 在安裝完官方出品的 Python 套件後，預設就是開啟，所以不設定也沒差（除非你要關掉），通常第一次開啟 py 檔時會跳出提示讓你選擇想使用的 linter。</li>
+<li>VS Code <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/linting#_specific-linters">支援的 Python linter 不少</a>，有些是「<strong>通用</strong>」的，像本文的 Flake8，有些則著眼於<strong>局部的特性</strong>，比如 <a target="_blank" rel="noopener" href="https://github.com/python/mypy">Mypy</a> 著眼於 type hints，理論上它們可以<strong>全部同時開啟</strong>！只是同時使用太多 linter 可能會帶來大量的提醒，在視覺上大受干擾，建議功能相似的 linter 只需開啟一種即可。</li>
+<li>Args：實際上就是幫你把 args 字串轉換成命令列上的參數，在 VS Code 呼叫這些 linter 時使用，主要是為了依需求客製化。這裡要特別講究 args 字串的格式，不同的的工具在字串格式上可能大不相同。如果打錯，則整個 linting 功能會失效，而且<strong>不會有任何錯誤提示</strong>！要特別注意。<ul>
+<li>這裡的第一部分<code>&quot;--max-line-length=100&quot;</code>是設定單行字元上限，Flake8 預設的是 PEP 8 的 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length">79 字元</a>，從現代的角度來看可能常常容易超過，與團隊討論後，目前共識為 100 字元，所以必須加入 args。這可能是最常用的 args 設定。</li>
+<li>第二部分就看你想忽略哪些提醒，雖然 Flake8 相較於 pylint 已經較為寬鬆，但也不一定要全部遵守。不同的錯誤有不同的代號，在提醒的說明內會標註代號，可以依需求忽略。</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用-linter-後的效果"><a href="#使用-linter-後的效果" class="headerlink" title="使用 linter 後的效果"></a>使用 linter 後的效果</h3><ol>
+<li>會出現<strong>波浪底線</strong>錯誤提示！</li>
+<li>滑鼠移至波浪底線，會顯示錯誤訊息，包含錯誤代號。</li>
+</ol>
+<p><img src="https://i.imgur.com/Vp6eFf9.png" alt="Flake8 in VS Code"><span class="cap">Flake8 in VS Code</span></p>
+<h3 id="Linter-功能歸納"><a href="#Linter-功能歸納" class="headerlink" title="Linter 功能歸納"></a>Linter 功能歸納</h3><p>綜上所述，通用型的 Python linter 主要功能有二：</p>
+<ol>
+<li>檢查程式是否有<strong>語法錯誤</strong>並提示。</li>
+<li>檢查程式是否<strong>符合 PEP 8 風格</strong>並提示。不過要強調一下，風格檢查不只有針對 PEP 8 而已，還有一般性的風格規範，只不過 PEP 8 是最基本也最核心的部分。</li>
+</ol>
+<p>而本文著眼的是第二部分，也就是排版風格。在 linter 幫你檢測出排版風格有缺失後，接下來就輪到 formatter 登場了。</p>
+<hr>
+<h2 id="Formatter-簡介"><a href="#Formatter-簡介" class="headerlink" title="Formatter 簡介"></a>Formatter 簡介</h2><p>統一程式碼排版風格第一步是使用 linter，通用型 linter 會檢查（但不限於）程式碼風格上所有違反 PEP 8 的部分，發現風格不符後，接著就要用 formatter（格式化器）進行格式化！</p>
+<p>換句話說，formatter 就是<strong>自動幫你修正這些排版問題的工具</strong>！而這個過程，就是「<strong>格式化</strong>」。</p>
+<p>程式語法錯誤——比如使用未設定的變數——雖然也可能被 linter 檢測出並提示，但這部分的修正通常得手動為之。Formatter 只能協助處理排版風格上的缺失。</p>
+<p>雖然修正排版一樣也可以手動為之，但是一來麻煩，二來難免會有遺漏，還是靠機器比較實在，也輕鬆得多。</p>
+<h2 id="VS-Code-Python-formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python formatter 設定：以 yapf 為例"></a>VS Code Python formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到<code>Python › Formatting: Provider</code>這項設定。有三種 formatter 可選：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a></li>
+</ul>
+<p>不同於多個 linter 可以全部開啟，formatter 功能因具有「排他性」，<strong>只能擇一使用</strong>。預設為 autopep8，這裡我們改用 Google 出品的 yapf。</p>
+<p>Formatter 主要是為了讓你的 Python 程式碼可以<strong>最大限度遵守 PEP 8 及一般風格規範</strong>——這也是所有 Python 開發者都值得具備的良好習慣。</p>
+<p>Formatter 一樣可以設定 args：<code>Python › Formatting: Yapf Args</code>。而且 VS Code 本來就可以設定「<strong>存檔時自動格式化</strong>」，但有一個限制：<strong>afterDelay</strong> 模式的自動存檔（即<code>&quot;files.autoSave&quot;: &quot;afterDelay&quot;</code>）時不會格式化，只有其他模式的自動存檔及手動存檔有效。</p>
+<p>整體的<code>settings.json</code>設定如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;yapf&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.formatting.yapfArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--style=&#123;column_limit=100&#125;&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 不支援 afterDelay 自動存檔</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="不同-formatter-的差異"><a href="#不同-formatter-的差異" class="headerlink" title="不同 formatter 的差異"></a>不同 formatter 的差異</h2><p>這些 formatter 的主要差別，主要是體現在<strong>格式化結果「彈性」上的差異</strong>。</p>
+<h3 id="一、autopep8"><a href="#一、autopep8" class="headerlink" title="一、autopep8"></a>一、autopep8</h3><p>就我的使用經驗，autopep8 要求較寬鬆，輸出結果彈性最大，如果一段程式碼有兩、三種排版方式皆合乎 PEP 8 風格，則對 autopep8 而言都算是「合法」的——因為它只要求不違背 PEP 8 即可。此時它便不會再對程式碼進行修正。所以使用 autopep8，程式碼的排版風格未必能統一，我覺得這是一大缺點，個人無法接受。</p>
+<h3 id="二、yapf"><a href="#二、yapf" class="headerlink" title="二、yapf"></a>二、yapf</h3><p>yapf 是由 Google 推出的 formatter。</p>
+<p>和前述 autopep8 相比，大部分的時候格式化結果都是一致的，因為它會從兩、三種都合乎 PEP 8 的風格中，<strong>讓演算法依具體情況</strong>進一步<strong>選擇其中一種</strong>作為格式化結果（儘管可能未必是你最認同的那種），我覺得<strong>更適合團隊協作</strong>。</p>
+<p>更多介紹可參考 yapf 的<a target="_blank" rel="noopener" href="https://github.com/google/yapf#introduction">GitHub 頁面</a>：</p>
+<blockquote>
+<p>YAPF takes a different approach. It’s based off of ‘clang-format’, developed by Daniel Jasper. In essence, the algorithm takes the code and <strong>reformats it to the best formatting that conforms to the style guide, even if the original code didn’t violate the style guide.</strong></p>
+</blockquote>
+<h3 id="三、Black"><a href="#三、Black" class="headerlink" title="三、Black"></a>三、Black</h3><p>而 Black 最嚴格，除了「單行最大字元」或「字串必須使用單雙引號（竟然連這個都要規範）」外，<strong>幾乎沒有可以客製、調整的部分</strong>，可以說絕對只有「一種」結果，嚴格程度明顯高於 PEP 8 要求，有時可能會讓人覺得太嚴格了。我將在接下來的 side project 中嘗試採用，畢竟我除了是分類控，同時也是規範控。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></p>
+</blockquote>
+<hr>
+<p>Args 的設定一樣要特別注意，這上述例子中就能看出，不同工具的 args 字串格式真的會有一定差異（這是當然的，畢竟不同 CLI 工具，參數 flag 的命名與風格本來就不會相同），千萬不要打錯，否則 formatter 也會無法作用。</p>
+<h2 id="VS-Code-使用-formatter-小撇步"><a href="#VS-Code-使用-formatter-小撇步" class="headerlink" title="VS Code 使用 formatter 小撇步"></a>VS Code 使用 formatter 小撇步</h2><p>和 linter 開啟後就會自動生效並顯示錯誤提示不同，格式化器需要你<strong>主動使用</strong>，或設定為<strong>存檔時自動格式化</strong>。以下說明「<strong>主動使用</strong>」上的方式差異與要點：</p>
+<ul>
+<li><strong>格式化文件：</strong>很簡單，在 VS Code 編輯器中打開文件後，按右鍵選單選擇「格式化文件」即可。這個功能我比較少直接使用，而且如果善用快捷鍵，它完全可以被下述的「格式化選取範圍」所取代。</li>
+<li><strong>格式化選取範圍</strong>：在反白選取範圍後按右鍵選單就會出現這個選項，沒有預設的快捷鍵。<ul>
+<li>實際使用時可以<strong>不做任何選取，直接使用</strong>，會格式化<strong>插入點所在的程式行</strong>，再搭配<strong>自訂的快捷鍵</strong>，是我最常用的方式。</li>
+<li>此外，如果在文件中的<strong>空白行</strong>使用，則會「<strong>格式化整個文件</strong>」，達到相當於上述格式化文件的效果，且更方便自行切換。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><code>2022/05/11</code>：後來我都直接使用「<strong>存檔時自動格式化</strong>」了，因為整個文件本來就都要格式化，所以特地選取範圍的意義並不大，而且為了防止忘記，存檔時一併執行格式化還是最適合的。</p>
+</blockquote>
+<hr>
+<h2 id="結語：Clean-Code-基石"><a href="#結語：Clean-Code-基石" class="headerlink" title="結語：Clean Code 基石"></a>結語：Clean Code 基石</h2><p>Linter 和 formatter 雖然無法保證你寫出 Clean Code，但至少能協助你盡可能符合 PEP 8 風格，並省下處理排版細節上的心力，讓你更專注在程式的核心部分。</p>
+<p>有鑑於 PEP 8 在 Python 中的地位是如此無可取代，善用這些工具也成了必經之路。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/formatter/">formatter</a>
+            <a href="/tags/TOP-10/">TOP 10</a>
+            <a href="/tags/Flake8/">Flake8</a>
+            <a href="/tags/linter/">linter</a>
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            <a href="/tags/Black-Formatter/">Black Formatter</a>
+            <a href="/tags/yapf/">yapf</a>
+            <a href="/tags/PEP-8/">PEP 8</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/add-top10-page/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">新增自製熱門文章頁面</span>
+        <span class="prev-text nav-mobile">新增自製熱門文章頁面</span>
+      </a>
+    <a class="next" href="/my-markdown-writing-flow/">
+        <span class="next-text nav-default">Notion + VS Code：我的 Markdown 寫作工作流</span>
+        <span class="prev-text nav-mobile">Notion + VS Code：我的 Markdown 寫作工作流</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

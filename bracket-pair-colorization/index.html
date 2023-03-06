@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/bracket-pair-colorization/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-10-29
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-bracket-pair-colorization"><span class="toc-text">什麼是 bracket pair colorization</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bracket-Pair-Colorizer-2"><span class="toc-text">Bracket Pair Colorizer 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Native-bracket-pair-colorization-in-VS-Code"><span class="toc-text">Native bracket pair colorization in VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#settings-json-%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="toc-text">settings.json 相關設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AA%E5%A4%96%E7%AF%87%EF%BC%9A%E6%88%91%E7%9A%84%E7%A8%8B%E5%BC%8F%E9%A1%8F%E8%89%B2%E7%BE%8E%E5%AD%B8"><span class="toc-text">番外篇：我的程式顏色美學</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/Qh4xphg.jpg" alt="by Aleksandar Pasaric from Pexels"><span class="cap">by Aleksandar Pasaric from Pexels</span></p>
+<blockquote>
+<p>本文最近更新日期：<code>2022/05/07</code></p>
+</blockquote>
+<p>習慣使用 IDE 的開發者們，即使沒有很清楚「bracket pair colorization」為何物，對於它實際的功能特性也應該不會太陌生。</p>
+<p>無論以何種語言進行開發，程式碼中總會有著為數眾多的大、中、小括號，用來包覆它所對應的程式邏輯區塊（code block）。</p>
+<p>而 bracket pair colorization 講白了，就是<strong>為這些括號上色，以增加識別度</strong>。</p>
+<span id="more"></span>
+
+
+<h2 id="什麼是-bracket-pair-colorization"><a href="#什麼是-bracket-pair-colorization" class="headerlink" title="什麼是 bracket pair colorization"></a>什麼是 bracket pair colorization</h2><p>bracket pair colorization 簡言之就是<strong>讓同一個程式碼區塊的開頭與結尾括號都使用同一種顏色</strong>的功能。</p>
+<p>因為是用在開頭與結尾的<strong>成對括號</strong>上所以稱為 bracket pair，而 colorization 則是為該對括號「<strong>上色</strong>」之意，讓人一眼就能看出括號所包含邏輯區塊的<strong>對應範圍</strong>為何。</p>
+<p>此外，<strong>不同層級的區塊通常會搭配不同的顏色</strong>，如此一來，即使正在開發或修改<strong>好幾層縮排齊聚的程式碼複雜地帶</strong>，各區塊的層次及對應的範圍也能<strong>盡可能保持一目了然</strong>，讓我們不至於眼花撩亂。</p>
+<p>文字描述可能不夠直觀，要使用過才好理解，但沒用過的人只要看看這張 VS Code 官方圖片也能秒懂 bracket pair colorization 的意義與價值：</p>
+<p><img src="https://code.visualstudio.com/assets/blogs/2021/09/29/on-off-comparison.drawio.svg" alt="成對的括號與配色讓我們避免迷失在程式碼中"><span class="cap">成對的括號與配色讓我們避免迷失在程式碼中</span></p>
+<p>總之，可以想見，這樣的功能是何等的實用，可以說是所有開發者必備。</p>
+<h2 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h2><p>這類需求既然迫切，合理推測，為之開發的 IDE 套件一定也不少。在 VS Code 中，最有名的相關套件就是 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a>（該套件目前已標記為 <strong>deprecated</strong>），我也是用它！裝完它後只要在 VS Code 的<code>settings.json</code>進行層級與顏色的相關設定即可：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;bracket-pair-colorizer-2.colors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;#7777ff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;BlueViolet&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;Crimson&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;#5eaaa8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;Purple&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>最上面是第一層，最下面是第五層，Bracket Pair Colorizer 2 最多可以設定五層自訂顏色，並且支援使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%A2%9C%E8%89%B2%E5%88%97%E8%A1%A8">顏色名稱</a>，所以允許出現「Crimson、Purple」等字樣。</p>
+<p>我就這樣一直適舒地使用著它，並為此感到滿足，相信這已經是關於這項需求的最佳方案。沒錯，直到 VS Code 將這個功能變成<strong>內建</strong>！</p>
+<h2 id="Native-bracket-pair-colorization-in-VS-Code"><a href="#Native-bracket-pair-colorization-in-VS-Code" class="headerlink" title="Native bracket pair colorization in VS Code"></a>Native bracket pair colorization in VS Code</h2><p>在 VS Code 版本號 1.60 的更新資訊文章中，赫然發現了這樣的子標題：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates/v1_60#_high-performance-bracket-pair-colorization">High performance bracket pair colorization</a>，其核心內容不外乎就是這句：</p>
+<blockquote>
+<p>The editor now supports <strong>native</strong> bracket pair colorization:</p>
+</blockquote>
+<p>果然該來的還是要來，這麼重要的功能，當然是 VS Code 自行實作才是最佳方案。</p>
+<p>並且就這項更新他們還寫了這篇〈<a target="_blank" rel="noopener" href="https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization">Bracket pair colorization 10,000x faster</a>〉，詳細闡述 bracket pair colorization 的發展以及一直都存在的效能問題。這裡的「<strong>效能</strong>」指的主要是<strong>渲染</strong>——也就是<strong>為括號上色</strong>——的速度，以及開發團隊提出的解決之道，有興趣的讀者可以前往閱讀。</p>
+<p>總的來說，從此以後 bracket pair colorization 功能不止被 VS Code 內建了，還得到了渲染效能的巨幅提升，快來用吧！</p>
+<h2 id="settings-json-相關設定"><a href="#settings-json-相關設定" class="headerlink" title="settings.json 相關設定"></a>settings.json 相關設定</h2><p>好，說了這麼多，其實重點只有一個，那就是從今天開始可以解除安裝 Bracket Pair Colorizer 2，直接設定好 VS Code 內建的 bracket pair colorization 即可，請立即打開 VS Code 的<code>settings.json</code>並新增下列條目：（顏色自選）</p>
+<blockquote>
+<p><code>2022/05/07</code>更新：<br>從 VS Code 1.67 版起，bracket pair colorization 已改為「<a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates/v1_67#_bracket-pair-colorization-enabled-by-default">預設開啟</a>」，這意味著下面的第一個設定<code>editor.bracketPairColorization.enabled</code>，除非是要<strong>關閉</strong>而設定為<code>false</code>，否則<strong>可以整行省略</strong>。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 開啟 bracket pair colorization；1.67 以上可省略此開啟設定</span></span><br><span class="line"><span class="attr">&quot;editor.bracketPairColorization.enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// 設定顏色</span></span><br><span class="line"><span class="attr">&quot;workbench.colorCustomizations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 層級括號顏色，從 1 至 6 層，此處只設定了 5 層</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#7777ff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground2&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#8a2be2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground3&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#DC143C&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground4&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#5eaaa8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground5&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#800080&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 異常括號的顏色，比如多出來的結尾括號</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.unexpectedBracket.foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>簡單暴力！</p>
+<p>有兩件事附帶一提：</p>
+<ul>
+<li>內建的 bracket pair colorization <strong>最多可以設 6 層顏色</strong>，而這裡我只設了 5 層。</li>
+<li><strong>不可以使用顏色名稱</strong>：所以原來的「BlueViolet、Crimson」等表示方式已不再可用，我只能乖乖查詢相對應的 HTML 色碼。</li>
+</ul>
+<hr>
+<h2 id="番外篇：我的程式顏色美學"><a href="#番外篇：我的程式顏色美學" class="headerlink" title="番外篇：我的程式顏色美學"></a>番外篇：我的程式顏色美學</h2><p>說起來打從學程式開始，我對編輯器中的各種 syntax highlight（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AA%9E%E6%B3%95%E7%AA%81%E9%A1%AF">語法突顯</a>）與編輯器界面，在顏色選擇的合理性與美感都有一定追求，可以稱之為顏色美學。</p>
+<p>在此闡述我對 bracket pair colorization 層級顏色設定的一些想法：</p>
+<ol>
+<li><strong>第一層</strong>：一半以上的括號屬於第一層，我會使用<strong>與函式相近的顏色</strong>。因為函式後面很常接括號作為呼叫之用，且第一層比較沒有辨識上的困難，加上出場頻繁，<strong>不適合凸顯它，以免版面過於花俏而顯得雜亂</strong>。所以搭配和函式相近的顏色，盡量讓它們融為一體。在此我選擇較深的天空藍。</li>
+<li><strong>第二層</strong>：往下一層，凸顯的必要性相對提升，我選擇紫色系，明度較前者低但彩度則更高一些。當你看到這個顏色時，表示<strong>程式結構層級增加了</strong>，可以作為一個<strong>提醒</strong>。當然，第二層還是很常見的。</li>
+<li><strong>第三層</strong>：第三層已屬於深海，值得有意識地減少它，否則勢必影響程式可讀性，畢竟〈<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Python%E4%B9%8B%E7%A6%85">Zen of Python</a>〉也提示我們「 <strong>Flat is better than nested.</strong> 」。所以我選擇鮮明且和前者二者大相逕庭的 <strong>Crimson 腥紅色</strong>，作為一種「<strong>紅色警戒</strong>」。</li>
+<li><strong>第四層</strong>：使用和第三層的<strong>對比色</strong>來<strong>強調</strong>，這裡採綠色系。使用對比色警告自己已觸碰到了<strong>合理層級</strong>的「<strong>底限</strong>」，作為 Clean Code 的貫徹者，最好不要再往下。</li>
+<li>第五層以後：只是備用，且應該要<strong>極盡所能地少用到</strong>。</li>
+<li>異常括號顏色：建議使用任何你覺得很顯眼甚至是刺眼的顏色，通常使用正紅色<code>#ff0000</code>。搭配深色佈景主題時，我也推薦純白色，非常顯眼，很符合需求。</li>
+</ol>
+<p>儘管 Python 只以「<strong>純縮排</strong>」而沒有像其他語言採用常見的「<strong>括號 + 縮排</strong>」來對<strong>程式區塊</strong>進行封裝，所以<strong>括號顏色</strong>在「<strong>表現程式結構深度、增加程式可讀性</strong>」的作用與效果，相對沒那麼顯著，但還是值得在括號顏色選擇上花一些心思。</p>
+<p><img src="https://i.imgur.com/jtTZivq.png" alt="前三層括號顏色示意 in Python"><span class="cap">前三層括號顏色示意 in Python</span></p>
+<hr>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>雖然官方表示 bracket pair colorization 得到了效能上的巨幅提升，但如果你的專案沒有像該篇 blog 中例示的單檔擁有 4 萬行程式碼與大量括號，而只是短短數百行，或者電腦的效能本來就很猛，大概不容易感受到其中的差異。</p>
+<p>我實際使用的感覺是：VS Code 一開啟程式專案後，當環境還在讀取、設定，syntax highlight 的顏色也還沒有開始渲染時，所有的括號就已經上色完畢，確實有差！但顯然要複雜一點的情境才會對效能提升更加有感。</p>
+<p>無論如何，本著工程師的簡潔信仰，能善用內建的特性，就可以少裝一個套件，至少在「<strong>心靈上</strong>」可以得到一定的滿足。😌</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/vscode-pythonpath/" title="VS Code 正確設定 PYTHONPATH 教學" rel="bookmark">VS Code 正確設定 PYTHONPATH 教學</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/bracket-pair-colorization/">bracket pair colorization</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/on-writing/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">聊聊接下來的寫作方向與如何持續寫作</span>
+        <span class="prev-text nav-mobile">聊聊接下來的寫作方向與如何持續寫作</span>
+      </a>
+    <a class="next" href="/flake8-and-isort/">
+        <span class="next-text nav-default">Flake8 與 isort in VS Code</span>
+        <span class="prev-text nav-mobile">Flake8 與 isort in VS Code</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

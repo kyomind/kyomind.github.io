@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/my-own-blog-part-one/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-24
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Medium-%E6%94%B9%E7%89%88%E9%A2%A8%E6%B3%A2"><span class="toc-text">Medium 改版風波</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%92%B0%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">環境的重要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%9E%B6%E7%9A%84%E5%BF%85%E8%A6%81"><span class="toc-text">自架的必要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%96%E4%BA%BA%E7%B6%93%E9%A9%97%EF%BC%9A%E5%85%A9%E7%AF%87%E3%80%8C%E7%8D%A8%E7%AB%8B%E5%AE%A3%E8%A8%80%E3%80%8D"><span class="toc-text">他人經驗：兩篇「獨立宣言」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%80%EF%BC%9A%E9%81%8E%E5%BA%A6%E7%B0%A1%E9%99%8B%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%8D%80%E5%A1%8A"><span class="toc-text">理由一：過度簡陋的程式碼區塊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%BA%8C%EF%BC%9A%E8%A4%87%E9%9B%9C%E5%8F%88%E7%BC%BA%E4%B9%8F%E5%BD%88%E6%80%A7%E7%9A%84-publication"><span class="toc-text">理由二：複雜又缺乏彈性的 publication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%89%EF%BC%9AMedium-%E5%B9%B3%E5%8F%B0%E5%B0%8D%E4%B8%AD%E6%96%87%E4%BD%9C%E8%80%85%E6%A5%B5%E5%BA%A6%E4%B8%8D%E5%8F%8B%E5%96%84"><span class="toc-text">理由三：Medium 平台對中文作者極度不友善</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E5%8D%8A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">上半篇小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/OXSzwob.jpg" alt="by Hokyoung Kim"><span class="cap">by Hokyoung Kim</span></p>
+<p>2018 年以來，我一直都是在 Medium 上寫 blog。後來更建立了複雜的 publication——<a target="_blank" rel="noopener" href="https://medium.com/code-and-me">Code and Me</a>（目前已停止更新），並且在上面發表了好些文章。</p>
+<p>但是，我始終覺得 Medium 確實有不少缺點，讓我對於是否續留 Medium 感到為難。這篇文章是我自架部落格的第一篇，主要講述決心從 Medium 獨立的理由。</p>
+<h3 id="系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲"><a href="#系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲" class="headerlink" title="系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲"></a>系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲</h3><blockquote>
+<ol>
+<li><strong>不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</strong></li>
+<li><a href="https://blog.kyomind.tw/my-own-blog-part-two/">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a></li>
+<li><a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></li>
+<li><a href="https://blog.kyomind.tw/a-mind-for-blogs/">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="Medium-改版風波"><a href="#Medium-改版風波" class="headerlink" title="Medium 改版風波"></a>Medium 改版風波</h2><p>早在去年 9 月 Medium 迎來一波大改版後，改版之初對中文不友好的 bug 與首頁演算法對中文文章的不利調整，讓我第一次感受到<strong>寄身於平台的風險</strong>，並忍不住開始認真考慮是否真的要自己來架一個 blog。</p>
+<p>說來諷刺，在改版不久前，我才剛下定小小決心，打算好好在上面發文，並寫了這篇〈<a target="_blank" rel="noopener" href="https://medium.com/code-and-me/small-island-498e9869c8fc">我依舊會在 Medium 上寫作</a>〉宣誓決心。這波改版多少影響了我的創作士氣，讓我內心產生動搖——而且幅度還不小。</p>
+<span id="more"></span>
+
+<p>早在此次改版前，Medium 中文圈就已經開始逐漸式微，並伴隨著一定的出走潮。</p>
+<p>出走的作者中，一部分人主要考量「經營自媒體，應該要有<strong>清晰的品牌</strong>」（對部落格而言最基本的就是要擁有「<strong>自己的域名</strong>」），而不是待在 Medium 為他人流量作嫁。</p>
+<p>現階段我僅屬於一個想到才寫的佛系創作者，儘管如此，「自架部落格」這個念頭仍一直在心中盤旋，因為原來的創作環境——Medium——已讓我產生懷疑。</p>
+<h2 id="環境的重要性"><a href="#環境的重要性" class="headerlink" title="環境的重要性"></a>環境的重要性</h2><p>並非只有勤於寫作的人才在乎寫作環境，相反的，也有些勤於寫作的人更專注在寫作本身，對寫作環境與形式未必很講究。</p>
+<p>就我對自己的觀察，當我有一點動力想要寫的時候，平台的舒適度（有沒有哪裡覺得綁手綁腳）與對平台的信任程度（會不會說變就變），確實影響動筆寫作的「靜摩擦力」與堅持程度。從這個角度看，擁有自己的域名、專屬於自己的創作空間，理論上似乎真的能夠提升寫作動力？</p>
+<h3 id="輕度玩家更需要保護寫作動力"><a href="#輕度玩家更需要保護寫作動力" class="headerlink" title="輕度玩家更需要保護寫作動力"></a>輕度玩家更需要保護寫作動力</h3><p>正因為是想到才寫的「輕度玩家」，所以我們更容易放棄（或者說荒廢）；正因為容易放棄，所以我們更應該要主動掃除那些會讓人半途而廢的創作阻礙，而「寫作環境」就是一大重點。</p>
+<p>所以，佛系也好，認真創作也罷，總之在提筆（鍵盤）的當下，我們都希望不要因為寫作的「環境因素」而影響寫作動力。</p>
+<p>這個主題便要來聊聊為什麼我覺得<strong>自己</strong>有必要架設部落格、我考慮過的方案、與最後選擇的依據。</p>
+<p>本文為上篇，說明我認為必須在 Medium 之外，自己架一個 blog 的<strong>主要理由</strong>。</p>
+<h2 id="自架的必要"><a href="#自架的必要" class="headerlink" title="自架的必要"></a>自架的必要</h2><p>稍為理解或認同環境對創作的影響後，我們就可以切入正題。</p>
+<p>為什麼必須擁有自己的 blog？為什麼會離開 Medium？自媒體經營者們已經寫過無數文章闡釋與鼓吹，隨便孤狗都有，在此我只引用最熟悉的兩篇，因為對我帶來一定的影響，再分享我自己的想法。不過如標題所言，我並沒有要離開 Medium，只是為自己多打造一個發文的基地而已。</p>
+<h2 id="他人經驗：兩篇「獨立宣言」"><a href="#他人經驗：兩篇「獨立宣言」" class="headerlink" title="他人經驗：兩篇「獨立宣言」"></a>他人經驗：兩篇「獨立宣言」</h2><p>我喜歡先參考佩服的人的經驗來提升自己作類似決策的品質，也就是所謂的「模仿」，而選擇是否自架 blog 這件事亦然，這裡分享兩篇對我來說特別有感的「從 Medium 搬離之獨立宣言」，簡單引述文中的主要觀點與我的簡評。</p>
+<blockquote>
+<p>星箭廣播：<a target="_blank" rel="noopener" href="https://blog.starrocket.io/posts/the-reason-why-we-build-our-own-blog-website-by-using-wordpress/">我們把文章搬到自己架設的網站了</a></p>
+</blockquote>
+<p>星箭廣播大概是我聽最多集的 Podcast 節目，沒有之一。其很多內容都展現了主持人對於數位工具選擇與使用上的細節偏執，他們的看法頗有參考價值。而且文章中的考量說明與決定理由也都非常具體，看完只能說真的很星箭！</p>
+<ol>
+<li>方案選擇：WordPress。</li>
+<li>離開的理由：<ol>
+<li>想看更多的分析數據。</li>
+<li>想將流量拉回至自己的網域集中管理，提高自網站的 SEO。</li>
+<li>降低風險。</li>
+<li>更多內容編排上的自由。</li>
+</ol>
+</li>
+<li>簡評：前三者主要是基於行銷考量，完全可以理解。第四點則深有同感，就是我選擇自架的第一個主要理由。</li>
+</ol>
+<hr>
+<blockquote>
+<p>侯智薰（雷蒙）：<a target="_blank" rel="noopener" href="https://medium.com/y-pointer/raymond-to-wordpress-66a0c019f4e7">我為什麼從 Medium 搬家到 Wordpress 了？</a></p>
+</blockquote>
+<p>在搬家之前，侯智薰已經位居 Medium 中文流量的超級前端班，站上有各種實用文章，我當初轉職也有參考他寫的面試攻略，對很多事物他都有自己清晰的想法，了解他為什麼決定自架 blog，有助於我明確方向。</p>
+<ol>
+<li>方案選擇：WordPress。</li>
+<li>離開的理由：<ol>
+<li>後台數據不利分析。</li>
+<li>不利未來擴充更多內容。</li>
+</ol>
+</li>
+<li>簡評：第一部分和星箭差不多，第二部分也正是我所持的第二個理由——可說是最關鍵的理由，講白了就是 publication 的限制太多！</li>
+</ol>
+<hr>
+<p>上述兩篇恰恰提到了兩個我也抱持的主要觀點，且看下段說明。</p>
+<h2 id="理由一：過度簡陋的程式碼區塊"><a href="#理由一：過度簡陋的程式碼區塊" class="headerlink" title="理由一：過度簡陋的程式碼區塊"></a>理由一：過度簡陋的程式碼區塊</h2><p>第一個不夠好的地方，就是那又醜又難用的 code block。</p>
+<p>Medium 提供的程式碼區塊（code block）真是<strong>極盡簡陋之能事</strong>！</p>
+<p>對軟體工程師而言，一份現代文件提供的程式碼區塊，具有「語法突顯（syntax highlight）」乃是十分基本卻又重要的特性，但顯然 Medium 不這麼想。</p>
+<p><img src="https://i.imgur.com/TQ3Zr51.png" alt="簡單的 syntax highlight 真的很重要"><span class="cap">簡單的 syntax highlight 真的很重要</span></p>
+<p>Medium 的程式碼區塊不僅沒有語法突顯，而且<strong>排版還特別醜</strong>，從電腦看行距過小，糊成一團。這拙劣的視覺呈現，當今世上大概<a target="_blank" rel="noopener" href="https://medium.com/code-and-me/why-evernote-7cd2abbfbafd">只有 Evernote 可以與之相比</a>。</p>
+<p><img src="https://i.imgur.com/ZRpXmQm.png" alt="程式碼在 Medium 上的黑白人生"><span class="cap">程式碼在 Medium 上的黑白人生</span></p>
+<p>Medium 上的技術文章非常多，或許官方有自己的政策考量，比如不想讓技術文章過度擴張而影響平台內容的多樣性，但你看著這些作者們<a target="_blank" rel="noopener" href="https://levelup.gitconnected.com/10-python-tricks-for-speed-up-your-code-8c189d8c99b6">用盡各種替代方案</a>只為了讓文章中的程式碼好看一點，就不禁讓人感到幾分無奈與苦笑。</p>
+<p>部分創作者會把程式碼區塊拿來用作文章目錄（table of contents）使用，我個人非常贊同，因為這可能已經是對 Medium 程式碼區塊<strong>最妥善的運用</strong>了。</p>
+<p>總的來說，這些程式碼呈現的替代方案我都認真思考過，稍稍妥協其實未嘗不可，但下述第二個因素就讓人感到無解了。</p>
+<h2 id="理由二：複雜又缺乏彈性的-publication"><a href="#理由二：複雜又缺乏彈性的-publication" class="headerlink" title="理由二：複雜又缺乏彈性的 publication"></a>理由二：複雜又缺乏彈性的 publication</h2><p>如果程式碼區塊算是不夠好的地方，則理由二堪稱「<strong>不能忍受</strong>」缺陷。</p>
+<p>什麼是 publication？一言以蔽之，publication 的主要功能就是讓你的 Medium 文章不再只是<a target="_blank" rel="noopener" href="https://kyomind.medium.com/">流水線般呈現</a>，而可以進行<a target="_blank" rel="noopener" href="https://medium.com/code-and-me">較為精緻的分類與版面控制</a>，這樣說來其實就跟一般的 blog 一樣，但不同的是：<strong>它真的複雜很多，也限制很多</strong>。</p>
+<p>倘若是剛開始在 Medium 上寫作，我個人會強烈建議<strong>先不要使用</strong>它的 publication 功能，其設定的複雜度讓人卻步不說，在後續更新文章時的分類門檻也會讓你在創作的構思階段時就陷入太多不必要的考慮。總之，先寫個十篇再來思考也不遲。</p>
+<h3 id="複雜"><a href="#複雜" class="headerlink" title="複雜"></a>複雜</h3><p> publication 的複雜度，從那些教你怎麼設定好理想 publication 的<a target="_blank" rel="noopener" href="https://medium.com/deerlight/writing-a278f5203864">教學文章</a>中就能看得出來，只要看一看這些內容，就能體會到「事情為什麼可以這麼複雜？我不就是想寫個 blog 嗎？🤣」</p>
+<h3 id="缺乏彈性"><a href="#缺乏彈性" class="headerlink" title="缺乏彈性"></a>缺乏彈性</h3><p>對我而言，設定上複雜還可以忍受，但它的<strong>限制</strong>就真的讓我<strong>忍無可忍</strong>。可惜對於未使用過的人，比較難解釋其中的不便之處。</p>
+<p>概括而言，就像前述引用雷蒙文章中說的，當你文章愈多的時候，你企圖要好好分類、整理你的文章就會愈加綁手綁腳、捉襟見肘——這簡直是<strong>對長期創作者的一種懲罰</strong>。</p>
+<p>而這件事對我寫作意願的直接影響就是：每次想到要寫一篇文章，第一步先思考的竟然不是內容如何呈現，而是寫完後，要怎麼放置到合適的 publication 區塊，思路常常糾結在一起，最後往往<strong>不了了之</strong>。</p>
+<p>不過這跟我是分類控的個性可能也很有關係，我無法忍受重要事物（尤其是知識類）的編排缺乏一個<strong>井然有序且易用</strong>的「<strong>規則</strong>」或「<strong>結構</strong>」，而 Medium 提供的 publication 就是給我的這樣的感受，它實在太難用了。</p>
+<h2 id="理由三：Medium-平台對中文作者極度不友善"><a href="#理由三：Medium-平台對中文作者極度不友善" class="headerlink" title="理由三：Medium 平台對中文作者極度不友善"></a>理由三：Medium 平台對中文作者極度不友善</h2><p>這可能是不要「單押」Medium 的最大理由。</p>
+<p>如果你現在才要開始在 Medium 上創作，建議還是在<strong>多個平台</strong>上同步發表會比較好。雖然我們都說 Medium 帶有「<strong>社群</strong>」屬性，但很抱歉，那是對於<strong>英文世界</strong>而言。</p>
+<p>在 Medium 寫「<strong>中文文章</strong>」，來自平台的自然流量會讓你想要直接放棄。就像我在〈<a target="_blank" rel="noopener" href="https://medium.com/code-and-me/small-island-498e9869c8fc">我依舊會在 Medium 上寫作</a>〉說的：</p>
+<blockquote>
+<p>如果你是 2019 年以後才加入 Medium，可能會更有感覺：辛辛苦苦寫了一篇文章，可不是發表後就沒事了。你必須到前述的流量平台 — — 通常是臉書，再次宣傳你的文章，才可能會有不至於讓你直接放棄寫作的閱讀量。</p>
+</blockquote>
+<h3 id="中文寫作者在-Medium-沒有未來"><a href="#中文寫作者在-Medium-沒有未來" class="headerlink" title="中文寫作者在 Medium 沒有未來"></a>中文寫作者在 Medium 沒有未來</h3><p>而且，更讓人感到悲觀的是——這個窘境，<strong>幾乎不可能會改善</strong>。詳細理由與分析可見這篇〈<a target="_blank" rel="noopener" href="https://data.leafwind.tw/platform-weakness-of-chinese-writer-in-medium-and-importance-of-localization-aa1e33174c42">中文寫作者在 Medium 的平台劣勢</a>〉。</p>
+<p>現在還留在 Medium 上的中文作者，大多是<strong>早期</strong>就加入的，他們很可能已經有大量的<strong>追縱者</strong>，能確保發文時的瀏覽量基本盤，或是<strong>有其他平台</strong>的支持。</p>
+<p>附帶一提，如果真的要在 Medium 上寫作中文內容，據說在標籤加上「<strong>中文</strong>」對系統的推薦會有幫助。</p>
+<p>總之，這絕不是一個適合「白手起家」的地方，而且它對中文作者也沒有未來可言。</p>
+<hr>
+<p>基於上述三個理由，我還是決定在不放棄 Medium 的情況下，另謀出路，為自己開僻一個更舒適的寫作環境。</p>
+<h2 id="上半篇小結"><a href="#上半篇小結" class="headerlink" title="上半篇小結"></a>上半篇小結</h2><p>考量文章的字數還是不要太長，這個主題寫到一半就超過 2000 字了，所以決定分成上下篇發布。</p>
+<h3 id="總結一下本篇的內容"><a href="#總結一下本篇的內容" class="headerlink" title="總結一下本篇的內容"></a>總結一下本篇的內容</h3><ol>
+<li>寫作環境對寫作動力的影響顯然存在，Medium 有著<strong>平台的方便</strong>，讓人可以快速開始創作自己的文字內容；但也有著一些<strong>不利的因素</strong>，讓人在考慮長線的持續寫作時感到<strong>不便與不安</strong>。</li>
+<li>本文講述了我認為自己在 Medium 上寫作的<strong>三個關鍵痛點</strong>。其中第二點讓我常常在文章構思階段就陷入卡關——不知道怎麼樣才能有效架構 publication 的呈現方式。第三點更是我建議你<strong>不要選擇 Medium 作為單一寫作平台</strong>的最大理由。</li>
+</ol>
+<p>最終，我決定不離開但是跳出來，為自己另僻園地，這部分為下篇內容，敬請期待。</p>
+<hr>
+<blockquote>
+<p>下篇：<a href="https://blog.kyomind.tw/my-own-blog-part-two/">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a></p>
+</blockquote>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇" rel="bookmark">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-12/" title="12，blog 新增文章訂閱功能——使用 follow.it——與我的思考" rel="bookmark">12，blog 新增文章訂閱功能——使用 follow.it——與我的思考</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/on-writing/" title="聊聊接下來的寫作方向與如何持續寫作" rel="bookmark">聊聊接下來的寫作方向與如何持續寫作</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E5%AF%AB%E4%BD%9C/">寫作</a>
+            <a href="/tags/blog/">blog</a>
+            <a href="/tags/Medium/">Medium</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/adding-sitemap-issue/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</span>
+        <span class="prev-text nav-mobile">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

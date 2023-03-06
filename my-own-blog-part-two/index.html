@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/my-own-blog-part-two/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-07-24
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%B7%9A%E4%B8%80%EF%BC%9AWordPress"><span class="toc-text">路線一：WordPress</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%92%E7%B5%95-WordPress"><span class="toc-text">拒絕 WordPress</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%B7%9A%E4%BA%8C%EF%BC%9A%E5%90%84%E5%BC%8F%E9%9D%9C%E6%85%8B%E6%A1%86%E6%9E%B6"><span class="toc-text">路線二：各式靜態框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%80%8B%E9%9D%9C%E6%85%8B%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%B4%B9"><span class="toc-text">三個靜態框架介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Hexo%EF%BC%9F"><span class="toc-text">Why Hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-%E4%BC%8F%E7%AD%86"><span class="toc-text">Markdown 伏筆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%AB%E4%BA%86%E5%8D%81%E7%AF%87%E4%B9%8B%E5%BE%8C"><span class="toc-text">寫了十篇之後</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E7%8B%A1%E5%85%94%E6%9C%89%E4%B8%89%E7%AA%9F"><span class="toc-text">結語：狡兔有三窟</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/xZtuAXe.png" alt="by Elizaveta Rusalskaya on Behance"><span class="cap">by Elizaveta Rusalskaya on Behance</span></p>
+<p>〈<a href="https://blog.kyomind.tw/my-own-blog-part-one/">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a>〉闡述了我自架 blog 的理由，但從萌生這個念頭到真正行動，中間竟也隔了 9 個月之久！</p>
+<p>儘管不滿 Medium 的不便，自己架站卻也要考慮很多，就像在 Medium 上寫文章，想著想著又放在一旁了。</p>
+<p>這篇就來講一下自架有哪些選擇，我怎麼考慮等等。不過我並沒有真的通盤考量、比較所有選項的細節，就當作是自架網站選項參考的收集冊吧！</p>
+<h3 id="系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲"><a href="#系列：Medium-到-Hexo——我的-Markdown-靜態部落格寫作四部曲" class="headerlink" title="系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲"></a>系列：Medium 到 Hexo——我的 Markdown 靜態部落格寫作四部曲</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/my-own-blog-part-one/">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a></li>
+<li><strong>不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</strong></li>
+<li><a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></li>
+<li><a href="https://blog.kyomind.tw/a-mind-for-blogs/">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></li>
+</ol>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="路線一：WordPress"><a href="#路線一：WordPress" class="headerlink" title="路線一：WordPress"></a>路線一：WordPress</h2><p>既然說是自己架站了，那類似 Medium 的現成寫作平台如 Blogger 或台灣的痞客邦、方格子等，自然就不能納入其中。</p>
+<p>而說到自架部落格，第一個想到的毫無疑問就是超級老牌的 WordPress。</p>
+<h3 id="百花齊放的選擇"><a href="#百花齊放的選擇" class="headerlink" title="百花齊放的選擇"></a>百花齊放的選擇</h3><p>WordPress 的建置方案眾多，從<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-on-ubuntu-20-04-with-a-lamp-stack">自己搞 VM 把整個 LAMP Stack 架起來</a>這種比較適合工程師的「低階方案」（意指需要較多技術門檻），到直接去 <a target="_blank" rel="noopener" href="https://wordpress.com/zh-tw/">WordPress.com</a> 開一個帳號的「高階方案」（這麼做已經很像 Medium 了，但它沒有社群元素，所以姑且還是歸類於自架），各種選擇應有盡有，這個市場已經非常成熟。</p>
+<p>其中你的技術成分愈多，彈性就愈大，需要花的錢也就愈少（通常啦！但也不一定），反之就要付費才能用得比較舒服。我想時間就是金錢，而且我們是來寫作而不是來搞技術的，不一定要選擇最有彈性的方式，太累啦！</p>
+<p>所幸，一般人只要願意學習，網路上的 WordPress 教學資源豐富，一步一步照著做，都能找到適合自己的折衷方案。</p>
+<h3 id="我的思考：來自星箭廣播"><a href="#我的思考：來自星箭廣播" class="headerlink" title="我的思考：來自星箭廣播"></a>我的思考：來自星箭廣播</h3><p>起初會先考慮 WordPress，無疑是受到「上篇」中所提及星箭廣播的〈<a target="_blank" rel="noopener" href="https://blog.starrocket.io/posts/the-reason-why-we-build-our-own-blog-website-by-using-wordpress/">我們把文章搬到自己架設的網站了</a>〉影響，該篇文章已經非常完整地闡述了「選擇 WordPress 的理由」，值得參考。</p>
+<p>對我而言，選用 WordPress 最大的賣點就在於<strong>編輯器</strong>，容我直接引述原文這幾段：</p>
+<blockquote>
+<p>不過最後我們卻打了個煞車停了下來，回心轉意改用 WordPress。最主要的原因就是 WordPress 的編輯器：<strong>Gutenberg Editor</strong> 以及他的生態系。</p>
+</blockquote>
+<blockquote>
+<p>Gutenberg Editor 在每一個區塊（blocks）裡面可以使用比 Medium 與 Ghost 更多的格式，可以放上按鈕、音檔、直接塞入 HTML 之外，連圖文的排版都可以自由調整。</p>
+</blockquote>
+<blockquote>
+<p>根據這一個強大的功能，我們決定轉向 WordPress，因為實際上來說，這樣的彈性自由將可以讓內容編輯在撰文與排版上有更多發揮的空間。</p>
+</blockquote>
+<p>寫作上，我也是傳統文章編輯器的高度依賴者，雖然是軟體工程師，但我並不那麼愛寫 Markdown，對我來說，還是編輯器最棒了！</p>
+<p>並非沒試過用 Markdown 來寫作，比如 macOS 上的寫作軟體 <a target="_blank" rel="noopener" href="https://bear.app/">Bear</a> 我也付費過一段時間，但還是不太習慣沒有編輯器與<strong>樣式按鈕</strong>的模式，可能是從 Evernote 以來就養成的習慣，積習難改？</p>
+<h2 id="拒絕-WordPress"><a href="#拒絕-WordPress" class="headerlink" title="拒絕 WordPress"></a>拒絕 WordPress</h2><p>既然編輯器這麼重要，那應該就選擇 WordPress 了？</p>
+<p><img src="https://i.imgur.com/tSCqIFE.jpg"></p>
+<p>為什麼？和<strong>工程師的偏執</strong>有關。</p>
+<p>很多工程師都會<a target="_blank" rel="noopener" href="https://jason-memo.dev/posts/why-i-leave-medium-and-build-blog-with-eleventy/">追求簡潔</a>，我也不例外。WordPress 在預設上確實是不夠簡潔的，且常常因「<strong>肥大</strong>」而為人垢病，在網站內容較多的情況下還希望它跑得順，除了砸更多錢在機器上外，調校的功力也不可少。</p>
+<p>至於 WordPress 生態系的各式外掛套件，對非商業取向的我而言，重要性也不高，而且大量套件本身就已經違反了簡潔的精神。當然，這仍要視每個人的需求而定。</p>
+<p>光這樣想就覺得有點「<strong>複雜</strong>」，仔細思考一下，如果 WordPress 對我而言最大的吸引力就是編輯器，那或許我應該有辦法在編輯器部分取得一個平衡然後捨棄它。</p>
+<p>總之，最後就沒有選它了。</p>
+<h3 id="WordPress-好站推薦"><a href="#WordPress-好站推薦" class="headerlink" title="WordPress 好站推薦"></a>WordPress 好站推薦</h3><p>雖然我沒有採用，但考慮到 WordPress 的網頁與影片教學資源實在<strong>多如繁星</strong>，我相信它仍是大部分人的第一選擇。</p>
+<p>以下推薦我覺得有代表性的 WordPress 網站，並簡述我欣賞的點，這部分純屬個人品味，僅供參考。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://gtwang.org/">G. T. Wang - 分享 GNU&#x2F;Linux 與 Open Source 技術、教學文件、程式設計技巧、統計研究與生活點滴記錄</a></li>
+</ul>
+<p>簡約，且效能很高的 WordPress 網站，如果我是選擇 WordPress，我也會想要這樣風格的網站。軟體工程相關，所以對我而言它的代表性除了界面還有實用。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://readingoutpost.com/">閱讀前哨站｜推薦好書給忙碌的你，透過閱讀成為更好的自己</a></li>
+</ul>
+<p>雖然我很少看別人的書評文章、影片，但瓦基的網站卻讓我印象深刻，難以想像上面的一切都是他一個人研究、實作出來的，視覺上兼具整體的一致性與美感，可以看得出他是個<strong>完美主義者</strong>。</p>
+<hr>
+<h2 id="路線二：各式靜態框架"><a href="#路線二：各式靜態框架" class="headerlink" title="路線二：各式靜態框架"></a>路線二：各式靜態框架</h2><p>靜態框架就是「<strong>靜態網站產生器（Static Site Generator）</strong>」，基本上就是把你寫成的 Markdown 檔案轉換成 HTML 頁面加以呈現（這個過程我稱之為「<strong>渲染</strong>」，惟此用詞<strong>具有爭議</strong>，可參考下方留言討論）。</p>
+<p>關於「<strong>靜態網頁</strong>」的定義可以自行搜索，簡單理解就是<strong>沒有資料庫與複雜程式的網頁</strong>，整體頁面以 HTML、CSS 和基本的 JavaScript 為主。</p>
+<h3 id="靜態框架的優點"><a href="#靜態框架的優點" class="headerlink" title="靜態框架的優點"></a>靜態框架的優點</h3><p>因此，選用靜態框架的一個<strong>代表性優勢</strong>，在於它能夠<strong>大幅節省</strong>執行網站程式運算所需要的資源耗費（相較於 WordPress）——白話講就是：<strong>你的網站會更快</strong>！</p>
+<p>不過對很多人而言，它<strong>最大的賣點</strong>或許還是在於「<strong>免費</strong>」。</p>
+<p>選用靜態框架的人大多是部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a> 上，我也是，整套方案弄下來花不到一毛錢（如果不算租網域的費用），而且 GitHub 的速度和穩定度都很不錯。</p>
+<h3 id="靜態框架的缺點"><a href="#靜態框架的缺點" class="headerlink" title="靜態框架的缺點"></a>靜態框架的缺點</h3><p>靜態網頁的<strong>缺點</strong>就是界面與功能的彈性較小，想要額外的特性常常需要套件輔助才能辦到。這也帶來了<strong>另一個缺點</strong>：要透過套件新增功能時，對非技術人員實在略有門檻。</p>
+<p>我也是照著網路上的教學一步一步實踐，基本上不會涉及太多技術細節，但終端機的操作免不了，確實稱不上平易近人。</p>
+<h2 id="三個靜態框架介紹"><a href="#三個靜態框架介紹" class="headerlink" title="三個靜態框架介紹"></a>三個靜態框架介紹</h2><p>靜態框架也是百百種，這裡只提三個我有<strong>真正考慮過</strong>的選項。</p>
+<h3 id="選項一：Pelican"><a href="#選項一：Pelican" class="headerlink" title="選項一：Pelican"></a>選項一：<a target="_blank" rel="noopener" href="https://github.com/getpelican/pelican">Pelican</a></h3><blockquote>
+<p>Pelican is a static site generator, written in Python.</p>
+</blockquote>
+<p>作為 Python 開發者，會想選擇自己熟悉語言所寫成的框架誠屬自然。不過值得注意的是：Pelican 的知名度和下面兩位相比，著實有不小的差距。我也是開始蒐集靜態框架相關的資料後才知道它。</p>
+<p>後來沒選它，原因也很簡單，一來是找不到喜歡的主題。其次，它的<strong>相對冷門</strong>也是一個顧慮，如果使用上有問題，或需要手刻一些功能時，資料會比較難找。</p>
+<p>所以，平心而論，我<strong>並不推薦</strong>你選擇 Pelican。以下兩個框架，應該會是更好的選擇。</p>
+<ul>
+<li><strong>Pelican 好站推薦：</strong> <a target="_blank" rel="noopener" href="https://leemeng.tw/">LeeMeng - All About DataScience</a></li>
+</ul>
+<p>網站的頁面很有質感，文章更是一篇比一篇長，可謂質與量兼具。資料科學學習者應該很少不知道這個網站，但可能也很少注意過它是用 Pelican 架設的。</p>
+<p>倘若你還沒有聽過這個網站，推薦可以從這篇〈<a target="_blank" rel="noopener" href="https://leemeng.tw/gpt2-language-model-generate-chinese-jing-yong-novels.html">直觀理解 GPT-2 語言模型並生成金庸武俠小說</a>〉開始上手。</p>
+<h3 id="選項二：Hugo"><a href="#選項二：Hugo" class="headerlink" title="選項二：Hugo"></a>選項二：<a target="_blank" rel="noopener" href="https://github.com/gohugoio/hugo">Hugo</a></h3><p>GitHub 上的星星數已經超過下述的 Hexo 好一截，號稱生成頁面速度地表最快的靜態框架，畢竟是以 Go 語言寫成，沒人會質疑它的效能。</p>
+<p>未採用的原因一樣是找不到理想的主題，顯然主題才是本體無誤。</p>
+<p><code>2022/07/17</code>：不過，如果你正考慮用 Hugo 來架站，卻苦於不知道從何上手，或者需要更加<strong>手把手</strong>的教學。那我個人推薦 Hahow 平台上的這堂《<a target="_blank" rel="noopener" href="https://hahow.in/courses/5de8fec16117240026540b9c/main">Github 免費架站術！輕鬆打造個人品牌</a>》，我有買且大致看完了，並曾在個人臉書發表過<a target="_blank" rel="noopener" href="https://www.facebook.com/kyomind/posts/pfbid0e3MxdhEiEZwUXJSPu4Y5Zd7VUbYhHtWHiV5p9FXu6rHtHi1NzoYxdnGeJcEBbvjhl">簡單的課程心得</a>，可供參考。</p>
+<h3 id="選項三：Hexo"><a href="#選項三：Hexo" class="headerlink" title="選項三：Hexo"></a>選項三：<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">Hexo</a></h3><p>終於來到重頭戲——Hexo！沒錯，我最後就是選了 Hexo，所以就來說一下它的優點吧！</p>
+<p>它最大的優點就是中文的使用者很多。（這在國外網站的介紹被列為缺點，只能苦笑）</p>
+<h2 id="Why-Hexo？"><a href="#Why-Hexo？" class="headerlink" title="Why Hexo？"></a>Why Hexo？</h2><p>中文使用者多，除了使用上有問題時容易搜尋到中文資料以及相關教學外，一個更大的影響就是主題的創作很多是中文用戶，所以會更在乎<strong>中文的排版</strong>。</p>
+<h3 id="常常被忽略的中文排版"><a href="#常常被忽略的中文排版" class="headerlink" title="常常被忽略的中文排版"></a>常常被忽略的中文排版</h3><p>這點真的很重要，前述我未提及的一個不想選 WordPress 的潛在原因就是中文排版優化不足，此議題請參考這篇〈<a target="_blank" rel="noopener" href="https://medium.com/deerlight/medium-6a42f494254">留在 Medium 及暫不自架站</a>〉中「<strong>不同語言在介面上的體驗呈現</strong>」部分。</p>
+<blockquote>
+<p>並不是單純改變語系，就能完成編排設計。</p>
+</blockquote>
+<p>在預設的情況下，WordPress 的中文排版常常是一場災難。</p>
+<h3 id="合適的主題"><a href="#合適的主題" class="headerlink" title="合適的主題"></a>合適的主題</h3><p>鑑於前二者不採用的理由，都是因為沒有理想的主題，而最後選了 Hexo，自然是因為找到了合適的主題！感謝 <a target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a> 的作者，創作出如此簡潔又有美感的作品。</p>
+<p>話雖如此，我還是花了 30 小時以上（不誇張）調整了頁面的各項 CSS 細節，包括顏色，字體大小、行距、字型等等，才讓版面接近我的理想。</p>
+<p>不過，後來我發現，原來 Even 主題也有 <a target="_blank" rel="noopener" href="https://github.com/olOwOlo/hugo-theme-even">Hugo 版本</a>！😂</p>
+<ul>
+<li><strong>Hexo 好站推薦：</strong><a target="_blank" rel="noopener" href="https://askie.today/">Askie’s Coding Life</a></li>
+</ul>
+<p>由前端工程師 <a target="_blank" rel="noopener" href="https://askie.today/about/">Askie Lin</a> 所架設的網站，基於她的專業（前端技術）與審美對原主題進行了相當程度的頁面優化，不得不說我在修改自己頁面的時候，也常常參考她的排版，獲益良多。</p>
+<h2 id="Markdown-伏筆"><a href="#Markdown-伏筆" class="headerlink" title="Markdown 伏筆"></a>Markdown 伏筆</h2><p>從前面看下來，你是否覺得有點奇怪，我明明一開始說不愛用 Markdown 寫作，怎麼最後卻是選了基於 Markdown 的靜態框架？</p>
+<p>簡言之，我找到了用 Markdown 寫作的折衷方式。這部分細節不少，請容我再另闢一篇討論，因為它確實滿重要的，也會影響你寫作的舒適度，最終決定你能否長期運行與產出。</p>
+<p>也就是說，靜態框架有它的缺點，唯有接受或克服這些缺點，它才會是適合的選項。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></p>
+</blockquote>
+<hr>
+<h2 id="寫了十篇之後"><a href="#寫了十篇之後" class="headerlink" title="寫了十篇之後"></a>寫了十篇之後</h2><p>這篇恰好是自架後的第十篇文章，已經有基本的累積，可以稍為講述，自行架站寫作的整體感受與心得了。</p>
+<p>一言以蔽之：我覺得這個決定<strong>非常正確且必要</strong>。</p>
+<h3 id="編輯器與排版部分"><a href="#編輯器與排版部分" class="headerlink" title="編輯器與排版部分"></a>編輯器與排版部分</h3><p>用了 Hexo（或說 Markdown）後，才深感原先 Medium 的編輯器與版面是<strong>如何限制我的文章呈現</strong>。<a href="https://blog.kyomind.tw/my-own-blog-part-one/#%E6%88%91%E7%9A%84%E7%9C%8B%E6%B3%95%EF%BC%9AMedium-%E5%85%A9%E5%80%8B%E4%B8%8D%E5%A4%A0%E5%A5%BD%E7%9A%84%E5%9C%B0%E6%96%B9">上篇提到的程式碼區塊部分</a>就不提了，還有清單無法到第二層，以及小標題不明顯等讓我困擾的排版缺陷。</p>
+<p><img src="https://i.imgur.com/0TBcN4L.png" alt="像這樣有兩層的有序清單，Medium 是不允許的"><span class="cap">像這樣有兩層的有序清單，Medium 是不允許的</span></p>
+<p><img src="https://i.imgur.com/fW8PsEC.png" alt="Medium 的小標題存在感稀薄"><span class="cap">Medium 的小標題存在感稀薄</span></p>
+<ul>
+<li><code>2021/07/25</code>：後來發現小標不明顯的問題主要發生在 Chrome 瀏覽器上。</li>
+</ul>
+<p>不過大體而言，Medium 的中文排版還不差，功能也基本夠用，所以不算是我真正覺得「被解放」的部分。</p>
+<h3 id="發文流程的大幅化簡"><a href="#發文流程的大幅化簡" class="headerlink" title="發文流程的大幅化簡"></a>發文流程的大幅化簡</h3><p>真正被解放的是發文流程！因為在 Medium 發文前要設定一堆東西！</p>
+<p>這裡就說明一下我把文章轉到 Medium 後，在發布之前要設定什麼：</p>
+<ol>
+<li><strong>文章標籤</strong>：這個幾乎都要，所以還好。</li>
+<li><strong>display subtitle</strong>：在 publication 的縮圖呈現時，副標是獨立的，通常會自動使用你內文的副標（如果有的話），內文沒有副標時，就會自動抓取你第一段的開頭部分，呈現上未必是你想要的。</li>
+<li><strong>封面 reposition</strong>：封面如果比較大張，縮圖截取的位置可能不理想，要重新定位，這部分我少用，但偶爾還是需要。</li>
+<li><strong>SEO Title</strong>：給 Google 索引用的標題，通常不用動，但太長會需要修一下。</li>
+<li><strong>SEO Description</strong>：給 Google 索引用的文章描述，我幾乎都會改，因為預設的內容往往很醜。</li>
+<li><strong>Customize Story Link</strong>：一定改，因為要用英文連結名稱。</li>
+<li><strong>Customize Canonical Link</strong>：因為是從自己 blog 轉載所以也一定會加。Canonical Link 的功能在於告訴 Google 儘可能以呈現原站文章為主，使用 import story 的話就會自帶。</li>
+</ol>
+<p>以上設定除了封面重置偶爾為之以外，每一個都是我發文前必要的步驟，說多煩有多煩，不設定又覺得呈現不夠理想，心理不適 😎，真的辛苦。</p>
+<p>而 Hexo 就沒有這些東西可以設定，主要就是文章的分類和標籤而已，發布更是指令一下就完成了，速度差很多。</p>
+<p><img src="https://i.imgur.com/WHykuNz.png" alt="即使日後要調整分類或變更標籤也非常方便"><span class="cap">即使日後要調整分類或變更標籤也非常方便</span></p>
+<p>流程化簡的好處就是發文的摩擦力顯著下降！尤其是短文，只有 500 字的文章也一樣要設定上述那些，想想真的讓人有點卻步。</p>
+<hr>
+<h2 id="結語：狡兔有三窟"><a href="#結語：狡兔有三窟" class="headerlink" title="結語：狡兔有三窟"></a>結語：狡兔有三窟</h2><p>我想任何單一寫作平台，即使再好，身為作者也難免不安，擔心平台的變動和自己會受到的影響。而有自己 blog 的好處是分散了這個風險，達到真正的「多元」。</p>
+<p>平台還是平台，但你是自由的。</p>
+<p>平台可以繼續使用，只是哪天它變了，你也可以立刻拍拍屁股走人，不用擔心接下來該何去何從。我想這就是自架部落格所帶能來的最大救贖。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-markdown-writing-flow/" title="Notion + VS Code：我的 Markdown 寫作工作流" rel="bookmark">Notion + VS Code：我的 Markdown 寫作工作流</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-one/" title="不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇" rel="bookmark">不離開 Medium，我自架 blog 的理由與選擇（上）：理由篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2" rel="bookmark">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Markdown/">Markdown</a>
+            <a href="/tags/%E5%AF%AB%E4%BD%9C/">寫作</a>
+            <a href="/tags/blog/">blog</a>
+            <a href="/tags/Hexo/">Hexo</a>
+            <a href="/tags/Medium/">Medium</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/learning-topic/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">notes 回顧與每月學習主題</span>
+        <span class="prev-text nav-mobile">notes 回顧與每月學習主題</span>
+      </a>
+    <a class="next" href="/hard-to-say/">
+        <span class="next-text nav-default">誠實面對自己，真的很難</span>
+        <span class="prev-text nav-mobile">誠實面對自己，真的很難</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

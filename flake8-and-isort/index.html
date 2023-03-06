@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Flake8 與 isort in VS Code"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/flake8-and-isort/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Flake8 與 isort in VS Code - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Flake8 與 isort in VS Code
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-10-14
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pylint-to-Flake8"><span class="toc-text">Pylint to Flake8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort"><span class="toc-text">原來早就內建的 isort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/LnNp1ye.png"></p>
+<p>晚上河濱散步的最後十分鐘聽了《<a target="_blank" rel="noopener" href="https://pythonhunter.org/">捕蛇者說</a>》這集〈<a target="_blank" rel="noopener" href="https://pythonhunter.org/episodes/17">Ep 17. Use the Flake8, Luke!</a>〉的前面一部分，發現裡面提到的東西正是我需要的啊！</p>
+<blockquote>
+<p>相關文章：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定使用 Python linter 與 formatter：以 Flake8、yapf 為例</a></li>
+<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+
+<h2 id="Pylint-to-Flake8"><a href="#Pylint-to-Flake8" class="headerlink" title="Pylint to Flake8"></a>Pylint to Flake8</h2><p>最近 VS Code 不斷提醒我要把 Language Server 換成 Pylance，我終於屈服，隨即發現 pylint 的語法提醒變多了，波浪底線與小點點們讓我看得有點心煩。</p>
+<h3 id="Linters-in-Python"><a href="#Linters-in-Python" class="headerlink" title="Linters in Python"></a>Linters in Python</h3><p>Linter，簡言之就是幫你檢查程式中語法正確性的工具，各種語言都有自己的 linter，而 Python 最常見的 linter 不外乎<code>pylint</code>、<code>pep8</code>（現在改名為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>，早期 VS Code 會推薦使用<code>pylint</code>，所以我也一直延用至今。</p>
+<p>以上 linter 都是 Python 的 package，可獨立執行、使用，這裡提及的主要是整合在 VS Code 中，讓這些選定的 linter 自動幫你檢查程式碼是否有錯誤的功能。</p>
+<h3 id="龜毛的-pylint"><a href="#龜毛的-pylint" class="headerlink" title="龜毛的 pylint"></a>龜毛的 pylint</h3><p>不過<code>pylint</code>的語法檢查真的有點太細瑣、嚴格，比如：</p>
+<ul>
+<li><code>except ValueError as e</code>，這裡的變數<code>e</code>就會被警告沒有符合 Python 命名風格——要有底線分隔。</li>
+<li>警告你函式或類別缺乏 docstring，函式沒寫 docstring？好像很常見厚？😂</li>
+</ul>
+<p>還有一個典型的情況就是<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chaojihexiang/p/6417835.html">這篇</a>所提及的和 Django 的不合拍：</p>
+<blockquote>
+<p>典型的就是集成了django.db.models.Model的模型層對象在編譯時沒有objects屬性，但是運行時卻有，造成我們在編寫代碼時pylint會報”has no objects attributes”之類的錯誤，雖然不影響程序運行，但是很影響心情啊</p>
+</blockquote>
+<p>沒錯，每次看到<code>.objects</code>屬性底下的警告波浪線真的很心煩，哈哈！</p>
+<p>雖然可以使用<code>.pylintrc</code>文件或 IDE 的<code>arguments setting</code>來排除與客製化檢查規則，但就是麻煩，如本集 Podcast 來賓所言，調整起來費時費力，太辛苦了。</p>
+<h3 id="VS-Code-Flake8-settings"><a href="#VS-Code-Flake8-settings" class="headerlink" title="VS Code Flake8 settings"></a>VS Code Flake8 settings</h3><p>換成<code>flake8</code>感覺就好多了，預設出現的提醒都相對實用，不太需要調整。</p>
+<p>雖然我後續還是忍不住在 VS Code 的<code>settings.json</code>增加了下列設定 XD：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.linting.flake8Args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;--max-line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;--ignore=E402,F841,F401,E302,E305&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>畢竟長度 80 字元真的太嚴格囉！偶爾會超過一些但又不想換行變冗。</p>
+<p>總之，比較推薦<code>flake8</code>！</p>
+<h2 id="原來早就內建的-isort"><a href="#原來早就內建的-isort" class="headerlink" title="原來早就內建的 isort"></a>原來早就內建的 isort</h2><blockquote>
+<p><code>2022/05/08</code>更正：<br>原來不是 VS Code 內建了 isort，而是 Python extension 直接安裝了 isort。更多資訊可參考：<a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></p>
+</blockquote>
+<p>除了 linter，常見語法相關工具還有 formatter，自動幫你排版程式碼，讓它們盡可能符合 PEP8 的風格，早期我是用 <a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a> ，後來改用 Google 出的 <a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a>，目前還不考慮轉戰排版一致性最高的 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>。</p>
+<p>儘管有這些 formatter，但 import 順序問題依舊是一個痛，因為它們不會幫你自動調整成 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#imports">PEP8 期待的風格</a>：</p>
+<ul>
+<li>依序為：<ul>
+<li>標準函式庫</li>
+<li>第三方函式庫</li>
+<li>本地模組</li>
+</ul>
+</li>
+<li>三種類的 import 中間要各空一行。</li>
+</ul>
+<p>而像我這種排版小偏執，就很難不在意。</p>
+<p>但手動一個一個調整，效率不高又可能出錯，結果本集就提到了 <a target="_blank" rel="noopener" href="https://pypi.org/project/isort/">isort</a> 這個套件，可以幫你自動排序 import 程式行令其符合上述風格。我無法置信這麼重要的東西我以前竟然都不知道！</p>
+<p>於是立刻 google 一下 VS Code 怎麼開啟這個功能，是否也是裝完 isort package 再去設定中打開？結果比想像中更簡單，原來<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/editing#_sort-imports">這功能早就直接內建了</a>！按右鍵就可以使用啊我哭😭，太晚才知道。立刻設定了鍵盤快捷鍵：<code>Alt+I</code>。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>雖然都是小事，不過能增加效率就是好事，happy coding！</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例" rel="bookmark">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/isort/">isort</a>
+            <a href="/tags/pylint/">pylint</a>
+            <a href="/tags/Flake8/">Flake8</a>
+            <a href="/tags/linter/">linter</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/bracket-pair-colorization/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization</span>
+        <span class="prev-text nav-mobile">VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization</span>
+      </a>
+    <a class="next" href="/ubuntu-zsh-zinit/">
+        <span class="next-text nav-default">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</span>
+        <span class="prev-text nav-mobile">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

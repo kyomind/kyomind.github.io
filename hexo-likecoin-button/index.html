@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="為 Hexo 裝上 LikeCoin 按鈕"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/hexo-likecoin-button/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>為 Hexo 裝上 LikeCoin 按鈕 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.2.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            標籤
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/top10/">
+            TOP 10
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/subscribe/">
+            訂閱
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">為 Hexo 裝上 LikeCoin 按鈕
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-03-12
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%89%E6%8A%98%E2%80%94%E2%80%94%E3%80%8C%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0%E3%80%8D%E5%8A%9F%E8%83%BD"><span class="toc-text">轉折——「相關文章」功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA-Hexo-%E5%AE%89%E8%A3%9D-LikeCoin-widget"><span class="toc-text">為 Hexo 安裝 LikeCoin widget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E6%9E%9C"><span class="toc-text">成果</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/S8kR1aT.png" alt="docs.like.co"><span class="cap">docs.like.co</span></p>
+<p>自從用 Hexo 建立自己的 blog 後不久，就有認真思考過要不要在文末加上 LikeCoin 按鈕，但一直都沒有行動。原因大致有二：</p>
+<ol>
+<li>重視美感，覺得 LikeCoin 按鈕和 blog 整體風格似乎有點不搭。</li>
+<li>覺得拍手前的登入程序頗為麻煩，連我自己可能都懶得登入，又怎麼能夠期待收獲別人的拍手呢？</li>
+</ol>
+<p>基於上述兩個理由，即使後來方格子、Medium 等平台以及更早的 WordPress 都已經陸續支援了 LikeCoin 按鈕，我還是興趣缺缺。</p>
+<p>但為什麼後來又回心轉意了呢？原因有點特別。</p>
+<span id="more"></span>
+
+
+<h2 id="轉折——「相關文章」功能"><a href="#轉折——「相關文章」功能" class="headerlink" title="轉折——「相關文章」功能"></a>轉折——「相關文章」功能</h2><p>過年期間，我苦於 blog 單篇文章頁面內的「<strong>坪效</strong>」太差，怎麼說呢？</p>
+<blockquote>
+<p>以下指的都是「<strong>桌面版</strong>」網頁，手機版的顯示空間本來就有限，所以版面呈現上差異不大。</p>
+</blockquote>
+<p>以友人 <a target="_blank" rel="noopener" href="https://www.instagram.com/junlearning/">Jun</a> 的這篇〈<a target="_blank" rel="noopener" href="https://junlearning.com/notion-mark-manager/">【Notion】Notion+ 標記管理器，快速匯出筆記重點</a>〉為例，從文內的版面就可以看到典型 WordPress 排版：左邊有「熱門文章」連結，而文末有「你可能也會有興趣的其他文章」連結。</p>
+<p>換句話說，頁面除了本文外，<strong>還會配置不少「站內連結」</strong>，除了增強 SEO，也能讓從搜尋引擎進來的新朋友，有機會<strong>直接看到</strong>站內其他可能也會感興趣的文章，這就是我所謂的「頁面的坪效」——好不容易吸引讀者點進來了，總不希望對方看完眼前的文章就速速閃人哩！</p>
+<p>唉呀！我也好想要有「相關文章」這樣的功能，這不是理所當然應該要有的嗎？而且很多 Hexo 主題也都有，可是我選的主題偏偏就是沒有！</p>
+<p>只能按照網路上的教學，自己使用套件（<a target="_blank" rel="noopener" href="https://github.com/tea3/hexo-related-popular-posts">hexo-related-popular-posts</a>）加上改模版，把它給刻出來，第一版大致如下：</p>
+<p><img src="https://i.imgur.com/lhXRzWP.png" alt="第一版我叫它「類似標籤文章」"><span class="cap">第一版我叫它「類似標籤文章」</span></p>
+<p>感覺效果還不錯！外掛會依照有相同標籤的文章自行幫你推薦，我設定最多只顯示 3 篇，以免失焦，而且我很喜歡這樣的呈現，簡潔不失美感，但後來發現一個問題。</p>
+<p>為了區別<strong>內文的結尾</strong>和「相關文章」區塊，我在兩者中間額外加上了一條分隔線，這就造成了我的苦惱，因為我常常在最後一大段——小結——之前，也使用分隔線，如果小結的內容不多，就會<strong>在短短的篇幅範圍內使用了兩次分隔線</strong>。</p>
+<p>這密集出現的分隔線，在我看來就像函式中有重複的程式碼段落卻沒有進行重構合併一般——讓我混身不自在：</p>
+<p><img src="https://i.imgur.com/raYhJnw.png"></p>
+<p>雖然應該沒什麼人會在意，但我就是看不順眼，怎麼辦才好？</p>
+<p>沒錯，我想到了使用 LikeCoin 按鈕的整個 widget 區塊作為一種<strong>另類的分隔線</strong>！</p>
+<h2 id="為-Hexo-安裝-LikeCoin-widget"><a href="#為-Hexo-安裝-LikeCoin-widget" class="headerlink" title="為 Hexo 安裝 LikeCoin widget"></a>為 Hexo 安裝 LikeCoin widget</h2><p>既然有這樣的想法，第一個問題便是「Hexo 能裝 LikeCoin widget 嗎？」</p>
+<blockquote>
+<p>答案是：當然可以。</p>
+</blockquote>
+<p>不過資料並不多，你孤狗一下，顯然<a target="_blank" rel="noopener" href="https://docs.like.co/v/zh/user-guide/creator/self-host/hexo-next">官方文件的教學</a>已經是最全面的了，儘管它也是收集、引用別人的文章。</p>
+<p>我主要還是參考這篇被文件引用的〈<a target="_blank" rel="noopener" href="https://blog.typeart.cc/%E5%9C%A8Hexo%20NexT%E5%A2%9E%E5%8A%A0like%20Button/">在Hexo NexT增加like Button</a>〉，比較可惜的是，本篇文章是基於 Hexo 中最知名的 <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">Next 主題</a>，該主題用戶眾多，對常見功能都有高度的整合。但如果你跟我一樣不是用這個主題的話，很抱歉，還是要稍為手刻一下——就是要改模板內容啦！</p>
+<p>因為才剛實作完「相關文章」區塊沒多久，記憶猶新，我便想到乾脆就把 LikeCoin widget 的程式碼也一起塞到相關文章的 swig 模板裡，也就是把它們在呈現上綁在一起，畢竟它們通常是「同進同出」沒錯，模板的 HTML 長這樣：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    document.write(</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">      &quot;<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">scrolling</span>=<span class="string">&#x27;no&#x27;</span> <span class="attr">frameborder</span>=<span class="string">&#x27;0&#x27;</span> <span class="attr">sandbox</span>=<span class="string">&#x27;allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation&#x27;</span> <span class="attr">style</span>=<span class="string">&#x27;height: 212px; width: 100%;&#x27;</span> <span class="attr">src</span>=<span class="string">&#x27;https://button.like.co/in/embed/[LikerID]/button?referrer=&quot; +</span></span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="language-xml"><span class="language-handlebars">      encodeURIComponent(location.href.split(&quot;?&quot;)[0].split(&quot;#&quot;)[0]) + &quot;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span>&quot;);</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">♠︎</span><br><span class="line">    <span class="tag">&lt;<span class="name">b</span>&gt;</span></span><br><span class="line">      相關文章</span><br><span class="line">    <span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">&#123;%- if theme.popular_posts.enable -%&#125;</span><br><span class="line">  &#123;&#123; popular_posts( &#123; ulClass: &#x27;popular-posts&#x27;, maxCount: theme.popular_posts.maxCount, PPMixingRate: theme.popular_posts.PPMixingRate, isImage:theme.popular_posts.isImage   &#125; , page ) &#125;&#125;</span><br><span class="line">&#123;%- endif -%&#125;</span><br></pre></td></tr></table></figure>
+
+<p>「♠︎」之前的部分，就是 LikeCoin widget 的程式碼，從上述官方文件複製而來，其中<code>[LikerID]</code>記得要改成你自己的 Liker ID。</p>
+<p>雖然每個主題的手刻方式略有不同，但也大同小異，只能靠自己費一些心思了。</p>
+<h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>令人滿意！這自然的「<strong>留白</strong>」，非常符合我的期待！簡直超乎想像。</p>
+<p><img src="https://i.imgur.com/TbTrLdd.png"></p>
+<p>頓時我才明白，原來這就是它最大的價值！真是太美惹。</p>
+<p>如果喜歡這篇文章，也歡迎按下 LikeCoin button 為我拍手唷！</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇" rel="bookmark">不離開 Medium，我自架 blog 的理由與選擇（下）：選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2" rel="bookmark">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Hexo/">Hexo</a>
+            <a href="/tags/LikeCoin/">LikeCoin</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/zinit-deleted/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">zinit 作者刪庫與我對 zsh 套件管理器的看法</span>
+        <span class="prev-text nav-mobile">zinit 作者刪庫與我對 zsh 套件管理器的看法</span>
+      </a>
+    <a class="next" href="/python-docker-sdk/">
+        <span class="next-text nav-default">Python Docker SDK 快速上手</span>
+        <span class="prev-text nav-mobile">Python Docker SDK 快速上手</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
