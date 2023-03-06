@@ -634,7 +634,7 @@ h6 {
         content: '·'; }
   .post .post-toc {
     position: absolute;
-    width: 220px;
+    width: 222px;
     margin-left: 747px;
     padding: 10px 10px 8px 10px;
     font-family: "nunito", 微軟正黑體, 思源黑體, sans-serif;
@@ -660,7 +660,7 @@ h6 {
           padding-left: 15px; }
       .post .post-toc .post-toc-content .toc-link:hover {
         color: Crimson; }
-  @media screen and (max-width: 1187px) {
+  @media screen and (max-width: 1191px) {
     .post .post-toc {
       display: none; } }
   .post .post-content {
