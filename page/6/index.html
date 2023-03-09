@@ -34,7 +34,7 @@
 </script>
 
     <title>Code and Me</title>
-  <meta name="generator" content="Hexo 6.2.0"></head>
+  <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
@@ -233,7 +233,18 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
-<p><code>2022/11/30</code>：若不想透過 VS Code 的<code>settings.json</code>來設定參數，而希望在專案中以「<strong>設定檔</strong>」形式，讓所有專案參與者能<strong>直接共用設定</strong>，則可參考：〈<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a>〉。</p>
+<blockquote>
+<p><code>2022/11/30</code>：若不想透過 VS Code 的<code>settings.json</code>來設定參數，而希望在專案中以「<strong>設定檔</strong>」形式，讓所有專案參與者能<strong>直接共用設定</strong>，可參考：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p><code>2023/03/09</code>：Flake8 與 Black Formatter 兩者皆已有微軟官方發表的 VS Code extension 版本，設定上略有不同，可參考：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+</ul>
+</blockquote>
 <hr>
 <p>在〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到了 Python 的 linter——pylint 與 Flake8，今天就來說明 linter 與 formatter 的具體設定方法。</p>
 <p>不得不說，善用 linter 與 formatter，無疑是 Python 程式開發的<strong>起手式</strong>。尤其在多人協作的時候，想深入要求每個人的寫作習慣很難，但至少在<strong>排版風格</strong>上，能藉由工具能達到<strong>基本的統一</strong>。</p>
