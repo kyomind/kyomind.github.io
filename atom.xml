@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-03-10T14:50:49.493Z</updated>
+  <updated>2023-03-11T09:51:19.366Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>13，我買了 Apple Studio Display 與系列心得寫作計畫</title>
+    <link href="https://blog.kyomind.tw/weekly-review-13/"/>
+    <id>https://blog.kyomind.tw/weekly-review-13/</id>
+    <published>2023-03-11T09:33:31.000Z</published>
+    <updated>2023-03-11T09:51:19.366Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>上星期買了 Studio Display，使用上已滿一週。儘管它確實是個好螢幕，但期間仍少不了一定的探索和適應過程。</p><p>結論上，我會留下它。</p><p>之前在<a href="https://www.facebook.com/kyomind/posts/pfbid02R8CpNTfyHcfaLsRpF3TcBMbiKuumrHyDxYgdGKfPqFCm576Skq7J2i63iD4MgJuJl">臉書發文</a>已提過「若最終沒有退貨，再來寫一篇『<strong>必須選它的理由</strong>』」，我想這是很有必要的。</p><p>畢竟，這麼貴的東西，確實值得好好寫一篇選購指南。更別說我為了買 Mac 的外接螢幕，也著實做了不少功課。</p><p>我打算把整個選購螢幕歷程所做的功課、曾經考慮的選項、Studio Display 購買上要特別注意的點，還有入手後我對於大螢幕的不適應所做出的調整與改善。</p><p>尤其是那些「曾經太過年輕」的天真想法——在買入後發現根本不切實際，當初純粹是多想了……等以上種種，寫成一個「三部曲」系列。</p><p>而本篇，則是這個系列的導讀與輪廓介紹（但不是內容）。</p><span id="more"></span><hr><h2 id="一、所做的功課與曾經考慮過的選項"><a href="#一、所做的功課與曾經考慮過的選項" class="headerlink" title="一、所做的功課與曾經考慮過的選項"></a>一、所做的功課與曾經考慮過的選項</h2><p>為 Mac（Macbook &#x2F; Mac mini）買一台外接顯示器所需要下的功夫，除了選購螢幕本來就必備具體的基本知識之外，macOS 作業系統也有一些不同於 Windows 的「獨特之處」。</p><p>換言之，想要做出好的決定，「螢幕選購」與「Mac 螢幕選購」這兩種先備知識都是不可缺少的。</p><p>所幸 YouTube 上已有好些影片整理了這類內容，有特別出色的，我會在文中介紹並強調我認為的重點（有些影片真的好長……）。</p><p>此外，我會順便介紹曾經心儀的兩款非 Studio Display 螢幕——雖然後來還是捨棄了，講述當時考慮它們的理由與做過的功課，作為不想花大錢買螢幕的替代方案。</p><h2 id="二、Studio-Display-心得與採購指南"><a href="#二、Studio-Display-心得與採購指南" class="headerlink" title="二、Studio Display 心得與採購指南"></a>二、Studio Display 心得與採購指南</h2><p>Studio Display 的介紹與評測影片已經非常多，所以它的整體素質、表現如何，並不需要我再重複著墨。</p><p>再說，文字也不比影片適合表達螢幕的聲音、色彩在呈現上的種種迷人之處。</p><p>所以本篇的著眼點，在於我選購與使用 Studio Display 時，所擔心的不適合與實際購入後遇到的「困難」。不過還是會提一些它的優點——我很喜歡的部分。</p><p>只不過，那些你<strong>不喜歡</strong>或<strong>可能無法接受</strong>的環節，才是做決定時最重要的考量點——<strong>那些「不」才是關鍵</strong>。</p><p>本文會著重在 Studio Display 的哪些特點可能會讓你<strong>想對它說「不」</strong>，或者你可能沒考慮到的<strong>潛在問題</strong>，省得買回來後，還要大費周章退貨——它好重！</p><p>所以，這絕不是另一篇開箱評測，而是防止踩雷的「<strong>買前必讀</strong>」。</p><h2 id="三、我如何使用-Rectangle-app-讓-Studio-Display-變得好用"><a href="#三、我如何使用-Rectangle-app-讓-Studio-Display-變得好用" class="headerlink" title="三、我如何使用 Rectangle app 讓 Studio Display 變得好用"></a>三、我如何使用 Rectangle app 讓 Studio Display 變得好用</h2><p><a href="https://rectangleapp.com/">Rectangle</a> 是 macOS 上的視窗管理工具，可以讓你分割視窗、快速將視窗拖曳至不同區域並對齊，使得<strong>多工作業</strong>更加方便。</p><p>但說真的，我用它的方式並不如你想的那樣——上下分割、左右分割之類的，其實我不太用。</p><p>本文會討論「<strong>為什麼 Rectangle 對我是必要的</strong>」，以及我在 Studio Display 上使用它的主要方式，還有一個比較 Geek 的自定義。</p><p>必須說，我完全不是為了什麼多工，純粹是因為 <strong>27 吋螢幕對我而言太大了</strong>。我必須透過 Rectangle 把視窗縮小，才能好好使用 Studio Display——或其它 27 吋螢幕。</p><p>你可能覺得：「那就縮小視窗就好了啊？有什麼特別之處？」</p><p>對我而言，這其中的「<strong>眉眉角角</strong>」，非 app 不能勝任。</p><p>所以，Rectangle 不止必要，而且是我螢幕選購之路的<strong>最後一塊拼圖</strong>，值得為它留一點篇幅。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上星期買了 Studio Display，使用上已滿一週。儘管它確實是個好螢幕，但期間仍少不了一定的探索和適應過程。&lt;/p&gt;
+&lt;p&gt;結論上，我會留下它。&lt;/p&gt;
+&lt;p&gt;之前在&lt;a href=&quot;https://www.facebook.com/kyomind/posts/pfbid02R8CpNTfyHcfaLsRpF3TcBMbiKuumrHyDxYgdGKfPqFCm576Skq7J2i63iD4MgJuJl&quot;&gt;臉書發文&lt;/a&gt;已提過「若最終沒有退貨，再來寫一篇『&lt;strong&gt;必須選它的理由&lt;/strong&gt;』」，我想這是很有必要的。&lt;/p&gt;
+&lt;p&gt;畢竟，這麼貴的東西，確實值得好好寫一篇選購指南。更別說我為了買 Mac 的外接螢幕，也著實做了不少功課。&lt;/p&gt;
+&lt;p&gt;我打算把整個選購螢幕歷程所做的功課、曾經考慮的選項、Studio Display 購買上要特別注意的點，還有入手後我對於大螢幕的不適應所做出的調整與改善。&lt;/p&gt;
+&lt;p&gt;尤其是那些「曾經太過年輕」的天真想法——在買入後發現根本不切實際，當初純粹是多想了……等以上種種，寫成一個「三部曲」系列。&lt;/p&gt;
+&lt;p&gt;而本篇，則是這個系列的導讀與輪廓介紹（但不是內容）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="Macbook" scheme="https://blog.kyomind.tw/tags/Macbook/"/>
+    
+    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
+    
+  </entry>
   
   <entry>
     <title>從 Logseq 看清單式筆記的兩大弱點</title>
@@ -318,36 +348,6 @@
     <category term="清單式筆記" scheme="https://blog.kyomind.tw/tags/%E6%B8%85%E5%96%AE%E5%BC%8F%E7%AD%86%E8%A8%98/"/>
     
     <category term="簡潔主義" scheme="https://blog.kyomind.tw/tags/%E7%B0%A1%E6%BD%94%E4%B8%BB%E7%BE%A9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>07，年末特輯上：2022 寫作反省與明年目標</title>
-    <link href="https://blog.kyomind.tw/weekly-review-07/"/>
-    <id>https://blog.kyomind.tw/weekly-review-07/</id>
-    <published>2022-12-31T15:55:56.000Z</published>
-    <updated>2023-03-05T18:42:43.265Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>今天是 2022 年的最後一天，臉書塗鴉牆上的「總結、回顧」文章也開始百花齊放，看得我目不暇給。</p><p>一直不是個擅長規劃的人，對年度回顧也常常不知從何起手，因此很少發表此類文章。僅有的一篇就是剛開始學習程式那年所寫下的〈<a href="https://medium.com/code-and-me/2018%E5%B9%B4%E5%AD%B8%E7%BF%92%E7%B8%BD%E7%B5%90-56533b234c65">2018年學習總結</a>〉——好青澀🐧</p><p>轉眼已 4 年過去，時光飛逝！</p><p>今年，我也要來寫！但全方位的總體回顧，對我而言還是有些困難（太多細節缺乏事前規劃，也沒有事後記錄），所以乾脆就只從我最最關心的兩大面向——<strong>程式與寫作</strong>——切入即可。抓大放小，符合我常掛在嘴邊的「<a href="https://blog.kyomind.tw/about/#%E7%B0%A1%E6%BD%94%E4%B8%BB%E7%BE%A9">簡潔主義</a>」。</p><p>本期為全年「<strong>寫作</strong>」的回顧與反省，下期則是<strong>工作與技術學習</strong>的盤點，共分兩期展開。因為是「特輯」，字數可能會略多於平常。</p><span id="more"></span><hr><h2 id="一、關於流量"><a href="#一、關於流量" class="headerlink" title="一、關於流量"></a>一、關於流量</h2><p><strong>流量</strong>對於「<strong>公開寫作</strong>」的重要性，我已在〈<a href="https://blog.kyomind.tw/a-mind-for-blogs/">Hexo 部落格寫作一週年：完整心得與總結 + 如何持續寫作 Part 2</a>〉大書特書，自不待言。</p><p>今年 1 月的月流量大概在 2000 左右，其中足足有 6 成瀏覽數都來自〈<a href="https://blog.kyomind.tw/my-way/">中信 My Way 數位帳戶：開戶、升級與使用心得</a>〉一篇。</p><p>但這篇文章只是個「例外」——基於個人不佳體驗的偶然創作——而不是部落格的主要方向。所以，究竟要怎麼樣才能讓我的文章被更多人看見？老實說，那時心裡幾乎<strong>完全沒有頭緒</strong>。</p><p>接下來還是繼續寫一些技術文章，不過流量都很慘澹，有點讓人看不到希望，進而產生了<strong>自我懷疑</strong>。</p><h2 id="二、宣傳很重要"><a href="#二、宣傳很重要" class="headerlink" title="二、宣傳很重要"></a>二、宣傳很重要</h2><p>直到 4、5 月分別在臉書 <a href="https://www.facebook.com/groups/pythontw">Python Taiwan</a> 社團轉載了自己的這兩篇〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉、〈<a href="https://blog.kyomind.tw/good-vscode-extensions/">Python 後端開發：22 個我最常用的 VS Code「擴充套件」推薦</a>〉，流量才迎來了一波意料之外的小爆發。</p><p>同時，我也理解到了「<strong>推廣自己文章</strong>」對我這種小咖作者的責任與重要性。儘管如此，轉載文章仍非我的常態，絕大部分的時候，我依舊只是寫完文章，然後就默默等待著 Google 的青睞——這通常需要 1 到 3 個月，而且不一定會發生。</p><p>這裡想說的是，如果某篇文章是你的嘔心瀝血之作，那絕對值得為它花費額外的心力宣傳，也許會有意想不到的發展。</p><p>如果本來就都有在宣傳，那很好！這才是優秀的作者。</p><h2 id="三、10-萬瀏覽達成"><a href="#三、10-萬瀏覽達成" class="headerlink" title="三、10 萬瀏覽達成"></a>三、10 萬瀏覽達成</h2><p>有了這兩篇「爆款」的激勵，向來不那麼自信的我，今年 7 月，也不禁在臉書寫下了這篇〈<a href="https://www.facebook.com/kyomind/posts/pfbid0jTyuhujkXPfrBvdBPhPoraFqedpum6JzK5psGvazxK5QS3b9B5yk2q7YoQD1fvPpl">誰能夠不迷戀數字呢？</a>〉，並發下豪言：</p><blockquote><p>年底達月瀏覽 1 萬，明年中達 1 萬 5，明年底達 2 萬</p></blockquote><p>就在昨天，我的部落格也終於迎來了第 10 萬個瀏覽，可喜可賀！</p><p><img src="https://i.imgur.com/eEn9b2m.png"></p><p>雖然，同樣是一年半時間，<a href="https://readingoutpost.com/blog-growth-10-lessons/">瓦基取得的成就，足足是我的 10 倍</a> XD！但我還是覺得：「竟然有瓦基的十分之一，唉唷不錯喔！」當然，他還有 Podcast 、線上課程等其它創作，這裡只是個小參照。</p><p>達到一段里程碑固然令人欣喜，但在此之前我就已經意識到：這其中存在一定的「<strong>問題</strong>」。</p><h2 id="四、反省：發文方向與流量組成"><a href="#四、反省：發文方向與流量組成" class="headerlink" title="四、反省：發文方向與流量組成"></a>四、反省：發文方向與流量組成</h2><p>經過一番努力，「My Way」這篇文章的每月全站流量佔比，已經從年初的 6 成，下降至現在的 15% 左右（雖然還是很多），這是好事。</p><p>但這些減少的「流量比例」，並非全然被技術類文章瓜分了，其中有一半是被「筆記類」主題如 <a href="https://blog.kyomind.tw/simple-notion/">Notion</a>、<a href="https://blog.kyomind.tw/logseq/">Logseq</a> 等文章拿走。</p><p>儘管自詡為技術部落格，但目前的流量組成，尚不符合我的期待。</p><p>而且我知道<strong>為什麼</strong>：因為技術類的文章，想要取得一定流量並不容易，而筆記類文章的受眾，則相對大得多——我受到了潘朵拉（易得流量）的誘惑。</p><p>我當然也可以告訴自己：「筆記本來就是我工作、生活的<strong>重要組成</strong>，寫這個主題獲取流量，也是理直氣壯啊！」確實，但這依舊不是我最想要的。</p><h2 id="五、部落格應該是「我」的化身"><a href="#五、部落格應該是「我」的化身" class="headerlink" title="五、部落格應該是「我」的化身"></a>五、部落格應該是「我」的化身</h2><p>我是一個軟體工程師。</p><p>筆記也好，寫作也罷，這些都可稱之為「<strong>興趣</strong>」——<strong>很重要的興趣</strong>。但我最在乎的事物、最想表達的內容，卻還沒有在文章中一一呈現出來。</p><p>況且，流量有時是需要「<strong>創造</strong>」的。就像在瓦基之前，哪個部落格能靠<strong>寫書評</strong>帶來這麼可觀的流量？這是瓦基自己打出來的市場。有些文章，我不寫，別人很可能也不會寫，這是我的使命。</p><p>有鑑於像我這樣的個人部落格，在流量上永遠不可能和大咖食記作者相提並論，正因如此——如前述文章中的「<a href="https://blog.kyomind.tw/a-mind-for-blogs/#%E4%BA%8C%E3%80%81%E5%8F%96%E6%8D%A8%E4%BB%A5%E7%AA%81%E9%A1%AF">二、取捨以突顯</a>」所言——我相信，有了<strong>流量基礎</strong>後，「<strong>個人獨特性</strong>」與「<strong>自我代表性</strong>」，才是對於小小個體，最有意義的追求。</p><h2 id="六、2023-年寫作目標"><a href="#六、2023-年寫作目標" class="headerlink" title="六、2023 年寫作目標"></a>六、2023 年寫作目標</h2><p>綜上所述，明年要把更多心力放在技術文章（包括程式書評）上，雖然流量應該還是很難和「筆記」這類大眾主題抗衡，但必須如此，才能讓自己心安。</p><p>具體的目標很簡單——儘管並不容易，如下：</p><ol><li>寫滿 <strong>10</strong> 篇程式書評（目前才 2 篇）。</li><li>發表 <strong>20</strong> 篇程式類文章（只要和程式有關的都算，包括上述程式書評）。</li><li>全年共 <strong>52</strong> 篇文章，含 <a href="https://blog.kyomind.tw/categories/Weekly-Review/">Weekly Review</a>。</li></ol><p>一直都不是像<a href="https://chuhenry.medium.com/">朱騏</a>那般多產的人，52 篇文章產出，對我已堪稱挑戰 XD。不過，縮短篇幅、提高文章產能，也是我來年的一個小目標——且讓我們拭目以待。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;今天是 2022 年的最後一天，臉書塗鴉牆上的「總結、回顧」文章也開始百花齊放，看得我目不暇給。&lt;/p&gt;
-&lt;p&gt;一直不是個擅長規劃的人，對年度回顧也常常不知從何起手，因此很少發表此類文章。僅有的一篇就是剛開始學習程式那年所寫下的〈&lt;a href=&quot;https://medium.com/code-and-me/2018%E5%B9%B4%E5%AD%B8%E7%BF%92%E7%B8%BD%E7%B5%90-56533b234c65&quot;&gt;2018年學習總結&lt;/a&gt;〉——好青澀🐧&lt;/p&gt;
-&lt;p&gt;轉眼已 4 年過去，時光飛逝！&lt;/p&gt;
-&lt;p&gt;今年，我也要來寫！但全方位的總體回顧，對我而言還是有些困難（太多細節缺乏事前規劃，也沒有事後記錄），所以乾脆就只從我最最關心的兩大面向——&lt;strong&gt;程式與寫作&lt;/strong&gt;——切入即可。抓大放小，符合我常掛在嘴邊的「&lt;a href=&quot;https://blog.kyomind.tw/about/#%E7%B0%A1%E6%BD%94%E4%B8%BB%E7%BE%A9&quot;&gt;簡潔主義&lt;/a&gt;」。&lt;/p&gt;
-&lt;p&gt;本期為全年「&lt;strong&gt;寫作&lt;/strong&gt;」的回顧與反省，下期則是&lt;strong&gt;工作與技術學習&lt;/strong&gt;的盤點，共分兩期展開。因為是「特輯」，字數可能會略多於平常。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
-    
-    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
-    
-    <category term="回顧" scheme="https://blog.kyomind.tw/tags/%E5%9B%9E%E9%A1%A7/"/>
     
   </entry>
   
