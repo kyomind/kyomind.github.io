@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-03-11T18:35:47.810Z</updated>
+  <updated>2023-03-15T04:21:39.145Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.kyomind.tw/weekly-review-13/"/>
     <id>https://blog.kyomind.tw/weekly-review-13/</id>
     <published>2023-03-11T09:33:31.000Z</published>
-    <updated>2023-03-11T18:35:47.810Z</updated>
+    <updated>2023-03-15T04:21:39.145Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>上星期買了 <a href="https://www.apple.com/tw/studio-display/">Studio Display</a>，使用上已滿一週。儘管它確實是個好螢幕，但期間仍少不了一定的探索和適應過程。</p><p>結論上，我會留下它。</p><p>之前在<a href="https://www.facebook.com/kyomind/posts/pfbid02R8CpNTfyHcfaLsRpF3TcBMbiKuumrHyDxYgdGKfPqFCm576Skq7J2i63iD4MgJuJl">臉書發文</a>已提過「若最終沒有退貨，再來寫一篇『<strong>必須選它的理由</strong>』」，我想這是很有必要的。</p><p>畢竟，這麼貴的東西，確實值得好好寫一篇選購指南。更別說我為了買 Mac 的外接螢幕，也著實做了不少功課。</p><p>我打算把整個選購螢幕歷程所做的功課、曾經考慮的選項、Studio Display 購買上要特別注意的點，還有入手後我對於大螢幕的不適應所做出的調整與改善。</p><p>尤其是那些「<strong>曾經太過年輕</strong>」的天真想法——買入後發現根本不切實際，當初純粹是多想了……等以上種種，寫成一個「三部曲」系列。</p><p>而本篇，則是這個系列的<strong>導讀</strong>與<strong>輪廓介紹</strong>。</p><span id="more"></span><hr><h2 id="一、所做的功課與曾經考慮過的選項"><a href="#一、所做的功課與曾經考慮過的選項" class="headerlink" title="一、所做的功課與曾經考慮過的選項"></a>一、所做的功課與曾經考慮過的選項</h2><p>為 Mac（Macbook &#x2F; Mac mini）買一台外接顯示器所需要下的功夫，除了選購螢幕本來就必備具體的基本知識之外，macOS 作業系統也有一些不同於 Windows 的「獨特之處」。</p><p>換言之，想要做出好的決定，「螢幕選購」與「Mac 螢幕選購」這兩種先備知識都是不可缺少的。</p><p>所幸 YouTube 上已有好些影片整理了這類內容，有特別出色的，我會在文中介紹並強調我認為的重點（有些影片真的好長……）。</p><p>此外，我會順便介紹曾經心儀的兩款非 Studio Display 螢幕——雖然後來還是捨棄了，講述當時考慮它們的理由與做過的功課，作為不想花大錢買螢幕的替代方案。</p><h2 id="二、Studio-Display-使用心得與採購指南"><a href="#二、Studio-Display-使用心得與採購指南" class="headerlink" title="二、Studio Display 使用心得與採購指南"></a>二、Studio Display 使用心得與採購指南</h2><p>Studio Display 的介紹與評測影片已經非常多，所以它的整體素質、表現如何，並不需要我再重複著墨。</p><p>再說，文字也不比影片更適合表達螢幕的聲音、色彩在呈現上的種種迷人之處。</p><p>所以本篇的著眼點，在於我選購 Studio Display 前，所<strong>慎重考慮過</strong>的部分，與實際購入後遇到的「困難」。</p><p>但還是會提一些它的優點——那些我很喜歡的地方。</p><p>只不過，那些你<strong>不喜歡</strong>或<strong>可能無法接受</strong>的環節，才是做決定時最重要的考量點——<strong>那些「不」才是關鍵</strong>。</p><p>本文會著重在 Studio Display 的哪些特點可能會讓你<strong>想對它說「不」</strong>，或者你可能沒考慮到的<strong>潛在問題</strong>，省得買回來後，還要大費周章退貨——它好重！</p><p>所以，這絕不是「另一篇」開箱評測，而是給潛在購買者的「<strong>買前必讀</strong>」。</p><h2 id="三、我如何使用-Rectangle-app-讓-Studio-Display-變得好用"><a href="#三、我如何使用-Rectangle-app-讓-Studio-Display-變得好用" class="headerlink" title="三、我如何使用 Rectangle app 讓 Studio Display 變得好用"></a>三、我如何使用 Rectangle app 讓 Studio Display 變得好用</h2><p><a href="https://rectangleapp.com/">Rectangle</a> 是 macOS 上的視窗管理工具，可以讓你分割視窗、快速將視窗拖曳至不同區域並對齊，使得<strong>多工作業</strong>更加方便。</p><p>但說真的，我用它的方式並不如你想的那樣——上下分割、左右分割之類的，其實我不太用。</p><p>本文會討論「<strong>為什麼 Rectangle 對我是必要的</strong>」，以及我在 Studio Display 上使用它的主要方式，還有一個比較 Geek 的自定義。</p><p>必須說，我完全不是為了什麼多工，純粹是因為 <strong>27 吋螢幕對我而言太大了</strong>。我必須透過 Rectangle 把視窗縮小，才能好好使用 Studio Display——或其它 27 吋螢幕。</p><p>你可能覺得：「那就縮小視窗就好了啊？有什麼特別之處？」</p><p>對我而言，這其中的「<strong>眉眉角角</strong>」，非 app 不能勝任。</p><p>所以，Rectangle 不止必要，而且是我螢幕選購之路的<strong>最後一塊拼圖</strong>，值得為它留一點篇幅。</p>]]></content>
     
@@ -40,9 +40,9 @@
     <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
     
     
-    <category term="Macbook" scheme="https://blog.kyomind.tw/tags/Macbook/"/>
-    
     <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
+    
+    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
   </entry>
   
@@ -257,7 +257,7 @@
     <link href="https://blog.kyomind.tw/weekly-review-09/"/>
     <id>https://blog.kyomind.tw/weekly-review-09/</id>
     <published>2023-02-05T12:10:37.000Z</published>
-    <updated>2023-03-05T18:42:43.265Z</updated>
+    <updated>2023-03-15T04:21:39.145Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>過年期間，什麼正事都沒做，天天睡到中午，非常愜意。</p><p>唯一勉強和「正事」沾得上邊的，就是花了一堆時間在 YouTube 上，觀看最新發表的 M2 Pro&#x2F;Max Macbook Pro 與 2021 版的差異介紹、評測影片。</p><p>因為我想要幫自己換電腦了！</p><span id="more"></span><hr><h2 id="我的第一台-Macbook"><a href="#我的第一台-Macbook" class="headerlink" title="我的第一台 Macbook"></a>我的第一台 Macbook</h2><p>說起來，我的第一台蘋果電腦，是 2016 年底時買的 <a href="https://www.apple.com/tw/shop/product/FRQN2TA/A/12-%E5%90%8B-MacBook-12GHz-%E9%9B%99%E6%A0%B8%E5%BF%83-Intel-Core-m3-%E6%95%B4%E4%BF%AE%E5%93%81-%E9%87%91%E8%89%B2">12 吋 Macbook 整修品</a>。（但我的是銀色的）</p><p>之所以可以接受這樣的規格，是因為當時沒有想到自己，竟然會需要用它來寫程式！那時還在執行分署當書記官，所以只視它為普通的下班休閒文書機。</p><p>當時買它，是看上了 Macbook 系列的螢幕品質，事後證明，確實令人滿意。</p><p>彼時的 Macbook 都還很貴，不像現在的入門款，便宜且效能強大。所以，哪怕是整修品，也要 35400 新台幣。</p><p>轉職以後，我竟然還用它寫了足足 2 年程式，回想 12 吋 Macbook 視野之狹窄、效能之孱弱——打開 VS Code 時，我都可以先去倒杯水了。</p><h2 id="我的第二台-Macbook：Macbook-Air-2020-Intel-版"><a href="#我的第二台-Macbook：Macbook-Air-2020-Intel-版" class="headerlink" title="我的第二台 Macbook：Macbook Air 2020 Intel 版"></a>我的第二台 Macbook：Macbook Air 2020 Intel 版</h2><p>有了前車之鑑，我心想：「下一台一定要告別小螢幕與低效能！」，2020 年 8 月，我入手了 Macbook Air。</p><p>這台 Air，相比於前一代，各方面的規格都有大幅提升。CPU 從雙核升級到 4 核，而且不再是 Intel 14nm+++++，而是初代的 10 奈米產品（Ice Lake），RAM 也從萬年的 DDR3 2133 升級成 DDR4 3733。</p><p>那時我還很得意，心想：「等了這麼久，忍過了幾乎沒啥提升的前一代，這下子總算苦盡甘來了！😎」</p><p>結果 2020 年 11 月，Apple 就發表了 M1。</p><p>Apple 要為旗下的 Macbook 改用 ARM 架構處理器，這是我們早就知道的，我們唯一不知道的是：<strong>M1 的效能竟是如此的變態！</strong></p><p>頓時讓我的 Intel 版 Macbook 變成一個笑話。我只好安慰自己：「至少它可以 Boot Camp 灌 Windows！」</p><h2 id="令人失望的-M2-Pro-x2F-Max-Macbook-Pro"><a href="#令人失望的-M2-Pro-x2F-Max-Macbook-Pro" class="headerlink" title="令人失望的 M2 Pro&#x2F;Max Macbook Pro"></a>令人失望的 M2 Pro&#x2F;Max Macbook Pro</h2><p>轉眼間，這台 Macbook Air 也服役了兩年半了，它的效能果然是——<strong>真的不太行 XD。</strong></p><p>儘管當初已幫它加到了 16 GB RAM 和 1 TB SSD，也救不了弱弱的 CPU。所以我一直期待著這次的 M2 Pro&#x2F;Max 系列。</p><p>一經推出，知道不是採用台積電 3 奈米製程，心就先涼了半截——效能的提升幅度已完全可以預料，並不會有太誇張的升幅。</p><blockquote><p><code>2023/02/25</code>：後來看了<a href="https://youtu.be/BGQUtTBnhzI">這個影片</a>，才知道其實 N3 製程也有許多版本，所以即便後續採用，提升也未必如想像中巨大——那我就放心了🤣</p></blockquote><p>沒有 3 奈米，也罷！然而在看了一堆評測影片以後（我主要看 <a href="https://www.youtube.com/c/MaxTechOfficial/videos">Max Tech</a> 和<a href="https://www.youtube.com/@Petersun/videos">彼得森</a>），又發現新版的 Macbook Pro，竟還伴隨著一些「<strong>降級</strong>」：</p><ul><li><a href="https://youtu.be/kaGGyXzBG2M">散熱片的面積變小</a>，對於我想買的 14 吋的影響比 16 吋更大。</li><li><a href="https://www.youtube.com/watch?v=20eIt1XGNGA&t=548s">入門款的 SSD 變慢</a>，這個相信大家已經熟知了。在定價 1999 美元的產品上還這樣省成本，令我難以苟同。雖然我不太可能真的選擇入門款的大小，但還是覺得十足反胃。</li><li>變貴了！好啦，這不算降級，而且美元定價是沒變的，但因為匯率變貴了，台幣定價硬生生漲了 5000，不可謂不痛。</li></ul><p>上面的變動可能不算什麼，但考慮到整體的升級幅度確實不大，我頓時就不想買新版的  Macbook Pro 了。</p><h2 id="我買了-14-吋-Macbook-Pro-2021-整修品"><a href="#我買了-14-吋-Macbook-Pro-2021-整修品" class="headerlink" title="我買了 14 吋 Macbook Pro 2021 整修品"></a>我買了 14 吋 Macbook Pro 2021 整修品</h2><p>相較於新的 Macbook Pro，舊版的 2021 版整修品，CP 值真的爆炸高！</p><p>Apple 的整修品我基本上當新品看待，而且我的第一台 Macbook 就是。只是要等新品上市半年後才會開始有，所以沒事也不會特別等。</p><p>入手這台只要 57600，全新版的定價為 74900（現已下架），其規格如下：</p><ul><li>M1 Pro 高階版：10 核 CPU + 16 核 GPU</li><li>16 GB RAM</li><li>1 TB SSD</li></ul><p>看起來很不錯，本來整修品的定價是 67400，在新 Macbook Pro 發表後，再度降價為 57600，這價格真的太殺了！</p><p>做了許多功課，我知道它不止比新 Macbook Pro 更便宜（新版類似規格要 79900），而且效能還相去不遠，認真思考了一天後就下標了。</p><h2 id="我來，我見，我退貨"><a href="#我來，我見，我退貨" class="headerlink" title="我來，我見，我退貨"></a>我來，我見，我退貨</h2><p>收到後，用了幾個小時，我突然意識一件非常重要的事：</p><blockquote><p>我其實並不需要一台 Macbook Pro。</p></blockquote><p>仔細想想，其原因有二：</p><ol><li>除了過年回家，我幾乎很少帶筆電出門使用。</li><li>即使要帶出門，14 吋這個大小與重量，實在不是我喜歡帶著移動的份量。外出我只能接受 Air。</li></ol><p>加上同時也打算為自己入手人生的第一台螢幕（不誇張，這輩子還沒買過螢幕🙈），Macbook Pro 那精美的 Mini LED 螢幕對我也變得無關緊要。</p><p>這時我才<strong>恍然大悟</strong>：原來我需要的不是 Macbook Pro，而是配備了 M2 Pro 處理器的 <a href="https://www.apple.com/tw/mac-mini/">Mac mini</a>！——YouTuber Marques Brownlee <a href="https://youtu.be/cneoANZKBGk">稱它是一台「Game Changer」</a>。</p><p>這個認知讓我<strong>豁然開朗</strong>，而且我知道，如果不是「<strong>真的</strong>」買了一台 Macbook Pro，我是很難產生<strong>這麼清晰的想法與好惡。</strong></p><p>換句話說，<strong>有些事，往往只有試了才能知曉。</strong></p><p>所以我選擇了退貨，繼續等待台灣新 Mac mini 上市。</p><hr><h2 id="小結：新的野心"><a href="#小結：新的野心" class="headerlink" title="小結：新的野心"></a>小結：新的野心</h2><p>這次我不止打算買新電腦而已，沒錯，如前所言，我還打算買新螢幕與相關道具（螢幕掛燈、支架）。</p><p>經過無數爬文與爬影片，預計會入手貴鬆鬆的 <a href="https://www.apple.com/tw/studio-display/">Studio Display</a>。</p><p>對於螢幕，我也做了相當大量的功課（過個年真是不輕鬆），從機型選擇的變遷，到 macOS 在渲染不同解析度 HiDPI 的做法差異與對效能的影響，都足以再另成篇章了。</p><p>總之，新的一年，讓我們一起快快樂樂地寫程式吧！</p>]]></content>
     
@@ -272,7 +272,7 @@
     <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
     
     
-    <category term="Macbook" scheme="https://blog.kyomind.tw/tags/Macbook/"/>
+    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
   </entry>
   
