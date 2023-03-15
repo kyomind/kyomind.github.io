@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
+    
+    <lastmod>2023-03-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    
+    <lastmod>2023-03-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2023-03-15</lastmod>
     
@@ -32,15 +50,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
     
     <lastmod>2023-03-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
-    
-    <lastmod>2023-03-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -210,15 +219,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
