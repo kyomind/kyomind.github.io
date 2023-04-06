@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tags/index.html</loc>
+    <loc>https://blog.kyomind.tw/categories/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -155,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/index.html</loc>
+    <loc>https://blog.kyomind.tw/tags/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -209,15 +209,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -227,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-11/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -236,7 +227,16 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-11/</loc>
+    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -281,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
+    <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
+    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -326,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -335,7 +335,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -398,6 +398,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-request-headers/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -416,7 +425,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
+    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -426,15 +435,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/a-mind-for-blogs/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -470,7 +470,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
+    <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -479,7 +479,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
+    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -497,7 +497,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/on-writing/</loc>
+    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -506,7 +506,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
+    <loc>https://blog.kyomind.tw/on-writing/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -569,15 +569,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/just-a-note/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -588,6 +579,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/learning-topic/</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/just-a-note/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
