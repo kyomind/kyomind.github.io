@@ -339,17 +339,14 @@
 <h2 id="AI-輔助寫-code"><a href="#AI-輔助寫-code" class="headerlink" title="AI 輔助寫 code"></a>AI 輔助寫 code</h2><p>目前常見的「AI」套件大概只能幫你自動產生一些重複雜較高的程式碼。</p>
 <h3 id="16-IntelliCode"><a href="#16-IntelliCode" class="headerlink" title="16. IntelliCode"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode">16. IntelliCode</a></h3><p>微軟官方出品，在「AI」一詞還沒有這麼氾濫以前，這個套件還是很有代表性的。</p>
 <p>能預測你接下來要呼叫的函式或方法等等，就跟手機中文輸入法的那些猜測模式類似，用久了會猜得更準。</p>
-<p>本套件的推薦度與重要性依照你是否額外安裝了下面的 Tabnine 而所有差異。</p>
-<p>已安裝 Tabnine（必要性下降，但我還是會一起使用）：</p>
 <blockquote>
-<p>推薦度：⭐️<br> 重要性：⭐️</p>
-</blockquote>
-<p>未安裝 Tabnine（只用 IntelliCode 也不失為一種簡潔）：</p>
-<blockquote>
-<p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️</p>
+<p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️（在尋找「既有的」類別、方法時仍然很有用）</p>
 </blockquote>
 <p> 但 IntelliCode 有一個比較討厭的地方，就是它無法自動把推薦的內容，和已經存在的程式碼自動整合，只會硬塞到目前插入點的後方，這點就很不聰明！</p>
-<h3 id="17-Tabnine"><a href="#17-Tabnine" class="headerlink" title="17. Tabnine"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode">17. Tabnine</a></h3><p>一樣是猜測你接下來要打的內容，不過是基於 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> 的套件，付費和免費的訓練資料集有差別，我沒付錢，用起來的感覺差不多就是……比上面的 IntelliCode 強一點。</p>
+<h3 id="17-Tabnine"><a href="#17-Tabnine" class="headerlink" title="17. Tabnine"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode">17. Tabnine</a></h3><blockquote>
+<p><code>2023/04/07</code>補充：隨著 GitHub Copilot 的持續改進，加上兩者在功能上的高度重疊，我目前已經移除了 Tabnine。</p>
+</blockquote>
+<p>一樣是猜測你接下來要打的內容，不過是基於 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> 的套件，付費和免費的訓練資料集有差別，我沒付錢，用起來的感覺差不多就是……比上面的 IntelliCode 強一點。</p>
 <p>它預測的範圍、程式碼句子要長於 IntelliCode。換句話說，如果 IntelliCode 預測的是你的<strong>下一步</strong>，那 Tabnine 可以直接預測你的<strong>下二、三步</strong>，確實可以省下更多力氣。</p>
 <p>如下圖所示，上半部是 Tabnine 的預測（較長），下半部則是 IntelliCode。</p>
 <p><img src="https://i.imgur.com/3cqTiUR.png"></p>
@@ -361,7 +358,7 @@
 <p> 我個人習慣把 Tabnine 的建議項目<strong>從 5 個減少到 2、3 個</strong>，不然真的有點視覺干擾，更別說建議視窗沒多久就會跳出來一次。相關設定可以使用快捷鍵<code>shift</code>+<code>alt</code>+<code>P</code>並輸入「tabnine」找到。</p>
 <h3 id="18-GitHub-Copilot"><a href="#18-GitHub-Copilot" class="headerlink" title="18. GitHub Copilot"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">18. GitHub Copilot</a></h3><p>發文後才通過申請！用的時間不長，我暫時的心得：〈<a href="https://blog.kyomind.tw/github-copilot/">GitHub Copilot 心得——寫文章的利器？</a>〉。</p>
 <blockquote>
-<p>推薦度：⭐️⭐️⭐️（未來期待）<br> 重要性：⭐️⭐️⭐️（未來期待）</p>
+<p>推薦度：⭐️⭐️⭐️<br> 重要性：⭐️⭐️⭐️</p>
 </blockquote>
 <h3 id="19-autoDocstring"><a href="#19-autoDocstring" class="headerlink" title="19. autoDocstring"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">19. autoDocstring</a></h3><p><img src="https://i.imgur.com/qklu8qB.gif"></p>
 <p>自動產生符合 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0257/">PEP 257</a> 慣例的 docstring 結構，讓你<strong>只需要填寫核心內容</strong>而不必苦惱打字與排版，文件有多種格式可選：</p>
@@ -380,6 +377,10 @@
 <h3 id="Python-docstring-之我見"><a href="#Python-docstring-之我見" class="headerlink" title="Python docstring 之我見"></a>Python docstring 之我見</h3><p>我個人非常建議在一些重要的函式或類別，<strong>必須要有 docstring</strong>。</p>
 <p>換言之，在我看來，無論程式寫得如何簡潔易讀，對一些比較複雜的函式或類別而言，<strong>docstring 終究是不可少的</strong>。因為文字的<strong>詮釋能力</strong>和程式碼相比，<strong>絕不在同一個層次</strong>，相信這也是為何 docstring 會有屬於自己的獨立 PEP 加以規範的理由。</p>
 <p>不知道你怎麼看？我相信，寫好 docstring，是簡潔程式碼<strong>不可或缺的一環</strong>，更是優秀軟體工程師的必備條件——我對此深信不疑。</p>
+<p>類似論點可參考下面這篇文章，雖然講的是「文件」，但 docstring 也是一種文件，因此可以套用其中的觀點：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/geekculture/why-todays-code-documentation-is-a-heap-of-garbage-c66ac8aa6cb6">Why today’s code documentation is a heap of garbage</a></li>
+</ul>
 <h3 id="如何寫好-docstring？"><a href="#如何寫好-docstring？" class="headerlink" title="如何寫好 docstring？"></a>如何寫好 docstring？</h3><p>在此我非常推薦，可以用<strong>寫文章</strong>來練習唷！</p>
 <p>不誇張，兩者的差別其實只在於——文章是寫給讀者看，docstring 則是寫同事（協作者）、自己看。以及一些功能面的考量不同。</p>
 <p>而兩者的共通之處，在於「<strong>讀者意識</strong>」——懷抱著「我希望寫出好讀又好懂的內容」的心態，才能寫出優秀的 docstring。</p>
