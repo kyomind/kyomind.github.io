@@ -192,6 +192,14 @@
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></p>
 </blockquote>
+<hr>
+<blockquote>
+<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅化簡了設定內容</a>，本段下面的內容在新版仍適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>（無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！）：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>官方的 shell 指令版本（for zsh）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="zsh-使用者"><a href="#zsh-使用者" class="headerlink" title="zsh 使用者"></a>zsh 使用者</h3><p>設定的內容主要是提供正確的 Python PATH，這部分很關鍵。具體要新增什麼內容，各教學或官方的版本沒有完全一致，不過大同小異，在此提供我實際新增的部分，<strong>注意以下皆是以 Homebrew 安裝的 pyenv 為例：</strong></p>
 <ul>
 <li><code>.zprofile</code>新增</li>
