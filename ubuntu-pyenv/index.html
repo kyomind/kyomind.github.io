@@ -183,7 +183,7 @@
 <p>官方的 shell 指令版本（for zsh）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
 
-<p>這三行設定，無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！真的簡化了很多，不用再去判斷是哪種 shell 了。</p>
+<p>這三行設定，無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，增加的內容也<strong>完全一樣</strong>！真的簡化了很多，不用再去判斷是哪種 shell 了。</p>
 <hr>
 <h3 id="bash：設定-bashrc與-profile"><a href="#bash：設定-bashrc與-profile" class="headerlink" title="bash：設定.bashrc與.profile"></a>bash：設定<code>.bashrc</code>與<code>.profile</code></h3><blockquote>
 <p>這部分很重要且容易出錯。</p>
