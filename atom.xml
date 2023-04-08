@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-04-02T18:31:00.498Z</updated>
+  <updated>2023-04-08T15:32:16.456Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>15，付費一個月後，我還是退訂了 Notion AI</title>
+    <link href="https://blog.kyomind.tw/weekly-review-15/"/>
+    <id>https://blog.kyomind.tw/weekly-review-15/</id>
+    <published>2023-04-08T15:17:04.000Z</published>
+    <updated>2023-04-08T15:32:16.456Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>前陣子 <a href="https://www.notion.so/product/ai">Notion AI</a> 公布時，我並沒有在第一時間就申請試用。仔細想想，可能作為一個文字創作者，我還是<strong>「本能地」不太願意讓 AI 來干涉這塊「最後的淨土」</strong>。</p><p>這與我對「<a href="http://localhost:4000/github-copilot/#%E5%B0%8F%E7%B5%90%EF%BC%9A%E6%88%91%E5%B0%8D%E3%80%8C%E6%A9%9F%E5%99%A8%E8%BC%94%E5%8A%A9%E3%80%8D%E7%9A%84%E6%9C%9F%E5%BE%85">AI 輔助寫 code</a>」的態度，有著很大的差別。</p><p>但在看到一些人已經開始分享 Notion  AI 的使用心得後，無論是基於期待還是焦慮，我也不得不加入了排隊清單，結果排到我後的沒多久，Notion 就宣告測試結束，要開始全面收費了！</p><p>然而，到底要不要付這每月 10 美元？我掙扎了許久，從我臉書上的多次發文，就能看出其中的反覆與猶豫。</p><p>接下來就帶各位回顧，我對 Notion AI 的態度，是如何以「起、承、轉、合」四個階段持續演進——從期待到放棄。</p><span id="more"></span><hr><h2 id="起：震憾與期待"><a href="#起：震憾與期待" class="headerlink" title="起：震憾與期待"></a>起：震憾與期待</h2><p><a href="https://www.facebook.com/kyomind/posts/pfbid02LUFdBAdpRLifWdjGaSd1FCopkaqAoWdtAzYUK5S81bzBNFet1qHYQztSBNqwbYxrl">第一篇發文。</a></p><p>首先，我得承認，作為一個大型寫作工具箱，Notion AI 確實有不少吸引人的地方。它整合了大量寫作專用的功能，包括總結、列大綱等等常見需求。讓你不必再「事事問 ChatGPT」。這些功能，不但可以省下時間，更可能讓我專注於創作本身。</p><p>所以一開始我是這麼說的：</p><blockquote><p>現在我不得不相信，在不久的將來，部分內容產出很可能會是以 AI 為主，人類則退居輔助，負擔起編輯、引導的角色</p><p>仔細想想，真不知道該高興還是害怕，因為這確實有點恐怖——我感覺，想要突顯甚至保留個人的寫作風格，更加不容易了</p><p>我將失去自己</p></blockquote><p>可見在第一時間，我內心的震動！</p><h2 id="承：難以重複的奇蹟"><a href="#承：難以重複的奇蹟" class="headerlink" title="承：難以重複的奇蹟"></a>承：難以重複的奇蹟</h2><p><a href="https://www.facebook.com/kyomind/posts/pfbid02WDdhxNu4b5DZygwun9Uo1W5sQQLrHoWLhPPkdmA5FGHPdWSAqhYsv1h6W6dxvMsnl">第二篇發文。</a></p><p>與<a href="https://blog.kyomind.tw/github-copilot/#%E6%84%8F%E6%96%99%E4%B9%8B%E5%A4%96%EF%BC%9A%E5%AF%AB%E4%BD%9C%E8%BC%94%E5%8A%A9">使用 GitHub Copilot 輔助寫作</a>的經驗非常類似——「<strong>超常發揮</strong>」需要機緣巧合才有機會出現。</p><p>但很憾遺，這個「機緣巧合」，在實際上很難出現。</p><p>於是我又不禁有了這樣的感嘆：</p><blockquote><p>但是！後來我就再也試不出類似的效果了<br>顯然那次只是「純屬偶然」，也就是剛好某個天時地利人和，因而 Notion AI 產出了幾乎完美符合我當下需求的文章段落</p></blockquote><p>而且，更讓人失落的是，即使不期待奇蹟，它在寫作輔助部分的「<strong>日常發揮</strong>」，也往往<strong>差強人意</strong>：</p><blockquote><p>後來，我嘗試著給它段落大標題，甚至已經前面寫了好一段，才下標讓它試著繼續寫，而它對於該標題的內容產出品質，依舊是「乏善可陳」<br>講白了就是沒有「個性」，也沒有亮點<br>以至於我可能用它生了 500-1000 字作為素材，結果最後只用了 50 個字，而且是用在比較無關緊要的地方</p></blockquote><p>可以說，在「測試」階段，它的效果並不符合我的期待。</p><h2 id="轉：正式付費"><a href="#轉：正式付費" class="headerlink" title="轉：正式付費"></a>轉：正式付費</h2><p><a href="https://www.facebook.com/kyomind/posts/pfbid0fTrdNt78uwSFB89jaG7RbweCzgszEnm4sEK2jmy1eZSvYZANhUwu9MrLMHBgD2vl">第三篇發文。</a></p><p>你以為我就此放棄了嗎？沒有！我還想繼續努力（掙扎），誓言「Make Notion AI Great Again！」</p><p>好啦，如文中所言，其實是因為 miula 也訂了它！讓我不禁懷疑自己：「難道是我沒有善用 Notion AI，所以才覺得不需要它？」</p><p>此時 Notion AI 已經正式收費，基於繼續嘗試與探索的必要性，在發表這篇臉書貼文後的不久，我正式付費了 Notion AI——不然我也無法再試了。</p><h2 id="合：暫別-Notion-AI"><a href="#合：暫別-Notion-AI" class="headerlink" title="合：暫別 Notion AI"></a>合：暫別 Notion AI</h2><p><a href="https://www.facebook.com/kyomind/posts/pfbid027FpL65YaxpQgcDc98vVvV9AZVowkv5mozx9uBSDb9KAXZ5ZowQUeTfZfnWyNefNcl">第四篇發文。</a></p><p>這篇和上一篇，剛好相距一個月。</p><p>雖然其間我在 blog 只發表了 3 篇文章（其實還有半篇已完成的心得文草稿），但我還是盡可能透過不同方式，讓 Notion AI 來加速或簡化我的寫作。</p><p>但事與願違——而且它不時會答非所問🤣。</p><p>它的表現仍然未脫我在測試階段的感受，尤其在 <a href="https://openai.com/product/gpt-4">GPT-4</a> 推出且我也實際付費使用後，更深深讓我感受到兩者的差距之大。</p><p>同時我也明白了 Notion AI 表現不佳的根本原因——<a href="https://dataconomy.com/2022/11/what-is-notion-ai-waitlist-features-how-use/#What_is_Notion_AI">它是基於 GPT-3</a>。</p><hr><h2 id="指數級的差距"><a href="#指數級的差距" class="headerlink" title="指數級的差距"></a>指數級的差距</h2><p>GPT-3、3.5（ChatGPT 免費版）、4，這三者的差距，究竟有多大？</p><p>在實際使用後，如果僅就「<strong>個人主觀角度</strong>」來評分，我會依序給出：<strong>50 分、100 分、500 分</strong>。</p><p>而且我覺得，<strong>寫作輔助</strong>（這裡可不是指整理會議紀錄或發一封簡短的工作 email 這樣的寫作）這類「精緻使用方式」，可能還是需要 3.5 以上會比較適合。</p><p>GPT-3（Notion AI）寫出來的內容，哪怕只是拿來參考，都稍嫌太模板化了。不僅不夠深刻，而且看多了還會讓我煩躁！</p><hr><h2 id="小結：指日仍可待"><a href="#小結：指日仍可待" class="headerlink" title="小結：指日仍可待"></a>小結：指日仍可待</h2><p>說了這麼多，最後還是要為 Notion AI 平反一下：如果只是簡單的使用，比如列大綱、做總結，雖然我覺得產出的品質普通——曾經滄海難為水啊！——但也尚稱堪用。</p><p>但是，Notion 對現在的我而言，<strong>就僅僅是拿來寫作</strong>！如果對寫作幫不上忙，那便稱 AI 也枉然。</p><p>對此，我表示遺憾，而且這也不是它的錯，畢竟它還只是個孩子啊！（GPT-3）</p><p>基於<strong>運算成本</strong>考量，它今年之內應該還無緣長大（替換模型為 GPT-4），不過我相信這只是時間問題而已。</p><p>Notion AI 直接整合在創作界面中，讓我們不必再搬運文字去問 ChatGPT，對於直接透過 Notion 創作的人如我，仍有其不可替代性。</p><p>因此，我只能期待，那一天，能趕快到來。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前陣子 &lt;a href=&quot;https://www.notion.so/product/ai&quot;&gt;Notion AI&lt;/a&gt; 公布時，我並沒有在第一時間就申請試用。仔細想想，可能作為一個文字創作者，我還是&lt;strong&gt;「本能地」不太願意讓 AI 來干涉這塊「最後的淨土」&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;這與我對「&lt;a href=&quot;http://localhost:4000/github-copilot/#%E5%B0%8F%E7%B5%90%EF%BC%9A%E6%88%91%E5%B0%8D%E3%80%8C%E6%A9%9F%E5%99%A8%E8%BC%94%E5%8A%A9%E3%80%8D%E7%9A%84%E6%9C%9F%E5%BE%85&quot;&gt;AI 輔助寫 code&lt;/a&gt;」的態度，有著很大的差別。&lt;/p&gt;
+&lt;p&gt;但在看到一些人已經開始分享 Notion  AI 的使用心得後，無論是基於期待還是焦慮，我也不得不加入了排隊清單，結果排到我後的沒多久，Notion 就宣告測試結束，要開始全面收費了！&lt;/p&gt;
+&lt;p&gt;然而，到底要不要付這每月 10 美元？我掙扎了許久，從我臉書上的多次發文，就能看出其中的反覆與猶豫。&lt;/p&gt;
+&lt;p&gt;接下來就帶各位回顧，我對 Notion AI 的態度，是如何以「起、承、轉、合」四個階段持續演進——從期待到放棄。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+    <category term="ChatGPT" scheme="https://blog.kyomind.tw/tags/ChatGPT/"/>
+    
+    <category term="Notion AI" scheme="https://blog.kyomind.tw/tags/Notion-AI/"/>
+    
+  </entry>
   
   <entry>
     <title>14，小米 13 的兩大關鍵亮點，與那些「價值觀層級」的器物們</title>
@@ -306,42 +340,6 @@
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
     <category term="產品評論" scheme="https://blog.kyomind.tw/tags/%E7%94%A2%E5%93%81%E8%A9%95%E8%AB%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>08，年末特輯下：2022 工作與程式學習總結</title>
-    <link href="https://blog.kyomind.tw/weekly-review-08/"/>
-    <id>https://blog.kyomind.tw/weekly-review-08/</id>
-    <published>2023-01-29T08:28:52.000Z</published>
-    <updated>2023-03-14T08:43:25.125Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-07/">07，年末特輯上：2022 寫作反省與明年目標</a></p></blockquote><p>「今天是公司尾牙，也是我進公司剛滿一年半。」——本來要用這兩句作為開頭的🤣。結果年假放起來，一轉眼兩星期過去，驀然回首，2023 年 1 月都快結束了！</p><p>不得不說，2022 才是我身為軟體工程師，覺得自己比較有進步的第一年。儘管不特別勤奮，但對細節還是相當講究的，尤其是「團隊文件文化」的建立，與程式碼可讀性的落實。</p><p>個人部分，寫程式的能力，要說提升多少，可能也沒有——code review 功力倒是明顯提升了，主還是在於一些重要工具的熟悉、應用上。</p><p>這些工具是在 Python 開發工作上佔據一定重要性，有著「應用廣、可延續」的特性，並擔當「讓團隊開發更加高效且健全」的角色。</p><p>可以說，作為一個稱職的 Python 開發者，就應該要使用這些東東！</p><p>其中的一部分，去年已經寫成教學文章。剩下的還沒動筆的，今年也要寫出來。接下來就來盤點一下，它們具體是哪些。</p><span id="more"></span><hr><h2 id="一、使用-Poetry-管理專案的-Python-虛擬環境"><a href="#一、使用-Poetry-管理專案的-Python-虛擬環境" class="headerlink" title="一、使用 Poetry 管理專案的 Python 虛擬環境"></a>一、使用 Poetry 管理專案的 Python 虛擬環境</h2><p>在〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉中，我並沒有具體提及團隊改採用 Poetry 的理由，但在<a href="https://www.facebook.com/groups/pythontw/permalink/10162017819458438/">臉書社團的宣傳文</a>中則有這段發言：</p><blockquote><p>前陣子工作專案在新增一個簡單的 feature 後，我赫然發現明明專案規模還不算大，Python 虛擬環境所安裝的套件數量竟然堂堂突破了 200 大關（拜 Azure SDK 所賜），產生的 Docker image 也超過 2 GB，真是太誇張了！</p></blockquote><p>這是不能接受的！</p><p>不過即便用了一段時間，還是難免覺得，Poetry 真的「不算」是個容易上手的工具。有時候我還是會回頭看自己的文章，才能想起來某件事要怎麼下指令。</p><p>但整體而言，絕對值得啦！而且它的套件管理機制，也不像 <a href="https://blog.marsen.me/2022/09/08/2022/how_to_npm_update_more_smoothly/">npm 那樣，容易過度肥大，甚至會形成黑洞（一個迷因）</a>。</p><h2 id="二、使用-pytest-撰寫-API-單元測試"><a href="#二、使用-pytest-撰寫-API-單元測試" class="headerlink" title="二、使用 pytest 撰寫 API 單元測試"></a>二、使用 pytest 撰寫 API 單元測試</h2><p>可能是去年「第二重要」的事！</p><p>我想，單元測試，或者說寫測試，是「<strong>最有效</strong>」改善一個工程師平時寫程式的「不良習慣」的一種手段——因為它要求你對自己寫下的程式碼的品質，負起責任。</p><p>而且光單元測試本身就很多學問——還真的非常多，比如這篇〈<a href="https://www.marclittlemore.com/how-to-write-high-quality-unit-tests/">How To Write High Quality Unit Tests</a>〉。不過對剛接觸測試的我們，用一個好工具如 pytest，把基本的測試寫出來，就已經有 60 分了！</p><p>用過 pytest 就能感受到它是如此的<strong>強大而優雅</strong>，優雅的點在於，它能讓測試程式碼本身就盡可能「<strong>有秩序、好讀好維護</strong>」（當然這需要一定深思熟慮的設計與落實），尤其在<strong>專案與測試規模愈來愈大</strong>的時候，pytest 的優勢將會更加突顯。</p><p>難怪 pytest 能在軟體 QA 等各種測試領域都佔據一定地位，更別說對一般的開發者了——不用說，我們要善用它。</p><h2 id="三、MongoEngine-ORM-存取-MongoDB"><a href="#三、MongoEngine-ORM-存取-MongoDB" class="headerlink" title="三、MongoEngine ORM 存取 MongoDB"></a>三、MongoEngine ORM 存取 MongoDB</h2><p>ORM 這東西到底是否必要，<a href="https://ionutbalosin.com/2021/12/do-we-really-need-an-orm/">向來都有爭論</a>。在存取需求不複雜的情況下，我還是偏好 ORM，這裡就是很好的例子。</p><p>我們只是想把 gateway 的 config（多層且不固定的資料結構）透過 MongoDB 儲存，有了 MongoEngine 這樣的 ORM 工具，就不需要知曉太多 MongoDB 細節，可以減輕一開始的實作負擔。</p><p>不過不可否認，工具本身也需要學習🐸，而學習就是成本！這部分可參考〈<a href="https://blog.kyomind.tw/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a>〉。後續預計會再寫一、兩篇操作教學文。</p><h2 id="四、Linter、Formatter、pyproject-toml、pre-commit"><a href="#四、Linter、Formatter、pyproject-toml、pre-commit" class="headerlink" title="四、Linter、Formatter、pyproject.toml、pre-commit"></a>四、Linter、Formatter、pyproject.toml、pre-commit</h2><p>如果測試是第二重要，那什麼才是最重要的事？——確保程式碼的<strong>規範與一致性</strong>。</p><p>「一致性」在團隊協作的重要程度，容易被輕忽。</p><p>對於相同功能與目標，卻有著（截然）不同的寫法，其中造成的<strong>思考停頓、理解混淆、bug 滋生</strong>等，這些額外的隱性成本，並不容易計算，但確確實實存在。</p><p>你我都知道，這就是一種「<strong>程式碼的不衛生</strong>」。</p><p>本段標題的工具們就是為了落實規範與一致性，降低「程式碼不衛生」的可能，我視它們為程式開發基石，所以自然是第一重要的事。</p><hr><h2 id="小結：2023-上半年目標"><a href="#小結：2023-上半年目標" class="headerlink" title="小結：2023 上半年目標"></a>小結：2023 上半年目標</h2><p>我在今年上半年（除日常開發外）的自訂工作績效，列了下面幾個小目標，供參：</p><ol><li>為全部專案實作完整的 logging。</li><li>大量導入 type hints 與相關工具如 <a href="https://github.com/python/mypy">mypy</a>。</li><li>增進單元測試品質（增加測試覆蓋率與降低外部耦合）。</li></ol><p>儘管每個目標都不算大，但透過一步步累積與向外擴展，我們應該都能過上踏實的開發人生。🐧</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;相關文章：&lt;a href=&quot;https://blog.kyomind.tw/weekly-review-07/&quot;&gt;07，年末特輯上：2022 寫作反省與明年目標&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;「今天是公司尾牙，也是我進公司剛滿一年半。」——本來要用這兩句作為開頭的🤣。結果年假放起來，一轉眼兩星期過去，驀然回首，2023 年 1 月都快結束了！&lt;/p&gt;
-&lt;p&gt;不得不說，2022 才是我身為軟體工程師，覺得自己比較有進步的第一年。儘管不特別勤奮，但對細節還是相當講究的，尤其是「團隊文件文化」的建立，與程式碼可讀性的落實。&lt;/p&gt;
-&lt;p&gt;個人部分，寫程式的能力，要說提升多少，可能也沒有——code review 功力倒是明顯提升了，主還是在於一些重要工具的熟悉、應用上。&lt;/p&gt;
-&lt;p&gt;這些工具是在 Python 開發工作上佔據一定重要性，有著「應用廣、可延續」的特性，並擔當「讓團隊開發更加高效且健全」的角色。&lt;/p&gt;
-&lt;p&gt;可以說，作為一個稱職的 Python 開發者，就應該要使用這些東東！&lt;/p&gt;
-&lt;p&gt;其中的一部分，去年已經寫成教學文章。剩下的還沒動筆的，今年也要寫出來。接下來就來盤點一下，它們具體是哪些。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
-    <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
-    
-    <category term="MongoEngine" scheme="https://blog.kyomind.tw/tags/MongoEngine/"/>
-    
-    <category term="pytest" scheme="https://blog.kyomind.tw/tags/pytest/"/>
     
   </entry>
   
