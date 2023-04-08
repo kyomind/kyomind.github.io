@@ -177,11 +177,13 @@
 <h2 id="設定-pyenv"><a href="#設定-pyenv" class="headerlink" title="設定 pyenv"></a>設定 pyenv</h2><p>主要看你用哪個 shell，<strong>不同的 shell 設定也不同</strong>，而 Ubuntu 自帶的是 bash，故先以 bash 為例。</p>
 <hr>
 <blockquote>
-<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>（無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！）：</p>
+<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>官方的 shell 指令版本（for zsh）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>這三行設定，無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！真的簡化了很多，不用再去判斷是哪種 shell 了。</p>
 <hr>
 <h3 id="bash：設定-bashrc與-profile"><a href="#bash：設定-bashrc與-profile" class="headerlink" title="bash：設定.bashrc與.profile"></a>bash：設定<code>.bashrc</code>與<code>.profile</code></h3><blockquote>
 <p>這部分很重要且容易出錯。</p>

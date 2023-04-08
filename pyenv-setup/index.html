@@ -146,7 +146,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E"><span class="toc-text">本文重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E5%BE%9E-conda-%E8%BD%89%E5%90%91-pyenv%EF%BC%9F"><span class="toc-text">為何要從 conda 轉向 pyenv？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%B1%A4%E7%B4%9A%E7%9A%84%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%AE%A1%E7%90%86%EF%BC%9APython-vs-%E5%B0%88%E6%A1%88"><span class="toc-text">不同層級的虛擬環境管理：Python vs 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-pyenv-%E8%88%87-pyenv-virtualenv"><span class="toc-text">安裝 pyenv 與 pyenv-virtualenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B0%A1%E5%96%AE%E8%A8%AD%E5%AE%9A%E8%88%87%E4%BD%BF%E7%94%A8"><span class="toc-text">簡單設定與使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E"><span class="toc-text">本文重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E8%A6%81%E5%BE%9E-conda-%E8%BD%89%E5%90%91-pyenv%EF%BC%9F"><span class="toc-text">為何要從 conda 轉向 pyenv？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%B1%A4%E7%B4%9A%E7%9A%84%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%AE%A1%E7%90%86%EF%BC%9APython-vs-%E5%B0%88%E6%A1%88"><span class="toc-text">不同層級的虛擬環境管理：Python vs 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">安裝、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-pyenv-virtualenv"><span class="toc-text">安裝 pyenv-virtualenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B0%A1%E5%96%AE%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">簡單使用案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AB%96"><span class="toc-text">結論</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/rnvlF18.jpg" alt="by Koma Zhang on Behance"><span class="cap">by Koma Zhang on Behance</span></p>
 <blockquote>
@@ -186,7 +186,7 @@
 </ul>
 <p>以上都只是套件管理，如果要連同 Python 的版本一起管理（這顯然是個硬需求），還是需要 pyenv。</p>
 <hr>
-<h2 id="安裝-pyenv-與-pyenv-virtualenv"><a href="#安裝-pyenv-與-pyenv-virtualenv" class="headerlink" title="安裝 pyenv 與 pyenv-virtualenv"></a>安裝 pyenv 與 pyenv-virtualenv</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install pyenv</span><br><span class="line">brew install pyenv-virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="安裝、設定-pyenv"><a href="#安裝、設定-pyenv" class="headerlink" title="安裝、設定 pyenv"></a>安裝、設定 pyenv</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
 
 <p>裝完之後要設定<code>.bashrc</code>或<code>.zshrc</code>，還有<code>.bash_profile</code>或<code>.zprofile</code>，端視你的 shell 是哪個。目前新版本的 macOS 預設 shell 為 <strong>zsh</strong>。</p>
 <blockquote>
@@ -194,11 +194,13 @@
 </blockquote>
 <hr>
 <blockquote>
-<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>（無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！）：</p>
+<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>官方的 shell 指令版本（for zsh）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>這三行設定，無論 bash 或 zsh 皆同；<code>.profile</code> 或 <code>.zprofile</code> 如果需要，內容也<strong>完全一樣</strong>！真的簡化了很多，不用再去判斷是哪種 shell 了。</p>
 <hr>
 <h3 id="zsh-使用者"><a href="#zsh-使用者" class="headerlink" title="zsh 使用者"></a>zsh 使用者</h3><p>設定的內容主要是提供正確的 Python PATH，這部分很關鍵。具體要新增什麼內容，各教學或官方的版本沒有完全一致，不過大同小異，在此提供我實際新增的部分，<strong>注意以下皆是以 Homebrew 安裝的 pyenv 為例：</strong></p>
 <ul>
@@ -226,8 +228,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;if command -v pyenv &gt;/dev/null; then eval &quot;$(pyenv init -)&quot;; fi&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
 
 <p>上述設定完後記得要<code>source</code>或重啟 shell。</p>
+<h2 id="安裝-pyenv-virtualenv"><a href="#安裝-pyenv-virtualenv" class="headerlink" title="安裝 pyenv-virtualenv"></a>安裝 pyenv-virtualenv</h2><p>請直接參考<a href="https://blog.kyomind.tw/ubuntu-pyenv/#%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A-pyenv-virtualenv">另一篇文章的內容</a>。</p>
 <hr>
-<h2 id="簡單設定與使用"><a href="#簡單設定與使用" class="headerlink" title="簡單設定與使用"></a>簡單設定與使用</h2><p>以我的例子：</p>
+<h2 id="簡單使用案例"><a href="#簡單使用案例" class="headerlink" title="簡單使用案例"></a>簡單使用案例</h2><p>以我的例子：</p>
 <ol>
 <li>建立一個全域的 Python 3.7.11 環境。</li>
 <li>建立一個使用 Python 3.7.11 的虛擬環境。</li>
@@ -248,7 +251,7 @@
 <p>像下面這樣：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3.7.11/envs/my_venv (created from /Users/kyo/.pyenv/versions/3.7.11)</span><br><span class="line">* my_venv (created from /Users/kyo/.pyenv/versions/3.7.11)</span><br></pre></td></tr></table></figure>
 
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>使用 pyenv 建立不同 Python 版本並管理相對應的虛擬環境實在非常方便！</p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>使用 pyenv 建立不同 Python 版本並管理相對應的虛擬環境實在非常方便！</p>
 <p>附帶一提，雖然不一定要安裝  pyenv-virtualenv 而可以直接<code>pip virtualenv</code>即可，但後者的使用方式類似內建的 venv，比較沒有那麼彈性。</p>
 <p>此外，pyenv-virtualenv 在 3.3 版本以上的 Python，實際上就是調用內建的 venv 來建立虛擬環境，否則就是調用 virtualenv，總之就是多一層封裝讓使用變得更方便而已。</p>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
