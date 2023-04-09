@@ -210,11 +210,15 @@
 <p>安裝好 yadm 後，它就變成了一種「特殊的 Git」指令——只會影響你的 dotfiles repo。</p>
 <h2 id="yadm-常用指令"><a href="#yadm-常用指令" class="headerlink" title="yadm 常用指令"></a>yadm 常用指令</h2><p>常用的指令可參考<a target="_blank" rel="noopener" href="https://yadm.io/docs/common_commands#">這個頁面</a>。</p>
 <p>就跟 Git 非常類似——畢竟它本質上就是 Git。只是增加了一些<strong>額外的指令</strong>方便你查看目前 dotfiles repo 狀態，比如<code>yadm list</code>。</p>
-<p>這些區別，頁面中也都有註明：</p>
+<p>這些區別，頁面中也都有說明：</p>
+<blockquote>
+<p>Most of these operations will look like Git commands; <strong>because they are. yadm wraps Git</strong>, allowing it to perform all of Git’s operations. <strong>The difference is your $HOME directory becomes the working directory</strong>, and you can run the commands from any directory.</p>
+</blockquote>
 <blockquote>
 <p>Commands below which are special to yadm are denoted with <code>*</code>, and those which are passed directly through to Git are denoted with <code>git</code>.</p>
 </blockquote>
-<p>所以使用上，就跟操作 Git 大同小異，如下圖：</p>
+<p>所以使用上，與操作 Git 大同小異，如下圖：</p>
+<p><img src="https://i.imgur.com/WDwriPv.png"></p>
 <p>解說：</p>
 <ul>
 <li>我把<code>yadm</code>設 alias 為「<code>y</code>」了。</li>
