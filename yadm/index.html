@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="是時候同步你的 dotfiles 了——我選擇 yadm 的理由與思路整理"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/yadm/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>是時候同步你的 dotfiles 了——我選擇 yadm 的理由與思路整理 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記 (13)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (10)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (10)</a>
+          
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談 (14)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (15)</a>
+          
+            <a href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評 (2)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django/">Django (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top10/">
+          TOP 10
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">是時候同步你的 dotfiles 了——我選擇 yadm 的理由與思路整理
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-04-09
+        </span><span class="post-category">
+            <a href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-VM-%E9%96%93%E7%9A%84-dotfiles-%E6%89%8B%E5%8B%95%E5%90%8C%E6%AD%A5%E8%AE%93%E4%BA%BA%E6%83%B3%E9%80%83%E9%81%BF"><span class="toc-text">不同 VM 間的 dotfiles 手動同步讓人想逃避</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-dotfiles%EF%BC%9F"><span class="toc-text">什麼是 dotfiles？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-dotfiles-%E7%9A%84%E5%85%A9%E5%A4%A7%E6%B5%81%E6%B4%BE%EF%BC%9ASymbolic-Link-vs-Bare-Git"><span class="toc-text">管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9ASymbolic-Link"><span class="toc-text">方案一：Symbolic Link</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9ABare-Git"><span class="toc-text">方案二：Bare Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E8%AC%82-Bare-Git-%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="toc-text">何謂 Bare Git 方案？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Symbolic-Link-%E8%88%87-Bare-Git-%E7%9A%84%E8%87%AA%E5%8B%95%E5%8C%96%E5%B7%A5%E5%85%B7%E9%81%B8%E9%A0%85"><span class="toc-text">Symbolic Link 與 Bare Git 的自動化工具選項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%81%B8%E6%93%87-yadm"><span class="toc-text">我選擇 yadm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%A9%A6-yadm-%E5%BF%83%E5%BE%97"><span class="toc-text">小試 yadm 心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yadm-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-text">yadm 常用指令</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/AGhzS0d.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<p>本文主要面向：軟體工程師，尤其是後端。</p>
+<p>不過，<strong>這並不是一篇 yadm 操作教學</strong>，而是我在選擇 dotfiles 同步方案時，所做的功課與思路整理，其中的考量大概有下：</p>
+<ol>
+<li>靠自己簡單實作就好，還是要透過工具？</li>
+<li>如果要用工具，<strong>工具這麼多，該如何選擇</strong>？</li>
+<li>工具之間有什麼本質的差別嗎？（其實就是下述流派上的差別）</li>
+</ol>
+<h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>如〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker</a>〉所言，因為新 VM 的建立，我又得重設一次開發環境，而重設開發環境往往是一個耗時且繁瑣的過程。</p>
+<p>在這個過程中，需要重新建立一些設定檔，例如<code>.bashrc</code>、<code>.zshrc</code>。這些設定檔通常包含了工具設定、命令別名、環境變數等大量內容，因此特別惱人。</p>
+<p>此外，即使不是重建環境，平時要在不同 VM 包括本機電腦間「手動」同步這些檔案，也是一件讓人很想逃避的事。</p>
+<p>以<code>.zshrc</code>為例，如果它很少變動，那可能還好。但很不幸的，我又是一個很愛為命令列工具建立 <a target="_blank" rel="noopener" href="https://dywang.csie.cyut.edu.tw/dywang/linuxSystem/node88.html">alias</a>（別名）的人，光憑這點，就使我不時會修改<code>.zshrc</code>。</p>
+<span id="more"></span>
+
+<h2 id="不同-VM-間的-dotfiles-手動同步讓人想逃避"><a href="#不同-VM-間的-dotfiles-手動同步讓人想逃避" class="headerlink" title="不同 VM 間的 dotfiles 手動同步讓人想逃避"></a>不同 VM 間的 dotfiles 手動同步讓人想逃避</h2><p>而當你有 1 台、2 台……甚至更多 VM 時，<code>.zshrc</code>修改後的「內容同步」問題，足以讓你非常痛苦。</p>
+<p>我工作上「只有」2 台 VM，哪怕是兩台，<strong>在很長一段時間裡</strong>，這兩台 VM 的 alias 設定都<strong>沒有完全一致</strong>——因為我在其中一台新增了 alias 後，就懶得手動為另一台更新相同內容。</p>
+<p>這聽起來有點愚蠢，卻是人之常情……但這次我不忍了！為了解決這個問題，我打算使用「更先進的手段」，來同步和管理這些設定檔。</p>
+<p>如此一來，無論「重設開發環境」或「在多個 VM 之間同步設定」，我的 dotfiles 都可以輕鬆保持一致，提高工作效率。</p>
+<hr>
+<h2 id="什麼是-dotfiles？"><a href="#什麼是-dotfiles？" class="headerlink" title="什麼是 dotfiles？"></a>什麼是 dotfiles？</h2><p>對於很多人來說，這應該不陌生，舉凡在<code>$HOME</code>目錄底下的各種工具設定檔，常常都是以一個點「<code>.</code>」開頭，所以它們被稱為 dotfiles。</p>
+<p>當然，它們未必<strong>全都</strong>放在<code>$HOME</code>目錄底下，也未必皆以「<code>.</code>」開頭，只是大多時候如此。</p>
+<p>一些常見的 dotfiles 包括：</p>
+<ol>
+<li><code>.bashrc</code>和<code>.bash_profile</code>：最常見的 dotfiles。</li>
+<li><code>.vimrc</code>：Vim 編輯器的設定檔，包含了一些編輯器偏好、快捷鍵綁定等。</li>
+<li><code>.gitconfig</code>：Git 版控系統的設定檔，最基本的功能是儲存使用者的 name 和 email。而我個人也習慣把 Git「子命令」相關的 alias 放在這裡，而非放在<code>.zshrc</code>，像下面這樣：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">	name = kyo</span><br><span class="line">	email = odinxp@gmail.com</span><br><span class="line"></span><br><span class="line">[<span class="built_in">alias</span>]</span><br><span class="line">	st = status</span><br><span class="line">	br = branch</span><br><span class="line">	co = checkout</span><br><span class="line">	lg = <span class="built_in">log</span> --color --graph --pretty=format:<span class="string">&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27;</span> --abbrev-commit --</span><br><span class="line">	brs = branch -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git"><a href="#管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git" class="headerlink" title="管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git"></a>管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git</h2><p>做過一番功課以後，我認為同步 dotfiles 所使用的手段，大致可分為兩個流派。而且各有各的工具方便你使用。</p>
+<p>如果想要自己摸索，嘗試，這篇 Reddit 討論串我覺得頗值參考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/linux4noobs/comments/sk5fm5/how_do_you_manage_your_dotfiles/">how do you manage your dotfiles?</a></li>
+</ul>
+<p>我對 dotfiles 管理工具的理解，也大致是從這篇討論延伸而來。</p>
+<h2 id="方案一：Symbolic-Link"><a href="#方案一：Symbolic-Link" class="headerlink" title="方案一：Symbolic Link"></a>方案一：Symbolic Link</h2><p>老實說，想同步 dotfiles，也未必要透過別人寫的工具，最常見的做法，就是使用軟連結（Symbolic Link）。</p>
+<p>在此不細論具體的做法為何，可以隨意 Google 一下「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=symbolic%20link%20dotfiles">symbolic link dotfiles</a>」就有滿坑滿谷的資訊。</p>
+<p>此外，Symbolic Link 方案不一定要透過任何工具：自己弄一個 dotfiles repo 然後手動建立軟連結，就是一個簡單暴力的方式。</p>
+<p>但這樣做的主要缺點就是「軟連結」部分需要每次重新建立，也還是不太輕鬆，所以並不推薦使用——但適合不想使用工具，又希望比「複製貼上」方便的極簡主義者。</p>
+<p>再「聰明」一點，則是配合 stow，可參考這篇〈<a target="_blank" rel="noopener" href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">【譯】使用 GNU stow 管理你的點文件</a>〉，我想這樣已經足夠優雅了。</p>
+<h2 id="方案二：Bare-Git"><a href="#方案二：Bare-Git" class="headerlink" title="方案二：Bare Git"></a>方案二：Bare Git</h2><p>既然如此，那為什麼還需要寫這篇文章呢？當然是為了那些——包括我——不想在本機建立一個獨立的 dotfiles repo 的人！</p>
+<p>申言之，軟連結方案通常會改變 dotfiles 的實際存放路徑——因為它們必須集中到 dotfiles repo 底下。而 stow 等工具的通常用途把你手動建立連結部分變成自動。</p>
+<p>至於不想要變動 dotfiles 路徑的人（這無疑也是一種偏執呀，哈哈哈！），則需要第二種的「Bare Git」方案。</p>
+<p>雖說是第二種方案，但其實<strong>兩者都需要在遠端維護一個 dotfiles repo</strong>，只不過 Git 方案在「本地」並沒有建立一個獨立的 dotfiles repo——所以也不必變動原來 dotfiles 的存放路徑。</p>
+<h2 id="何謂-Bare-Git-方案？"><a href="#何謂-Bare-Git-方案？" class="headerlink" title="何謂 Bare Git 方案？"></a>何謂 Bare Git 方案？</h2><p>具體而言，就是指這篇〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉文章中的做法。因為文中就稱它是「Bare Git」，所以我也這麼稱呼。</p>
+<p>講白了就是利用 Git 本身的功能（但不是一般我們常用的那種）來達到同步 dotfiles 的目的。</p>
+<p>這篇文章不長，但我實際試著一步步照做後，發現其中的「坑」還真是不少。在一小時的嘗試與挫敗後，我放棄了！我決定直接使用工具即可。</p>
+<p>只不過在方案上，我還是想選擇 Bare Git 流派工具，而非 Symbolic Link。</p>
+<h2 id="Symbolic-Link-與-Bare-Git-的自動化工具選項"><a href="#Symbolic-Link-與-Bare-Git-的自動化工具選項" class="headerlink" title="Symbolic Link 與 Bare Git 的自動化工具選項"></a>Symbolic Link 與 Bare Git 的自動化工具選項</h2><p>管理、同步 dotfiles 究竟有哪些工具可以選擇呢？說真的，非常多！</p>
+<p>可以參考<a target="_blank" rel="noopener" href="https://dotfiles.github.io/utilities/">這個清單</a>，它依照 GitHub 星星數量排序列出，並附上了言簡意賅的介紹。</p>
+<p>如果想要知道工具間的更多細節與比較，則可以參考這個<a target="_blank" rel="noopener" href="https://www.chezmoi.io/comparison-table/">對照表</a>。</p>
+<p>作為一個 Python 開發者，我習慣選擇由 Python 開發而成的工具（這只是一種個人偏好），參考上述兩個頁面，顯然 Dotbot 和 yadm 是合理的選項——它們都是由 Python 寫成。</p>
+<h2 id="我選擇-yadm"><a href="#我選擇-yadm" class="headerlink" title="我選擇 yadm"></a>我選擇 yadm</h2><p>事實上，Dotbot 和 yadm 我一開始也不知道要選哪個，所以乾脆直接先挑其中一個來試試，看看稱不稱手、合不合用。</p>
+<p>如果是，就可以結束這回合；如果否，就換另一個。</p>
+<p>我先試了 yadm，因為已經自己實作過〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉的內容，我不禁訝異：<strong>這不就是自動化的 Bare Git 方案嗎！</strong></p>
+<p>流程可以說非常類似，重要的是：它把那些<strong>複雜且容易出錯</strong>的地方「封裝並隱藏起來了」——顯然這就是我要的！</p>
+<h2 id="小試-yadm-心得"><a href="#小試-yadm-心得" class="headerlink" title="小試 yadm 心得"></a>小試 yadm 心得</h2><p>教學什麼的就不獻醜了，而且步驟也非常簡單，尤其在我親身「折騰」過〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉以後，更是覺得：靠工具通常還是會讓你輕鬆不少，所以也不再堅持要「自己來」了。</p>
+<p>建議直接參考官網的這頁「<a target="_blank" rel="noopener" href="https://yadm.io/docs/getting_started">Getting Started</a>」操作。</p>
+<p>其實你只要自己實踐過〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉就會知道，兩者大同小異，只是 yadm 隱藏了更多容易出錯的細節，我想這是必要的。</p>
+<p>安裝好 yadm 後，它就變成了一種「特殊的 Git」指令——只會影響你的 dotfiles repo。</p>
+<h2 id="yadm-常用指令"><a href="#yadm-常用指令" class="headerlink" title="yadm 常用指令"></a>yadm 常用指令</h2><p>常用的指令可參考<a target="_blank" rel="noopener" href="https://yadm.io/docs/common_commands#">這個頁面</a>。</p>
+<p>就跟 Git 非常類似——畢竟它本質上就是 Git。只是增加了一些<strong>額外的指令</strong>方便你查看目前 dotfiles repo 狀態，比如<code>yadm list</code>。</p>
+<p>這些區別，頁面中也都有註明：</p>
+<blockquote>
+<p>Commands below which are special to yadm are denoted with <code>*</code>, and those which are passed directly through to Git are denoted with <code>git</code>.</p>
+</blockquote>
+<p>所以使用上，就跟操作 Git 大同小異，如下圖：</p>
+<p>解說：</p>
+<ul>
+<li>我把<code>yadm</code>設 alias 為「<code>y</code>」了。</li>
+<li><code>pull</code>、<code>push</code>這些常見 Git 操作，在使用 yadm 時也一樣，所以如果發生「檔案狀態衝突」，也是要依照與 Git 相同方式去處理。</li>
+<li>為了同步需求，在遠端比如 GitHub，還是要建立一個「收集這些 dotfiles 清單與狀態」的倉庫，通常我們也會命名為「dotfiles」。</li>
+</ul>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/linux-dev-setup/" title="Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker" rel="bookmark">Linux 開發環境設定大全：zsh、zinit、pyenv、poetry、docker</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/shell/">shell</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/weekly-review-15/">
+        <span class="next-text nav-default">15，付費一個月後，我還是退訂了 Notion AI</span>
+        <span class="prev-text nav-mobile">15，付費一個月後，我還是退訂了 Notion AI</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E6%9B%B8%E8%A9%95/">程式書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E9%96%8B%E7%99%BC%E7%AD%86%E8%A8%98/">開發筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
