@@ -195,9 +195,9 @@
 <p>雖說是第二種方案，但其實<strong>兩者都需要在遠端維護一個 dotfiles repo</strong>，只不過 Git 方案在「本地」並沒有建立一個獨立的 dotfiles repo——所以也不必變動原來 dotfiles 的存放路徑。</p>
 <h2 id="何謂-Bare-Git-方案？"><a href="#何謂-Bare-Git-方案？" class="headerlink" title="何謂 Bare Git 方案？"></a>何謂 Bare Git 方案？</h2><p>具體而言，就是指這篇〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉文章中的做法。因為文中就稱它是「Bare Git」，所以我也這麼稱呼。</p>
 <p>講白了就是利用 Git 本身的功能（但不是一般我們常用的那種）來達到同步 dotfiles 的目的。</p>
-<p>這個做法的好處是，不需要在本機建立額外一個獨立的 dotfiles repo，而是直接使用你的「家目錄」作為 dotfiles repo。且<strong>需要你主動選擇並加入想同步的檔案</strong>，而不像我們一般使用 Git 時，工作目錄內只要沒有被 gitignore，都會自動被同步。</p>
+<p>這個做法的<strong>特色與好處</strong>是，不需要在本機建立額外一個獨立的 dotfiles repo，而是直接使用你的「家目錄」作為 dotfiles repo。且<strong>需要你主動選擇並加入想同步的檔案</strong>，而不像我們一般使用 Git 時，工作目錄內只要沒有被 gitignore，都會自動被同步。</p>
 <p>這篇文章不長，但我實際試著一步步照做後，發現其中的「坑」還真是不少——畢竟這不是我們平常使用 Git 的方式。</p>
-<p>在一小時的嘗試與挫敗後，我放棄了！我決定直接使用工具即可。</p>
+<p>在一小時的嘗試與挫敗後，我放棄了！決定直接使用工具即可。</p>
 <hr>
 <h2 id="Symbolic-Link-與-Bare-Git-的自動化工具選項"><a href="#Symbolic-Link-與-Bare-Git-的自動化工具選項" class="headerlink" title="Symbolic Link 與 Bare Git 的自動化工具選項"></a>Symbolic Link 與 Bare Git 的自動化工具選項</h2><p>管理、同步 dotfiles 究竟有哪些工具可以選擇呢？說真的，非常多！</p>
 <p>可以參考<a target="_blank" rel="noopener" href="https://dotfiles.github.io/utilities/">這個清單</a>，它依照 GitHub 星星數量排序列出，並附上了言簡意賅的介紹。</p>
