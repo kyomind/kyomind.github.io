@@ -182,11 +182,11 @@
 <p>不過，在團隊協作時，這樣的做法可以減少大家在「設定未同步」時的潛在問題，所以還是要依不同情境考量，究竟要用哪種方式。</p>
 <p>基於協作一致性考慮，本文的案例我仍建議同事採用這個做法。</p>
 <h3 id="二、使用PYTHONPATH"><a href="#二、使用PYTHONPATH" class="headerlink" title="二、使用PYTHONPATH"></a>二、使用<code>PYTHONPATH</code></h3><p>儘管如此，有時候我們只是個人開發，或不想在程式碼中直接修改<code>sys.path</code>，則設定<code>PYTHONPATH</code>是更常見的做法。</p>
+<hr>
 <h2 id="VS-Code-設定PYTHONPATH"><a href="#VS-Code-設定PYTHONPATH" class="headerlink" title="VS Code 設定PYTHONPATH"></a>VS Code 設定<code>PYTHONPATH</code></h2><p>首先要說明的是，<code>PYTHONPATH</code>在不同情境會被不同的工具使用，比如 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49631146/how-do-you-add-a-path-to-pythonpath-in-a-dockerfile">Dockerfile</a>。</p>
 <p>而本文只集中在「<strong>使用 VS Code</strong>」的情境下——究竟要怎麼設定，才能讓 VS Code 取得正確的路徑？</p>
 <p>嚴格說，是指 VS Code 的<strong>整合命令列</strong>中，如何正確套用<code>PYTHONPATH</code>。好讓 VS Code 在以整合命令列執行程式時，可以正確 import，而不會出現<code>ModuleNotFoundError</code>。</p>
 <p>通常這段設定會放在「專案」下的<code>settings.json</code>，也就是「<code>專案/.vscode/settings.json</code>」，你要使用「使用者」設定（全域的<code>settings.json</code>）也是可以，只是要留意<strong>不同專案是否會因此而有不一致的結果</strong>。</p>
-<hr>
 <h2 id="設定PYTHONPATH的三種方式"><a href="#設定PYTHONPATH的三種方式" class="headerlink" title="設定PYTHONPATH的三種方式"></a>設定<code>PYTHONPATH</code>的三種方式</h2><p>關於 VS Code 加入<code>PYTHONPATH</code>的<code>settings.json</code>設定，從以前（至少是 3 年前）到現在，有過方式變遷，我們只需要知道：舊的方法已經不管用。</p>
 <h2 id="第一種方式：直接設定-settings-json（已廢棄）"><a href="#第一種方式：直接設定-settings-json（已廢棄）" class="headerlink" title="第一種方式：直接設定 settings.json（已廢棄）"></a>第一種方式：直接設定 settings.json（已廢棄）</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.pythonPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;專案根目錄&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -201,12 +201,14 @@
 <p>可以看出，使用的是「<strong>相對路徑</strong>」或「<strong>環境變數</strong>」，兩者異曲同工，實際想指向的，都是專案根目錄。不用絕對路徑，則是為了「<strong>方便在不同專案之間套用</strong>」。</p>
 <p>要特別注意，無論是<code>.</code>還是<code>$(pwd)</code>，都是「<strong>相對於該 env 檔所在的資料夾</strong>」而言。</p>
 <p>換句話說，如果你的 env「<strong>沒有</strong>」放在專案根目錄底下，這個設定就可能會出錯。此時為了避免過度複雜，改用絕對路徑也是可以的。</p>
+<hr>
 <h3 id="重要：sys-path-的第一順位值"><a href="#重要：sys-path-的第一順位值" class="headerlink" title="重要：sys.path 的第一順位值"></a>重要：sys.path 的第一順位值</h3><p>需要補充說明的是，執行任意 Python 檔案時，Python 直譯器會依序嘗試<code>sys.path</code>裡的每個值，直到找到你要 import 的模組。而<code>sys.path</code>的「<strong>第一順位值</strong>」就是<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/sys-path-in-python/">執行檔所在的路徑（資料夾）</a>：</p>
 <blockquote>
 <p><strong>By default, the interpreter looks for a module within the current directory.</strong> To make the interpreter search in some other directory you just simply have to change the current directory.</p>
 </blockquote>
 <p>換句話說，如果<code>debugger.py</code>「正好」就在專案根目錄下，那就不需要額外的設定。因此，本文案例之所以會出現<code>ModuleNotFoundError</code>，也正因<code>debugger.py</code>不在專案的根目錄裡。</p>
 <p>可想而知，把<code>debugger.py</code>改放在專案根目錄下，就不會有問題了。但這並不是解決問題的<strong>根本方法</strong>，因為會讓專案結構變得「<strong>不整齊、缺乏一致性</strong>」。</p>
+<hr>
 <h3 id="settings-json-設定-env-讀取路徑"><a href="#settings-json-設定-env-讀取路徑" class="headerlink" title="settings.json 設定 env 讀取路徑"></a>settings.json 設定 env 讀取路徑</h3><p>有了 env 檔案，接著就是要讓 VS Code 去讀取它，<code>settings.json</code>要加入下列內容：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.envFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/.env&quot;</span></span><br></pre></td></tr></table></figure>
 
