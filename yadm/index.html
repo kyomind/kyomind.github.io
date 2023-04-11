@@ -189,11 +189,11 @@
 <li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/linux4noobs/comments/sk5fm5/how_do_you_manage_your_dotfiles/">how do you manage your dotfiles?</a></li>
 </ul>
 <p>我對 dotfiles 管理工具的理解，也大致是從這篇討論延伸而來。</p>
-<h2 id="方案一：Symbolic-Link"><a href="#方案一：Symbolic-Link" class="headerlink" title="方案一：Symbolic Link"></a>方案一：Symbolic Link</h2><p>事實上，想要輕鬆同步你的 dotfiles，未必要透過別人寫的工具。最常見的做法，就是使用<strong>軟連結</strong>（Symbolic Link）。</p>
+<h2 id="方案一：Symbolic-Link"><a href="#方案一：Symbolic-Link" class="headerlink" title="方案一：Symbolic Link"></a>方案一：Symbolic Link</h2><p>事實上，想要輕鬆同步你的 dotfiles，未必要使用別人寫的工具。最常見的做法，就是透過<strong>軟連結</strong>（Symbolic Link）。</p>
 <p>在此不細論具體的做法為何，可以隨意 Google 一下「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=symbolic%20link%20dotfiles">symbolic link dotfiles</a>」就有滿坑滿谷的資訊。</p>
-<p>此外，Symbolic Link 方案不一定要透過任何工具：自己弄一個 dotfiles repo 然後手動建立軟連結，就是一個簡單暴力的方式。</p>
-<p>但這樣做的主要缺點就是「軟連結」部分需要每次重新建立，也還是不太輕鬆，所以並不推薦使用——但適合不想使用工具，又希望比「複製貼上」方便的極簡主義者。</p>
-<p>再「聰明」一點，則是配合 stow，可參考這篇〈<a target="_blank" rel="noopener" href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">【譯】使用 GNU stow 管理你的點文件</a>〉，我想這樣已經足夠優雅了。</p>
+<p>意即，自己弄一個 dotfiles repo 並手動建立軟連結，就是一個簡單暴力的方式。</p>
+<p>但這樣做的主要缺點是：「軟連結」部分需要你<strong>手動建立</strong>，也還是不太輕鬆，所以並不推薦使用——但適合<strong>不想靠工具</strong>，又希望比「複製貼上」更有效的<strong>極簡主義者</strong>。</p>
+<p>再「聰明」一點，則是配合 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/stow/manual/stow.html">stow</a>，可參考這篇〈<a target="_blank" rel="noopener" href="https://farseerfc.me/using-gnu-stow-to-manage-your-dotfiles.html">【譯】使用 GNU stow 管理你的點文件</a>〉，我想這樣已經足夠優雅了。</p>
 <h2 id="方案二：Bare-Git"><a href="#方案二：Bare-Git" class="headerlink" title="方案二：Bare Git"></a>方案二：Bare Git</h2><p>既然如此，那為什麼還需要寫這篇文章呢？當然是為了那些——包括我——不想在本機建立一個獨立的 dotfiles repo 的人！</p>
 <p>申言之，軟連結方案通常會改變 dotfiles 的實際存放路徑——因為它們必須集中到 dotfiles repo 底下。而 stow 等工具的通常用途把你手動建立連結部分變成自動。</p>
 <p>至於不想要變動 dotfiles 路徑的人（這無疑也是一種偏執呀，哈哈哈！），則需要第二種的「Bare Git」方案。</p>
