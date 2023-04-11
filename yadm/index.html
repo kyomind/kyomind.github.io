@@ -178,13 +178,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">    name = kyo</span><br><span class="line">    email = odinxp@gmail.com</span><br><span class="line"></span><br><span class="line">[<span class="built_in">alias</span>]</span><br><span class="line">    st = status</span><br><span class="line">    br = branch</span><br><span class="line">    co = checkout</span><br><span class="line">    brs = branch -a</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git"><a href="#管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git" class="headerlink" title="管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git"></a>管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git</h2><p>做過一番功課以後，我認為同步 dotfiles 所使用的手段，大致可分為兩個流派。而且各有各的工具方便你使用。</p>
+<h2 id="管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git"><a href="#管理-dotfiles-的兩大流派：Symbolic-Link-vs-Bare-Git" class="headerlink" title="管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git"></a>管理 dotfiles 的兩大流派：Symbolic Link vs Bare Git</h2><p>做過一番功課以後，我認為同步 dotfiles 所使用的手段，大致可分為兩個流派：</p>
+<ol>
+<li><strong>Symbolic Link</strong></li>
+<li><strong>Bare Git</strong></li>
+</ol>
+<p>而且各有各的工具方便你使用。</p>
 <p>如果想要自己摸索，嘗試，這篇 Reddit 討論串我覺得頗值參考：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/linux4noobs/comments/sk5fm5/how_do_you_manage_your_dotfiles/">how do you manage your dotfiles?</a></li>
 </ul>
 <p>我對 dotfiles 管理工具的理解，也大致是從這篇討論延伸而來。</p>
-<h2 id="方案一：Symbolic-Link"><a href="#方案一：Symbolic-Link" class="headerlink" title="方案一：Symbolic Link"></a>方案一：Symbolic Link</h2><p>老實說，想同步 dotfiles，也未必要透過別人寫的工具，最常見的做法，就是使用軟連結（Symbolic Link）。</p>
+<h2 id="方案一：Symbolic-Link"><a href="#方案一：Symbolic-Link" class="headerlink" title="方案一：Symbolic Link"></a>方案一：Symbolic Link</h2><p>事實上，想要輕鬆同步你的 dotfiles，未必要透過別人寫的工具。最常見的做法，就是使用<strong>軟連結</strong>（Symbolic Link）。</p>
 <p>在此不細論具體的做法為何，可以隨意 Google 一下「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=symbolic%20link%20dotfiles">symbolic link dotfiles</a>」就有滿坑滿谷的資訊。</p>
 <p>此外，Symbolic Link 方案不一定要透過任何工具：自己弄一個 dotfiles repo 然後手動建立軟連結，就是一個簡單暴力的方式。</p>
 <p>但這樣做的主要缺點就是「軟連結」部分需要每次重新建立，也還是不太輕鬆，所以並不推薦使用——但適合不想使用工具，又希望比「複製貼上」方便的極簡主義者。</p>
