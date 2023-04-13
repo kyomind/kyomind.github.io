@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
     
-    <lastmod>2023-04-11</lastmod>
+    <lastmod>2023-04-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
+    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
     
     <lastmod>2023-04-11</lastmod>
     
@@ -661,7 +661,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-04-11</lastmod>
+    <lastmod>2023-04-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
