@@ -79,11 +79,11 @@
     
     <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
     
+    <category term="Notion AI" scheme="https://blog.kyomind.tw/tags/Notion-AI/"/>
+    
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
     <category term="ChatGPT" scheme="https://blog.kyomind.tw/tags/ChatGPT/"/>
-    
-    <category term="Notion AI" scheme="https://blog.kyomind.tw/tags/Notion-AI/"/>
     
   </entry>
   
@@ -287,9 +287,9 @@
     
     <category term="簡潔主義" scheme="https://blog.kyomind.tw/tags/%E7%B0%A1%E6%BD%94%E4%B8%BB%E7%BE%A9/"/>
     
-    <category term="知識焦慮" scheme="https://blog.kyomind.tw/tags/%E7%9F%A5%E8%AD%98%E7%84%A6%E6%85%AE/"/>
-    
     <category term="學習" scheme="https://blog.kyomind.tw/tags/%E5%AD%B8%E7%BF%92/"/>
+    
+    <category term="知識焦慮" scheme="https://blog.kyomind.tw/tags/%E7%9F%A5%E8%AD%98%E7%84%A6%E6%85%AE/"/>
     
   </entry>
   
