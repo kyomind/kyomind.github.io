@@ -2,9 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
+    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
     
-    <lastmod>2023-04-17</lastmod>
+    <lastmod>2023-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
+    
+    <lastmod>2023-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
+    
+    <lastmod>2023-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-poetry/</loc>
+    
+    <lastmod>2023-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
+    
+    <lastmod>2023-04-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -12,6 +48,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/yadm/</loc>
+    
+    <lastmod>2023-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
     
     <lastmod>2023-04-17</lastmod>
     
@@ -83,15 +128,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
-    
-    <lastmod>2023-04-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2023-04-08</lastmod>
@@ -110,15 +146,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-poetry/</loc>
-    
-    <lastmod>2023-04-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2023-04-07</lastmod>
@@ -129,15 +156,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
-    
-    <lastmod>2023-04-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
     
     <lastmod>2023-04-07</lastmod>
     
@@ -326,15 +344,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -506,15 +515,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -670,7 +670,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-04-17</lastmod>
+    <lastmod>2023-04-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
