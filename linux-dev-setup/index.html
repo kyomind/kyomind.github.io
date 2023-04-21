@@ -161,18 +161,18 @@
 <p>本文是以 <strong>Ubuntu 20.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
 <h2 id="用-yadm-管理-dotfiles"><a href="#用-yadm-管理-dotfiles" class="headerlink" title="用 yadm 管理 dotfiles"></a>用 yadm 管理 dotfiles</h2><p>Dofiles 是指「<strong>設定檔</strong>」，例如 <code>.zshrc</code>、<code>.vimrc</code>、<code>.gitconfig</code> 等等。</p>
 <p>使用 zinit、Powerlevel10k、pyenv 之前，都要先設定<code>.zshrc</code>。</p>
-<p>如果你已經有使用相關工具來<strong>管理並同步你的 dotfiles</strong>，那麼以下關於<code>.zshrc</code>內容的新增、修改，<strong>理論上都可以跳過——直接透過工具同步即可。</strong></p>
+<p>如果你已經有使用相關工具來<strong>管理你的 dotfiles</strong>，那麼以下關於<code>.zshrc</code>內容的新增、修改，<strong>理論上都可以跳過——直接透過工具「同步」即可。</strong></p>
 <p>如果你還沒接觸過任何 dotfiles 管理工具，那麼我推薦 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a>，可參考文章：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
 </ul>
-<p>話不多說，讓我們開始。</p>
+<p>前言到此為止，話不多說，讓我們開始吧！</p>
 <hr>
-<h2 id="一、設定-SSH-連線"><a href="#一、設定-SSH-連線" class="headerlink" title="一、設定 SSH 連線"></a>一、設定 SSH 連線</h2><p>這部分我並沒有寫成文章，因為網路上的資源已經非常多，而且步驟也不算太複雜。</p>
-<p>對我而言，主要設定下面兩種 SSH 連線：</p>
+<h2 id="一、設定-SSH-連線"><a href="#一、設定-SSH-連線" class="headerlink" title="一、設定 SSH 連線"></a>一、設定 SSH 連線</h2><p>這部分我並沒有寫成文章，因為網路上的資訊已經足夠多，而且步驟也不算太複雜。</p>
+<p>對我而言，主要為 VM 設定下面兩種 SSH 連線：</p>
 <ol>
 <li>本機電腦與遠端 VM 的連線。</li>
-<li>VM 與 GitHub（或其它 Git 服務）的連線。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">遠端 VM 與 GitHub 的連線。</a>（或其它 Git 服務）</li>
 </ol>
 <p>至於具體要怎麼做，還請自行 Google。</p>
 <h2 id="二、設定-zsh、zinit、Powerlevel10k"><a href="#二、設定-zsh、zinit、Powerlevel10k" class="headerlink" title="二、設定 zsh、zinit、Powerlevel10k"></a>二、設定 zsh、zinit、Powerlevel10k</h2><blockquote>
@@ -186,7 +186,7 @@
 
 <h3 id="將-zsh-設為登入時的「預設」shell"><a href="#將-zsh-設為登入時的「預設」shell" class="headerlink" title="將 zsh 設為登入時的「預設」shell"></a>將 zsh 設為登入時的「預設」shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -s /bin/zsh <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
 
-<p>提醒：請務必先確認 zsh 本身的安裝、設定沒問題，可以正常使用。否則登入後可能直接卡住，需要透過別的帳號例如 admin 來處理。</p>
+<p>提醒：請務必先確認 zsh 本身的安裝、設定沒問題，可以正常使用。否則登入後可能直接卡住，需要透過別的 admin 帳號來處理。</p>
 <h3 id="新增-zshrc與-zprofile"><a href="#新增-zshrc與-zprofile" class="headerlink" title="新增.zshrc與.zprofile"></a>新增<code>.zshrc</code>與<code>.zprofile</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> .zshrc</span><br><span class="line"><span class="built_in">touch</span> .zprofile</span><br></pre></td></tr></table></figure>
 
 <h3 id="安裝-zinit-套件管理器"><a href="#安裝-zinit-套件管理器" class="headerlink" title="安裝 zinit 套件管理器"></a>安裝 zinit 套件管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;<span class="subst">$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
@@ -208,11 +208,12 @@
 
 <h3 id="安裝-pyenv"><a href="#安裝-pyenv" class="headerlink" title="安裝 pyenv"></a>安裝 pyenv</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pyenv/pyenv.git ~/.pyenv</span><br></pre></td></tr></table></figure>
 
-<h3 id="設定-pyenv"><a href="#設定-pyenv" class="headerlink" title="設定 pyenv"></a>設定 pyenv</h3><p>這裡直接採用 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">pyenv 2.3.0 以後的設定方式</a>，大幅簡化操作——變得更加無腦、易用，好評！——且 zsh 或 bash 在設定上<strong>已無差別</strong>。</p>
+<h3 id="設定-pyenv"><a href="#設定-pyenv" class="headerlink" title="設定 pyenv"></a>設定 pyenv</h3><blockquote>
+<p>這裡直接採用 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">pyenv 2.3.0 以後的設定方式</a>，已大幅簡化操作——變得更加無腦、易用！——且 zsh 或 bash 在設定上<strong>不再有差別</strong>。</p>
+</blockquote>
 <p>一律在<code>.zshrc</code>或<code>.bashrc</code>中，新增下列內容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<p>官方的 shell 指令版本（for zsh）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init -)&quot;&#x27;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
+
 
 <h3 id="pyenv-安裝-Python-3-10-10-並設為全域"><a href="#pyenv-安裝-Python-3-10-10-並設為全域" class="headerlink" title="pyenv 安裝 Python 3.10.10 並設為全域"></a>pyenv 安裝 Python 3.10.10 並設為全域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.10</span><br></pre></td></tr></table></figure>
 
@@ -220,7 +221,7 @@
 <p>接著透過 pyenv，將系統全域的 Python 設定為 <a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-31010/">3.10.10</a>（或其他版本）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.10.10</span><br></pre></td></tr></table></figure>
 
-<h3 id="不再安裝-pyenv-virtualenv"><a href="#不再安裝-pyenv-virtualenv" class="headerlink" title="不再安裝 pyenv-virtualenv"></a>不再安裝 pyenv-virtualenv</h3><p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以我現在<strong>一律只使用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
+<h3 id="不安裝-pyenv-virtualenv"><a href="#不安裝-pyenv-virtualenv" class="headerlink" title="不安裝 pyenv-virtualenv"></a>不安裝 pyenv-virtualenv</h3><p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只使用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
 <p>這也是我目前覺得<strong>最簡潔</strong>的做法。</p>
 <hr>
 <h2 id="四、設定-Poetry"><a href="#四、設定-Poetry" class="headerlink" title="四、設定 Poetry"></a>四、設定 Poetry</h2><blockquote>
