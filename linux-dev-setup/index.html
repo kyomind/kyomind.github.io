@@ -232,7 +232,8 @@
 <h3 id="新增poetry指令至-PATH"><a href="#新增poetry指令至-PATH" class="headerlink" title="新增poetry指令至 PATH"></a>新增<code>poetry</code>指令至 PATH</h3><p>在<code>.zshrc</code>新增以下內容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
-<h3 id="修改config，改用專案內的-venv虛擬環境"><a href="#修改config，改用專案內的-venv虛擬環境" class="headerlink" title="修改config，改用專案內的.venv虛擬環境"></a>修改<code>config</code>，改用專案內的<code>.venv</code>虛擬環境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="修改config，改用-venv虛擬環境"><a href="#修改config，改用-venv虛擬環境" class="headerlink" title="修改config，改用.venv虛擬環境"></a>修改<code>config</code>，改用<code>.venv</code>虛擬環境</h3><p>預設為<code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！改成<code>true</code>以後，<strong>則直接在專案中建立虛擬環境，且名稱固定為<code>.venv</code>。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="五、安裝-Docker"><a href="#五、安裝-Docker" class="headerlink" title="五、安裝 Docker"></a>五、安裝 Docker</h2><p>安裝細節常常隨著 Docker 版本的更新而有所變動，建議直接看<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">官方文件</a>即可。</p>
