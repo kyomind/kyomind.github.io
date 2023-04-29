@@ -204,7 +204,7 @@
 </li>
 </ul>
 </blockquote>
-<p>此外，我在臉書社團「Backend 台灣 (Backend Tw)」<a target="_blank" rel="noopener" href="https://www.facebook.com/groups/backendtw/permalink/2934392300027960">這篇文章</a>的回應中，也表達了自己的看法，這裡只節錄最後兩段：</p>
+<h3 id="我的關注點"><a href="#我的關注點" class="headerlink" title="我的關注點"></a>我的關注點</h3><p>此外，我在臉書社團「Backend 台灣 (Backend Tw)」<a target="_blank" rel="noopener" href="https://www.facebook.com/groups/backendtw/permalink/2934392300027960">這篇文章</a>的回應中，也表達了自己的看法，這裡只節錄最後兩段：</p>
 <blockquote>
 <p>上面的情況其實都在說：「linter已經提醒有問題，但formatter無法正常格式化」，細心的人會停下來排除問題或討論，但人難免都有粗心的時候，偶爾還是忽略且commit了</p>
 </blockquote>
@@ -213,21 +213,21 @@
 </blockquote>
 <p>是的，我最大的著眼點在於：「<strong>減少團隊協作時，不必要的磨擦（精神消耗）。</strong>」</p>
 <p>個人認為這真的很重要，畢竟我們不是機器，都有情緒，而情緒應該要用在更有價值的地方。</p>
-<p>總的來說，如果你問我「為何要使用 pre-commit？」從個人角度看，我已視之為理所當然，畢竟我都寫了 6 篇相關文章了——pre-commit 正是確保這些 linter、formatter 能夠發揮全部效用的<strong>最後一塊拼圖</strong>！</p>
+<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>總的來說，如果你問我「為何要使用 pre-commit？」從個人角度看，我已視之為理所當然，畢竟我都寫了 6 篇相關文章了——pre-commit 正是確保這些 linter、formatter 能夠發揮全部效用的<strong>最後一塊拼圖</strong>！</p>
 <p>而從團隊的角度，則是因為「這樣對大家都好！」</p>
 <hr>
 <h2 id="pre-commit-基本設定"><a href="#pre-commit-基本設定" class="headerlink" title="pre-commit 基本設定"></a>pre-commit 基本設定</h2><p>這是所有文章都會提到的部分，所以我們可以加快一點。</p>
 <p>安裝 pre-commit 應該不必解釋，<code>poetry add pre-commit</code>或<code>pip install pre-commit</code>任君挑選。macOS 也可以用<code>brew install pre-commit</code>全域安裝，但如此一來它就不會在專案虛擬環境中。</p>
-<p>接著是關於<code>.pre-commit-config.yaml</code>內容的編輯，請將此檔案建立於專案的根目錄，pre-commit 就是透過這份設定檔，把各項 hook 內容，以封裝的形式，<strong>自動轉譯</strong>成 shell 腳本。</p>
+<h3 id="pre-commit-config-yaml"><a href="#pre-commit-config-yaml" class="headerlink" title=".pre-commit-config.yaml"></a>.pre-commit-config.yaml</h3><p>接著是關於<code>.pre-commit-config.yaml</code>內容的編輯，請將此檔案建立於專案的根目錄，pre-commit 就是透過這份設定檔，把各項 hook 內容，以封裝的形式，<strong>自動轉譯</strong>成 shell 腳本。</p>
 <p>一般而言，<code>.pre-commit-config.yaml</code>會長這樣：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/pre-commit/pre-commit-hooks</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="string">v4.3.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">trailing-whitespace</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">check-added-large-files</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/flake8</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.0</span><span class="number">.4</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">flake8</span></span><br></pre></td></tr></table></figure>
 
 <p>最上面是<a target="_blank" rel="noopener" href="https://github.com/pre-commit/pre-commit-hooks#hooks-available">由 pre-commit 專案提供的基本 hooks</a>。剩下的部分則是其它開源專案所提供的 hook。</p>
 <p><code>yaml</code>檔中的<code>repo</code>、<code>rev</code>、<code>hooks</code>、<code>id</code>等設定，直接看<a target="_blank" rel="noopener" href="https://pre-commit.com/#pre-commit-configyaml---repos">文件</a>就知道意思了。</p>
-<p>對於第一次接觸 pre-commit 的人而言，這裡會有的<strong>最大疑問</strong>應該是：「啊我怎麼知道我可以用哪些 hook？我又怎麼知道這些 hook 的 repo 網址？」</p>
+<h3 id="設定上重點"><a href="#設定上重點" class="headerlink" title="設定上重點"></a>設定上重點</h3><p>對於第一次接觸 pre-commit 的人而言，這裡會有的<strong>最大疑問</strong>應該是：「啊我怎麼知道我可以用哪些 hook？我又怎麼知道這些 hook 的 repo 網址？」</p>
 <p>沒錯，這是關鍵所在，<a target="_blank" rel="noopener" href="https://pre-commit.com/hooks.html">這個網頁</a>有目前全部可用的 hook 清單，上面如果沒有列出你想用的工具，那就是暫不支援囉！</p>
 <p>至於<code>rev</code>的具體版本號（總不能自己瞎編一個），repo 網頁的「tags」頁面就會有，比如這是 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/flake8/tags">Flake8 的 tags 頁面</a>。</p>
-<p>值得留意的是：有些 hook 的 tag 有「<code>v</code>」開頭，有些則否（上述 Flake8 就沒有）。這基本上看專案開發者的習慣，所以要看清楚。</p>
+<p>值得留意的是：有些 hook 的 tag 有「<code>v</code>」開頭，有些則否（上述 Flake8 就沒有）。這基本上看專案開發者的習慣，不要搞錯即可。</p>
 <p>知道這些，基本上就能設定好<code>.pre-commit-config.yaml</code>了。</p>
 <h2 id="pre-commit-設定-Flake8、isort、yapf"><a href="#pre-commit-設定-Flake8、isort、yapf" class="headerlink" title="pre-commit 設定 Flake8、isort、yapf"></a>pre-commit 設定 Flake8、isort、yapf</h2><p>又到了整個系列都不斷重複、重複、再重複的幾樣工具😎</p>
 <h3 id="Flake8"><a href="#Flake8" class="headerlink" title="Flake8"></a>Flake8</h3><p>直接看設定檔：</p>
