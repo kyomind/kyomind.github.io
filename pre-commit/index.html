@@ -253,7 +253,7 @@
 
 <p>還有一件想當然爾但依舊必須提醒的事，即 hook 使用的<code>rev</code>版本，要和你專案裡使用的工具的版本一致。比如上述設定檔中我的 Flake8 是<code>5.0.4</code>版，那虛擬環境裡安裝的<code>flake8</code>自然也是<code>5.0.4</code>，而不會是其它版本。</p>
 <p>安裝完 pre-commit 並建立好<code>.pre-commit-config.yaml</code>後，<strong>事情還沒有結束！</strong>此時專案中的<code>.git/hooks</code>目錄下，依舊是預設時的模樣。</p>
-<p>我們還差一個動作——將<code>.pre-commit-config.yaml</code>轉譯為 hook 腳本，當然，這會由工具代勞，我們只需要下指令即可：</p>
+<h3 id="pre-commit-install"><a href="#pre-commit-install" class="headerlink" title="pre-commit install"></a>pre-commit install</h3><p>我們還差一個動作——將<code>.pre-commit-config.yaml</code>轉譯為 hook 腳本，當然，這會由工具代勞，我們只需要下指令即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre-commit install</span><br></pre></td></tr></table></figure>
 
 <p>下指令時<strong>請確定虛擬環境已經開啟</strong>，不然可能會找不到<code>pre-commit</code>這個執行檔——除非你是全域安裝。</p>
