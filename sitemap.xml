@@ -92,6 +92,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    
+    <lastmod>2023-04-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2023-04-19</lastmod>
@@ -185,15 +194,6 @@
     <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
     
     <lastmod>2023-04-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
-    
-    <lastmod>2023-04-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/index.html</loc>
+    <loc>https://blog.kyomind.tw/tags/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -308,7 +308,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tags/index.html</loc>
+    <loc>https://blog.kyomind.tw/categories/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -515,7 +515,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/riverside/</loc>
+    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -524,7 +524,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
+    <loc>https://blog.kyomind.tw/riverside/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -587,7 +587,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
+    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -605,7 +605,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
+    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
