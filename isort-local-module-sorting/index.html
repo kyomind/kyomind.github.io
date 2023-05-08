@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/isort-local-module-sorting/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/VS-Code/">VS Code (10)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (10)</a>
+          
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談 (14)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (17)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django/">Django (2)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (15)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top10/">
+          TOP 10
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-05-09
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#isort-%E6%9C%AC%E5%9C%B0%E6%A8%A1%E7%B5%84%E6%8E%92%E5%BA%8F%E9%8C%AF%E8%AA%A4"><span class="toc-text">isort 本地模組排序錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9AVS-Code"><span class="toc-text">解法：VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%88%87-pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 與 pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%B8%B6%E4%B8%80%E6%8F%90"><span class="toc-text">附帶一提</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/M6eKHe9.png"></p>
+<p><a target="_blank" rel="noopener" href="https://pycqa.github.io/isort/">isort</a> 是一個 Python 套件兼命令列工具，可以幫開發者自動排序 Python imports，以符合 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/#imports">PEP 8 規範</a>。這種排序也可以讓程式碼更加易讀且易於維護。</p>
+<p>之前已經有數篇文章介紹過，可參考本站的「<a href="tags/isort/">isort 標籤頁</a>」。</p>
+<p>isort 會自動將 import 分為「<strong>Python 內建</strong>」、「<strong>第三方</strong>」、「<strong>本地</strong>」套件等三大區塊，並依<strong>字母順序</strong>排列，同時為你在三個區塊之間<strong>空一行</strong>。</p>
+<h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的判斷，有可能發生錯誤。</strong></p>
+<p>這會造成什麼結果？通常的影響是，本來應該排在第三區塊的 import，排到第二區塊去了。</p>
+<p>這樣除了不符合 PEP 8 規範，更重要的是，它還可能對開發者造成「誤導」。而且，會使用 isort 的人，往往就是在乎 import 排序的人，當然不可能接受這樣的錯誤。</p>
+<span id="more"></span>
+
+<h2 id="解法：VS-Code"><a href="#解法：VS-Code" class="headerlink" title="解法：VS Code"></a>解法：VS Code</h2><p>第一次發現這個問題，是在 VS Code 的整合界面，在自動格式化時，發現本地模組被排到第三方去了。</p>
+<p>很自然的輸入關鍵字，比如「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=isort+wrong+order">isort wrong order</a>」，然後你就能找到這篇 issue：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-python/issues/14254">Wrong order in import when using sort imports in vscode</a></li>
+</ul>
+<p>往下滑，很快你就得到了答案，在<code>settings.json</code>加入以下設定：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.sortImports.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>不過上面是以前的做法，<a href="https://blog.kyomind.tw/isort/">現在 isort 有獨立套件</a>，所以應該用下面的設定：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;isort.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="pyproject-toml-與-pre-commit-設定"><a href="#pyproject-toml-與-pre-commit-設定" class="headerlink" title="pyproject.toml 與 pre-commit 設定"></a>pyproject.toml 與 pre-commit 設定</h2><p>有了 pre-commit 以後，僅設定 VS Code 是不夠的。即使 IDE 格式化的結果正確，若未設定 pre-commit 的 isort hook，仍可能受到阻擋。</p>
+<p>另外，在團隊開發時，使用支援 isort 的 pyproject.toml 來設定 isort 參數，明顯比所有成員各自設定其自己的 VS Code 更加可行。</p>
+<p>所以我們需要設定這兩者的 isort 參數。</p>
+<p>不過，顯然<code>pyproject.toml</code>和 pre-commit 不太可能是上述的<code>settings.json</code>設定的照抄。因為它們根本不知道<code>$&#123;workspaceFolder&#125;</code>是什麼。</p>
+<p>所以想必有別的做法。</p>
+<h3 id="pyproject-toml"><a href="#pyproject-toml" class="headerlink" title="pyproject.toml"></a>pyproject.toml</h3><p>設定如下，使用<code>src_paths = [&quot;.&quot;]</code>。</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">line_length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">src_paths</span> = [<span class="string">&quot;.&quot;</span>] <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="pre-commit"><a href="#pre-commit" class="headerlink" title="pre-commit"></a>pre-commit</h3><p><code>.pre-commit-config.yaml</code>設定如下，使用<code>--src=.</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/isort</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.11</span><span class="number">.5</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">isort</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--line-length=100</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--src=.</span> <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
+
+<p>基本上都是用「<code>.</code>」來代表專案根目錄。</p>
+<h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>VS Code 如果有 isort 設定，則會<strong>優先於 pyproject.toml</strong>，我不太理解這個邏輯，明明後者的適用範圍較小（僅限於專案），理論上愈小範圍應該要優先適用才對？使用時可留意一下兩者的設定是否存在衝突。</p>
+<p>我自己平常都是透過<code>settings.json</code>設定 isort，至於<code>pyproject.toml</code>，則是給團隊其餘沒有設定 VS Code 的人使用的。</p>
+<p>不過總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如<code>pyproject.toml</code>來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學" rel="bookmark">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pre-commit/" title="pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例" rel="bookmark">pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/isort/">isort</a>
+            <a href="/tags/pre-commit/">pre-commit</a>
+            <a href="/tags/pyproject-toml/">pyproject.toml</a>
+            <a href="/tags/Code-Formatting/">Code Formatting</a>
+            <a href="/tags/%E7%9F%AD%E7%AF%87/">短篇</a>
+            <a href="/tags/debug/">debug</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/weekly-review-17/">
+        <span class="next-text nav-default">17，AI 時代的生存指南（一）：我對 AI 工具的投入與觀望</span>
+        <span class="prev-text nav-mobile">17，AI 時代的生存指南（一）：我對 AI 工具的投入與觀望</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">2</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">17</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
