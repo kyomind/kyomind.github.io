@@ -183,7 +183,7 @@
 <p>基本上都是用「<code>.</code>」來代表專案根目錄。</p>
 <h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>VS Code 如果有 isort 設定，則會<strong>優先於 pyproject.toml</strong>，我不太理解這個邏輯，明明後者的適用範圍較小（僅限於專案），理論上愈小範圍應該要優先適用才對？使用時可留意一下兩者的設定是否存在衝突。</p>
 <p>我自己平常都是透過<code>settings.json</code>設定 isort，至於<code>pyproject.toml</code>，則是給團隊其餘沒有設定 VS Code 的人使用的。</p>
-<p>不過總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如<code>pyproject.toml</code>來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
+<p>不過，總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如<code>pyproject.toml</code>來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
 
       </div>
       
