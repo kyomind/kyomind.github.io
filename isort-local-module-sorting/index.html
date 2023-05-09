@@ -146,18 +146,18 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#isort-%E6%9C%AC%E5%9C%B0%E6%A8%A1%E7%B5%84%E6%8E%92%E5%BA%8F%E9%8C%AF%E8%AA%A4"><span class="toc-text">isort 本地模組排序錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%EF%BC%9AVS-Code"><span class="toc-text">解法：VS Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%88%87-pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 與 pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%B8%B6%E4%B8%80%E6%8F%90"><span class="toc-text">附帶一提</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#isort-%E6%9C%AC%E5%9C%B0%E6%A8%A1%E7%B5%84%E6%8E%92%E5%BA%8F%E9%8C%AF%E8%AA%A4"><span class="toc-text">isort 本地模組排序錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%A7%A3%E6%B3%95"><span class="toc-text">VS Code 解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%88%87-pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 與 pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%B8%B6%E4%B8%80%E6%8F%90"><span class="toc-text">附帶一提</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/M6eKHe9.png"></p>
 <p><a target="_blank" rel="noopener" href="https://pycqa.github.io/isort/">isort</a> 是一個 Python 套件兼命令列工具，可以幫開發者自動排序 Python imports，以符合 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/#imports">PEP 8 規範</a>。這種排序也可以讓程式碼更加易讀且易於維護。</p>
-<p>之前已經有數篇文章介紹過，可參考本站的「<a href="/tags/isort/">isort 標籤頁</a>」。</p>
-<p>isort 會自動將 import 分為「<strong>Python 內建</strong>」、「<strong>第三方</strong>」、「<strong>本地</strong>」套件等三大區塊，並依<strong>字母順序</strong>排列，同時為你在三個區塊之間<strong>空一行</strong>。</p>
+<p>之前已有數篇文章介紹過，可參考本站的「<a href="/tags/isort/">isort 標籤頁</a>」。</p>
+<p>isort 會自動將 import 分為「<strong>Python 標準函式庫</strong>」、「<strong>第三方套件</strong>」、「<strong>本地模組</strong>」等三大區塊，並依<strong>字母順序</strong>排列，同時為你在三個區塊之間<strong>空一行</strong>。</p>
 <h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的判斷，有可能發生錯誤。</strong></p>
-<p>這會造成什麼結果？通常的影響是，本來應該排在第三區塊的 import，排到第二區塊去了。</p>
-<p>這樣除了不符合 PEP 8 規範，更重要的是，它還可能對開發者造成「誤導」。而且，會使用 isort 的人，往往就是在乎 import 排序的人，當然不可能接受這樣的錯誤。</p>
+<p>這會造成什麼結果？通常的影響是，<strong>本來應該排在第三區塊的 import，排到第二區塊去了。</strong>總之就是 import 放錯了區塊。</p>
+<p>這樣除了不符合 PEP 8 規範，更重要的是，它還可能對開發者造成「<strong>誤導</strong>」。而且會使用 isort 的人，往往就是在乎 import 排序的人，當然不能接受這樣的錯誤。</p>
 <span id="more"></span>
 
-<h2 id="解法：VS-Code"><a href="#解法：VS-Code" class="headerlink" title="解法：VS Code"></a>解法：VS Code</h2><p>第一次發現這個問題，是在 VS Code 的整合界面，在自動格式化時，發現本地模組被排到第三方去了。</p>
+<h2 id="VS-Code-解法"><a href="#VS-Code-解法" class="headerlink" title="VS Code 解法"></a>VS Code 解法</h2><p>第一次發現這個問題，是在 VS Code 的整合界面，在自動格式化時，發現本地模組被排到第三方去了。</p>
 <p>很自然的輸入關鍵字，比如「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=isort+wrong+order">isort wrong order</a>」，然後你就能找到這篇 issue：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-python/issues/14254">Wrong order in import when using sort imports in vscode</a></li>
@@ -169,11 +169,11 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;isort.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="pyproject-toml-與-pre-commit-設定"><a href="#pyproject-toml-與-pre-commit-設定" class="headerlink" title="pyproject.toml 與 pre-commit 設定"></a>pyproject.toml 與 pre-commit 設定</h2><p>有了 pre-commit 以後，僅設定 VS Code 是不夠的。即使 IDE 格式化的結果正確，若未設定 pre-commit 的 isort hook，仍可能受到阻擋。</p>
-<p>另外，在團隊開發時，使用支援 isort 的 pyproject.toml 來設定 isort 參數，明顯比所有成員各自設定其自己的 VS Code 更加可行。</p>
-<p>所以我們需要設定這兩者的 isort 參數。</p>
-<p>不過，顯然<code>pyproject.toml</code>和 pre-commit 不太可能是上述的<code>settings.json</code>設定的照抄。因為它們根本不知道<code>$&#123;workspaceFolder&#125;</code>是什麼。</p>
-<p>所以想必有別的做法。</p>
+<h2 id="pyproject-toml-與-pre-commit-設定"><a href="#pyproject-toml-與-pre-commit-設定" class="headerlink" title="pyproject.toml 與 pre-commit 設定"></a>pyproject.toml 與 pre-commit 設定</h2><p>在有了 pre-commit 以後，僅設定 VS Code 是不夠的。因為即使 IDE 格式化的結果正確，若未設定 pre-commit 的 isort hook，仍可能受到阻擋，造成衝突。</p>
+<p>另外，在團隊開發時，使用<code>pyproject.toml</code>來設定 isort 參數，明顯比所有成員各自設定其自己的 VS Code 更加可行。</p>
+<p>所以我們需要設定前述二者的 isort 參數。</p>
+<p>不過，仔細想想，顯然<code>pyproject.toml</code>和 pre-commit 的 isort 設定，不會是上述的<code>settings.json</code>的照抄。因為它們根本不知道<code>$&#123;workspaceFolder&#125;</code>是什麼。</p>
+<p>想必有別的做法。</p>
 <h3 id="pyproject-toml"><a href="#pyproject-toml" class="headerlink" title="pyproject.toml"></a>pyproject.toml</h3><p>設定如下，使用<code>src_paths = [&quot;.&quot;]</code>。</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">line_length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">src_paths</span> = [<span class="string">&quot;.&quot;</span>] <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
 

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
+    <loc>https://blog.kyomind.tw/isort-local-module-sorting/</loc>
     
     <lastmod>2023-05-09</lastmod>
     
@@ -11,7 +11,16 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/isort-local-module-sorting/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
+    
+    <lastmod>2023-05-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
     
     <lastmod>2023-05-09</lastmod>
     
@@ -39,15 +48,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/isort/</loc>
-    
-    <lastmod>2023-05-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2023-05-08</lastmod>
     
