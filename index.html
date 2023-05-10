@@ -147,7 +147,7 @@
 <p><a target="_blank" rel="noopener" href="https://pycqa.github.io/isort/">isort</a> 是一個 Python 套件兼命令列工具，可以幫開發者自動排序 Python imports，以符合 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/#imports">PEP 8 規範</a>。這種排序也可以讓程式碼更加易讀且易於維護。</p>
 <p>之前已有數篇文章介紹過，可參考本站的「<a href="/tags/isort/">isort 標籤頁</a>」。</p>
 <p>isort 會自動將 import 分為「<strong>Python 標準函式庫</strong>」、「<strong>第三方套件</strong>」、「<strong>本地模組</strong>」等三大區塊，並依<strong>字母順序</strong>排列，同時為你在三個區塊之間<strong>空一行</strong>。</p>
-<h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的判斷，有可能發生錯誤。</strong></p>
+<h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的「排序判斷」，有可能發生錯誤。</strong></p>
 <p>這會造成什麼結果？通常的影響是，<strong>本來應該排在第三區塊的 import，排到第二區塊去了。</strong>總之就是 import 放錯了區塊。</p>
 <p>這樣除了不符合 PEP 8 規範，更重要的是，它還可能對開發者造成「<strong>誤導</strong>」。而且會使用 isort 的人，往往就是在乎 import 排序的人，當然不能接受這樣的錯誤。</p>
           <div class="read-more">

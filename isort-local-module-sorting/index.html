@@ -152,13 +152,13 @@
 <p><a target="_blank" rel="noopener" href="https://pycqa.github.io/isort/">isort</a> 是一個 Python 套件兼命令列工具，可以幫開發者自動排序 Python imports，以符合 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/#imports">PEP 8 規範</a>。這種排序也可以讓程式碼更加易讀且易於維護。</p>
 <p>之前已有數篇文章介紹過，可參考本站的「<a href="/tags/isort/">isort 標籤頁</a>」。</p>
 <p>isort 會自動將 import 分為「<strong>Python 標準函式庫</strong>」、「<strong>第三方套件</strong>」、「<strong>本地模組</strong>」等三大區塊，並依<strong>字母順序</strong>排列，同時為你在三個區塊之間<strong>空一行</strong>。</p>
-<h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的判斷，有可能發生錯誤。</strong></p>
+<h2 id="isort-本地模組排序錯誤"><a href="#isort-本地模組排序錯誤" class="headerlink" title="isort 本地模組排序錯誤"></a>isort 本地模組排序錯誤</h2><p>isort 有一個 bug（我也不確定是不是 bug），就是<strong>對於本地模組的「排序判斷」，有可能發生錯誤。</strong></p>
 <p>這會造成什麼結果？通常的影響是，<strong>本來應該排在第三區塊的 import，排到第二區塊去了。</strong>總之就是 import 放錯了區塊。</p>
 <p>這樣除了不符合 PEP 8 規範，更重要的是，它還可能對開發者造成「<strong>誤導</strong>」。而且會使用 isort 的人，往往就是在乎 import 排序的人，當然不能接受這樣的錯誤。</p>
 <span id="more"></span>
 
-<h2 id="VS-Code-解法"><a href="#VS-Code-解法" class="headerlink" title="VS Code 解法"></a>VS Code 解法</h2><p>第一次發現這個問題，是在 VS Code 的整合界面，在自動格式化時，發現本地模組被排到第三方去了。</p>
-<p>很自然的輸入關鍵字，比如「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=isort+wrong+order">isort wrong order</a>」，然後你就能找到這篇 issue：</p>
+<h2 id="VS-Code-解法"><a href="#VS-Code-解法" class="headerlink" title="VS Code 解法"></a>VS Code 解法</h2><p>我第一次發現這個問題是在 VS Code 的整合界面，在自動格式化時，發現<strong>本地模組被錯誤地分類到了第三方模組</strong>。</p>
+<p>很自然的輸入關鍵字，比如「<a target="_blank" rel="noopener" href="https://www.google.com/search?q=isort+wrong+order">isort wrong order</a>」，你能找到這篇 issue：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-python/issues/14254">Wrong order in import when using sort imports in vscode</a></li>
 </ul>
@@ -181,7 +181,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/isort</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.11</span><span class="number">.5</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">isort</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--line-length=100</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--src=.</span> <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
 
 <p>基本上都是用「<code>.</code>」來代表專案根目錄。</p>
-<h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>VS Code 如果有 isort 設定，則會<strong>優先於 pyproject.toml</strong>，我不太理解這個邏輯，明明後者的適用範圍較小（僅限於專案），理論上愈小範圍應該要優先適用才對？使用時可留意一下兩者的設定是否存在衝突。</p>
+<h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>值得注意的是，如果 VS Code 有設定 isort，那這個設定將<strong>優先於<code>pyproject.toml</code>。</strong>這樣的邏輯我不太能理解，因為理論上愈小範圍應該要優先適用才對。讀者使用時，可留意一下兩者的設定是否存在衝突。</p>
 <p>我自己平常都是透過<code>settings.json</code>設定 isort，至於<code>pyproject.toml</code>，則是給團隊其餘沒有設定 VS Code 的人使用的。</p>
 <p>不過，總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如<code>pyproject.toml</code>來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
 
