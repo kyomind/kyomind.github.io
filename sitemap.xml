@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/pre-commit/</loc>
+    
+    <lastmod>2023-05-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
+    
+    <lastmod>2023-05-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
     
     <lastmod>2023-05-10</lastmod>
@@ -210,15 +228,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
-    
-    <lastmod>2023-05-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pre-commit/</loc>
     
     <lastmod>2023-05-08</lastmod>
     
@@ -497,15 +506,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -697,7 +697,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-05-10</lastmod>
+    <lastmod>2023-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
