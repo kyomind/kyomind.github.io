@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-05-10T05:41:40.865Z</updated>
+  <updated>2023-05-13T20:37:15.412Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>18，論軟體工程師常見的「路徑依賴」問題（上）</title>
+    <link href="https://blog.kyomind.tw/weekly-review-18/"/>
+    <id>https://blog.kyomind.tw/weekly-review-18/</id>
+    <published>2023-05-13T20:01:00.000Z</published>
+    <updated>2023-05-13T20:37:15.412Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>我常常覺得，軟體工程師可能是最能體現「<a href="https://zh.wikipedia.org/zh-tw/%E5%B7%A5%E5%85%B7%E8%A7%84%E5%BE%8B">當你手裡只有鎚子，看什麼都會像釘子</a>」的一群人😂</p><p>我們在工作中，有時會陷入一種被稱為「<a href="https://zh.wikipedia.org/zh-tw/%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96">路徑依賴</a>」的困境。本文將探討「路徑依賴」在軟體工程師的工作與職涯發展中，所造成的各種影響和受困者會有的具體表現。</p><p>或許會讓你感到有點熟悉。</p><h2 id="前言：何謂路徑依賴？"><a href="#前言：何謂路徑依賴？" class="headerlink" title="前言：何謂路徑依賴？"></a>前言：何謂路徑依賴？</h2><p>「路徑依賴」是一種社會科學的概念，用來描述一種現象，即一旦人們在某一方面選擇了特定的路徑或方式，他們就可能變得<strong>過度依賴這條路徑，並且可能難以改變。</strong></p><p>這種依賴性可能源於各種因素，包括習慣、成本、學習曲線等，並可能在多個層面上產生影響，包括個人的行為、團隊的運作，甚至是整個社會的結構和制度。</p><p>在這裡，我們將專注於討論「<strong>軟體工程師常見的路徑依賴</strong>」。以下的內容主要是基於我個人在工作上的觀察，可能會帶有一點偏見，但絕大部分都是基於事實。</p><span id="more"></span><h2 id="何謂軟體工程師的路徑依賴？"><a href="#何謂軟體工程師的路徑依賴？" class="headerlink" title="何謂軟體工程師的路徑依賴？"></a><strong>何謂軟體工程師的路徑依賴？</strong></h2><p>文章標題與開頭把「路徑依賴」稱之為是一種「<strong>困境</strong>」，這樣的論述可能有失公允。</p><p>畢竟，人都會依賴某些路徑，這往往可以大幅提高效率，也是專業發展的基礎。</p><p>所以嚴格來說，本文要討論的，是軟體工程師在工作與職涯中，那些「<strong>造成不良影響</strong>」的路徑依賴。</p><p>這類依賴帶來了<strong>一系列問題</strong>，例如<strong>低效率的產出、溝通不順暢，甚至限制了我們的視野</strong>。因此，對於軟體工程師來說，了解這些路徑依賴的存在，確實有其必要。</p><p>接下來，我將從我自己以及我曾接觸和共事過的軟體工程師身上，舉出四個常見的路徑依賴觀察案例。</p><p>而且它們會是「<strong>層層遞進</strong>」的關係，從底層的工作細節，到上層的個人職涯選擇，我們無不受到「<strong>軟體工程師</strong>」這個角色的影響（或說「<strong>限制</strong>」）。</p><p>不過礙於篇幅，我們這期<strong>只先講前兩個</strong>。</p><hr><h2 id="一、程式碼註解的路徑依賴"><a href="#一、程式碼註解的路徑依賴" class="headerlink" title="一、程式碼註解的路徑依賴"></a>一、程式碼註解的路徑依賴</h2><p>首先，我們來看看軟體工程師在<a href="https://zh.wikipedia.org/zh-tw/%E8%A8%BB%E8%A7%A3_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)">程式碼註解</a>（請容我把 Python 中的 <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">docstring</a> 也包含在這裡的註解一詞，因為它們本質相近）時如何表現出「<strong>不良的路徑依賴</strong>」。</p><p>所謂的「程式碼註解」，指的是在程式碼中<strong>以特定格式或符號添加的文字或說明</strong>，用於解釋程式碼的功能、邏輯或用途。</p><p>程式碼註解是為了提供給開發人員或其他讀者（通常是一起開發的工程師）更容易理解和閱讀本段程式碼的<strong>附加資訊</strong>。它們<strong>不會影響程式的執行</strong>，但對於增進開發上的溝通與協作效率，有著重要地位，尤其是程式中<strong>特別複雜</strong>的部分。</p><p>註解通常使用自然語言（例如英文、中文）撰寫，而且要力求好讀、好懂、好理解。</p><p>某些工程師，在撰寫註解時，容易過度依賴程式碼的「實作細節」來表達（比如「用 excutemany 大量插入資料至 User Table），而非使用<strong>清晰簡潔的自然語言</strong>（比如「將用戶資料存入資料庫）。</p><p>為什麼？因為他們「<strong>比較擅長</strong>」寫程式，而非文字表達。</p><p>這種在思考與陳述上，<strong>嚴重依賴程式碼邏輯</strong>的表達方式，常常導致註解<strong>難以理解</strong>、重複程式碼的內容（即<strong>冗餘的註解</strong>），甚至可能<strong>產生混淆</strong>。</p><h2 id="為什麼作者都需要好的編輯？"><a href="#為什麼作者都需要好的編輯？" class="headerlink" title="為什麼作者都需要好的編輯？"></a>為什麼作者都需要好的編輯？</h2><p>你可能會想說：「這不就提醒並請對方注意一下就好了？自己的文字好不好懂，應該很容易看得出來吧！」可惜，事實往往不是如此。</p><p>對於開發程式的「當事人」而言，即使註解中夾雜了大量不必要的程式細節，自己也常常會<strong>深陷其中，難以察覺</strong>，甚至覺得看起來<strong>很合理</strong>！——這就是為什麼作者都需要好的編輯，因為自身的盲點是很難完全發現並避免的。</p><p>少部分工程師甚至會覺得「我有寫完程式邏輯且執行結果正確」就算稱職了。至於註解有沒有寫、寫得好不好，不能算是評價我工作品質的範圍與指標。</p><p>這想法不能說毫無道理，只不過，寫程式若只顧自己，終究難登大雅之堂。這些程式碼看起來就像<strong>一個人的自言自語</strong>（只要自己有完成任務就好）——<strong>它並沒有在溝通</strong>。</p><p>這樣的心態不會只有在一處出現，事實上，<strong>它的影響無所不在</strong>。我們繼續往下看，看看上述心態在繼續往上一層延伸後，所表現出的特徵——工作表達方式上的路徑依賴。</p><h2 id="二、工作表達方式上的路徑依賴"><a href="#二、工作表達方式上的路徑依賴" class="headerlink" title="二、工作表達方式上的路徑依賴"></a>二、工作表達方式上的路徑依賴</h2><p>看完第一個路徑依賴，我想你已經能猜到，這第二個會是什麼模樣了。</p><p>很多軟體 PM 在會議中常常會覺得，聽不太懂工程師在說些什麼。而我想說的是，你的感覺是對的！其實我也聽不懂。</p><p>既然寫註解、docstring 這種應該要用「簡潔清晰的自然語言」表達的場合，都容易<strong>藉由程式邏輯與實作細節含混帶過</strong>。那麼軟體工程師在會議中的表達，自然也會受到此「慣性」影響。</p><p>以我個人的經驗，工程師在描述自己工作上的要解決的問題、解決方式、可能的方向、已完成的任務等等，真的非常容易陷入這種路徑上的依賴。</p><p>其結果就跟前面提到的程式碼註解一樣，你不會覺得對方是在講「人話」，而是一種對技術方案、程式邏輯的「<strong>輪廓描述</strong>」。</p><p>至於所解決的問題、背後的痛點，究竟是什麼？選擇的依據為何？常常會直接予以忽略——因為他們滿腦子都是技術思維。導致重點還沒說清楚，相關細節卻講了一堆，本末倒置。</p><h2 id="請說人話"><a href="#請說人話" class="headerlink" title="請說人話"></a>請說人話</h2><p>前面說，不好的程式碼註解，就像一個人的自言自語。而這樣的表達模式，又何嘗不是如此？導致我們常常需要提醒對方「等等！我想要先知道的是……」</p><p>不過平心而論，良好的表達對任何人都不容易，都需要一定的練習。</p><p>只不過軟體工程師基於職業上的特性，在感到<strong>表達困難</strong>的當下，<strong>容易反射性地躲回自己熟悉的技術與專業領域，以求得一定的自適與安全感。</strong></p><p>這無疑會讓沒有技術背景的人，感到困惑和隔閡。</p><hr><h2 id="小結：讀者意識的欠缺"><a href="#小結：讀者意識的欠缺" class="headerlink" title="小結：讀者意識的欠缺"></a>小結：讀者意識的欠缺</h2><p>講完前兩項，本篇要收尾了，我們先來個小結。</p><p>前兩個路徑依賴凸顯的都是當事人對於「<strong>他人很可能會不理解</strong>」這個意識的強烈欠缺，如果是一個寫作者，那就是「讀者意識不足」——寫出來的文章<strong>只有自己看得懂</strong>。</p><p>我很想說「本文只是指出少數軟體工程師在工作上……」，但你我都知道（這裡的「你我」指的是工程師群體），說「少」恐怕是騙人的。</p><p>「讀者意識的欠缺」在軟體工程師中確實是一個<strong>普遍存在的問題</strong>。有時候，我們可能過於專注於自己的程式碼和技術細節，而忽略了將這些複雜的概念和思維以易於理解的方式傳達給他人。</p><p>我也不敢說自己已經完全擺脫了上述的困境，在「讓自己與自己的工作產出容易被他人理解」這個面向上，我們還可以不斷努力，一直努力。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我常常覺得，軟體工程師可能是最能體現「&lt;a href=&quot;https://zh.wikipedia.org/zh-tw/%E5%B7%A5%E5%85%B7%E8%A7%84%E5%BE%8B&quot;&gt;當你手裡只有鎚子，看什麼都會像釘子&lt;/a&gt;」的一群人😂&lt;/p&gt;
+&lt;p&gt;我們在工作中，有時會陷入一種被稱為「&lt;a href=&quot;https://zh.wikipedia.org/zh-tw/%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96&quot;&gt;路徑依賴&lt;/a&gt;」的困境。本文將探討「路徑依賴」在軟體工程師的工作與職涯發展中，所造成的各種影響和受困者會有的具體表現。&lt;/p&gt;
+&lt;p&gt;或許會讓你感到有點熟悉。&lt;/p&gt;
+&lt;h2 id=&quot;前言：何謂路徑依賴？&quot;&gt;&lt;a href=&quot;#前言：何謂路徑依賴？&quot; class=&quot;headerlink&quot; title=&quot;前言：何謂路徑依賴？&quot;&gt;&lt;/a&gt;前言：何謂路徑依賴？&lt;/h2&gt;&lt;p&gt;「路徑依賴」是一種社會科學的概念，用來描述一種現象，即一旦人們在某一方面選擇了特定的路徑或方式，他們就可能變得&lt;strong&gt;過度依賴這條路徑，並且可能難以改變。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;這種依賴性可能源於各種因素，包括習慣、成本、學習曲線等，並可能在多個層面上產生影響，包括個人的行為、團隊的運作，甚至是整個社會的結構和制度。&lt;/p&gt;
+&lt;p&gt;在這裡，我們將專注於討論「&lt;strong&gt;軟體工程師常見的路徑依賴&lt;/strong&gt;」。以下的內容主要是基於我個人在工作上的觀察，可能會帶有一點偏見，但絕大部分都是基於事實。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</title>
@@ -348,37 +375,6 @@
     <category term="清單式筆記" scheme="https://blog.kyomind.tw/tags/%E6%B8%85%E5%96%AE%E5%BC%8F%E7%AD%86%E8%A8%98/"/>
     
     <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>12，blog 新增文章訂閱功能——使用 follow.it——與我的思考</title>
-    <link href="https://blog.kyomind.tw/weekly-review-12/"/>
-    <id>https://blog.kyomind.tw/weekly-review-12/</id>
-    <published>2023-02-25T11:25:27.000Z</published>
-    <updated>2023-05-10T11:41:33.227Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>在臉書、YouTube 這類「流量大平台」興起之後，很多創作者雖然因此獲得不少流量甚至一夕爆紅，但對<strong>平台演算法</strong>的心情，仍然是愛恨交加。</p><p>在文字創作領域，為了對抗平台與演算法，古老的<strong>電子報</strong>也迎來了一波「<strong>文藝復興</strong>」，造就了一堆電子報服務提供者，比如 <a href="https://mailchimp.com/">Mailchimp</a>、<a href="https://convertkit.com/">Convertkit</a>。</p><p>它們讓作者可以直接把內容透過 email 發送給讀者，強化了兩者間的直接連繫。</p><p>因此，你可以看到愈來愈多的部落格，都有提供電子報訂閱功能。可能是推送最新文章給你，也可能是更多額外的內容。</p><p>更別說像 <a href="https://substack.com/">Substack</a> 這樣「<strong>部落格、電子報——我全都要</strong>」的數位出版服務。</p><p>說這些主要想表達：「<strong>訂閱功能</strong>」確實是現代部落格的一大需求。</p><span id="more"></span><hr><h2 id="我也為部落格新增了文章訂閱功能——使用-follow-it"><a href="#我也為部落格新增了文章訂閱功能——使用-follow-it" class="headerlink" title="我也為部落格新增了文章訂閱功能——使用 follow.it"></a>我也為部落格新增了文章訂閱功能——使用 follow.it</h2><p>如果你有用過電子報服務，那想必很清楚，它們都有一個共同特色：收費不便宜。</p><p>雖然在一定的訂戶額度、發信量內是不用錢的，但一旦流量提升，隨之而來的費用也相當可觀。</p><p>不同於一些很重視電子報訂閱的 blog，對我來說，我的 email 訂閱主要是方便想收到<strong>新文章通知</strong>，但不想或沒在用「<a href="https://zh.wikipedia.org/zh-tw/RSS">RSS</a> 閱讀器」服務的讀者。</p><p>因此，對我來說，使用一般的電子報供應商可能有些「殺雞用牛刀」——我需要更簡潔的方案，但一直沒有找到合適的選擇。</p><p>直到某天，我在哆啦王的臉書看到<a href="https://www.facebook.com/FfaarrFinance/posts/pfbid0m7TpUSiE3Y2cfFfUpAph4Mq9Gw9pFUfyTbGC3EutxVbhhbdJmhDekRo9jBPD1jS1l">這篇</a>：</p><blockquote><p>雖然我在部落格發文之後，都會也在facebook這邊分享，但之前有讀者覺得因為fb常常觸及不到，所以建議來做一個文章訂閱，因此目前在我部落格的右上角，增設了使用follow.it這個網站的訂閱按鈕，輸入e-mail後按下送出之後，信箱會收到一封follow.it的確認信件，點擊確認之後即完成訂閱文章。</p></blockquote><p>感謝哆啦王！讓我此從知道了 <a href="https://follow.it/">follow.it</a> 這個服務——這不就是我一直在找的嗎？</p><h2 id="follow-it-的優勢與缺點"><a href="#follow-it-的優勢與缺點" class="headerlink" title="follow.it 的優勢與缺點"></a>follow.it 的優勢與缺點</h2><p>follow.it 的主要功能，是幫你把網站的 RSS feed 內容轉成電子報發送。要說它屬於前述 Mailchimp 那種電子報服務，是，但也不完全是。</p><p>它的角色核心比較側重於「<strong>透過 RSS feed 轉 email，輔助並完善網站的內容訂閱</strong>」，而上述的電子報供應商，不一定要你有部落格或 RSS。</p><p>相反的，使用 <a href="http://follow.it/">follow.it</a>，你必須提供 RSS feed 才行。（不然沒有東西可以轉）</p><p><a href="http://follow.it/">follow.it</a> 可以免費使用，而且相比於傳統電子報服務，它的免費方案和 Substack 相同——<strong>沒有訂閱人數限制！</strong>這無疑是免費仔的福音。</p><p>但先別高興得太早，它自然有<strong>別的限制</strong>來促使你付費。比如對電子報而言，舉足輕重的「<strong>email 標題</strong>」和「<strong>寄件者</strong>」欄位，在免費方案裡，都是<strong>無法自訂</strong>的！</p><p>不得不承認這確實有點「<strong>痛</strong>」，難怪可以不限人數，卻不怕你不付費。😂</p><p><img src="https://i.imgur.com/Icrn8xh.png" alt="天下果然沒有白吃的午餐"><span class="cap">天下果然沒有白吃的午餐</span></p><p>透過付費可以得到更多額外的 email 客製化功能，這樣就會愈來愈像真正的電子報了。但老實說，如果要付費，我會選擇<strong>專業的電子報服務</strong>，比如 <a href="https://buttondown.email/">Buttondown</a>。😎</p><hr><h2 id="我對電子報的思考"><a href="#我對電子報的思考" class="headerlink" title="我對電子報的思考"></a>我對電子報的思考</h2><p>就我所知，有些 blog 非常重視透過電子報和讀者互動。比如「<a href="https://pinchlime.com/">Pin 起來</a>」，不僅提供所有文章的電子報訂閱，甚至能讓你<a href="https://pinchlime.com/subscribe/">只訂閱部分內容</a>，可謂非常用心。</p><p>對現階段的我而言，文章訂閱型的電子報僅屬於「<strong>輔助</strong>」地位，基於軟體工程師的簡潔信仰，我一直有意避開上述那些電子報供應商方案。</p><p>本來還想要自己寫（程式），但問過有類似經驗的同事後，才知道土砲（DIY）最難的地方反而是「如何讓 gmail 不把你的電子報歸到垃圾信」——好吧！我放棄XD。</p><p>確定採用 <a href="http://follow.it/">follow.it</a> 後，還有兩個點也讓我掙扎了一番。</p><h2 id="一、是否附上全文？"><a href="#一、是否附上全文？" class="headerlink" title="一、是否附上全文？"></a>一、是否附上全文？</h2><p>我一開始是設定<strong>只顯示文章開頭部分</strong>，然後附上文章連結。心裡打的算盤當然是——「你要看全文就要來站上喔！」這樣瀏覽數會好看一點。</p><p>但仔細想想，這真的很蠢。</p><p>一來是有這類訂閱需求的人就已經很少了，如果還吝於把全文放在 email 裡，實在有些可笑。</p><p>再說，這些 email 內容都是透過 <a href="http://follow.it/">follow.it</a> 從我的 RSS feed 自動轉換過來的，既然 RSS 提供的就是全文，那希望讓讀者<strong>更加方便、好用</strong>的 email 管道，何必再自我閹割？</p><p>追根究柢，到底要在 email 裡讀完，還是到到網站上看，這個「選擇權」應該留給讀者才對。</p><p>所以，後來我就改成全文發送了。</p><h2 id="二、訂閱按鈕放哪好？"><a href="#二、訂閱按鈕放哪好？" class="headerlink" title="二、訂閱按鈕放哪好？"></a>二、訂閱按鈕放哪好？</h2><p>這是另一個有趣且<strong>不可小覷</strong>的議題。</p><p>最常見的方式是放在每一篇文章的<strong>結尾處</strong>，或像<a href="https://finance.ffaarr.com.tw/">哆啦王</a>那樣，放在<strong>側邊欄的 widget</strong>，讓每一篇文章都能看到。</p><p>這樣做無疑能最大化訂戶的數量，因為位置顯眼，讀者想不看到都難，有興趣的人自然就會訂了。</p><p>不過我還是捨棄了上述兩種方案，因為兩者都會一定程度地影響我<strong>文章版面的美感</strong>。</p><p>而且，假設我是讀者，如果我不是很想訂，但願意多看看站上的文章，結果每篇文章結尾都在 push 我訂閱，看著就有點煩。</p><p>或者，我已經訂了，但依舊要繼續看到這些佔空間的訂閱按鈕，也是有點煩。</p><p>所以想了想，我還是把訂閱區塊獨立一個<a href="https://blog.kyomind.tw/subscribe/">分頁</a>，這樣至少它在版面上，只會佔用<strong>兩個字</strong>，把視覺上的妨礙降到最低。</p><p>而且因為分頁已經有點多，為了維持<strong>簡潔的美感</strong>，我同時也拿掉了「首頁」這個連結——其實按左上角的「<a href="https://blog.kyomind.tw/">Code and Me</a>」就能回到首頁。</p><hr><p>看到這裡，不考慮<a href="https://blog.kyomind.tw/subscribe/">訂一下</a>嗎？👀</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在臉書、YouTube 這類「流量大平台」興起之後，很多創作者雖然因此獲得不少流量甚至一夕爆紅，但對&lt;strong&gt;平台演算法&lt;/strong&gt;的心情，仍然是愛恨交加。&lt;/p&gt;
-&lt;p&gt;在文字創作領域，為了對抗平台與演算法，古老的&lt;strong&gt;電子報&lt;/strong&gt;也迎來了一波「&lt;strong&gt;文藝復興&lt;/strong&gt;」，造就了一堆電子報服務提供者，比如 &lt;a href=&quot;https://mailchimp.com/&quot;&gt;Mailchimp&lt;/a&gt;、&lt;a href=&quot;https://convertkit.com/&quot;&gt;Convertkit&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;它們讓作者可以直接把內容透過 email 發送給讀者，強化了兩者間的直接連繫。&lt;/p&gt;
-&lt;p&gt;因此，你可以看到愈來愈多的部落格，都有提供電子報訂閱功能。可能是推送最新文章給你，也可能是更多額外的內容。&lt;/p&gt;
-&lt;p&gt;更別說像 &lt;a href=&quot;https://substack.com/&quot;&gt;Substack&lt;/a&gt; 這樣「&lt;strong&gt;部落格、電子報——我全都要&lt;/strong&gt;」的數位出版服務。&lt;/p&gt;
-&lt;p&gt;說這些主要想表達：「&lt;strong&gt;訂閱功能&lt;/strong&gt;」確實是現代部落格的一大需求。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
-    
-    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
-    
-    <category term="電子報" scheme="https://blog.kyomind.tw/tags/%E9%9B%BB%E5%AD%90%E5%A0%B1/"/>
     
   </entry>
   
