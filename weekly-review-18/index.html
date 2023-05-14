@@ -146,7 +146,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%BD%95%E8%AC%82%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">前言：何謂路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E8%AC%82%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">何謂軟體工程師的路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A8%8B%E5%BC%8F%E7%A2%BC%E8%A8%BB%E8%A7%A3%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">一、程式碼註解的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%9C%E8%80%85%E9%83%BD%E9%9C%80%E8%A6%81%E5%A5%BD%E7%9A%84%E7%B7%A8%E8%BC%AF%EF%BC%9F"><span class="toc-text">為什麼作者都需要好的編輯？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E9%81%94%E6%96%B9%E5%BC%8F%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">二、工作表達方式上的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AB%8B%E8%AA%AA%E4%BA%BA%E8%A9%B1"><span class="toc-text">請說人話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E8%AE%80%E8%80%85%E6%84%8F%E8%AD%98%E7%9A%84%E6%AC%A0%E7%BC%BA"><span class="toc-text">小結：讀者意識的欠缺</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%BD%95%E8%AC%82%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">前言：何謂路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E8%AC%82%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">何謂軟體工程師的路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A8%8B%E5%BC%8F%E7%A2%BC%E8%A8%BB%E8%A7%A3%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">一、程式碼註解的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E9%81%94%E6%96%B9%E5%BC%8F%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">二、工作表達方式上的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E8%AE%80%E8%80%85%E6%84%8F%E8%AD%98%E7%9A%84%E6%AC%A0%E7%BC%BA"><span class="toc-text">小結：讀者意識的欠缺</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/sWgUbzT.png"></p>
 <p>我常常覺得，軟體工程師可能是最能體現「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B7%A5%E5%85%B7%E8%A7%84%E5%BE%8B">當你手裡只有鎚子，看什麼都會像釘子</a>」的一群人😂</p>
@@ -172,18 +172,20 @@
 <p>某些工程師，在撰寫註解時，容易過度依賴程式碼的「實作細節」來表達（比如「用 excutemany 大量插入資料至 User Table），而非使用<strong>簡潔清晰的自然語言</strong>（比如「將用戶資料存入資料庫）。</p>
 <p>為什麼？因為他們「<strong>比較擅長</strong>」寫程式，而非文字表達。</p>
 <p>這種在思考與陳述上，<strong>嚴重依賴程式碼邏輯</strong>的表達方式，常常導致註解<strong>難以理解</strong>、重複程式碼的內容（即<strong>冗餘的註解</strong>），甚至可能<strong>產生混淆</strong>。</p>
-<h2 id="為什麼作者都需要好的編輯？"><a href="#為什麼作者都需要好的編輯？" class="headerlink" title="為什麼作者都需要好的編輯？"></a>為什麼作者都需要好的編輯？</h2><p>你可能會認為：「只要提醒對方注意一下，問題就解決了吧？自己的文字是否易懂，應該很容易看得出來吧！」可惜，事實往往不是如此。</p>
+<h3 id="為什麼作者都需要好的編輯？"><a href="#為什麼作者都需要好的編輯？" class="headerlink" title="為什麼作者都需要好的編輯？"></a>為什麼作者都需要好的編輯？</h3><p>你可能會認為：「只要提醒對方注意一下，問題就解決了吧？自己的文字是否易懂，應該很容易看得出來吧！」可惜，事實往往不是如此。</p>
 <p>對於開發程式的「當事人」而言，即使註解中夾雜了大量不必要的程式細節，自己也常常會<strong>深陷其中，難以察覺</strong>，甚至覺得看起來<strong>很合理</strong>！——這就是為什麼作者都需要好的編輯，因為<strong>自身的盲點是很難完全發現並避免的</strong>。</p>
 <p>少部分工程師甚至會覺得「我的程式能跑且執行結果正確」就算稱職了。至於註解有沒有寫、寫得好不好，不能算是評價我工作品質的範圍與指標。</p>
 <p>這想法不能說毫無道理，只不過，寫程式若只顧自己，終究難登大雅之堂。這些程式碼看起來就像是<strong>一個人的自言自語</strong>（只要自己有完成任務就好）——<strong>它並沒有在溝通</strong>。</p>
-<p>這樣的心態絕不會只在一處出現，事實上，<strong>它的影響無所不在</strong>。我們繼續往下看，看看此心態在<strong>往上一層延伸</strong>後，所表現出的特徵——工作表達方式上的路徑依賴。</p>
+<h3 id="程式碼註解只是一個例子"><a href="#程式碼註解只是一個例子" class="headerlink" title="程式碼註解只是一個例子"></a>程式碼註解只是一個例子</h3><p>本段以「程式碼註解」為例，試圖說明工程師在「撰寫易讀程式碼」的路上常見的路徑依賴（可以說是一種協作上的「阻礙」）。</p>
+<p>然而，這種「<strong>缺乏溝通意識</strong>」所帶來的影響，不僅存在於註解中，<strong>也往往貫穿整個程式寫作過程</strong>。</p>
+<p>事實上，這種心態的影響更是<strong>遠遠超越了程式碼層面</strong>。下一段我們將討論，這種心態在「<strong>工作表達方式</strong>」上所體現出的路徑依賴特徵。</p>
 <h2 id="二、工作表達方式上的路徑依賴"><a href="#二、工作表達方式上的路徑依賴" class="headerlink" title="二、工作表達方式上的路徑依賴"></a>二、工作表達方式上的路徑依賴</h2><p>看完第一個路徑依賴，我想你已經能猜到，這第二個會是什麼模樣了。</p>
 <p>很多軟體 PM 在會議中常常會覺得，聽不太懂工程師在說些什麼。而我想說的是，你的感覺是對的！其實我也聽不懂。</p>
 <p>既然寫註解、docstring 這種應該要用「簡潔清晰的自然語言」表達的場合，都容易<strong>藉由程式邏輯與實作細節含混帶過</strong>。那麼軟體工程師在會議中的表達，自然也會受到此「慣性」影響。</p>
 <p>以我個人的經驗，工程師在描述自己工作上的要解決的問題、解決方式、可能的方向、已完成的任務等等，真的非常容易陷入這種路徑上的依賴。</p>
 <p>其結果就跟前面提到的程式碼註解一樣，你不會覺得對方是在講「人話」，而是一種對技術方案、程式邏輯的「<strong>輪廓描述</strong>」。</p>
 <p>至於所解決的問題、背後的痛點，究竟是什麼？選擇的依據為何？常常會直接予以忽略——因為他們滿腦子都是技術思維。導致重點還沒說清楚，相關細節卻講了一堆，本末倒置。</p>
-<h2 id="請說人話"><a href="#請說人話" class="headerlink" title="請說人話"></a>請說人話</h2><p>前面提到，不好的程式碼註解，就像一個人的自言自語。而這樣的表達方式，又何嘗不是如此？導致我們常常需要提醒對方「等等！我想要先知道的是……」</p>
+<h3 id="請說人話"><a href="#請說人話" class="headerlink" title="請說人話"></a>請說人話</h3><p>前面提到，不好的程式碼註解，就像一個人的自言自語。而這樣的表達方式，又何嘗不是如此？導致我們常常需要提醒對方「等等！我想要先知道的是……」</p>
 <p>不過平心而論，良好的溝通、表達，對任何人都不容易，都需要一定的練習。</p>
 <p>只不過軟體工程師基於職業上的特性，在感到<strong>表達困難</strong>的當下，<strong>容易反射性地躲回自己熟悉的技術與專業領域，以求得一定的自適與安全感。</strong></p>
 <p>這無疑會讓沒有技術背景的人，感到困惑和隔閡。</p>
