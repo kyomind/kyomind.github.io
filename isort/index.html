@@ -187,6 +187,14 @@
 <li><code>from import</code>內容超過設定「<strong>單行字元上限</strong>」時，會幫你<strong>自動添加括號</strong>，目的是為了<strong>優雅地換行</strong>（但邏輯上仍屬同一行）！相反地，在移除項目後，又符合單行上限時，則會<strong>自動取消括號，回復成單行</strong>。這功能真是太美妙了。😇</li>
 </ol>
 <p>如果上述 3 點皆未讓你感到心動，那或許就真的不需要它了。</p>
+<h3 id="自動整合相同模組的-import"><a href="#自動整合相同模組的-import" class="headerlink" title="自動整合相同模組的 import"></a>自動整合相同模組的 import</h3><blockquote>
+<p><code>2023/05/15</code>補充：還有一個我覺得也很不錯的特性，就是「<strong>自動整合相同模組的 import</strong>」</p>
+</blockquote>
+<p>比如你本來有下列這兩行 import，其中一行很可能是<strong>後來才加的，你未必有注意到，兩者其實來自相同的模組</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> FileExtensionValidator</span><br><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> MaxLengthValidator</span><br></pre></td></tr></table></figure>
+<p>但因為它們都是來自<code>django.core.validators</code>，所以 isort 會幫你整合成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> FileExtensionValidator, MaxLengthValidator</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h2 id="VS-Code-isort-套件簡介"><a href="#VS-Code-isort-套件簡介" class="headerlink" title="VS Code isort 套件簡介"></a>VS Code isort 套件簡介</h2><p>如前所述，isort 是一個命令列工具，而 VS Code isort 套件，則是對 isort 進行<strong>封裝</strong>，以方便和 VS Code 整合使用。</p>
 <p>換句話說，這套件的核心，仍然是 isort package。</p>
