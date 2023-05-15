@@ -190,8 +190,8 @@
 <h3 id="自動整合相同模組的-import"><a href="#自動整合相同模組的-import" class="headerlink" title="自動整合相同模組的 import"></a>自動整合相同模組的 import</h3><blockquote>
 <p><code>2023/05/15</code>補充：還有一個我覺得也很不錯的特性，就是「<strong>自動整合相同模組的 import</strong>」</p>
 </blockquote>
-<p>比如你本來有下列這兩行 import，其中一行很可能是<strong>後來才加的，你未必有注意到，兩者其實來自相同的模組</strong>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> FileExtensionValidator</span><br><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> MaxLengthValidator</span><br></pre></td></tr></table></figure>
+<p>比如你本來有下列這兩行 import，其中一行很可能是<strong>後來才加的，你未必有注意到兩者來自相同的模組</strong>（當導入的元件眾多，或相距較遠時，很可能會漏看)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> FileExtensionValidator</span><br><span class="line">...</span><br><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> MaxLengthValidator</span><br></pre></td></tr></table></figure>
 <p>但因為它們都是來自<code>django.core.validators</code>，所以 isort 會幫你整合成：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.validators <span class="keyword">import</span> FileExtensionValidator, MaxLengthValidator</span><br></pre></td></tr></table></figure>
 
