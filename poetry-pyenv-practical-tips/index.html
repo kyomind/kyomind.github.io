@@ -214,13 +214,13 @@
 
 <p>可以看到其中有一行「<code>readme = &quot;README.md&quot;</code>」，此時專案必須有<code>README.md</code>不然會找不到檔案，我都直接刪除該行比較省事。</p>
 <h3 id="使用poetry-new快速初始化"><a href="#使用poetry-new快速初始化" class="headerlink" title="使用poetry new快速初始化"></a>使用<code>poetry new</code>快速初始化</h3><p>要達到專案初始化的效果，你也可以直接用<code>poetry new poetry-demo</code>指令，這樣更快速！不過它會幫你做「更多事」，細節請參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/basic-usage/#project-setup">文件</a>。</p>
-<h2 id="二、為專案建立-Python-虛擬環境"><a href="#二、為專案建立-Python-虛擬環境" class="headerlink" title="二、為專案建立 Python 虛擬環境"></a>二、為專案建立 Python 虛擬環境</h2><p>這裡是「重頭戲」之一，但做法上並不是那麼「直觀」。僅使用 pyenv 的前提下，使用<code>pyenv-virtualenv</code>套件來建立虛擬環境，確實不難。</p>
+<h2 id="二、為專案建立-Python-虛擬環境"><a href="#二、為專案建立-Python-虛擬環境" class="headerlink" title="二、為專案建立 Python 虛擬環境"></a>二、為專案建立 Python 虛擬環境</h2><p>這裡是「重頭戲」之一，但做法上並不是那麼「直觀」，常常容易讓人混淆。僅使用 pyenv 的前提下，再安裝<code>pyenv-virtualenv</code>來建立虛擬環境，確實不難。</p>
 <p>但現在有了 Poetry，兩者的搭配使用方式就很重要，這也是為什麼我一再強調，有了 Poetry，乾脆就不要再裝<code>pyenv-virtualenv</code>了。</p>
-<p>前一篇文章中，雖然<code>poetry shell</code>有時候可以替代<code>poetry env use</code>，作為建立虛擬環境的便捷手段。</p>
+<p>第一篇文章中，雖然<code>poetry shell</code>有時候可以替代<code>poetry env use</code>，作為快速建立虛擬環境的便捷手段。</p>
 <p>但是，當你還沒有為專案建立虛擬環境，且作業系統中包含了不止一個 Python 版本時，建議就不要用<code>poetry shell</code>來建立虛擬環境——因為它很可能會選擇不是你要的 Python 版本。</p>
 <p>儘管我們使用 pyenv 來管理 Python，但完整的 Linux 發行版往往都自帶了系統的 Python。比如我的 Ubuntu 就自帶了 3.8.x，這正是為何上面<code>pyprojcet.toml</code>會有一行「<code>python = &quot;^3.8&quot;</code>」而不是<code>^3.10</code>——因為 Poetry 偵測到的是系統預設的 Python，而不是 pyenv 的 Poetry。</p>
-<p>換句話說，無論透過 pyenv 安裝了幾個 Python 版本，這些資訊對 Poetry 而言，仍可能是陌生的。</p>
-<p>為了讓 Poetry 在建立虛擬環境時，確實使用你想要的 Python 版本，我們必須善用<code>poetry env use</code>指令才行。</p>
+<p>換句話說，無論透過 pyenv 安裝了幾個 Python 版本，<strong>這些資訊對 Poetry 而言，仍可能是陌生的。</strong></p>
+<p>為了讓 Poetry 在建立虛擬環境時，確實地使用你想要的 Python 版本，我們必須善用<code>poetry env use</code>指令才行。</p>
 <h2 id="三、確定專案使用的-Python-版本"><a href="#三、確定專案使用的-Python-版本" class="headerlink" title="三、確定專案使用的 Python 版本"></a>三、確定專案使用的 Python 版本</h2><p><a href="https://blog.kyomind.tw/python-poetry/">上篇文章</a>中提到：</p>
 <blockquote>
 <p>我覺得學習 Poetry 的<strong>第一道關卡</strong>，就是它對於<strong>虛擬環境</strong>的管理。</p>
@@ -240,7 +240,7 @@
 <li>將<code>virtualenvs.prefer-active-python</code>設為<code>true</code>。</li>
 <li>使用 pyenv 的<code>pyenv local</code>指令。</li>
 </ol>
-<h3 id="更簡單的做法：poetry-env-use"><a href="#更簡單的做法：poetry-env-use" class="headerlink" title="更簡單的做法：poetry env use"></a>更簡單的做法：<code>poetry env use</code></h3><p>如果你只需要一個版本的 Python，且已經將其設定為<code>global</code>，那麼前述的<code>virtualenvs.prefer-active-python</code>設定或可省略。</p>
+<h3 id="更簡單的做法：poetry-env-use"><a href="#更簡單的做法：poetry-env-use" class="headerlink" title="更簡單的做法：poetry env use"></a>更簡單的做法：<code>poetry env use</code></h3><p>如果你只確定需要「<strong>一個</strong>」Python 版本，且已經將其設定為<code>global</code>，那麼前述的<code>virtualenvs.prefer-active-python</code>設定，或可省略。</p>
 <p><code>poetry env use</code>有下列幾種用法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use /full/path/to/python</span><br></pre></td></tr></table></figure>
 
@@ -251,14 +251,17 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use 3.7</span><br></pre></td></tr></table></figure>
 
 <p>後三者的<code>python</code>、<code>python3.7</code>或<code>3.7</code>，都和你的<code>PATH</code>有關。</p>
-<p>換句話說，如果你在終端機打<code>python3.7</code>，有成功進入「Python 互動式視窗」，那就表示這個版本的 Python 確實存在<code>PATH</code>中。</p>
+<p>換句話說，如果你在終端機打<code>python3.7</code>，有成功進入「<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/visualstudio/python/python-interactive-repl-in-visual-studio?view=vs-2022">Python 互動式視窗</a>」，那就表示這個版本的 Python 確實存在<code>PATH</code>中。</p>
+<h3 id="使用which指令確認-Python-版本是否存在PATH中"><a href="#使用which指令確認-Python-版本是否存在PATH中" class="headerlink" title="使用which指令確認 Python 版本是否存在PATH中"></a>使用<code>which</code>指令確認 Python 版本是否存在<code>PATH</code>中</h3><p>不想進入 REPL，只想確認 Python 版本是否存在<code>PATH</code>中，可以使用<code>which</code>指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">❯ <span class="built_in">which</span> python3.9</span><br><span class="line">/home/kyo/.pyenv/shims/python3.9</span><br><span class="line">❯ <span class="built_in">which</span> python3.10</span><br><span class="line">/home/kyo/.pyenv/shims/python3.10</span><br><span class="line">❯ <span class="built_in">which</span> python</span><br><span class="line">/home/kyo/.pyenv/shims/python</span><br></pre></td></tr></table></figure>
+
 <p>聰明的你應該猜到了，我們只要確保 Python 版本已存在於<code>PATH</code>，透過<code>poetry env use &lt;指定的python版本&gt;</code>即可確定專案使用的 Python 版本。</p>
-<p>不過，這個<code>&lt;指定的python版本&gt;</code>必須要先透過 pyenv 安裝好，而且你至少要將其設定為<code>global</code>或<code>local</code>才行。</p>
-<h3 id="poetry-demo-的實際做法"><a href="#poetry-demo-的實際做法" class="headerlink" title="poetry-demo 的實際做法"></a>poetry-demo 的實際做法</h3><p>回到案例，這裡我們已經將  3.10.11 設為<code>global</code>。所以輸入<code>python3.10</code>指令時，會進入互動視窗。</p>
+<p>不過，這個<code>&lt;指定的python版本&gt;</code>必須要先透過 pyenv 安裝好，<strong>而且你通常要將其設定為<code>global</code>或<code>local</code>，系統才找得到。</strong></p>
+<h3 id="poetry-demo-操作"><a href="#poetry-demo-操作" class="headerlink" title="poetry-demo 操作"></a>poetry-demo 操作</h3><p>回到案例，這裡我們已經將 3.10.11 設為<code>global</code>。所以輸入<code>python3.10</code>指令時，會進入互動式視窗。</p>
 <p>此時只要使用下列指令，基本上可以確定使用的 Python 版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use 3.10.11</span><br></pre></td></tr></table></figure>
 
-<p>單純使用<code>poetry env use python</code>應該也是可以成功套用 3.10，但保險起見，還是建議使用完整的版本號。</p>
+<p>因為已經有設定<code>global</code>，單純使用<code>poetry env use python</code>應該也是可以成功套用 3.10。但保險起見，使用指令時還是建議輸入<strong>完整的版本號</strong>，包括尾綴的<code>.11</code></p>
 <h2 id="四、不同專案使用不同-Python-版本"><a href="#四、不同專案使用不同-Python-版本" class="headerlink" title="四、不同專案使用不同 Python 版本"></a>四、不同專案使用不同 Python 版本</h2><p>假設你有 a、b、c 三個專案，分別要使用 Python 3.7.11、3.9.12、3.10.11，依照上述，我們可以這麼做。</p>
 <p>首先，確認這三個版本的 Python 都已經由 pyenv 安裝完成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ pyenv versions</span><br><span class="line">  system</span><br><span class="line">  3.7.11</span><br><span class="line">  3.9.12</span><br><span class="line">* 3.10.11 (<span class="built_in">set</span> by /home/kyo/.pyenv/version)</span><br></pre></td></tr></table></figure>
