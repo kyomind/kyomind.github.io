@@ -51,15 +51,15 @@
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
+    <category term="pip" scheme="https://blog.kyomind.tw/tags/pip/"/>
+    
     <category term="pyenv" scheme="https://blog.kyomind.tw/tags/pyenv/"/>
+    
+    <category term="virtualenv" scheme="https://blog.kyomind.tw/tags/virtualenv/"/>
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
-    
-    <category term="virtualenv" scheme="https://blog.kyomind.tw/tags/virtualenv/"/>
-    
-    <category term="pip" scheme="https://blog.kyomind.tw/tags/pip/"/>
     
   </entry>
   
