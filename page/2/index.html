@@ -95,7 +95,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (18)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (19)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -130,6 +130,37 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-04-09
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/AGhzS0d.jpg" alt="from Pixabay"></p>
+<p>本文主要寫給軟體工程師，尤其是後端。</p>
+<p>不過，<strong>這並不是一篇 yadm 操作教學</strong>，而是我在選擇 dotfiles 同步方案時，所做的功課與思路整理，其中的考量大概有下：</p>
+<ol>
+<li>靠自己簡單實作就好，還是要透過工具？</li>
+<li>如果要用工具，<strong>工具這麼多，該如何選擇</strong>？</li>
+<li>工具之間有什麼本質的差別嗎？（其實就是下述流派上的差別）</li>
+</ol>
+<hr>
+<h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>如〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux Python 開發環境設定：zsh、zinit、pyenv、poetry、docker</a>〉所言，因為新 VM 的建立，我又得重設一次開發環境，而重設開發環境往往是一個耗時且繁瑣的過程。</p>
+<p>在這個過程中，需要重新建立一些設定檔，例如<code>.bashrc</code>、<code>.zshrc</code>。這些設定檔通常包含了工具設定、命令別名、環境變數等大量內容，因此特別惱人。</p>
+<p>此外，即使不是重建環境，平時要在不同 VM 包括本機電腦間「<strong>手動同步</strong>」這些檔案，也是一件讓人很想逃避的事。</p>
+<p>以<code>.zshrc</code>為例，如果它很少變動，那可能還好。但很不幸的，我又是一個很愛為命令列工具建立 <a target="_blank" rel="noopener" href="https://dywang.csie.cyut.edu.tw/dywang/linuxSystem/node88.html">alias</a>（別名）的人，光憑這點，就使我不時會修改<code>.zshrc</code>。</p>
+          <div class="read-more">
+            <a href="/yadm/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-15/">15，付費一個月後，我還是退訂了 Notion AI</a>
         </h1>
@@ -290,31 +321,6 @@
 <p>做了好幾次以後，這次不禁想到：「<strong>咦？我乾脆整理成一篇就好了啊！</strong>」</p>
           <div class="read-more">
             <a href="/linux-dev-setup/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/weekly-review-11/">11，我絕不當資訊的聚合者</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-02-18
-        </span><span class="post-category">
-            <a href="/categories/Weekly-Review/">Weekly Review</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/sWgUbzT.png"></p>
-<p>你一定用過 <a target="_blank" rel="noopener" href="https://getpocket.com/">Pocket</a> 這類可以幫你把文章、網址存下來，以供日後再讀的服務。現在很多瀏覽器也內建了類似功能。</p>
-<p>可以說，這樣的「<strong>稍後再讀</strong>」服務，幾乎是現代人獲取和管理網路上資訊的起手式。畢竟資訊量實在太大，不可能一看到什麼就讀什麼。</p>
-<p>如果要再進一步，將這些資訊歸納、整合，那可就<strong>非常複雜</strong>了！</p>
-<p>聽聽星箭廣播這期〈<a target="_blank" rel="noopener" href="https://blog.starrocket.io/posts/star-rocket-podcast-ep107-statementdog-marketing-manager-wei-yu-lin-talks-about-his-productivity-tools-and-the-system-for-learning/">107: 希望我們的第二大腦都不會太遲緩：聊聊學習生產力工具（ft. 財報狗林威宇）</a>〉，我們可以得知，有一種人，特別熱衷於整理、消化網路上的各種資訊。</p>
-<p>通常，這些人也都挺厲害的，比如上述財報狗的<a target="_blank" rel="noopener" href="https://wylin.tw/">林威宇</a>。</p>
-<p>但我想說的是——<strong>我絕對不要成為這樣的人。</strong></p>
-          <div class="read-more">
-            <a href="/weekly-review-11/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">

@@ -95,7 +95,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (18)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (19)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -130,6 +130,29 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-06/">06，十年後，還能繼續當軟體工程師嗎？</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-12-25
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/sWgUbzT.png"></p>
+<p>從 12 月初 ChatGPT 進入大眾的視野以來，引發的熱潮與衝擊，遠遠大於過去任何一項 AI 產品。</p>
+<p>我對此也深感興趣（恐慌？），忍不住花了一些時間在關注與它相關的議題及應用，從 <a target="_blank" rel="noopener" href="https://youtu.be/JTxsNm9IdYU">YouTube 影片</a>、<a target="_blank" rel="noopener" href="https://medium.com/bitsrc/i-asked-chat-gpt-to-build-a-to-do-app-have-we-finally-met-our-replacement-ad347ad74c51">文章</a>、<a target="_blank" rel="noopener" href="https://www.facebook.com/chatgpttimes">臉書粉絲團</a>，到同事的意見，都是我好奇的範圍。</p>
+<p>和擔心被 AI 取代的眾多人類工作者一樣，我就是想要在「<strong>現在</strong>」這個時間點，多多少少預期一下，這類基於大型語言模型（Large Language Model）的人工智慧，對我的當前工作的衝擊究竟有多大？以及我「還有多少時間」？</p>
+<p>以下是我的粗略看法，真的很粗啦！另外因為這個議題的內容有點多，本期就不提其它了。</p>
+          <div class="read-more">
+            <a href="/weekly-review-06/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-05/">05，終於寫了「關於我」頁面</a>
         </h1>
@@ -275,38 +298,6 @@
 <p>本文將沿著這個核心思路，繼續展開，進一步介紹：無論是以何種方式使用 Notion，<strong>你都很可能踏入的兩個「陷阱」</strong>，與我的對策。</p>
           <div class="read-more">
             <a href="/stumbling-on-notion/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-11-15
-        </span><span class="post-category">
-            <a href="/categories/VS-Code/">VS Code</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/FFvdkOl.jpg"></p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/isort-local-module-sorting/">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></p>
-</blockquote>
-<p>最近發現，VS Code Python 擴充套件<a href="https://blog.kyomind.tw/flake8-and-isort/#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort">附帶的 isort 功能</a>失效了！打開<code>settings.json</code>查看相關設定：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.sortImports.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-
-<p>VS Code 會提示這樣的訊息：</p>
-<blockquote>
-<p>This setting <strong>will be removed soon</strong>. Use <code>isort.args</code> instead.</p>
-</blockquote>
-<p>果然該來的還是要來，在〈<a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a>〉中提過，微軟一直在積極拆分 Python 擴充套件功能，試圖為其「<strong>減肥</strong>」與<strong>解耦</strong>。</p>
-<p>而 linter 和 formatter 正是拆分的一大重心所在，前者目前已有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.pylint">Pylint</a> 和 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.flake8">Flake8</a>，後者則有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">Black</a>，都是微軟官方出品。（yapf 表示：因為我來自 Google 就差別待遇？）</p>
-<p>再參考 iThome 這篇〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/154035">VS Code Python擴充套件現在會預設安裝匯入項目排序擴充套件isort</a>〉，顯然 VS Code 官方認為，isort 的正式獨立時機已到。</p>
-          <div class="read-more">
-            <a href="/isort/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
