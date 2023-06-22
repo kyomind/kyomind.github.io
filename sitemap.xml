@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
+    
+    <lastmod>2023-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    
+    <lastmod>2023-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2023-06-11</lastmod>
@@ -66,15 +84,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
-    
-    <lastmod>2023-06-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2023-06-09</lastmod>
     
@@ -165,15 +174,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
-    
-    <lastmod>2023-05-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2023-05-09</lastmod>
     
@@ -724,7 +724,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-06-11</lastmod>
+    <lastmod>2023-06-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
