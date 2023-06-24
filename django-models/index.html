@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定"/><meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" /><link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/django-models/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162021706-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162021706-2');
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top10/">
+        <li class="mobile-menu-item">TOP 10
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (16)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (10)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (10)</a>
+          
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談 (14)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (19)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django/">Django (3)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top10/">
+          TOP 10
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-06-25
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%8D%B5%E9%97%9C%E4%BF%82%E8%88%87-related-name"><span class="toc-text">外鍵關係與 related_name</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-model-%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="toc-text">小結：關聯是 model 的核心</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/yK0Us6a.jpg" alt="by Léo Alexandre"><span class="cap">by Léo Alexandre</span></p>
+<p>工作上使用 Django 近 2 年，卻很少發表關於 Django 主題的文章，是時候該來補一補了。</p>
+<p>就從 Django ORM 開始吧！因為 Django ORM 可以說是無論你怎麼使用 Django（全端或前後端分離），都不得不學的核心部分。</p>
+<p>怎麼說？我們先來看看，在「前後端分離」的開發趨勢下，Django 的三大核心——MTV——的重要性有哪些變動。</p>
+<span id="more"></span>
+
+
+<h2 id="前後端分離下的-Django-MTV"><a href="#前後端分離下的-Django-MTV" class="headerlink" title="前後端分離下的 Django MTV"></a>前後端分離下的 Django MTV</h2><p>在 Django 中，MTV 是指 Model-Template-View 的架構模式。這是 Django 框架的核心設計模式，用於組織和分離應用程式的不同部分。</p>
+<ul>
+<li><strong>Model（模型）：</strong> 模型負責處理與資料庫相關的操作，它是定義數據結構、資料表和資料庫查詢的地方。</li>
+<li><strong>Template（模板）：</strong> 模板用於前端。它是一個包含 HTML、CSS 和一些額外標記語言（例如 Django 的模板語言）的文件，用於定義網頁的外觀和內容。</li>
+<li><strong>View（視圖）：</strong> 視圖是應用程式處理邏輯的地方。它接收用戶的請求，從模型獲取數據，並使用模板來生成適當的回應。視圖處理用戶的 HTTP 請求，並根據需要調用相應的模型和模板來生成回應。</li>
+</ul>
+<h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>我們假設你是一個前後端分離下的 Django 工程師，你那通常就是負責後端的 API 開發。</p>
+<p>首先，顯然 Template 不需要了，因為這是前端的範疇，而 View 呢？相當程度會被 **<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>**（以下皆簡稱為 DRF）所取代。說「取代」不太正確，應該說「升級」。</p>
+<p>帶來的影響是：View 中相當部分操作細節與學習重點會遷移到 DRF 本身，而非 Django 原生提供的功能。</p>
+<p>最常見的就是<code>request.data</code>特性，重新封裝了 Django 的<code>request.GET</code>、<code>request.POST</code>，還有<code>APIView</code>或<code>@api_view</code>等等。使用上的問題常常看的是 DRF 的文件而非 Django 的。</p>
+<p>既然 Template 被前端取代，而 View 的功能則被 DRF 重新封裝。可想而知，三大元件中重要性唯一不變的，就是 Model——Django ORM。</p>
+<p>可見，作為一個 Django 開發者，學好 ORM 是絕對不虧的！</p>
+<h2 id="範例程式碼專案介紹"><a href="#範例程式碼專案介紹" class="headerlink" title="範例程式碼專案介紹"></a>範例程式碼專案介紹</h2><p>如前所述，我打算寫一系列的 Django 教學文章，如果有範例程式碼，必然更方便讀者學習、參考。於是我建了一個 GitHub Repo 名為「<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial%E3%80%8D%EF%BC%8C%E6%8A%8A%E6%96%87%E7%AB%A0%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0%E6%96%BC%E6%AD%A4%E3%80%82">https://github.com/kyomind/kyo-django-tutorial」，把文章中使用的程式碼同步更新於此。</a></p>
+<p>這是一個典型的 Django 專案，而且有著完整的 Python 環境設定，各種細節都和我個人開發一致，有 Poetry、pre-commit 與基本的 linter、formatter 設定等，方便讀者複製環境並跟著操作。</p>
+<p>以下是簡單的介紹。</p>
+<h3 id="專案環境介紹"><a href="#專案環境介紹" class="headerlink" title="專案環境介紹"></a>專案環境介紹</h3><p>支援 Poetry，方便重建專案所需的 Python 虛擬環境。但你也可以不使用它，我有另外準備<code>requirements.txt</code>供<code>pip</code>安裝。</p>
+<p>pre-commit 完全可選，基本上用不到，除非你有打算變更程式碼的內容。只要不使用指令<code>pre-commit install</code>，它相當於不存在。但如果你想用的話，整個<code>.pre-commit-config.yaml</code>設定檔都寫好了。</p>
+<p>隨著文章更新，未來還會支援 Docker，敬請期待。</p>
+<h3 id="工具版本說明"><a href="#工具版本說明" class="headerlink" title="工具版本說明"></a>工具版本說明</h3><p>Django 版本為 4.2.x LTS，對 Python 的版本有一定要求，不能太舊，必須在 3.8 以上。</p>
+<p>Python 版本使用 3.10.11，建議至少使用 3.8.1，雖然剛剛說 Django 只要求 3.8，但因為 Flake8 版本是 6.0.0，要求 Python 至少要 3.8.1 XD。建議直接還是安裝 3.10 或更新的版本。</p>
+<hr>
+<p>基本的介紹就到這裡，我們趕緊進入本篇的重點。</p>
+<h2 id="本文重點：Django-ORM-外鍵關聯設定"><a href="#本文重點：Django-ORM-外鍵關聯設定" class="headerlink" title="本文重點：Django ORM 外鍵關聯設定"></a>本文重點：Django ORM 外鍵關聯設定</h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>，也就是 db table 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">OOP</a> 程式型態，透過 ORM 來實現兩者的對應關係——從 db table 到 Python class。</p>
+<p>如果說 ORM 是 Django 的核心之一，而 ORM 的核心會是什麼呢？我相信其中一個答案，就是「（外鍵）關聯」（relationships）。若是少了關聯性，資料表就像孤立的島嶼，根本無法真實模擬世界。</p>
+<p>剛開始寫 Django ORM 時，疑問最多的就是外鍵關聯了！因為它不止重要，而且常用。外鍵關聯又分一對一、一對多（多對一）與多對多，我們會先著重在前兩者的介紹——因為它們最常用。讓你一接觸 Django ORM 就快速上手。</p>
+<p><strong>本文為上篇，主要是系列前言與外鍵設定教學，查詢部分則留到下篇。</strong></p>
+<h2 id="專案模型介紹"><a href="#專案模型介紹" class="headerlink" title="專案模型介紹"></a>專案模型介紹</h2><p>學習 Django 模型和外鍵關係的最佳方法，是透過具體的例子。在上述專案中，我準備了一個最常見的範例：<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial/blob/01-django-models/post/models.py">文章模型</a>。</p>
+<p>選這個例子主要出於兩個原因：</p>
+<ol>
+<li>它很容易想像。</li>
+<li>它同時包括了一對一、一對多、多對多等不同情境。</li>
+</ol>
+<p>模型對應的情境大致是這樣：你有一個個人的部落格網站，只有你可以發表文章，而讀者可以留言。</p>
+<p>因為只有一個作者，也就是你，所以模型省略了作者的部分。這些設計都是為了方便介紹而已，不必對它們的真實性太過認真。</p>
+<p>以下我們一一介紹這 3 個模型。</p>
+<h3 id="Title：文章標題"><a href="#Title：文章標題" class="headerlink" title="Title：文章標題"></a>Title：文章標題</h3><p>通常標題只會是文章模型的一個欄位，很少獨立出來。我這樣設計是為了呈現一對一關係，而且這裡有分主、副標題，多少為獨立出來增加了一點合理性，就一點XD。</p>
+<h3 id="Post：文章"><a href="#Post：文章" class="headerlink" title="Post：文章"></a>Post：文章</h3><p>最主要的模型，其餘兩個模型都和它有關。</p>
+<p>與標題是一對一關係，直接有一個<code>title</code>外鍵欄位關聯到 Title 模型，另一個欄位則是<code>content</code>。</p>
+<h3 id="Comment：留言"><a href="#Comment：留言" class="headerlink" title="Comment：留言"></a>Comment：留言</h3><p>用來說明對一多關係的模型，有一個外鍵欄位<code>post</code>關聯到 Post。對 Post 來說，則會建立一個「反向關聯（<a target="_blank" rel="noopener" href="https://allwin-raju-12.medium.com/reverse-relationship-in-django-f016d34e2c68">reverse relationship</a>）」屬性，下面會詳細介紹。</p>
+<p>三者的關係可以畫成簡單的實體關聯圖（ERD） 如下：</p>
+<p><img src="https://i.imgur.com/5qO8q8E.png"></p>
+<p>Django 會自動幫你在外鍵屬性名稱加上<code>_id</code>，轉換成 db 中 table 欄位的名稱，所以上面圖中的欄位名稱是<code>title_id</code>與<code>post_id</code>。</p>
+<hr>
+<h2 id="在-Model-中建立外鍵欄位"><a href="#在-Model-中建立外鍵欄位" class="headerlink" title="在 Model 中建立外鍵欄位"></a>在 Model 中建立外鍵欄位</h2><p>我們知道，ORM 所對應的 table 欄位，都是用 Python 類別中的類別屬性來定義與規範的。而 db 欄位的 schema 則對應 model 屬性的「參數」。</p>
+<p>尤其是外鍵屬性，因為要建立關聯，使用的參數通常比較多，格式上也和一般欄位屬性有所差別。</p>
+<p>無論如何，了解外鍵欄位常用的參數與其代表的意義，相當必要，這也是本篇的重心。</p>
+<p>以下介紹一對一和一對多的外鍵關聯設定，讀者可適時參考深獲開發者好評的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/">Django 文件</a>，我們只就重點進行說明。</p>
+<h2 id="一對一關係"><a href="#一對一關係" class="headerlink" title="一對一關係"></a>一對一關係</h2><blockquote>
+<p>class <code>OneToOneField</code>(to, on_delete, parent_link&#x3D;False, **options)<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.OneToOneField">¶</a></p>
+</blockquote>
+<p>只有兩個必填的位置參數，即<code>to</code>和<code>on_delete</code>。</p>
+<p>先看一下專案中存在一對一關係的兩個 model（為了網頁呈現，我縮減了單行字元上限與空行數、省略了無關部分，所以和原始碼有所不同）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.OneToOneField(</span><br><span class="line">        <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br><span class="line">    content = models.TextField()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Title</span>(models.Model):</span><br><span class="line">    main = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    subtitle = models.CharField(max_length=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>OneToOneField</code>即外鍵中的一對一關係欄位，第一個參數是<code>to</code>，為目標關聯的 model，有兩種格式：</p>
+<ol>
+<li>model class 本身。</li>
+<li>字串。用於無法直接引用的情境，比如本例中的 title 欄位，Title 類別定義在 Post 之後。</li>
+</ol>
+<p>第二個參數是<code>on_delete</code>，用來定義「關聯物件被刪除時」當前物件該如何處理的行為。有多揰模式，最常用的不外乎<code>CASCADE</code>、<code>PROTECT</code>、<code>SET_NULL</code>這 3 種，其餘所有選項與行為定義，可以參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.CASCADE">文件</a>。</p>
+<p>除了<code>to</code>和<code>on_delete</code>兩個必要參數，剩下的都是 optional，不過還有一個參數也非常重要，那就是<code>related_name</code>。</p>
+<h2 id="外鍵關係與-related-name"><a href="#外鍵關係與-related-name" class="headerlink" title="外鍵關係與 related_name"></a>外鍵關係與 related_name</h2><p><code>related_name</code>用於指定關聯<strong>目標 model</strong>（在本例中是 Title）的「反向關聯」屬性名稱。這個參數在查詢時非常常用，它也是外鍵欄位中最重要的參數之一。</p>
+<p>我們從兩個 model 的角度來看看外鍵成功建立後的效果，以及<code>related_name</code>所扮演的角色。</p>
+<h3 id="Post-model-角度"><a href="#Post-model-角度" class="headerlink" title="Post model 角度"></a>Post model 角度</h3><p>Post 有一個屬性為<code>title</code>，也就是我們所建立的外鍵，這個屬性在 model 中是明示的，意味著它在 db table 中也會有對應的欄位——<code>title_id</code>。其中<code>_id</code>是 Django 幫你加的，你可以透過<code>class Meta</code>自行定義這個欄位的名稱。</p>
+<p>事實上，建立關聯不一定只能指向目標 model 的「主鍵」，只要是 model 中的  unique 欄位都可以，可參考 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.to_field">to_field 文件</a>。</p>
+<h3 id="Title-角度"><a href="#Title-角度" class="headerlink" title="Title 角度"></a>Title 角度</h3><p>一對一關係建立後，對 Title model 或它的實例而言，它得到了什麼？——反向關聯屬性。</p>
+<p>這個屬性在 model 中沒有明示，你從 model 中看不出 Tilte 有什麼屬性可以指向 Post。但實際上 Tilte 確實有一個反向關聯屬性指向 Post。</p>
+<p>這就是反向關聯的特性，它是「隱式」的，這個屬性確實存在。而<strong>反向關聯屬性的名稱就是前述</strong><code>related_name</code><strong>所定義的名稱</strong>，在本例中即<code>post</code>。</p>
+<p>所以，Title 的所有實例，比如有一個實例叫<code>title_1</code>，實際上「一定有」一個屬性<code>post</code>，而它的返回值依不同情況有兩種可能：</p>
+<ol>
+<li><code>title_1</code>已經被關聯到某個 Post 實例比如<code>post_1</code>，那<code>title_1.post</code>的值就是該<code>post_1</code>實例。</li>
+<li><code>RelatedObjectDoesNotExist</code>物件。當<strong>實例之間的關聯還不存在</strong>，試圖取得關聯實例將會出現這樣的錯誤。</li>
+</ol>
+<h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>這個<code>post</code>屬性不在 model 中明示，資料表中也<strong>不存在相對應的欄位</strong>——它本質上只是查詢的「捷徑」。</p>
+<p>這種隱式的設計讓我們更容易識別在外鍵關係中，哪個屬性是正向關聯，哪個則是反向關聯。</p>
+<p>反向關聯允許我們透過簡單的屬性呼叫，就能夠輕鬆地獲取相關資料，而不需要額外的操作和查詢語句。</p>
+<hr>
+<h2 id="一對多關係"><a href="#一對多關係" class="headerlink" title="一對多關係"></a>一對多關係</h2><blockquote>
+<p>class <code>ForeignKey</code>(to, on_delete, **options)<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey">¶</a></p>
+</blockquote>
+<blockquote>
+<p>A many-to-one relationship. Requires two positional arguments: the class to which the model is related and the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.on_delete"><code>on_delete</code></a> option.</p>
+</blockquote>
+<p>我們在前述一對一關係費了很大的功夫將關聯的細節詳加說明，有了上述基礎，理解一對多關係也會容易得多。</p>
+<p>Django 稱<code>ForeignKey</code>為「many-to-one」即多對一關係，從 model 與欄位的角色看，確實比較合理。因為會建立這個欄位的 model，必然屬關係中的「多方」。</p>
+<p>不過無論一對多或多對一，主要區別是視角不同，都是同一種關係。下面我還是用「一對多」這個詞進行說明。</p>
+<p>我選擇先講一對一是因為它相對單純，不需要一次理解太多事情。而一對多（或多對一），即 Django 中的 ForeignKey，則有更多參數和變化，但我們依舊只關注其中最重要的部分。</p>
+<h3 id="專案程式碼說明"><a href="#專案程式碼說明" class="headerlink" title="專案程式碼說明"></a>專案程式碼說明</h3><p>毫無疑問，文章和它的留言是一對多關係，一篇文章可以有「0 到多個」留言，注意這個 0 還滿重要的！這也是它和一對一關係很不同的地方。</p>
+<p>讓我們回到程式碼：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.OneToOneField(</span><br><span class="line">        <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br><span class="line">    content = models.TextField()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 留言</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Comment</span>(models.Model):</span><br><span class="line">    post = models.ForeignKey(</span><br><span class="line">        Post, on_delete=models.CASCADE, related_name=<span class="string">&#x27;comments&#x27;</span>)</span><br><span class="line">    content = models.TextField()</span><br></pre></td></tr></table></figure>
+
+<p>我們可以看到，Comment 有一個欄位叫<code>post</code>，是一個<code>ForeignKey</code>。這個<code>ForeignKey</code>欄位，最常用的參數還是那 3 個，前 2 個前面已經有介紹，在此不贅。</p>
+<p>第 3 個參數仍是<code>related_name</code>，但它的引數值<code>&#39;comments&#39;</code>看起來，和一對一的<code>related_name</code>在命名上有所不同——它是複數！</p>
+<h2 id="related-name在一對多關係中的重點"><a href="#related-name在一對多關係中的重點" class="headerlink" title="related_name在一對多關係中的重點"></a><code>related_name</code>在一對多關係中的重點</h2><p>前提已經提過，<code>related_name</code>實際上是為「反向關聯屬性」進行命名。</p>
+<p><code>post</code>屬性的<code>related_name=&#39;comments&#39;</code>意味著，Post model 將得到一個名為「comments」反向關聯屬性。</p>
+<p>一個 Post 實例，假設為<code>post_1</code>，可以透過<code>post_1.comments</code>取得所有和它關聯的 Comment 實例。可能有 1 個、多個，甚至沒有。</p>
+<blockquote>
+<p>這裡有一個細節是，<code>post_1.comments</code>只會先取得「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/managers/#django.db.models.Manager">關係管理器</a>」物件，再透過該物件取得「由 Comment 關聯實例組成的<code>QuerySet</code>」，比如：<code>post_1.comments.all()</code>。</p>
+</blockquote>
+<p>這和一對一時，反向關聯或者得到一個特定關聯實例，或者得到（拋出）RelatedObjectDoesNotExist 有明顯不同。</p>
+<h3 id="related-name的預設名稱"><a href="#related-name的預設名稱" class="headerlink" title="related_name的預設名稱"></a><code>related_name</code>的預設名稱</h3><p>如果你在建立欄位時沒有給定<code>related_name</code>引數，那 Django 會自動給你預設名稱。</p>
+<p>在一對一中，預設名稱為外鍵欄位所屬 Model 名稱的小寫。</p>
+<p>參考 Post 的一對一外鍵程式碼：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.OneToOneField(</span><br><span class="line">        <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>related_name</code>的預設值就是 Post 的小寫——<code>post</code>。顯然我定義的其實就是預設值而已。一對一時，是否定義<code>related_name</code>影響不大，<strong>因為它的預設值往往就已足夠</strong>。</p>
+<p>在一對多，預設名稱為外鍵欄位所屬 Model 名稱的小寫再加上<code>_set</code>後綴。你可能就未必喜歡這樣的命名了。</p>
+<p>一樣看一下相關程式片段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Comment</span>(models.Model):</span><br><span class="line">    post = models.ForeignKey(</span><br><span class="line">        Post, on_delete=models.CASCADE, related_name=<span class="string">&#x27;comments&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果沒有定義<code>related_name</code>，則被關聯的 Post 將獲得 Django 預設的反向關聯屬性名稱「<code>comment_set</code>」。</p>
+<p>無論是自定義的<code>comments</code>或預設的<code>comment_set</code>，都表達它的內涵是一個「複數」，這是一對多的特色（多對多也是如此）。</p>
+<p>實務中，把這個<code>related_name</code>命名好還是很重要的，雖然大部分時候用單純的複數就可以搞定，就像上面的<code>comments</code>，但也有需要你花費巧思的時候，我們日後再談。</p>
+<hr>
+<h2 id="小結：關聯是-model-的核心"><a href="#小結：關聯是-model-的核心" class="headerlink" title="小結：關聯是 model 的核心"></a>小結：關聯是 model 的核心</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。</p>
+<p>通過關聯，我們能夠模擬真實世界中的關係，使資料表之間建立起有意義的連結。</p>
+<p>了解一對一和一對多的關聯設定，以及反向關聯屬性的使用，我們能夠更好地應用 Django ORM，建構出高效且具有關聯性的資料模型。</p>
+<p>而辛苦建立這些模型與關聯，就是為了能夠充分利用它們！</p>
+<p>下篇文章將探討，如何有效對這些關聯模型進行查詢，輕鬆地從模型中檢索和篩選所需的資料。</p>
+<p>請敬期待。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-mongoengine/" title="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學" rel="bookmark">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/learning-topic/" title="notes 回顧與每月學習主題" rel="bookmark">notes 回顧與每月學習主題</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-request-headers/" title="Django：以 request.headers 而非 META 獲取 HTTP header 資訊" rel="bookmark">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/ORM/">ORM</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/weekly-review-19/">
+        <span class="next-text nav-default">19，AI 時代的生存指南（二）：數位斷捨離</span>
+        <span class="prev-text nav-mobile">19，AI 時代的生存指南（二）：數位斷捨離</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">3</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">19</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">16</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">14</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
