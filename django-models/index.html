@@ -253,7 +253,7 @@
 <blockquote>
 <p>這裡有一個細節是，<code>post_1.comments</code>只會先取得「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/managers/#django.db.models.Manager">關係管理器</a>」物件，再透過該物件取得「由 Comment 關聯實例組成的<code>QuerySet</code>」，比如：<code>post_1.comments.all()</code>。</p>
 </blockquote>
-<p>這和一對一時，反向關聯或者得到一個特定關聯實例，或者得到（拋出）RelatedObjectDoesNotExist 有明顯不同。</p>
+<p>這和一對一關係中，你呼叫反向關聯屬性時，可能得到一個<strong>關聯實例</strong>或拋出<code>RelatedObjectDoesNotExist</code>有明顯不同。</p>
 <h3 id="related-name-的預設名稱"><a href="#related-name-的預設名稱" class="headerlink" title="related_name 的預設名稱"></a>related_name 的預設名稱</h3><p>如果你在建立欄位時沒有給定<code>related_name</code>引數，那 Django 會自動給你預設名稱。</p>
 <p>在一對一中，預設名稱為外鍵欄位所屬 Model 名稱的小寫。</p>
 <p>參考 Post 的一對一外鍵程式碼：</p>
