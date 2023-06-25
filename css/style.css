@@ -15,9 +15,14 @@
 
 @font-face {
   font-family: 'nunito';
-  src: url("../fonts/nunito/nunito.ttf");
   src: local("nunito"), url("../fonts/nunito/nunito.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'nunito';
+  src: local("nunito-bold"), url("../fonts/nunito/nunito-bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal; }
 
 @font-face {
