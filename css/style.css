@@ -799,8 +799,8 @@ h6 {
       color: #485B6E; }
     .post .post-content code {
       font-size: 0.85em;
-      font-weight: 400;
-      font-family: robotomono, monospace;
+      font-weight: 500;
+      font-family: "Roboto Mono", monospace;
       background: #eee; }
     .post .post-content code {
       border: 1px solid;
