@@ -1,14 +1,12 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'lobster';
-  src: url("../fonts/lobster/lobster.ttf");
   src: local("lobster"), url("../fonts/lobster/lobster.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
 @font-face {
   font-family: 'rubik';
-  src: url("../fonts/rubik/rubik.ttf");
   src: local("rubik"), url("../fonts/rubik/rubik.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
@@ -21,25 +19,25 @@
 
 @font-face {
   font-family: 'nunito';
-  src: local("nunito-bold"), url("../fonts/nunito/nunito-bold.ttf") format("truetype");
+  src: local("nunito"), url("../fonts/nunito/nunito-bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal; }
 
 @font-face {
-  font-family: 'firacode';
-  src: local("firacode"), url("../fonts/firacode/firacode.ttf") format("truetype");
+  font-family: "Fira Code";
+  src: local("Fira Code"), url("../fonts/firacode/firacode.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
 @font-face {
-  font-family: 'firacode';
-  src: local("firacode-bold"), url("../fonts/firacode/firacode-bold.ttf") format("truetype");
+  font-family: "Fira Code";
+  src: local("Fira Code"), url("../fonts/firacode/firacode-bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal; }
 
 @font-face {
-  font-family: 'robotomono';
-  src: local("robotomono"), url("../fonts/robotomono/robotomono.ttf") format("truetype");
+  font-family: "Roboto Mono";
+  src: local("Roboto Mono"), url("../fonts/robotomono/robotomono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
@@ -795,7 +793,7 @@ h6 {
     .post .post-content pre {
       padding: 7px;
       font-size: 16px;
-      font-family: firacode, Menlo, Consolas, monospace, sans-serif;
+      font-family: "Fira Code", Menlo, Consolas, monospace, sans-serif;
       background: #f1f1e3; }
     .post .post-content td.code {
       color: #485B6E; }

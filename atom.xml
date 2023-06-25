@@ -115,13 +115,13 @@
     
     <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
     
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
     <category term="pyenv" scheme="https://blog.kyomind.tw/tags/pyenv/"/>
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
+    
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="pip" scheme="https://blog.kyomind.tw/tags/pip/"/>
     
@@ -306,11 +306,11 @@
     <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
     
     
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
     <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
-    
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
   </entry>
   
