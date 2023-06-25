@@ -164,7 +164,7 @@
 <h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>我們假設你是一個前後端分離下的 Django 工程師，你那通常就是負責後端的 API 開發。</p>
 <p>首先，顯然 Template 不需要了，因為這是前端的範疇，而 View 呢？相當程度會被 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（以下皆簡稱為 DRF）所取代。說「取代」不太正確，應該說「升級」。</p>
 <p>帶來的影響是 View 中相當部分操作細節與學習重點會遷移到 DRF 本身，而非 Django 原生提供的功能。</p>
-<p>比如<code>request.data</code>，重新封裝了 Django 的<code>request.POST</code>，還有升級後的<code>APIView</code>或<code>@api_view</code>等等。</p>
+<p>比如<code>request.data</code>，重新封裝了 Django 中的<code>request.POST</code>和<code>request.FILES</code>兩個屬性，類似的情況還有<code>APIView</code>或<code>@api_view</code>等等。</p>
 <p>既然 Template 被前端取代，而 View 的功能則被 DRF 重新封裝。可想而知，三大元件中重要性唯一不變的，就是 Model——Django ORM。</p>
 <p>可見，作為一個 Django 開發者，學好 ORM 是絕對不虧的！</p>
 <h2 id="範例程式碼專案介紹"><a href="#範例程式碼專案介紹" class="headerlink" title="範例程式碼專案介紹"></a>範例程式碼專案介紹</h2><p>如前所述，我打算寫一系列的 Django 教學文章，如果有範例程式碼，必然更方便讀者學習、參考。於是我建了一個 GitHub Repo 名為「<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial">kyo-django-tutorial</a>」，把文章中使用的程式碼同步更新於此。</p>
@@ -203,7 +203,7 @@
 <p>無論如何，了解外鍵欄位常用的參數與其代表的意義，相當必要，這也是本篇的重心。</p>
 <p>以下介紹一對一和一對多的外鍵關聯設定，讀者可適時參考深獲開發者好評的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/">Django 文件</a>，我們只就重點進行說明。</p>
 <h2 id="一對一關係"><a href="#一對一關係" class="headerlink" title="一對一關係"></a>一對一關係</h2><blockquote>
-<p>class <code>OneToOneField</code>(to, on_delete, parent_link&#x3D;False, **options)<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.OneToOneField">¶</a></p>
+<p>class <code>OneToOneField</code>(to, on_delete, parent_link&#x3D;False, **<strong>options</strong>) <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.OneToOneField">¶</a></p>
 </blockquote>
 <p>只有兩個必填的位置參數，即<code>to</code>和<code>on_delete</code>。</p>
 <p>先看一下專案中存在一對一關係的兩個 model（為了網頁呈現，我縮減了單行字元上限與空行數、省略了無關部分，所以和原始碼有所不同）：</p>
@@ -221,7 +221,7 @@
 <h3 id="Post-model-角度"><a href="#Post-model-角度" class="headerlink" title="Post model 角度"></a>Post model 角度</h3><p>Post 有一個屬性為<code>title</code>，也就是我們所建立的外鍵，這個屬性在 model 中是明示的，意味著它在 db table 中也會有對應的欄位——<code>title_id</code>。其中<code>_id</code>是 Django 幫你加的，你可以透過<code>class Meta</code>自行定義這個欄位的名稱。</p>
 <p>事實上，建立關聯不一定只能指向目標 model 的「主鍵」，只要是 model 中的  unique 欄位都可以，可參考 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.to_field">to_field 文件</a>。</p>
 <h3 id="Title-角度"><a href="#Title-角度" class="headerlink" title="Title 角度"></a>Title 角度</h3><p>一對一關係建立後，對 Title model 或它的實例而言，它得到了什麼？——反向關聯屬性。</p>
-<p>這個屬性在 model 中沒有明示，你從 model 中看不出 Tilte 有什麼屬性可以指向 Post。但實際上 Tilte 確實有一個反向關聯屬性指向 Post。</p>
+<p>這個屬性在 model 中沒有明示，你從 model 中看不出 Title 有什麼屬性可以指向 Post。但實際上 Title 確實有一個反向關聯屬性指向 Post。</p>
 <p>這就是反向關聯的特性，它是「隱式」的，這個屬性確實存在。而<strong>反向關聯屬性的名稱就是前述</strong><code>related_name</code><strong>所定義的名稱</strong>，在本例中即<code>post</code>。</p>
 <p>所以，Title 的所有實例，比如有一個實例叫<code>title_1</code>，實際上「一定有」一個屬性<code>post</code>，而它的返回值依不同情況有兩種可能：</p>
 <ol>
@@ -233,13 +233,13 @@
 <p>反向關聯允許我們透過簡單的屬性呼叫，就能夠輕鬆地獲取相關資料，而不需要額外的操作和查詢語句。</p>
 <hr>
 <h2 id="一對多關係"><a href="#一對多關係" class="headerlink" title="一對多關係"></a>一對多關係</h2><blockquote>
-<p>class <code>ForeignKey</code>(to, on_delete, **options)<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey">¶</a></p>
+<p>class <code>ForeignKey</code>(to, on_delete, **<strong>options</strong>) <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey">¶</a></p>
 </blockquote>
 <blockquote>
-<p>A many-to-one relationship. Requires two positional arguments: the class to which the model is related and the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.on_delete"><code>on_delete</code></a> option.</p>
+<p>A <strong>many-to-one</strong> relationship. <strong>Requires two positional arguments</strong>: the class to which the model is related and the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.on_delete"><code>on_delete</code></a> option.</p>
 </blockquote>
 <p>我們在前述一對一關係費了很大的功夫將關聯的細節詳加說明，有了上述基礎，理解一對多關係也會容易得多。</p>
-<p>Django 稱<code>ForeignKey</code>為「many-to-one」即多對一關係，從 model 與欄位的角色看，確實比較合理。因為會建立這個欄位的 model，必然屬關係中的「多方」。</p>
+<p>Django 稱<code>ForeignKey</code>為「<strong>many-to-one</strong>」，即多對一關係，從 model 角度看，確實更合理。因為建立這個<code>ForeignKey</code>屬性的 model，必然屬於關係中的「<strong>多方</strong>」。所以是「多對一」。</p>
 <p>不過無論一對多或多對一，主要區別是視角不同，都是同一種關係。下面我還是用「一對多」這個詞進行說明。</p>
 <p>我選擇先講一對一是因為它相對單純，不需要一次理解太多事情。而一對多（或多對一），即 Django 中的 ForeignKey，則有更多參數和變化，但我們依舊只關注其中最重要的部分。</p>
 <h3 id="專案程式碼說明"><a href="#專案程式碼說明" class="headerlink" title="專案程式碼說明"></a>專案程式碼說明</h3><p>毫無疑問，文章和它的留言是一對多關係，一篇文章可以有「0 到多個」留言，注意這個 0 還滿重要的！這也是它和一對一關係很不同的地方。</p>
