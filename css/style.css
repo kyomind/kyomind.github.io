@@ -27,14 +27,18 @@
 
 @font-face {
   font-family: 'firacode';
-  src: url("../fonts/firacode/firacode.ttf");
   src: local("firacode"), url("../fonts/firacode/firacode.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
 @font-face {
+  font-family: 'firacode';
+  src: local("firacode-bold"), url("../fonts/firacode/firacode-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
+
+@font-face {
   font-family: 'robotomono';
-  src: url("../fonts/robotomono/robotomono.ttf");
   src: local("robotomono"), url("../fonts/robotomono/robotomono.ttf") format("truetype");
   font-weight: 400;
   font-style: normal; }
@@ -797,7 +801,7 @@ h6 {
       color: #485B6E; }
     .post .post-content code {
       font-size: 0.85em;
-      font-weight: 500;
+      font-weight: 400;
       font-family: robotomono, monospace;
       background: #eee; }
     .post .post-content code {
@@ -1022,7 +1026,7 @@ h6 {
       .post .post-content .highlight .code .keyword,
       .post .post-content .highlight .code .selector-tag,
       .post .post-content .highlight .code .addition {
-        color: DodgerBlue;
+        color: #1b81e5;
         font-weight: bold; }
       .post .post-content .highlight .code .number,
       .post .post-content .highlight .code .string,
@@ -1036,7 +1040,7 @@ h6 {
       .post .post-content .highlight .code .name,
       .post .post-content .highlight .code .selector-id,
       .post .post-content .highlight .code .selector-class {
-        color: MediumSlateBlue; }
+        color: #CC7000; }
       .post .post-content .highlight .code .attribute,
       .post .post-content .highlight .code .attr,
       .post .post-content .highlight .code .variable,
