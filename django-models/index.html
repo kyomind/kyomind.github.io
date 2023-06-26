@@ -251,7 +251,7 @@
 <p><code>post</code>屬性的<code>related_name=&#39;comments&#39;</code>意味著，Post model 將得到一個名為「comments」反向關聯屬性。</p>
 <p>一個 Post 實例，假設為<code>post_1</code>，可以透過<code>post_1.comments</code>取得所有和它關聯的 Comment 實例。可能有 1 個、多個，甚至沒有。</p>
 <blockquote>
-<p>這裡有一個細節是，<code>post_1.comments</code>只會先取得「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/managers/#django.db.models.Manager">關係管理器</a>」物件，再透過該物件取得「由 Comment 關聯實例組成的<code>QuerySet</code>」，比如：<code>post_1.comments.all()</code>。</p>
+<p>這裡有一個細節是，<code>post_1.comments</code>只會先取得「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/relations/#django.db.models.fields.related.RelatedManager">關係管理器</a>」物件，再透過該物件取得「由 Comment 關聯實例組成的<code>QuerySet</code>」，比如：<code>post_1.comments.all()</code>。</p>
 </blockquote>
 <p>這和一對一關係中，你呼叫反向關聯屬性時，可能得到一個<strong>關聯實例</strong>或拋出<code>RelatedObjectDoesNotExist</code>有明顯不同。</p>
 <h3 id="related-name-的預設名稱"><a href="#related-name-的預設名稱" class="headerlink" title="related_name 的預設名稱"></a>related_name 的預設名稱</h3><p>如果你在建立欄位時沒有給定<code>related_name</code>引數，那 Django 會自動給你預設名稱。</p>
