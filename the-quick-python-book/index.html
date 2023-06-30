@@ -299,7 +299,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: local variable <span class="string">&#x27;total&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
 
 <p>相反的，假設<code>else</code>內沒有<code>raise</code>，而是做了一些事，但不包括<code>total</code>的賦值，那進了<code>else</code>後，最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
-<p>很小兒科的問題吧？但很遺憾，對於新手 Python 工程師而言，它真的不算罕見。</p>
+<p>很小兒科的問題吧？但很遺憾，對新手 Python 工程師而言，它真的不算罕見。</p>
 <hr>
 <p>開發人員沒有明確區分上述可能的不同情況，而一律加上預設值，往往是因為概念不夠清晰，或未能進一步思考使然。</p>
 <p>或許你會問：「即使一律都加上預設值，也不會真的造成問題啊？只是程式碼有點冗餘而已」，這是我們第三本書要討論的議題，在此先按下不表。</p>
