@@ -294,15 +294,15 @@
 <p>因為怕產生<strong>未賦值先使用</strong>的錯誤。</p>
 </blockquote>
 <p><strong>但其實這裡不會。</strong></p>
-<p>會產生如此誤解的原因是：<code>else</code>裡面雖然缺少關於<code>total</code>的賦值行為，但因為是直接拋出錯誤，進了<code>else</code>後就不會觸發函式的<code>return</code>。</p>
+<p>會產生如此誤解的原因是：<code>else</code>裡面雖然缺少關於<code>total</code>的賦值行為，但因為是直接拋出錯誤，進了<code>else</code>後就<strong>不會</strong>觸發函式的<code>return</code>——不會有機會使用到<code>total</code>。</p>
 <p>換句話說，<code>return</code><strong>只可能發生</strong>在<code>if</code>成立時。而<code>if</code>內確實有<code>total</code>的賦值行為，所以<strong>根本不會</strong>出現開發人員所擔心的未賦值先使用（<code>UnboundLocalError</code>）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: local variable <span class="string">&#x27;total&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不會發生，只是給你看一下想像中的錯誤訊息</span></span><br><span class="line">UnboundLocalError: local variable <span class="string">&#x27;total&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
 
-<p>相反的，假設<code>else</code>內沒有<code>raise</code>，而是做了一些事，但不包括<code>total</code>的賦值，那進了<code>else</code>後，最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
+<p>反之，假設<code>else</code>內沒有<code>raise</code>，而是做了一些事，但不包括<code>total</code>的賦值，那進了<code>else</code>後，最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
 <p>很小兒科的問題吧？但很遺憾，對新手 Python 工程師而言，它真的不算罕見。</p>
 <hr>
 <p>開發人員沒有明確區分上述可能的不同情況，而一律加上預設值，往往是因為概念不夠清晰，或未能進一步思考使然。</p>
-<p>或許你會問：「即使一律都加上預設值，也不會真的造成問題啊？只是程式碼有點冗餘而已」，這是我們第三本書要討論的議題，在此先按下不表。</p>
+<p>或許你會問：「即使一律都加上預設值，也不會真的造成什麼大問題啊？<strong>只是程式碼有點冗餘而已</strong>」，這正是我們第三本書所要討論的議題，在此先按下不表。</p>
 <h2 id="書中的經典案例"><a href="#書中的經典案例" class="headerlink" title="書中的經典案例"></a>書中的經典案例</h2><p>上述開發人員如果看過接下來要介紹的，本書的經典案例，相信就會明白為何<code>total</code>變數不需要預設值。</p>
 <p>這個「老手帶路」範例，就像書中所述，是連老手都可能失足的所在。在此我們先來看一段關鍵引言：</p>
 <blockquote>
