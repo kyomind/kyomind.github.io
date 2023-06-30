@@ -246,9 +246,13 @@
 <hr>
 <p>回到正題，本段開頭所引述書上的短短幾行，其中資訊量可一點也不少，足以讓你舉一反三，推導出下列有<strong>關 Python 變數的 3 個重要事實</strong>：</p>
 <ol>
-<li>在引數傳入後，函式內的參數如果<strong>重新參照</strong>了新物件（依上述，本來引數與參數是參照同一個物件），則作為引數的外部變數<strong>不會受影響</strong>。</li>
-<li>反之，如果傳入的引數是「<strong>可變物件</strong>」，且在函式內<strong>修改參數的內容</strong>，就會同時修改到函式外的引數——因為它們<strong>參照的是同一個物件</strong>。</li>
-<li>第三，是這段話中沒有特別強調，但實際已經描寫得很清楚的——Python 引數的傳入模式為「<strong>Call by Object Reference</strong>」，有興趣的讀者可參考這篇〈<a target="_blank" rel="noopener" href="https://medium.com/starbugs/python-%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82-pass-by-value-pass-by-reference-%E8%88%87-pass-by-sharing-1873a2c6ac46">Python 是 Pass By Value, Pass by Reference, 還是 Pass by Sharing？</a>〉，文中有詳細的例示與說明，限於篇幅，這裡就不展開。</li>
+<li>引數傳入後，<strong>如果</strong>函式內的參數<strong>重新參照</strong>了新物件（根據前述，引數和參數<strong>本來是參照同一個物件</strong>），由於重新參照，兩者的參照對象<strong>不再相同</strong>，所以作為引數的外部變數將<strong>不再受到影響</strong>。</li>
+<li>但是，如果傳入的引數是「<strong>可變物件（<a target="_blank" rel="noopener" href="https://www.maxlist.xyz/2021/01/26/python-immutable-mutable-objects/">mutable</a>）</strong>」，且在函式內<strong>「修改參數的內容」</strong>，就會<strong>同時修改到</strong>函式外的引數——因為它們<strong>參照的是同一個物件</strong>。<ol>
+<li>這是典型的「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%89%AF%E4%BD%9C%E7%94%A8_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">副作用</a>」，要盡可能避免。</li>
+<li>如果引數是「<strong>不可變物件（immutable）</strong>」，則不會有此問題。因為不可變物件，特性上就是<strong>無法被修改</strong>。所有對其進行的操作，都是<strong>重新參照</strong>，而不是修改原物件。</li>
+</ol>
+</li>
+<li>第三，是這段話中沒有特別強調，但能夠推論得出的命題——Python 引數的傳入模式為「<strong>Call by Object Reference</strong>」，有興趣的讀者可參考這篇〈<a target="_blank" rel="noopener" href="https://medium.com/starbugs/python-%E4%B8%80%E6%AC%A1%E6%90%9E%E6%87%82-pass-by-value-pass-by-reference-%E8%88%87-pass-by-sharing-1873a2c6ac46">Python 是 Pass By Value, Pass by Reference, 還是 Pass by Sharing？</a>〉，文中有詳細的例示與說明，限於篇幅，這裡就不展開。</li>
 </ol>
 <h3 id="實例"><a href="#實例" class="headerlink" title="實例"></a>實例</h3><p>用書中實例來說明上述概念：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">num, list1, list2</span>):</span><br><span class="line">    num = <span class="number">3</span></span><br><span class="line">    list1 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">    list2[<span class="number">0</span>] = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">y = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">z = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">func(x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x, y, z, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
@@ -257,9 +261,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">[[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 <h3 id="x、y、z-變數狀態解說"><a href="#x、y、z-變數狀態解說" class="headerlink" title="x、y、z 變數狀態解說"></a>x、y、z 變數狀態解說</h3><ol>
-<li><code>x</code>在函式外部的值為 5，並作為<strong>引數</strong>傳入函式中，因為在函式中「<strong>重新參照</strong>」了新物件 3，依上述說明，外部的變數<strong>不受影響</strong>，其值仍為原來的 5。</li>
+<li><code>x</code>在函式外部的值為 5，型別是<code>int</code>，屬於<strong>不可變物件</strong>。作為<strong>引數</strong>傳入函式中，因為在函式中「<strong>重新參照（重新賦值）</strong>」了新物件 3。<ol>
+<li>依上述說明，重新參照時，外部的變數<strong>不受影響</strong>，其值仍為原來的 5。</li>
+<li>無論引數是可變或不可變物件，只要函式內部<strong>只是重新參照而非修改內容</strong>，外部變數都不受影響。</li>
+</ol>
+</li>
 <li>同理，<code>y</code>傳入函式後為參數<code>list1</code>，雖然<code>y</code>是「<strong>可變物件</strong>」，但其在函式內部的行為<strong>也只是重新參照</strong>（重新賦值）為<code>[4, 5, 6]</code>，所以外部變數<code>y</code>也不受影響。</li>
-<li>但<code>z</code>就不同，<code>list2[0] = [4, 5, 6]</code>並非重新賦值，而是對<strong>其內容進行修改</strong>。前面已經提過，因為引數與參數所參照的是「<strong>同一個物件</strong>」，對參數的修改，相當於<strong>對共同參照物件的修改</strong>，其結果就是——外部的<code>z</code>狀態跟著一起改變！</li>
+<li>但<code>z</code>就不同，<code>list2[0] = [4, 5, 6]</code>並非重新賦值，而是<strong>對其內容進行修改</strong>。前面已經提過，因為引數與參數所參照的是「<strong>同一個物件</strong>」，對參數的修改，相當於<strong>「對共同參照物件的修改」</strong>。結果就是——外部的<code>z</code>跟著一起改變！</li>
 </ol>
 <p>若稍微修改一下上面程式碼的內容，把這兩行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">z = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
@@ -277,17 +285,21 @@
 
 <p>這是一個我在 code review 時很常遇到的問題，而且每隔一段時間就會反覆出現——<code>total = None</code>這行純屬多餘。</p>
 <p>在本例中，並<strong>不需要</strong>給定<code>total</code>變數的<strong>預設值</strong>。換句話說，即使沒有<code>total = None</code>這一行，函式的行為也不會受到影響。</p>
-<p>在此我們先不考慮<code>else</code>其實可以用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%AB%E8%AF%AD%E5%8F%A5">衛語句</a>（guard clause）替代，且假設<code>list1</code>參數的元素內容只會是「零到多個<code>int</code>物件」。以此為前提，我們只關注一個點：為什麼開發人員會覺得在<code>if</code>&#x2F;<code>else</code>判斷式之前，應該要先有一行<code>total = None</code>？</p>
+<p>在此我們先不考慮<code>else</code>其實可以用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%AB%E8%AF%AD%E5%8F%A5">衛語句</a>（guard clause）替代，且假設<code>list1</code>參數的元素內容不會有型別錯誤。以此為前提，<strong>我們只關注一個核心問題</strong>：</p>
+<blockquote>
+<p>為什麼開發人員會覺得在<code>if</code>&#x2F;<code>else</code>判斷式之前，應該要先有一行<code>total = None</code>作為預設值？</p>
+</blockquote>
 <h3 id="未賦值先使用？"><a href="#未賦值先使用？" class="headerlink" title="未賦值先使用？"></a>未賦值先使用？</h3><p>當你詢問對方為何要加上這一行，得到的回答通常是：</p>
 <blockquote>
 <p>因為怕產生<strong>未賦值先使用</strong>的錯誤。</p>
 </blockquote>
-<p>但其實這裡不會。</p>
+<p><strong>但其實這裡不會。</strong></p>
 <p>會產生如此誤解的原因是：<code>else</code>裡面雖然缺少關於<code>total</code>的賦值行為，但因為是直接拋出錯誤，進了<code>else</code>後就不會觸發函式的<code>return</code>。</p>
-<p>換句話說，<code>return</code><strong>只可能發生</strong>在<code>if</code>成立時。而<code>if</code>內確實有<code>total</code>的賦值行為，所以<strong>不會</strong>出現開發人員所擔心的未賦值先使用（UnboundLocalError）：</p>
+<p>換句話說，<code>return</code><strong>只可能發生</strong>在<code>if</code>成立時。而<code>if</code>內確實有<code>total</code>的賦值行為，所以<strong>根本不會</strong>出現開發人員所擔心的未賦值先使用（<code>UnboundLocalError</code>）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: local variable <span class="string">&#x27;total&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
 
-<p>相反的，假設<code>else</code>內非直接<code>raise</code>，而是做了一些事，且這些事中卻不包括<code>total</code>的賦值，那進了<code>else</code>後最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
+<p>相反的，假設<code>else</code>內沒有<code>raise</code>，而是做了一些事，但不包括<code>total</code>的賦值，那進了<code>else</code>後，最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
+<p>很小兒科的問題吧？但很遺憾，對於新手 Python 工程師而言，它真的不算罕見。</p>
 <hr>
 <p>開發人員沒有明確區分上述可能的不同情況，而一律加上預設值，往往是因為概念不夠清晰，或未能進一步思考使然。</p>
 <p>或許你會問：「即使一律都加上預設值，也不會真的造成問題啊？只是程式碼有點冗餘而已」，這是我們第三本書要討論的議題，在此先按下不表。</p>
