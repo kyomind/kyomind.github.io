@@ -346,10 +346,19 @@
 <li><code>%APPDATA%\Python\Scripts</code> on Windows</li>
 </ul>
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
-<h3 id="設定-PATH"><a href="#設定-PATH" class="headerlink" title="設定 PATH"></a>設定 PATH</h3><p>新增<code>poetry</code>指令執行檔所在的路徑至 PATH。</p>
+<h3 id="設定-PATH"><a href="#設定-PATH" class="headerlink" title="設定 PATH"></a>設定 PATH</h3><p>注意，<strong>這一步非常重要</strong>，如果你也是選擇「<strong>全域安裝</strong>」，那麼你<strong>必須設定 PATH</strong>，否則你的電腦就不知道<code>poetry</code>指令在哪裡，從而根本無法使用。</p>
+<p>所以我們要新增<code>poetry</code>執行檔所在的路徑至 PATH。</p>
 <p>在<code>.zshrc</code>或<code>.bashrc</code>或<code>.bash_profile</code>新增：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
+<hr>
+<p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html#cbc399de">Poetry 設定教學</a>。我覺得寫得比 Poetry 官方文件更好懂：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$Env</span>:Path += <span class="string">&quot;;C:\Users\jetbrains\AppData\Roaming\Python\Scripts&quot;</span>; setx PATH <span class="string">&quot;<span class="variable">$Env</span>:Path&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，上面的路徑要替換成你自己的使用者路徑，肯定不是<code>jetbrains</code>——Don’t forget to replace jetbrains with your username!</p>
+</blockquote>
+<hr>
 <p>存檔後重啟 shell 即可使用。直接在命令列打上<code>poetry</code>指令測試：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry</span><br><span class="line">Poetry version 1.1.13</span><br><span class="line"></span><br><span class="line">USAGE</span><br><span class="line">  poetry [-h] [-q] [-v [&lt;...&gt;]] [-V] [--ansi] [--no-ansi] [-n] &lt;<span class="built_in">command</span>&gt; [&lt;arg1&gt;] ... [&lt;argN&gt;]</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
