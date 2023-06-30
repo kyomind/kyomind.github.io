@@ -211,7 +211,7 @@
 <h2 id="一、Python-中的變數：是水桶還是標籤？"><a href="#一、Python-中的變數：是水桶還是標籤？" class="headerlink" title="一、Python 中的變數：是水桶還是標籤？"></a>一、Python 中的變數：是水桶還是標籤？</h2><p>參見本書：頁 4-9。</p>
 <p>這是一個重要且<strong>影響無所不在</strong>的概念。</p>
 <p>把變數和「變數值」的關係，想像成水桶和「水桶中的水」，無疑是符合人類直覺的思維——然而 Python 並非如此。Python 中的變數，<a href="https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/#%E5%88%86%E6%94%AF%E5%B7%AE%E7%95%B0%E5%8D%B3-commit-%E5%B7%AE%E7%95%B0">就像 Git 的分支一樣</a>，都只是一張「<strong>貼紙（標籤）</strong>」，而變數的實際內容，則另有<strong>參照</strong>主體——<strong>物件</strong>。</p>
-<p>換句話說，在 Pyhon 中，我們只是把變數這張貼紙，<strong>貼到「物件」上面</strong>而已。</p>
+<p>換句話說，在 Python 中，我們只是把變數這張貼紙，<strong>貼到「物件」上面</strong>而已。</p>
 <p>比如<code>number = 3</code>，number 是一個變數，而 3 是一個獨立的整數物件，是這個<code>=</code>把兩者<strong>暫時綁定（參照）</strong>在一起了。但 3 依舊不是 number 的一部分，只是 number 變數的「<strong>參考（reference）</strong>」。</p>
 <blockquote>
 <p>為什麼這個觀念很重要？</p>
