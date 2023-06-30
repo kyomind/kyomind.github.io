@@ -346,7 +346,7 @@
 <li><code>%APPDATA%\Python\Scripts</code> on Windows</li>
 </ul>
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
-<h3 id="設定-PATH（重要）"><a href="#設定-PATH（重要）" class="headerlink" title="設定 PATH（重要）"></a>設定 PATH（重要）</h3><p><strong>這一步非常重要</strong>，如果你也是選擇「<strong>全域安裝</strong>」，那麼就<strong>必須先「設定 PATH」</strong>，否則作業系統不知道<code>poetry</code>指令在哪裡，從而根本<strong>無法使用</strong>。</p>
+<h3 id="設定-PATH（重要）"><a href="#設定-PATH（重要）" class="headerlink" title="設定 PATH（重要）"></a>設定 PATH（重要）</h3><p><strong>這一步非常重要</strong>，如果你也是選擇「<strong>全域安裝</strong>」，就<strong>必須先「設定 PATH」</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
 <p>所以我們要新增<code>poetry</code>執行檔所在的路徑至 PATH。</p>
 <p>在<code>.zshrc</code>或<code>.bashrc</code>或<code>.bash_profile</code>新增：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
