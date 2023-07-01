@@ -91,7 +91,7 @@
           
             <a href="/categories/VS-Code/">VS Code (10)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (10)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (11)</a>
           
             <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談 (14)</a>
           
@@ -130,6 +130,40 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/pre-commit/">pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-04-29
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/HdNTdXP.jpg" alt="from Pixabay"></p>
+<p>這篇應該算是 Python Linter、Formatter 系列（嚴格來說並沒有這個系列，它們只是彼此相關）的最後一篇，有關「<a href="/tags/Code-Formatting/">Code Formatting</a>」這一主題的文章，之前已經寫了不少，依時間順序如下：</p>
+<ol>
+<li><a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a></li>
+<li><a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a>（主要）</li>
+<li><a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></li>
+<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
+<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+</ol>
+<p>仔細一看，其實不就是 Flake8、yapf、isort、Black Formatter 這 4 項工具的排列組合而已嗎XD。</p>
+<p>是的！我自己整理到都覺得有點不好意思了🫣。</p>
+<p>但是，為什麼要寫這麼多？還是那句老話：「<strong>我認為這些工具的重要性，再怎麼強調也不為過——更別說它們常常被低估了。</strong>」</p>
+<p>我曾在上述文章中的開頭或結尾處，不厭其煩地表達自己對它們的重視，這裡就不再贅述，直接進入重點。</p>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>在這篇文章中，我們將講述如何使用 pre-commit 設定 Git Hooks，並以 Flake8、isort、yapf 為例來進行演示，同時提醒一些注意事項。</p>
+<p>如同 Poetry，pre-commit 也是我在工作上，強烈希望導入的工具——畢竟它可以有效降低我 code review 時血壓升高的次數☺️</p>
+          <div class="read-more">
+            <a href="/pre-commit/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-16/">16，我的「價值觀層級」器物清單</a>
         </h1>
@@ -300,31 +334,6 @@
 <p>總之，以上兩種情境，在使用清單式筆記時，最好能有效避開。</p>
           <div class="read-more">
             <a href="/rusty-bullets/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/weekly-review-12/">12，blog 新增文章訂閱功能——使用 follow.it——與我的思考</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-02-25
-        </span><span class="post-category">
-            <a href="/categories/Weekly-Review/">Weekly Review</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/sWgUbzT.png"></p>
-<p>在臉書、YouTube 這類「流量大平台」興起之後，很多創作者雖然因此獲得不少流量甚至一夕爆紅，但對<strong>平台演算法</strong>的心情，仍然是愛恨交加。</p>
-<p>在文字創作領域，為了對抗平台與演算法，古老的<strong>電子報</strong>也迎來了一波「<strong>文藝復興</strong>」，造就了一堆電子報服務提供者，比如 <a target="_blank" rel="noopener" href="https://mailchimp.com/">Mailchimp</a>、<a target="_blank" rel="noopener" href="https://convertkit.com/">Convertkit</a>。</p>
-<p>它們讓作者可以直接把內容透過 email 發送給讀者，強化了兩者間的直接連繫。</p>
-<p>因此，你可以看到愈來愈多的部落格，都有提供電子報訂閱功能。可能是推送最新文章給你，也可能是更多額外的內容。</p>
-<p>更別說像 <a target="_blank" rel="noopener" href="https://substack.com/">Substack</a> 這樣「<strong>部落格、電子報——我全都要</strong>」的數位出版服務。</p>
-<p>說這些主要想表達：「<strong>訂閱功能</strong>」確實是現代部落格的一大需求。</p>
-          <div class="read-more">
-            <a href="/weekly-review-12/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
