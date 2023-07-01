@@ -214,7 +214,7 @@
 
 <p><code>$&#123;workspaceFolder&#125;</code>的意思是「VS Code 當前開啟的專案根目錄」。</p>
 <p>你可以把 env 檔放在更深層的資料夾，只要<code>python.envFile</code>的路徑正確，VS Code 仍然能夠正確讀取它。</p>
-<p>但如前所述，env 中<code>PYTHONOPATH</code>的值若為<code>$(pwd)</code>或<code>.</code>，那它的「<strong>實際路徑</strong>」就會隨著 env 所在的路徑而變動，有著不確定性。</p>
+<p>但如前所述，env 中<code>PYTHONPATH</code>的值若為<code>$(pwd)</code>或<code>.</code>，那它的「<strong>實際路徑</strong>」就會隨著 env 所在的路徑而變動，有著不確定性。</p>
 <p>所以，我們往往<strong>就是</strong>把 env 放在<strong>專案根目錄</strong>。當然，它通常叫「<code>.env</code>」。</p>
 <h2 id="第三種方式：「整合-terminal」設定"><a href="#第三種方式：「整合-terminal」設定" class="headerlink" title="第三種方式：「整合 terminal」設定"></a>第三種方式：「整合 terminal」設定</h2><p>一開始看到<code>ModuleNotFoundError</code>時，我立刻想到的就是第二種設定，趕緊翻出筆記，依樣畫葫蘆。</p>
 <p>沒想到，它不 work！</p>
@@ -258,9 +258,10 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例" rel="bookmark">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/good-vscode-extensions/" title="Python 後端開發：22 個我最常用的 VS Code「擴充套件」推薦" rel="bookmark">Python 後端開發：22 個我最常用的 VS Code「擴充套件」推薦</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort/" title="VS Code：Python isort 擴充套件介紹與簡易設定教學" rel="bookmark">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/TOP-10/">TOP 10</a>
             <a href="/tags/Python/">Python</a>
             <a href="/tags/PYTHONPATH/">PYTHONPATH</a>
             </div>
