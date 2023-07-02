@@ -37,9 +37,9 @@
     <category term="隨筆雜談" scheme="https://blog.kyomind.tw/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/"/>
     
     
-    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
-    
     <category term="Apple Silicon" scheme="https://blog.kyomind.tw/tags/Apple-Silicon/"/>
+    
+    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
   </entry>
   
@@ -68,9 +68,9 @@
     
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
     <category term="產品評論" scheme="https://blog.kyomind.tw/tags/%E7%94%A2%E5%93%81%E8%A9%95%E8%AB%96/"/>
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
   </entry>
   
@@ -171,6 +171,8 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
+    <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="pyenv" scheme="https://blog.kyomind.tw/tags/pyenv/"/>
@@ -178,8 +180,6 @@
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
-    
-    <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
     
     <category term="pip" scheme="https://blog.kyomind.tw/tags/pip/"/>
     
@@ -241,11 +241,11 @@
     
     <category term="isort" scheme="https://blog.kyomind.tw/tags/isort/"/>
     
-    <category term="Code Formatting" scheme="https://blog.kyomind.tw/tags/Code-Formatting/"/>
-    
     <category term="pre-commit" scheme="https://blog.kyomind.tw/tags/pre-commit/"/>
     
     <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
+    
+    <category term="Code Formatting" scheme="https://blog.kyomind.tw/tags/Code-Formatting/"/>
     
     <category term="短篇" scheme="https://blog.kyomind.tw/tags/%E7%9F%AD%E7%AF%87/"/>
     
@@ -321,15 +321,15 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
     <category term="isort" scheme="https://blog.kyomind.tw/tags/isort/"/>
-    
-    <category term="Code Formatting" scheme="https://blog.kyomind.tw/tags/Code-Formatting/"/>
     
     <category term="pre-commit" scheme="https://blog.kyomind.tw/tags/pre-commit/"/>
     
     <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
+    
+    <category term="Code Formatting" scheme="https://blog.kyomind.tw/tags/Code-Formatting/"/>
+    
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Flake8" scheme="https://blog.kyomind.tw/tags/Flake8/"/>
     
@@ -366,9 +366,9 @@
     
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
-    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
-    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
     
   </entry>
   
