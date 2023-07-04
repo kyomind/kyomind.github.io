@@ -348,15 +348,13 @@
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
 <h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p><strong>這一步非常重要</strong>，如果你也是選擇「<strong>全域安裝</strong>」，就<strong>必須先「設定 PATH」</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
 <blockquote>
-<p>至於 PATH 是什麼，請參考此篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
+<p>至於 PATH 是什麼，可以參考良葛格這篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
 </blockquote>
 <p>總之，我們要新增<code>poetry</code>執行檔所在的路徑（目錄）至 PATH。</p>
 <h3 id="在-macOS-或-Linux-上設定-PATH"><a href="#在-macOS-或-Linux-上設定-PATH" class="headerlink" title="在 macOS 或 Linux 上設定 PATH"></a>在 macOS 或 Linux 上設定 PATH</h3><p>使用 macOS 或 Linux，設定 PATH 的步驟相對簡單，只要在<code>.zshrc</code>或<code>.bashrc</code>或<code>.bash_profile</code>新增：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
-<p>存檔後重啟 shell 即可使用。直接在命令列打上<code>poetry</code>指令測試：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry</span><br><span class="line">Poetry version 1.1.13</span><br><span class="line"></span><br><span class="line">USAGE</span><br><span class="line">  poetry [-h] [-q] [-v [&lt;...&gt;]] [-V] [--ansi] [--no-ansi] [-n] &lt;<span class="built_in">command</span>&gt; [&lt;arg1&gt;] ... [&lt;argN&gt;]</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
+<p>存檔後重啟 shell 即可使用。直接在命令列打上<code>poetry</code>指令測試。</p>
 <h3 id="在-Windows-上設定-PATH"><a href="#在-Windows-上設定-PATH" class="headerlink" title="在 Windows 上設定 PATH"></a>在 Windows 上設定 PATH</h3><p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html#cbc399de">Poetry 設定教學</a>。我覺得寫得比 Poetry 官方文件更好懂：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$Env</span>:Path += <span class="string">&quot;;C:\Users\jetbrains\AppData\Roaming\Python\Scripts&quot;</span>; setx PATH <span class="string">&quot;<span class="variable">$Env</span>:Path&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -364,7 +362,7 @@
 <blockquote>
 <p>Don’t forget to replace jetbrains with your username!</p>
 </blockquote>
-<p>設定完後，重啟 shell 即可使用，可直接在命令列打上<code>poetry</code>指令測試。</p>
+<p>設定完後，重啟 shell，一樣，可直接在命令列打上<code>poetry</code>指令測試。</p>
 <h3 id="設定-alias"><a href="#設定-alias" class="headerlink" title="設定 alias"></a>設定 alias</h3><p>比起<code>pip</code>，<code>poetry</code>這個指令實在太冗長了！我們還是給它一個 alias 吧！</p>
 <p>基於它是我極為常用的指令，我願意賦與它<strong>「單字母」的 alias 特權</strong>，我使用<code>p</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> p=<span class="string">&#x27;poetry&#x27;</span></span><br></pre></td></tr></table></figure>

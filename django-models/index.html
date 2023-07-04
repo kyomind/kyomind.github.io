@@ -268,7 +268,7 @@
 <h3 id="良好的-related-name-命名"><a href="#良好的-related-name-命名" class="headerlink" title="良好的 related_name 命名"></a>良好的 related_name 命名</h3><p>實務中，把這個<code>related_name</code>命名好還是很重要的，雖然大部分時候用單純的複數就可以搞定，就像上面的<code>comments</code>，但為了<strong>增進程式的可讀性</strong>，也有需要你花費巧思的時候，比如下面這段程式碼：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Project</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line">    certificate = models.ForeignKey(<span class="string">&#x27;Certificate&#x27;</span>,</span><br><span class="line">                                    on_delete=models.PROTECT,</span><br><span class="line">                                    related_name=<span class="string">&#x27;used_by_projects&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>這裡就不用死板<code>projects</code>來命名，因為當你透過<code>Certificate</code>物件要訪問「<strong>使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code>顯然會比<code>certificate.projects</code>更具描述性，其他開發者也能迅速理解這個欄位的用途。</p>
+<p>這裡不再用死板<code>projects</code>來命名，因為當你透過<code>Certificate</code>物件要訪問「<strong>使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code>顯然會比<code>certificate.projects</code><strong>更具描述性</strong>，其他開發者也能迅速理解這個欄位的意義與用途。</p>
 <hr>
 <h2 id="小結：關聯是-model-核心"><a href="#小結：關聯是-model-核心" class="headerlink" title="小結：關聯是 model 核心"></a>小結：關聯是 model 核心</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。</p>
 <p>通過關聯，我們能夠模擬真實世界中的關係，使資料表之間建立起有意義的連結。</p>
