@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/pre-commit/</loc>
+    
+    <lastmod>2023-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/mac-mini/</loc>
     
     <lastmod>2023-07-05</lastmod>
@@ -257,15 +266,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
     
     <lastmod>2023-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pre-commit/</loc>
-    
-    <lastmod>2023-05-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
