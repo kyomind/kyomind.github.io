@@ -203,10 +203,13 @@
 <p>理由很簡單，因為這些套件可以在不同專案之間「<strong>共用</strong>」，所以你只需要安裝一個 VS Code 套件，就不必再各個專案的 Python 虛擬環境重複安裝。</p>
 <p>如此不止節省空間，專案的環境也更加整潔。</p>
 <blockquote>
-<p><code>2023/07/05</code>補充：同 Flake8、Black Formatter，當你的虛擬環境<strong>沒有安裝</strong> isort 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝 isort</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
+<p><code>2023/07/05</code>補充：如同 Flake8、Black Formatter 擴充套件（三者都是微軟出的），當你的虛擬環境<strong>沒有安裝</strong> isort 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝 isort</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
 </blockquote>
 <blockquote>
 <p>The bundled isort is only used if there is no installed version of isort found in the selected python environment.</p>
+</blockquote>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></p>
 </blockquote>
 <p>尤其這些工具——無論是 linter、formatter——它們與實際產品專案都沒有直接相關，所以對版本不那麼敏感，可以隨時升級而不影響專案的穩定。</p>
 <p>所以，它們「特別適合」獨立出來<strong>共享</strong>。</p>
