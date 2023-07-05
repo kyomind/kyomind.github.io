@@ -203,7 +203,7 @@
 <p>理由很簡單，因為這些套件可以在不同專案之間「<strong>共用</strong>」，所以你只需要安裝一個 VS Code 套件，就不必再各個專案的 Python 虛擬環境重複安裝。</p>
 <p>如此不止節省空間，專案的環境也更加整潔。</p>
 <blockquote>
-<p><code>2023/07/05</code>補充：如同 Flake8、Black Formatter 擴充套件（都是微軟出的），當你的虛擬環境<strong>沒有安裝</strong> isort 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝 isort</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
+<p><code>2023/07/05</code>補充：如同 Flake8、Black Formatter 擴充套件（都是微軟出的），當你的虛擬環境<strong>沒有安裝</strong> isort 時，擴充套件會使用它<strong>預設的版本</strong>。如果虛擬環境<strong>有安裝 isort</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
 </blockquote>
 <blockquote>
 <p>The bundled isort is only used if there is no installed version of isort found in the selected python environment.</p>
@@ -213,7 +213,7 @@
 </blockquote>
 <p>這些工具——無論是 linter、formatter——它們與實際產品專案沒有直接相關，對版本也沒那麼敏感，可以隨時升級而不影響專案的穩定。</p>
 <p>所以，它們「特別適合」獨立出來<strong>共享</strong>。</p>
-<p>但話說回來，如果是<strong>團隊協作</strong>，那這些工具的版本還是要<strong>盡可能統一</strong>才好。避免不同的開發者使用不同版本，造成格式不一致問題。</p>
+<p>但話說回來，如果是<strong>團隊協作</strong>，那這些工具的版本還是要<strong>盡可能統一</strong>才好。避免不同的開發者使用不同版本，造成格式不一致的問題。</p>
 <hr>
 <h2 id="VS-Code-isort-套件設定"><a href="#VS-Code-isort-套件設定" class="headerlink" title="VS Code isort 套件設定"></a>VS Code isort 套件設定</h2><p>安裝套件後，原則上你無須設定就可以使用，不過還是值得了解一點細節，以方便進行客製化微調，比如最常見的——變更單行字元上限。</p>
 <p>關於 isort 套件在 VS Code <code>settings.json</code>中的設定事項，<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort#settings">套件首頁已有介紹</a>。在此特別提其中的兩個，以及一個「<strong>存檔時自動格式化</strong>」的設定。</p>
