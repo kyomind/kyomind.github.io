@@ -148,8 +148,9 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-import-%E5%9F%BA%E7%A4%8E"><span class="toc-text">Python import 基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E5%B9%ABsys-path%E3%80%8C%E5%8A%A0%E6%96%99%E3%80%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">兩個幫sys.path「加料」的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%A8%AD%E5%AE%9APYTHONPATH"><span class="toc-text">VS Code 設定PYTHONPATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9APYTHONPATH%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">設定PYTHONPATH的三種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%A8%AD%E5%AE%9A-settings-json%EF%BC%88%E5%B7%B2%E5%BB%A2%E6%A3%84%EF%BC%89"><span class="toc-text">第一種方式：直接設定 settings.json（已廢棄）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%80%8F%E9%81%8E-env-%E6%AA%94"><span class="toc-text">第二種方式：透過 env 檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E3%80%8C%E6%95%B4%E5%90%88-terminal%E3%80%8D%E8%A8%AD%E5%AE%9A"><span class="toc-text">第三種方式：「整合 terminal」設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%88%A5%E6%8F%90%E9%86%92"><span class="toc-text">特別提醒</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/VHCKtxW.jpg"></p>
-<p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，所以需要另外 import：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> configs.config <span class="keyword">import</span> TestMode  <span class="comment"># import 本地的 configs 模組</span></span><br></pre></td></tr></table></figure>
+<p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定——<code>DeployStatus</code>，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，所以需要另外 import。</p>
+<p>因此，<code>debugger.py</code>的開頭程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">...</span><br><span class="line"><span class="keyword">from</span> configs.config <span class="keyword">import</span> DeployStatus</span><br></pre></td></tr></table></figure>
 
 <p>而專案的結構則是（這裡只凸顯兩者的「<strong>相對層級關係</strong>」，其餘細節省略）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 元件</span><br><span class="line">│   ├── debugger.py</span><br><span class="line">│</span><br><span class="line">├── configs</span><br><span class="line">│   ├── config.py</span><br><span class="line">│</span><br></pre></td></tr></table></figure>
@@ -158,7 +159,7 @@
 <p>不出所料，直接執行之後，會出現錯誤訊息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;configs&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p>這就牽涉到，Python 直譯器在 import 時，究竟「<strong>如何尋找 import 路徑</strong>」議題。</p>
+<p>為什麼？這牽涉到 Python 直譯器在 import 時，究竟「<strong>如何尋找 import 路徑</strong>」議題。</p>
 <span id="more"></span>
 <hr>
 <h2 id="Python-import-基礎"><a href="#Python-import-基礎" class="headerlink" title="Python import 基礎"></a>Python import 基礎</h2><p>可先參考下列三篇文章，建立關於 import 的基礎世界觀：</p>
@@ -167,8 +168,8 @@
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196775">import雜談之二———export機制以及namespace package</a></li>
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196901">import雜談之三———sys.path的洪荒之時</a></li>
 </ul>
-<p>從上述引用內容可知，<code>debugger.py</code>所以會出現<code>ModuleNotFoundError</code>，正是因為<code>from configs.config import TestMode</code>這段程式碼，是希望從「專案根目錄」的角度出發去 import。</p>
-<h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><p>但在沒有額外設定的情況下，專案根目錄並不在<code>sys.path</code>裡——除非<code>debugger.py</code>就在專案根目錄底下（容後述）。所以自然就找不到<code>configs</code>模組。</p>
+<p>從上述引用內容可知，<code>debugger.py</code>所以會出現<code>ModuleNotFoundError</code>，是因為<code>from configs.config import DeployStatus</code>這段程式碼的「<strong>程式寫作意圖</strong>」，是希望從「<strong>專案根目錄</strong>」的角度出發去 import——但實際上 Python 直譯器卻沒有如預期地這麼做。</p>
+<h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><p>因為，在這個例子中，沒有額外設定的情況下，專案根目錄並不在<code>sys.path</code>裡（除非<code>debugger.py</code>就在專案根目錄底下，容後述），直譯器自然找不到<code>configs</code>模組。</p>
 <p>換句話說，Python 直譯器在執行 import 時，會從<code>sys.path</code>中，由<strong>左至右依序嘗試</strong>要 import 的路徑。一般而言，<code>sys.path</code>的值可以例示如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python38.zip&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8/lib-dynload&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8/site-packages&#x27;</span>]</span><br></pre></td></tr></table></figure>
 <p>第一個元素是空字串，代表<strong>當前目錄</strong>。</p>
@@ -206,7 +207,9 @@
 <p><strong>By default, the interpreter looks for a module within the current directory.</strong> To make the interpreter search in some other directory you just simply have to change the current directory.</p>
 </blockquote>
 <p>換句話說，如果<code>debugger.py</code>「正好」就在專案根目錄下，那就不需要額外的設定。因此，本文案例之所以會出現<code>ModuleNotFoundError</code>，也正因<code>debugger.py</code>不在專案的根目錄裡。</p>
-<p>可想而知，把<code>debugger.py</code>改放在專案根目錄下，就不會有問題了。但這並不是解決問題的<strong>根本方法</strong>，因為會讓專案結構變得「<strong>不整齊、缺乏一致性</strong>」。</p>
+<p>可想而知，把<code>debugger.py</code>改放在專案根目錄下，就不會有問題了。</p>
+<p><strong>但這並不是解決問題的根本方法</strong>。換句話說，我們不能只因為「方便」，就輕易改變原本設計好的專案結構。</p>
+<p>這樣「妥協」的做法，往往會讓專案結構逐漸變得「<strong>缺乏一致性</strong>」而難以維護。</p>
 <hr>
 <h3 id="settings-json-設定-env-讀取路徑"><a href="#settings-json-設定-env-讀取路徑" class="headerlink" title="settings.json 設定 env 讀取路徑"></a>settings.json 設定 env 讀取路徑</h3><p>有了 env 檔案，接著就是要讓 VS Code 去讀取它，<code>settings.json</code>要加入下列內容：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.envFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/.env&quot;</span></span><br></pre></td></tr></table></figure>
