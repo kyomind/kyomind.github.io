@@ -159,8 +159,8 @@
 <p>是的！我自己整理到都覺得有點不好意思了🫣。</p>
 <p>但是，為什麼要寫這麼多？還是那句老話：「<strong>我認為這些工具的重要性，再怎麼強調也不為過——更別說它們常常被低估了。</strong>」</p>
 <p>我曾在上述文章中的開頭或結尾處，不厭其煩地表達自己對它們的重視，這裡就不再贅述，直接進入重點。</p>
-<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>在這篇文章中，我們將講述如何使用 pre-commit 設定 Git Hooks，並以 Flake8、isort、yapf 為例來進行演示，同時提醒一些注意事項。</p>
-<p>如同 Poetry，pre-commit 也是我在工作上，強烈希望導入的工具——畢竟它可以有效降低我 code review 時血壓升高的次數☺️</p>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將講述如何透過 <a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 這個工具設定 Git Hooks，並以 Flake8、isort、yapf 等 Python 開發常用套件為例，進行演示，同時提醒一些注意事項。</p>
+<p>如同 Poetry，pre-commit 也是我在工作上，強烈希望導入的工具——畢竟它可以有效降低 code review 時血壓升高的次數☺️</p>
 <span id="more"></span>
 
 <h2 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h2><p>我們會先講一下什麼是 Git Hooks 和 pre-commit，因為不是論述上的重點，所以只需簡單帶過，讀者心中有個輪廓即可。</p>
@@ -174,8 +174,8 @@
 <p>事實上，你可以用任何語言來撰寫 hook 腳本，只要編寫的腳本能夠在系統上被執行，而且符合 Git hook 的腳本格式，就可以使用。</p>
 <p>開發者只需要在<code>.git/hooks</code>目錄下建立相對應的 hook（命名必須遵守規則），依照 Git Hooks 的 API 規範，編寫自己需要的處理邏輯即可。</p>
 <p>但我們才不會這麼做！因為我們有工具嘛！</p>
-<h2 id="Git-Hooks-管理工具介紹"><a href="#Git-Hooks-管理工具介紹" class="headerlink" title="Git Hooks 管理工具介紹"></a>Git Hooks 管理工具介紹</h2><p>即使你會寫 shell script，也不一定想自己手刻一個 hook 腳本，所幸這麼常見的需求，自然有許多開源的工具可以使用，而 pre-commit 就是其中的佼佼者——只能說這個套件的命名非常簡單暴力！🤣</p>
-<p><a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 是由 Python 所寫成的 Git Hooks 管理工具，但可以適用於各類程式語言專案，包括 Python、JavaScript、Ruby、Java、Go 等。使用者可以根據自己的需求，選擇要使用的 hook。</p>
+<h2 id="Git-Hooks-管理工具介紹"><a href="#Git-Hooks-管理工具介紹" class="headerlink" title="Git Hooks 管理工具介紹"></a>Git Hooks 管理工具介紹</h2><p>即使你會寫 shell script，也不一定想自己手刻一個 hook 腳本，所幸這麼常見的需求，自然有許多開源的工具可以使用，而 pre-commit 就是其中的佼佼者——只能說這套件的命名非常簡單暴力！🤣</p>
+<p><a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 是由 Python 所寫成的 Git Hooks 管理工具，<strong>但可以適用於各類程式語言專案</strong>，包括 Python、JavaScript、Ruby、Java、Go 等。使用者可以根據自己的需求，選擇要使用的 hook。</p>
 <p>類似的工具還有 <a target="_blank" rel="noopener" href="https://github.com/typicode/husky">husky</a>、<a target="_blank" rel="noopener" href="https://github.com/sds/overcommit">overcommit</a> 等等。不過作為 Python 開發者，我們當然還是選擇 pre-commit 囉！</p>
 <p>雖然叫 pre-commit，但實際上它可以管理全部種類的 Git Hooks，比如<code>pre-push</code>、<code>post-merge</code>等等，管理 pre-commit hook 只是其中最常見的用途而已，我想這應該不至於造成誤會。</p>
 <hr>
@@ -186,7 +186,7 @@
 </ol>
 <p>這兩個問題有先後關係，先有 1 才有 2。不過 2 的理由比較簡單，所以我們先講 2 再講 1。</p>
 <h3 id="為什麼要使用自動化工具來管理-Git-Hooks？"><a href="#為什麼要使用自動化工具來管理-Git-Hooks？" class="headerlink" title="為什麼要使用自動化工具來管理 Git Hooks？"></a>為什麼要使用自動化工具來管理 Git Hooks？</h3><p>除了和〈<a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a>〉一樣：<strong>因為這個方式更加輕鬆</strong>以外。更關鍵的是，透過工具你可以像堆樂高積木般，輕鬆組合各式套件所提供的現成 hook，比如本文的 Flake8，這顯然比自己寫 shell 要高效得多。</p>
-<p>所以比起管理 dotfiles，直接透過工具來管理 Git Hooks，應該是絕大多數人<strong>自然而然的選擇</strong>。</p>
+<p>所以，直接透過工具來管理 Git Hooks，應該是絕大多數人<strong>自然而然的選擇</strong>。</p>
 <h3 id="為什麼要使用-pre-commit-hook？"><a href="#為什麼要使用-pre-commit-hook？" class="headerlink" title="為什麼要使用 pre-commit hook？"></a>為什麼要使用 pre-commit hook？</h3><p>在〈<a target="_blank" rel="noopener" href="https://www.mropengate.com/2019/08/pre-commit-git-hooks_4.html?m=1">提升程式碼品質：使用 Pre-Commit (Git Hooks)</a>〉一文中，作者提出了三點，闡述為何要使用 pre-commit hook，理由充分且令人信服，請容我直接引用：</p>
 <blockquote>
 <ul>
@@ -211,19 +211,19 @@
 </blockquote>
 <p>是的，我最大的著眼點在於：「<strong>減少團隊協作時，不必要的磨擦（精神消耗）。</strong>」</p>
 <p>個人認為這真的很重要，畢竟我們不是機器，都有情緒，而情緒應該要用在更有價值的地方。</p>
-<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>總的來說，如果你問我「為何要使用 pre-commit？」從個人角度看，我已視之為理所當然，畢竟我都寫了 6 篇相關文章了。</p>
-<p>而 pre-commit 則是我們的<strong>最後一塊拼圖</strong>，它更進一步確保了 linter 和 formatter 的檢查，在 commit 之際，能被<strong>完全落實</strong>。</p>
+<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>總的來說，如果你問我「為何要使用 pre-commit？」從個人角度看，我已視之為理所當然，畢竟我都寫了多篇關於「<strong>如何落實 Code Formatting</strong>」的文章了。</p>
+<p>而 pre-commit 則是我們的<strong>最後一塊拼圖</strong>，它更進一步確保了 linter 和 formatter 的檢查，在 commit 之際，能被<strong>完全遵守</strong>。</p>
 <p>而從團隊的角度，則是因為「這樣對大家都好！」</p>
 <hr>
 <h2 id="pre-commit-基本設定"><a href="#pre-commit-基本設定" class="headerlink" title="pre-commit 基本設定"></a>pre-commit 基本設定</h2><p>安裝 pre-commit 應該不必解釋，<code>poetry add pre-commit</code>或<code>pip install pre-commit</code>任君挑選。macOS 也可以用<code>brew install pre-commit</code>全域安裝，但如此一來它就不會在專案虛擬環境中。</p>
-<h3 id="pre-commit-config-yaml"><a href="#pre-commit-config-yaml" class="headerlink" title=".pre-commit-config.yaml"></a>.pre-commit-config.yaml</h3><p>接著是關於<code>.pre-commit-config.yaml</code>的編輯，請將此檔案建立於專案的根目錄，pre-commit 就是透過這份設定檔，實現各項 hook 內容。</p>
+<h3 id="pre-commit-config-yaml"><a href="#pre-commit-config-yaml" class="headerlink" title=".pre-commit-config.yaml"></a>.pre-commit-config.yaml</h3><p>接著是關於<code>.pre-commit-config.yaml</code>的編輯，請將此檔案建立於<strong>專案的根目錄</strong>，pre-commit 就是透過這份設定檔，實現各項 hook 內容。</p>
 <p>一般而言，<code>.pre-commit-config.yaml</code>會長這樣：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/pre-commit/pre-commit-hooks</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="string">v4.3.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">trailing-whitespace</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">check-added-large-files</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/flake8</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.0</span><span class="number">.4</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">flake8</span></span><br></pre></td></tr></table></figure>
 
 <p>最上面是<a target="_blank" rel="noopener" href="https://github.com/pre-commit/pre-commit-hooks#hooks-available">由 pre-commit 專案提供的基本 hooks</a>。剩下的部分則是其它開源專案所提供的 hook。</p>
 <p><code>yaml</code>檔中的<code>repo</code>、<code>rev</code>、<code>hooks</code>、<code>id</code>等設定，直接看<a target="_blank" rel="noopener" href="https://pre-commit.com/#pre-commit-configyaml---repos">文件</a>就知道意思了。</p>
 <h3 id="設定上重點"><a href="#設定上重點" class="headerlink" title="設定上重點"></a>設定上重點</h3><p>對於第一次接觸 pre-commit 的人而言，這裡會有的<strong>最大疑問</strong>應該是：「啊我怎麼知道我可以用哪些 hook？我又怎麼知道這些 hook 的 repo 網址？」</p>
-<p>沒錯，這是關鍵所在，<a target="_blank" rel="noopener" href="https://pre-commit.com/hooks.html">這個網頁</a>有目前全部可用的 hook 清單，上面如果沒有列出你想用的工具，那就是暫不支援囉！</p>
+<p>沒錯，這是關鍵所在，這個「<a target="_blank" rel="noopener" href="https://pre-commit.com/hooks.html">Supported hooks</a>」網頁有目前全部可用的 hook 清單，上面如果沒有列出你想用的工具，那就是暫不支援囉！</p>
 <p>至於<code>rev</code>的具體版本號（總不能自己瞎編一個），repo 網頁的「tags」頁面就會有，比如這是 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/flake8/tags">Flake8 的 tags 頁面</a>。</p>
 <p>值得留意的是：有些 hook 的 tag 有「<code>v</code>」開頭，有些則否（上述 Flake8 就沒有）。這主要取決於各專案開發者的 tag 命名習慣，我們只要留意一下即可。</p>
 <p>知道這些，基本上就能設定好<code>.pre-commit-config.yaml</code>了。</p>
