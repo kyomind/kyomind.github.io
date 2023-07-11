@@ -169,7 +169,10 @@
 <li>套件是否實用帶有<strong>主觀色彩</strong>，為了增加讀者參考上的方便與可信度，我會給出從主觀與客觀兩種不同角度的<strong>量化指標</strong>（下述），以免推薦內容流於我個人的主觀偏好。</li>
 </ul>
 <h2 id="量化指標：推薦度與重要性"><a href="#量化指標：推薦度與重要性" class="headerlink" title="量化指標：推薦度與重要性"></a>量化指標：推薦度與重要性</h2><p>每一個套件我都會為它加上我個人認為在開發上的<strong>重要性</strong>與<strong>推薦度</strong>，以「⭐️」表示，可以想成米其林的一星到三星，兩者的差別如下（<strong>本文賦與的特別定義</strong>）：</p>
-<p> 推薦度：「<strong>客觀</strong>」上我認為<strong>別人</strong>可能會喜歡、覺得有用的程度。<br> 重要性：「<strong>主觀</strong>」上<strong>對我而言</strong>不可或缺的程度。</p>
+<ul>
+<li><strong>推薦度</strong>：「<strong>客觀</strong>」上我認為<strong>別人</strong>可能會喜歡、覺得有用的程度。</li>
+<li><strong>重要性</strong>：「<strong>主觀</strong>」上<strong>對我而言</strong>不可或缺的程度。</li>
+</ul>
 <p>所以對你來說，參考價值通常是：<strong>推薦度＞重要性</strong>。</p>
 <h3 id="推薦度"><a href="#推薦度" class="headerlink" title="推薦度"></a>推薦度</h3><p>客觀推薦程度：</p>
 <ul>
@@ -189,10 +192,12 @@
 <p><strong>Python extension for Visual Studio Code</strong><br>IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more.</p>
 </blockquote>
 <p>這個套件應該不太需要解釋，不裝就不用寫 Python 了。</p>
-<p>它有一個<strong>缺點</strong>，就是太「<strong>包山包海</strong>」了——除了 Python 基本功能，還包括了 isort、Jupyter 和 linter 與 formatter 的整合，難怪微軟打算將一部分功能陸續拆分出來。</p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></p>
-</blockquote>
+<p>它有一個<strong>缺點</strong>，就是太「<strong>包山包海</strong>」了——除了 Python 基本功能，還包括了 isort、Jupyter 和 linter 與 formatter 的整合，難怪微軟打算將一部分功能<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/150798">陸續拆分出來</a>。</p>
+<p>目前<strong>已完成拆分</strong>的套件有 Flake8、Black、isort 等，相關文章如下：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
+</ul>
 <h3 id="Pylance"><a href="#Pylance" class="headerlink" title="Pylance"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a></h3><p>由微軟自行研發的 <a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/python/introducing-the-python-language-server/">Python language server</a>，可簡單想成前述 Python 套件的強化補充包，藉以提供更多 Python 相關的實用功能，比如靜態語法分析等。詳細功能可參考套件頁面，目前已經是前項 Python 套件的<strong>預設</strong> language server。</p>
 <hr>
 <p>前言結束。現在，讓我們進入正題。</p>
