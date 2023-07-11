@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2023-07-11</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/mac-mini/</loc>
+    
+    <lastmod>2023-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
     
     <lastmod>2023-07-11</lastmod>
     
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
-    
-    <lastmod>2023-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2023-07-07</lastmod>
     
