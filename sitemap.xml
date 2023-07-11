@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
+    
+    <lastmod>2023-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/mac-mini/</loc>
+    
+    <lastmod>2023-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
+    
+    <lastmod>2023-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2023-07-11</lastmod>
@@ -20,25 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
-    
-    <lastmod>2023-07-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
-    
-    <lastmod>2023-07-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/mac-mini/</loc>
     
     <lastmod>2023-07-08</lastmod>
     
@@ -93,15 +102,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
-    
-    <lastmod>2023-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
     
     <lastmod>2023-07-05</lastmod>
     
