@@ -160,7 +160,7 @@
 <li><strong>Template（模板）：</strong> 模板用於前端。它是一個包含 HTML、CSS 和一些額外標記語言（例如 Django 的模板語言）的文件，用於定義網頁的外觀和內容。</li>
 <li><strong>View（視圖）：</strong> 視圖是應用程式處理邏輯的地方。它接收用戶的請求，從模型獲取數據，並使用模板來生成適當的回應。視圖處理用戶的 HTTP 請求，並根據需要調用相應的模型和模板來生成回應。</li>
 </ul>
-<h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>我們假設你是一個前後端分離下的 Django 工程師，你那通常就是負責後端的 API 開發。</p>
+<h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>假設你是一個前後端分離下的 Django 工程師，那通常就是負責後端的 API 開發。</p>
 <p>首先，顯然 Template 不需要了，因為這是前端的範疇，而 View 呢？相當程度會被 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（以下皆簡稱為 DRF）所取代。說「取代」不太正確，應該說「升級」。</p>
 <p>帶來的影響是 View 中相當部分操作細節與學習重點會遷移到 DRF 本身，而非 Django 原生提供的功能。</p>
 <p>比如<code>request.data</code>，重新封裝了 Django 中的<code>request.POST</code>和<code>request.FILES</code>兩個屬性，類似的情況還有<code>APIView</code>或<code>@api_view</code>等等。</p>
