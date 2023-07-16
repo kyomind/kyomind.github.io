@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-07-11T16:23:09.478Z</updated>
+  <updated>2023-07-16T20:37:57.440Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Evernote 最佳替代方案——筆記軟體 Bear 2 升級心得</title>
+    <link href="https://blog.kyomind.tw/bear/"/>
+    <id>https://blog.kyomind.tw/bear/</id>
+    <published>2023-07-16T20:12:36.000Z</published>
+    <updated>2023-07-16T20:37:57.440Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/5jYB3kZ.png" alt="bear.app"><span class="cap">bear.app</span></p><p>在〈<a href="https://blog.kyomind.tw/simple-notion/">使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a>〉一文中，我曾提到：</p><blockquote><p>如果你正在尋找一款和 Evernote 界面相似、使用邏輯相仿，且<strong>符合現代潮流</strong>的 app，那麼我誠摯推薦自己也有在用的 **<a href="https://bear.app/">Bear</a>**。（可惜它只限 macOS 與 iOS 平台）</p></blockquote><p>Bear、Notion、Logseq 三者，都是我目前有持續在使用的筆記軟體，雖然在使用量上，它們呈現一個非常不均勻的分布：</p><ul><li>Logseq：80%</li><li>Notion：15%</li><li>Bear：5%</li></ul><p>對，你沒看錯，Bear 的使用量只佔我全部筆記的 5% 而已。</p><p>儘管如此，我依舊是一個忠實的 Bear 付費用戶，原因無他，因為無論是 Notion 還是 Logseq，它們都太「重」了！</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/logseq/">Logseq 心得：一顆冉冉升起的「卡片筆記」新星</a></p></blockquote><span id="more"></span><h2 id="簡易型筆記軟體"><a href="#簡易型筆記軟體" class="headerlink" title="簡易型筆記軟體"></a>簡易型筆記軟體</h2><p>當我要想存一些簡單內容，比如常用資訊（地址、帳號、手機）；或完全不想歸類的獨立筆記，比如臉書文章摘要，我需要更簡單、輕量的筆記工具。</p><p>這些內容的特色是：當我需要它們的時候，我要快速獲取！或者我並不想為它們進行有系統的架構、組織，但又希望稍加整理。</p><p>因此，我不想動用 Notion、Logseq 這兩把「牛刀」，造成心理上的負擔。</p><p>我相信，這樣的「簡單需求」始終存在，所以我還是需要第三個筆記軟體。</p><h3 id="Bear-2"><a href="#Bear-2" class="headerlink" title="Bear 2"></a>Bear 2</h3><p>很多人會選擇 <a href="https://apps.apple.com/us/app/notes/id1110145109">Apple Notes</a>，畢竟對 Mac 用戶而言，它不止免費，而且還不需要額外安裝。同時也完全符合訴求。</p><p>Bear 則是另一個有力選項，以流暢的操作手感與簡潔優雅的使用者介面聞名。和大多數筆記軟體相同，它可以免費使用，然後付費解鎖額外功能。</p><p>就在本月，Bear 迎來了許多人等待數年之久的重大更新——<a href="https://blog.bear.app/2023/07/bear-2-is-here/">Bear 2</a>。</p><p>這篇，我們就來聊聊，Bear 2 帶給我的感受。</p><h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>文章首先會講一下我對 Bear 這個筆記工具的整體看法，以及為何它是 Evernote 的優秀替代方案。</p><p>其次則是介紹這次 Bear 2 總計 20-30 項更新中，我個人比較有感的 4 項。最後下一個簡單的結論。</p><p>請注意，因為 Bear 只是我的「第三」筆記軟體，所以我對它的要求與第一筆記軟體——也就是 Logseq——有很大的不同！</p><p>換句話說，它對我而言，只要「方便」就好，不求功能強大或面面俱到。</p><h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>目標讀者有三。不用說，你得先是一個 macOS 或 iOS 用戶才行唷！</p><ol><li>屬於這波 <a href="https://www.bnext.com.tw/article/72698/evernote-join-bending-spoons">Evernote 逃難潮</a>，正在考慮下一個筆記軟體的人。</li><li>已用過 <a href="https://www.notion.so/">Notion</a>、<a href="https://obsidian.md/">Obsidian</a>、<a href="https://logseq.com/">Logseq、</a><a href="https://heptabase.com/">Heptabase</a> 等筆記軟體，<strong>覺得這些東西實在太複雜</strong>的人——它們確實都很複雜😷</li><li>不想用 Apple Notes 的人。</li></ol><hr><h2 id="為什麼說-Bear-是-Evernote-最佳替代？"><a href="#為什麼說-Bear-是-Evernote-最佳替代？" class="headerlink" title="為什麼說 Bear 是 Evernote 最佳替代？"></a>為什麼說 Bear 是 Evernote 最佳替代？</h2><p>當然是因為它們的「排版格局」和使用方式都相對類似，如圖：</p><p><img src="https://i.imgur.com/5vlTatc.png" alt="Bear 2"><span class="cap">Bear 2</span></p><p>從右至左都是：分類選單、分類文章摘要、本文——只是 Bear 美得多☺️</p><p>你不得不承認，這種排版就是最簡潔有力的排版，難怪 Apple Notes 也一樣遵守了這個傳統。</p><h3 id="標籤-VS-記事本"><a href="#標籤-VS-記事本" class="headerlink" title="標籤 VS 記事本"></a>標籤 VS 記事本</h3><p>真要說不同的話，早期的 Evernote 採用的是很傳統的分類資料夾，稱為「記事本」，而且只限一層。加上堆疊，也不過兩層。</p><p>就像我在〈<a href="https://medium.com/code-and-me/why-evernote-7cd2abbfbafd">心得 |《曼無止盡》第40期：Evernote 的重生之路</a>〉一文說的：</p><ul><li>只允許「記事本堆疊&gt;記事本&gt;記事」最多共 3 個層級的目錄結構，不像 Notion 或 WorkFlowy 可以無限層級</li><li>承上，層級很少，所以你無法進行太複雜的「專案架構」規劃，只能以簡單分類的方式來歸納記事而已，這顯然不太符合時代潮流</li></ul><p>相對的，Bear 則是用「標籤」來形成分類，彈性更大，而且支援無階層級。</p><p>但老實說，<strong>現在的我已經不覺得層級少是個問題</strong>，我在 Notion 或 Logseq 中也只用兩個層級而已。</p><blockquote><p>為什麼？</p></blockquote><h3 id="過度分類-x3D-自找麻煩"><a href="#過度分類-x3D-自找麻煩" class="headerlink" title="過度分類 &#x3D; 自找麻煩"></a>過度分類 &#x3D; 自找麻煩</h3><p>因為「多層級」是一種由上而下，有著強烈「中心化精神」的筆記方式，它的優點是層次井然、有條理，但缺點就是笨重、缺乏彈性。</p><p>「笨重、缺乏彈性」在這裡的意思是：你常常得對任意一則筆記進行詳細的分類，才能夠安置好它們該存放的知識體系——我認為這是在自找麻煩。</p><p>後來 Evernote 也加入了標籤功能，所以兩者的區別也相對小了。真要說的話，主要差異還是產品的給人的感覺，尤其是整體感與美感。</p><p>Evernote 畢竟是 2008 年的產物，受限於時空與古老的軟體架構，而且還要跨平台。它落後於時代，我覺得情有可原。</p><p>但就讓它安息吧。</p><hr><p>好，簡單的比較結束，我們來看看這次 Bear 2 更新對我來說有哪些亮點。所有更新項目請參考<a href="https://blog.bear.app/2023/07/bear-2-is-here/">網頁</a>，這裡只提其中一部分。</p><h2 id="一、隱藏-Markdown-符號"><a href="#一、隱藏-Markdown-符號" class="headerlink" title="一、隱藏 Markdown 符號"></a>一、隱藏 Markdown 符號</h2><p><img src="https://i.imgur.com/sjJb6cX.png"></p><p>這是一段沒有隱藏 Markdown 符號的 Bear 文本，說真的看起來就是有點煩。而且以前沒有開關，它一定會顯示。</p><p>我相信不是每個人都討厭這樣的設計，因為它的好處是<strong>文本的長度會完全固定</strong>，不會因為 Markdown 符號的顯示、隱藏而有區別。</p><p>但缺點當然就是，略嫌妨礙閱讀。</p><p>現在總算有開關了，讓使用者可以自由選擇。</p><h2 id="二、可調整圖片大小"><a href="#二、可調整圖片大小" class="headerlink" title="二、可調整圖片大小"></a>二、可調整圖片大小</h2><p><img src="https://i.imgur.com/TNj2LeB.png"></p><p>這個真的很重要！</p><p>雖然這功能 Notion、Logseq 都有，但呈現上各有優劣。</p><p>首先 Logseq 的最爛，調整也是在右下角但相對沒那麼好操作，而且調完後，前後的文本不會跟著移動，要重新讀取區塊才行。差評！</p><p>Notion 就好多了，使用圖片左右兩側的判定區來調整大小。</p><p>Bear 的也很不錯！調整的判定區做得很美，拉起來也很順。和 Logseq 相同，圖片都會靠左，而 Notion 則是置中。我個人偏好靠左，與文字一致。</p><h2 id="三、超連結編輯器"><a href="#三、超連結編輯器" class="headerlink" title="三、超連結編輯器"></a>三、超連結編輯器</h2><p><img src="https://i.imgur.com/8yPlckm.png"></p><p>在 Markdown 文件中要編輯超連結，真的不太方便，所以很多支援 Markdown 的軟體會有類似上圖的超連結編輯器，比如 Notion 就有。</p><p>我覺得 Bear 的貼心之處在於，每個超連結末端都加了「鉛筆」圖示，按下去就可以編輯，確實方便。</p><p>相較之下，Notion 則需要滑鼠短暫停留，我感覺稍為麻煩一點。</p><p>但是 Bear 的不足則是無法直接取消超連結，只能透過清空下面的連結內容來達成，這個就太不直觀了。</p><h2 id="四、聊勝於無的摺疊功能"><a href="#四、聊勝於無的摺疊功能" class="headerlink" title="四、聊勝於無的摺疊功能"></a>四、聊勝於無的摺疊功能</h2><p><img src="https://i.imgur.com/SFdsEJJ.png"></p><p>相當於 Notion 中的 Toggle，但要透過呼叫選單才能操作，有點不便。</p><p>效果是把整個標題的內容都收納起來，收納後會呈現上面那個 H3 標題樣式。收納功能在「<a href="https://blog.kyomind.tw/silver-bullets/#%E4%BA%8C%E3%80%81%E6%94%B6%E5%90%88">清單式筆記</a>」是必備元素，而且自然得多。</p><p>簡評就是，收起來很麻煩，展開相對容易，只能算是個<strong>半成品</strong>。</p><h2 id="五、其它更新項目簡評"><a href="#五、其它更新項目簡評" class="headerlink" title="五、其它更新項目簡評"></a>五、其它更新項目簡評</h2><p>其餘比較值得一提的更新：</p><ul><li>Table of Contents：不是在文本中，是在資訊欄的第二分頁，可以快速跳轉同頁內容，對長文本比較有用。</li><li>表格：偶爾需要，而且用起來比 Notion 的順手。</li><li>自訂字型：雖然我覺得這是現代筆記工具的基本，但很多軟體都沒有！</li><li>雙向連結？如果筆記需要雙向連結，我就不會放在 Bear 了🐸。但聊勝於無，只是要建立雙向連結相當麻煩。</li></ul><hr><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Bear 2 在力求維持原本簡潔的基礎上，盡可能加入一些常用的便捷功能。</p><p>在這個筆記軟體的戰國時代，「功能的多樣化與複雜化」幾乎是現代筆記軟體都會遇到的兩難困境，可以說就是一種「軍備競賽」。</p><p>別人有的功能你沒有，難免會流失一些客群。</p><p>在這種情況下要堅持簡潔，我認為很不容易。這是為什麼我依舊欣賞 Bear，因為它有一定的——被嫌棄的勇氣。</p><p>當然，某些功能的更新也讓我覺得，它感受到一定的壓力，不得不加入。</p><p>如何保持清醒，對目標用戶有一定清晰的認知，這是開發方需要不斷思考的問題。</p><p>其實對使用者而言，也是如此。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/5jYB3kZ.png&quot; alt=&quot;bear.app&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在〈&lt;a href=&quot;https://blog.kyomind.tw/simple-notion/&quot;&gt;使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？&lt;/a&gt;〉一文中，我曾提到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你正在尋找一款和 Evernote 界面相似、使用邏輯相仿，且&lt;strong&gt;符合現代潮流&lt;/strong&gt;的 app，那麼我誠摯推薦自己也有在用的 **&lt;a href=&quot;https://bear.app/&quot;&gt;Bear&lt;/a&gt;**。（可惜它只限 macOS 與 iOS 平台）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Bear、Notion、Logseq 三者，都是我目前有持續在使用的筆記軟體，雖然在使用量上，它們呈現一個非常不均勻的分布：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logseq：80%&lt;/li&gt;
+&lt;li&gt;Notion：15%&lt;/li&gt;
+&lt;li&gt;Bear：5%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;對，你沒看錯，Bear 的使用量只佔我全部筆記的 5% 而已。&lt;/p&gt;
+&lt;p&gt;儘管如此，我依舊是一個忠實的 Bear 付費用戶，原因無他，因為無論是 Notion 還是 Logseq，它們都太「重」了！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相關文章：&lt;a href=&quot;https://blog.kyomind.tw/logseq/&quot;&gt;Logseq 心得：一顆冉冉升起的「卡片筆記」新星&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
+    
+    <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
+    
+    <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
+    
+    <category term="Bear" scheme="https://blog.kyomind.tw/tags/Bear/"/>
+    
+    <category term="Evernote" scheme="https://blog.kyomind.tw/tags/Evernote/"/>
+    
+  </entry>
   
   <entry>
     <title>淺談我對蘋果 M 系列晶片的看法——超新星爆發</title>
@@ -333,39 +377,6 @@
     <category term="yapf" scheme="https://blog.kyomind.tw/tags/yapf/"/>
     
     <category term="Git" scheme="https://blog.kyomind.tw/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>16，我的「價值觀層級」器物清單</title>
-    <link href="https://blog.kyomind.tw/weekly-review-16/"/>
-    <id>https://blog.kyomind.tw/weekly-review-16/</id>
-    <published>2023-04-16T14:46:53.000Z</published>
-    <updated>2023-04-18T09:06:18.555Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/sWgUbzT.png"></p><p>〈<a href="https://blog.kyomind.tw/weekly-review-14/">14，小米 13 的兩大關鍵亮點，與那些「價值觀層級」的器物們</a>〉點出了所謂「價值觀層級」的「器物」，這期就來補完這個部分。</p><p>當然，無論是定義還是清單都是非常個人化的產物，僅供參考。</p><hr><h2 id="何謂「價值觀層級」？"><a href="#何謂「價值觀層級」？" class="headerlink" title="何謂「價值觀層級」？"></a>何謂「價值觀層級」？</h2><p>我們或許可以把喜愛或討厭特定人事物的<strong>程度</strong>，大致區分為「<strong>偏好</strong>」與「<strong>價值觀</strong>」。</p><p>兩者在好惡上，肯定具有「<strong>量</strong>」的差異，但顯然不止如此而己。</p><p>如果要再加上一個<strong>根本的區別</strong>，那或許是「<strong>難以忍受</strong>」——那些你難以忍受它不存在、存在的人事物，可能就稱得上價值觀層級的事物。而其餘的，就只能說是偏好。</p><p>比如，我就完全不能忍受，<a href="https://zh.wikipedia.org/zh-tw/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2">命令列</a>（CLI，Command-Line Interface）的背景是白色的！淺色的可以，但白色就不行。</p><p>或更常見的「香菜之爭」，要說它對部分人而言，屬於價值觀層級的事物，或許也不為過。</p><span id="more"></span><h2 id="何謂價值觀層級的「器物」？"><a href="#何謂價值觀層級的「器物」？" class="headerlink" title="何謂價值觀層級的「器物」？"></a>何謂價值觀層級的「器物」？</h2><p>說是「器物」，意味著它無關人或事，而是指<strong>具體可以拿來使用的東西</strong>。</p><p>只不過這些東西，被主人賦與了強烈的偏好——即價值觀——達到了「如果失去它們，就會讓人很困擾」的程度。</p><p>當然，絕大部分的器物都是沒了可以再買，所以這裡指的「失去」，大概要限縮在「如果這東西停產了、從世界上消失了」的情況，才能凸顯它們的重要性。</p><h2 id="器物的進一步定義"><a href="#器物的進一步定義" class="headerlink" title="器物的進一步定義"></a>器物的進一步定義</h2><p>為了清晰表達，我們再為本文的「器物」一詞，描繪出更明確的輪廓。</p><p>首先，它可能是<strong>具體的產品</strong>，但也可能是一種產品的「<strong>類別</strong>」（比如「Mac 電腦」就是一個類別），有時候產品類別的重要性就已經達到價值觀層級，而具體是指該類別下的哪一項產品，則不是很緊要。</p><p>此外，我們這裡只論「產品」，而不論「<strong>特性（feature）</strong>」。</p><p>「特性」指的是產品或物品所具備的功能或屬性，例如一支筆的書寫功能、一個手機的通訊功能等等，屬性則是顏色、造型、材質等等。它們都屬於產品的一部分，所以僅論產品已足。</p><p>最後，「軟體服務」不算XD，因為算的話就太多了——望向 Notion 與 Logseq。並且這裡更想表達，那些「在現實世界佔據空間」的東西。</p><hr><h2 id="我的價觀值層級器物清單"><a href="#我的價觀值層級器物清單" class="headerlink" title="我的價觀值層級器物清單"></a>我的價觀值層級器物清單</h2><p>完整的鋪陳後，終於可以來一一介紹我目前心中的價觀值器物們，為了寫這篇，我也不得不認真思考了一下，哪些才稱得上？其實考慮的主要就兩個重點，必須兼而有之：</p><ol><li>細節做得比別人好。</li><li>有其不可替代的 feature。</li></ol><p>作為一個 3C 宅，你可能以為我要講的全都是 3C 產品，非也非也，畢竟我也是要生活的。且限於幅篇，就只講 5 項即可——它們已經有足夠的代表性。</p><p>廢話不多說，開始！</p><h2 id="一、類別：Mac-電腦"><a href="#一、類別：Mac-電腦" class="headerlink" title="一、類別：Mac 電腦"></a>一、類別：Mac 電腦</h2><p>Mac 電腦，包括 Macbook、Mac mini、iMac 等等，選擇哪一種 Mac 對我來只能算是「偏好」——在家我偏好 Mac mini，而出外偏好 Macbook Air。</p><p>那它的「不可取代性（價值觀）」在哪？我覺得有兩個方面：</p><ol><li>做工：很多人說 Mac 就像藝術品，對此我完全認同XD。昂貴的 Windows 筆電通常是透過「堆料」的結果，也就是硬體很強，但產品本身的溢價卻相對有限。</li><li>macOS：這裡特指「命令列」部分！它和 Linux 系出同源，減少了好些程式開發上的麻煩——畢竟我也用 Windows 寫過兩年程式，所以能體會其中的差距。</li></ol><p>毫無疑問，若 Mac 從世界上消失，身為一個開發者，我會很困擾。</p><h2 id="二、產品：Apple-Studio-Display"><a href="#二、產品：Apple-Studio-Display" class="headerlink" title="二、產品：Apple Studio Display"></a>二、產品：Apple Studio Display</h2><p>我使用它的時間還不到 2 個月，是否納入價值觀層級，確實有些猶豫，但我還是選了它。</p><p>很多時候，一個東西是否達到價值觀層級，要和它的競爭對手相比。</p><p>從這個角度看，在我心中，我認為它在台幣 5 萬元的範圍內，沒有對手。意思是，別的產品雖然更便宜，但體驗也因此打了折扣，而我認為它是 5 萬內，價格和體驗上的最佳平衡。</p><p>當然正常人是<strong>很難接受</strong>用這麼高的價格卻只買了一台螢幕，所以我還是補充一下，對我而言它不可或缺的特色：</p><ol><li><strong>抗反光鍍膜</strong>：如果只有一個理由，就是它了。鏡面螢幕的最佳解，誰用誰知道XD。</li><li>27 吋 5K 解析度：5K 和 4K 的像素數量還是有相當差距（比 4K 顯示器多出 67%），對於很常在螢幕上看文字（寫作）和程式碼的我而言，字體因解析度不足而產生的毛邊，是最最不可接受的一環。而 5K 的表現顯然比 4K 要好上一截。</li></ol><p>可以看出，目前提到的兩項，它們之所以可以達到「價值觀層級」，根本的原因都是因為：<a href="https://blog.kyomind.tw/weekly-review-02/#%E4%BA%8C%E3%80%81%E9%97%9C%E6%96%BC%E5%AF%AB%E7%A8%8B%E5%BC%8F%E5%88%B0-70-%E6%AD%B2%E7%9A%84%E6%83%B3%E5%83%8F">我是一個軟體工程師</a>。</p><h2 id="三、類別：升降桌"><a href="#三、類別：升降桌" class="headerlink" title="三、類別：升降桌"></a>三、類別：升降桌</h2><p>對於用過升降桌的人而言，大概不會懷疑為什麼它具有價值觀的層級。</p><p>但對於沒用過的人來說，還是有必要補充一下。</p><p>你最常聽到的可能是可以坐、站交錯類的彈性等等，但這不是最關鍵的，最關鍵的是它可以讓你選定一個最自己適合的高度（通常指的是坐著的高度）。</p><p>而要在茫茫桌海中找到一個剛好符合自己高度的桌子，難度就高非常多了。這也是為什麼我的 Studio Display 是 VESA 版——用來配合螢幕支架，自訂高度。</p><p>至於要選擇哪個品牌，在我看來只是偏好而非價值觀。</p><h2 id="四、產品：大甲乾麵麻醬口味"><a href="#四、產品：大甲乾麵麻醬口味" class="headerlink" title="四、產品：大甲乾麵麻醬口味"></a>四、產品：大甲乾麵麻醬口味</h2><p>這東西我在<a href="https://www.facebook.com/kyomind/posts/pfbid0ofMwWhhUft6fat8ut3krkwEDawovMzkPhv7ynMLE6md3E39vsdHc2rTa4R25p3kil">之前的臉書貼文</a>就已經大書特書過，再次總結一下它的重要性。</p><p>作為一個在家工作的軟體工程師，中午常常不想出門——因為要換衣服捏！而且有時候會中斷思緒。而大甲乾麵就是能讓我<strong>平日中午盡量不必出門</strong>的利器。那它的特色與不可取代性又在哪？</p><ol><li>特色：麻醬口味還挺耐吃的（其餘口味建議不要嘗試）。</li><li>不可取代性：文中有提及，就是鈉含量相對很低，這點已屬難能可貴。真要說的話，便宜也是一大特色。全聯有賣！</li></ol><p>但不知為何，從今年 2 月開始，線上購物通路的價格竟直接翻倍，毫無競爭力。所幸全聯還是以前的價格（非特價期間一袋 4 包 119 元，特價通常是 99 元）。</p><p>而且之前還有買一送一！你知道我因此囤了幾袋嗎？——12 袋🤣</p><h2 id="五、產品：詹粉"><a href="#五、產品：詹粉" class="headerlink" title="五、產品：詹粉"></a>五、產品：詹粉</h2><p>搭配前述大甲乾麵的利器！</p><p>同一樣食物，你常吃就容易膩，這是人之常情，更別說大甲乾麵麻醬口味的調味，相對也屬平淡。</p><p>我有試著買一些別的調味料，但加分的效果都很有限——直到我遇見了詹粉！愈講愈像業配了。</p><p>從結論上來說，有了詹粉以後，大甲乾麵簡直如虎添翼。上個月有 31 天，而從 Logseq 的記錄上看，我足足吃了 17 次大甲乾麵XD</p><p>這其中有一半的「功勞」要歸於詹粉，它讓它變得更好吃惹。</p><hr><h2 id="結語：器物價值反映的是人的追求"><a href="#結語：器物價值反映的是人的追求" class="headerlink" title="結語：器物價值反映的是人的追求"></a>結語：器物價值反映的是人的追求</h2><p>仔細一看，上述這 5 項，不都是為了讓我可以更常待在家裡嗎XD——好白癡。</p><p>人們所追求的事物和價值觀常常反映在他們所擁有的器物上。透過這些物品，我們可以了解一個人的生活方式、興趣，和在乎的事情。</p><p>對現在的我來說，成為出色的軟體工程師是我的主要追求，於是有了這樣的取捨。</p><p><strong>這些器物不僅反映了我的價值觀，也體現了我對未來的追求和期望</strong>——我傾向選擇那些可以讓我達成目標的物品，賦與它們<strong>精神上的重要性</strong>。</p><p>所以，哪怕是食物，也有了不同的意義。</p><p>而你的追求，又是什麼呢？</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/sWgUbzT.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;〈&lt;a href=&quot;https://blog.kyomind.tw/weekly-review-14/&quot;&gt;14，小米 13 的兩大關鍵亮點，與那些「價值觀層級」的器物們&lt;/a&gt;〉點出了所謂「價值觀層級」的「器物」，這期就來補完這個部分。&lt;/p&gt;
-&lt;p&gt;當然，無論是定義還是清單都是非常個人化的產物，僅供參考。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;何謂「價值觀層級」？&quot;&gt;&lt;a href=&quot;#何謂「價值觀層級」？&quot; class=&quot;headerlink&quot; title=&quot;何謂「價值觀層級」？&quot;&gt;&lt;/a&gt;何謂「價值觀層級」？&lt;/h2&gt;&lt;p&gt;我們或許可以把喜愛或討厭特定人事物的&lt;strong&gt;程度&lt;/strong&gt;，大致區分為「&lt;strong&gt;偏好&lt;/strong&gt;」與「&lt;strong&gt;價值觀&lt;/strong&gt;」。&lt;/p&gt;
-&lt;p&gt;兩者在好惡上，肯定具有「&lt;strong&gt;量&lt;/strong&gt;」的差異，但顯然不止如此而己。&lt;/p&gt;
-&lt;p&gt;如果要再加上一個&lt;strong&gt;根本的區別&lt;/strong&gt;，那或許是「&lt;strong&gt;難以忍受&lt;/strong&gt;」——那些你難以忍受它不存在、存在的人事物，可能就稱得上價值觀層級的事物。而其餘的，就只能說是偏好。&lt;/p&gt;
-&lt;p&gt;比如，我就完全不能忍受，&lt;a href=&quot;https://zh.wikipedia.org/zh-tw/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%95%8C%E9%9D%A2&quot;&gt;命令列&lt;/a&gt;（CLI，Command-Line Interface）的背景是白色的！淺色的可以，但白色就不行。&lt;/p&gt;
-&lt;p&gt;或更常見的「香菜之爭」，要說它對部分人而言，屬於價值觀層級的事物，或許也不為過。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
-    
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
-    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
     
   </entry>
   
