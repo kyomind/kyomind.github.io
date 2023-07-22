@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    
+    <lastmod>2023-07-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
     
     <lastmod>2023-07-22</lastmod>
@@ -129,15 +138,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/silver-bullets/</loc>
-    
-    <lastmod>2023-07-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
