@@ -270,7 +270,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Project</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line">    certificate = models.ForeignKey(<span class="string">&#x27;Certificate&#x27;</span>,</span><br><span class="line">                                    on_delete=models.PROTECT,</span><br><span class="line">                                    related_name=<span class="string">&#x27;used_by_projects&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這裡的 related_name 不再用死板板的<code>projects</code>來命名，因為當你透過<code>Certificate</code>物件要訪問「<strong>所有使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code>顯然會比<code>certificate.projects</code><strong>更具描述性</strong>——尤其在<code>Certificate</code>還有<strong>更多其它關聯</strong>的時候，太多<code>certificate.XXXs</code>容易讓人混淆。</p>
-<p>換言之，<code>used_by_projects</code>命名<strong>讓程式更可讀</strong>，讓你一看就知道這個 related_name 的意義與用途。</p>
+<p>簡言之，<code>used_by_projects</code>命名<strong>讓程式更可讀</strong>，讓你一看就知道這個 related_name 的意義與用途。</p>
 <hr>
 <h2 id="小結：關聯是-model-核心"><a href="#小結：關聯是-model-核心" class="headerlink" title="小結：關聯是 model 核心"></a>小結：關聯是 model 核心</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。</p>
 <p>通過關聯，我們能夠模擬真實世界中的關係，使資料表之間建立起有意義的連結。</p>
