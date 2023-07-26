@@ -108,9 +108,9 @@
     
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
     <category term="開箱評論" scheme="https://blog.kyomind.tw/tags/%E9%96%8B%E7%AE%B1%E8%A9%95%E8%AB%96/"/>
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
   </entry>
   
@@ -315,9 +315,9 @@
     <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
     
     
-    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
-    
     <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
+    
+    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
     
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
