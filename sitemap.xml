@@ -587,7 +587,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tags/index.html</loc>
+    <loc>https://blog.kyomind.tw/categories/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -596,7 +596,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/categories/index.html</loc>
+    <loc>https://blog.kyomind.tw/tags/index.html</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -614,7 +614,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-04/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -623,7 +623,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-04/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -659,7 +659,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/riverside/</loc>
+    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -668,7 +668,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
+    <loc>https://blog.kyomind.tw/riverside/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -713,15 +713,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/learning-topic/</loc>
-    
-    <lastmod>2023-03-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
     
     <lastmod>2023-03-05</lastmod>
@@ -731,7 +722,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/bracket-pair-colorization/</loc>
+    <loc>https://blog.kyomind.tw/learning-topic/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -741,6 +732,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/docker-learning/</loc>
+    
+    <lastmod>2023-03-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bracket-pair-colorization/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -760,7 +760,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-07-26</lastmod>
+    <lastmod>2023-07-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

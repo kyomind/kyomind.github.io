@@ -84,6 +84,7 @@ li {
   position: relative;
   top: 0;
   margin-left: 10px;
+  margin-bottom: 3px;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
