@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-20/</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2023-07-29</lastmod>
     
@@ -12,6 +21,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/bear/</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2023-07-29</lastmod>
     
@@ -156,15 +174,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/top10/index.html</loc>
-    
-    <lastmod>2023-07-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2023-07-16</lastmod>
     
@@ -659,7 +668,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
+    <loc>https://blog.kyomind.tw/riverside/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -668,7 +677,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/riverside/</loc>
+    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -731,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/docker-learning/</loc>
+    <loc>https://blog.kyomind.tw/bracket-pair-colorization/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -740,7 +749,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/bracket-pair-colorization/</loc>
+    <loc>https://blog.kyomind.tw/docker-learning/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
