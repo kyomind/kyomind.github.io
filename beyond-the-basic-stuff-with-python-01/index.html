@@ -248,15 +248,15 @@
 
 <p>常數是在程式中被使用的<strong>固定值</strong>，通常是<strong>不能被改變</strong>的。在使用常數時，我們應該使用<strong>有描述性的命名</strong>，這樣有助於提高程式的可讀性和可維護性。</p>
 <p>常數 + 有描述性的命名，就是應對魔術數字的絕佳手段。</p>
-<p>比如 Django REST Framework（DRF）中的典型例子：</p>
+<p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>（DRF）中的<code>status</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> JsonResponse(context, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure>
-<p>常見的還有：</p>
+<p>除了 200，常見的還有：</p>
 <ul>
 <li><code>status.HTTP_400_BAD_REQUEST</code></li>
 <li><code>status.HTTP_404_NOT_FOUND</code></li>
 </ul>
-<p>我們當然可以直接寫<code>status=200</code>、<code>400</code>、<code>404</code>，看起來也很直觀呀？但對於那些沒那麼熟悉的 HTTP 狀態碼，比如 509，則又需要陷入停頓與思考。</p>
-<p>而使用常數的話，則所有成員都更加一視同仁：</p>
+<p>我們當然可以直接寫<code>status=200</code>、<code>400</code>、<code>404</code>，看起來也很直觀，但對於那些我們<strong>沒那麼熟悉</strong>的 HTTP 狀態碼，比如 509，則又需要陷入停頓與思考。</p>
+<p>而使用常數的話，則所有成員都會更加一視同仁：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status.HTTP_509_BANDWIDTH_LIMIT_EXCEEDED</span><br></pre></td></tr></table></figure>
 
 <h3 id="雙層生成式"><a href="#雙層生成式" class="headerlink" title="雙層生成式"></a>雙層生成式</h3><p>書中講的是，如果你有兩層的生成式（<a target="_blank" rel="noopener" href="https://steam.oxxostudio.tw/category/python/basic/comprehension.html">Comprehension</a>），比如這樣：</p>
