@@ -209,7 +209,7 @@
 <p>比如<code>payment1</code>、<code>payment2</code>、<code>payment3</code>。</p>
 <p>我真的很討厭！因為這樣的命名<strong>缺乏表意性</strong>。</p>
 <p>有時候我會在 pytest 的 fixtrue 看到同事這樣寫，我會建議改成比較「<strong>能表現個體特質</strong>」的命名。</p>
-<p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間真的沒有任何區別（我相信這是比較少的，通常都有區別，但懶得一一想名字），就只是需要複數個同類型的物件</p>
+<p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間真的沒有任何區別（通常都有區別，但懶得一一想名字），就只是需要複數個同類型的物件</p>
 <h3 id="不要使用內建名稱"><a href="#不要使用內建名稱" class="headerlink" title="不要使用內建名稱"></a>不要使用內建名稱</h3><p>意即不要使用 Python 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BF%9D%E7%95%99%E5%AD%97">保留字</a>。理由可想而知，因為它會覆蓋原來的內建物件，造成程式的錯誤與混亂。</p>
 <p>那真的需要怎麼辦？一個常見的做法是加上<code>_</code>作為<strong>後綴</strong>。比如<code>type_</code>。</p>
 <h3 id="史上最糟的變數名稱——data"><a href="#史上最糟的變數名稱——data" class="headerlink" title="史上最糟的變數名稱——data"></a>史上最糟的變數名稱——data</h3><p>不瞞您說，<strong>萬事萬物都是資料。</strong></p>
@@ -291,9 +291,11 @@
 <blockquote>
 <p>不知道你怎麼看？我相信，寫好 docstring，是簡潔程式碼<strong>不可或缺的一環</strong>，更是優秀軟體工程師的必備條件——我對此深信不疑。</p>
 </blockquote>
-<p>有些<strong>事實</strong>很重要，開發者在維護與修改程式時必須意識到，但並不適合在程式碼中描述，比如程式碼的「使用方式」與「注意事項」，如果邏輯很複雜，單看程式碼要理解很久——你只能靠註釋或 docstring 來傳達。</p>
-<p>當然我們也不得不承認，大部分註解都寫得很爛！但這不是註解的錯，而是寫的人還不夠熟練或深思。而且寫好註解也真的很難，需要大量的練習。</p>
-<p>作者也是這麼認為的：</p>
+<h3 id="註解與-docstring-的價值"><a href="#註解與-docstring-的價值" class="headerlink" title="註解與 docstring 的價值"></a>註解與 docstring 的價值</h3><p><strong>有些事很重要</strong>，開發者在維護與修改程式時<strong>必須知道</strong>，這些事往往難以直接藉由程式碼透露出來，<strong>比如函式的「使用方式」與「注意事項」</strong>，這時註解就派上用場了。</p>
+<p>退萬步言，複雜的程式光要看懂就很不容易。而良好的註解與 docstring <strong>可以大幅縮短閱讀理解的時間</strong>，你的隊友一定會感謝你。</p>
+<p>尤其在團隊開發時，<strong>註解與 docstring 是溝通的重要媒介</strong>，有時甚至是<strong>唯一</strong>的媒介。</p>
+<p>當然我們也不得不承認，很多註解都寫得很爛！但這不是註解的錯，而是寫的人還不夠熟練或深思。而且寫好註解也真的很難，需要大量的練習。</p>
+<p>顯然作者也是這麼認為的：</p>
 <blockquote>
 <p>要寫出簡潔有效的注釋並不容易，注釋就像程式碼一樣，需要重寫和多次修調才會更好。</p>
 </blockquote>
