@@ -223,6 +223,8 @@
 <h2 id="第-5-章：找出程式碼的異味"><a href="#第-5-章：找出程式碼的異味" class="headerlink" title="第 5 章：找出程式碼的異味"></a>第 5 章：找出程式碼的異味</h2><p>程式碼異味（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3">code smell</a>）指的就是程式中看起來「不對勁」，且有可能在後續引發問題的地方。</p>
 <p>如果可以，我們當然要盡可能避免異味。至少要給予一定的關注才行。</p>
 <p>我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX PATCH 做的事情太多了，很容易發生狀態殘留問題</span></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;PATCH&#x27;</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
 <p>畢竟異味不一定都會造成問題，也不是所有的異味都要被修正（因為太多了），甚至隨著後續開發，原本看起來的異味可能隨之消散或減緩——但這屬於少見的情況。大部分都是愈來愈糟，不然怎麼會有「<strong>技術債</strong>」這個詞呢？</p>
 <p>書中所舉的異味種類很多，也都很經典，值一一細讀。不過限於篇幅，我只舉其中幾個我認為比較有代表性的異味。</p>
 <h3 id="一、重複的程式碼"><a href="#一、重複的程式碼" class="headerlink" title="一、重複的程式碼"></a>一、重複的程式碼</h3><p>重複程式碼肯定不是一個錯誤（error），卻很可能造成後續維護上的困擾。典型的困境就是改一個地方結果多處也要跟著一起改時，我稱之為程式碼的「<strong>同步</strong>」問題。</p>
