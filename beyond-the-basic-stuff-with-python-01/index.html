@@ -221,8 +221,8 @@
 <p>簡言之，執意將變數命名為 data，需要非常堅實的理由——通常不存在這樣的理由。</p>
 <hr>
 <h2 id="第-5-章：找出程式碼的異味"><a href="#第-5-章：找出程式碼的異味" class="headerlink" title="第 5 章：找出程式碼的異味"></a>第 5 章：找出程式碼的異味</h2><p>程式碼異味（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3">code smell</a>）指的就是程式中看起來「不對勁」，且有可能在後續引發問題的地方。</p>
-<p>如果可以，我們當然要盡可能避免異味。至少要給予一定的關注才行。</p>
-<p>我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
+<p>如果可以，我們當然要盡可能避免異味，至少要給予一定關注才行。</p>
+<p>實務上，我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX PATCH 做的事情太多了，很容易發生狀態殘留問題</span></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;PATCH&#x27;</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>畢竟異味不一定都會造成問題，也不是所有的異味都要被修正（因為太多了），甚至隨著後續開發，原本看起來的異味可能隨之消散或減緩——但這屬於少見的情況。大部分都是愈來愈糟，不然怎麼會有「<strong>技術債</strong>」這個詞呢？</p>
