@@ -147,38 +147,48 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E8%88%87%E5%8F%8D%E5%90%91%E9%97%9C%E8%81%AF"><span class="toc-text">related_name 與反向關聯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name 在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%AF%E5%A5%BD%E7%9A%84-related-name-%E5%91%BD%E5%90%8D"><span class="toc-text">良好的 related_name 命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-model-%E6%A0%B8%E5%BF%83"><span class="toc-text">小結：關聯是 model 核心</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://i.imgur.com/yK0Us6a.jpg" alt="by Léo Alexandre"><span class="cap">by Léo Alexandre</span></p>
+  </div><div class="post-content"><!-- ![by Léo Alexandre](https://i.imgur.com/yK0Us6a.jpg) -->
+<p><img src="https://i.imgur.com/TBQKYrC.png"></p>
 <p>工作上使用 Django 近 2 年，卻很少發表關於 Django 主題的文章，是時候該來補一補了。</p>
-<p>就從 Django ORM 開始吧！因為 Django ORM 可以說是無論你怎麼使用 Django（全端或前後端分離），都不得不學的核心部分。</p>
-<p>怎麼說？我們先來看看，在「前後端分離」的開發趨勢下，Django 的三大核心——MTV——的重要性有哪些變動。</p>
+<p>那就從 Django ORM 開始吧！因為 ORM（<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>）可以說是無論你怎麼使用 Django（全端或前後端分離），都不得不學的核心部分。</p>
+<p>怎麼說？我們先來看看，在「<strong>前後端分離</strong>」的開發趨勢下，Django 的三大核心——MTV——的重要性有哪些變動。</p>
 <span id="more"></span>
 
 
-<h2 id="前後端分離下的-Django-MTV"><a href="#前後端分離下的-Django-MTV" class="headerlink" title="前後端分離下的 Django MTV"></a>前後端分離下的 Django MTV</h2><p>在 Django 中，MTV 是指 Model-Template-View 的架構模式。這是 Django 框架的核心設計模式，用於組織和分離應用程式的不同部分。</p>
+<h2 id="前後端分離下的-Django-MTV"><a href="#前後端分離下的-Django-MTV" class="headerlink" title="前後端分離下的 Django MTV"></a>前後端分離下的 Django MTV</h2><p>在 Django 中，MTV 指的是「<strong>Model-Template-View</strong>」架構模式。類似於 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/MVC">MVC</a>，這是 Django 框架的核心設計模式，用於組織和分離應用程式的不同部分。</p>
 <ul>
 <li><strong>Model（模型）：</strong> 模型負責處理與資料庫相關的操作，它是定義數據結構、資料表和資料庫查詢的地方。</li>
 <li><strong>Template（模板）：</strong> 模板用於前端。它是一個包含 HTML、CSS 和一些額外標記語言（例如 Django 的模板語言）的文件，用於定義網頁的外觀和內容。</li>
-<li><strong>View（視圖）：</strong> 視圖是應用程式處理邏輯的地方。它接收用戶的請求，從模型獲取數據，並使用模板來生成適當的回應。視圖處理用戶的 HTTP 請求，並根據需要調用相應的模型和模板來生成回應。</li>
+<li><strong>View（視圖）：</strong> 視圖是應用程式處理邏輯的地方。它接收前端的 HTTP 請求，並根據需要調用相應的模型和模板來生成回應。</li>
 </ul>
-<h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>假設你是一個前後端分離下的 Django 工程師，那通常就是負責後端的 API 開發。</p>
+<h3 id="前後端分離對三大元件的重要性影響"><a href="#前後端分離對三大元件的重要性影響" class="headerlink" title="前後端分離對三大元件的重要性影響"></a>前後端分離對三大元件的重要性影響</h3><p>假設你是一個前後端分離下的 Django 工程師，那通常是負責<strong>後端的 API 開發</strong>。</p>
 <p>首先，顯然 Template 不需要了，因為這是前端的範疇，而 View 呢？相當程度會被 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（以下皆簡稱為 DRF）所取代。說「取代」不太正確，應該說「升級」。</p>
-<p>帶來的影響是 View 中相當部分操作細節與學習重點會遷移到 DRF 本身，而非 Django 原生提供的功能。</p>
+<p>帶來的影響是 View 中相當部分操作細節與學習重點會遷移到 DRF 本身，而非 Django 提供的原生功能。</p>
 <p>比如<code>request.data</code>，重新封裝了 Django 中的<code>request.POST</code>和<code>request.FILES</code>兩個屬性，類似的情況還有<code>APIView</code>或<code>@api_view</code>等等。</p>
-<p>既然 Template 被前端取代，而 View 的功能則被 DRF 重新封裝。可想而知，三大元件中重要性唯一不變的，就是 Model——Django ORM。</p>
+<p>既然 Template 被前端取代，而 View 的功能則被 DRF 重新封裝。可想而知，三大元件中重要性<strong>唯一不變</strong>的，就是 Model——Django ORM。</p>
 <p>可見，作為一個 Django 開發者，學好 ORM 是絕對不虧的！</p>
-<h2 id="範例程式碼專案介紹"><a href="#範例程式碼專案介紹" class="headerlink" title="範例程式碼專案介紹"></a>範例程式碼專案介紹</h2><p>如前所述，我打算寫一系列的 Django 教學文章，如果有範例程式碼，必然更方便讀者學習、參考。於是我建了一個 GitHub Repo 名為「<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial">kyo-django-tutorial</a>」，把文章中使用的程式碼同步更新於此。</p>
-<p>這是一個典型的 Django 專案，而且有著完整的 Python 環境設定，各種細節都和我個人開發一致，有 Poetry、pre-commit 與基本的 linter、formatter 設定等，方便讀者複製環境並跟著操作。</p>
+<h3 id="有助於學習-FastAPI"><a href="#有助於學習-FastAPI" class="headerlink" title="有助於學習 FastAPI"></a>有助於學習 FastAPI</h3><p>尤其，現在火紅的 <a target="_blank" rel="noopener" href="https://github.com/tiangolo/fastapi">FastAPI</a>，本身並沒有包括 ORM 功能，所以需要另外選擇 ORM 套件。常見的選項有 <a target="_blank" rel="noopener" href="https://github.com/sqlalchemy/sqlalchemy">SQLAlchemy</a>、<a target="_blank" rel="noopener" href="https://github.com/tortoise/tortoise-orm">Tortoise ORM</a>。</p>
+<p>而 Tortoise ORM 則是<a target="_blank" rel="noopener" href="https://github.com/tortoise/tortoise-orm#introduction">受到 Django ORM 的啟發</a>，所以學好 Django ORM 之後，學習 Tortoise ORM 會更容易上手：</p>
+<blockquote>
+<p>Tortoise ORM is an easy-to-use asyncio ORM (Object Relational Mapper) <strong>inspired by Django</strong>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Tortoise ORM was built with relations in mind and admiration for the excellent and popular Django ORM.</strong> It’s engraved in its design that you are working not with just tables, you work with relational data.</p>
+</blockquote>
+<p>附帶一提，我個人不太喜歡 SQLAlchemy，因為它的語法相對複雜，而且官方文件網站的排版也讓人感覺很陳舊過時（這點和 DRF 很像XD）。所以推薦 Tortoise ORM。</p>
+<h2 id="範例程式碼專案介紹"><a href="#範例程式碼專案介紹" class="headerlink" title="範例程式碼專案介紹"></a>範例程式碼專案介紹</h2><p>如前所述，我打算寫一系列的 Django 教學文章，有範例程式碼，會更方便讀者學習、參考。於是我建了一個 GitHub Repo 名為「<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial">kyo-django-tutorial</a>」，把文章中使用的程式碼同步更新於此。</p>
+<p>這是一個典型的 Django 專案，而且有著完整的 Python 環境設定，各種細節都和我個人開發一致，有 Poetry、pre-commit 與基本的 linter、formatter 設定等，方便你重現環境並跟著操作。</p>
 <p>以下是簡單的介紹。</p>
 <h3 id="專案環境介紹"><a href="#專案環境介紹" class="headerlink" title="專案環境介紹"></a>專案環境介紹</h3><p>支援 Poetry，方便重建專案所需的 Python 虛擬環境。但你也可以不使用它，我有另外準備<code>requirements.txt</code>供<code>pip</code>安裝。</p>
 <p>pre-commit 完全可選，基本上用不到，除非你有打算變更程式碼的內容。只要不使用指令<code>pre-commit install</code>，它相當於不存在。但如果你想用的話，整個<code>.pre-commit-config.yaml</code>設定檔都寫好了。</p>
 <p>隨著文章更新，未來還會支援 Docker，敬請期待。</p>
-<h3 id="工具版本說明"><a href="#工具版本說明" class="headerlink" title="工具版本說明"></a>工具版本說明</h3><p>Django 版本為 4.2.x LTS，對 Python 的版本有一定要求，不能太舊，必須在 3.8 以上。</p>
+<h3 id="工具版本說明"><a href="#工具版本說明" class="headerlink" title="工具版本說明"></a>工具版本說明</h3><p>Django 版本為 4.2 LTS，對 Python 的版本有一定要求，不能太舊，要 3.8 以上。</p>
 <p>Python 版本使用 3.10.11，建議至少使用 3.8.1，雖然剛剛說 Django 只要求 3.8，但因為 Flake8 版本是 6.0.0，要求 Python 至少要 3.8.1 XD。建議直接還是安裝 3.10 或更新的版本。</p>
 <hr>
 <p>基本的介紹就到這裡，我們趕緊進入本篇的重點。</p>
-<h2 id="本文重點：Django-ORM-外鍵關聯設定"><a href="#本文重點：Django-ORM-外鍵關聯設定" class="headerlink" title="本文重點：Django ORM 外鍵關聯設定"></a>本文重點：Django ORM 外鍵關聯設定</h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>，也就是 db table 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">OOP</a> 程式型態，透過 ORM 來實現兩者的對應關係——從 db table 到 Python class。</p>
-<p>如果說 ORM 是 Django 的核心之一，而 ORM 的核心會是什麼呢？我相信其中一個答案，就是「（外鍵）關聯」（relationships）。若是少了關聯性，資料表就像孤立的島嶼，根本無法真實模擬世界。</p>
-<p>剛開始寫 Django ORM 時，疑問最多的就是外鍵關聯了！因為它不止重要，而且常用。外鍵關聯又分一對一、一對多（多對一）與多對多，我們會先著重在前兩者的介紹——因為它們最常用。讓你一接觸 Django ORM 就快速上手。</p>
+<h2 id="本文重點：Django-ORM-外鍵關聯設定"><a href="#本文重點：Django-ORM-外鍵關聯設定" class="headerlink" title="本文重點：Django ORM 外鍵關聯設定"></a>本文重點：Django ORM 外鍵關聯設定</h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>，也就是 database table 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">OOP</a> 型態，透過 ORM 來實現兩者的對應關係——從 table 到 Python class。</p>
+<p>如果說 ORM 是 Django 的核心之一，而 ORM 的核心會是什麼呢？我相信其中一個答案，就是「<strong>外鍵關聯</strong>」（<strong>relationships</strong>）。若是少了關聯，資料表就像孤立的島嶼，根本無法真實模擬世界。</p>
+<p>剛開始寫 Django ORM 時，疑問最多的就是外鍵關聯了！因為它不止重要，而且十分常用。外鍵關聯又分一對一、一對多（多對一）與多對多，我們會先著重在前兩者的介紹——因為它們最常遇到，方便你快速上手。</p>
 <p><strong>本文為上篇，主要是系列前言與外鍵設定教學，查詢部分則留到下篇。</strong></p>
 <h2 id="專案模型介紹"><a href="#專案模型介紹" class="headerlink" title="專案模型介紹"></a>專案模型介紹</h2><p>學習 Django 模型和外鍵關係的最佳方法，是透過具體的例子。在上述專案中，我準備了一個最常見的範例：<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial/blob/01-django-models/post/models.py">文章模型</a>。</p>
 <p>選這個例子主要出於兩個原因：</p>
@@ -226,9 +236,12 @@
 <li><code>title_1</code>已經被關聯到某個 Post 實例比如<code>post_1</code>，那<code>title_1.post</code>的值就是該<code>post_1</code>實例。</li>
 <li><code>RelatedObjectDoesNotExist</code>物件。當<strong>實例之間的關聯還不存在</strong>，試圖取得關聯實例將會出現這樣的錯誤。</li>
 </ol>
-<h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>這個<code>post</code>屬性不在 model 中明示，資料表中也<strong>不存在相對應的欄位</strong>——它本質上只是查詢的「捷徑」。</p>
-<p>這種隱式的設計讓我們更容易識別在外鍵關係中，哪個屬性是正向關聯，哪個則是反向關聯。</p>
-<p>反向關聯允許我們透過簡單的屬性呼叫，就能夠輕鬆地獲取相關資料，而不需要額外的操作和查詢語句。</p>
+<p>附帶一提，<code>RelatedObjectDoesNotExist</code>其實就是<code>ObjectDoesNotExist</code>的子類別。所以如果你想要捕捉它，直接使用常見的<code>ObjectDoesNotExist</code>即可。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    title_1.post</span><br><span class="line"><span class="keyword">except</span> ObjectDoesNotExist:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>上述<code>post</code>屬性並未在 model class 中明示（但物件有此屬性），資料表中也<strong>不存在相對應的欄位</strong>。它本質上只是一個「<strong>ORM 查詢捷徑</strong>」——但非常實用。</p>
+<p>這種隱式的設計讓我們<strong>更容易識別</strong>在外鍵關係中，哪些屬性是<strong>正向關聯</strong>，哪些則是<strong>反向關聯</strong>。</p>
+<p>反向關聯允許我們透過簡單的<strong>屬性呼叫</strong>，就能夠輕鬆地獲取相關資料，而不需要額外的操作和查詢語句。</p>
 <hr>
 <h2 id="一對多關係"><a href="#一對多關係" class="headerlink" title="一對多關係"></a>一對多關係</h2><blockquote>
 <p>class <code>ForeignKey</code>(to, on_delete, **<strong>options</strong>) <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey">¶</a></p>
