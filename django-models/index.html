@@ -92,7 +92,7 @@
           
             <a href="/categories/VS-Code/">VS Code (10)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (12)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (13)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
           
@@ -201,7 +201,7 @@
 <p>模型對應的情境大致是這樣：你有一個個人的部落格網站，只有你可以發表文章，而讀者可以留言。</p>
 <p>因為只有一個作者，也就是你，所以模型省略了作者的部分。這些設計都是為了方便介紹而已，不必對它們的真實性太過認真。</p>
 <p>以下我們一一介紹這 3 個模型。</p>
-<h3 id="Title：文章標題"><a href="#Title：文章標題" class="headerlink" title="Title：文章標題"></a>Title：文章標題</h3><p>通常標題只會是文章模型的一個欄位，很少獨立出來。我這樣設計是為了呈現一對一關係，而且這裡有分主、副標題，多少為獨立出來增加了一點合理性，就一點XD。</p>
+<h3 id="Title：文章標題"><a href="#Title：文章標題" class="headerlink" title="Title：文章標題"></a>Title：文章標題</h3><p>通常標題只會是文章模型的一個欄位，很少獨立出來。我這樣設計是為了呈現一對一關係，而且這裡有分主、副標題，多少為獨立出來增加了一些合理性。</p>
 <h3 id="Post：文章"><a href="#Post：文章" class="headerlink" title="Post：文章"></a>Post：文章</h3><p>最主要的模型，其餘兩個模型都和它有關。</p>
 <p>與標題是一對一關係，直接有一個<code>title</code>外鍵欄位關聯到 Title 模型，另一個欄位則是<code>content</code>。</p>
 <h3 id="Comment：留言"><a href="#Comment：留言" class="headerlink" title="Comment：留言"></a>Comment：留言</h3><p>用來說明對一多關係的模型，有一個外鍵欄位<code>post</code>關聯到 Post。對 Post 來說，則會建立一個「反向關聯（<a target="_blank" rel="noopener" href="https://allwin-raju-12.medium.com/reverse-relationship-in-django-f016d34e2c68">reverse relationship</a>）」屬性，下面會詳細介紹。</p>
@@ -343,7 +343,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">3</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">20</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">12</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">17</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">15</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">3</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">20</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">17</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">15</span></a>
     </div>
   </div>
 </div>
