@@ -145,7 +145,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA-Pythonic-%E9%A2%A8%E6%A0%BC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">第 6 章：寫出 Pythonic 風格的程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8enumerate-%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8range"><span class="toc-text">使用enumerate()而不要用range()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E8%A1%8C%E8%A9%B1"><span class="toc-text">第 7 章：程式設計的行話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%B8%B8%E8%A6%8B%E7%9A%84-Python-%E8%AA%A4%E8%A7%A3%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-text">第 8 章：常見的 Python 誤解和陷阱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E9%A0%90%E8%A8%AD%E5%8F%83%E6%95%B8%E3%80%8D"><span class="toc-text">不要使用「可變物件」作為「預設參數」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple%EF%BC%88%E5%85%83%E7%B5%84%EF%BC%89%E4%B8%AD%E5%8D%B3%E4%BD%BF%E5%8F%AA%E6%9C%89%E4%B8%80%E5%80%8B%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%BF%98%E8%A8%98%E5%8A%A0%E9%80%97%E8%99%9F"><span class="toc-text">tuple（元組）中即使只有一個元素，也不要忘記加逗號</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA-Pythonic-%E9%A2%A8%E6%A0%BC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">第 6 章：寫出 Pythonic 風格的程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8enumerate-%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8range"><span class="toc-text">使用enumerate()而不要用range()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E8%A1%8C%E8%A9%B1"><span class="toc-text">第 7 章：程式設計的行話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%B8%B8%E8%A6%8B%E7%9A%84-Python-%E8%AA%A4%E8%A7%A3%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-text">第 8 章：常見的 Python 誤解和陷阱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E9%A0%90%E8%A8%AD%E5%8F%83%E6%95%B8%E3%80%8D"><span class="toc-text">不要使用「可變物件」作為「預設參數」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-%E4%B8%AD%E5%8D%B3%E4%BD%BF%E5%8F%AA%E6%9C%89%E4%B8%80%E5%80%8B%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%BF%98%E8%A8%98%E5%8A%A0%E9%80%97%E8%99%9F"><span class="toc-text">tuple 中即使只有一個元素，也不要忘記加逗號</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
 <p>我們繼續《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記，這是第 2 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
@@ -272,21 +272,18 @@
 <p>替代方案當然就是經典的 list +<code>join</code>字串方法。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">greeting_parts = [<span class="string">&#x27;Hello World!&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    greeting_parts.append(<span class="string">&#x27;one more&#x27;</span>)</span><br><span class="line">greeting = <span class="string">&#x27;&#x27;</span>.join(greeting_parts)</span><br></pre></td></tr></table></figure>
 
-<h2 id="tuple（元組）中即使只有一個元素，也不要忘記加逗號"><a href="#tuple（元組）中即使只有一個元素，也不要忘記加逗號" class="headerlink" title="tuple（元組）中即使只有一個元素，也不要忘記加逗號"></a>tuple（元組）中即使只有一個元素，也不要忘記加逗號</h2><p>這個例子非常經典！因為不少人可能寫了超過一年的 Python，都未必知道這個特性，而在某些「意料之外」的事發生後，才赫然發現這個事實。</p>
+<h2 id="tuple-中即使只有一個元素，也不要忘記加逗號"><a href="#tuple-中即使只有一個元素，也不要忘記加逗號" class="headerlink" title="tuple 中即使只有一個元素，也不要忘記加逗號"></a>tuple 中即使只有一個元素，也不要忘記加逗號</h2><p>這個例子非常經典！因為不少人可能寫了超過一年的 Python，都未必知道這個特性，而在某些「意料之外」的事發生後，才赫然發現這個事實。</p>
 <p>好，我承認第一次知道時我也很吃驚，還好我是看書知道的。</p>
 <p>照標題的意思，單元素 tuple 應該要長這樣：<code>(&quot;cat&quot;,)</code>，而不是這樣<code>(&quot;cat&quot;)</code>。</p>
 <p>為什麼？</p>
-<p>我們先看一下 ChatGPT 的回答：</p>
+<p>我們先看一下 ChatGPT 的怎麼說：</p>
 <blockquote>
-<p>這是因為在 Python 中，括號（這裡指的是「小」括號）被用於<strong>多個目的</strong>，例如分組表達式。當你寫<code>(&quot;cat&quot;)</code>時，括號會<strong>被解釋為分組符號</strong>，所以這個表達式的值<strong>就是字串</strong><code>&quot;cat&quot;</code>，而<strong>不是</strong>包含一個元素的元組。</p>
+<p>這是因為在 Python 中，括號（這裡指的是「小」括號）被用於<strong>多個目的</strong>，例如分組表達式。當你寫<code>(&quot;cat&quot;)</code>時，括號會<strong>被解釋為分組符號</strong>，所以這個表達式的值<strong>就是字串</strong><code>&quot;cat&quot;</code>，而<strong>不是</strong>包含一個元素的元組（tuple）。</p>
 </blockquote>
-<p>非常經典的解說！</p>
 <blockquote>
 <p>如果你想要創建一個只有一個元素的元組，你需要在那個元素後面加上逗號。所以<code>(&quot;cat&quot;,)</code><strong>才是</strong>包含一個元素的元組。逗號告訴Python你想要創建一個元組，而不僅僅是使用括號進行分組。</p>
 </blockquote>
-<blockquote>
-<p>這是Python的語法規則之一，可能有些令人困惑，但一旦你理解了這個規則，就很容易記住。</p>
-</blockquote>
+<p>非常經典的講解！</p>
 <p>就像《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863479116">流暢的 Python</a>》中說的，逗點才是 tuple 的本體XD。</p>
 <p>這也是為什麼我們在函式中 return 複數值時，不需要為它們加上小括號，只要使用逗點分隔，return 自然就是一個 tuple。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multiple_values</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="number">42</span></span><br><span class="line"></span><br><span class="line">result = multiple_values()</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 輸出: (&#x27;apple&#x27;, &#x27;banana&#x27;, 42)</span></span><br></pre></td></tr></table></figure>
