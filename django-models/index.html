@@ -204,8 +204,8 @@
 <h3 id="Title：文章標題"><a href="#Title：文章標題" class="headerlink" title="Title：文章標題"></a>Title：文章標題</h3><p>通常標題只會是文章模型的一個欄位，很少獨立出來。我這樣設計是為了呈現一對一關係，而且這裡有分主、副標題，多少為獨立出來增加了一些合理性。</p>
 <h3 id="Post：文章"><a href="#Post：文章" class="headerlink" title="Post：文章"></a>Post：文章</h3><p>最主要的模型，其餘兩個模型都和它有關。</p>
 <p>與標題是一對一關係，直接有一個<code>title</code>外鍵欄位關聯到 Title 模型，另一個欄位則是<code>content</code>。</p>
-<h3 id="Comment：留言"><a href="#Comment：留言" class="headerlink" title="Comment：留言"></a>Comment：留言</h3><p>用來說明對一多關係的模型，有一個外鍵欄位<code>post</code>關聯到 Post。對 Post 來說，則會建立一個「反向關聯（<a target="_blank" rel="noopener" href="https://allwin-raju-12.medium.com/reverse-relationship-in-django-f016d34e2c68">reverse relationship</a>）」屬性，下面會詳細介紹。</p>
-<p>三者的關係可以畫成簡單的實體關聯圖（ERD） 如下：</p>
+<h3 id="Comment：留言"><a href="#Comment：留言" class="headerlink" title="Comment：留言"></a>Comment：留言</h3><p>用來說明對一多關係的模型，有一個外鍵欄位<code>post</code>關聯到 Post。對 Post 來說，則會產生一個「<strong>反向關聯</strong>（<a target="_blank" rel="noopener" href="https://allwin-raju-12.medium.com/reverse-relationship-in-django-f016d34e2c68">reverse relationship</a>）」屬性，下面會詳細介紹。</p>
+<p>三者的關係可以畫成簡單的<strong>實體關聯圖</strong>（Entity Relationship Diagram，簡稱 <strong>ERD</strong>），如下：</p>
 <p><img src="https://i.imgur.com/5qO8q8E.png"></p>
 <p>Django 會自動幫你在外鍵屬性名稱加上<code>_id</code>，轉換成 db 中 table 欄位的名稱，所以上面圖中的欄位名稱是<code>title_id</code>與<code>post_id</code>。</p>
 <hr>
@@ -213,7 +213,7 @@
 <p>尤其是外鍵屬性，因為要建立關聯，使用的參數通常比較多，格式上也和一般欄位屬性有所差別。</p>
 <p>無論如何，了解外鍵欄位常用的參數與其代表的意義，相當必要，這也是本篇的重心。</p>
 <p>以下介紹一對一和一對多的外鍵關聯設定，讀者可適時參考深獲開發者好評的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/">Django 文件</a>，我們只就重點進行說明。</p>
-<h2 id="一對一關係"><a href="#一對一關係" class="headerlink" title="一對一關係"></a>一對一關係</h2><p>參考<code>OneToOneField</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#onetoonefield">文件</a>，只有兩個必填的<strong>位置參數</strong>，即<code>to</code>和<code>on_delete</code>。</p>
+<h2 id="一對一關係"><a href="#一對一關係" class="headerlink" title="一對一關係"></a>一對一關係</h2><p>參考<code>OneToOneField</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#onetoonefield">文件</a>，有兩個必填的<strong>位置參數</strong>，即<code>to</code>和<code>on_delete</code>。</p>
 <p>先看一下專案中存在一對一關係的兩個 model（為了網頁呈現，我縮減了單行字元上限與空行數、省略了無關部分，所以和原始碼有所不同）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.OneToOneField(</span><br><span class="line">        <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br><span class="line">    content = models.TextField()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Title</span>(models.Model):</span><br><span class="line">    main = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    subtitle = models.CharField(max_length=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
 
