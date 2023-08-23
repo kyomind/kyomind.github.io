@@ -185,9 +185,9 @@
 <p>兩種寫法的結果是一樣的，但後者更加善用 Python 的內建特性，<strong>且優雅</strong>。</p>
 <p><strong>善用 Python 的自身的特性寫出優雅而簡潔的程式碼——這就是 Pythonic。</strong></p>
 <hr>
-<h3 id="使用with陳述式而不要手動close"><a href="#使用with陳述式而不要手動close" class="headerlink" title="使用with陳述式而不要手動close()"></a>使用<code>with</code>陳述式而不要手動<code>close()</code></h3><p>因為你很可能會忘記嘛！</p>
-<p><code>with</code>（context manager，上下文管理器）在資源管理上很有用，比如文件讀寫或資料庫連接等，可以確保即使有錯誤發生，也能正確地關閉、釋放資源。</p>
-<p>但對於不熟悉或不常見的物件，則要注意物件是否實作了所謂的「上下文管理協定」。</p>
+<h3 id="使用with陳述式而不要手動close"><a href="#使用with陳述式而不要手動close" class="headerlink" title="使用with陳述式而不要手動close()"></a>使用<code>with</code>陳述式而不要手動<code>close()</code></h3><p>因為你很可能會忘記 close！</p>
+<p><code>with</code>（<strong>context manager，上下文管理器</strong>）在資源管理上很有用，比如文件讀寫或資料庫連接等，可以確保即使有錯誤發生，也能正確地關閉、釋放資源。</p>
+<p>但對於不熟悉或不常見的物件，<strong>則要注意物件是否實作了所謂的「上下文管理協定」</strong>。</p>
 <p>這個協定要求物件必須實作以下兩個方法：<code>__enter__</code> 和 <code>__exit__</code>。這樣物件搭配<code>with</code>使用時，才能正常運作。</p>
 <h3 id="使用is比較是否為None，而不用"><a href="#使用is比較是否為None，而不用" class="headerlink" title="使用is比較是否為None，而不用=="></a>使用<code>is</code>比較是否為<code>None</code>，而不用<code>==</code></h3><p>細節請參考書中的詳盡說明，所幸現代 linter 都會提醒你：在比較<code>None</code>、<code>True</code>、<code>False</code>這 3 種值時，請使用<code>is</code>而非<code>==</code>。</p>
 <h3 id="以-Pythonic-風格來運用字典"><a href="#以-Pythonic-風格來運用字典" class="headerlink" title="以 Pythonic 風格來運用字典"></a>以 Pythonic 風格來運用字典</h3><ol>
@@ -265,12 +265,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&#x27;Hello&#x27;</span> + <span class="string">&#x27;World!&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>連接兩個字串無傷大傷，但如果是這樣的話：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">		greeting += <span class="string">&#x27;one more&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    greeting += <span class="string">&#x27;one more&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>就會造成效能上的低落——和下列替代方案相比，慢了近 10 倍。</p>
 <p>因為 Python 的<strong>字串</strong>是<strong>不可變</strong>的，所以這種拼接實際上是用舊的字串<strong>建立新的字串</strong>，for 迴圈中的每一次迭代，都會建立一個新字串。</p>
 <p>替代方案當然就是經典的 list +<code>join</code>字串方法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">greeting_parts = [<span class="string">&#x27;Hello World!&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    greeting_parts.append(<span class="string">&#x27;one more&#x27;</span>)</span><br><span class="line">greeting = <span class="string">&#x27;&#x27;</span>.join(greeting_parts)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">greeting_parts = [<span class="string">&#x27;Hello World!&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    greeting_parts.append(<span class="string">&#x27;one more&#x27;</span>)</span><br><span class="line"></span><br><span class="line">greeting = <span class="string">&#x27;&#x27;</span>.join(greeting_parts)</span><br></pre></td></tr></table></figure>
 
 <h2 id="tuple-中即使只有一個元素，也不要忘記加逗號"><a href="#tuple-中即使只有一個元素，也不要忘記加逗號" class="headerlink" title="tuple 中即使只有一個元素，也不要忘記加逗號"></a>tuple 中即使只有一個元素，也不要忘記加逗號</h2><p>這個例子非常經典！因為不少人可能寫了超過一年的 Python，都未必知道這個特性，而在某些「意料之外」的事發生後，才赫然發現這個事實。</p>
 <p>好，我承認第一次知道時我也很吃驚，還好我是看書知道的。</p>
