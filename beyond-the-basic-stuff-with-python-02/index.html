@@ -165,12 +165,12 @@
 <p>你想同時知道每一個元素是 list 中的<strong>第幾個</strong>與<strong>內容為何</strong>，直觀上可能會這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>animals = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;moose&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(animals)):</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i + <span class="number">1</span>, animals[i])</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> cat</span><br><span class="line"><span class="number">2</span> dog</span><br><span class="line"><span class="number">3</span> moose</span><br></pre></td></tr></table></figure>
 
-<p>我們評論一下，這段程式碼有兩個很醜（難讀）的地方。</p>
+<p>這種「<strong>手刻邏輯</strong>式的寫作風格」——要什麼就寫什麼，寫完也不重構——你是否已經屢見不鮮？我們來評論一下，這段程式碼有兩個很醜（難讀）的地方。</p>
 <ol>
 <li><code>i + 1</code>。這寫法顯然是為了讓<strong>計數</strong>從 1 開始——而不是預設的 0。</li>
-<li><code>range(len(animals))</code>寫法非常不直觀，多層的<strong>呼叫嵌套</strong>讓人看了昏昏欲睡。</li>
+<li><code>range(len(animals))</code>寫法非常不直觀，多層的<strong>嵌套式呼叫</strong>讓人看了昏昏欲睡。</li>
 </ol>
-<p>這兩個地方充滿了「<strong>手刻</strong>」的<strong>僵化感</strong>，只是為了最快速達到開發者「當下目的」而強行採用的一種粗糙手段——但顯然不是最好的那個。</p>
+<p>這兩個地方充滿了「<strong>手刻</strong>」的<strong>僵化感</strong>，只是為了<strong>最快速達到開發者「當下目的」而強行採用的一種粗糙手段</strong>——但顯然不是最好的那個。</p>
 <p>雖然兩者都不難理解與推測，但除了寫這段程式的人，<strong>誰也無法 100% 確信作者的「意圖」</strong>——這是<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20107637/ironman/1927">糙 code</a> 的特色，它存在著<strong>大量且不必要的誤解空間</strong>。</p>
 <p>這些<strong>不明確的誤解空間</strong>會造成別人閱讀本段程式碼時的「<strong>思考停頓</strong>」，更別說後續滋生 bug 的可能。所幸，它們是有可能被消除的。比如使用以下的<code>enumerate</code>。</p>
 <p>一言以蔽之，你只要<strong>在<code>for</code>迴圈內</strong>，看到以下這樣的寫作模式，那就是典型的 Python <a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/refactoring-notes-2-bad-smell/">壞味道</a>：</p>
