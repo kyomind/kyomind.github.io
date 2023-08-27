@@ -275,7 +275,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line">[[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">[[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 <p>為什麼會這樣？參考上一段「<a href="#%E5%AF%A6%E4%BE%8B%E8%AA%AA%E6%98%8E">Python 中的變數：是水桶還是標籤？</a>」的例子，相信就不難明白。</p>
-<p>相關議題，還有同樣經典的「以<strong>可變物件</strong>作為函式<strong>參數預設值</strong>問題」，可直接參考書中的頁 9-19，這裡就點到為止。</p>
+<p>同樣經典的，還有「<a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E9%A0%90%E8%A8%AD%E5%8F%83%E6%95%B8%E3%80%8D">不要使用可變物件作為預設參數</a>」議題，可參考書中的頁 9-19，或是下面的相關文章。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></p>
+</blockquote>
+<hr>
 <h2 id="三、小心區域變數未賦值先使用"><a href="#三、小心區域變數未賦值先使用" class="headerlink" title="三、小心區域變數未賦值先使用"></a>三、小心區域變數未賦值先使用</h2><p>參見本書：頁 9-23。</p>
 <p>這也一個要先理解「Python 變數即標籤」才容易切入的問題，所以最開頭才會有所謂的「影響深遠」之說，而這一頁絕對是我重翻本書最多次的一頁！</p>
 <h3 id="我的經驗：開發人員對於-Python-區域變數常常是一知半解"><a href="#我的經驗：開發人員對於-Python-區域變數常常是一知半解" class="headerlink" title="我的經驗：開發人員對於 Python 區域變數常常是一知半解"></a>我的經驗：開發人員對於 Python 區域變數常常是一知半解</h3><p>要說 Python 簡單，那恐怕只是因為我們知道的還太少。就像我本來也以為 <a target="_blank" rel="noopener" href="https://www.djangoproject.com/">Django</a> 很簡單一樣。😂</p>
@@ -336,13 +340,10 @@
 <p>書中的精彩之處還有很多，限於幅篇，無法一一列舉，從<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863125914">書的介紹頁面</a>看來，至少還有以下這些重點：</p>
 <ul>
 <li>Python 全域變數不是真正全域？</li>
-<li>為何 Python 函式都不檢查參數值，先用了出錯再處理？</li>
 <li>Python 物件沒有真正的私有屬性，資訊都不用封裝隱藏了嗎？</li>
 <li>鴨子型別是什麼？我實在不懂這跟鴨子到底有什麼關係？</li>
-<li>為什麼 Python 函式可以一次 return 多個傳回值？</li>
 <li>Pythonic 這個詞好像很厲害，是什麼意思？</li>
 <li>Python 的 list[n:m] 切片為何要有頭無尾？</li>
-<li>為什麼 Python 要求程式每行結尾不要超過 80 個字？</li>
 <li>Python 的型別與類別是同義詞？</li>
 </ul>
 <p>這些議題，就留給讀者們自行探索了。</p>

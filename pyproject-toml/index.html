@@ -145,7 +145,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E4%BB%8B%E7%B4%B9"><span class="toc-text">pyproject.toml 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%85%A7%E6%B6%B5%EF%BC%9APEP-518"><span class="toc-text">核心內涵：PEP 518</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E7%9A%84%E5%B4%9B%E8%B5%B7"><span class="toc-text">pyproject.toml 的崛起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E5%AE%9A%E7%BE%A9%EF%BC%9A%E6%94%AF%E6%8F%B4%E7%8E%87%E8%88%87%E6%8E%A1%E7%94%A8%E7%8E%87"><span class="toc-text">名詞定義：支援率與採用率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Black-code-formatter"><span class="toc-text">Black code formatter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awesome-pyproject"><span class="toc-text">awesome-pyproject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-pyproject-toml-%E8%A8%AD%E5%AE%9A-Black%E3%80%81yapf%E3%80%81isort"><span class="toc-text">使用 pyproject.toml 設定 Black、yapf、isort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94%E5%85%A7%E5%AE%B9%E8%88%87%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="toc-text">設定檔內容與參考文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%88%91%E7%9A%84-pyproject-toml-%E4%BD%BF%E7%94%A8%E7%BF%92%E6%85%A3"><span class="toc-text">結語：我的 pyproject.toml 使用習慣</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E4%BB%8B%E7%B4%B9"><span class="toc-text">pyproject.toml 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E5%85%A7%E6%B6%B5%EF%BC%9APEP-518"><span class="toc-text">核心內涵：PEP 518</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E7%9A%84%E5%B4%9B%E8%B5%B7"><span class="toc-text">pyproject.toml 的崛起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E5%AE%9A%E7%BE%A9%EF%BC%9A%E6%94%AF%E6%8F%B4%E7%8E%87%E8%88%87%E6%8E%A1%E7%94%A8%E7%8E%87"><span class="toc-text">名詞定義：支援率與採用率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Black-Formatter"><span class="toc-text">Black Formatter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#awesome-pyproject"><span class="toc-text">awesome-pyproject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-pyproject-toml-%E8%A8%AD%E5%AE%9A-Black%E3%80%81yapf%E3%80%81isort"><span class="toc-text">使用 pyproject.toml 設定 Black、yapf、isort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E6%AA%94%E5%85%A7%E5%AE%B9%E8%88%87%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="toc-text">設定檔內容與參考文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%88%91%E7%9A%84-pyproject-toml-%E4%BD%BF%E7%94%A8%E7%BF%92%E6%85%A3"><span class="toc-text">結語：我的 pyproject.toml 使用習慣</span></a></li></ol>
     </div>
   </div><div class="post-content"><!-- ![by Sam Chivers on Behance](https://i.imgur.com/Xv6e27P.jpg) -->
 <!-- ![by Wenjia Tang on Behance](https://i.imgur.com/qKoIBk9.jpg) -->
@@ -199,6 +199,7 @@
 <p>由此可知，pyproject.toml 打從一誕生，就能夠被用作為 Python 專案所使用套件（工具）的設定檔（前提是工具本身必須支援)。</p>
 <p>標準做法是使用<code>[tool.&lt;tool_name&gt;]</code>欄位，比如例子中的<code>[tool.flit]</code>和我們已熟悉的<code>[tool.poetry]</code>。</p>
 <p>正好例子的這兩者都是<strong>和打包相關的套件</strong>，會優先採用 PEP 518 建議作為打包設定標準的 pyproject.toml，並不難理解。</p>
+<hr>
 <h2 id="pyproject-toml-的崛起"><a href="#pyproject-toml-的崛起" class="headerlink" title="pyproject.toml 的崛起"></a>pyproject.toml 的崛起</h2><p>在 PEP 518 被提出後，陸續有工具——比如上述的 <a target="_blank" rel="noopener" href="https://github.com/pypa/flit">Flit</a> 和 <a target="_blank" rel="noopener" href="https://python-poetry.org/">Poetry</a>——在套件的誕生之初，就決定選用 pyproject.toml 作為<strong>獨佔</strong>的工具設定檔格式，可謂非常捧場。不用說，這類工具、套件都屬於比較晚建立的專案。</p>
 <p>而在 PEP 518 發表<strong>前</strong>就已經被開發出的套件，比如<code>pytest</code>或<code>yapf</code>，自然已有自己支援的設定檔格式，也沒有非得再多「支援」pyproject.toml 的必要。</p>
 <p>另一方面，從一般開發者的角度看，使用了這兩個工具的開源專案，也一定早就有了原先的工具設定檔，可能是<code>setup.cfg</code>或<code>ini</code>格式。對於專案開發人員，看不到足夠誘因促使開發者一定要改「採用」pyproject.toml 來儲存工具的設定。</p>
@@ -213,7 +214,7 @@
 <hr>
 <p>你不難推想，如果 pyproject.toml 的「支援率」很低，那「採用率」絕對高不到哪去。畢竟如果沒有任何的套件、工具<strong>支援</strong> pyproject.toml 作為設定檔，那你想<strong>採用</strong>它，也是天方夜譚。</p>
 <p>這是一個「<strong>雞生蛋、蛋生雞</strong>」的問題。</p>
-<h2 id="Black-code-formatter"><a href="#Black-code-formatter" class="headerlink" title="Black code formatter"></a>Black code formatter</h2><p>然而，就在 PEP 518 發表的兩年後，事情迎來了<strong>轉機——pyproject.toml「支援率」開始提升</strong>。而孕育出這個改變的主要推手，竟然就是 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>！</p>
+<h2 id="Black-Formatter"><a href="#Black-Formatter" class="headerlink" title="Black Formatter"></a>Black Formatter</h2><p>然而，就在 PEP 518 發表的兩年後，事情迎來了<strong>轉機——pyproject.toml「支援率」開始提升</strong>。而孕育出這個改變的主要推手，竟然就是 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>！</p>
 <p><img src="https://i.imgur.com/ZkldsSM.png"></p>
 <p>在《<a target="_blank" rel="noopener" href="https://pragprog.com/titles/bopytest2/python-testing-with-pytest-second-edition/">Python Testing with pytest, Second Edition</a>》（入門 pytest 的佳作，可惜目前沒有中譯本，未來應該也不會有😅）一書中，便如此寫道：</p>
 <blockquote>
@@ -231,6 +232,10 @@
 <p>說起來簡單，但這個<strong>「第一步」總是最難發生的</strong>。所以，Black 相較於 Flit 或 Poetry，對 pyproject.toml 的普及與推廣作用，更是起到了<strong>決定性的作用</strong>。</p>
 <p>這個提升，同時提升了「支援率」與「採用率」，形成一個<strong>正向循環</strong>——雞開始生蛋，蛋也開始生雞了。</p>
 <p>不得不感嘆：偉哉 Black！</p>
+<blockquote>
+<p>相閱文章：<a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></p>
+</blockquote>
+<hr>
 <h2 id="awesome-pyproject"><a href="#awesome-pyproject" class="headerlink" title="awesome-pyproject"></a>awesome-pyproject</h2><p>GitHub 上有著各種 awesome-xxx 系列的倉庫，收集了 xxx 主題相關或具有代表性的內容，比如 <a target="_blank" rel="noopener" href="https://github.com/vinta/awesome-python">awesome-python</a>。</p>
 <p>而 pyproject.toml 也有屬於它的 <a target="_blank" rel="noopener" href="https://github.com/carlosperate/awesome-pyproject">awesome-pyproject</a>——羅列了目前所有能「支援」pyproject.toml 作為<strong>工具設定檔</strong>的套件清單。想發揮 pyproject.toml 的<strong>最大整合能力</strong>，有必要看一看這份清單。而本文提及的套件，自然都清單中。</p>
 <p>最後還列出了，正在討論是否支援 pyproject.toml 設定的套件，比如 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/flake8">Flake8</a>。</p>

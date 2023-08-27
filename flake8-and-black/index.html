@@ -195,6 +195,7 @@
 <p>內容相同，只是 token 名稱不同而已。</p>
 <p>和以前最大的區別是：Flake8 package 已安裝於擴充套件中，不必再額外安裝到專案虛擬環境，且可以<strong>跨專案共用</strong>！這也是採用新方案的<strong>最大優點</strong>。</p>
 <p>注意，新舊兩者是可以並存的！因為它們指向的<code>flake8</code>路徑各不相同。但我還是建議，安裝擴充套件以後，原來的設定就可以移除了，以免混淆。</p>
+<hr>
 <h2 id="Black-Formatter-設定"><a href="#Black-Formatter-設定" class="headerlink" title="Black Formatter 設定"></a>Black Formatter 設定</h2><p>舊有的設定：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;black&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.formatting.blackArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--skip-string-normalization&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
@@ -202,11 +203,11 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;[python]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ms-python.black-formatter&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;black-formatter.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--skip-string-normalization&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>這裡的一大重點，就是要把 Python 預設的格式化器，從 Python 擴充套件提供，改為直接使用 Black 擴充套件。</p>
-<hr>
-<h2 id="不同專案使用不同格式化器"><a href="#不同專案使用不同格式化器" class="headerlink" title="不同專案使用不同格式化器"></a>不同專案使用不同格式化器</h2><p>最後補充一個常見的情境，以我自己為例：</p>
 <blockquote>
-<p>個人開發我使用 Black，但工作上都是使用 yapf，怎麼辦？</p>
+<p>相關文章：<a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></p>
 </blockquote>
+<hr>
+<h2 id="不同專案使用不同格式化器"><a href="#不同專案使用不同格式化器" class="headerlink" title="不同專案使用不同格式化器"></a>不同專案使用不同格式化器</h2><p>最後補充一個常見的情境，以我自己為例：個人開發我使用 Black，但工作上都是使用 yapf，怎麼辦？</p>
 <p>此時要善用 VS Code 的<strong>專案設定檔</strong>。</p>
 <p>該設定檔預設並不存在，最簡單的方式就是先在<strong>專案的根目錄</strong>中建立<code>.vscode</code>資料夾（記得要加入<code>.gitignore</code>），並在其中新增一個<code>settings.json</code>檔。</p>
 <p>假設我們平常以 Black 為預設格式化器，在<strong>特定專案</strong>才使用 yapf，那麼我們只要在專案設定檔中，把格式化器改為 yapf 即可，而<strong>專案設定會優先於使用者全域設定</strong>。</p>
