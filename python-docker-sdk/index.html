@@ -147,7 +147,8 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Docker-SDK-for-Python"><span class="toc-text">安裝 Docker SDK for Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Docker-client"><span class="toc-text">初始化 Docker client</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOCKER-HOST-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">DOCKER_HOST 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-socket-%E6%AC%8A%E9%99%90%E5%95%8F%E9%A1%8C"><span class="toc-text">Docker socket 權限問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">容器操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://i.imgur.com/LdJAtZN.jpg"></p>
+  </div><div class="post-content"><!-- ![](https://i.imgur.com/LdJAtZN.jpg) -->
+<p><img src="https://i.imgur.com/LtuphDF.png"></p>
 <p>在專案中，我們很多時候會需要<strong>透過程式碼</strong>來操作某項服務——比如操作 Google Map 或本文的 Docker——而不是使用相對直覺的 CLI 或更方便的 GUI，畢竟它們都是給人類使用的。</p>
 <p>遇到這樣的需求，腦中第一個浮現的通常是「這服務有沒有官方 API 可以呼叫？」，再進一步想，如果有提供我們 SDK 就更好了！</p>
 <p>本文將介紹 Python Docker SDK 的基本使用方式，大致集中在<strong>初始化連線</strong>及<strong>容器操作</strong>部分，主要參考自<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/"> SDK 官方文件</a>，並會加上一些個人的實作經驗與小提醒。</p>
