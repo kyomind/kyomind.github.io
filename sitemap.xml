@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    
+    <lastmod>2023-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-models/</loc>
     
     <lastmod>2023-09-03</lastmod>
@@ -509,15 +518,6 @@
     <loc>https://blog.kyomind.tw/django-request-headers/</loc>
     
     <lastmod>2023-06-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
-    
-    <lastmod>2023-06-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
