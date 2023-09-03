@@ -151,7 +151,7 @@
 <p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p>〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
 <p>感覺如何？——我覺得還不錯！可見不是三分鐘熱度而已。</p>
-<p>對現在的我而言，Poetry 已成為專案開發不可或缺的元素。它不僅提供了更加便捷的專案套件管理和版本控制，同時，<strong>Poetry 採用 pyproject.toml 作為 config，使得我們更容易一併設置其他同樣支援 pyproject.toml 的工具，</strong>比如 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">ruff</a>。</p>
+<p>對現在的我而言，Poetry 已成為專案開發不可或缺的元素。它不僅提供了更加便捷的專案套件管理和版本控制，同時，Poetry 支援 pyproject.toml 作為設定檔的特性，也使得我更容易使用其他也採用 pyproject.toml 的工具。</p>
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></p>
 </blockquote>
@@ -168,7 +168,7 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將補充系列第一篇中在「<a href="https://blog.kyomind.tw/python-poetry/#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA">情境使用</a>」方面的不足之處，尤其是針對 Poetry 和 pyenv 同時使用時可能出現的問題進行討論。這是第一篇所遺漏的內容。</p>
 <p>透過本文，我希望能夠提供更全面、更實用的 Poetry 使用建議，讓讀者在使用 Poetry 和 pyenv 時能夠充分發揮它們的優勢，並減少不必要的困惑。</p>
 <h3 id="以-poetry-demo-為例"><a href="#以-poetry-demo-為例" class="headerlink" title="以 poetry-demo 為例"></a>以 poetry-demo 為例</h3><p>poetry-demo 是本文作為例示的專案模版，但我們不會安裝太多套件，僅各取一個作為示範之用。</p>
-<p>有一個簡單的具體實例，會比抽象的描述容易理解得多。</p>
+<p>有一個簡單的具體實例，還是比抽象的描述容易理解得多。</p>
 <p>我們會從一台全新的 Linux VM（Ubuntu 20.04）開始，先安裝 pyenv，再安裝 Poetry，然後再一起使用它們，建立 Python 專案與虛擬環境。</p>
 <h3 id="使用的-Poetry-版本：1-5-1"><a href="#使用的-Poetry-版本：1-5-1" class="headerlink" title="使用的 Poetry 版本：1.5.1"></a>使用的 Poetry 版本：1.5.1</h3><p>Poetry 在 1.2 版後，對於部分指令進行有較大的改動與擴張，導致舊指令使用上不完全相容，這次會採用當前的最新版——<a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry/releases/tag/1.5.1">1.5.1</a>——來進行示範。</p>
 <h3 id="使用的-pyenv-版本：2-3-18"><a href="#使用的-pyenv-版本：2-3-18" class="headerlink" title="使用的 pyenv 版本：2.3.18"></a>使用的 pyenv 版本：2.3.18</h3><p>pyenv 在 v2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，所以這裡也有必要強調一下使用的版本：<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv/releases/tag/v2.3.18">v2.3.18</a>。</p>
