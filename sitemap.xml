@@ -2,16 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
-    <lastmod>2023-09-03</lastmod>
+    <lastmod>2023-09-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    <loc>https://blog.kyomind.tw/python-poetry/</loc>
+    
+    <lastmod>2023-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
     <lastmod>2023-09-03</lastmod>
     
@@ -497,15 +506,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-poetry/</loc>
-    
-    <lastmod>2023-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/github-copilot/</loc>
     
     <lastmod>2023-07-01</lastmod>
@@ -805,7 +805,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-09-03</lastmod>
+    <lastmod>2023-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

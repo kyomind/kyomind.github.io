@@ -485,11 +485,11 @@
 <hr>
 <h2 id="新增套件至-dev-dependencies"><a href="#新增套件至-dev-dependencies" class="headerlink" title="新增套件至 dev-dependencies"></a>新增套件至 dev-dependencies</h2><p>有些套件，比如<code>pytest</code>、<code>flake8</code>等等，<strong>只會在開發環境中使用</strong>，產品的<strong>部署環境</strong>並不需要。</p>
 <p>Poetry 允許你<strong>區分</strong>這兩者，將上述的套件安裝至<code>dev-dependencies</code>區塊，方便讓你<strong>輕鬆建立一份「不包含」<code>dev-dependencies</code>開發套件的安裝清單</strong>。</p>
-<p>在此以 Black 為例，安裝方式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add black -D</span><br></pre></td></tr></table></figure>
+<p>在此以 Black 為例，安裝指令如下，<strong>舊版</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -D</span><br></pre></td></tr></table></figure>
 
-<p>或</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --dev</span><br></pre></td></tr></table></figure>
+<p><strong>新版，Poetry &gt;&#x3D; 1.2.0</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --group dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -G dev</span><br></pre></td></tr></table></figure>
 
 <p>結果的區別顯示在<code>pyproject.toml</code>裡：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[tool.poetry.dependencies]</span><br><span class="line">python = <span class="string">&quot;^3.8&quot;</span></span><br><span class="line">Flask = <span class="string">&quot;^2.1.1&quot;</span></span><br><span class="line"></span><br><span class="line">[tool.poetry.dev-dependencies]</span><br><span class="line">black = <span class="string">&quot;^22.3.0&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>

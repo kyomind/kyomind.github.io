@@ -309,7 +309,7 @@
 <p>因為當你不是使用<code>poetry add</code>指令，而是直接修改<code>pyproject.toml</code>時，此時上述的第 2、3 步<strong>都不會自動執行</strong>。</p>
 <p>但通常你手動修改 toml 檔最終都是為了變更虛擬環境，所以更新完<code>pyproject.toml</code>後，我們還要再使用<code>poetry lock</code>與<code>poetry install</code>指令才行！</p>
 <p>對於不熟悉上述流程的初學者，很容易遺漏，並感到困惑。</p>
-<h3 id="重點二：-group"><a href="#重點二：-group" class="headerlink" title="重點二：--group"></a>重點二：<code>--group</code></h3><p><strong>舊版</strong>（1.1）只有 main 和 dev 兩種依賴環境設定，<strong>新版</strong>（1.2）增加了<code>--group</code>參數，讓你可以除了 main 和 dev 外，還有能自訂多種 group，增加使用上的彈性。</p>
+<h3 id="重點二：-group"><a href="#重點二：-group" class="headerlink" title="重點二：--group"></a>重點二：<code>--group</code></h3><p><strong>舊版</strong>（1.1.x）只有 main 和 dev 兩種依賴環境設定，<strong>新版</strong>（1.2.0）增加了<code>--group</code>參數，讓你可以除了 main 和 dev 外，還有能自訂多種 group，增加使用上的彈性。</p>
 <p>比如可以命名不同的群組如下：</p>
 <ul>
 <li>test</li>
@@ -317,10 +317,10 @@
 <li>prod</li>
 </ul>
 <p>基本語法（後續還會提及）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add pytest --group <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add pytest --group dev</span><br></pre></td></tr></table></figure>
 
 <p>在新版（1.2）的<code>pyproject.toml</code>中會如此記載：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.poetry.group.test.dependencies]</span></span><br><span class="line"><span class="attr">pytest</span> = <span class="string">&quot;^6.0.0&quot;</span></span><br><span class="line"><span class="attr">pytest-mock</span> = <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.poetry.group.dev.dependencies]</span></span><br><span class="line"><span class="attr">pytest</span> = <span class="string">&quot;^6.0.0&quot;</span></span><br><span class="line"><span class="attr">pytest-mock</span> = <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>而舊版則是：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Poetry pre-1.2.x style, understood by Poetry 1.0–1.2</span></span><br><span class="line"><span class="section">[tool.poetry.dev-dependencies]</span></span><br><span class="line"><span class="attr">pytest</span> = <span class="string">&quot;^6.0.0&quot;</span></span><br><span class="line"><span class="attr">pytest-mock</span> = <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure>
