@@ -236,11 +236,10 @@
 
 <hr>
 <h2 id="五、安裝-Docker"><a href="#五、安裝-Docker" class="headerlink" title="五、安裝 Docker"></a>五、安裝 Docker</h2><p>安裝細節常常隨著 Docker 版本的更新而有所變動，建議直接看<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">官方文件</a>即可。</p>
-<p>這次安裝有兩個發現：</p>
-<ol>
-<li>最新版似乎已經<strong>不需要將使用者加入 Docker 群組了</strong>。</li>
-<li><code>docker compose</code>改以 plugin 的形式安裝，變成 Docker client 的<strong>子命令</strong>，而不再採用舊版的<code>docker-compose</code>。</li>
-</ol>
+<p>安裝完成後，為了不必每次都要<code>sudo</code>才能執行 Docker 相關指令，要把當前使用者加入 Docker 群組：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
+
+<p>附帶一提，新版的<code>docker compose</code>改以 plugin 的形式安裝，變成 Docker client 的<strong>子命令</strong>，而不再採用舊版的<code>docker-compose</code>。</p>
 
       </div>
       

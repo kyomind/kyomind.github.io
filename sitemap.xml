@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
+    
+    <lastmod>2023-09-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
     
     <lastmod>2023-09-07</lastmod>
@@ -542,15 +551,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
-    
-    <lastmod>2023-06-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
     
     <lastmod>2023-06-09</lastmod>
@@ -805,7 +805,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-09-07</lastmod>
+    <lastmod>2023-09-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
