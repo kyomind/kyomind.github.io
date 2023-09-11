@@ -173,7 +173,7 @@
 <h2 id="我選擇-Umami-的理由"><a href="#我選擇-Umami-的理由" class="headerlink" title="我選擇 Umami 的理由"></a>我選擇 Umami 的理由</h2><p>GA4 的界面讓我很不想用，至少不想常用。雖然我並沒有把它拔除，但我想找一個供平時使用，更簡單、好讀的網站流量儀表版服務。</p>
 <p>Google 一下關鍵字「ga alternative」你可以找到一大堆，而我強力推薦 Umami——畢竟我自己也用了！</p>
 <p>我選擇 Umami 的主要理由只有一個：因為它簡潔且美觀。</p>
-<p>Dashboard 這種東西，顏值肯定是第一指標。至於 Umami 的其它賣點，比如對隱私的保護，雖然我也認同，但不是考量上的重點。</p>
+<p>Dashboard 這種東西，顏值肯定是第一指標。至於 Umami 的其它賣點，例如對隱私的保護，雖然我也認同，但不是考量上的重點。</p>
 <p>總之，如果你不想用 GA，又不知道該選哪個作為替代，就先選 Umami 吧！</p>
 <hr>
 <h2 id="部署-Umami-的幾種方式"><a href="#部署-Umami-的幾種方式" class="headerlink" title="部署 Umami 的幾種方式"></a>部署 Umami 的幾種方式</h2><p>Umami 雖然是開源的，但和很多開源軟體的一樣，採用類似 WordPress 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%85%8D%E8%B2%BB%E5%A2%9E%E5%80%BC">Freemium</a> 模式。</p>
@@ -189,17 +189,17 @@
 <h2 id="免費部署的常見隱憂"><a href="#免費部署的常見隱憂" class="headerlink" title="免費部署的常見隱憂"></a>免費部署的常見隱憂</h2><p>我認為，如果你只是打算「試用」一下 Umami，那麼選擇什麼方式都可以，甚至直接付費 Umami Cloud 一個月。</p>
 <p>但是，如果用了覺得喜歡，想要長期部署，那我強烈建議不要選擇上述第二種方式。理由有下：</p>
 <ol>
-<li>帶有免費額度的平台通常伴隨著<strong>各種限制</strong>，而且容易受到<strong>政策變更</strong>的影響，比如最有名的 <a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/152729">Heroku</a>。</li>
+<li>帶有免費額度的平台通常伴隨著<strong>各種限制</strong>，而且容易受到<strong>政策變更</strong>的影響，最有名的例子莫過於 <a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/152729">Heroku</a>。</li>
 <li>被平台與服務綁定，不利於未來<strong>資料的遷移</strong>。當然平台理論上也會有備份方案，但就是沒有直接 own 一台 Linux VM 那麼簡單、通用。</li>
 </ol>
 <p>簡言之，部署這類服務，<strong>長期可持續性</strong>是最重要的。而免費額度平台可能會讓你在未來遇到各種麻煩。</p>
 <p>當然，如果只是小試水溫，則沒有這麼多顧慮。</p>
 <h2 id="選擇-VM-部署的理由"><a href="#選擇-VM-部署的理由" class="headerlink" title="選擇 VM 部署的理由"></a>選擇 VM 部署的理由</h2><p>為何選擇 VM？除了前述原因，我再補充一下我的理由。</p>
-<p>第一，VM 的環境都是一樣的，足夠通用。不用因為比如 A 平台要收費了，我又要學習 B 平台怎麼用。資料的備份和遷移也是如此。</p>
-<p>其次，對有技術基礎的人而言，用 VM 部署往往更簡單，尤其 Umami 的專案中直接給你一個<code>docker-compose.yml</code>。Docker 用戶都知道，這意味著部署起來將會很方便且無腦，比設定什麼免費 db 都要簡單得多。</p>
+<p>第一，VM 的環境都是一樣的，足夠通用。不用因為 A 平台要收費了，我又要學習 B 平台怎麼用。資料的備份和遷移也是如此。</p>
+<p>其次，對有技術基礎的人而言，用 VM 部署往往更簡單，尤其 Umami 的專案中直接給你一個<code>docker-compose.yml</code>。Docker 用戶都知道，這意味著部署起來會很方便且無腦，比設定什麼免費 db 都要簡單得多。</p>
 <p>不過話說回來，如果只是為了部署這單一個服務，特地租一台 VM 還是太過浪費了，錢也沒有省多少——還不如直接付費 Umami Cloud。</p>
-<p>所以同時要能讓 VM 有多種用途，會比較划算。</p>
-<p>此外，如果選擇用此方式部署，那「自己的域名」和「SSL 憑證」都是必要的。這樣才能確保安全性。</p>
+<p>換句話說，能讓 VM 有多種用途，會比較划算。</p>
+<p>此外，如果選擇用這個方式<strong>長期部署</strong>，那「<strong>自己的域名</strong>」和「<strong>SSL 憑證</strong>」都是必要的。如此才能確保<strong>安全性</strong>。</p>
 <p>好吧我承認這真的有點麻煩😅，但我認為這是值得的。</p>
 <hr>
 <h2 id="使用-VM-部署-Umami"><a href="#使用-VM-部署-Umami" class="headerlink" title="使用 VM 部署 Umami"></a>使用 VM 部署 Umami</h2><p>關於部署 Umami，網路上可以找到比較多上述第二種部署方式，包括教你怎麼註冊、使用那些平台等等。我想不必再贅述。</p>
@@ -214,7 +214,7 @@
 <li><strong>透過 Certbot 申請 SSL 憑證（需要有自己的域名）</strong></li>
 </ol>
 <p>我基本上就是照著它完成的，順利的話應該不出 1 小時——如果你已經有一台 VM。</p>
-<p>雖然我實際花費的時間比 1 小時要多得多，但主要是為了了解整個流程用到的相關知識，比如 Nginx 和 Docker，所以和 ChatGPT 進行了大量交流、做了很多筆記。</p>
+<p>雖然我實際花費的時間比 1 小時要多得多，但主要是為了了解整個流程用到的相關知識——主要是 Nginx 和 Docker，所以和 ChatGPT 進行了大量交流、做了很多筆記。</p>
 <p>這過程讓我學到不少，包括現學現賣的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA">virtual hosting</a>（用單一台主機部署多個域名與服務），和複習 Docker 概念。</p>
 <p>這無疑是很具體且<strong>目標導向</strong>的學習。</p>
 
