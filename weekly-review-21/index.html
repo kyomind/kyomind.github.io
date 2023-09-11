@@ -148,7 +148,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%B9%9F%E4%B8%8D%E5%96%9C%E6%AD%A1-GA4"><span class="toc-text">我也不喜歡 GA4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GA-%E6%9B%BF%E4%BB%A3%E5%93%81"><span class="toc-text">GA 替代品</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%81%B8%E6%93%87-Umami-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">我選擇 Umami 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-Umami-%E7%9A%84%E5%B9%BE%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">部署 Umami 的幾種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B2%BB%E9%83%A8%E7%BD%B2%E7%9A%84%E5%B8%B8%E8%A6%8B%E9%9A%B1%E6%86%82"><span class="toc-text">免費部署的常見隱憂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87-VM-%E9%83%A8%E7%BD%B2%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">選擇 VM 部署的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-VM-%E9%83%A8%E7%BD%B2-Umami"><span class="toc-text">使用 VM 部署 Umami</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://i.imgur.com/Gy0Alrs.png" alt="Umami dashboard"><span class="cap">Umami dashboard</span></p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/fBvzAN2.png" alt="Umami dashboard"><span class="cap">Umami dashboard</span></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/umami-software/umami">Umami</a> 是一款類似 Google Analytics 的<strong>網站訪客數據收集、統計與分析</strong>工具，只是它是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%BC%80%E6%BA%90%E5%AE%9A%E4%B9%89">開源</a>的，而且強調對隱私的保護，不會收集你的個人資訊。</p>
 <p>當初會知道它，主要基於這兩篇文章：</p>
 <ul>
@@ -198,7 +198,9 @@
 <p>第一，VM 的環境都是一樣的，足夠通用。不用因為比如 A 平台要收費了，我又要學習 B 平台怎麼用。資料的備份和遷移也是如此。</p>
 <p>其次，對有技術基礎的人而言，用 VM 部署往往更簡單，尤其 Umami 的專案中直接給你一個<code>docker-compose.yml</code>。Docker 用戶都知道，這意味著部署起來將會很方便且無腦，比設定什麼免費 db 都要簡單得多。</p>
 <p>不過話說回來，如果只是為了部署這單一個服務，特地租一台 VM 還是太過浪費了，錢也沒有省多少——還不如直接付費 Umami Cloud。</p>
-<p>所以，同時要能讓 VM 有多種用途，才稱得上划算。</p>
+<p>所以同時要能讓 VM 有多種用途，會比較划算。</p>
+<p>此外，如果選擇用此方式部署，那「自己的域名」和「SSL 憑證」都是必要的。這樣才能確保安全性。</p>
+<p>好吧我承認這真的有點麻煩，但我認為這是值得的</p>
 <hr>
 <h2 id="使用-VM-部署-Umami"><a href="#使用-VM-部署-Umami" class="headerlink" title="使用 VM 部署 Umami"></a>使用 VM 部署 Umami</h2><p>關於部署 Umami，網路上可以找到比較多上述第二種部署方式，包括教你怎麼註冊、使用那些平台等等。我想不必再贅述。</p>
 <p>而如果你想用 VM 部署，那麼一定要參考 DigitalOcean 上的這篇手把手教學：</p>
