@@ -101,7 +101,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (21)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (22)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -134,6 +134,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-04-06
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"></p>
+<blockquote>
+<p><code>2023/06/05</code>新增：<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 實戰心得：常用指令與注意事項</a></p>
+</blockquote>
+<blockquote>
+<p>合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux Python 開發環境設定：zsh、zinit、pyenv、poetry、docker</a></p>
+</blockquote>
+<p>前陣子工作上的專案從原先的 pip 改用 Poetry 管理 Python 套件，由於採用 Poetry 正是我的提議，所以得身先士卒，研究 Poetry 使用上的重點與學習成本，並評估是否真有所值——講白了就是至少要利大於弊，不然會徒增團隊適應上的負擔。</p>
+<p>拜這個機會所賜，我對 Poetry 總算有了一個較為全面的理解。</p>
+<p>習慣後，現在我所有的個人開發也都改用 Poetry 來管理套件及虛擬環境，對於 Poetry 這個略嫌複雜的工具（相較 pip），上手的同時我也感受到它確實存在一些<strong>學習門檻</strong>，間接促使了本文的誕生。</p>
+<h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
+<ol>
+<li><strong>再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</strong></li>
+<li><a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 實戰心得：常用指令與注意事項</a></li>
+<li>終結 requirements.txt：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
+</ol>
+</blockquote>
+<h3 id="本文定位：獻給-Poetry-新手的使用說明書"><a href="#本文定位：獻給-Poetry-新手的使用說明書" class="headerlink" title="本文定位：獻給 Poetry 新手的使用說明書"></a>本文定位：獻給 Poetry 新手的使用說明書</h3><p>有鑑於 Poetry 真的有點複雜，如果要推薦別人使用，我想還是有必要好好介紹一下。換句話說，這會是一篇<strong>完整的入門教學</strong>。</p>
+          <div class="read-more">
+            <a href="/python-poetry/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/clean-code-python/">在天瓏買了兩本 Python 新書與一生的追求</a>
         </h1>
@@ -267,43 +303,6 @@
 <p>手動新增了一個全站熱門文章頁面！位置就在分頁選單的「<a href="https://blog.kyomind.tw/top10/">TOP 10</a>」，統計最近 90 天瀏覽量排名前十的文章，並列成清單。數據來自本站 Google Analytics。</p>
           <div class="read-more">
             <a href="/add-top10-page/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/flake8-yapf-setting/">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-01-25
-        </span><span class="post-category">
-            <a href="/categories/VS-Code/">VS Code</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/pre-commit/">pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例</a></p>
-</blockquote>
-<blockquote>
-<p>若不想透過 VS Code 的<code>settings.json</code>自定義參數，而希望以「<strong>設定檔</strong>」形式，方便所有專案參與者能<strong>直接共用設定</strong>，可參考：</p>
-<ul>
-<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
-</ul>
-</blockquote>
-<blockquote>
-<p>Flake8 與 Black Formatter 皆已有微軟官方發表的 VS Code extension，<strong>設定上與本文略有不同</strong>，可參考：</p>
-<ul>
-<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
-</ul>
-</blockquote>
-<hr>
-<p>在〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到了 Python 的 linter——pylint 與 Flake8，今天就來說明 linter 與 formatter 的具體設定方法。</p>
-<p>不得不說，善用 linter 與 formatter，無疑是 Python 程式開發的<strong>起手式</strong>。尤其在多人協作的時候，想深入要求每個人的寫作習慣很難，但至少在<strong>排版風格</strong>上，能藉由工具能達到<strong>基本的統一</strong>。</p>
-          <div class="read-more">
-            <a href="/flake8-yapf-setting/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/8/">
