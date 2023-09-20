@@ -208,14 +208,15 @@
 <p>這 3 種空行，格式化器能幫你自動完成。另外，空 3 行或在上述情境「以外」的地方空 2 行，都是不允許的😷</p>
 <p>格式化器會一併修正（linter 也會提醒），不會讓你自由發揮。</p>
 <p>這麼說來，真正難的，還是<strong>什麼時候要空 1 行</strong>。我想這就是<strong>空行藝術</strong>的所在了。</p>
-<h3 id="Why-Black？"><a href="#Why-Black？" class="headerlink" title="Why Black？"></a>Why Black？</h3><p>本書推薦 Black 的理由，就跟許多大型 Python 開源專案採用 Black 的理由一樣——因為它的<strong>規則最硬</strong>，大家只能乖乖遵守：</p>
+<h3 id="Why-Black？"><a href="#Why-Black？" class="headerlink" title="Why Black？"></a>Why Black？</h3><p>本書推薦 Black 的理由，就跟許多大型 Python 開源專案採用 Black 的理由一樣——因為它的<strong>規則最硬</strong>，大家只能乖乖遵守。書中是這麼說的：</p>
 <blockquote>
 <p>如果您正在與其他人一起進行某個程式專案，只要使用 Black 工具就能立即解決所有關於格式化程式碼的許多爭論與協調。</p>
 </blockquote>
 <p>真的，只要協作的人愈多，我們對程式碼「<strong>一致性</strong>」的需求就愈高，<strong>優先權</strong>甚至高過了典型的<strong>慣例與規則</strong>。比如 Google 要求內部 Python 專案中的程式碼縮排為 2 個空格而不是常見的 4 個。</p>
 <p>2 空格的縮排既不符合 PEP 8，也並非常見慣例，是基於團隊與專案的<strong>一致性要求</strong>。</p>
 <p>而一致性的本質就是——<strong>這沒得商量</strong>。</p>
-<p>沒得商量，就沒必要爭執，而且誰也不能怪誰，因為這是 Black 規定的！<br>不過，如同我之前的文章介紹，大多數時候我還是會變更下列兩個 Black 預設值：</p>
+<p>沒得商量，就沒必要爭執，而且誰也不能怪誰，因為這是 Black 規定的！</p>
+<p>不過，如同我之前的文章介紹，大多數時候我還是會變更下列兩個 Black 預設值：</p>
 <ol>
 <li>單行字元上限。</li>
 <li>停用強制雙引號。</li>
@@ -226,10 +227,11 @@
 </blockquote>
 <p>可不是嗎？</p>
 <hr>
-<h2 id="第-4-章：選用易懂的命名"><a href="#第-4-章：選用易懂的命名" class="headerlink" title="第 4 章：選用易懂的命名"></a>第 4 章：選用易懂的命名</h2><p>命名之難，是因為你總是要用很心才能命出好名字。而且情境千變萬化，命名有原則，卻沒有太多捷徑。</p>
+<h2 id="第-4-章：選用易懂的命名"><a href="#第-4-章：選用易懂的命名" class="headerlink" title="第 4 章：選用易懂的命名"></a>第 4 章：選用易懂的命名</h2><p>命名之難，是因為你總是要用很心才能命出好名字。而且情境千變萬化，<strong>命名有原則，卻沒有太多捷徑。</strong></p>
 <p>檢查風格樣式，機器可以代勞，但命名就不行了——那是以前！</p>
 <p>現在有了 AI，只要你願意讓它看看你的程式碼，要求它「請幫我找出不恰當的命名」並接受它的建言，我相信肯定很有幫助。</p>
-<p>雖然我們通常不想面對批評，哪怕是來自 AI 的批評。我懂，這是人之常情。包括我自己，也會覺得有點難受。</p>
+<p>雖然我們通常不想面對批評——哪怕是來自 AI 的批評。我懂，這是人之常情。包括我自己，也會覺得有點難受。</p>
+<p>但你的 code 會因此變得更 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%81%A5%E5%A3%AE%E6%80%A7_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)">robust</a>，這是值得的。</p>
 <h3 id="兩種不佳的命名模式"><a href="#兩種不佳的命名模式" class="headerlink" title="兩種不佳的命名模式"></a>兩種不佳的命名模式</h3><p><strong>一、prefix，命名的前綴</strong></p>
 <p>為類別中的屬性命名，重複類別名稱作為前綴，比如在 Cat 類別中，屬性 weight 又命名為 cat_weight。這樣做是冗餘的。</p>
 <p>先別說你不會XD，很多時候人都是健忘的。尤其當這個類別是 ORM 中的 Model 時，特別容易！</p>
