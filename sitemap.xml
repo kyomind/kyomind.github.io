@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
+    
+    <lastmod>2023-09-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/apple-silicon/</loc>
     
     <lastmod>2023-09-21</lastmod>
@@ -47,6 +56,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/isort-local-module-sorting/</loc>
+    
+    <lastmod>2023-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2023-09-20</lastmod>
@@ -57,15 +75,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/think-riverside/</loc>
-    
-    <lastmod>2023-09-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
     
     <lastmod>2023-09-20</lastmod>
     
@@ -617,15 +626,6 @@
     <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2023-06-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/isort-local-module-sorting/</loc>
-    
-    <lastmod>2023-05-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
