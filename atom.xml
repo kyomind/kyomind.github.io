@@ -41,15 +41,15 @@
     
     <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
     
+    <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
+    
     <category term="卡片盒筆記法" scheme="https://blog.kyomind.tw/tags/%E5%8D%A1%E7%89%87%E7%9B%92%E7%AD%86%E8%A8%98%E6%B3%95/"/>
     
     <category term="Obsidian" scheme="https://blog.kyomind.tw/tags/Obsidian/"/>
     
-    <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
+    <category term="Hetpabase" scheme="https://blog.kyomind.tw/tags/Hetpabase/"/>
     
     <category term="線上課" scheme="https://blog.kyomind.tw/tags/%E7%B7%9A%E4%B8%8A%E8%AA%B2/"/>
-    
-    <category term="Hetpabase" scheme="https://blog.kyomind.tw/tags/Hetpabase/"/>
     
     <category term="Udemy" scheme="https://blog.kyomind.tw/tags/Udemy/"/>
     
@@ -82,11 +82,11 @@
     
     <category term="短篇" scheme="https://blog.kyomind.tw/tags/%E7%9F%AD%E7%AF%87/"/>
     
+    <category term="河濱" scheme="https://blog.kyomind.tw/tags/%E6%B2%B3%E6%BF%B1/"/>
+    
     <category term="數位斷捨離" scheme="https://blog.kyomind.tw/tags/%E6%95%B8%E4%BD%8D%E6%96%B7%E6%8D%A8%E9%9B%A2/"/>
     
     <category term="Cal Newport" scheme="https://blog.kyomind.tw/tags/Cal-Newport/"/>
-    
-    <category term="河濱" scheme="https://blog.kyomind.tw/tags/%E6%B2%B3%E6%BF%B1/"/>
     
   </entry>
   
@@ -121,9 +121,9 @@
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
-    <category term="DigitalOcean" scheme="https://blog.kyomind.tw/tags/DigitalOcean/"/>
-    
     <category term="Umami" scheme="https://blog.kyomind.tw/tags/Umami/"/>
+    
+    <category term="DigitalOcean" scheme="https://blog.kyomind.tw/tags/DigitalOcean/"/>
     
   </entry>
   
@@ -162,10 +162,6 @@
     
     <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
     
-    <category term="卡片盒筆記法" scheme="https://blog.kyomind.tw/tags/%E5%8D%A1%E7%89%87%E7%9B%92%E7%AD%86%E8%A8%98%E6%B3%95/"/>
-    
-    <category term="Obsidian" scheme="https://blog.kyomind.tw/tags/Obsidian/"/>
-    
     <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
     
     <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
@@ -173,6 +169,10 @@
     <category term="Bear" scheme="https://blog.kyomind.tw/tags/Bear/"/>
     
     <category term="Evernote" scheme="https://blog.kyomind.tw/tags/Evernote/"/>
+    
+    <category term="卡片盒筆記法" scheme="https://blog.kyomind.tw/tags/%E5%8D%A1%E7%89%87%E7%9B%92%E7%AD%86%E8%A8%98%E6%B3%95/"/>
+    
+    <category term="Obsidian" scheme="https://blog.kyomind.tw/tags/Obsidian/"/>
     
   </entry>
   
@@ -210,9 +210,9 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
-    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
-    
     <category term="筆記" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="閱讀心得" scheme="https://blog.kyomind.tw/tags/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97/"/>
     
@@ -254,9 +254,9 @@
     
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
-    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
-    
     <category term="開箱評論" scheme="https://blog.kyomind.tw/tags/%E9%96%8B%E7%AE%B1%E8%A9%95%E8%AB%96/"/>
+    
+    <category term="Studio Display" scheme="https://blog.kyomind.tw/tags/Studio-Display/"/>
     
   </entry>
   
@@ -291,15 +291,15 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
+    <category term="Black Formatter" scheme="https://blog.kyomind.tw/tags/Black-Formatter/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
-    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
-    
-    <category term="Black Formatter" scheme="https://blog.kyomind.tw/tags/Black-Formatter/"/>
-    
     <category term="筆記" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98/"/>
+    
+    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="閱讀心得" scheme="https://blog.kyomind.tw/tags/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97/"/>
     
@@ -367,13 +367,13 @@
     
     <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
     
-    <category term="個人知識管理" scheme="https://blog.kyomind.tw/tags/%E5%80%8B%E4%BA%BA%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/"/>
-    
     <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
     
     <category term="Bear" scheme="https://blog.kyomind.tw/tags/Bear/"/>
     
     <category term="Evernote" scheme="https://blog.kyomind.tw/tags/Evernote/"/>
+    
+    <category term="個人知識管理" scheme="https://blog.kyomind.tw/tags/%E5%80%8B%E4%BA%BA%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
