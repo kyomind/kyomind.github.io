@@ -30,7 +30,7 @@
     <meta property="og:tag" content="後端" />
     
 
-  <meta property="article:modified_time" content="2023-07-11T15:03:25+08:00" />
+  <meta property="article:modified_time" content="2023-09-22T01:47:10+08:00" />
 
 
 
@@ -166,7 +166,10 @@
       <div class="post-meta">
         <span class="post-time">
           2022-05-02
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-09-22
+          </span>
+        <span class="post-category">
             <a href="/categories/VS-Code/">VS Code</a>
             </span>
         </div>
@@ -178,9 +181,6 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8F%E5%8C%96%E6%8C%87%E6%A8%99%EF%BC%9A%E6%8E%A8%E8%96%A6%E5%BA%A6%E8%88%87%E9%87%8D%E8%A6%81%E6%80%A7"><span class="toc-text">量化指標：推薦度與重要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%A5%97%E4%BB%B6"><span class="toc-text">前置套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%88%E6%99%AF%E4%B8%BB%E9%A1%8C"><span class="toc-text">佈景主題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E7%89%88%E6%8E%A7"><span class="toc-text">Git 版控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%8C%E7%AB%AF%E8%88%87%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-text">後端與設定檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E7%89%88%E8%88%87%E8%A6%96%E8%A6%BA%E5%8C%96"><span class="toc-text">排版與視覺化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%AC%E8%A9%A6%E8%88%87%E9%99%A4%E9%8C%AF"><span class="toc-text">測試與除錯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI-%E8%BC%94%E5%8A%A9%E5%AF%AB-code"><span class="toc-text">AI 輔助寫 code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9A%E6%9B%BE%E7%B6%93%E7%9A%84%E8%BC%9D%E7%85%8C"><span class="toc-text">補充：曾經的輝煌</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/vwMEGGb.jpg" alt="by Brian Gossett on Behance"><span class="cap">by Brian Gossett on Behance</span></p>
-<blockquote>
-<p><code>2022/06/12</code>：新增 2 個套件，分別為第 6 和第 18，並變更標題為 22 個。</p>
-</blockquote>
 <p>很久以前就想寫關於「VS Code 套件（extension）」的推薦文章了，畢竟我曾在不止一篇文章中表示自己就是一個 VS Code 工具控。</p>
 <p>話雖如此，卻遲遲沒有下筆，原因是這類文章網路上已經有不少，要怎麼寫得有個人特色，無疑是一大挑戰。所以我決定累積一定的 VS Code 使用經驗後，再來分享。</p>
 <p>2018 年 4 月左右，是我第一次使用 VS Code，那時它對 Python 的支援還非常陽春，所以在轉職班上課時，我仍以 Jupyter Notebook 和 Spyder 寫 Python。</p>
@@ -312,19 +312,20 @@
 <blockquote>
 <p>推薦度：⭐️⭐️⭐️<br> 重要性：⭐️⭐️⭐️</p>
 </blockquote>
-<p>不過它也有一個明顯的缺點：那就是<strong>非常吃記憶體</strong>！（<a target="_blank" rel="noopener" href="https://www.electronjs.org/">Electron</a> 你懂的 😎）</p>
+<p>不過它也有一個缺點：那就是<strong>吃記憶體</strong>！（<a target="_blank" rel="noopener" href="https://www.electronjs.org/">Electron</a> 你懂的 😎）</p>
 <p>由於遠端 VM 的成本高昂，記憶體不太可能像本機一般，隨便開就是 8G、16G。如果 VM 上的硬體規格不足，尤其是記憶體不足，那 Linux swap 一定要開大一點，不然一旦<strong>記憶體超載</strong>，VM 很可能會<strong>直接死當</strong>。</p>
 <p>這裡直接附上啟用 swap 的指令，不客氣嘿！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo fallocate -l 4G /swapfile</span><br><span class="line">sudo <span class="built_in">chmod</span> 600 /swapfile</span><br><span class="line">sudo mkswap /swapfile</span><br><span class="line">sudo swapon /swapfile</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="排版與視覺化"><a href="#排版與視覺化" class="headerlink" title="排版與視覺化"></a>排版與視覺化</h2><p>程式碼呈現與版面相關。</p>
-<h3 id="11-TODO-Highlight"><a href="#11-TODO-Highlight" class="headerlink" title="11. TODO Highlight"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">11. TODO Highlight</a></h3><p>對「<strong>TODO、FIXME</strong>」這類特殊註解的關鍵字加以<strong>突顯</strong>，關鍵字本身與外觀樣式皆可以自訂，開發很常用。至於這些註解幾時能因為落實而被拿掉，就，不得而知了。😎</p>
+<h3 id="11-TODO-Highlight"><a href="#11-TODO-Highlight" class="headerlink" title="11. TODO Highlight"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">11. TODO Highlight</a></h3><p>對「<strong>TODO、FIXME</strong>」這類被稱為「<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0350/">Codetags</a>」的特殊註解的關鍵字加以<strong>突顯</strong>，關鍵字本身與外觀樣式皆可以自訂，開發很常用。至於這些註解幾時能因為落實而被拿掉，就，不得而知了。😎</p>
 <p><img src="https://i.imgur.com/eLnerlP.png"></p>
 <blockquote>
 <p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️</p>
 </blockquote>
-<p> 常常一併安裝的套件為 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a>，方便你快速尋找程式中的所有 TODO 類標籤，但我自己並未使用。</p>
+<p>類似的替代方案還有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments">Better Comments</a>，可以參考這篇〈<a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/vscode-better-comments/">VS Code 擴充推薦 - Better Comments</a>〉的介紹。</p>
+<p> 常常一併安裝的套件為 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a>，方便你快速尋找程式中的所有 TODO 類標籤。</p>
 <h3 id="12-Trailing-Spaces"><a href="#12-Trailing-Spaces" class="headerlink" title="12. Trailing Spaces"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces">12. Trailing Spaces</a></h3><p>在函式或類別中，常常需要使用<strong>空行</strong>來區分程式碼的邏輯段落，以增加可讀性。而這些空行，理論上必須是「<strong>完全的空行</strong>」，意思是不能帶有與函式、類別內相同的排縮。</p>
 <p>這個套件可以幫你檢測這些不必要的<strong>排縮空白</strong>，以及<strong>行末空白</strong>，並有自動刪除功能。</p>
 <blockquote>
@@ -357,7 +358,7 @@
 <p>可以想像，對開發者而言，最理想的測試覆蓋率呈現方式，肯定是<strong>直接整合到編輯器的程式碼頁面</strong>！讓你完全不用一邊看著輸出報告，一邊比對編輯器中當前程式檔的哪幾行程式沒有被執行。</p>
 <p>Coverage Gutters 就是為你實現這個願望的神兵利器！並支援多種語言。它會<strong>自動讀取前述套件產出的覆蓋率報告檔</strong>，並以此為依據，<strong>將覆蓋率狀態標識直接渲染到編輯器上</strong>，真是太直觀，太方便了！😭</p>
 <p><img src="https://i.imgur.com/Fo0n4Hr.png" alt="綠色為測試已覆蓋，紅色為未覆蓋，顏色可自訂"><span class="cap">綠色為測試已覆蓋，紅色為未覆蓋，顏色可自訂</span></p>
-<p>預設只會顯示最左邊的顏色提示，單行顏色提示要額外開啟，以免常駐時在視覺上過於干擾。</p>
+<p>預設只會顯示最左邊的顏色提示，單行顏色提示要額外開啟，以免在視覺上過於干擾。</p>
 <blockquote>
 <p>推薦度：⭐️⭐️⭐️<br> 重要性：⭐️⭐️⭐️</p>
 </blockquote>
@@ -365,7 +366,7 @@
 <h3 id="15-Code-Spell-Checker"><a href="#15-Code-Spell-Checker" class="headerlink" title="15. Code Spell Checker"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">15. Code Spell Checker</a></h3><p>幫你檢測拼字錯誤，廣為人知的套件，畢竟寫程式，甚至是寫文章也好，很難完全不拼錯字。</p>
 <p>大部分的 typo 都不會造成程式的執行問題，但偶爾也會產生難以糾錯的窘境。偏偏像 typo 這類的錯誤，往往是人類最難主動發現的——尤其是開發者自己。</p>
 <p>還是靠機器最保險。</p>
-<p>而且，程式碼中如果有 typo，容易帶給人一種粗心、不專業的印象，所以即使是小錯也要盡可能避免。</p>
+<p>而且，程式碼中如果有 typo，容易帶給人一種<strong>粗心、不專業</strong>的印象，所以即使是小錯也要盡可能避免。</p>
 <blockquote>
 <p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️</p>
 </blockquote>
