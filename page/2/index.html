@@ -82,8 +82,11 @@
       </a><a href="/subscribe/">
         <li class="mobile-menu-item">訂閱
           </li>
+      </a><a target="_blank" rel="noopener" href="https://kyomind.notion.site/0c953c8bedb94bc5905a6257b836a8b8?v=6e9a78b29905451e8661a1f14cdcc053">
+        <li class="mobile-menu-item">發文計畫
+          </li>
       </a><a href="/about/">
-        <li class="mobile-menu-item">關於我
+        <li class="mobile-menu-item">關於
           </li>
       </a></ul>
 </nav>
@@ -116,7 +119,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (22)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (23)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -138,8 +141,13 @@
           </a>
       </li>
     <li class="menu-item">
+        <a class="menu-item-link" target="_blank" rel="noopener" href="https://kyomind.notion.site/0c953c8bedb94bc5905a6257b836a8b8?v=6e9a78b29905451e8661a1f14cdcc053">
+          發文計畫
+          </a>
+      </li>
+    <li class="menu-item">
         <a class="menu-item-link" href="/about/">
-          關於我
+          關於
           </a>
       </li>
     </ul>
@@ -149,6 +157,39 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-08-05
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
+<ol>
+<li><strong>《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</strong></li>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="系列緣起"><a href="#系列緣起" class="headerlink" title="系列緣起"></a>系列緣起</h2><p>我會用數篇文章，把本書的重點一一勾勒出來。之所以願意這麼做，主要有兩個原因。</p>
+<h3 id="要真正落實-Clean-Code，著實不易"><a href="#要真正落實-Clean-Code，著實不易" class="headerlink" title="要真正落實 Clean Code，著實不易"></a>要真正落實 Clean Code，著實不易</h3><p>雖然任何一種程式語言都能夠寫出堪稱簡潔的程式碼，但 Python 可能是最接近「自然語言」的那個，從這個角度看，Python 的 Clean Code 或許是最美的。</p>
+<p>但因為 Python 的自由度，往往實際上的程式碼品質都不是那麼理想——你甚至希望它不要那麼自由。</p>
+<h3 id="我認為這本書被低估了"><a href="#我認為這本書被低估了" class="headerlink" title="我認為這本書被低估了"></a>我認為這本書被低估了</h3><p>意思是它似乎不那麼有名。</p>
+<p>當然，講 Clean Code Python 的書也不只這本，但我認為本書是<strong>最適合起手</strong>的一本。儘管它面向的是 Python 新鮮人，但不得不承認，即使已經寫了一、兩年 Python 的開發者，對於書中建議的落實，往往都還有所不足。</p>
+<p>儘管 Python 是自由的，但 Clean Code 卻<strong>沒有那麼自由</strong>——我們需要這本書，而且要好好實踐它。</p>
+          <div class="read-more">
+            <a href="/beyond-the-basic-stuff-with-python-01/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-20/">20，更新部落格「關於我」至 2.0</a>
         </h1>
@@ -305,39 +346,6 @@
 <p>概念理解上沒什麼困難，但實踐起來可遠遠不是如此。</p>
           <div class="read-more">
             <a href="/weekly-review-19/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/poetry-pyenv-practical-tips/">Poetry + pyenv 實戰心得：常用指令與注意事項</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-06-05
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><!-- ![from Pixabay](https://i.imgur.com/yODxmxJ.jpg) -->
-<p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"></p>
-<p>〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
-<p>感覺如何？——我覺得還不錯！可見不是三分鐘熱度而已。</p>
-<p>對現在的我而言，Poetry 已成為專案開發不可或缺的元素。它不僅提供了更加便捷的專案套件管理和版本控制，同時，Poetry 支援 pyproject.toml 作為設定檔的特性，也使得我更容易使用其他也採用 pyproject.toml 的工具。</p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></p>
-</blockquote>
-<h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
-<ol>
-<li><a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a></li>
-<li><strong>Poetry + pyenv 實戰心得：常用指令與注意事項</strong></li>
-<li>終結 requirements.txt：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
-</ol>
-</blockquote>
-          <div class="read-more">
-            <a href="/poetry-pyenv-practical-tips/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
