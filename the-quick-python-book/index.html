@@ -30,7 +30,7 @@
     <meta property="og:tag" content="長文" />
     
 
-  <meta property="article:modified_time" content="2023-09-26T04:49:03+08:00" />
+  <meta property="article:modified_time" content="2023-09-26T05:14:38+08:00" />
 
 
 
@@ -320,7 +320,7 @@
 <hr>
 <h2 id="三、小心區域變數未賦值先使用"><a href="#三、小心區域變數未賦值先使用" class="headerlink" title="三、小心區域變數未賦值先使用"></a>三、小心區域變數未賦值先使用</h2><p>參見本書：頁 9-23。</p>
 <p>這也一個要先理解「Python 變數即標籤」才容易切入的問題，所以最開頭才會有所謂的「影響深遠」之說，而這一頁絕對是我重翻本書最多次的一頁！</p>
-<h3 id="我的經驗：開發人員對於-Python-區域變數常常是一知半解"><a href="#我的經驗：開發人員對於-Python-區域變數常常是一知半解" class="headerlink" title="我的經驗：開發人員對於 Python 區域變數常常是一知半解"></a>我的經驗：開發人員對於 Python 區域變數常常是一知半解</h3><p>要說 Python 簡單，那恐怕只是因為我們知道的還太少。就像我本來也以為 <a target="_blank" rel="noopener" href="https://www.djangoproject.com/">Django</a> 很簡單一樣。😂</p>
+<h3 id="開發人員對於-Python-區域變數常常是一知半解"><a href="#開發人員對於-Python-區域變數常常是一知半解" class="headerlink" title="開發人員對於 Python 區域變數常常是一知半解"></a>開發人員對於 Python 區域變數常常是一知半解</h3><p>要說 Python 簡單，那恐怕只是因為我們知道的還太少。就像我本來也以為 <a target="_blank" rel="noopener" href="https://www.djangoproject.com/">Django</a> 很簡單一樣。😂</p>
 <p>即便是使用 Python 一段時間的開發人員，還是很可能對<strong>函式內的區域變數</strong>只有<strong>模糊的概念</strong>，因而寫出一些乍看有點摸不著頭緒的內容，比如下面的程式碼：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_total</span>(<span class="params">list1</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;取得傳入的list中的數值總合，如果為空list，則拋出錯誤&quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> list1:</span><br><span class="line">        total = <span class="built_in">sum</span>(list1)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Empty list values！&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
 
