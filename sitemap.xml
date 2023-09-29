@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
     
     <lastmod>2023-09-29</lastmod>
     
@@ -11,9 +11,18 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
     
-    <lastmod>2023-09-27</lastmod>
+    <lastmod>2023-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    
+    <lastmod>2023-09-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -320,15 +329,6 @@
     <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2023-09-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
-    
-    <lastmod>2023-09-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
