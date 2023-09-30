@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2023-09-30T08:25:00.265Z</updated>
+  <updated>2023-09-30T08:57:06.479Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kyo&#39;s Django Tutorial：系列介紹與導讀</title>
+    <link href="https://blog.kyomind.tw/django-tutorial/"/>
+    <id>https://blog.kyomind.tw/django-tutorial/</id>
+    <published>2023-09-30T08:48:35.000Z</published>
+    <updated>2023-09-30T08:57:06.479Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/lyxUZv1.png" alt="github.com/kyomind/Django-Tutorial"><span class="cap">github.com/kyomind/Django-Tutorial</span></p><p>這是「<a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a>」系列文章的第「0」篇，也就是序言。</p><p>主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。</p><p>嘗試寫作這樣「單一主題長系列連載」的靈感，源於下列二者：</p><ul><li><a href="https://www.maxlist.xyz/2020/01/01/author/">Max 行銷誌</a>的 <a href="https://www.maxlist.xyz/2020/05/01/flask-list/">2023 Flask 入門指南</a></li><li><a href="https://blog.aotoki.me/">蒼時弦也</a>的<a href="https://blog.aotoki.me/series/">系列連載</a></li></ul><p>兩位都是「<strong>既能做又能寫</strong>」的優秀開發者，值得我們學習。</p><hr><h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然 blog 上本來就有少數被我歸類為「系列」的文章，比如 <a href="https://blog.kyomind.tw/simple-notion/#%E7%B3%BB%E5%88%97%EF%BC%9ASimple-Notion%E2%80%94%E2%80%94%E6%88%91%E7%9A%84-Notion-%E7%B0%A1%E6%BD%94%E4%B9%8B%E9%81%93">Simple Notion 系列</a>。但最多就是 3-4 篇，這是我有意控制的結果，希望整個創作週期不要拉得太長。</p><p>而且用 3-4 篇呈現、表達一個我認為重要的主題，通常也足夠了。</p><p>後來想到自己雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。讓我不免覺得，自己有違作為一個 Django 開發者的「義務」。</p><p>所以起心動念，想說至少寫個「Django Models」三部曲，也就是目前整個系列中，在時間軸上第一篇發表的文章〈<a href="https://blog.kyomind.tw/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a>〉。</p><p>寫完後又沉寂了好一段時間，才有了這篇序言。</p><span id="more"></span><h2 id="從-Django-Models-到-Django-API"><a href="#從-Django-Models-到-Django-API" class="headerlink" title="從 Django Models 到 Django API"></a>從 Django Models 到 Django API</h2><p>Django models 可以說是 Django 最常見的議題（它確實非常重要），網路上的介紹文章已經不少。</p><p>所以即使寫完這三部曲，我覺得恐怕對讀者的助益仍是有限，想到這裡難免有點動搖，於是遲遲不見第二篇。</p><p>後來又思考了一番，既然如此，那我乾脆把工作中常見的 Django 實作加入這個系列，無疑會更有價值、更完整。</p><p>尤其繁體中文世界對於 Django 的介紹，大多停留在<strong>製作整個網站</strong>（主要介紹模板、Form、View、Model），而不是開發 API——用 Django 開發 API 的相關教材太少了。</p><p>這個現象不難理解，因為在台灣使用 Django 作為產品主要後端的公司相對有限，所以文章分享自然就不是那麼多。</p><p>但工作中你幾乎不太可能直接用 Django 來開發整個網站，畢竟這是個前後端分離的年代。</p><p>想到這裡，寫作 Django 系列教學的動力又回升了！這或許就是我的使命。</p><h2 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h2><p>因此，這系列文章主要針對那些已有 Python 基礎，但想要進一步了解 Django 網頁開發，尤其是「<strong>用 Django 開發 Web API</strong>」的讀者。</p><p>畢竟開發 API 才是我的 Django 日常。</p><p>所以我不得不遺憾地表示，這個系列將不會有任何關於「Django 模板、表單」元件等介紹，也不會討論上述元件與 Django View 的整合議題。</p><p>而是完全以「API」為核心。</p><hr><h2 id="文章規劃"><a href="#文章規劃" class="headerlink" title="文章規劃"></a>文章規劃</h2><p>目前計畫分成三大部分。</p><h3 id="一、Django-ORM"><a href="#一、Django-ORM" class="headerlink" title="一、Django ORM"></a>一、Django ORM</h3><p>無論全端還是前後端分離，<strong>Django ORM 的重要性與地位都不會有任何影響</strong>，所以 ORM 三部曲自然還是要一一介紹。</p><p>而且會放在整個系列的最靠前部分。</p><p>目前規劃的文章為：</p><ol><li>Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</li><li>Django ORM：一對一、一對多外鍵教學（中）反向關聯</li><li>Django ORM：一對一、一對多外鍵教學（下）查詢篇</li></ol><p>而且，整個 Django 框架中，我最愛的部分就是 Django ORM——它<strong>強大而優雅</strong>。</p><h3 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h3><p>我相信，沒有單元測試的開發，是「不健全」的開發。</p><p>自己的程式自己測，優秀的開發者不會把「低級錯誤」留給 QA，讓 QA 當保姆。</p><p>哪怕只是最基本的，為每一個 API 加上 200 回傳值的單元測試，都遠比沒有來得強。有了測試，再來就是覆蓋率報告。</p><p>文章預計有下：</p><ol><li>Django 測試指南：用 pytest 撰寫 API 單元測試——環境設定篇</li><li>Django 測試指南：用 pytest 撰寫 API 單元測試——Fixtures 篇</li><li>Django 測試指南：使用 pytest + pytest-cov 計算 Test Coverage</li></ol><h3 id="三、Django-API"><a href="#三、Django-API" class="headerlink" title="三、Django API"></a>三、Django API</h3><p>講到 Django API，就不得不提 <a href="https://www.django-rest-framework.org/">Django REST framework</a>（下稱 DRF），尤其是它提供的 <a href="https://www.django-rest-framework.org/api-guide/views/">API view</a>（無論 <a href="https://ithelp.ithome.com.tw/articles/10205779">CBV 或 FBV</a>）與<a href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>。</p><p>當然，時代在變遷，如今開發 Django API 並非只能選擇 DRF，後起之秀 <a href="https://django-ninja.rest-framework.com/">Django Ninja</a> 也值得一試。</p><p>尤其它支援 <a href="https://docs.pydantic.dev/latest/">Pydantic</a>，可以<strong>依程式碼自動生成 API 文件</strong>。你可以簡單想成，它就像是「Django 版的 FastAPI」。</p><p>不過我們的教學還是會以 DRF 為主。</p><p>預計主題有下，目前文章標題皆未定：</p><ul><li>用 DRF 開發 Django API</li><li>DRF 序列化器</li><li>檔案上傳</li><li>國際化（i18n）</li><li>DRF 分頁（Pagination）</li><li>logging</li></ul><h3 id="非屬系列的-Django-教學"><a href="#非屬系列的-Django-教學" class="headerlink" title="非屬系列的 Django 教學"></a>非屬系列的 Django 教學</h3><p>Blog 的 <a href="https://blog.kyomind.tw/categories/Django/">Django 分類</a>，還是會寫一些和 Django 相關的文章，但不屬於這個大主題的一部分，所以沒有納入系列文章中。</p><p>比如現有的：</p><ul><li><a href="https://blog.kyomind.tw/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></li><li><a href="https://blog.kyomind.tw/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a></li></ul><hr><h2 id="GitHub-專案介紹"><a href="#GitHub-專案介紹" class="headerlink" title="GitHub 專案介紹"></a>GitHub 專案介紹</h2><p>最後，介紹與整個系列教學直接相關的 GitHub repository——<a href="https://github.com/kyomind/Django-Tutorial">Django Tutorial</a> 專案。</p><p>這個專案的核心定位是「讓有讀者實際程式碼可以參考」。所以基本上是拿來「看」的。</p><p>但實際上我會讓它也能夠真正運行，以方便想要自己動手嘗試的讀者。</p><p>所以會為你準備相對應的 db 資料（使用 Django fixtures）。讓你可以在運行起這個專案後，使用 Postman 等 api client，直接呼叫該 api 親身驗證結果。</p><p>我相信這對學習大有幫助。</p><h3 id="分支的功能"><a href="#分支的功能" class="headerlink" title="分支的功能"></a>分支的功能</h3><p>專案中會有許多分支，採<code>&lt;流水號-文章slug&gt;</code>的模式命名，比如：</p><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">01</span>-django-models</span><br></pre></td></tr></table></figure><p>分支主要是作為歷史記錄之用，以及快速查看該分支所對應的<strong>程式碼修改</strong>。</p><p>每個分支所在的 commit 與上一個分支的結束，基本就是整個分支的變更內容（除了我直接在<code>main</code>分支進行修改，比如更新 <code>README</code>）。也就是文章教學中，對專案程式碼新增的部分。</p><p>附帶一提，<strong>分支記錄並非只限 Django Tutorial 系列文章</strong>，別的相關文章可能也會有！</p><p>比如我某篇文章要講解「專案容器化」，用現有的專案來進行示範無疑再好不過，所以也會變動專案程式碼並留下分支記錄。</p><h2 id="為何需要「教學用專案」"><a href="#為何需要「教學用專案」" class="headerlink" title="為何需要「教學用專案」"></a>為何需要「教學用專案」</h2><p><strong>讓系列中的每篇文章，有相對應的程式碼可供參考，而且可以實際運行，是為何我特地建立這個專案的核心理由。</strong></p><p>不得不說，維護這樣的專案比單純寫文章來得辛苦。因此如此一來，這些文章中的程式碼舉例，都需要<strong>圍繞著專案而設計</strong>——不能隨意為之，且須有一定的「連貫性」。</p><p>但這麼做的價值是顯而易見的，專案讓這些教學更有<strong>整體感</strong>，與<strong>真實感</strong>。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/lyxUZv1.png&quot; alt=&quot;github.com/kyomind/Django-Tutorial&quot;&gt;&lt;/p&gt;
+&lt;p&gt;這是「&lt;a href=&quot;https://blog.kyomind.tw/tags/Django-Tutorial/&quot;&gt;Django Tutorial&lt;/a&gt;」系列文章的第「0」篇，也就是序言。&lt;/p&gt;
+&lt;p&gt;主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。&lt;/p&gt;
+&lt;p&gt;嘗試寫作這樣「單一主題長系列連載」的靈感，源於下列二者：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.maxlist.xyz/2020/01/01/author/&quot;&gt;Max 行銷誌&lt;/a&gt;的 &lt;a href=&quot;https://www.maxlist.xyz/2020/05/01/flask-list/&quot;&gt;2023 Flask 入門指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.aotoki.me/&quot;&gt;蒼時弦也&lt;/a&gt;的&lt;a href=&quot;https://blog.aotoki.me/series/&quot;&gt;系列連載&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;兩位都是「&lt;strong&gt;既能做又能寫&lt;/strong&gt;」的優秀開發者，值得我們學習。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;系列寫作動機&quot;&gt;&lt;a href=&quot;#系列寫作動機&quot; class=&quot;headerlink&quot; title=&quot;系列寫作動機&quot;&gt;&lt;/a&gt;系列寫作動機&lt;/h2&gt;&lt;p&gt;雖然 blog 上本來就有少數被我歸類為「系列」的文章，比如 &lt;a href=&quot;https://blog.kyomind.tw/simple-notion/#%E7%B3%BB%E5%88%97%EF%BC%9ASimple-Notion%E2%80%94%E2%80%94%E6%88%91%E7%9A%84-Notion-%E7%B0%A1%E6%BD%94%E4%B9%8B%E9%81%93&quot;&gt;Simple Notion 系列&lt;/a&gt;。但最多就是 3-4 篇，這是我有意控制的結果，希望整個創作週期不要拉得太長。&lt;/p&gt;
+&lt;p&gt;而且用 3-4 篇呈現、表達一個我認為重要的主題，通常也足夠了。&lt;/p&gt;
+&lt;p&gt;後來想到自己雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。讓我不免覺得，自己有違作為一個 Django 開發者的「義務」。&lt;/p&gt;
+&lt;p&gt;所以起心動念，想說至少寫個「Django Models」三部曲，也就是目前整個系列中，在時間軸上第一篇發表的文章〈&lt;a href=&quot;https://blog.kyomind.tw/django-models/&quot;&gt;Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定&lt;/a&gt;〉。&lt;/p&gt;
+&lt;p&gt;寫完後又沉寂了好一段時間，才有了這篇序言。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/lyxUZv1.png" type="image"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
+    
+  </entry>
   
   <entry>
     <title>重啟了 Twitter 與我的理由</title>
@@ -374,35 +413,6 @@
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="閱讀心得" scheme="https://blog.kyomind.tw/tags/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>20，更新部落格「關於我」至 2.0</title>
-    <link href="https://blog.kyomind.tw/weekly-review-20/"/>
-    <id>https://blog.kyomind.tw/weekly-review-20/</id>
-    <published>2023-07-29T17:27:31.000Z</published>
-    <updated>2023-09-15T19:31:56.608Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"><span class="cap">by Sam Chivers</span></p><p>從〈<a href="https://blog.kyomind.tw/weekly-review-05/">05，終於寫了「關於我」頁面</a>〉至今，已經近 8 個月。這次「<a href="https://blog.kyomind.tw/about/">關於我</a>」終於迎來 2.0 版更新。</p><p>1.0 版的「關於我」，尚有參考借鑑其他作者共 3 篇自介的影子，到了 2.0，應該已經不太容易發現這些痕跡。</p><p>這也符合<strong>創作的本質</strong>——從風格模仿到慢慢演化出自己的偏好。</p><p>本篇會講述本次更新的<strong>重點思路</strong>，可以視為有關這次更新的「導讀」與補充。</p><span id="more"></span><h2 id="更新概要"><a href="#更新概要" class="headerlink" title="更新概要"></a>更新概要</h2><p>整體而言，這次新增了有關「<a href="https://en.wikipedia.org/wiki/Cal_Newport">Cal Newport</a>」的一整段內容（往後的文章中，他的名字將更常出現），以及<strong>對舊有內容的刪減與補充</strong>。</p><p>我刪掉了關於「記錄控」一節，這並不是說我不記錄了，而是我認為這部分的代表性和其它部分相比，還略有不足。</p><p>加上自介篇幅不宜過長，新增了一段，只好也刪掉一段。</p><p>此外，幾乎每一個段落都進行了字句調整，還補上了幅篇不多但<strong>極具個人價值觀色彩</strong>的表述。比如：</p><blockquote><p><strong>我相信，人不是機器，不需要知曉一切，更不需要一個「完美」的筆記系統。</strong></p></blockquote><p>這段除了呼應到新增的 Cal Newport 相關內容，也代表了我看待這些筆記工具的基本態度。</p><hr><h2 id="Cal-Newport-段落"><a href="#Cal-Newport-段落" class="headerlink" title="Cal Newport 段落"></a>Cal Newport 段落</h2><p>Cal Newport 在台灣被翻譯出版了 4 本書，其中最著名的無疑是《<a href="https://www.books.com.tw/products/0010906940">Deep Work 深度工作力：淺薄時代，個人成功的關鍵能力</a>》。</p><p>我都買了也看了，最有共鳴的一本，當然屬已經為其寫過數篇文章的《深度數位大掃除》，Weekly Review 上一期就是在探討書中的「數位斷捨離」。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-19/">19，AI 時代的生存指南（二）數位斷捨離</a></p></blockquote><p>但，必須承認，除了《深度數位大掃除》與數位斷捨離，我相當認同也實踐了一番外。他的《深度工作力》和《深度職場力》，我乍看感覺都和現實世界有好一段距離。</p><p>換句話說，我並不相信大多數人真的能實踐——因為這些理論看起來很不容易。</p><h2 id="深度工作的極限想像"><a href="#深度工作的極限想像" class="headerlink" title="深度工作的極限想像"></a>深度工作的極限想像</h2><p>Cal Newport 在其著名且廣為流傳的文章〈<a href="https://calnewport.com/fixed-schedule-productivity-how-i-accomplish-a-large-amount-of-work-in-a-small-number-of-work-hours/">Fixed-Schedule Productivity: How I Accomplish a Large Amount of Work in a Small Number of Work Hours</a>〉中，闡述了他如何在一週工作約 40 小時的「限制」內，完成許多重要的事。</p><p>文章中提到了他的一週實際工作時間如下：</p><ul><li>工作日早上 9 點到下午 5 點</li><li>星期日早上</li></ul><p>除上述時段外，他就不碰工作，而是做自己想做的事。這聽起來<strong>很不可思議</strong>，但他的確做到了。</p><p>至少在時間上，他並沒有「做更多」，但「產能」卻相當可觀。</p><p>合理推測，一般人如果要完成相同的工作量，可能需要 50、60 小時，甚至更久——<strong>這也是為何這篇文章的迴響驚人。</strong></p><p>但我認為，一般人看到這樣的內容，最強烈的感受可能不是深深佩服或想要立即效仿，而是覺得<strong>壓力很大</strong>！因為「<strong>密度</strong>」太高了。</p><p>意思是，這套模式對實踐者的「<strong>紀律與決心、面對變化的決策與彈性拿捏</strong>」等等，<strong>要求極高</strong>——我還不如老老實實加班或延長工作時間，為什麼非得在 40 小時內做完？</p><h2 id="我的折衷"><a href="#我的折衷" class="headerlink" title="我的折衷"></a>我的折衷</h2><p>然而就像更新中說的：</p><blockquote><p>直到最近接觸了他的 Podcast《<a href="https://podcasts.apple.com/us/podcast/deep-questions-with-cal-newport/id1515786216">Deep Questions with Cal Newport</a>》，有機會從書籍以外的各種角度，更深入了解他的想法。</p></blockquote><p>附帶一提，我不是真的聽了這些 Podcast，而是靠 <a href="https://goodsnooze.gumroad.com/l/macwhisper">MacWhisper</a> 語音轉文字，並使用 ChatGPT Code Interpreter 整理、Logseq 筆記。</p><p>原本我覺得「深度工作」是一個曲高和寡的理論，現在稍為改觀了——我想要實現這種可能。</p><p>儘管我認為要達到 Cal Newport 這樣的水準依舊難如登天，但我願意相信這些理論是可行的，哪怕是像我一樣的凡人。</p><p>我大概無法只用 40 小時就做到這麼多事，但我可以試著用 25 小時做出原本自己要花 30、40 小時才能達到的價值。</p><p>在我看來，這已經相當了不起。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YmlPRz1.jpg&quot; alt=&quot;by Sam Chivers&quot;&gt;&lt;/p&gt;
-&lt;p&gt;從〈&lt;a href=&quot;https://blog.kyomind.tw/weekly-review-05/&quot;&gt;05，終於寫了「關於我」頁面&lt;/a&gt;〉至今，已經近 8 個月。這次「&lt;a href=&quot;https://blog.kyomind.tw/about/&quot;&gt;關於我&lt;/a&gt;」終於迎來 2.0 版更新。&lt;/p&gt;
-&lt;p&gt;1.0 版的「關於我」，尚有參考借鑑其他作者共 3 篇自介的影子，到了 2.0，應該已經不太容易發現這些痕跡。&lt;/p&gt;
-&lt;p&gt;這也符合&lt;strong&gt;創作的本質&lt;/strong&gt;——從風格模仿到慢慢演化出自己的偏好。&lt;/p&gt;
-&lt;p&gt;本篇會講述本次更新的&lt;strong&gt;重點思路&lt;/strong&gt;，可以視為有關這次更新的「導讀」與補充。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="短篇" scheme="https://blog.kyomind.tw/tags/%E7%9F%AD%E7%AF%87/"/>
-    
-    <category term="Cal Newport" scheme="https://blog.kyomind.tw/tags/Cal-Newport/"/>
-    
-    <category term="Deep Work" scheme="https://blog.kyomind.tw/tags/Deep-Work/"/>
     
   </entry>
   
