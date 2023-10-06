@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-06T06:35:34+08:00" />
+  <meta property="article:modified_time" content="2023-10-06T07:12:44+08:00" />
 
 
 
@@ -266,19 +266,19 @@
 <p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間真的沒有任何區別（通常都有區別，但懶得一一想名字），就只是需要複數個同類型的物件</p>
 <h3 id="不要使用內建名稱"><a href="#不要使用內建名稱" class="headerlink" title="不要使用內建名稱"></a>不要使用內建名稱</h3><p>意即不要使用 Python 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BF%9D%E7%95%99%E5%AD%97">保留字</a>。理由可想而知，因為它會覆蓋原來的內建物件，造成程式的錯誤與混亂。</p>
 <p>那真的需要怎麼辦？一個常見的做法是加上<code>_</code>作為<strong>後綴</strong>。比如<code>type_</code>。</p>
-<h2 id="史上最糟的變數名稱——data"><a href="#史上最糟的變數名稱——data" class="headerlink" title="史上最糟的變數名稱——data"></a>史上最糟的變數名稱——data</h2><p>不瞞您說，<strong>萬事萬物都是資料。</strong></p>
+<h2 id="史上最糟的變數名稱——data"><a href="#史上最糟的變數名稱——data" class="headerlink" title="史上最糟的變數名稱——data"></a>史上最糟的變數名稱——data</h2><p>不瞞您說，<strong>萬事萬物都是「data」。</strong></p>
 <p>在實務中，遇到把變數命名為 data 的情況還真不算罕見，往往讓人看得一頭霧水。</p>
 <p>書中的這段話說得非常好（我稍重組了一下原句）：</p>
 <blockquote>
 <p>將變數命名為 data，就像把你的狗命名為 Dog。</p>
 </blockquote>
 <p>簡言之，執意將變數命名為 data，需要非常堅實的理由——通常不存在這樣的理由。</p>
-<h3 id="少數的例外"><a href="#少數的例外" class="headerlink" title="少數的例外"></a>少數的例外</h3><p>好啦！我唯一稍能理解的，將變數命名為 data 的情境，就是當呼叫的<strong>函式參數名稱為 data 時</strong>，比如常見的：</p>
+<h3 id="少數的例外"><a href="#少數的例外" class="headerlink" title="少數的例外"></a>少數的例外</h3><p>好啦，我唯一稍能理解將變數命名為 data 的情境，就是當呼叫的<strong>函式參數名稱為 data 時</strong>，比如常見的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 使用requests套件發送POST請求</span></span><br><span class="line">url = <span class="string">&#x27;https://example.com/api&#x27;</span></span><br><span class="line">response = requests.post(url, data=data)</span><br></pre></td></tr></table></figure>
-<p>這裡有兩個要點，我認為必須兼備才算是合理的使用情境：</p>
+<p>這裡有兩個要點，我認為必須<strong>兼備</strong>才算是合理的使用情境：</p>
 <ol>
-<li>函式參數名稱為 data。</li>
-<li>變數的<strong>生命週期很短</strong>——我絕對不會在任何長期存在的變數中使用 data。</li>
+<li>函式參數名稱就是 data：所以引數叫 data 也還算合理。</li>
+<li>該變數的<strong>生命週期很短</strong>——我絕對不會將任何長生命週期的變數命名為 data。上述例子中，data 的生命週期就只有寥寥幾行，所以我覺得還可以接受。</li>
 </ol>
 <p>事實上，<strong>即使是這樣的情況，我依舊會盡可能避免使用 data（這是為了養成習慣）</strong>，而是改用更有表意性的名稱，比如 payload。</p>
 <p>養成好習慣，遵守起來就不會那麼困難。</p>
