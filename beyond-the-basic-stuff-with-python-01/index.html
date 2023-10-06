@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-06T07:28:34+08:00" />
+  <meta property="article:modified_time" content="2023-10-06T07:32:52+08:00" />
 
 
 
@@ -304,14 +304,14 @@
 
 <p>這 604800 究竟代表什麼？我們肯定需要停下來思考，可能需要花一些時間才能想出來。這樣的寫法顯然太不直觀。</p>
 <p>重點是，<strong>你縱使猜得到，也無法 100% 確定</strong>。</p>
-<p>一種改進方式是加上註解：</p>
+<p>一種改進方式是<strong>加上註解</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expiration = time.time() + <span class="number">604800</span>  <span class="comment"># 一星期後失效</span></span><br></pre></td></tr></table></figure>
 
 <p>原來 604800 代表的是一週的秒數！</p>
 <p>這樣寫好很多，但書中建議我們採取更經典的做法——使用<strong>常數</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SECONDS_PER_MINUTE = <span class="number">60</span></span><br><span class="line">SECONDS_PER_HOUR = <span class="number">60</span> * SECONDS_PER_MINUTE</span><br><span class="line">SECONDS_PER_DAY = <span class="number">24</span> * SECONDS_PER_HOUR</span><br><span class="line">SECONDS_PER_WEEK = <span class="number">7</span> * SECONDS_PER_DAY</span><br><span class="line"></span><br><span class="line">expiration = time.time() + SECONDS_PER_WEEK  <span class="comment"># 一星期後失效</span></span><br></pre></td></tr></table></figure>
 
-<p>常數是在程式中被使用的<strong>固定值</strong>，通常是<strong>不能被改變</strong>的。在使用常數時，我們應該使用<strong>有描述性的命名</strong>，這樣有助於提高程式的可讀性和可維護性。</p>
+<p>常數是在程式中使用的<strong>固定值</strong>，原則上是<strong>不能被改變</strong>的。在使用常數時，我們應該採取<strong>有描述性的命名</strong>，這樣有助於提高程式的可讀性和可維護性。</p>
 <p>常數 + 有描述性的命名，就是應對魔術數字的絕佳手段。</p>
 <p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>（DRF）中的<code>status</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> JsonResponse(context, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure>
@@ -330,7 +330,7 @@
 <p>作者建議用雙層的 for 迴圈改寫，以增加可讀性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nested_list = [[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">flat_list = []</span><br><span class="line"><span class="keyword">for</span> sub_list <span class="keyword">in</span> nested_list:</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> sub_list:</span><br><span class="line">        flat_list.append(num)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>flat_list</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br></pre></td></tr></table></figure>
 
-<p>確實，但說真的，可以的話，也盡量不要使用雙層迴圈。</p>
+<p>確實。但說真的，可以的話，我覺得盡量也不要使用雙層迴圈。</p>
 <p>其中的原因，容我直接引用<a target="_blank" rel="noopener" href="https://www.facebook.com/kyomind/posts/pfbid02KKKWxAjUxGWVep39bUDUyopBPrJcWj6Wv7tMU5wuZqF9AknA8cQT88zJQUNMS7sl">臉書舊貼文</a>：</p>
 <blockquote>
 <p>程式碼裡有：一層迴圈是壞味道，兩層迴圈是罪惡，三層迴圈是罪大惡極<br>　<br>因為這些都是程式中的「手工藝」，乏缺架構思維，除了當下用起來很「方便」，日後更可能是難以維護，畢竟正常人無法一眼就看出第二、三層迴圈到底在做什麼（仔細看也一樣啦！）<br>　<br>此乃典型的技術債，而且是很廉價的那種</p>
