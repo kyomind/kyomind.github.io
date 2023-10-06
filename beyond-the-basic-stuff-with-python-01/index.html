@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-06T03:50:10+08:00" />
+  <meta property="article:modified_time" content="2023-10-05T06:03:13+08:00" />
 
 
 
@@ -259,7 +259,7 @@
 <p><strong>二、在名稱中以「循序數字」當作後綴</strong></p>
 <p>比如<code>payment1</code>、<code>payment2</code>、<code>payment3</code>。</p>
 <p>我真的很討厭！因為這樣的命名<strong>缺乏表意性</strong>。</p>
-<p>有時候我會在 pytest 的 fixtrue 看到同事這樣寫，我會建議改成比較「<strong>能表現個體特質</strong>」的命名。</p>
+<p>有時候會在 pytest fixture 看到同事這樣寫，我會建議改成比較「<strong>能表現個體特質</strong>」的命名。</p>
 <p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間真的沒有任何區別（通常都有區別，但懶得一一想名字），就只是需要複數個同類型的物件</p>
 <h3 id="不要使用內建名稱"><a href="#不要使用內建名稱" class="headerlink" title="不要使用內建名稱"></a>不要使用內建名稱</h3><p>意即不要使用 Python 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BF%9D%E7%95%99%E5%AD%97">保留字</a>。理由可想而知，因為它會覆蓋原來的內建物件，造成程式的錯誤與混亂。</p>
 <p>那真的需要怎麼辦？一個常見的做法是加上<code>_</code>作為<strong>後綴</strong>。比如<code>type_</code>。</p>
