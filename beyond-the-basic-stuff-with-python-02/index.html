@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱">
-  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱"><meta name="twitter:description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。">
+  <meta property="og:description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。"><meta name="twitter:image" content="https://i.imgur.com/tS78Ke0.png">
+  <meta property="og:image" content="https://i.imgur.com/tS78Ke0.png">
+<meta name="description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -31,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-09-05T16:23:55+08:00" />
+  <meta property="article:modified_time" content="2023-10-22T08:53:42+08:00" />
 
 
 
@@ -122,7 +124,7 @@
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (15)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (19)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (20)</a>
           
             <a href="/categories/Django/">Django (4)</a>
           
@@ -192,10 +194,11 @@
 <ol>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
 <li><strong>《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</strong></li>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a></li>
 </ol>
 </blockquote>
 <hr>
-<h2 id="第-6-章：寫出-Pythonic-風格的程式碼"><a href="#第-6-章：寫出-Pythonic-風格的程式碼" class="headerlink" title="第 6 章：寫出 Pythonic 風格的程式碼"></a>第 6 章：寫出 Pythonic 風格的程式碼</h2><p>我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，可能一時之間也不容易回答，畢竟它沒有一個公認的標準或定義。</p>
+<h2 id="第-6-章：寫出-Pythonic-風格的程式碼"><a href="#第-6-章：寫出-Pythonic-風格的程式碼" class="headerlink" title="第 6 章：寫出 Pythonic 風格的程式碼"></a>第 6 章：寫出 Pythonic 風格的程式碼</h2><p>我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。</p>
 <p>不過，<strong>充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫</strong>（不重複造輪子——因為你自己造的輪子往往<strong>不會</strong>更好、更方便、更有效），顯然是大家都認同的部分。</p>
 <p>至於遵守上篇提到的 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">PEP 8</a>，自然不在話下。如果你的變數命名使用了小駝峰式命名法（lower camel case），那麼在「形式上」就已經不太 Pythonic 了。</p>
 <p>話說回來，本書雖然是一本優秀的 Clean Code in Python 入門書，但不知為何，書中的函式命名皆是採用小駝峰，讓我不甚理解。</p>
@@ -362,7 +365,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/the-quick-python-book/" title="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀" rel="bookmark">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/clean-code-python/" title="在天瓏買了兩本 Python 新書與一生的追求" rel="bookmark">在天瓏買了兩本 Python 新書與一生的追求</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-03/" title="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring" rel="bookmark">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/the-quick-python-book/" title="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀" rel="bookmark">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Python/">Python</a>
             <a href="/tags/%E6%9B%B8/">書</a>
@@ -388,7 +391,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">4</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">23</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">19</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">17</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">4</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">23</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">20</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">17</span></a>
     </div>
   </div>
 </div>

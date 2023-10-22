@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring">
+  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring"><meta name="twitter:description" content="○○○">
+  <meta property="og:description" content="○○○"><meta name="twitter:image" content="https://i.imgur.com/tS78Ke0.png">
+  <meta property="og:image" content="https://i.imgur.com/tS78Ke0.png">
+<meta name="description" content="○○○" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
+            <meta property="og:tag" content="Python" />
+    <meta property="og:tag" content="書" />
+    <meta property="og:tag" content="筆記" />
+    <meta property="og:tag" content="Clean Code" />
+    <meta property="og:tag" content="閱讀心得" />
+    
+
+  <meta property="article:modified_time" content="2023-10-22T09:14:24+08:00" />
+
+
+
+
+
+  <meta property="article:published_time" content="2023-10-21T08:46:34+08:00" />
+
+
+
+<meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" />
+<meta name="author" content="Kyo" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>《Python 功力提升的樂趣》筆記（三）函式、註解、docstring - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top/">
+        <li class="mobile-menu-item">熱門
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a target="_blank" rel="noopener" href="https://kyomind.notion.site/0c953c8bedb94bc5905a6257b836a8b8">
+        <li class="mobile-menu-item">發文計畫
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談 (17)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (15)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (20)</a>
+          
+            <a href="/categories/Django/">Django (4)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (10)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (2)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (23)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top/">
+          熱門
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" target="_blank" rel="noopener" href="https://kyomind.notion.site/0c953c8bedb94bc5905a6257b836a8b8">
+          發文計畫
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-10-21
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">第 10 章：寫出有效率的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A6%8F%E6%A8%A1%EF%BC%9A%E5%B0%8F%E5%B0%B1%E6%98%AF%E5%A5%BD%EF%BC%9F"><span class="toc-text">函式的規模：小就是好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%88return%EF%BC%89%E6%87%89%E8%A9%B2%E9%83%BD%E8%A6%81%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-text">返回值（return）應該都要有相同的資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%8D%E5%AF%AB%E5%A5%BD%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9C%8B%E6%B3%95"><span class="toc-text">我對寫好函式的基本看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">Docstring 真的很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A1%8C%E7%82%BA%E8%88%87%E5%91%BD%E5%90%8D%E8%A6%81%E4%B8%80%E8%87%B4"><span class="toc-text">函式的行為與命名要一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%B3%A8%E9%87%8B%E3%80%81docstring-%E5%92%8C-type-hints"><span class="toc-text">第 11 章：注釋、docstring 和 type hints</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，也是最後一篇。</p>
+<p>你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>本次整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。</p>
+<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></li>
+<li><strong>《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="第-10-章：寫出有效率的函式"><a href="#第-10-章：寫出有效率的函式" class="headerlink" title="第 10 章：寫出有效率的函式"></a>第 10 章：寫出有效率的函式</h2><p>有效率的函式（或說「<strong>好的</strong>」函式）需要你在「<strong>命名、規模大小（程式碼行數）、參數數量和複雜性</strong>」之間，做出許多決定和<strong>取捨</strong>。</p>
+<p>這無疑是極具挑戰的事——尤其是取捨。</p>
+<p>人生之難，就難在取捨。</p>
+<p>本章探討的正是這些取捨之間的利弊得失，以及編寫函式的重要原則。不用說，絕對是關鍵的一章。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>相關文章：重構日誌：如何寫好一個 Python 函式——註解、docstring、解耦（待發表）</p>
+</blockquote>
+<h2 id="函式的規模：小就是好？"><a href="#函式的規模：小就是好？" class="headerlink" title="函式的規模：小就是好？"></a>函式的規模：小就是好？</h2><p>我們都聽過「函式應該盡可能簡單、一次只做一次件事」之類的建言，也表示認同。從這個精神出發，太大或太複雜的函式就應該要進行拆分。</p>
+<p>但！事實是，有效拆分函式是一件耗神、講究細節，且沒有標準答案的事。以致於我們即使知道，也很難完全貫徹，包括我自己。</p>
+<p>出於各種原因，我們常常對現實世界作出一定的妥協。</p>
+<h3 id="小函式的優點"><a href="#小函式的優點" class="headerlink" title="小函式的優點"></a>小函式的優點</h3><p>有些人覺得任何函式都不應該超過 20 行，甚至 10、5 行😂。因為函式「短」往往有下面這些優點：</p>
+<ul>
+<li>單一函式容易理解</li>
+<li>較少的參數（這確實非常重要！）</li>
+<li>易於測試與除錯</li>
+</ul>
+<h3 id="小函式的缺點"><a href="#小函式的缺點" class="headerlink" title="小函式的缺點"></a>小函式的缺點</h3><p>但小也有缺點：</p>
+<ul>
+<li>一樣的邏輯，更小的函式也意味著「更多」的小函式</li>
+<li>函式愈多，結構就愈複雜。即「函式間」的關係會變得更加複雜</li>
+<li>愈多函式，函式間的精準命名將成為巨大的挑戰——這真的很困難！</li>
+</ul>
+<p>這些「缺點」往往也解釋了為何我們不一定那麼積極拆分函式，讓每一個函式都符合「一次只做一件事」原則。</p>
+<p>尤其是小函式造成的大量命名問題，對於命名很講究的我而言，有時確實感到棘手。</p>
+<h3 id="小結：小不等於短"><a href="#小結：小不等於短" class="headerlink" title="小結：小不等於短"></a>小結：小不等於短</h3><p>函式原則上還是應該要盡可能單純一點，該拆就要拆，但不一定要很短。而且其中必然會有很多挑戰。</p>
+<p>從「功能」上去劃分界限、拆分函式，會更有意義與指導性，與可行性。</p>
+<p>作者認為，一味追求短函式，確實可以讓各別函式變得簡單，但卻很可能讓程式的「整體」變得複雜，適得其反。</p>
+<p>他的經驗是，理想情況下，函式最好少於 30 行，最多不超過 200 行。<strong>讓函式在合理情況下盡可能短少</strong>，但不只是為了短少而縮減。</p>
+<hr>
+<h2 id="返回值（return）應該都要有相同的資料型別"><a href="#返回值（return）應該都要有相同的資料型別" class="headerlink" title="返回值（return）應該都要有相同的資料型別"></a>返回值（return）應該都要有相同的資料型別</h2><p>對此，我想說：</p>
+<blockquote>
+<p>這真的好重要啊！（吶喊）</p>
+</blockquote>
+<p>卻常常沒有被好好遵守。</p>
+<p>簡言之，為確保函式的「<strong>可預測性</strong>」，我們應該努力讓函式只回傳「<strong>單一資料型別</strong>」的值。比如<strong>總是</strong>回傳整數或字串，而不要有時回傳字串，有時則回傳布林值。</p>
+<p>這不一定容易做到，但我更常遇到的情況是：<strong>明明有替代方案讓回傳型別單一化，卻沒有善用。</strong></p>
+<h3 id="以False代替raise"><a href="#以False代替raise" class="headerlink" title="以False代替raise"></a>以<code>False</code>代替<code>raise</code></h3><p>最常見的例子就是：<strong>該拋出錯誤時候，卻只用<code>return False</code> 替代</strong>。</p>
+<p>意即，當函式正常執行時，回傳一般正常的 output 值。但當執行失敗時，卻是回傳<code>False</code>——這簡直令人髮指，而且我相信你一定看過這樣的函式。</p>
+<p>必須說明，發生錯誤時不拋出而選擇<code>return False</code>未必總是不好的，就像 Django REST framework 序列化器的<code>is_valid</code>方法，預設也是返回一個布林值（可以用<code>raise_exception=True</code>參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
+<p>不過，如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>。</p>
+<p>而且函式命名最好也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。</p>
+<h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，其目的是從一個<code>JSON</code>文件中讀取配置資訊。如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常並返回<code>False</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            config = json.load(f)</span><br><span class="line">        <span class="keyword">return</span> config</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># 這裡是問題所在</span></span><br></pre></td></tr></table></figure>
+
+<p>這個函式在<code>except</code>區塊裡面直接返回<code>False</code>，這會導致以下問題：</p>
+<ol>
+<li><strong>資料型別不一致</strong>：正常情況下返回一個字典，異常情況下返回<code>False</code>（布林值）。</li>
+<li><strong>誤導函式使用者</strong>：使用者可能會誤以為<code>False</code>是一個有效的配置，進而嘗試在其上進行操作，這會導致更多的錯誤。</li>
+<li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為<code>False</code>，然後再決定是否進行後續的操作。</li>
+</ol>
+<p>「return 型別不確定」未必只發生在例外處理，<strong>但我看過不止一次這樣的真實案例</strong>。</p>
+<p>很多人本能地會這樣寫，這往往是因為不習慣、不擅長處理錯誤，所以想要用自己平常更熟悉的<code>False</code>。</p>
+<p>除此之以外我還看過「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息字串」這種非常<strong>反直覺</strong>的回傳值。</p>
+<p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
+<blockquote>
+<p>充滿了技術債味的寫法。</p>
+</blockquote>
+<h3 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h3><p>這類「<strong>雙型別 return</strong>」的函式，對於<strong>函式使用者</strong>（有可能是你的同事）的認知，有著「<strong>更高的要求</strong>」——呼叫方必須很了解這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
+<p>這在多行或有多個 return 值的複雜函式時，真是一場災難。</p>
+<blockquote>
+<p>期望他人知道自己做了什麼「特別的事」，不是我所知曉的軟體開發之道。</p>
+</blockquote>
+<p>當函式具有這種「雙型別 return」的特性時，會明顯增加呼叫方的「<strong>認知負擔</strong>」。</p>
+<p>這使得程式<strong>不僅難以閱讀和維護，也容易出錯</strong>，因為未來的維護者或其他團隊成員<strong>很可能不知道</strong>這個函式的「獨特」行為。</p>
+<p>無論何時，我們都不應該寫這樣的程式。</p>
+<hr>
+<h2 id="我對寫好函式的基本看法"><a href="#我對寫好函式的基本看法" class="headerlink" title="我對寫好函式的基本看法"></a>我對寫好函式的基本看法</h2><p>寫好函式的重點實在太多了，而本文的篇幅有限，我只能擇要為之。</p>
+<p>我也講講我認為函式的撰寫中，最重要的兩點。</p>
+<p>至少遵守這兩點，你的同事會很感激你。</p>
+<h2 id="Docstring-真的很重要"><a href="#Docstring-真的很重要" class="headerlink" title="Docstring 真的很重要"></a>Docstring 真的很重要</h2><p>其一是盡可能地寫 docstring，這不容易，畢竟維護 docstring 也需要心力。</p>
+<p>而且 docstring 也不是有寫就行，還需要從「讀者」的角度去思考、表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
+<p>在眾多函式中，對於「<strong>專案自定義成份濃厚</strong>（也就是<strong>除了你沒人知道它在幹什麼，然後又超長、邏輯超手刻</strong>——沒人會想要細看程式碼）」與「<strong>邏輯相對複雜</strong>」的函式，docstring 的重要性幾乎拉滿。</p>
+<p>畢竟，看有描述性的文字總比看一堆複雜程式碼要簡單得多。</p>
+<p>關於我對 docstring 的其它討論，可以參考這兩個部分：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
+<li><a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
+</ul>
+<p>我的觀點一向如此：<strong>不寫好 docstring，就稱不上是一流的 Python 開發者。</strong></p>
+<h2 id="函式的行為與命名要一致"><a href="#函式的行為與命名要一致" class="headerlink" title="函式的行為與命名要一致"></a>函式的行為與命名要一致</h2><p>其二，雖然很簡單、基本，卻很常做不到。</p>
+<blockquote>
+<p>這不是理所當然的嗎？</p>
+</blockquote>
+<p>對，它<strong>本應該是理所當然</strong>的，而且這不就是函式命名的基本目的？——描述函式的行為。</p>
+<p>但我們可以回想一下自己在工作中遇到的各式各樣函式，究竟有多少比例，是真正做到「言行一致」？我覺得可能只有一半。</p>
+<p>你可能認為「一半」也太誇張了！但我並不這麼認為。「言行不一致」通常有下面幾種症狀：</p>
+<ol>
+<li>函式名稱只表達了函式「一部分」的行為。也就是函式做了超過它宣稱要做的事，比如「驗證欄位」函式，竟然還把驗證資料格式化了！</li>
+<li>函式名稱「言過其實」，說要驗證加格式化，結果只做了一半。</li>
+<li>名稱太模糊、缺乏業務邏輯描述、濫用技術詞彙、過於底層等等，<strong>根本看不懂在說什麼</strong>，更別說言行一致了。</li>
+</ol>
+<p>如果你不能從一個函式的名稱中<strong>有效理解並推測</strong>它應有的行為，那麼這個函式基本上就是失敗（或不健康）的。</p>
+<p>很多時候，函式<strong>最初</strong>可能是「言行一致」的，但隨著後來的修改、刪除、擴充，實際上做的事情變更了，但命名卻沒有跟著改變、重構。</p>
+<p>這些言行不一的函式，充滿了<strong>誤導性</strong>，不斷地挑戰著你的認知、推理能力，還增加了維護成本。</p>
+<p>這樣的例子還少嗎？恐怕每天都在發生。</p>
+<hr>
+<h2 id="第-11-章：注釋、docstring-和-type-hints"><a href="#第-11-章：注釋、docstring-和-type-hints" class="headerlink" title="第 11 章：注釋、docstring 和 type hints"></a>第 11 章：注釋、docstring 和 type hints</h2><p>這章我只摘錄書中的一段話——我特別欣賞與認同的部分：</p>
+<blockquote>
+<p>好的注釋對程式設計師在未來閱讀並理解程式碼作用時提供了簡潔、有用和準確的資訊。這些注釋應該<strong>用來解說程式設計師原本的意圖，並總結某程式碼的作用，而不是只對某行程式碼進行解說。</strong></p>
+</blockquote>
+<blockquote>
+<p>注釋有時會詳細描述程式設計師在編寫程式碼時<strong>所得到的經驗教訓，這些寶貴的資訊可以讓將來的維護者不必再次經歷這些苦難。</strong></p>
+</blockquote>
+<p>說的太好了！</p>
+<p>團隊寫程式，是關於溝通的藝術，畢竟《<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/0010254508">人月神話</a>》已經告訴我們：人多不一定比較快。</p>
+<p>溝通不止發生在會議、Jira、Slack 和規格文件上，程式之內也有著大量的溝通，註解是如此，docstring 亦是如此。</p>
+<p>永遠不要低估「對這些細節的用心」所帶能來的巨大影響力。</p>
+<p>優秀的工程師絕不可能輕忽它們。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-02/" title="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱" rel="bookmark">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/the-quick-python-book/" title="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀" rel="bookmark">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/%E6%9B%B8/">書</a>
+            <a href="/tags/%E7%AD%86%E8%A8%98/">筆記</a>
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            <a href="/tags/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97/">閱讀心得</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/essential-subscriptions-2023/">
+        <span class="next-text nav-default">2023 那些我已不可或缺的「付費訂閱」推薦</span>
+        <span class="prev-text nav-mobile">2023 那些我已不可或缺的「付費訂閱」推薦</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">4</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">23</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">2</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">20</span></a> <a class="category-link" href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談<span class="category-count">17</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kyomind.tw/" class="iconfont icon-instagram" title="instagram"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2023<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

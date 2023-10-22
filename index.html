@@ -111,7 +111,7 @@
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (15)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (19)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (20)</a>
           
             <a href="/categories/Django/">Django (4)</a>
           
@@ -157,6 +157,40 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/beyond-the-basic-stuff-with-python-03/">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-10-21
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，也是最後一篇。</p>
+<p>你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>本次整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。</p>
+<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></li>
+<li><strong>《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="第-10-章：寫出有效率的函式"><a href="#第-10-章：寫出有效率的函式" class="headerlink" title="第 10 章：寫出有效率的函式"></a>第 10 章：寫出有效率的函式</h2><p>有效率的函式（或說「<strong>好的</strong>」函式）需要你在「<strong>命名、規模大小（程式碼行數）、參數數量和複雜性</strong>」之間，做出許多決定和<strong>取捨</strong>。</p>
+<p>這無疑是極具挑戰的事——尤其是取捨。</p>
+<p>人生之難，就難在取捨。</p>
+<p>本章探討的正是這些取捨之間的利弊得失，以及編寫函式的重要原則。不用說，絕對是關鍵的一章。</p>
+          <div class="read-more">
+            <a href="/beyond-the-basic-stuff-with-python-03/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/essential-subscriptions-2023/">2023 那些我已不可或缺的「付費訂閱」推薦</a>
         </h1>
@@ -316,31 +350,6 @@
 <p>這讓我不禁陷入一陣掙扎，究竟是買還是不買呢？</p>
           <div class="read-more">
             <a href="/weekly-review-22/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/think-riverside/">Cal Newport 與我的河濱思考</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-09-14
-        </span><span class="post-category">
-            <a href="/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/">隨筆雜談</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
-<p>從〈<a href="https://blog.kyomind.tw/weekly-review-19/">19，AI 時代的生存指南（二）數位斷捨離</a>〉發表後，又過了兩個月的時間，就像文中說的，要持續數位斷捨離，可一點也不簡單。</p>
-<p>不過沒關係，我還是會繼續嘗試與實踐下去。只不過，數位斷捨離跟許多好習慣的養成一樣，多多少少都會消耗你的意志力，以達成一定的<strong>慣性</strong>。（當然如果你並不真的喜歡這件事，那最終依舊不會形成慣性）</p>
-<p>如果同時還有其它目標追求，確實不宜對自己太過嚴苛，以免「全軍覆沒」。</p>
-<p>不過其中一種數位斷捨離實踐，我倒是持續了好幾個月，效果不錯，而且我也推薦你這麼做——那就是「<strong>散步時，不要用手機</strong>」。</p>
-<h2 id="Cal-Newport-為什麼沒有社交媒體帳號"><a href="#Cal-Newport-為什麼沒有社交媒體帳號" class="headerlink" title="Cal Newport 為什麼沒有社交媒體帳號"></a>Cal Newport 為什麼沒有社交媒體帳號</h2><p>Cal Newport 在這則〈<a target="_blank" rel="noopener" href="https://youtu.be/m6AF_aFuD8w?si=KRXvJroDMkhB7JkJ">The Perks of Living Without Social Media | Cal Newport</a>〉影片中，講述了他<strong>不用任何社交媒體</strong>的理由。</p>
-<p>一言以蔽之就是：為了<strong>保持無聊</strong>。</p>
-          <div class="read-more">
-            <a href="/think-riverside/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
