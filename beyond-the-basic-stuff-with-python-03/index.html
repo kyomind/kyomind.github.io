@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring">
-  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring"><meta name="twitter:description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。">
-  <meta property="og:description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。"><meta name="twitter:image" content="https://i.imgur.com/tS78Ke0.png">
+  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（三）函式、註解、docstring"><meta name="twitter:description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 自然也不例外。">
+  <meta property="og:description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 自然也不例外。"><meta name="twitter:image" content="https://i.imgur.com/tS78Ke0.png">
   <meta property="og:image" content="https://i.imgur.com/tS78Ke0.png">
-<meta name="description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。" />
+<meta name="description" content="本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 自然也不例外。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-22T13:36:32+08:00" />
+  <meta property="article:modified_time" content="2023-10-23T18:37:53+08:00" />
 
 
 
@@ -191,7 +191,7 @@
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
 <p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，也是最後一篇。</p>
 <p>你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
-<p>本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「寫好函式」這件事總是如此重要，Python 也不例外。</p>
+<p>本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「<strong>寫好函式</strong>」這件事總是如此重要，Python 自然也不例外。</p>
 <h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
 <ol>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
@@ -268,30 +268,35 @@
 <p>這使得程式<strong>不僅難以閱讀和維護，也容易出錯</strong>，因為未來的維護者或其他團隊成員<strong>很可能不知道</strong>這個函式的「獨特」行為。</p>
 <p>無論何時，我們都不應該寫這樣的程式。</p>
 <hr>
-<h2 id="我對寫好函式的基本看法"><a href="#我對寫好函式的基本看法" class="headerlink" title="我對寫好函式的基本看法"></a>我對寫好函式的基本看法</h2><p>寫好函式的重點實在太多了，而本文的篇幅有限，我只能擇要為之。</p>
+<h2 id="我對寫好函式的基本看法"><a href="#我對寫好函式的基本看法" class="headerlink" title="我對寫好函式的基本看法"></a>我對寫好函式的基本看法</h2><p>寫好函式的重點實在太多了，而本文的篇幅有限，只能擇要為之。</p>
 <p>我也講講我認為函式的撰寫中，最重要的兩點。</p>
 <p>至少遵守這兩點，你的同事會很感激你。</p>
 <h2 id="Docstring-真的很重要"><a href="#Docstring-真的很重要" class="headerlink" title="Docstring 真的很重要"></a>Docstring 真的很重要</h2><p>其一是盡可能地寫 docstring，這不容易，畢竟維護 docstring 也需要心力。</p>
-<p>而且 docstring 也不是有寫就行，還需要從「讀者」的角度去思考、表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
-<p>在眾多函式中，對於「<strong>專案自定義成份濃厚</strong>（也就是<strong>除了你沒人知道它在幹什麼，然後又超長、邏輯超手刻</strong>——沒人會想要細看程式碼）」與「<strong>邏輯相對複雜</strong>」的函式，docstring 的重要性幾乎拉滿。</p>
-<p>畢竟，看有描述性的文字總比看一堆複雜程式碼要簡單得多。</p>
+<blockquote>
+<p>Docstring 就跟所有開發文件一樣——自己很懶得寫，但如果我想調用別人寫好的程式時，卻希望它們越詳細越好。</p>
+</blockquote>
+<p>而且 docstring 也不是有寫就行，還需要從「<strong>讀者</strong>（也就是你的同事）」的角度去思考與表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
+<p>在眾多函式中，對於「<strong>專案自定義成份濃厚</strong>（也就是<strong>除了你沒人知道它在幹什麼，行數超多、邏輯超手刻</strong>，aka <strong>沒人想看的程式碼</strong>）」與「<strong>相對複雜</strong>」的函式，docstring 的重要性幾乎拉滿。</p>
+<p>畢竟，看<strong>有描述性的文字</strong>，總比看一長串複雜、混亂的程式碼，要簡單且友善得多。</p>
 <p>關於我對 docstring 的其它討論，可以參考這兩個部分：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
 <li><a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
 </ul>
 <p>我的觀點一向如此：<strong>不寫好 docstring，就稱不上是一流的 Python 開發者。</strong></p>
-<h2 id="函式的行為與命名要一致"><a href="#函式的行為與命名要一致" class="headerlink" title="函式的行為與命名要一致"></a>函式的行為與命名要一致</h2><p>其二，雖然很簡單、基本，卻很常做不到。</p>
+<h2 id="函式的行為與命名要一致"><a href="#函式的行為與命名要一致" class="headerlink" title="函式的行為與命名要一致"></a>函式的行為與命名要一致</h2><p>其二，好的函式要「言行一致」。</p>
+<p>你可能會想：</p>
 <blockquote>
 <p>這不是理所當然的嗎？</p>
 </blockquote>
-<p>對，它<strong>本應該是理所當然</strong>的，而且這不就是函式命名的基本目的？——描述函式的行為。</p>
+<p>對，它<strong>「本應該」是理所當然</strong>的，畢竟這不就是函式命名的基本目的？——用來描述函式的行為。</p>
 <p>但我們可以回想一下自己在工作中遇到的各式各樣函式，究竟有多少比例，是真正做到「言行一致」？我覺得可能只有一半。</p>
-<p>你可能認為「一半」也太誇張了！但我並不這麼認為。「言行不一致」通常有下面幾種症狀：</p>
+<p>或許你會認為「一半」也太誇張了！但我並不這麼想。</p>
+<p>「言行不一致」通常有下面幾種症狀：</p>
 <ol>
-<li>函式名稱只表達了函式「一部分」的行為。也就是函式做了超過它宣稱要做的事，比如「驗證欄位」函式，竟然還把驗證資料格式化了！</li>
-<li>函式名稱「言過其實」，說要驗證加格式化，結果只做了一半。</li>
-<li>名稱太模糊、缺乏業務邏輯描述、濫用技術詞彙、過於底層等等，<strong>根本看不懂在說什麼</strong>，更別說言行一致了。</li>
+<li>函式名稱只表達了函式「<strong>部分</strong>」的行為。也就是函式做了超過它宣稱要做的事，比如「驗證欄位」函式，竟然還把驗證資料格式化了！</li>
+<li>函式名稱「<strong>言過其實</strong>」，說要驗證加格式化，結果只做了一半。</li>
+<li>名稱太模糊、缺乏業務邏輯描述、濫用技術詞彙等等，<strong>根本看不懂它在說什麼</strong>，更別說言行一致了。</li>
 </ol>
 <p>如果你不能從一個函式的名稱中<strong>有效理解並推測</strong>它應有的行為，那麼這個函式基本上就是失敗（或不健康）的。</p>
 <p>很多時候，函式<strong>最初</strong>可能是「言行一致」的，但隨著後來的修改、刪除、擴充，實際上做的事情變更了，但命名卻沒有跟著改變、重構。</p>
