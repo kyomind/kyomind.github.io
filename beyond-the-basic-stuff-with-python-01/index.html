@@ -34,7 +34,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-24T07:56:41+08:00" />
+  <meta property="article:modified_time" content="2023-10-24T07:59:28+08:00" />
 
 
 
@@ -193,7 +193,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E7%B7%A3%E8%B5%B7"><span class="toc-text">系列緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E8%AC%9B%E9%87%8D%E9%BB%9E"><span class="toc-text">只講重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E4%BD%BF%E7%94%A8-Black-%E9%80%B2%E8%A1%8C%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">第 3 章：使用 Black 進行程式碼格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Black%EF%BC%9F"><span class="toc-text">Why Black？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E9%81%B8%E7%94%A8%E6%98%93%E6%87%82%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">第 4 章：選用易懂的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B2%E4%B8%8A%E6%9C%80%E7%B3%9F%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%E2%80%94%E2%80%94data"><span class="toc-text">史上最糟的變數名稱——data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B2%E4%B8%8A%E3%80%8C%E7%AC%AC%E4%BA%8C%E7%B3%9F%E3%80%8D%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%EF%BC%9F"><span class="toc-text">史上「第二糟」的變數名稱？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%80%8B%E4%BB%A3%E8%A1%A8%E6%80%A7%E6%A1%88%E4%BE%8B"><span class="toc-text">3 個代表性案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-5-%E7%AB%A0%EF%BC%9A%E6%89%BE%E5%87%BA%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%9A%84%E7%95%B0%E5%91%B3"><span class="toc-text">第 5 章：找出程式碼的異味</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%95%B0%E5%91%B3%E7%9A%84%E8%BF%B7%E6%80%9D"><span class="toc-text">程式碼異味的迷思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F"><span class="toc-text">註解是不需要的？</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
-<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上大量我個人的開發經驗與心得。</p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上（大量）我個人的開發經驗與心得。</p>
 <h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
 <ol>
 <li><strong>《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</strong></li>
@@ -310,7 +310,7 @@
 <p>這個常見例子還有一個常見的「<strong>變形</strong>」：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(res.json())</span><br></pre></td></tr></table></figure>
 <p>這麼巧！response 和 result 兩者恰好都是以 res 為前綴，只要命名為<code>res</code>就天下太平了——才怪。</p>
-<p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了！</strong></p>
+<p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了。</strong></p>
 <hr>
 <p>說真的，data 至少還有上述的例外情況，但關於 result，我真的想不到。</p>
 <p>所以，請原諒我，這一段的標題是「<strong>騙人</strong>」的，result 壓根不是什麼「史上第二糟」的變數名稱，<strong>它就是「全銀河系最爛」的變數名稱。</strong></p>
