@@ -34,7 +34,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-24T07:59:28+08:00" />
+  <meta property="article:modified_time" content="2023-10-24T08:20:01+08:00" />
 
 
 
@@ -267,8 +267,22 @@
 <p>我真的很討厭！因為這樣的命名<strong>缺乏表意性</strong>。</p>
 <p>有時候會在 pytest fixture 看到同事這樣寫，我會建議改成比較「<strong>能表現個體特質</strong>」的命名。</p>
 <p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間真的沒有任何區別（通常都有區別，但懶得一一想名字），就只是需要複數個同類型的物件</p>
+<h3 id="第三種不佳的命名模式——型別後綴"><a href="#第三種不佳的命名模式——型別後綴" class="headerlink" title="第三種不佳的命名模式——型別後綴"></a>第三種不佳的命名模式——型別後綴</h3><p>除了書中的兩種，還有一種我個人也覺得不妥的命名模式——<strong>型別後綴</strong>。</p>
+<p>也就是在變數的最後加上型別，比如<code>name_str</code>、<code>age_int</code>。</p>
+<p>你未必很常看到這樣的命名，因為大部分時候並不需要。但是，在某些場合，當開發者<strong>想要強調</strong>某個變數的型別時，就會這麼做。</p>
+<p>比如 code review 時，我最常見到的「型別後綴」命名就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response_dict = response.json()</span><br></pre></td></tr></table></figure>
+
+
+<p>這樣寫似乎有其道理，<strong>但我仍不推薦，理由有二：</strong></p>
+<ol>
+<li>型別後綴會<strong>讓語意變得混亂</strong>：比如本來很清楚的<code>is_valid</code>，加上後綴變成<code>is_valid_bool</code>，反而讓人不知所云。</li>
+<li>現在已經有了 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">type hints</a>，可以用來強調型別。前述例子，你想強調它是一個布林值，就可以這樣寫：<code>is_valid: bool</code>。</li>
+</ol>
+<p>所以，我們很難再找到充分理由，來使用型別後綴。</p>
 <h3 id="不要使用內建名稱"><a href="#不要使用內建名稱" class="headerlink" title="不要使用內建名稱"></a>不要使用內建名稱</h3><p>意即不要使用 Python 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BF%9D%E7%95%99%E5%AD%97">保留字</a>。理由可想而知，因為它會覆蓋原來的內建物件，造成程式的錯誤與混亂。</p>
 <p>那真的需要怎麼辦？一個常見的做法是加上<code>_</code>作為<strong>後綴</strong>。比如<code>type_</code>。</p>
+<hr>
 <h2 id="史上最糟的變數名稱——data"><a href="#史上最糟的變數名稱——data" class="headerlink" title="史上最糟的變數名稱——data"></a>史上最糟的變數名稱——data</h2><p>不瞞您說，<strong>萬事萬物都是「data」。</strong></p>
 <p>在實務中，把變數命名為 data 的情況還真不算罕見——但這是一種<strong>極為糟糕的命名</strong>，因為它<strong>缺乏表意性</strong>。</p>
 <p>書中的這段話說得非常好（我稍重組了一下原句）：</p>
