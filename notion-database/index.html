@@ -15,9 +15,11 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="剛剛好：Notion database「反複雜」使用指南">
-  <meta property="og:title" content="剛剛好：Notion database「反複雜」使用指南">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+<meta property="og:type" content="article"><meta name="twitter:title" content="Notion 資料庫「反複雜」使用指南">
+  <meta property="og:title" content="Notion 資料庫「反複雜」使用指南"><meta name="twitter:description" content="這是「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，最能夠代表 Notion 的關鍵元素——資料庫（database）。我希望不落俗套地，討論 Notion 資料庫的美麗與哀愁。">
+  <meta property="og:description" content="這是「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，最能夠代表 Notion 的關鍵元素——資料庫（database）。我希望不落俗套地，討論 Notion 資料庫的美麗與哀愁。"><meta name="twitter:image" content="https://i.imgur.com/TJQDGmr.jpg">
+  <meta property="og:image" content="https://i.imgur.com/TJQDGmr.jpg">
+<meta name="description" content="這是「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，最能夠代表 Notion 的關鍵元素——資料庫（database）。我希望不落俗套地，討論 Notion 資料庫的美麗與哀愁。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -34,7 +36,7 @@
     <meta property="og:tag" content="Airtable" />
     
 
-  <meta property="article:modified_time" content="2023-09-24T16:28:27+08:00" />
+  <meta property="article:modified_time" content="2023-10-27T13:40:43+08:00" />
 
 
 
@@ -66,7 +68,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>剛剛好：Notion database「反複雜」使用指南 - Code and Me</title>
+    <title>Notion 資料庫「反複雜」使用指南 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -172,13 +174,16 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">剛剛好：Notion database「反複雜」使用指南
+      <h1 class="post-title">Notion 資料庫「反複雜」使用指南
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
           2023-08-29
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-10-27
+          </span>
+        <span class="post-category">
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
             </span>
         </div>
@@ -187,40 +192,38 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E8%BB%B8"><span class="toc-text">本文架構與主軸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notion-%E7%9A%84%E6%A0%B8%E5%BF%83%E2%80%94%E2%80%94database"><span class="toc-text">Notion 的核心——database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%B8%80%EF%BC%9A%E5%AD%B8%E7%BF%92%E9%96%80%E6%AA%BB"><span class="toc-text">困境一：學習門檻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%BA%8C%EF%BC%9A%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">困境二：不必要的複雜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%B8%89%EF%BC%9A%E9%81%8E%E5%BA%A6%E4%BD%BF%E7%94%A8"><span class="toc-text">困境三：過度使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Database-%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81"><span class="toc-text">Database 太多了！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-database-%E6%B8%9B%E6%B3%95"><span class="toc-text">我的 database 減法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%8C%E5%A4%96%E8%A9%B1%EF%BC%9ANotion-%E4%B8%A6%E4%B8%8D%E9%81%A9%E5%90%88%E5%81%9A%E5%8D%A1%E7%89%87%E7%AD%86%E8%A8%98"><span class="toc-text">題外話：Notion 並不適合做卡片筆記</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E8%BB%B8"><span class="toc-text">本文架構與主軸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notion-%E7%9A%84%E5%BF%83%E8%87%9F%EF%BC%9A%E8%B3%87%E6%96%99%E5%BA%AB"><span class="toc-text">Notion 的心臟：資料庫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%B8%80%EF%BC%9A%E5%AD%B8%E7%BF%92%E9%96%80%E6%AA%BB"><span class="toc-text">困境一：學習門檻</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%BA%8C%EF%BC%9A%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">困境二：不必要的複雜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%B0%E5%A2%83%E4%B8%89%EF%BC%9A%E9%81%8E%E5%BA%A6%E4%BD%BF%E7%94%A8"><span class="toc-text">困境三：過度使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B3%87%E6%96%99%E5%BA%AB%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81"><span class="toc-text">資料庫太多了！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-database-%E6%B8%9B%E6%B3%95"><span class="toc-text">我的 database 減法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%8C%E5%A4%96%E8%A9%B1%EF%BC%9ANotion-%E4%B8%A6%E4%B8%8D%E9%81%A9%E5%90%88%E5%81%9A%E5%8D%A1%E7%89%87%E7%AD%86%E8%A8%98"><span class="toc-text">題外話：Notion 並不適合做卡片筆記</span></a></li></ol>
     </div>
-  </div><div class="post-content"><!-- ![by Tom Clohosy Cole](https://i.imgur.com/KF3B43y.jpg) -->
-<!-- ![by Daria Kolesnikova](https://i.imgur.com/zJRTnei.jpg) -->
-<p><img src="https://i.imgur.com/TJQDGmr.jpg" alt="by Daria Kolesnikova"><span class="cap">by Daria Kolesnikova</span></p>
-<p>讓我們進入「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，<strong>最能夠代表 Notion 的關鍵元素</strong>。</p>
-<p>提到 Notion 你會想到什麼？沒錯，<strong>database</strong>！</p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/TJQDGmr.jpg" alt="by Daria Kolesnikova"><span class="cap">by Daria Kolesnikova</span></p>
+<p>讓我們進入「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，<strong>最能夠代表 Notion 的關鍵元素：資料庫（<a target="_blank" rel="noopener" href="https://www.notion.so/help/intro-to-databases">database</a>）</strong>。</p>
+<p>一提到 Notion 你會想到什麼？沒錯，就是資料庫。它就是 <strong>Notion 的代名詞</strong>。</p>
 <p>Notion 在 2016 年就誕生了（你也可以說是 2013年，請參考維基百科關於 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Notion">Notion 的「歷史與發展」</a>），但直到 2018 年才大紅，為什麼？——因為加入了 database。</p>
-<p>儘管在 UI 加入類似 SQL table 元素與互動操作，並非 Notion 獨創。畢竟，在此之前，<a target="_blank" rel="noopener" href="https://www.airtable.com/">Airtable</a> 已經是這方面的佼佼者。但我們不得不承認，<strong>Notion 確確實實把 database 玩出了新的高度</strong>。</p>
+<p>儘管在 UI 加入類似<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>，並非 Notion 獨創。畢竟，在此之前，<a target="_blank" rel="noopener" href="https://www.airtable.com/">Airtable</a> 已經是這方面的佼佼者。但我們不得不承認，<strong>Notion 確實把資料庫玩出了新的高度</strong>。</p>
 <h3 id="系列：Simple-Notion——我的-Notion-簡潔之道"><a href="#系列：Simple-Notion——我的-Notion-簡潔之道" class="headerlink" title="系列：Simple Notion——我的 Notion 簡潔之道"></a><strong>系列：Simple Notion——我的 Notion 簡潔之道</strong></h3><blockquote>
 <ol>
 <li><a href="https://blog.kyomind.tw/simple-notion/">使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a></li>
 <li><a href="https://blog.kyomind.tw/stumbling-on-notion/">少則得，多則惑：使用 Notion 時的兩個常見陷阱</a></li>
-<li><strong>剛剛好：Notion database「反複雜」使用指南</strong></li>
+<li><strong>Notion 資料庫「反複雜」使用指南</strong></li>
 </ol>
 </blockquote>
 <hr>
-<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>我希望不落俗套地，討論 Notion 的 database——它的美麗與哀愁。</p>
-<p>既然是「Simple Notion」系列文章，主軸仍會聚焦在「簡潔」二字。而講到簡潔使用 Notion，database 絕對是<strong>一個無法繞過的主要議題</strong>。</p>
+<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>我希望不落俗套地，討論 Notion 資料庫的美麗與哀愁。</p>
+<p>既然是「Simple Notion」系列文章，主軸仍會聚焦在「簡潔」二字。而講到簡潔使用 Notion，資料庫絕對是<strong>一個無法繞過的主要議題</strong>。</p>
 <span id="more"></span>
 
 
-<h3 id="何謂不落俗套？"><a href="#何謂不落俗套？" class="headerlink" title="何謂不落俗套？"></a>何謂不落俗套？</h3><p>看過前兩篇的讀者或許能預見，我又要來說一說 database 的缺點了。嚴格而言，應該稱之為「濫用 database 的困境」。</p>
-<p>Notion database 是如此的強大，以至於能夠讓 Notion 在眾多筆記軟體中脫穎而出。甚至，有了 database，你簡直不能說 Notion 只是一個筆記軟體了。</p>
-<p>說它是一個資料平台也不為過。</p>
-<h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>這篇文章是為了「已使用過 Notion database 但<strong>覺得太複雜或心累</strong>」的讀者而寫。</p>
+
+
+<h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>這篇文章是為了「已使用過 Notion 資料庫但<strong>覺得太複雜或心累</strong>」的讀者而寫。</p>
 <p>因為我就是其中一員！至少曾經是。</p>
-<p>雖然現在已經較少使用 Notion database（只拿來管理文章草稿和工作會議記錄），但我覺得這個「利器」，適度使用還是非常方便的。</p>
-<h2 id="本文架構與主軸"><a href="#本文架構與主軸" class="headerlink" title="本文架構與主軸"></a>本文架構與主軸</h2><p>我們要先講 Notion database 為什麼強大，然後再討論與之相關的「困境」，最後則是我對這些困境的解法與心得。</p>
-<p>本文的主軸是「<strong>Notion database 使用之道</strong>」。因此，如同前兩篇，文中不會有任何關於 Notion database 的詳細操作教學——這些是「術」。</p>
+<p>雖然現在已經較少使用 Notion 資料庫（只拿來管理文章草稿和工作會議記錄），但我覺得這個「利器」，適度使用還是非常方便的。</p>
+<h2 id="本文架構與主軸"><a href="#本文架構與主軸" class="headerlink" title="本文架構與主軸"></a>本文架構與主軸</h2><p>為統一用語，本文中「database」皆指 Notion database。</p>
+<p>我們要先講 Notion database 為什麼強大，然後再討論與之相關的「困境」，最後則是我對這些困境的解法與心得。</p>
+<p>本文主軸是「<strong>Notion 資料庫簡潔之道</strong>」。因此，如同前兩篇，原則上不會有任何關於 Notion database 的詳細操作教學——這些是「術」。</p>
 <p>想知道各種 database 使用技巧，可以上 YouTube，那裡有著海量的學習資源。</p>
 <hr>
 <p>讓我們進入正題。</p>
-<h2 id="Notion-的核心——database"><a href="#Notion-的核心——database" class="headerlink" title="Notion 的核心——database"></a>Notion 的核心——database</h2><p>Notion database 真的很強大。可以說，光是 database 和六種 <a target="_blank" rel="noopener" href="https://www.notion.so/help/guides/when-to-use-each-type-of-database-view">database view</a>，就佔據了 Notion 一半以上的重要功能——以及複雜度。</p>
+<h2 id="Notion-的心臟：資料庫"><a href="#Notion-的心臟：資料庫" class="headerlink" title="Notion 的心臟：資料庫"></a>Notion 的心臟：資料庫</h2><p>Notion database 真的很強大。可以說，光是 database 和六種 <a target="_blank" rel="noopener" href="https://www.notion.so/help/guides/when-to-use-each-type-of-database-view">database view</a>，就佔據了 Notion 一半以上的重要功能——以及複雜度。</p>
 <p>雖然 Notion database 有借鑑 Airtable 之嫌，但 <strong>view 與 view 之間的自由切換、資料的靈活呈現</strong>，則是任何剛接觸的人，都不得不讚嘆的強大應用模式。</p>
 <h3 id="Notion-的本體就是-database"><a href="#Notion-的本體就是-database" class="headerlink" title="Notion 的本體就是 database"></a>Notion 的本體就是 database</h3><p>換句話說，我認為要用 Notion，絕對是因為它強大的 database。</p>
 <p>這東西大大滿足了喜歡收集資料，和把它們整理得井然有序而且美觀的筆記控！我也曾經是這一份子啦☺️</p>
@@ -270,7 +273,7 @@
 <p>光學習，可能要區分成「程式類」和「非程式類」。而不同素材如書、線上課、文章等等，我不希望它們<strong>歸納時</strong>沒有任何區別，因為這樣找起來或複習很麻煩。</p>
 <p>於是，為了新的「子分類」，要麻再多開一個 database，不然就是多增加一些欄位作為區別。我甚至想把程式主題再進一步細分，比 Django、Docker、Python 等等。</p>
 <p>如此反覆，我的學習筆記類 database 在數量上增加到了 6-8 個，其中有的欄位多、有的欄位少。</p>
-<h2 id="Database-太多了！"><a href="#Database-太多了！" class="headerlink" title="Database 太多了！"></a>Database 太多了！</h2><blockquote>
+<h2 id="資料庫太多了！"><a href="#資料庫太多了！" class="headerlink" title="資料庫太多了！"></a>資料庫太多了！</h2><blockquote>
 <p>後來，看著一堆 database，覺得自己好累，尤其在新增一則筆記時，不得不先思考：「呃……它應該放到哪個 db？」——好像已經太多了。</p>
 </blockquote>
 <p>如果你有很多個 database 要維護，那你對它們得有一個<strong>相對清晰的概念與操作體系</strong>，才不容易作繭自縛。</p>
@@ -288,7 +291,7 @@
 <hr>
 <h2 id="我的-database-減法"><a href="#我的-database-減法" class="headerlink" title="我的 database 減法"></a>我的 database 減法</h2><p>簡單使用 Notion database 比簡單使用 Notion 要來得容易，我個人會貫徹下列原則。</p>
 <p>不過這些原則<strong>多少都會限制 database 的發揮</strong>，所以是「原則」，作為<strong>需要時的指引</strong>。</p>
-<h3 id="一、能透過「新增欄位」達成的，就不新增-db"><a href="#一、能透過「新增欄位」達成的，就不新增-db" class="headerlink" title="一、能透過「新增欄位」達成的，就不新增 db"></a>一、能透過「新增欄位」達成的，就不新增 db</h3><p>雖然欄位管理也是一個難題，但怎麼說都比新增一個獨立 database 來得<strong>輕量</strong>。</p>
+<h3 id="一、能透過「新增欄位」達成的，就不新增資料庫"><a href="#一、能透過「新增欄位」達成的，就不新增資料庫" class="headerlink" title="一、能透過「新增欄位」達成的，就不新增資料庫"></a>一、能透過「新增欄位」達成的，就不新增資料庫</h3><p>雖然欄位管理也是一個難題，但怎麼說都比新增一個獨立 database 來得<strong>輕量</strong>。</p>
 <p>換句話說，當筆記架構變得複雜，需要更多手段來<strong>有效分類</strong>不同筆記時，建議優先選擇建立欄位而非新增 database。</p>
 <h3 id="二、欄位不要過多"><a href="#二、欄位不要過多" class="headerlink" title="二、欄位不要過多"></a>二、欄位不要過多</h3><p>雖然說能用欄位處理的就不要透過 db，但欄位的增加也必須適合可止，盡可能讓每一個欄位<strong>都是必要的</strong>，而不是為了「<strong>看起來井然有序</strong>」或「<strong>看起來更完整</strong>」。</p>
 <p>畢竟填寫欄位的人是自己。即使有模板，要應付各種複雜的欄位與情況，模板可能也要很多樣，這些都不利於筆記。</p>
@@ -300,7 +303,7 @@
 <h3 id="四、善用-view-與-linked-database"><a href="#四、善用-view-與-linked-database" class="headerlink" title="四、善用 view 與 linked database"></a>四、善用 view 與 linked database</h3><p>過濾、排序、view 等功能分頁，我覺得它們是「必要之惡」——這是讚美☺️</p>
 <p><img src="https://i.imgur.com/DLNmoEx.png" alt="view 分頁"><span class="cap">view 分頁</span></p>
 <p>雖然太多分頁也會造成困擾，但透過分頁選擇不同 view、過濾條件、排序方式等，<strong>確實能讓 db 資料更加有效呈現，充分發揮看資料的視角</strong>，我認為非常值得善用。</p>
-<p>如果分頁太多了，推薦再開一個 <a target="_blank" rel="noopener" href="https://www.notion.so/help/guides/using-linked-databases">linked database</a>，這下又多了一個呈現資料的分身。</p>
+<p>如果分頁太多了，推薦再開一個 <a target="_blank" rel="noopener" href="https://www.notion.so/help/guides/using-linked-databases">linked database</a>，這下又多了一個呈現資料的「<strong>分身</strong>」。</p>
 <p>總之，<strong>我認為善用 view 分頁與 linked database，就是用好 Notion database 的一大關鍵！</strong></p>
 <p>在新增 db 或新增欄位之前，我們不妨先想想：「是不是新增一個 view 就能解決？」</p>
 <h3 id="五、固定架構"><a href="#五、固定架構" class="headerlink" title="五、固定架構"></a>五、固定架構</h3><p>我覺得 Notion database 最適合的，是那些<strong>「筆記架構相對固定」的場景</strong>，比如前面提到的年、月、週計畫這類的記錄。</p>
@@ -320,10 +323,11 @@
 <li>連結導向。</li>
 </ol>
 <p>關鍵是第二個：<strong>連結</strong>。</p>
-<p>我知道，Notion database 有 Relation 欄位可以進行簡單的 db 間關聯，頁面開頭也有本頁的 <a target="_blank" rel="noopener" href="https://www.playpcesor.com/2020/09/notion.html">backlinks</a> 可供參考。</p>
+<h3 id="Notion-的「連結」只做了一半"><a href="#Notion-的「連結」只做了一半" class="headerlink" title="Notion 的「連結」只做了一半"></a>Notion 的「連結」只做了一半</h3><p>我知道，Notion 資料庫有 Relation 欄位可以進行簡單的「<strong>資料庫關聯</strong>」，頁面開頭也有本頁的 <a target="_blank" rel="noopener" href="https://www.playpcesor.com/2020/09/notion.html">backlinks</a> 可供參考。</p>
 <p>但這些功能，相比於「<strong>原生支援雙向連結</strong>」的卡片筆記軟體如 Logseq、Obsidian，在「<strong>有效實踐卡片之間的連結</strong>」這件事上，效果相去甚遠。</p>
-<p>用 Notion 絕對可以做卡片筆記，但很難做得好。</p>
-<p>只要試想一下，當 Relation 欄位有著 <strong>100 個關聯</strong>的時候，這個欄位看起來會是如何？</p>
+<p>用 Notion 絕對可以做卡片筆記，但<strong>很難做得好</strong>。</p>
+<p>所以你可以看到，關於用 Notion 做卡片筆記的文章、影片，大多都是點到為止，沒有深入探討，也很難做更進一步的應用。</p>
+<p>畢竟，我們只需要簡單試想一下，當 Relation 欄位有著 <strong>100 個關聯</strong>的時候，這個欄位看起來會是如何？</p>
 <p>而 100 個關聯對於 Logseq 等卡片筆記 app 而言，僅僅只是開始而已。</p>
 
       </div>
