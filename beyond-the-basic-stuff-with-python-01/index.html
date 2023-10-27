@@ -34,7 +34,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-24T08:29:50+08:00" />
+  <meta property="article:modified_time" content="2023-10-27T13:54:08+08:00" />
 
 
 
@@ -229,7 +229,11 @@
 <p>儘管在不久的將來，我們產出的程式碼，可能有相當部分是 AI 幫我們寫的，但那依舊不妨礙我們對於 Clean Code 的追求——畢竟你還是要審視 AI 的產出，並適時修正與完善。</p>
 <hr>
 <p>本文整理書中第 3-5 章重點，前 2 章我覺得重要性普通就略過了。</p>
-<h2 id="第-3-章：使用-Black-進行程式碼格式化"><a href="#第-3-章：使用-Black-進行程式碼格式化" class="headerlink" title="第 3 章：使用 Black 進行程式碼格式化"></a>第 3 章：使用 Black 進行程式碼格式化</h2><p>Formatter——格式化器——想必大家都很熟悉了，我也有不少文章提過（雖然主要講 yapf），有興趣可以查看「<a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a>」這個標籤。</p>
+<h2 id="第-3-章：使用-Black-進行程式碼格式化"><a href="#第-3-章：使用-Black-進行程式碼格式化" class="headerlink" title="第 3 章：使用 Black 進行程式碼格式化"></a>第 3 章：使用 Black 進行程式碼格式化</h2><p>Formatter——格式化器——想必大家都很熟悉了，我也有不少文章提過（雖然主要講 yapf），有興趣可以查看「<a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a>」這個 tag。與下列兩篇與 Black 有關的文章：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
+</ul>
 <p>提 formatter 肯定要提 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">PEP 8</a>，畢竟所有的 Python formatter 都是以 PEP 8 為基礎，再加上一些慣例或額外規則。</p>
 <p>所以這章有一定的篇幅與範例都是在講 PEP 8，這裡只提一個我覺得比較容易被忽略（但我認為重要）的點——垂直間距（空行）。</p>
 <p>至於要用哪個格式化器，本書推薦 Black。我認為 yapf 也不錯。</p>
