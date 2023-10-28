@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-28T20:19:22+08:00" />
+  <meta property="article:modified_time" content="2023-10-28T20:51:20+08:00" />
 
 
 
@@ -252,13 +252,14 @@
 <li><strong>誤導函式使用者</strong>：使用者可能會誤以為<code>False</code>是一個有效的配置，進而嘗試在其上進行操作，這會導致更多的錯誤。</li>
 <li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為<code>False</code>，然後再決定是否進行後續的操作。</li>
 </ol>
-<p>「return 型別不確定」未必只發生在例外處理，<strong>但我看過不止一次這樣的真實案例</strong>。</p>
+<p>「return 型別不確定」肯定不只發生在例外處理，但它確實<strong>很常發生在例外處理</strong>，因為我看過<strong>不止一次</strong>類似的真實案例。</p>
 <p>很多人本能地會這樣寫，這往往是因為不習慣、不擅長處理錯誤，所以想要用自己平常更熟悉的<code>False</code>。</p>
-<p>除此之以外我還看過「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息字串」這種非常<strong>反直覺</strong>的回傳值。</p>
-<p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
+<p>除此之外，我還看過「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息」這種非常<strong>反直覺</strong>的設計。彷彿是在告訴我們：</p>
 <blockquote>
-<p>充滿了技術債味的寫法。</p>
+<p>這個函式的回傳值，可能是一個物件，也可能是一個 tuple，你自己判斷吧！</p>
 </blockquote>
+<p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
+<p><strong>充滿了技術債味的寫法。</strong></p>
 <h3 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h3><p>這類「<strong>雙型別 return</strong>」的函式，對於<strong>函式使用者</strong>（有可能是你的同事）的認知，有著「<strong>更高的要求</strong>」——呼叫方必須很了解這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
 <p>這在多行或有多個 return 值的複雜函式時，真是一場災難。</p>
 <blockquote>
