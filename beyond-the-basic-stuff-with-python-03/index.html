@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-23T18:37:53+08:00" />
+  <meta property="article:modified_time" content="2023-10-28T20:19:22+08:00" />
 
 
 
@@ -276,8 +276,12 @@
 <p>Docstring 就跟所有開發文件一樣——自己很懶得寫，但如果我想調用別人寫好的程式時，卻希望它們越詳細越好。</p>
 </blockquote>
 <p>而且 docstring 也不是有寫就行，還需要從「<strong>讀者</strong>（也就是你的同事）」的角度去思考與表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
-<p>在眾多函式中，對於「<strong>專案自定義成份濃厚</strong>（也就是<strong>除了你沒人知道它在幹什麼，行數超多、邏輯超手刻</strong>，aka <strong>沒人想看的程式碼</strong>）」與「<strong>相對複雜</strong>」的函式，docstring 的重要性幾乎拉滿。</p>
-<p>畢竟，看<strong>有描述性的文字</strong>，總比看一長串複雜、混亂的程式碼，要簡單且友善得多。</p>
+<p>在眾多函式中，下列兩種是我認為<strong>一定要寫 docstring</strong> 的：</p>
+<ol>
+<li><strong>專案「自定義」成份濃厚</strong>：除了開發者本人，沒人知道這段程式在幹什麼。這通常源於特殊的業務需求，而且往往行數超多、邏輯超手刻，各種 if&#x2F;else、for 迴圈滿天飛，aka——<strong>沒人想看的程式碼</strong>。</li>
+<li><strong>相對複雜</strong>的函式：愈複雜就愈難理解，這時候 docstring 就是你的好朋友。</li>
+</ol>
+<p>畢竟，看<strong>有描述性的文字</strong>，總比看一長串程式碼，要簡單且友善得多。</p>
 <p>關於我對 docstring 的其它討論，可以參考這兩個部分：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
