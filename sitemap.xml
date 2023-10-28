@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
-    
-    <lastmod>2023-10-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2023-10-28</lastmod>
@@ -29,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-23/</loc>
+    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
     
     <lastmod>2023-10-28</lastmod>
     
@@ -39,6 +30,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/notion-database/</loc>
+    
+    <lastmod>2023-10-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-23/</loc>
     
     <lastmod>2023-10-28</lastmod>
     
