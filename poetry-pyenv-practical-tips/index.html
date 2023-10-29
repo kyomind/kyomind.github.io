@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Poetry + pyenv 教學：常用指令與注意事項">
-  <meta property="og:title" content="Poetry + pyenv 教學：常用指令與注意事項">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="Poetry + pyenv 教學：常用指令與注意事項"><meta name="twitter:description" content="透過本文，我希望能夠提供更全面、更實用的 Poetry 使用建議，讓讀者在使用 Poetry 和 pyenv 時能夠充分發揮它們的優勢，並減少不必要的困惑。">
+  <meta property="og:description" content="透過本文，我希望能夠提供更全面、更實用的 Poetry 使用建議，讓讀者在使用 Poetry 和 pyenv 時能夠充分發揮它們的優勢，並減少不必要的困惑。"><meta name="twitter:image" content="https://i.imgur.com/npnmhFE.jpg">
+  <meta property="og:image" content="https://i.imgur.com/npnmhFE.jpg">
+<meta name="description" content="透過本文，我希望能夠提供更全面、更實用的 Poetry 使用建議，讓讀者在使用 Poetry 和 pyenv 時能夠充分發揮它們的優勢，並減少不必要的困惑。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -33,7 +35,7 @@
     <meta property="og:tag" content="virtualenv" />
     
 
-  <meta property="article:modified_time" content="2023-10-29T14:00:44+08:00" />
+  <meta property="article:modified_time" content="2023-10-29T14:02:25+08:00" />
 
 
 
@@ -177,7 +179,10 @@
       <div class="post-meta">
         <span class="post-time">
           2023-06-05
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-10-29
+          </span>
+        <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
             </span>
         </div>
@@ -188,8 +193,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Poetry%E3%80%81pyenv%E3%80%81Python-3-10"><span class="toc-text">安裝 Poetry、pyenv、Python 3.10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E8%88%87-pyenv-%E7%9A%84%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E9%87%8D%E7%96%8A"><span class="toc-text">Poetry 與 pyenv 的部分功能重疊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry-%E5%B0%88%E6%A1%88"><span class="toc-text">一、初始化 Poetry 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%82%BA%E5%B0%88%E6%A1%88%E5%BB%BA%E7%AB%8B-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">二、為專案建立 Python 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A2%BA%E5%AE%9A%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8%E7%9A%84-Python-%E7%89%88%E6%9C%AC"><span class="toc-text">三、確定專案使用的 Python 版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%8D%E5%90%8C%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C-Python-%E7%89%88%E6%9C%AC"><span class="toc-text">四、不同專案使用不同 Python 版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%A6%82%E4%BD%95%E7%A7%BB%E9%99%A4-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%EF%BC%9F"><span class="toc-text">五、如何移除 Poetry 虛擬環境？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6%E8%87%B3-main-dependencies"><span class="toc-text">六、安裝套件至 main dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%AE%89%E8%A3%9D%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies"><span class="toc-text">七、安裝套件至 dev dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81poetry-install-sync"><span class="toc-text">八、poetry install --sync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81Docker-%E7%92%B0%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8-Poetry"><span class="toc-text">九、Docker 環境中使用 Poetry</span></a></li></ol>
     </div>
-  </div><div class="post-content"><!-- ![from Pixabay](https://i.imgur.com/yODxmxJ.jpg) -->
-<p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p>〈<a href="https://blog.kyomind.tw/python-poetry/">最佳 Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
 <p>感覺如何？——我覺得還不錯！可見不是三分鐘熱度而已。</p>
 <p>對現在的我而言，Poetry 已成為專案開發不可或缺的元素。它不僅提供了更加便捷的專案套件管理和版本控制，同時，Poetry 支援 pyproject.toml 作為設定檔的特性，也使得我更容易使用其他也採用 pyproject.toml 的工具。</p>
