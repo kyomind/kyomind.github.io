@@ -33,7 +33,7 @@
     <meta property="og:tag" content="virtualenv" />
     
 
-  <meta property="article:modified_time" content="2023-09-05T16:19:31+08:00" />
+  <meta property="article:modified_time" content="2023-10-29T13:54:21+08:00" />
 
 
 
@@ -190,7 +190,7 @@
     </div>
   </div><div class="post-content"><!-- ![from Pixabay](https://i.imgur.com/yODxmxJ.jpg) -->
 <p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
-<p>〈<a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
+<p>〈<a href="https://blog.kyomind.tw/python-poetry/">最佳 Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
 <p>感覺如何？——我覺得還不錯！可見不是三分鐘熱度而已。</p>
 <p>對現在的我而言，Poetry 已成為專案開發不可或缺的元素。它不僅提供了更加便捷的專案套件管理和版本控制，同時，Poetry 支援 pyproject.toml 作為設定檔的特性，也使得我更容易使用其他也採用 pyproject.toml 的工具。</p>
 <blockquote>
@@ -198,9 +198,9 @@
 </blockquote>
 <h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
 <ol>
-<li><a href="https://blog.kyomind.tw/python-poetry/">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a></li>
+<li><a href="https://blog.kyomind.tw/python-poetry/">最佳 Python 套件管理器——Poetry 完全入門指南</a></li>
 <li><strong>Poetry + pyenv 實戰心得：常用指令與注意事項</strong></li>
-<li>終結 requirements.txt：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
+<li>Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
 </ol>
 </blockquote>
 <span id="more"></span>
@@ -214,7 +214,7 @@
 <h3 id="使用的-Poetry-版本：1-5-1"><a href="#使用的-Poetry-版本：1-5-1" class="headerlink" title="使用的 Poetry 版本：1.5.1"></a>使用的 Poetry 版本：1.5.1</h3><p>Poetry 在 1.2 版後，對於部分指令進行有較大的改動與擴張，導致舊指令使用上不完全相容，這次會採用當前的最新版——<a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry/releases/tag/1.5.1">1.5.1</a>——來進行示範。</p>
 <h3 id="使用的-pyenv-版本：2-3-18"><a href="#使用的-pyenv-版本：2-3-18" class="headerlink" title="使用的 pyenv 版本：2.3.18"></a>使用的 pyenv 版本：2.3.18</h3><p>pyenv 在 v2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，所以這裡也有必要強調一下使用的版本：<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv/releases/tag/v2.3.18">v2.3.18</a>。</p>
 <p>相關文章也有就新版設定內容進行更新，可參考〈<a href="https://blog.kyomind.tw/ubuntu-pyenv/#%E8%A8%AD%E5%AE%9A-pyenv">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a>〉。</p>
-<h2 id="安裝-Poetry、pyenv、Python-3-10"><a href="#安裝-Poetry、pyenv、Python-3-10" class="headerlink" title="安裝 Poetry、pyenv、Python 3.10"></a>安裝 Poetry、pyenv、Python 3.10</h2><p>請直接參考〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux Python 開發環境設定：zsh、zinit、pyenv、poetry、docker</a>〉中的「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">三、設定 pyenv</a>」、「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry">四、設定 Poetry</a>」部分。</p>
+<h2 id="安裝-Poetry、pyenv、Python-3-10"><a href="#安裝-Poetry、pyenv、Python-3-10" class="headerlink" title="安裝 Poetry、pyenv、Python 3.10"></a>安裝 Poetry、pyenv、Python 3.10</h2><p>請直接參考〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、poetry、docker</a>〉中的「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">三、設定 pyenv</a>」、「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry">四、設定 Poetry</a>」部分。</p>
 <p>不只是安裝，還包括設定 PATH 等環節，這些步驟都是必要的。完成這些步驟後，我們就擁有了 Poetry 和 pyenv。</p>
 <h3 id="透過-pyenv-安裝-Python-3-10-11"><a href="#透過-pyenv-安裝-Python-3-10-11" class="headerlink" title="透過 pyenv 安裝 Python 3.10.11"></a>透過 pyenv 安裝 Python 3.10.11</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.11</span><br></pre></td></tr></table></figure>
 
@@ -432,7 +432,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南" rel="bookmark">再見了 pip！最佳 Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyenv-setup/" title="告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境" rel="bookmark">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-pyenv/" title="Ubuntu 安裝使用 pyenv + pyenv-virtualenv" rel="bookmark">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="最佳 Python 套件管理器——Poetry 完全入門指南" rel="bookmark">最佳 Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyenv-setup/" title="告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境" rel="bookmark">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-pyenv/" title="Ubuntu 安裝使用 pyenv + pyenv-virtualenv" rel="bookmark">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Python/">Python</a>
             <a href="/tags/pyproject-toml/">pyproject.toml</a>
