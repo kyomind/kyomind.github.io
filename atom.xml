@@ -89,19 +89,19 @@
     
     <category term="Bear" scheme="https://blog.kyomind.tw/tags/Bear/"/>
     
+    <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
+    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="極客時間" scheme="https://blog.kyomind.tw/tags/%E6%A5%B5%E5%AE%A2%E6%99%82%E9%96%93/"/>
+    
+    <category term="Setapp" scheme="https://blog.kyomind.tw/tags/Setapp/"/>
     
     <category term="DigitalOcean" scheme="https://blog.kyomind.tw/tags/DigitalOcean/"/>
     
     <category term="Medium" scheme="https://blog.kyomind.tw/tags/Medium/"/>
     
-    <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
-    
     <category term="ChatGPT" scheme="https://blog.kyomind.tw/tags/ChatGPT/"/>
-    
-    <category term="極客時間" scheme="https://blog.kyomind.tw/tags/%E6%A5%B5%E5%AE%A2%E6%99%82%E9%96%93/"/>
-    
-    <category term="Setapp" scheme="https://blog.kyomind.tw/tags/Setapp/"/>
     
   </entry>
   
@@ -139,9 +139,9 @@
     
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
-    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
-    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
     
     <category term="工作心得" scheme="https://blog.kyomind.tw/tags/%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/"/>
     
@@ -212,11 +212,11 @@
     <category term="隨筆雜談" scheme="https://blog.kyomind.tw/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/"/>
     
     
+    <category term="Twitter" scheme="https://blog.kyomind.tw/tags/Twitter/"/>
+    
     <category term="數位斷捨離" scheme="https://blog.kyomind.tw/tags/%E6%95%B8%E4%BD%8D%E6%96%B7%E6%8D%A8%E9%9B%A2/"/>
     
     <category term="Cal Newport" scheme="https://blog.kyomind.tw/tags/Cal-Newport/"/>
-    
-    <category term="Twitter" scheme="https://blog.kyomind.tw/tags/Twitter/"/>
     
   </entry>
   
@@ -248,9 +248,9 @@
     
     <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
     
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
-    
     <category term="Airtable" scheme="https://blog.kyomind.tw/tags/Airtable/"/>
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
   </entry>
   
@@ -318,11 +318,11 @@
     <category term="隨筆雜談" scheme="https://blog.kyomind.tw/categories/%E9%9A%A8%E7%AD%86%E9%9B%9C%E8%AB%87/"/>
     
     
-    <category term="河濱" scheme="https://blog.kyomind.tw/tags/%E6%B2%B3%E6%BF%B1/"/>
-    
     <category term="數位斷捨離" scheme="https://blog.kyomind.tw/tags/%E6%95%B8%E4%BD%8D%E6%96%B7%E6%8D%A8%E9%9B%A2/"/>
     
     <category term="Cal Newport" scheme="https://blog.kyomind.tw/tags/Cal-Newport/"/>
+    
+    <category term="河濱" scheme="https://blog.kyomind.tw/tags/%E6%B2%B3%E6%BF%B1/"/>
     
   </entry>
   
@@ -353,13 +353,13 @@
     <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
     
     
+    <category term="DigitalOcean" scheme="https://blog.kyomind.tw/tags/DigitalOcean/"/>
+    
     <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
     <category term="Umami" scheme="https://blog.kyomind.tw/tags/Umami/"/>
-    
-    <category term="DigitalOcean" scheme="https://blog.kyomind.tw/tags/DigitalOcean/"/>
     
     <category term="Google Analytics" scheme="https://blog.kyomind.tw/tags/Google-Analytics/"/>
     
