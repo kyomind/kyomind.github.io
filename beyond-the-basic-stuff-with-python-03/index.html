@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-28T20:51:20+08:00" />
+  <meta property="article:modified_time" content="2023-11-01T05:06:31+08:00" />
 
 
 
@@ -277,10 +277,10 @@
 <p>Docstring 就跟所有開發文件一樣——自己很懶得寫，但如果我想調用別人寫好的程式時，卻希望它們越詳細越好。</p>
 </blockquote>
 <p>而且 docstring 也不是有寫就行，還需要從「<strong>讀者</strong>（也就是你的同事）」的角度去思考與表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
-<p>在眾多函式中，下列兩種是我認為<strong>一定要寫 docstring</strong> 的：</p>
+<p>然而我也承認，為所有的模組、類別、函式寫 docstring，未免有點不切實際。在眾多函式中，下列兩種是我認為<strong>一定要寫 docstring</strong> 的：</p>
 <ol>
 <li><strong>專案「自定義」成份濃厚</strong>：除了開發者本人，沒人知道這段程式在幹什麼。這通常源於特殊的業務需求，而且往往行數超多、邏輯超手刻，各種 if&#x2F;else、for 迴圈滿天飛，aka——<strong>沒人想看的程式碼</strong>。</li>
-<li><strong>相對複雜</strong>的函式：愈複雜就愈難理解，這時候 docstring 就是你的好朋友。</li>
+<li><strong>流程相對複雜</strong>的函式：愈複雜就愈難理解，這時候 docstring 就是你的好朋友。用文字描述函式的<strong>輸入、輸出、邏輯</strong>，能大大提升我們理解程式碼的效率。</li>
 </ol>
 <p>畢竟，看<strong>有描述性的文字</strong>，總比看一長串程式碼，要簡單且友善得多。</p>
 <p>關於我對 docstring 的其它討論，可以參考這兩個部分：</p>
