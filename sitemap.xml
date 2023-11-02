@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-01/</loc>
+    
+    <lastmod>2023-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
+    
+    <lastmod>2023-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
+    
+    <lastmod>2023-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
     <lastmod>2023-11-01</lastmod>
@@ -264,15 +291,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/on-writing/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-01/</loc>
     
     <lastmod>2023-10-29</lastmod>
     
@@ -596,24 +614,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
-    
-    <lastmod>2023-08-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
-    
-    <lastmod>2023-08-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-13/</loc>
     
     <lastmod>2023-08-31</lastmod>
@@ -895,7 +895,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-11-01</lastmod>
+    <lastmod>2023-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
