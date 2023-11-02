@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
+    
+    <lastmod>2023-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
     
     <lastmod>2023-11-02</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
     
     <lastmod>2023-11-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
-    
-    <lastmod>2023-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
