@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/mac-mini/</loc>
+    
+    <lastmod>2023-11-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/notion-database/</loc>
     
     <lastmod>2023-11-05</lastmod>
@@ -138,15 +147,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-23/</loc>
-    
-    <lastmod>2023-11-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/mac-mini/</loc>
     
     <lastmod>2023-11-03</lastmod>
     
