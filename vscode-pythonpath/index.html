@@ -29,7 +29,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2023-09-27T06:11:16+08:00" />
+  <meta property="article:modified_time" content="2023-11-08T03:22:55+08:00" />
 
 
 
@@ -200,8 +200,8 @@
 <p>從上述引用內容可知，<code>debugger.py</code>所以會出現<code>ModuleNotFoundError</code>，是因為<code>from configs.config import DeployStatus</code>這段程式碼的「<strong>程式寫作意圖</strong>」，是希望從「<strong>專案根目錄</strong>」的角度出發去 import——但實際上 Python 直譯器卻沒有如預期地這麼做。</p>
 <h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><p>因為，在這個例子中，沒有額外設定的情況下，專案根目錄並不在<code>sys.path</code>裡（除非<code>debugger.py</code>就在專案根目錄底下，容後述），直譯器自然找不到<code>configs</code>模組。</p>
 <p>換句話說，Python 直譯器在執行 import 時，會從<code>sys.path</code>中，由<strong>左至右依序嘗試</strong>要 import 的路徑。一般而言，<code>sys.path</code>的值可以例示如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python38.zip&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8/lib-dynload&#x27;</span>, <span class="string">&#x27;/usr/local/lib/python3.8/site-packages&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<p>第一個元素是空字串，代表<strong>當前目錄</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python38.zip&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/lib-dynload&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/site-packages&#x27;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>第一個元素是空字串，代表<strong>當前目錄</strong>。下面會再說明這個「當前目錄」的意義。</p>
 <h2 id="兩個幫sys-path「加料」的方法"><a href="#兩個幫sys-path「加料」的方法" class="headerlink" title="兩個幫sys.path「加料」的方法"></a>兩個幫<code>sys.path</code>「加料」的方法</h2><p>因此，若想要正確執行<code>debugger.py</code>，我們需要把「專案根目錄」的路徑，加入到<code>sys.path</code>，此時有兩個常見方法。</p>
 <h3 id="一、在程式碼中手動加入sys-path"><a href="#一、在程式碼中手動加入sys-path" class="headerlink" title="一、在程式碼中手動加入sys.path"></a>一、在程式碼中手動加入<code>sys.path</code></h3><p>也就是在<code>from configs.config...</code>之前，先手動加入這段<code>sys.path.append(&#39;專案根目錄&#39;)</code>。</p>
 <p>這樣的好處是，別人不需要額外設定<code>PYTHONPATH</code>，因為程式已經幫我們做完了。</p>
@@ -235,6 +235,7 @@
 <blockquote>
 <p><strong>By default, the interpreter looks for a module within the current directory.</strong> To make the interpreter search in some other directory you just simply have to change the current directory.</p>
 </blockquote>
+<p>這也符合了前述<code>sys.path</code>的第一個元素是<strong>空字串（即當前目錄）</strong>的說法。現在我們知道，所謂的<strong>當前目錄</strong>，就是<strong>執行檔所在的資料夾</strong>。</p>
 <p>換句話說，如果<code>debugger.py</code>「正好」就在專案根目錄下，那就不需要額外的設定。因此，本文案例之所以會出現<code>ModuleNotFoundError</code>，也正因<code>debugger.py</code>不在專案的根目錄裡。</p>
 <p>可想而知，把<code>debugger.py</code>改放在專案根目錄下，就不會有問題了。</p>
 <p><strong>但這並不是解決問題的根本方法</strong>。換句話說，我們不能只因為「方便」，就輕易改變原本設計好的專案結構。</p>
