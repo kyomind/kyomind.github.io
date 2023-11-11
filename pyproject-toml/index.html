@@ -37,7 +37,7 @@
     <meta property="og:tag" content="PEP 518" />
     
 
-  <meta property="article:modified_time" content="2023-11-09T15:21:21+08:00" />
+  <meta property="article:modified_time" content="2023-11-11T03:14:52+08:00" />
 
 
 
@@ -334,15 +334,15 @@
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">profile</span> = <span class="string">&quot;black&quot;</span></span><br></pre></td></tr></table></figure>
 <p>參考 <a target="_blank" rel="noopener" href="https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html">Black 文件</a>，<code>profile = &quot;black&quot;</code>對 isort 的主要影響如下（ChatGPT 整理）：</p>
 <ol>
-<li>多行輸出 (multi_line_output)： 被設為 3，意味著每個 import 會放在單獨的一行。</li>
+<li>多行輸出 (multi_line_output)： 被設為 3，意味著<strong>每個 import 會放在單獨的一行</strong>。</li>
 <li>包括結尾逗號 (include_trailing_comma)： 這會被設為 True，這符合 Black 的行為。</li>
-<li>強制網格包裝 (force_grid_wrap)： 被設為 0，這表示不會強制所有 import 都必須放在同一行。</li>
-<li>使用括號 (use_parentheses)： 被設為 True，這意味著多行 import 會使用括號。</li>
+<li>強制網格包裝 (force_grid_wrap)： 被設為 0，這表示<strong>不會強制所有 import 都必須放在同一行</strong>。</li>
+<li>使用括號 (use_parentheses)： 被設為 True，這意味著<strong>多行 import 會使用括號</strong>。</li>
 <li>確保註釋前有新行 (ensure_newline_before_comments)： 這會被設為 True。</li>
 <li>行長 (line_length)： 這會被設為 88，這是 Black 的預設行長。</li>
 </ol>
 <p>換句話說，如果你同時使用了 Black 和 isort，卻沒有設定<code>profile = &quot;black&quot;</code>，<strong>兩者很可能會產生衝突</strong>，導致格式化結果不一致。</p>
-<p>注意！<code>profile = &quot;black&quot;</code>是針對 Black 的「<strong>預設</strong>」行為，如果你有<strong>自訂</strong> Black 的設定，比如變更單行字元上限為 100，那在 isort 中也要再次設定：</p>
+<p>注意！<code>profile = &quot;black&quot;</code>只是針對 Black 的「<strong>預設</strong>」行為，如果你有<strong>自訂</strong> Black 的設定，比如變更單行字元上限為 100，那在 isort 中也要<strong>再次設定</strong>：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.black]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">profile</span> = <span class="string">&quot;black&quot;</span></span><br><span class="line"><span class="attr">line_length</span> = <span class="number">100</span></span><br></pre></td></tr></table></figure>
 
 <hr>
