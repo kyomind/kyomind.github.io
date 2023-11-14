@@ -37,7 +37,7 @@
     <meta property="og:tag" content="PEP 518" />
     
 
-  <meta property="article:modified_time" content="2023-11-11T03:14:52+08:00" />
+  <meta property="article:modified_time" content="2023-11-11T03:20:21+08:00" />
 
 
 
@@ -342,7 +342,7 @@
 <li>行長 (line_length)： 這會被設為 88，這是 Black 的預設行長。</li>
 </ol>
 <p>換句話說，如果你同時使用了 Black 和 isort，卻沒有設定<code>profile = &quot;black&quot;</code>，<strong>兩者很可能會產生衝突</strong>，導致格式化結果不一致。</p>
-<p>注意！<code>profile = &quot;black&quot;</code>只是針對 Black 的「<strong>預設</strong>」行為，如果你有<strong>自訂</strong> Black 的設定，比如變更單行字元上限為 100，那在 isort 中也要<strong>再次設定</strong>：</p>
+<p>注意！<code>profile = &quot;black&quot;</code>只是針對 Black 的「<strong>預設</strong>」行為，如果你有<strong>自訂</strong> Black 的設定，比如變更單行字元上限為 100，那在 isort 中<strong>也要再次設定</strong>：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.black]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">profile</span> = <span class="string">&quot;black&quot;</span></span><br><span class="line"><span class="attr">line_length</span> = <span class="number">100</span></span><br></pre></td></tr></table></figure>
 
 <hr>
