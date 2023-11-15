@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="VS Code 正確設定 PYTHONPATH 教學">
-  <meta property="og:title" content="VS Code 正確設定 PYTHONPATH 教學">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="VS Code 正確設定 PYTHONPATH 教學"><meta name="twitter:description" content="本文將介紹如何正確設定 VS Code 的 PYTHONPATH，以解決「ModuleNotFoundError」問題。並帶你了解 sys.path 的運作原理。">
+  <meta property="og:description" content="本文將介紹如何正確設定 VS Code 的 PYTHONPATH，以解決「ModuleNotFoundError」問題。並帶你了解 sys.path 的運作原理。"><meta name="twitter:image" content="https://i.imgur.com/VHCKtxW.jpg">
+  <meta property="og:image" content="https://i.imgur.com/VHCKtxW.jpg">
+<meta name="description" content="本文將介紹如何正確設定 VS Code 的 PYTHONPATH，以解決「ModuleNotFoundError」問題。並帶你了解 sys.path 的運作原理。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -29,7 +31,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2023-11-08T03:22:55+08:00" />
+  <meta property="article:modified_time" content="2023-11-15T16:39:28+08:00" />
 
 
 
@@ -165,7 +167,10 @@
       <div class="post-meta">
         <span class="post-time">
           2023-02-11
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-11-15
+          </span>
+        <span class="post-category">
             <a href="/categories/VS-Code/">VS Code</a>
             </span>
         </div>
@@ -231,11 +236,16 @@
 <p>要特別注意，無論是<code>.</code>還是<code>$(pwd)</code>，都是「<strong>相對於該 env 檔所在的資料夾</strong>」而言。</p>
 <p>換句話說，如果你的 env「<strong>沒有</strong>」放在專案根目錄底下，這個設定就可能會出錯。此時為了避免過度複雜，改用絕對路徑也是可以的。</p>
 <hr>
-<h3 id="重要：sys-path-的第一順位值"><a href="#重要：sys-path-的第一順位值" class="headerlink" title="重要：sys.path 的第一順位值"></a>重要：sys.path 的第一順位值</h3><p>需要補充說明的是，執行任意 Python 檔案時，Python 直譯器會依序嘗試<code>sys.path</code>裡的每個值，直到找到你要 import 的模組。而<code>sys.path</code>的「<strong>第一順位值</strong>」就是<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/sys-path-in-python/">執行檔所在的路徑（資料夾）</a>：</p>
+<h3 id="重要：sys-path-的第一順位值"><a href="#重要：sys-path-的第一順位值" class="headerlink" title="重要：sys.path 的第一順位值"></a>重要：sys.path 的第一順位值</h3><p>需要補充說明的是，執行任意 Python 檔案時，Python 直譯器會依序嘗試<code>sys.path</code>裡的每個值，直到找到你要 import 的模組。而<code>sys.path</code>的「<strong>第一順位值</strong>」就是<a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/sys-path-in-python/">執行檔所在的目錄（資料夾）</a>：</p>
 <blockquote>
 <p><strong>By default, the interpreter looks for a module within the current directory.</strong> To make the interpreter search in some other directory you just simply have to change the current directory.</p>
 </blockquote>
 <p>這也符合了前述<code>sys.path</code>的第一個元素是<strong>空字串（即當前目錄）</strong>的說法。現在我們知道，所謂的<strong>當前目錄</strong>，就是<strong>執行檔所在的資料夾</strong>。</p>
+<h3 id="所謂的「當前目錄」"><a href="#所謂的「當前目錄」" class="headerlink" title="所謂的「當前目錄」"></a>所謂的「當前目錄」</h3><p>這部分可同時參考 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys_path_init.html">Python 官方文件</a>中的說明：</p>
+<blockquote>
+<p>The first entry in the module search path <strong>is the directory that contains the input script, if there is one</strong>. Otherwise, the first entry is the current directory, which is the case when executing the interactive shell, a -c command, or -m module.</p>
+</blockquote>
+<p>從上可知，如果你在 terminal 中直接執行<code>python debugger.py</code>（有引數），那麼<code>sys.path</code>的第一順位值就是「<strong>包含 input script（<code>debugger.py</code>）的目錄</strong>」。</p>
 <p>換句話說，如果<code>debugger.py</code>「正好」就在專案根目錄下，那就不需要額外的設定。因此，本文案例之所以會出現<code>ModuleNotFoundError</code>，也正因<code>debugger.py</code>不在專案的根目錄裡。</p>
 <p>可想而知，把<code>debugger.py</code>改放在專案根目錄下，就不會有問題了。</p>
 <p><strong>但這並不是解決問題的根本方法</strong>。換句話說，我們不能只因為「方便」，就輕易改變原本設計好的專案結構。</p>
