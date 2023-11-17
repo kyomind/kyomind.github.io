@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-11-17T17:21:44+08:00" />
+  <meta property="article:modified_time" content="2023-11-17T17:27:08+08:00" />
 
 
 
@@ -271,8 +271,8 @@
 <li>不可變物件。</li>
 </ol>
 <p>這無疑是一大經典議題，但這裡就不展開了。只要知道物件的可變與不可變，對於變數的「參照」有著巨大的影響。有興趣可以再看看「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83">二、使用可變物件作為引數時要小心</a>」部分。</p>
-<hr>
 <p>本章還有很多術語的定義介紹，比如陳述式（statement）與表達式（expression）、iterable 與 iterator、參數與引數……等等，就請讀者自行參照書中介紹囉！</p>
+<hr>
 <h2 id="第-8-章：常見的-Python-誤解和陷阱"><a href="#第-8-章：常見的-Python-誤解和陷阱" class="headerlink" title="第 8 章：常見的 Python 誤解和陷阱"></a>第 8 章：常見的 Python 誤解和陷阱</h2><p>本章介紹基於 Python 特性的一些常見錯誤——我們一定都踩過。在此只提「為什麼這樣不好」以及如何避免這些不佳實作的<strong>核心思路</strong>。</p>
 <h3 id="不要在迴圈中新增或刪除「被迭代物件（比如-list）」中的元素"><a href="#不要在迴圈中新增或刪除「被迭代物件（比如-list）」中的元素" class="headerlink" title="不要在迴圈中新增或刪除「被迭代物件（比如 list）」中的元素"></a>不要在迴圈中新增或刪除「被迭代物件（比如 list）」中的元素</h3><p>只要遇過一、兩次就會知道這個坑，但一段時間後，很可能會一錯再錯XD。</p>
 <p>新增可能會造成無限迴圈（因為迭代不完），而且刪除則很可能會造成<strong>索引值與你預期內容產生錯亂的問題</strong>。</p>
