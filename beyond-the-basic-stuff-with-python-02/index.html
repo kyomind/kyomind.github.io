@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-10-22T14:59:10+08:00" />
+  <meta property="article:modified_time" content="2023-11-17T17:18:25+08:00" />
 
 
 
@@ -279,6 +279,7 @@
 <p>大原則就是「不要在迴圈中<strong>編輯</strong>（修改）當前被迭代的<strong>可變物件</strong>」，如果必須這麼麼做，就為它們建立一個「副本」吧！</p>
 <h3 id="一定要用copy-copy-和copy-deepcopy-來複製「可變值」"><a href="#一定要用copy-copy-和copy-deepcopy-來複製「可變值」" class="headerlink" title="一定要用copy.copy()和copy.deepcopy()來複製「可變值」"></a>一定要用<code>copy.copy()</code>和<code>copy.deepcopy()</code>來複製「可變值」</h3><p>承上，既然要建立複本，就要採用穩妥的方式，而穩妥方式就是使用內建方法。</p>
 <p>這又又又是一個「物件參照」的相關議題。下一個也是。</p>
+<hr>
 <h2 id="不要使用「可變物件」作為「預設參數」"><a href="#不要使用「可變物件」作為「預設參數」" class="headerlink" title="不要使用「可變物件」作為「預設參數」"></a>不要使用「可變物件」作為「預設參數」</h2><p>這點你可能已經很熟悉了，因為幾乎每一本書都會強調。</p>
 <p>我們用簡單的一段話來再次回顧，<strong>為什麼不能這麼做</strong>，by ChatGPT：</p>
 <blockquote>
