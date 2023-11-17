@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-11-17T17:27:08+08:00" />
+  <meta property="article:modified_time" content="2023-11-17T17:34:07+08:00" />
 
 
 
@@ -178,7 +178,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA-Pythonic-%E9%A2%A8%E6%A0%BC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">第 6 章：寫出 Pythonic 風格的程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8enumerate-%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8range"><span class="toc-text">使用enumerate()而不要用range()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E8%A1%8C%E8%A9%B1"><span class="toc-text">第 7 章：程式設計的行話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%B8%B8%E8%A6%8B%E7%9A%84-Python-%E8%AA%A4%E8%A7%A3%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-text">第 8 章：常見的 Python 誤解和陷阱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E9%A0%90%E8%A8%AD%E5%8F%83%E6%95%B8%E3%80%8D"><span class="toc-text">不要使用「可變物件」作為「預設參數」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-%E4%B8%AD%E5%8D%B3%E4%BD%BF%E5%8F%AA%E6%9C%89%E4%B8%80%E5%80%8B%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%BF%98%E8%A8%98%E5%8A%A0%E9%80%97%E8%99%9F"><span class="toc-text">tuple 中即使只有一個元素，也不要忘記加逗號</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA-Pythonic-%E9%A2%A8%E6%A0%BC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">第 6 章：寫出 Pythonic 風格的程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8enumerate-%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8range"><span class="toc-text">使用enumerate()而不要用range()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E8%A1%8C%E8%A9%B1"><span class="toc-text">第 7 章：程式設計的行話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%B8%B8%E8%A6%8B%E7%9A%84-Python-%E8%AA%A4%E8%A7%A3%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-text">第 8 章：常見的 Python 誤解和陷阱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E5%8F%83%E6%95%B8%E9%A0%90%E8%A8%AD%E5%80%BC%E3%80%8D"><span class="toc-text">不要使用「可變物件」作為「參數預設值」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-%E4%B8%AD%E5%8D%B3%E4%BD%BF%E5%8F%AA%E6%9C%89%E4%B8%80%E5%80%8B%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%BF%98%E8%A8%98%E5%8A%A0%E9%80%97%E8%99%9F"><span class="toc-text">tuple 中即使只有一個元素，也不要忘記加逗號</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
 <p>我們繼續《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記，這是第 2 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
@@ -280,16 +280,16 @@
 <h3 id="一定要用copy-copy-和copy-deepcopy-來複製「可變值」"><a href="#一定要用copy-copy-和copy-deepcopy-來複製「可變值」" class="headerlink" title="一定要用copy.copy()和copy.deepcopy()來複製「可變值」"></a>一定要用<code>copy.copy()</code>和<code>copy.deepcopy()</code>來複製「可變值」</h3><p>承上，既然要建立複本，就要採用穩妥的方式，而穩妥方式就是使用內建方法。</p>
 <p>這又又又是一個「物件參照」的相關議題。下一個也是。</p>
 <hr>
-<h2 id="不要使用「可變物件」作為「預設參數」"><a href="#不要使用「可變物件」作為「預設參數」" class="headerlink" title="不要使用「可變物件」作為「預設參數」"></a>不要使用「可變物件」作為「預設參數」</h2><p>這點你可能已經很熟悉了，因為幾乎每一本書都會強調。</p>
-<p>我們用簡單的一段話來再次回顧，<strong>為什麼不能這麼做</strong>，by ChatGPT：</p>
+<h2 id="不要使用「可變物件」作為「參數預設值」"><a href="#不要使用「可變物件」作為「參數預設值」" class="headerlink" title="不要使用「可變物件」作為「參數預設值」"></a>不要使用「可變物件」作為「參數預設值」</h2><p>這點你可能已經很熟悉了，因為幾乎每一本書都會強調。</p>
+<p>我們用下列兩段話（by ChatGPT）來回顧，<strong>為什麼不能這麼做</strong>：</p>
 <blockquote>
 <p>在Python 中，不應該用可變物件做預設參數（引數），因為這個可變物件在函式第一次<strong>被定義的時候</strong>就已經「<strong>固定</strong>」了。（<strong>只會建立一次</strong>）</p>
 </blockquote>
 <blockquote>
 <p>以後每次呼叫這個函式但<strong>沒有提供這個引數</strong>的話，都會<strong>共用同一個物件</strong>。如果你在函式裡改變了這個物件，那麼下次呼叫時，<strong>這個改變就被保留下來了</strong>。這會讓程式的行為變得很難預測和控制。</p>
 </blockquote>
-<p>看一下程式碼，這個函式正常使用時，希望你帶入一個<code>fruit_list</code>作為引數——當然，從上面的「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83">二、使用可變物件作為引數時要小心</a>」我們知道，這也是一個不太健康的做法！</p>
-<p>關於使用可變物件為引數，我們先不論，下面的呼叫我們都不給第二個引數，讓它<strong>只使用預設值</strong>。</p>
+<h3 id="一個簡單的例子"><a href="#一個簡單的例子" class="headerlink" title="一個簡單的例子"></a>一個簡單的例子</h3><p>參考程式碼，這個函式正常使用時，希望你帶入一個<code>fruit_list</code>作為引數——當然，從上面的「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83">二、使用可變物件作為引數時要小心</a>」我們知道，這也是一個不太健康的做法！</p>
+<p>關於<strong>使用可變物件為引數，我們先不論</strong>。下面的呼叫我們都不給第二個引數，讓它<strong>只使用參數預設值</strong>。</p>
 <p>我們預期的行為是：每次給定不同的水果，且不給<code>fruit_list</code>引數，則產出應該都要是「以該水果為單一元素的」的 list——<strong>但事實完全不是如此</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_fruit_to_list</span>(<span class="params">fruit, fruit_list=[]</span>):</span><br><span class="line">    fruit_list.append(fruit)</span><br><span class="line">    <span class="keyword">return</span> fruit_list</span><br><span class="line"></span><br><span class="line">apple_list = add_fruit_to_list(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;]</span></span><br><span class="line"></span><br><span class="line">banana_list = add_fruit_to_list(<span class="string">&#x27;banana&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(banana_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;, &#x27;banana&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;, &#x27;banana&#x27;]</span></span><br></pre></td></tr></table></figure>
 
@@ -298,10 +298,10 @@
 <li>banana_list 竟然包含了 apple！</li>
 <li>apple_list 竟然也被改變了！</li>
 </ol>
-<h3 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h3><p>而替代方案想必你也知曉，那就是把預設值改設為<code>None</code>，然後在函式中加上一個判斷式，比如下面的<code>if fruit_list is None:</code>。</p>
+<h3 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h3><p>而替代方案想必你也知曉，<strong>就是把預設值改設為</strong><code>None</code>，然後在函式中加上一個判斷，比如下面的<code>if fruit_list is None:</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_fruit_to_list</span>(<span class="params">fruit, fruit_list=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">if</span> fruit_list <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        fruit_list = []</span><br><span class="line">    fruit_list.append(fruit)</span><br><span class="line">    <span class="keyword">return</span> fruit_list</span><br><span class="line"></span><br><span class="line">apple_list = add_fruit_to_list(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line">banana_list = add_fruit_to_list(<span class="string">&#x27;banana&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(banana_list)  <span class="comment"># 輸出: [&#x27;banana&#x27;]</span></span><br></pre></td></tr></table></figure>
 
-<p>當沒有提供<code>fruit_list</code>參數（引數）時，<code>if fruit_list is None:</code>判斷式會成立，判斷式內通常會<strong>建立一個全新的可變物件</strong>，讓每一次呼叫都會有不同的<code>fruit_list</code>可變物件，避免前述的「狀態殘留」與意料之外的錯誤。</p>
+<p>當沒有提供<code>fruit_list</code>參數（引數）時，<code>if fruit_list is None:</code>判斷式會成立，判斷式內通常會<strong>建立一個全新的可變物件</strong>，讓每一次呼叫都會有不同的<code>fruit_list</code>可變物件，避免前述的「<strong>狀態殘留</strong>」與意料之外的錯誤。</p>
 <hr>
 <h3 id="不要以字串連接來製作字串"><a href="#不要以字串連接來製作字串" class="headerlink" title="不要以字串連接來製作字串"></a>不要以字串連接來製作字串</h3><p>所謂的字串連接，就是使用<code>+</code>運算子來合併多個字串。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&#x27;Hello&#x27;</span> + <span class="string">&#x27;World!&#x27;</span></span><br></pre></td></tr></table></figure>
