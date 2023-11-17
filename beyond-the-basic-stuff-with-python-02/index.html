@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-11-17T17:18:25+08:00" />
+  <meta property="article:modified_time" content="2023-11-17T17:21:44+08:00" />
 
 
 
@@ -314,6 +314,7 @@
 <p>替代方案當然就是經典的 list +<code>join</code>字串方法。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">greeting_parts = [<span class="string">&#x27;Hello World!&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10000</span>):</span><br><span class="line">    greeting_parts.append(<span class="string">&#x27;one more&#x27;</span>)</span><br><span class="line"></span><br><span class="line">greeting = <span class="string">&#x27;&#x27;</span>.join(greeting_parts)</span><br></pre></td></tr></table></figure>
 
+<hr>
 <h2 id="tuple-中即使只有一個元素，也不要忘記加逗號"><a href="#tuple-中即使只有一個元素，也不要忘記加逗號" class="headerlink" title="tuple 中即使只有一個元素，也不要忘記加逗號"></a>tuple 中即使只有一個元素，也不要忘記加逗號</h2><p>這個例子非常經典！因為不少人可能寫了超過一年的 Python，都未必知道這個特性，而在某些「意料之外」的事發生後，才赫然發現這個事實。</p>
 <p>好，我承認第一次知道時我也很吃驚，還好我是看書知道的。</p>
 <p>照標題的意思，單元素 tuple 應該要長這樣：<code>(&quot;cat&quot;,)</code>，而不是這樣<code>(&quot;cat&quot;)</code>。</p>
