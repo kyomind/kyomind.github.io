@@ -35,7 +35,7 @@
     <meta property="og:tag" content="長文" />
     
 
-  <meta property="article:modified_time" content="2023-10-29T16:27:13+08:00" />
+  <meta property="article:modified_time" content="2023-11-17T17:53:57+08:00" />
 
 
 
@@ -172,7 +172,7 @@
         <span class="post-time">
           2023-08-05
         </span><span class="post-update">
-            →  2023-10-24
+            →  2023-11-18
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -300,15 +300,16 @@
 <p>將變數命名為 data，就像把你的狗命名為 Dog。</p>
 </blockquote>
 <p>簡言之，執意將變數命名為 data，需要非常堅實的理由——通常不存在這樣的理由。</p>
-<h3 id="少數的例外"><a href="#少數的例外" class="headerlink" title="少數的例外"></a>少數的例外</h3><p>好啦，我唯一稍能理解將變數命名為 data 的情境，就是當呼叫的<strong>函式參數名稱為 data 時</strong>，比如常見的：</p>
+<h3 id="少數的例外"><a href="#少數的例外" class="headerlink" title="少數的例外"></a>少數的例外</h3><p>好啦，我能理解將變數命名為 data 的情境，就是當呼叫的<strong>函式參數名稱為 data 時</strong>，比如常見的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;age&#x27;</span>: <span class="number">18</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 使用requests套件發送POST請求</span></span><br><span class="line">url = <span class="string">&#x27;https://example.com/api&#x27;</span></span><br><span class="line">response = requests.post(url, data=data)</span><br></pre></td></tr></table></figure>
-<p>這裡有兩個要點，我認為<strong>必須兼備</strong>才算是合理的使用情境：</p>
+
+<p>總來的說，我覺得下面三種情境，使用 data 作為變數名稱都<strong>尚可接受</strong>：</p>
 <ol>
-<li>函式<strong>參數</strong>名稱就是 data：所以<strong>引數</strong>叫作 data，似乎也算合理。</li>
-<li>該變數的<strong>生命週期很短</strong>——我絕對不會將任何長生命週期的變數命名為 data。上述例子中，data 的生命週期就只有寥寥幾行，所以我覺得還可以接受。</li>
+<li>函式<strong>參數</strong>名稱就是 data。所以<strong>引數</strong>叫作 data，也算合理。</li>
+<li>該變數的<strong>生命週期很短</strong>——我絕對不會將任何長生命週期的變數命名為 data。上述例子中，data 的生命週期就只有寥寥幾行，所以我覺得還可以。</li>
+<li>HTTP response 的<strong>欄位名稱</strong>就是 data。這種情況下，我也會考慮使用 data 作為變數名稱，因為這樣可以<strong>保持一致性</strong>。</li>
 </ol>
-<p>但事實上，<strong>即使如此我「依舊」會盡可能避免使用 data 命名（這是為了養成習慣）</strong>，而改用<strong>更有表意性</strong>的名稱，比如 payload。</p>
-<p>養成好習慣，遵守起來就不會那麼困難。</p>
+<p>但一般而言，<strong>我還是會盡可能避免使用 data 命名變數，這是為了養成好習慣</strong>。</p>
 <hr>
 <h2 id="史上「第二糟」的變數名稱？"><a href="#史上「第二糟」的變數名稱？" class="headerlink" title="史上「第二糟」的變數名稱？"></a>史上「第二糟」的變數名稱？</h2><p>這部分不是書中的內容，而是我自己的心得。</p>
 <p>當我遵守了好習慣，盡可能避免在程式碼中使用 data 命名後，本以為能從此過上幸福快樂的生活，<strong>但我錯了！</strong></p>
@@ -319,12 +320,12 @@
 </blockquote>
 <p>result 命名的濫用，在「儲存呼叫函式的<strong>結果</strong>」時最為常見，<strong>難怪到處都是 result。</strong></p>
 <h2 id="3-個代表性案例"><a href="#3-個代表性案例" class="headerlink" title="3 個代表性案例"></a>3 個代表性案例</h2><p>下面我們就舉 3 個代表性案例，來看看 result 到底有多糟糕。以及應該要用什麼名稱來取代它——基本上就是<strong>更直接、具體、精確</strong>的名稱。</p>
-<h3 id="一、從資料庫查詢訂單"><a href="#一、從資料庫查詢訂單" class="headerlink" title="一、從資料庫查詢訂單"></a>一、從資料庫查詢訂單</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = query_orders_from_database(customer_id)</span><br><span class="line">process_orders(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">orders = query_orders_from_database(customer_id)</span><br><span class="line">process_orders(orders)</span><br></pre></td></tr></table></figure>
+<h3 id="一、從資料庫查詢訂單"><a href="#一、從資料庫查詢訂單" class="headerlink" title="一、從資料庫查詢訂單"></a>一、從資料庫查詢訂單</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">orders = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>第一種典型的情況是，<strong>明明有更具體的名稱可以使用</strong>，卻偏偏用了籠統的 result。</p>
 <p>這樣的寫法，讓人看了一頭霧水，不確定 result 到底是指什麼。類似的例子還有求平均值、性別、數量等等，太多了，明顯都可以用更具體的名稱來取代。</p>
 <p>事實上，無論是這 3 種情況中的哪一種，會叫 result，通常是因為<strong>懶得想名字</strong>。</p>
-<h3 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    perform_admin_action()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    perform_admin_action()</span><br></pre></td></tr></table></figure>
+<h3 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <p>我認為這是<strong>最重要</strong>的一種：當函式的<strong>回傳是一個<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97_(%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B)">布林值</a><strong>，代表</strong>狀態</strong>或<strong>成功與否</strong>。</p>
 <p>這個時候，我們應該要使用充滿了「<strong>布林味</strong>」的變數名稱，比如<code>has_permission</code>、<code>is_valid</code>、<code>is_success</code>等等。而不是<code>result</code>。</p>
 <h3 id="三、使用-requests-發出-HTTP-請求"><a href="#三、使用-requests-發出-HTTP-請求" class="headerlink" title="三、使用 requests 發出 HTTP 請求"></a>三、使用 requests 發出 HTTP 請求</h3><p>終於來你最常見到的情境了，使用<code>requests</code>（或<code>httpx</code>）發出 HTTP 請求，並將回傳的結果存入 result。</p>
@@ -337,6 +338,10 @@
 <p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了。</strong></p>
 <hr>
 <p>說真的，data 至少還有上述的例外情況，但關於 result，我真的想不到。</p>
+<p>我非常確信，打算我工作的第二年起（第一年可能還懵懂無知），再就也沒有使用過 result 這個變數名稱。</p>
+<blockquote>
+<p>一次也沒有。</p>
+</blockquote>
 <p>所以，請原諒我，這一段的標題是「<strong>騙人</strong>」的，result 壓根不是什麼「史上第二糟」的變數名稱，<strong>它就是「全銀河系最爛」的變數名稱。</strong></p>
 <p>除了一口氣把它塞入<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E9%A6%AC%E5%BA%A7A*">人馬座 A*</a> 的<strong>超大質量黑洞</strong>，我想不到更好的處理方式。</p>
 <hr>
