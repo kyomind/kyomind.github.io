@@ -38,6 +38,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    
+    <lastmod>2023-11-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
     
     <lastmod>2023-11-11</lastmod>
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
+    <loc>https://blog.kyomind.tw/top/index.html</loc>
     
     <lastmod>2023-11-10</lastmod>
     
@@ -58,16 +67,16 @@
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-07/</loc>
     
-    <lastmod>2023-11-09</lastmod>
+    <lastmod>2023-11-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/top/index.html</loc>
+    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
-    <lastmod>2023-11-09</lastmod>
+    <lastmod>2023-11-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -147,15 +156,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/notion-markdown/</loc>
-    
-    <lastmod>2023-11-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
     
     <lastmod>2023-11-05</lastmod>
     
