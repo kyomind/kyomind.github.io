@@ -33,7 +33,7 @@
     <meta property="og:tag" content="閱讀心得" />
     
 
-  <meta property="article:modified_time" content="2023-11-01T05:06:31+08:00" />
+  <meta property="article:modified_time" content="2023-11-22T04:27:04+08:00" />
 
 
 
@@ -233,8 +233,8 @@
 <h3 id="以False代替raise"><a href="#以False代替raise" class="headerlink" title="以False代替raise"></a>以<code>False</code>代替<code>raise</code></h3><p>最常見的例子就是：<strong>該拋出錯誤時候，卻只用<code>return False</code> 替代</strong>。</p>
 <p>意即，當函式正常執行時，回傳一般正常的 output 值。但當執行失敗時，卻是回傳<code>False</code>——這簡直令人髮指，而且我相信你一定看過這樣的函式。</p>
 <p>必須說明，發生錯誤時不拋出而選擇<code>return False</code>未必總是不好的，就像 Django REST framework 序列化器的<code>is_valid</code>方法，預設也是返回一個布林值（可以用<code>raise_exception=True</code>參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
-<p>不過，如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>。</p>
-<p>而且函式命名最好也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。</p>
+<p>不過，**如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>**，以保持回傳型別的一致性。</p>
+<p>而且<strong>函式命名</strong>也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。這些都是常見的最佳實踐。</p>
 <h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，其目的是從一個<code>JSON</code>文件中讀取配置資訊。如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常並返回<code>False</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            config = json.load(f)</span><br><span class="line">        <span class="keyword">return</span> config</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># 這裡是問題所在</span></span><br></pre></td></tr></table></figure>
 
