@@ -35,7 +35,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2023-12-18T03:40:22+08:00" />
+  <meta property="article:modified_time" content="2023-12-18T04:29:23+08:00" />
 
 
 
@@ -184,7 +184,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然我在去年就聽過它，但一直沒有任何行動。</p>
-<p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 版的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，畢竟前一版可是 v0.0.292），我覺得時機已到，所以進行了一番研究、嘗試，於是有了本文的誕生。</p>
+<p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，畢竟前一版可是 v0.0.292），我覺得時機已到，所以進行了一番研究、嘗試，於是有了本文的誕生。</p>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
 <li><a href="#%E7%B7%A3%E8%B5%B7">緣起</a></li>
 <li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
@@ -204,10 +204,10 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 分別是常見的 Flake8、isort、yapf。這部分在之前的文章已提及多次。</p>
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 分別是常見的 Flake8、isort、yapf。這部分在以往的文章有多次提及。</p>
 <p>隨著 Ruff 的聲量與能見度日漸提高，作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 愛好者，我自然也是躍躍欲試——最好是能夠直接應用到工作開發上！</p>
 <p>因為團隊還不大（含我共 3 個後端開發者），所以改用 Ruff 是完全有可能的。不過經過一番調查與研究，我還是暫時推遲了工作上對 Ruff 的採用（只是把 formatter 從 yapf 換成 Black），原因會在文末會說明。</p>
-<p>但是！我個人很推薦，<strong>從現在就開始使用 Ruff 作為你的預設 linter 甚至 formatter</strong>。而 Ruff 究竟有哪些吸引人之處，且容我娓娓道來。</p>
+<p>但是！我個人很推薦，<strong>從現在就開始使用 Ruff 作為你「個人開發」的預設 linter 甚至 formatter</strong>。而 Ruff 究竟有哪些吸引人之處？且容我娓娓道來。</p>
 <h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>我在〈<a href="https://blog.kyomind.tw/pre-commit/">pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例</a>〉曾提過：</p>
 <blockquote>
 <p>考慮到「pre-commit」這個主題已經有數篇文章珠玉在前，我下筆前都已拜讀完。本文的論述重點會<strong>盡可能與這些文章錯開，或乾脆直接引用</strong>，以降低不必要的重複感。</p>
@@ -221,7 +221,7 @@
 <li>Ruff 介紹篇。</li>
 <li>Ruff 設定篇。</li>
 </ol>
-<p>一開始不未俗地先講述我研究與使用 Ruff 的動機與理由，接著介紹 Ruff 的主要功能——linter 與 formatter。這也是它的最大賣點。</p>
+<p>一開始不免俗地先講述我研究與使用 Ruff 的動機與理由，接著介紹 Ruff 的主要功能——linter 與 formatter。這也是它的最大賣點。</p>
 <p>而「設定篇」中著重的，則是在初步了解 Ruff 之後，如果真要採用它，我們還需要設定哪些環節，才能在開發中流暢地使用它。</p>
 <p>畢竟，<strong>開發工具的設定與整合</strong>，可以算是本站文章的一大類型。☺️</p>
 <h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>本文的目標讀者有三，只要符合其中一項，就有比較明顯的助益：</p>
