@@ -34,7 +34,7 @@
     <meta property="og:tag" content="Git" />
     
 
-  <meta property="article:modified_time" content="2023-07-08T17:33:59+08:00" />
+  <meta property="article:modified_time" content="2023-12-19T06:19:58+08:00" />
 
 
 
@@ -200,7 +200,7 @@
 <h2 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h2><p>我們會先講一下什麼是 Git Hooks 和 pre-commit，因為不是論述上的重點，所以只需簡單帶過，讀者心中有個輪廓即可。</p>
 <p>接著探討「<strong>為什麼要使用 pre-commit 工具？</strong>」。和我過去的許多文章一樣，對動機與場景將有一定程度的著墨，我們會探討 pre-commit 的價值所在，包括我從團隊使用經驗得到的看法。</p>
 <p>最後是具體設定——這或許是最不重要的部分，因為它很簡單，但還是有一些值得留意的部分。以 Flake8、isort、yapf 為例，則是為了貫徹前述所有文章的一貫精神：<strong>有了 pre-commit，這一切才算圓滿。</strong></p>
-<p>附帶一提，考慮到「pre-commit」這個主題已經有數篇文章珠玉在前（參考文章我會放在文末），我下筆前都已拜讀完。本文的論述重點會<strong>盡可能與這些文章錯開，或乾脆直接引用</strong>，以降低不必要的重複感。</p>
+<p>附帶一提，考慮到「pre-commit」這個主題已經有數篇文章珠玉在前（參考文章我會放在文末），我下筆前都已拜讀完。<strong>本文的論述重心會盡可能與這些文章錯開，或乾脆直接引用，以降低不必要的重複感。</strong></p>
 <hr>
 <h2 id="Git-Hooks-介紹"><a href="#Git-Hooks-介紹" class="headerlink" title="Git Hooks 介紹"></a>Git Hooks 介紹</h2><p>Git Hooks 是 Git 提供的一個功能，允許開發者在特定的 Git 事件（如 commit、push 等）觸發時，自動執行自定義的腳本，這樣可以在提交程式碼之前進行一些檢查，以確保程式碼的交付品質。</p>
 <p><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks">Git Hooks 有很多種</a>，不同的 Git Hooks 可以幫助開發者在不同的場景下進行自動化操作，這裡我們只要知曉<strong>最常用的 pre-commit hook</strong> 已足。</p>
