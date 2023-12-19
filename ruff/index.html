@@ -30,12 +30,13 @@
     <meta property="og:tag" content="Python" />
     <meta property="og:tag" content="長文" />
     <meta property="og:tag" content="isort" />
+    <meta property="og:tag" content="pyproject.toml" />
     <meta property="og:tag" content="Code Formatting" />
     <meta property="og:tag" content="Flake8" />
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2023-12-19T09:10:48+08:00" />
+  <meta property="article:modified_time" content="2023-12-19T09:19:57+08:00" />
 
 
 
@@ -321,6 +322,9 @@
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
 <h2 id="Ruff-設定篇"><a href="#Ruff-設定篇" class="headerlink" title="Ruff 設定篇"></a>Ruff 設定篇</h2><p>當要採用一個新的 linter、formatter 時（尤其站在團隊開發考量），以下這三個部分的支援成熟度，是我一定會慎重考慮的。</p>
 <h3 id="設定檔（pyproject-toml-支援）"><a href="#設定檔（pyproject-toml-支援）" class="headerlink" title="設定檔（pyproject.toml 支援）"></a>設定檔（pyproject.toml 支援）</h3><p>不用說，複雜的工具都一定有自己的設定檔，讓你可以客製化一些需求。如果能支援 pyproject.toml 則會更受到我的青睞。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></p>
+</blockquote>
 <h3 id="VS-Code-套件支援"><a href="#VS-Code-套件支援" class="headerlink" title="VS Code 套件支援"></a>VS Code 套件支援</h3><p>它能讓你在寫程式的同時，就能夠看到 linter 發出的警告，而不必等到 commit 之際才被 pre-commit 擋下來。</p>
 <p>相較於 linter，<strong>formatter 更需要有自己的 VS Code 套件</strong>。讓你能直接在 VS Code 操作下進行格式化，而不用透過 CLI 指令或等到 pre-commit 時才自動修正。</p>
 <p>而且，雖然你可以只用 Ruff 的 linter 功能，但因為有「autofix」存在，本質上它也是一個<strong>簡易（附帶）的格式化器</strong>，所以最好有 VS Code 整合。</p>
@@ -430,12 +434,13 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例" rel="bookmark">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學" rel="bookmark">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pre-commit/" title="pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例" rel="bookmark">pre-commit 設定 Git Hooks 教學：以 Flake8、isort、yapf 為例</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Black-Formatter/">Black Formatter</a>
             <a href="/tags/Python/">Python</a>
             <a href="/tags/%E9%95%B7%E6%96%87/">長文</a>
             <a href="/tags/isort/">isort</a>
+            <a href="/tags/pyproject-toml/">pyproject.toml</a>
             <a href="/tags/Code-Formatting/">Code Formatting</a>
             <a href="/tags/Flake8/">Flake8</a>
             <a href="/tags/Ruff/">Ruff</a>
