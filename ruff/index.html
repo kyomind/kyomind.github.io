@@ -36,7 +36,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2023-12-19T13:49:14+08:00" />
+  <meta property="article:modified_time" content="2023-12-19T14:48:05+08:00" />
 
 
 
@@ -337,7 +337,7 @@
 <p>如果設定不算多，那我一律推薦放<code>pyproject.toml</code>。反之如果有大量的客製，那獨立一個設定檔可能是比較好的選擇。</p>
 <p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。文件中的範例內容同時有著註解式的解說。</p>
 <p><strong>不過大部分時候，我們只需要設定一些基本的項目</strong>。比如以下是我目前的設定，包含了 linter 與 formatter 部分：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;UP&quot;</span>]</span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py311&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;UP&quot;</span>]</span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py310&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="設定解說"><a href="#設定解說" class="headerlink" title="設定解說"></a>設定解說</h3><p>首先，因為在<code>pyproject.toml</code>中，所以設定的 key 定是<code>[tool.xxx]</code>格式。</p>
 <p>Linter 部分，一些基本的設定比如<code>line-length</code>和 Flake8 類似。其中<code>select</code>和沒有列出的<code>ignore</code>相對重要。</p>
@@ -345,7 +345,7 @@
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="comment"># 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E4&quot;</span>, <span class="string">&quot;E7&quot;</span>, <span class="string">&quot;E9&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;B&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Avoid enforcing line-length violations (`E501`)</span></span><br><span class="line"><span class="attr">ignore</span> = [<span class="string">&quot;E501&quot;</span>]</span><br></pre></td></tr></table></figure>
 
 <p>在我的設定中，<code>select</code>加上了<code>I</code>和<code>UP</code>。分別代表了 isort 和 pyupgrade。一旦你開啟了它們，Ruff 就會提示相關錯誤，並在有錯誤時自動修正。（autofix 預設為開啟）</p>
-<p>因為開啟了<code>UP</code>，所以我必須設定<code>target-version</code>（這裡為<code>py311</code>），意味著 Ruff 會將程式碼中<strong>舊的寫法</strong>自動轉換（autofix）為 Python 3.11 的寫法。</p>
+<p>因為開啟了<code>UP</code>，所以我必須設定<code>target-version</code>（這裡為<code>py310</code>），意味著 Ruff 會將程式碼中<strong>舊的寫法</strong>自動轉換（autofix）為 Python 3.10 的寫法。</p>
 <p>總之，可設定的項目非常豐富。</p>
 <hr>
 <h2 id="Ruff-VS-Code-套件設定"><a href="#Ruff-VS-Code-套件設定" class="headerlink" title="Ruff VS Code 套件設定"></a>Ruff VS Code 套件設定</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff 的 VS Code 套件</a>在 2022 年 12 月首次發表。</p>
