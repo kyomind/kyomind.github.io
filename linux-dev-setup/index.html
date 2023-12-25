@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker">
-  <meta property="og:title" content="Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker"><meta name="twitter:description" content="本文介紹如何在全新的 Linux VM 上，一步步設定好 Python 開發環境。如果你有用 yadm 管理 dotfiles，則過程會更加簡單。">
+  <meta property="og:description" content="本文介紹如何在全新的 Linux VM 上，一步步設定好 Python 開發環境。如果你有用 yadm 管理 dotfiles，則過程會更加簡單。"><meta name="twitter:image" content="https://i.imgur.com/wuqTPvs.jpg">
+  <meta property="og:image" content="https://i.imgur.com/wuqTPvs.jpg">
+<meta name="description" content="本文介紹如何在全新的 Linux VM 上，一步步設定好 Python 開發環境。如果你有用 yadm 管理 dotfiles，則過程會更加簡單。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -35,7 +37,7 @@
     <meta property="og:tag" content="yadm" />
     
 
-  <meta property="article:modified_time" content="2023-10-29T13:56:22+08:00" />
+  <meta property="article:modified_time" content="2023-12-25T10:11:08+08:00" />
 
 
 
@@ -171,7 +173,10 @@
       <div class="post-meta">
         <span class="post-time">
           2023-02-19
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-12-25
+          </span>
+        <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
             </span>
         </div>
@@ -180,7 +185,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-yadm-%E7%AE%A1%E7%90%86-dotfiles"><span class="toc-text">用 yadm 管理 dotfiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">一、設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A8%AD%E5%AE%9A-zsh%E3%80%81zinit%E3%80%81Powerlevel10k"><span class="toc-text">二、設定 zsh、zinit、Powerlevel10k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">三、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">四、設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-Docker"><span class="toc-text">五、安裝 Docker</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-yadm-%E7%AE%A1%E7%90%86-dotfiles"><span class="toc-text">用 yadm 管理 dotfiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-yadm-%E7%9A%84%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B%EF%BC%882023-12-25%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="toc-text">使用 yadm 的環境設定流程（2023&#x2F;12&#x2F;25更新）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">一、設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A8%AD%E5%AE%9A-zsh%E3%80%81zinit%E3%80%81Powerlevel10k"><span class="toc-text">二、設定 zsh、zinit、Powerlevel10k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">三、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">四、設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-Docker"><span class="toc-text">五、安裝 Docker</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/wuqTPvs.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p>最近為了升級 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu</a> 版本，重建了工作上的 Linux VM（直接升級會怕），所以又得重新設定一次開發環境。</p>
@@ -192,16 +197,26 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>沒錯！本篇講述的是：當我拿到一個<strong>全新的 Linux VM</strong>，為了開發方便，一定會安裝、設定的工具——主要基於「<strong>Python 後端</strong>」角度。</p>
 <p>內容參考自以往數篇文章，且只關注在<strong>建立開發環境的必要步驟</strong>，並適時給出一些額外的提醒與建議。</p>
 <p>如此一來，我們就不必在文章間穿梭，力求節省時間、一步到位！</p>
-<p>本文是以 <strong>Ubuntu 20.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
+<p>本文是以 <strong>Ubuntu 22.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
 <h2 id="用-yadm-管理-dotfiles"><a href="#用-yadm-管理-dotfiles" class="headerlink" title="用 yadm 管理 dotfiles"></a>用 yadm 管理 dotfiles</h2><p>Dofiles 是指「<strong>設定檔</strong>」，例如 <code>.zshrc</code>、<code>.vimrc</code>、<code>.gitconfig</code> 等等。</p>
 <p>使用 zinit、Powerlevel10k、pyenv 之前，都要先設定<code>.zshrc</code>。</p>
-<p>如果你已經有使用相關工具來<strong>管理你的 dotfiles</strong>，那麼以下關於<code>.zshrc</code>內容的新增、修改，<strong>理論上都可以跳過——直接透過工具「同步」即可。</strong></p>
+<p>如果你有使用工具來管理你的 dotfiles（包括<code>.zshrc</code>、<code>.zprofile</code>），那麼以下<strong>所有</strong>關於<code>.zshrc</code>內容的<strong>新增、修改</strong>，理論上都可以跳過——直接透過工具<strong>同步</strong>即可。</p>
 <p>如果你還沒接觸過任何 dotfiles 管理工具，那麼我推薦 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a>，可參考文章：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
 </ul>
-<p>前言到此，話不多說，讓我們開始吧！</p>
+<h2 id="使用-yadm-的環境設定流程（2023-12-25更新）"><a href="#使用-yadm-的環境設定流程（2023-12-25更新）" class="headerlink" title="使用 yadm 的環境設定流程（2023/12/25更新）"></a>使用 yadm 的環境設定流程（<code>2023/12/25</code>更新）</h2><p>使用 yadm，且你已經有自己的 dotfiles 倉庫，那麼整個流程略有不同：</p>
+<ol>
+<li>設定 VM 與 GitHub 連線。</li>
+<li><strong>安裝 yadm。</strong></li>
+<li><code>yadm clone &lt;遠端 dofiles 倉庫&gt;</code>，<strong>此時所有同步的 dotfile 都會有了！</strong></li>
+<li>一樣安裝設定 zsh，<strong>但不必安裝 zinit。</strong></li>
+<li>重新連線 ssh，就會開始依<code>.zshrc</code>安裝 zinit + zsh 套件。</li>
+<li>安裝 pyenv，<strong>但不必修改<code>.zshrc</code>。</strong></li>
+<li>安裝 Poetry，<strong>但不必修改<code>.zshrc</code>。</strong></li>
+</ol>
 <hr>
+<p>前言到此，話不多說，讓我們開始吧！</p>
 <h2 id="一、設定-SSH-連線"><a href="#一、設定-SSH-連線" class="headerlink" title="一、設定 SSH 連線"></a>一、設定 SSH 連線</h2><p>這部分我並沒有寫成文章，因為網路上的資訊已經足夠多，而且步驟也不算太複雜。</p>
 <p>對我而言，主要為 VM 設定下面兩種 SSH 連線：</p>
 <ol>
@@ -221,9 +236,15 @@
 <h3 id="將-zsh-設為登入時的「預設」shell"><a href="#將-zsh-設為登入時的「預設」shell" class="headerlink" title="將 zsh 設為登入時的「預設」shell"></a>將 zsh 設為登入時的「預設」shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -s /bin/zsh <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
 
 <p>提醒：請務必先確認 zsh 本身的安裝、設定沒問題，可以正常使用。否則登入後可能直接卡住，需要透過別的 admin 帳號來處理。</p>
-<h3 id="新增-zshrc與-zprofile"><a href="#新增-zshrc與-zprofile" class="headerlink" title="新增.zshrc與.zprofile"></a>新增<code>.zshrc</code>與<code>.zprofile</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> .zshrc</span><br><span class="line"><span class="built_in">touch</span> .zprofile</span><br></pre></td></tr></table></figure>
+<h3 id="新增-zshrc與-zprofile"><a href="#新增-zshrc與-zprofile" class="headerlink" title="新增.zshrc與.zprofile"></a>新增<code>.zshrc</code>與<code>.zprofile</code></h3><blockquote>
+<p><code>2023/12/25</code>更新：有安裝 yadm 且在遠端已經有自己的 dotfiles 倉庫的話，直接<code>yadm clone &lt;你的倉庫&gt;</code>即可。<strong>clone 完成後，所有同步的檔案就會自動出現在你的家目錄下。不必再新增、設定<code>.zshrc</code>與<code>.zprofile</code>。</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> .zshrc</span><br><span class="line"><span class="built_in">touch</span> .zprofile</span><br></pre></td></tr></table></figure>
 
-<h3 id="安裝-zinit-套件管理器"><a href="#安裝-zinit-套件管理器" class="headerlink" title="安裝 zinit 套件管理器"></a>安裝 zinit 套件管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;<span class="subst">$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="安裝-zinit-套件管理器"><a href="#安裝-zinit-套件管理器" class="headerlink" title="安裝 zinit 套件管理器"></a>安裝 zinit 套件管理器</h3><blockquote>
+<p><strong>有 yadm 同步可以跳過，不必安裝。</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;<span class="subst">$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="設定-zinit-套件"><a href="#設定-zinit-套件" class="headerlink" title="設定 zinit 套件"></a>設定 zinit 套件</h3><p>安裝完後，zinit 已經自動在<code>.zshrc</code>新增部分內容，請接著繼續新增下列內容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zsh 套件四天王</span></span><br><span class="line">zinit light zsh-users/zsh-completions</span><br><span class="line">zinit light zsh-users/zsh-autosuggestions</span><br><span class="line">zinit light zsh-users/zsh-history-substring-search</span><br><span class="line">zinit light zdharma-continuum/fast-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="comment"># Oh My Zsh 功能</span></span><br><span class="line">zinit snippet OMZ::lib/completion.zsh</span><br><span class="line">zinit snippet OMZ::lib/history.zsh</span><br><span class="line">zinit snippet OMZ::lib/key-bindings.zsh</span><br><span class="line">zinit snippet OMZ::lib/theme-and-appearance.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># key binding</span></span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[A&#x27;</span> history-substring-search-up</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[B&#x27;</span> history-substring-search-down</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;,&#x27;</span> autosuggest-accept</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他</span></span><br><span class="line">zinit load djui/alias-tips</span><br></pre></td></tr></table></figure>
@@ -245,7 +266,7 @@
 <h3 id="設定-pyenv"><a href="#設定-pyenv" class="headerlink" title="設定 pyenv"></a>設定 pyenv</h3><blockquote>
 <p>這裡直接採用 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">pyenv 2.3.0 以後的設定方式</a>，已大幅簡化操作——變得更加無腦、易用！——且 zsh 或 bash 在設定上<strong>不再有差別</strong>。</p>
 </blockquote>
-<p>一律在<code>.zshrc</code>或<code>.bashrc</code>中，新增下列內容：</p>
+<p>一律在<code>.zshrc</code>或<code>.bashrc</code>中，新增下列內容：<strong>（有 yadm 同步可以跳過）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -263,7 +284,7 @@
 </blockquote>
 <h3 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 -</span><br></pre></td></tr></table></figure>
 
-<h3 id="新增poetry指令至-PATH"><a href="#新增poetry指令至-PATH" class="headerlink" title="新增poetry指令至 PATH"></a>新增<code>poetry</code>指令至 PATH</h3><p>在<code>.zshrc</code>新增以下內容：</p>
+<h3 id="新增poetry指令至-PATH"><a href="#新增poetry指令至-PATH" class="headerlink" title="新增poetry指令至 PATH"></a>新增<code>poetry</code>指令至 PATH</h3><p>在<code>.zshrc</code>新增以下內容：<strong>（有 yadm 同步可以跳過）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
 <h3 id="修改config，改用-venv虛擬環境"><a href="#修改config，改用-venv虛擬環境" class="headerlink" title="修改config，改用.venv虛擬環境"></a>修改<code>config</code>，改用<code>.venv</code>虛擬環境</h3><p>預設為<code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！改成<code>true</code>以後，<strong>則直接在專案中建立虛擬環境，且名稱固定為<code>.venv</code>。</strong></p>
