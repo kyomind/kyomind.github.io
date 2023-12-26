@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/isort/</loc>
+    
+    <lastmod>2023-12-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pre-commit/</loc>
+    
+    <lastmod>2023-12-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
+    
+    <lastmod>2023-12-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
+    
+    <lastmod>2023-12-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
+    
+    <lastmod>2023-12-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
     
     <lastmod>2023-12-25</lastmod>
@@ -56,15 +101,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/pre-commit/</loc>
-    
-    <lastmod>2023-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/top/index.html</loc>
     
     <lastmod>2023-12-02</lastmod>
@@ -102,15 +138,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
-    
-    <lastmod>2023-11-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
     
     <lastmod>2023-11-11</lastmod>
     
@@ -443,15 +470,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
-    
-    <lastmod>2023-10-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
     
     <lastmod>2023-10-06</lastmod>
@@ -542,15 +560,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
-    
-    <lastmod>2023-09-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
     
     <lastmod>2023-09-26</lastmod>
@@ -581,15 +590,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2023-09-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/isort/</loc>
-    
-    <lastmod>2023-09-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -922,7 +922,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2023-12-25</lastmod>
+    <lastmod>2023-12-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

@@ -303,15 +303,18 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/HdNTdXP.jpg" alt="from Pixabay"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+</blockquote>
+<hr>
 <p>有關 Python「<a href="/tags/Code-Formatting/">Code Formatting</a>」（Linter、Formatter 等）這一主題的文章，之前已寫了不少：</p>
 <ol>
 <li><a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a></li>
-<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
 <li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
 <li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
 </ol>
 <p>仔細一看，其實不就是 Flake8、yapf、isort、Black Formatter 這 4 項工具的排列組合而已嗎XD。</p>
-<p>是的！我自己整理到都覺得有點不好意思了🫣。</p>
+<p>是的！我自己整理到都覺得有點不好意思了🫣</p>
 <p>但是，為什麼要寫這麼多？還是那句老話：「<strong>我認為這些工具的重要性，再怎麼強調也不為過——更別說它們常常被低估了。</strong>」</p>
 <p>我曾在上述文章中的開頭或結尾處，不厭其煩地表達自己對它們的重視，這裡就不再贅述，直接進入重點。</p>
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將講述如何透過 <a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 這個工具設定 Git Hooks，並以 Flake8、isort、yapf 等 Python 開發常用套件為例，進行演示，同時提醒一些注意事項。</p>

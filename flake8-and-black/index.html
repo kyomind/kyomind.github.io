@@ -34,7 +34,7 @@
     <meta property="og:tag" content="linter" />
     
 
-  <meta property="article:modified_time" content="2023-10-28T03:48:39+08:00" />
+  <meta property="article:modified_time" content="2023-12-26T09:02:15+08:00" />
 
 
 
@@ -186,17 +186,8 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tjIDNjn.jpg"></p>
 <blockquote>
-<p><code>2023/07/05</code>補充：無論 Flake8 還是 Black Formatter，當你的虛擬環境<strong>沒有安裝</strong>該 package 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
+<p><strong>替代方案（推薦👍）</strong>：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
 </blockquote>
-<p>參考兩者的套件說明：</p>
-<blockquote>
-<p>The bundled flake8 is only used if there is no installed version of flake8 found in the selected python environment.</p>
-</blockquote>
-<blockquote>
-<p>The bundled black is only used if there is no installed version of black found in the selected python environment.</p>
-</blockquote>
-<p>這樣做的好處就是，如果你<strong>沒有要特別指定 Flake8 或 Black Formatter 的版本</strong>，就不必再安裝到虛擬環境中，擴充套件會自動幫你處理。兼顧了方便與彈性。</p>
-<hr>
 <p>Python linter、formatter 整合 VS Code 的文章，已經寫過好幾篇，但還是不厭其煩地繼續寫，原因很簡單——它們實在太基本也太重要，卻往往未受到足夠的重視。</p>
 <p>永遠不要小看這些<strong>排版上的細節</strong>對<strong>程式寫作習慣</strong>的影響。</p>
 <p>如同我在〈<a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a>〉文末所言：</p>
@@ -223,7 +214,10 @@
 </ul>
 <p>isort 我們<a href="https://blog.kyomind.tw/isort/">上一篇</a>講過了，這次把剩下的兩項補完，功德圓滿。</p>
 <hr>
-<h2 id="Flake8-設定"><a href="#Flake8-設定" class="headerlink" title="Flake8 設定"></a>Flake8 設定</h2><p>舊有的 Flake8，是前述 Python 擴充套件的一部分，需要你額外安裝 Flake8 package 在專案的 Python 虛擬環境中。其<code>settings.json</code>設定如下：</p>
+<h2 id="Flake8-設定"><a href="#Flake8-設定" class="headerlink" title="Flake8 設定"></a>Flake8 設定</h2><blockquote>
+<p><code>2023/07/05</code>補充：無論 Flake8 還是 Black Formatter，當你的虛擬環境<strong>沒有安裝</strong>該 package 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
+</blockquote>
+<p>舊有的 Flake8，是前述 Python 擴充套件的一部分，需要你額外安裝 Flake8 package 在專案的 Python 虛擬環境中。其<code>settings.json</code>設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.linting.flake8Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--max-line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--ignore=E131,E302&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>使用 Flake8 擴充套件後，新的設定改為：</p>
