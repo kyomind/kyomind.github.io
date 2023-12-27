@@ -29,9 +29,11 @@
             <meta property="og:tag" content="Django" />
     <meta property="og:tag" content="ORM" />
     <meta property="og:tag" content="Django Tutorial" />
+    <meta property="og:tag" content="Django ORM" />
+    <meta property="og:tag" content="系列：Django ORM 入門教學" />
     
 
-  <meta property="article:modified_time" content="2023-10-31T03:35:00+08:00" />
+  <meta property="article:modified_time" content="2023-12-27T07:47:36+08:00" />
 
 
 
@@ -176,14 +178,13 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%8A%A9%E6%96%BC%E5%AD%B8%E7%BF%92-FastAPI"><span class="toc-text">有助於學習 FastAPI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E8%88%87%E5%8F%8D%E5%90%91%E9%97%9C%E8%81%AF"><span class="toc-text">related_name 與反向關聯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name 在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%AF%E5%A5%BD%E7%9A%84-related-name-%E5%91%BD%E5%90%8D"><span class="toc-text">良好的 related_name 命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-model-%E6%A0%B8%E5%BF%83"><span class="toc-text">小結：關聯是 model 核心</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%8A%A9%E6%96%BC%E5%AD%B8%E7%BF%92-FastAPI"><span class="toc-text">有助於學習 FastAPI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%83%85%E5%A2%83%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案情境介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E8%88%87%E5%8F%8D%E5%90%91%E9%97%9C%E8%81%AF"><span class="toc-text">related_name 與反向關聯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name 在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%AF%E5%A5%BD%E7%9A%84-related-name-%E5%91%BD%E5%90%8D"><span class="toc-text">良好的 related_name 命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-model-%E6%A0%B8%E5%BF%83"><span class="toc-text">小結：關聯是 model 核心</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="github.com/kyomind/Django-Tutorial"><span class="cap">github.com/kyomind/Django-Tutorial</span></p>
 <p>工作上使用 Django 近 2 年，卻很少發表關於 Django 主題的文章，是時候該來補一補了。</p>
 <p>那就從 Django ORM 開始吧！因為 ORM（<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>）可以說是無論你怎麼使用 Django（全端或前後端分離），都不得不學的核心部分。</p>
 <p>怎麼說？我們先來看看，在「<strong>前後端分離</strong>」的開發趨勢下，Django 的三大核心——MTV——的重要性有哪些變動。</p>
 <span id="more"></span>
-
 
 <h2 id="前後端分離下的-Django-MTV"><a href="#前後端分離下的-Django-MTV" class="headerlink" title="前後端分離下的 Django MTV"></a>前後端分離下的 Django MTV</h2><p>在 Django 中，MTV 指的是「<strong>Model-Template-View</strong>」架構模式。類似於 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/MVC">MVC</a>，這是 Django 框架的核心設計模式，用於組織和分離應用程式的不同部分。</p>
 <ul>
@@ -207,6 +208,7 @@
 <p><strong>Tortoise ORM was built with relations in mind and admiration for the excellent and popular Django ORM.</strong> It’s engraved in its design that you are working not with just tables, you work with relational data.</p>
 </blockquote>
 <p>附帶一提，我個人不太喜歡 SQLAlchemy，因為它的語法相對複雜，還有那過時的官方文件網站排版（這點和 DRF 很像XD）。所以推薦 Tortoise ORM。</p>
+<p>PS：但是！如果你是要用在正式產品環境中，那麼 SQLAlchemy 可能是更好——至少是更穩健——的選擇。畢竟它發展多年，而且有著龐大的社群支持。這點不是 Tortoise ORM 可以比擬的。</p>
 <hr>
 <h2 id="範例程式碼專案介紹"><a href="#範例程式碼專案介紹" class="headerlink" title="範例程式碼專案介紹"></a>範例程式碼專案介紹</h2><p>如前所述，我打算寫一系列的 Django 教學文章，有範例程式碼，會更方便讀者學習、參考。於是我建了一個 GitHub Repo 名為「<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial">kyo-django-tutorial</a>」，把文章中使用的程式碼同步更新於此。</p>
 <p>這是一個典型的 Django 專案，而且<strong>有著完整的 Python 專案開發環境</strong>，各種細節都和真實世界一致。<strong>Poetry、pre-commit 與 linter、formatter 等設定一應俱全，方便你重現環境並跟著操作。</strong></p>
@@ -230,15 +232,21 @@
 <p>如果說 ORM 是 Django 的核心之一，而 ORM 的核心會是什麼呢？我相信其中一個答案，就是「<strong>外鍵關聯</strong>」（<strong>relationships</strong>）。若是少了關聯，資料表就像孤立的島嶼，根本無法真實模擬世界。</p>
 <p>剛開始寫 Django ORM 時，疑問最多的就是外鍵關聯了！因為它不止重要，而且十分常用。外鍵關聯又分一對一、一對多（多對一）與多對多，我們會先著重在前兩者的介紹——因為它們最常遇到，方便你快速上手。</p>
 <p><strong>本文為上篇，主要是系列前言與外鍵設定教學，查詢部分則留到下篇。</strong></p>
-<h2 id="專案模型介紹"><a href="#專案模型介紹" class="headerlink" title="專案模型介紹"></a>專案模型介紹</h2><p>學習 Django 模型和外鍵關係的最佳方法，是透過具體的例子。在上述專案中，我準備了一個最常見的範例：<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial/blob/01-django-models/post/models.py">文章模型</a>。</p>
+<h2 id="專案情境介紹"><a href="#專案情境介紹" class="headerlink" title="專案情境介紹"></a>專案情境介紹</h2><p>學習 Django 模型和外鍵關係的最佳方法，是透過具體的例子。在上述專案中，我準備了一個最常見的範例：<a target="_blank" rel="noopener" href="https://github.com/kyomind/kyo-django-tutorial/blob/01-django-models/post/models.py">文章模型</a>。</p>
 <p>選這個例子主要出於兩個原因：</p>
 <ol>
 <li>它很容易想像。</li>
-<li>它同時包括了一對一、一對多、多對多等不同情境。</li>
+<li>它同時包括了一對一、一對多等不同情境。</li>
 </ol>
-<p>模型對應的情境大致是這樣：你有一個個人的部落格網站，只有你可以發表文章，而讀者可以留言。</p>
-<p>因為只有一個作者，也就是你，所以模型省略了作者的部分。這些設計都是為了方便介紹而已，不必對它們的真實性太過認真。</p>
-<p>以下我們一一介紹這 3 個模型。</p>
+<p>模型對應的情境大致是這樣：你有一個部落格網站，你可以發表文章，而讀者可以留言。</p>
+<p>因此，<strong>具體情境與對應的模型關係如下：</strong></p>
+<ul>
+<li>一篇文章只有一個標題，但標題可以有主標題和副標題。文章和標題（含副標題）是<strong>一對一關係</strong>。</li>
+<li>一篇文章可以有多個留言，但一個留言只能屬於某一篇文章。文章和留言是<strong>一對多關係</strong>。</li>
+</ul>
+<p>上述設計主要是為了教學與說明方便，不必對它們的真實性太過認真。</p>
+<p>並且，簡化過的情境與模型，<strong>有助於我們專注於外鍵關聯的設定，而不會被其他細節所干擾</strong>。</p>
+<h2 id="專案模型介紹"><a href="#專案模型介紹" class="headerlink" title="專案模型介紹"></a>專案模型介紹</h2><p>以下我們一一介紹這 3 個模型。</p>
 <h3 id="Title：文章標題"><a href="#Title：文章標題" class="headerlink" title="Title：文章標題"></a>Title：文章標題</h3><p>通常標題只會是文章模型的一個欄位，很少獨立出來。我這樣設計是為了呈現一對一關係，而且這裡有分主、副標題，多少為獨立出來增加了一些合理性。</p>
 <h3 id="Post：文章"><a href="#Post：文章" class="headerlink" title="Post：文章"></a>Post：文章</h3><p>最主要的模型，其餘兩個模型都和它有關。</p>
 <p>與標題是一對一關係，直接有一個<code>title</code>外鍵欄位關聯到 Title 模型，另一個欄位則是<code>content</code>。</p>
@@ -363,6 +371,8 @@
             <a href="/tags/Django/">Django</a>
             <a href="/tags/ORM/">ORM</a>
             <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            <a href="/tags/Django-ORM/">Django ORM</a>
+            <a href="/tags/%E7%B3%BB%E5%88%97%EF%BC%9ADjango-ORM-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/">系列：Django ORM 入門教學</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/mac-mini/">
