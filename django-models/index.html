@@ -33,7 +33,7 @@
     <meta property="og:tag" content="系列：Django ORM 入門教學" />
     
 
-  <meta property="article:modified_time" content="2023-12-27T08:29:49+08:00" />
+  <meta property="article:modified_time" content="2023-12-27T08:46:25+08:00" />
 
 
 
@@ -225,9 +225,10 @@
 <p>pre-commit 完全可選，基本上用不到，除非你有打算變更程式碼的內容。只要不使用指令<code>pre-commit install</code>，它相當於不存在。但如果你想用的話，整個<code>.pre-commit-config.yaml</code>設定檔都寫好了。</p>
 <p>隨著文章更新，<strong>未來還會支援 Docker</strong>，敬請期待。</p>
 <h3 id="工具版本說明"><a href="#工具版本說明" class="headerlink" title="工具版本說明"></a>工具版本說明</h3><p>Django 版本為 4.2 LTS，對 Python 的版本有一定要求，不能太舊，要 3.8 以上。</p>
-<p>Python 版本使用 3.10.11，建議至少使用 3.8.1，雖然剛剛說 Django 只要求 3.8，但因為 Flake8 版本是 6.0.0（已改為 Ruff），要求 Python 至少要 3.8.1 XD。強烈建議直接安裝 3.10 或更新的版本。</p>
+<p>Python 版本使用 3.10.11，建議至少使用 3.8.1，雖然剛剛說 Django 只要求 3.8，但因為 Flake8 版本是 6.0.0（已改為 Ruff），要求 Python 至少要 3.8.1 XD。</p>
+<p>總之，<strong>強烈建議直接安裝 3.10 或更新的版本。</strong></p>
 <hr>
-<p>基本的介紹就到這裡，我們趕緊進入本篇的重點。</p>
+<p>基本的介紹就到這裡，我們進入本篇重點。</p>
 <h2 id="本文重點：Django-ORM-外鍵關聯設定"><a href="#本文重點：Django-ORM-外鍵關聯設定" class="headerlink" title="本文重點：Django ORM 外鍵關聯設定"></a>本文重點：Django ORM 外鍵關聯設定</h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>，也就是 database table 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">OOP</a> 型態，透過 ORM 來實現兩者的對應關係——從 table 到 Python class。</p>
 <p>如果說 ORM 是 Django 的核心之一，而 ORM 的核心會是什麼呢？我相信其中一個答案，就是「<strong>外鍵關聯</strong>」（<strong>relationships</strong>）。若是少了關聯，資料表就像孤立的島嶼，根本無法真實模擬世界。</p>
 <p>剛開始寫 Django ORM 時，疑問最多的就是外鍵關聯了！因為它不止重要，而且十分常用。外鍵關聯又分一對一、一對多（多對一）與多對多，我們會先著重在前兩者的介紹——因為它們最常遇到，方便你快速上手。</p>

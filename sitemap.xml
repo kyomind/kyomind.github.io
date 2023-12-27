@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/mac-mini/</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-models/</loc>
     
     <lastmod>2023-12-27</lastmod>
@@ -176,15 +185,6 @@
     <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
     <lastmod>2023-11-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/mac-mini/</loc>
-    
-    <lastmod>2023-11-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
