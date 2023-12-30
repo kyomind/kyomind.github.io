@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀">
-  <meta property="og:title" content="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀"><meta name="twitter:description" content="本文將介紹我認為是目前最佳的 Python 入門書——《Python 技術者們 - 練功！》，並分享我對這本書的心得與導讀。">
+  <meta property="og:description" content="本文將介紹我認為是目前最佳的 Python 入門書——《Python 技術者們 - 練功！》，並分享我對這本書的心得與導讀。"><meta name="twitter:image" content="https://i.imgur.com/cHLjZCL.png">
+  <meta property="og:image" content="https://i.imgur.com/cHLjZCL.png">
+<meta name="description" content="本文將介紹我認為是目前最佳的 Python 入門書——《Python 技術者們 - 練功！》，並分享我對這本書的心得與導讀。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -28,9 +30,10 @@
     <meta property="og:tag" content="書" />
     <meta property="og:tag" content="閱讀心得" />
     <meta property="og:tag" content="長文" />
+    <meta property="og:tag" content="系列：Python 入門三部曲" />
     
 
-  <meta property="article:modified_time" content="2023-09-26T05:14:38+08:00" />
+  <meta property="article:modified_time" content="2023-12-30T07:34:20+08:00" />
 
 
 
@@ -166,7 +169,10 @@
       <div class="post-meta">
         <span class="post-time">
           2022-10-12
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2023-12-30
+          </span>
+        <span class="post-category">
             <a href="/categories/%E6%9B%B8%E8%A9%95/">書評</a>
             </span>
         </div>
@@ -175,9 +181,12 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E8%B6%8A%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A5%E9%96%80%E5%82%91%E4%BD%9C"><span class="toc-text">超越《精通 Python》的入門傑作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%9A%84%E5%AF%AB%E4%BD%9C%E8%A6%96%E8%A7%92"><span class="toc-text">本文的寫作視角</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E6%96%BC%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A7%E5%AE%B9%E7%B7%A8%E6%8E%92"><span class="toc-text">優於《精通 Python》的內容編排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E7%94%A8%E6%80%A7%E6%BB%BF%E6%BB%BF%E7%9A%84%E3%80%8C%E8%80%81%E6%89%8B%E5%B8%B6%E8%B7%AF%E3%80%8D"><span class="toc-text">實用性滿滿的「老手帶路」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Python-%E4%B8%AD%E7%9A%84%E8%AE%8A%E6%95%B8%EF%BC%9A%E6%98%AF%E6%B0%B4%E6%A1%B6%E9%82%84%E6%98%AF%E6%A8%99%E7%B1%A4%EF%BC%9F"><span class="toc-text">一、Python 中的變數：是水桶還是標籤？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83"><span class="toc-text">二、使用可變物件作為引數時要小心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B0%8F%E5%BF%83%E5%8D%80%E5%9F%9F%E8%AE%8A%E6%95%B8%E6%9C%AA%E8%B3%A6%E5%80%BC%E5%85%88%E4%BD%BF%E7%94%A8"><span class="toc-text">三、小心區域變數未賦值先使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%9A%84%E7%B6%93%E5%85%B8%E6%A1%88%E4%BE%8B"><span class="toc-text">書中的經典案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E6%9B%B8%E7%B8%BD%E8%A9%95"><span class="toc-text">全書總評</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%86%8D%E6%9C%83%E4%BA%86%EF%BC%81%E6%96%B0%E6%89%8B%E6%9D%91"><span class="toc-text">結語：再會了！新手村</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E8%B6%8A%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A5%E9%96%80%E5%82%91%E4%BD%9C"><span class="toc-text">超越《精通 Python》的入門傑作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E9%96%B1%E8%AE%80%E5%89%8D%E6%8F%90"><span class="toc-text">本文主旨與閱讀前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E6%96%BC%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A7%E5%AE%B9%E7%B7%A8%E6%8E%92"><span class="toc-text">優於《精通 Python》的內容編排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E7%94%A8%E6%80%A7%E6%BB%BF%E6%BB%BF%E7%9A%84%E3%80%8C%E8%80%81%E6%89%8B%E5%B8%B6%E8%B7%AF%E3%80%8D"><span class="toc-text">實用性滿滿的「老手帶路」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Python-%E4%B8%AD%E7%9A%84%E8%AE%8A%E6%95%B8%EF%BC%9A%E6%98%AF%E6%B0%B4%E6%A1%B6%E9%82%84%E6%98%AF%E6%A8%99%E7%B1%A4%EF%BC%9F"><span class="toc-text">一、Python 中的變數：是水桶還是標籤？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83"><span class="toc-text">二、使用可變物件作為引數時要小心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B0%8F%E5%BF%83%E5%8D%80%E5%9F%9F%E8%AE%8A%E6%95%B8%E6%9C%AA%E8%B3%A6%E5%80%BC%E5%85%88%E4%BD%BF%E7%94%A8"><span class="toc-text">三、小心區域變數未賦值先使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%9A%84%E7%B6%93%E5%85%B8%E6%A1%88%E4%BE%8B"><span class="toc-text">書中的經典案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E6%9B%B8%E7%B8%BD%E8%A9%95"><span class="toc-text">全書總評</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%86%8D%E6%9C%83%E4%BA%86%EF%BC%81%E6%96%B0%E6%89%8B%E6%9D%91"><span class="toc-text">結語：再會了！新手村</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/cHLjZCL.png" alt="Python 技術者們 - 練功！"><span class="cap">Python 技術者們 - 練功！</span></p>
+<blockquote>
+<p><code>2023/12/30</code> 更新：重新編輯並簡化前言，降低閱讀門檻。</p>
+</blockquote>
 <p>要說現在哪一門程式語言的入門書最多？恐怕就是 Python 了吧？</p>
 <p>基於<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80">動態語言</a>容易上手的特性，加上大數據、人工智慧的推波助瀾，Python 的熱度是一年比一年升溫，相關書籍也是一本接著一本推出。看看天瓏書局的 <a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/categories/python">Python 分類</a>，可謂汗牛充棟，多到讓你懷疑人生。</p>
 <p>即使扣除特定領域應用和相對進階的內容，剩下通盤介紹 Python 基礎的入門書，無論本土還是翻譯作，加起的數量依舊可觀，這也成為了初學者入門選書時的<strong>一大困擾</strong>。</p>
@@ -194,7 +203,7 @@
 </blockquote>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
 <li><a href="#%E8%B6%85%E8%B6%8A%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A5%E9%96%80%E5%82%91%E4%BD%9C">超越《精通 Python》的入門傑作</a></li>
-<li><a href="#%E6%9C%AC%E6%96%87%E7%9A%84%E5%AF%AB%E4%BD%9C%E8%A6%96%E8%A7%92">本文的寫作視角</a></li>
+<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E9%96%B1%E8%AE%80%E5%89%8D%E6%8F%90">本文主旨與閱讀前提</a></li>
 <li><a href="#%E5%84%AA%E6%96%BC%E3%80%8A%E7%B2%BE%E9%80%9A-Python%E3%80%8B%E7%9A%84%E5%85%A7%E5%AE%B9%E7%B7%A8%E6%8E%92">優於《精通 Python》的內容編排</a></li>
 <li><a href="#%E5%AF%A6%E7%94%A8%E6%80%A7%E6%BB%BF%E6%BB%BF%E7%9A%84%E3%80%8C%E8%80%81%E6%89%8B%E5%B8%B6%E8%B7%AF%E3%80%8D">實用性滿滿的「老手帶路」</a></li>
 <li><a href="#%E4%B8%80%E3%80%81Python-%E4%B8%AD%E7%9A%84%E8%AE%8A%E6%95%B8%EF%BC%9A%E6%98%AF%E6%B0%B4%E6%A1%B6%E9%82%84%E6%98%AF%E6%A8%99%E7%B1%A4%EF%BC%9F">一、Python 中的變數：是水桶還是標籤？</a></li>
@@ -213,16 +222,9 @@
 <p>如果說《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865024864">精通 Python</a>》是一部佳作，那麼這本《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863125914">Python 技術者們 - 練功！老手帶路教你精通正宗 Python 程式</a>》則屬毫無疑問的<strong>傑作</strong>——用詞淺白，卻能<strong>直指痛處</strong>。</p>
 <p>除了翻譯的品質明顯比《精通 Python》更好，作者 <a target="_blank" rel="noopener" href="https://www.naomiceder.tech/">Naomi Ceder</a> 也大有來頭，曾經是 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Python%E8%BB%9F%E9%AB%94%E5%9F%BA%E9%87%91%E6%9C%83">Python 軟體基金會</a>（Python Software Foundation）的主席。</p>
 <p>雖然從銷量與知名度而言，本書和《精通 Python》可能略有差距。不過沒關係，既然都是好書，我們當然全都要！</p>
-<h2 id="本文的寫作視角"><a href="#本文的寫作視角" class="headerlink" title="本文的寫作視角"></a>本文的寫作視角</h2><p>上一篇《精通 Python》心得，對於書中的具體內容，我往往點到為止，並沒有花太多篇幅加以介紹、著墨，只站在全書視野的高處，俯看整本書</p>
-<p>會選擇如此「高視角」切入，第一個原因是：剛開始嘗試程式類閱讀心得寫作，還處於摸索階段，需要更多的實驗與練習。</p>
-<p>其次，程式書籍不同於一般通俗讀物，性質上比較接近<strong>參考書</strong>——存在大量需要記憶的知識細節。如果文章以摘選或轉述書中內容為主，介紹可能會流於「<strong>繁瑣</strong>」，從而缺乏<strong>整體輪廓</strong>。對於尚在建立基礎的讀者而言，未必友好。</p>
-<p>所以，第一篇以讓讀者先<strong>熟悉 Python 基本功</strong>為目標，也有利於系列後續的展開，故未提及書中太多具體內容，僅從全書的寫作風格、輪廓與推薦閱讀方式上手。</p>
-<h3 id="本文的視角與前提"><a href="#本文的視角與前提" class="headerlink" title="本文的視角與前提"></a>本文的視角與前提</h3><p>接下來，本文則要擔當起「<strong>第二棒</strong>」的角色，寫作方式也會有<strong>小幅調整</strong>，改為「從高處俯看」與「介紹書中具體內容」兩個方向切入，增加書中教學的比例。</p>
-<p>因為已是系列的第二篇，本文會有下列視角與前提：</p>
-<ol>
-<li><strong>前提</strong>：預設讀者已經讀完前篇介紹的《精通 Python》一書，或其它 Python 入門書籍。即認為本篇讀者<strong>已經大致了解 Python 基礎語法</strong>。</li>
-<li><strong>視角</strong>：從 Python 開發者的角度，表達我個人對書中內容的看法與心得。</li>
-</ol>
+<h2 id="本文主旨與閱讀前提"><a href="#本文主旨與閱讀前提" class="headerlink" title="本文主旨與閱讀前提"></a>本文主旨與閱讀前提</h2><p>在這篇文章中，我將深入探討《Python 技術者們 - 練功！》這本書的核心概念，幫助讀者對 Python 有更深入的理解。</p>
+<p>我會從 Python 開發者的角度，分享我的看法和心得，並加上我個人的開發經驗。</p>
+<h3 id="閱讀前提"><a href="#閱讀前提" class="headerlink" title="閱讀前提"></a>閱讀前提</h3><p>本文<strong>預設</strong>讀者對 Python 基礎語法已有初步的了解。如果你是初學者，建議先讀完上述的《精通 Python》或系列<a href="https://blog.kyomind.tw/introducing-python/">第一篇文章</a>，再回來閱讀本文。</p>
 <hr>
 <p>好，有了上面的理解，我們來開始探索本書的迷人之處。</p>
 <h2 id="優於《精通-Python》的內容編排"><a href="#優於《精通-Python》的內容編排" class="headerlink" title="優於《精通 Python》的內容編排"></a>優於《精通 Python》的內容編排</h2><p>首先，還是要從 high level 講起。上篇我提到《精通 Python》的一個<strong>明顯缺點</strong>，就是「第二部分所佔比例太高」：</p>
@@ -336,6 +338,7 @@
 <hr>
 <p>開發人員沒有明確區分上述可能的不同情況，而一律加上預設值，往往是因為概念不夠清晰，或未能進一步思考使然。</p>
 <p>或許你會問：「即使一律都加上預設值，也不會真的造成什麼大問題啊？<strong>只是程式碼有點冗餘而已</strong>」，這正是我們第三本書所要討論的議題，在此先按下不表。</p>
+<hr>
 <h2 id="書中的經典案例"><a href="#書中的經典案例" class="headerlink" title="書中的經典案例"></a>書中的經典案例</h2><p>上述開發人員如果看過接下來要介紹的，本書的經典案例，相信就會明白為何<code>total</code>變數不需要預設值。</p>
 <p>這個「老手帶路」範例，就像書中所述，是連老手都可能失足的所在。在此我們先來看一段關鍵引言：</p>
 <blockquote>
@@ -372,14 +375,12 @@
 <li>Python 全域變數不是真正全域？</li>
 <li>Python 物件沒有真正的私有屬性，資訊都不用封裝隱藏了嗎？</li>
 <li>鴨子型別是什麼？我實在不懂這跟鴨子到底有什麼關係？</li>
-<li>Pythonic 這個詞好像很厲害，是什麼意思？</li>
 <li>Python 的 list[n:m] 切片為何要有頭無尾？</li>
 <li>Python 的型別與類別是同義詞？</li>
 </ul>
 <p>這些議題，就留給讀者們自行探索了。</p>
-<h2 id="全書總評"><a href="#全書總評" class="headerlink" title="全書總評"></a>全書總評</h2><p>原本書中的內容介紹我是打算寫 5 點的，但沒想到僅僅成文的這 3 點就耗費了超過 2000 字的幅篇，再多寫 2 點則整篇文章會顯得有點超載。</p>
-<p>不過，我覺得上述 3 點已稱得上極具代表性，即使止步於此，也不算偷懶了。</p>
-<p>本文所舉的內容，畢竟只是書中的一小部分，主要用意在於引發讀者閱讀此書的興趣。若看了文章覺得心動，建議趕緊前往天瓏書局網站<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863125914">為自己入手一本</a>。因為它很有可能會是你這輩子所買過，最值得的一本 Python 參考書。</p>
+<h2 id="全書總評"><a href="#全書總評" class="headerlink" title="全書總評"></a>全書總評</h2><p>本文所舉的內容，畢竟只是書中的一部分（當然是重要部分），主要用意在於引發讀者閱讀此書的興趣。</p>
+<p>若看了文章覺得心動，建議趕緊前往天瓏書局網站<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863125914">為自己入手一本</a>。因為它很有可能會是你這輩子所買過，最值得的一本 Python 參考書。</p>
 <h3 id="最佳-Python-入門書"><a href="#最佳-Python-入門書" class="headerlink" title="最佳 Python 入門書"></a>最佳 Python 入門書</h3><p>《Python 技術者們 - 練功！》是一部值得一看再看、對學習與實際開發都頗有助益的優秀作品。就像開頭所說言，它就是我心中最佳的 Python 入門書，沒有之一。</p>
 <p>全書讀下來，沒什麼多餘的部分，完全無愧於原文書名「<a target="_blank" rel="noopener" href="https://www.manning.com/books/the-quick-python-book-third-edition">The Quick Python Book</a>」，讓你在有限的幅篇內，快速了解 Python 學習與應用上的重點所在。</p>
 <p>好了，溢美之詞就到此為止。最後讓我對本書，表達深深的敬意與感謝。</p>
@@ -424,12 +425,13 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/introducing-python/" title="《精通 Python 第二版》心得：給入門者的 Python 學習藍圖" rel="bookmark">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-02/" title="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱" rel="bookmark">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/introducing-python/" title="《精通 Python 第二版》心得：給入門者的 Python 學習藍圖" rel="bookmark">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-02/" title="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱" rel="bookmark">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Python/">Python</a>
             <a href="/tags/%E6%9B%B8/">書</a>
             <a href="/tags/%E9%96%B1%E8%AE%80%E5%BF%83%E5%BE%97/">閱讀心得</a>
             <a href="/tags/%E9%95%B7%E6%96%87/">長文</a>
+            <a href="/tags/%E7%B3%BB%E5%88%97%EF%BC%9APython-%E5%85%A5%E9%96%80%E4%B8%89%E9%83%A8%E6%9B%B2/">系列：Python 入門三部曲</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/logseq/">
