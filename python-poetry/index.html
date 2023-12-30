@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2023-12-30T10:27:50+08:00" />
+  <meta property="article:modified_time" content="2023-12-30T19:10:59+08:00" />
 
 
 
@@ -364,14 +364,14 @@
 <p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，帶有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
 <p>Poetry 和 pip、git、pyenv 等工具一樣，都是典型的<strong>命令列工具</strong>，需要先安裝才能下達指令——<code>poetry</code>。</p>
-<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 主要提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
+<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
 <ol>
 <li>使用<code>pipx</code>安裝。</li>
-<li>使用 official installer（本質上就是下述的安裝指令）安裝。</li>
+<li>使用 official installer（即下述的安裝指令）安裝。</li>
 </ol>
 <p>以上兩種方式大同小異，核心內涵都是「<strong>自動為你建立一個 Python 虛擬環境，並在其中安裝 Poetry</strong>」，以達到 <strong>Poetry 安裝環境的獨立與隔離</strong>。</p>
-<p>如果你平常沒在使用 <a target="_blank" rel="noopener" href="https://github.com/pypa/pipx">pipx</a>（甚至沒聽過 XD），那選擇第二種方式即可。</p>
-<h3 id="不要安裝-Poetry-至你的專案虛擬環境"><a href="#不要安裝-Poetry-至你的專案虛擬環境" class="headerlink" title="不要安裝 Poetry 至你的專案虛擬環境"></a>不要安裝 Poetry 至你的專案虛擬環境</h3><p>安裝 Poetry 的時候，一定將它安裝在一個<strong>「專用」的虛擬環境</strong>。上述兩種安裝方式都滿足這個條件。</p>
+<p>如果你平常沒在使用 <a target="_blank" rel="noopener" href="https://github.com/pypa/pipx">pipx</a>，那選擇第二種方式即可。</p>
+<h3 id="避免安裝-Poetry-至專案虛擬環境"><a href="#避免安裝-Poetry-至專案虛擬環境" class="headerlink" title="避免安裝 Poetry 至專案虛擬環境"></a>避免安裝 Poetry 至專案虛擬環境</h3><p>安裝 Poetry 的時候，一定將它安裝在一個<strong>「專用」的虛擬環境</strong>。上述兩種安裝方式都滿足這個條件。</p>
 <p>千萬不要為了方便，把 Poetry 直接安裝至你的專案虛擬環境，<strong>這麼做是危險的</strong>。</p>
 <p>因為 Poetry 所依賴的套件非常多，<strong>總計超過 30 個，會嚴重影響專案虛擬環境的整潔度</strong>。這些依賴套件可能和專案本身的套件<strong>發生衝突</strong>。</p>
 <p>所以文件才會提醒你：</p>
@@ -394,7 +394,7 @@
 </ul>
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
 <hr>
-<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p>如果你選擇<code>pipx</code>安裝 Poetry，原則上不需要設定 PATH，因為<code>pipx</code>會自動幫你設定好——難怪官方把<code>pipx</code>安裝方式放在分頁的首位。</p>
+<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p>如果你選擇<code>pipx</code>安裝 Poetry，原則上不需要設定 PATH，因為<code>pipx</code>會自動幫你設定——難怪官方把<code>pipx</code>安裝方式放在分頁的首位。</p>
 <p>如果你選擇「<strong>official installer 安裝」，那這一步非常重要</strong>，我們<strong>必須先「手動設定」PATH</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
 <blockquote>
 <p>至於 PATH 是什麼，可以參考良葛格這篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
