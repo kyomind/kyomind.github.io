@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2023-12-30T08:41:18+08:00" />
+  <meta property="article:modified_time" content="2023-12-30T10:20:50+08:00" />
 
 
 
@@ -190,6 +190,9 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"><span class="cap">by Feifei Ruan on Behance</span></p>
 <blockquote>
+<p><code>2023/12/30</code>更新：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」一節內容。</p>
+</blockquote>
+<blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
 </blockquote>
 <p>前陣子工作上的專案從原先的 pip 改用 Poetry 管理 Python 套件，由於採用 Poetry 正是我的提議，所以得身先士卒，研究 Poetry 使用上的重點與學習成本，並評估是否真有所值——講白了就是至少要利大於弊，不然會徒增團隊適應上的負擔。</p>
@@ -245,12 +248,12 @@
 <li>套件相依性管理</li>
 <li>套件的打包與發布</li>
 </ul>
-<p>其中<strong>最為關鍵</strong>的是「<strong>套件的相依性管理</strong>」，也是本文的重點，而「套件的打包與發布」與主題較無關係，所以不會提及。</p>
+<p>其中<strong>最為關鍵</strong>的是「<strong>套件的相依性管理</strong>」，也是本文的重點，而「套件的打包與發布」與本文主題無關，所以不會提及。</p>
 <h2 id="名詞解釋：虛擬環境管理、套件管理、相依性管理"><a href="#名詞解釋：虛擬環境管理、套件管理、相依性管理" class="headerlink" title="名詞解釋：虛擬環境管理、套件管理、相依性管理"></a>名詞解釋：虛擬環境管理、套件管理、相依性管理</h2><p>開始前，要先大致說明標題中這三者的區別，才不易混淆文中的內容。這裡的定義可能不盡準確，但至少對理解文中的表達能有所幫助。</p>
 <h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>指的是使用內建的 venv 或 virtualenv 套件來建立及管理 Python 的虛擬環境，不同的虛擬環境間各自獨立，也就是對應的路徑各不相同。</p>
 <h3 id="套件管理、依賴管理（dependency-management）"><a href="#套件管理、依賴管理（dependency-management）" class="headerlink" title="套件管理、依賴管理（dependency management）"></a>套件管理、依賴管理（dependency management）</h3><p>指的是使用 pip 這類的套件管理器來管理 Python 環境（未必是虛擬環境），即管理環境中所安裝的全部套件（package、dependency）及其版本。</p>
 <p>在這個<strong>語境</strong>下，dependency 基本上就是指你安裝的 package。</p>
-<h3 id="「套件的」相依性管理、依賴解析"><a href="#「套件的」相依性管理、依賴解析" class="headerlink" title="「套件的」相依性管理、依賴解析"></a>「套件的」相依性管理、依賴解析</h3><p>這個有點難定義，它並不是一個非常通俗且有共識的名詞，我在英文中也還難找到對應的單字。本文使用它時，主要指的是<strong>套件與套件之間的依賴關係及版本衝突管理</strong>，也就是套件的「<strong>相依性管理</strong>」。在下文提及的 Podcast 中，又稱為「<strong>依賴解析</strong>」。</p>
+<h3 id="「套件的」相依性管理、依賴解析"><a href="#「套件的」相依性管理、依賴解析" class="headerlink" title="「套件的」相依性管理、依賴解析"></a>「套件的」相依性管理、依賴解析</h3><p>這個有點難定義，它並不是一個非常通俗且有共識的名詞，我在英文中也還難找到對應的單字。本文使用它時，主要指的是<strong>套件與套件之間的依賴關係及「版本衝突」管理</strong>。在下文提及的 Podcast 中，又稱為「<strong>依賴解析</strong>」。</p>
 <p>所謂套件的「<strong>版本衝突</strong>」指的是單一套件被兩個以上的套件所依賴，但不同的套件對依賴的套件有著不同的<strong>最低或最高版本要求</strong>，若兩者要求的範圍「<strong>沒有交集</strong>」，則會發生衝突而導致套件<strong>失效</strong>或<strong>無法安裝</strong>。</p>
 <h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><p>大概在 2 年前就聽過 Poetry 的大名，不過那時我還沒有套件相依性管理的強烈需求，加上看起來需要一些學習成本（確實如此），所以就一直擱在一旁，直到真正體會到了 pip 的不足。</p>
 <p>pip 是 Python 內建的套件管理工具，而它的最大罩門，就是對於「套件間的相依性管理」能力不足。尤其是在「<strong>移除</strong>」套件時的依賴解析——可以說沒有。這也是我提議改用 Poetry 的根本原因。</p>
@@ -309,7 +312,7 @@
 <p>從 Podcast 官方頁面中「時間節點」目錄中可知，該集對 Python 的虛擬環境與套件管理機制及相關工具，有著非常廣泛的討論，十分精彩，強力推薦！（為了寫這篇又聽了第 3 次）</p>
 <p><img src="https://i.imgur.com/gzcAU7e.png" alt="pythonhunter.org/episodes/ep15"><span class="cap">pythonhunter.org/episodes/ep15</span></p>
 <h3 id="Pipenv-vs-Poetry"><a href="#Pipenv-vs-Poetry" class="headerlink" title="Pipenv vs Poetry"></a>Pipenv vs Poetry</h3><p>因為 pip 存在這樣的致命弱點，所以很早就有相關的方案提出想要解決它，最知名的莫過於 <a target="_blank" rel="noopener" href="https://pipenv.pypa.io/en/latest/">Pipenv</a>！</p>
-<p>而講到需要有充分「套件相依性管理」功能的套件管理器，你基本上也只能從 Pipenv 和 Poetry 兩者之中二擇一了。</p>
+<p>而講到需要有充分「<strong>套件相依性管理</strong>」功能的套件管理器，你基本上也只能從 Pipenv 和 Poetry 兩者之中二擇一了。</p>
 <p>如果是在兩年前，這道選擇題恐怕不容易回答，且 Pipenv 可能會有較大的機率勝出，<strong>但兩年後的今天，我會建議你毫不猶豫地選擇 Poetry。</strong></p>
 <h2 id="選擇-Poetry-的兩個理由"><a href="#選擇-Poetry-的兩個理由" class="headerlink" title="選擇 Poetry 的兩個理由"></a>選擇 Poetry 的兩個理由</h2><p>怎麼說呢？以下是我的理由。</p>
 <h3 id="理由一：Pipenv-的不足"><a href="#理由一：Pipenv-的不足" class="headerlink" title="理由一：Pipenv 的不足"></a>理由一：Pipenv 的不足</h3><p>當你搜尋「python poetry」關鍵字的時候，那些教你怎麼使用 Poetry 的文章，往往也會一併提及<strong>為何不選擇 Pipenv。</strong></p>
@@ -355,23 +358,29 @@
 <li><a target="_blank" rel="noopener" href="https://realpython.com/dependency-management-python-poetry/">Dependency Management With Python Poetry</a></li>
 </ul>
 <p>如果在本文找不到你需要的內容，以上二處可能會有，所以主動列出。</p>
-<p>另外本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。不過，即使有問題，應該也是集中在安裝與設定階段，本文其餘部分仍可適用。</p>
-<h2 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h2><p>Poetry 和 pip、git、pyenv 等工具一樣，都是典型的<strong>命令列工具</strong>，需要先安裝才能下達指令——<code>poetry</code>。</p>
-<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 主要提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種安裝方式</a>：</p>
-<ol>
-<li><strong>全域安裝</strong>至使用者的家目錄。</li>
-<li><strong>pip 安裝</strong>至專案使用的 Python（虛擬）環境，即<code>pip install poetry</code>。</li>
-</ol>
-<p><strong>個人推薦使用全域安裝</strong>，官方文件也表示<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#alternative-installation-methods-not-recommended">不推薦使用 pip 安裝</a>。</p>
-<p>因為 pip 安裝是直接安裝到「<strong>專案所屬的 Python 虛擬環境</strong>」裡，而 Poetry 所依賴的套件非常多，<strong>總計超過 30 個，會嚴重影響專案虛擬環境的整潔度</strong>。文件中也警告這些依賴套件可能和專案本身的套件<strong>發生衝突</strong>：</p>
-<blockquote>
-<p>Be aware that it will also install Poetry’s dependencies which <strong>might cause conflicts with other packages.</strong></p>
+<p>另外本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。</p>
+<p>不過，即使有問題，應該也是集中在安裝與設定階段，本文其餘部分仍可適用。</p>
+<h2 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h2><blockquote>
+<p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，帶有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
-<h3 id="全域安裝-Poetry-至家目錄"><a href="#全域安裝-Poetry-至家目錄" class="headerlink" title="全域安裝 Poetry 至家目錄"></a>全域安裝 Poetry 至家目錄</h3><p>所以我們就使用全域安裝吧！</p>
+<p>Poetry 和 pip、git、pyenv 等工具一樣，都是典型的<strong>命令列工具</strong>，需要先安裝才能下達指令——<code>poetry</code>。</p>
+<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 主要提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
+<ol>
+<li>使用<code>pipx</code>安裝。</li>
+<li>使用 official installer（本質上就是下述的安裝指令）安裝。</li>
+</ol>
+<p>以上兩種方式大同小異，核心內涵都是「<strong>自動為你建立一個 Python 虛擬環境，並在其中安裝 Poetry</strong>」，以達到 <strong>Poetry 安裝環境的獨立與隔離</strong>。</p>
+<p>如果你平常沒在使用 <a target="_blank" rel="noopener" href="https://github.com/pypa/pipx">pipx</a>（甚至沒聽過 XD），那選擇第二種方式即可。</p>
+<h3 id="不要安裝-Poetry-至你的專案虛擬環境"><a href="#不要安裝-Poetry-至你的專案虛擬環境" class="headerlink" title="不要安裝 Poetry 至你的專案虛擬環境"></a>不要安裝 Poetry 至你的專案虛擬環境</h3><p>安裝 Poetry 的時候，一定將它安裝在一個<strong>「專用」的虛擬環境</strong>。上述兩種安裝方式都滿足這個條件。</p>
+<p>千萬不要為了方便，把 Poetry 直接安裝至你的專案虛擬環境，<strong>這麼做是危險的</strong>。</p>
+<p>因為 Poetry 所依賴的套件非常多，<strong>總計超過 30 個，會嚴重影響專案虛擬環境的整潔度</strong>。這些依賴套件可能和專案本身的套件<strong>發生衝突</strong>。</p>
+<p>所以文件才會提醒你：</p>
+<blockquote>
+<p><strong>Poetry should always be installed in a dedicated virtual environment to isolate it from the rest of your system.</strong> In no case, it should be installed in the environment of the project that is to be managed by Poetry.</p>
+</blockquote>
+<h3 id="使用-official-installer-安裝-Poetry-至家目錄"><a href="#使用-official-installer-安裝-Poetry-至家目錄" class="headerlink" title="使用 official installer 安裝 Poetry 至家目錄"></a>使用 official installer 安裝 Poetry 至家目錄</h3><p>我個人使用 <a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installing-with-the-official-installer">official installer</a> 安裝。</p>
+<p>要用 official installer 安裝 Poetry，只要在命令列輸入下列指令。</p>
 <h4 id="macOS-x2F-Linux-x2F-WSL（Windows-Subsystem-for-Linux）"><a href="#macOS-x2F-Linux-x2F-WSL（Windows-Subsystem-for-Linux）" class="headerlink" title="macOS &#x2F; Linux &#x2F; WSL（Windows Subsystem for Linux）"></a>macOS &#x2F; Linux &#x2F; WSL（Windows Subsystem for Linux）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 -</span><br></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -</span><br></pre></td></tr></table></figure>
-
 
 <h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -</span><br></pre></td></tr></table></figure>
 
@@ -384,7 +393,9 @@
 <li><code>%APPDATA%\Python\Scripts</code> on Windows</li>
 </ul>
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
-<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p><strong>這一步非常重要</strong>，如果你也是選擇「<strong>全域安裝</strong>」，就<strong>必須先「設定 PATH」</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
+<hr>
+<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p>如果你選擇使用 pipx 安裝 Poetry，那原則上不需要設定 PATH，因為 pipx 會自動幫你設定好——難怪官方把 pipx 安裝方式放在分頁的首位。</p>
+<p>如果你也是選擇「<strong>official installer 安裝」，那這一步非常重要</strong>，我們<strong>必須先「手動設定 PATH」</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
 <blockquote>
 <p>至於 PATH 是什麼，可以參考良葛格這篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
 </blockquote>
