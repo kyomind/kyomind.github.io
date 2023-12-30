@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    
+    <lastmod>2023-12-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-poetry/</loc>
+    
+    <lastmod>2023-12-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
     
     <lastmod>2023-12-30</lastmod>
@@ -75,15 +93,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
-    
-    <lastmod>2023-12-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-poetry/</loc>
     
     <lastmod>2023-12-30</lastmod>
     
@@ -408,15 +417,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2023-10-29</lastmod>
     
@@ -857,7 +857,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
+    <loc>https://blog.kyomind.tw/riverside/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
@@ -866,7 +866,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/riverside/</loc>
+    <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
     
     <lastmod>2023-03-05</lastmod>
     
