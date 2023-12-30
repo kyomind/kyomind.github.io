@@ -33,7 +33,7 @@
     <meta property="og:tag" content="Git" />
     
 
-  <meta property="article:modified_time" content="2023-12-27T13:16:41+08:00" />
+  <meta property="article:modified_time" content="2023-12-30T04:18:54+08:00" />
 
 
 
@@ -191,9 +191,8 @@
 <li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
 <li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
 </ol>
-<p>仔細一看，其實不就是 Flake8、yapf、isort、Black Formatter 這 4 項工具的排列組合而已嗎XD。</p>
-<p>是的！我自己整理到都覺得有點不好意思了🫣</p>
-<p>但是，為什麼要寫這麼多？還是那句老話：「<strong>我認為這些工具的重要性，再怎麼強調也不為過——更別說它們常常被低估了。</strong>」</p>
+<p>這些文章都是我在工作中，實際使用這些工具的心得。</p>
+<p>不過，為什麼要寫這麼多？還是那句老話：「<strong>我認為這些工具的重要性，再怎麼強調也不為過——更別說它們常常被低估了。</strong>」</p>
 <p>我曾在上述文章中的開頭或結尾處，不厭其煩地表達自己對它們的重視，這裡就不再贅述，直接進入重點。</p>
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將講述如何透過 <a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 這個工具設定 Git Hooks，並以 Flake8、isort、yapf 等 Python 開發常用套件為例，進行演示，同時提醒一些注意事項。</p>
 <p>如同 Poetry，pre-commit 也是我在工作上，強烈希望導入的工具——畢竟它可以有效降低 code review 時血壓升高的次數☺️</p>
@@ -263,7 +262,7 @@
 <p>至於<code>rev</code>的具體版本號（總不能自己瞎編一個），repo 網頁的「tags」頁面就會有，比如這是 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/flake8/tags">Flake8 的 tags 頁面</a>。</p>
 <p>值得留意的是：有些 hook 的 tag 有「<code>v</code>」開頭，有些則否（上述 Flake8 就沒有）。這主要取決於各專案開發者的 tag 命名習慣，我們只要留意一下即可。</p>
 <p>知道這些，基本上就能設定好<code>.pre-commit-config.yaml</code>了。</p>
-<h2 id="pre-commit-設定-Flake8、isort、yapf"><a href="#pre-commit-設定-Flake8、isort、yapf" class="headerlink" title="pre-commit 設定 Flake8、isort、yapf"></a>pre-commit 設定 Flake8、isort、yapf</h2><p>又到了整個「系列」都不斷重複、重複、再重複的幾樣工具😎</p>
+<h2 id="pre-commit-設定-Flake8、isort、yapf"><a href="#pre-commit-設定-Flake8、isort、yapf" class="headerlink" title="pre-commit 設定 Flake8、isort、yapf"></a>pre-commit 設定 Flake8、isort、yapf</h2><p>這裡我們以 Flake8、isort、yapf 為例，這三個工具都是 Python 開發常用的套件，而且我們在之前的文章中也有介紹過，所以就不再贅述。</p>
 <h3 id="Flake8"><a href="#Flake8" class="headerlink" title="Flake8"></a>Flake8</h3><p>直接看設定檔：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/flake8</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.0</span><span class="number">.4</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">flake8</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--max-line-length=100</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--ignore=E131,E126,E402</span></span><br></pre></td></tr></table></figure>
 
