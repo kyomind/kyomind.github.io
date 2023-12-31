@@ -33,7 +33,7 @@
     <meta property="og:tag" content="系列：Python 功力提升的樂趣" />
     
 
-  <meta property="article:modified_time" content="2023-12-27T13:16:02+08:00" />
+  <meta property="article:modified_time" content="2023-12-31T05:43:54+08:00" />
 
 
 
@@ -178,7 +178,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">第 10 章：寫出有效率的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A6%8F%E6%A8%A1%EF%BC%9A%E5%B0%8F%E5%B0%B1%E6%98%AF%E5%A5%BD%EF%BC%9F"><span class="toc-text">函式的規模：小就是好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%88return%EF%BC%89%E6%87%89%E8%A9%B2%E9%83%BD%E8%A6%81%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-text">返回值（return）應該都要有相同的資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%8D%E5%AF%AB%E5%A5%BD%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9C%8B%E6%B3%95"><span class="toc-text">我對寫好函式的基本看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">Docstring 真的很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A1%8C%E7%82%BA%E8%88%87%E5%91%BD%E5%90%8D%E8%A6%81%E4%B8%80%E8%87%B4"><span class="toc-text">函式的行為與命名要一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%B3%A8%E9%87%8B%E3%80%81docstring-%E5%92%8C-type-hints"><span class="toc-text">第 11 章：注釋、docstring 和 type hints</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">第 10 章：寫出有效率的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A6%8F%E6%A8%A1%EF%BC%9A%E5%B0%8F%E5%B0%B1%E6%98%AF%E5%A5%BD%EF%BC%9F"><span class="toc-text">函式的規模：小就是好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%88return%EF%BC%89%E6%87%89%E8%A9%B2%E9%83%BD%E8%A6%81%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-text">返回值（return）應該都要有相同的資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E8%A1%93%E5%82%B5%E8%88%87%E8%AA%8D%E7%9F%A5%E8%B2%A0%E6%93%94"><span class="toc-text">技術債與認知負擔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%8D%E5%AF%AB%E5%A5%BD%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9C%8B%E6%B3%95"><span class="toc-text">我對寫好函式的基本看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">Docstring 真的很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A1%8C%E7%82%BA%E8%88%87%E5%91%BD%E5%90%8D%E8%A6%81%E4%B8%80%E8%87%B4"><span class="toc-text">函式的行為與命名要一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%B3%A8%E9%87%8B%E3%80%81docstring-%E5%92%8C-type-hints"><span class="toc-text">第 11 章：注釋、docstring 和 type hints</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
 <p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，也是最後一篇。</p>
@@ -198,9 +198,7 @@
 <p>本章探討的正是這些取捨之間的利弊得失，以及編寫函式的重要原則。不用說，絕對是關鍵的一章。</p>
 <span id="more"></span>
 
-<blockquote>
-<p>相關文章：重構日誌：如何寫好一個 Python 函式——註解、docstring、解耦（待發表）</p>
-</blockquote>
+<hr>
 <h2 id="函式的規模：小就是好？"><a href="#函式的規模：小就是好？" class="headerlink" title="函式的規模：小就是好？"></a>函式的規模：小就是好？</h2><p>我們都聽過「函式應該盡可能簡單、一次只做一次件事」之類的建言，也表示認同。從這個精神出發，太大或太複雜的函式就應該要進行拆分。</p>
 <p>但！事實是，有效拆分函式是一件耗神、講究細節，且沒有標準答案的事。以致於我們即使知道，也很難完全貫徹，包括我自己。</p>
 <p>出於各種原因，我們常常對現實世界作出一定的妥協。</p>
@@ -225,7 +223,7 @@
 <hr>
 <h2 id="返回值（return）應該都要有相同的資料型別"><a href="#返回值（return）應該都要有相同的資料型別" class="headerlink" title="返回值（return）應該都要有相同的資料型別"></a>返回值（return）應該都要有相同的資料型別</h2><p>對此，我想說：</p>
 <blockquote>
-<p>這真的好重要啊！（吶喊）</p>
+<p><strong>這真的好重要啊！</strong>（吶喊）</p>
 </blockquote>
 <p>卻常常沒有被好好遵守。</p>
 <p>簡言之，為確保函式的「<strong>可預測性</strong>」，我們應該努力讓函式只回傳「<strong>單一資料型別</strong>」的值。比如<strong>總是</strong>回傳整數或字串，而不要有時回傳字串，有時則回傳布林值。</p>
@@ -233,7 +231,7 @@
 <h3 id="以False代替raise"><a href="#以False代替raise" class="headerlink" title="以False代替raise"></a>以<code>False</code>代替<code>raise</code></h3><p>最常見的例子就是：<strong>該拋出錯誤時候，卻只用<code>return False</code> 替代</strong>。</p>
 <p>意即，當函式正常執行時，回傳一般正常的 output 值。但當執行失敗時，卻是回傳<code>False</code>——這簡直令人髮指，而且我相信你一定看過這樣的函式。</p>
 <p>必須說明，發生錯誤時不拋出而選擇<code>return False</code>未必總是不好的，就像 Django REST framework 序列化器的<code>is_valid</code>方法，預設也是返回一個布林值（可以用<code>raise_exception=True</code>參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
-<p>不過，**如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>**，以保持回傳型別的一致性。</p>
+<p>不過，<strong>如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>，</strong>以保持回傳型別的一致性。</p>
 <p>而且<strong>函式命名</strong>也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。這些都是常見的最佳實踐。</p>
 <h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，其目的是從一個<code>JSON</code>文件中讀取配置資訊。如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常並返回<code>False</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            config = json.load(f)</span><br><span class="line">        <span class="keyword">return</span> config</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># 這裡是問題所在</span></span><br></pre></td></tr></table></figure>
@@ -244,16 +242,17 @@
 <li><strong>誤導函式使用者</strong>：使用者可能會誤以為<code>False</code>是一個有效的配置，進而嘗試在其上進行操作，這會導致更多的錯誤。</li>
 <li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為<code>False</code>，然後再決定是否進行後續的操作。</li>
 </ol>
-<p>「return 型別不確定」肯定不只發生在例外處理，但它確實<strong>很常發生在例外處理</strong>，因為我看過<strong>不止一次</strong>類似的真實案例。</p>
+<hr>
+<p>其實「<code>return</code>型別不確定」肯定不只發生在例外處理，但它<strong>確實「很常發生」在例外處理</strong>，因為我看過<strong>不止一次</strong>類似的真實案例。</p>
 <p>很多人本能地會這樣寫，這往往是因為不習慣、不擅長處理錯誤，所以想要用自己平常更熟悉的<code>False</code>。</p>
-<p>除此之外，我還看過「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息」這種非常<strong>反直覺</strong>的設計。彷彿是在告訴我們：</p>
+<p>除此之外，還有「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息」這種非常<strong>反直覺</strong>的設計。彷彿是在告訴我們：</p>
 <blockquote>
-<p>這個函式的回傳值，可能是一個物件，也可能是一個 tuple，你自己判斷吧！</p>
+<p>這個函式的回傳值，可能是一個物件，也可能是一個 tuple，<strong>你自己判斷吧！</strong></p>
 </blockquote>
 <p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
 <p><strong>充滿了技術債味的寫法。</strong></p>
-<h3 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h3><p>這類「<strong>雙型別 return</strong>」的函式，對於<strong>函式使用者</strong>（有可能是你的同事）的認知，有著「<strong>更高的要求</strong>」——呼叫方必須很了解這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
-<p>這在多行或有多個 return 值的複雜函式時，真是一場災難。</p>
+<h2 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h2><p>這類「<strong>雙型別 return</strong>」的函式，對於<strong>函式使用者</strong>（有可能是你的同事）的認知，有著「<strong>更高的要求</strong>」——呼叫方必須很了解這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
+<p>這在多行或有多個 return 值的<strong>複雜函式時，真是一場災難。</strong></p>
 <blockquote>
 <p>期望他人知道自己做了什麼「特別的事」，不是我所知曉的軟體開發之道。</p>
 </blockquote>
@@ -281,6 +280,7 @@
 <li><a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
 </ul>
 <p>我的觀點一向如此：<strong>不寫好 docstring，就稱不上是一流的 Python 開發者。</strong></p>
+<hr>
 <h2 id="函式的行為與命名要一致"><a href="#函式的行為與命名要一致" class="headerlink" title="函式的行為與命名要一致"></a>函式的行為與命名要一致</h2><p>其二，好的函式要「言行一致」。</p>
 <p>你可能會想：</p>
 <blockquote>
@@ -297,7 +297,7 @@
 </ol>
 <p>如果你不能從一個函式的名稱中<strong>有效理解並推測</strong>它應有的行為，那麼這個函式基本上就是失敗（或不健康）的。</p>
 <p>很多時候，函式<strong>最初</strong>可能是「言行一致」的，但隨著後來的修改、刪除、擴充，實際上做的事情變更了，但命名卻沒有跟著改變、重構。</p>
-<p>這些言行不一的函式，充滿了<strong>誤導性</strong>，不斷地挑戰著你的認知、推理能力，還增加了維護成本。</p>
+<p>這些言行不一的函式，充滿<strong>誤導性</strong>，不斷地挑戰著你的認知、推理能力，更增加了維護成本。</p>
 <p>這樣的例子還少嗎？恐怕每天都在發生。</p>
 <hr>
 <h2 id="第-11-章：注釋、docstring-和-type-hints"><a href="#第-11-章：注釋、docstring-和-type-hints" class="headerlink" title="第 11 章：注釋、docstring 和 type hints"></a>第 11 章：注釋、docstring 和 type hints</h2><p>這章我只摘錄書中的一段話——我特別欣賞與認同的部分：</p>
