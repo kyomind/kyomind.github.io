@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 入門" />
     
 
-  <meta property="article:modified_time" content="2023-12-29T08:11:44+08:00" />
+  <meta property="article:modified_time" content="2023-12-31T07:18:43+08:00" />
 
 
 
@@ -272,20 +272,23 @@
 <p><code>OneToOneField</code>即外鍵中的一對一關係欄位，第一個參數是<code>to</code>，為目標關聯的 model，有兩種格式：</p>
 <ol>
 <li>model class 本身。</li>
-<li>字串。用於無法直接引用的情境，比如本例中的 title 欄位，Title 類別定義在 Post 之後。</li>
+<li>字串。用於無法直接引用的情境，比如本例中的 title 欄位，<code>Title</code>類別定義在<code>Post</code>之後。</li>
 </ol>
 <p>第二個參數是<code>on_delete</code>，用來定義「關聯物件被刪除時」當前物件該如何處理的行為。有多揰模式，最常用的不外乎<code>CASCADE</code>、<code>PROTECT</code>、<code>SET_NULL</code>這 3 種，其餘所有選項與行為定義，可以參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.CASCADE">文件</a>。</p>
 <p>除了<code>to</code>和<code>on_delete</code>兩個必要參數，剩下的都是 optional，不過還有一個參數也非常重要，那就是<code>related_name</code>。</p>
-<h2 id="related-name-與反向關聯"><a href="#related-name-與反向關聯" class="headerlink" title="related_name 與反向關聯"></a>related_name 與反向關聯</h2><p><code>related_name</code>用於指定關聯<strong>目標 model</strong>（本例為 Title）的「反向關聯」<strong>屬性名稱</strong>。這個屬性對查詢很實用，所以<code>related_name</code>也是外鍵屬性中重要的參數之一。</p>
+<hr>
+<h2 id="related-name-與反向關聯"><a href="#related-name-與反向關聯" class="headerlink" title="related_name 與反向關聯"></a>related_name 與反向關聯</h2><p><code>related_name</code>用於指定<strong>關聯目標 model</strong>（本例為<code>Title</code>）的「反向關聯」<strong>屬性名稱</strong>。這個屬性對查詢很實用，所以<code>related_name</code>也是外鍵屬性中重要的參數之一。</p>
 <p>我們從 model 角度來看外鍵建立後的效果，以及<code>related_name</code>所扮演的角色。</p>
-<h3 id="Post-角度"><a href="#Post-角度" class="headerlink" title="Post 角度"></a>Post 角度</h3><p>Post 有一個屬性為<code>title</code>，也就是我們所建立的外鍵，這個屬性在 model 中是明示的，意味著它在 db table 中也會有對應的欄位——<code>title_id</code>。其中<code>_id</code>是 Django 幫你加的，你可以透過<code>class Meta</code>自行定義這個欄位的名稱。</p>
+<h3 id="Post-角度"><a href="#Post-角度" class="headerlink" title="Post 角度"></a>Post 角度</h3><p><code>Post</code>有一個屬性為<code>title</code>，也就是我們所建立的外鍵，這個屬性在 model 中是明示的，意味著它在 db table 中也會有對應的欄位——<code>title_id</code>。其中<code>_id</code>是 Django 幫你加的，你可以透過<code>class Meta</code>自行定義這個欄位的名稱。</p>
 <p>事實上，建立關聯不一定只能指向目標 model 的「主鍵」，只要是 model 中的  unique 欄位都可以，可參考 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey.to_field">to_field 文件</a>。</p>
-<h3 id="Title-角度"><a href="#Title-角度" class="headerlink" title="Title 角度"></a>Title 角度</h3><p>一對一關係建立後，對 Title model 或它的實例而言，它得到了什麼？——反向關聯屬性。</p>
-<p>這個屬性在 model 中沒有明示，你從 model 中看不出 Title 有什麼屬性可以指向 Post。但實際上 Title 確實有一個反向關聯屬性指向 Post。</p>
-<p>這就是反向關聯的特性，它是「<strong>隱式</strong>」的，這個屬性確實存在。而<strong>反向關聯屬性的名稱就是前述</strong><code>related_name</code><strong>所定義的名稱</strong>，即<code>post</code>：</p>
+<h3 id="Title-角度"><a href="#Title-角度" class="headerlink" title="Title 角度"></a>Title 角度</h3><p>一對一關係建立後，對<code>Title</code>或它的實例而言，它得到了什麼？——<strong>反向關聯屬性</strong>。</p>
+<p>這個屬性在 model 中沒有明示，你從 model 中看不出<code>Title</code>有什麼屬性可以指向<code>Post</code>。但實際上<code>Title</code>確實有一個<strong>反向關聯</strong>屬性指向<code>Post</code>。</p>
+<p>這就是反向關聯的<strong>特性</strong>——它是「<strong>隱式</strong>」的。即這個屬性確實存在，只是不以「欄位」的形式存在。</p>
+<hr>
+<p>而<strong>反向關聯屬性的名稱就是前述</strong><code>related_name</code><strong>所定義的名稱</strong>，即<code>post</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> title = models.OneToOneField(</span><br><span class="line">     <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>所以，Title 的所有實例，比如有一個實例叫<code>title_1</code>，一定會有一個<strong>反向關聯屬性</strong><code>post</code>，而它的返回值依不同情況有兩種可能：</p>
+<p>所以，<code>Title</code>的所有實例，比如有一個實例叫<code>title_1</code>，一定會有一個<strong>反向關聯屬性</strong><code>post</code>，而它的返回值依不同情況有<strong>兩種可能</strong>：</p>
 <ol>
 <li><code>title_1</code>已經被關聯到某個 Post 實例比如<code>post_1</code>，那<code>title_1.post</code>的值就是該<code>post_1</code>實例。</li>
 <li><code>RelatedObjectDoesNotExist</code>物件。當<strong>實例之間的關聯還不存在</strong>，試圖取得關聯實例將會出現這樣的錯誤。</li>
@@ -295,7 +298,7 @@
 
 <h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>上述<code>post</code>屬性並未在 model class 中明示（但物件有此屬性），資料表中也<strong>不存在相對應的欄位</strong>。它本質上只是一個「<strong>ORM 查詢捷徑</strong>」——但非常實用。</p>
 <p>這種隱式的設計讓我們<strong>更容易識別</strong>在外鍵關係中，哪些屬性是<strong>正向關聯</strong>，哪些則是<strong>反向關聯</strong>。</p>
-<p>反向關聯允許我們透過簡單的<strong>屬性呼叫</strong>，就能夠輕鬆地獲取相關資料，而不需要額外的操作和查詢語句。</p>
+<p>反向關聯允許我們透過簡單的<strong>屬性呼叫</strong>，就能夠輕鬆地獲取相關資料，而不需要額外的操作和 ORM 查詢語句，真的很方便。</p>
 <hr>
 <h2 id="一對多關係"><a href="#一對多關係" class="headerlink" title="一對多關係"></a>一對多關係</h2><blockquote>
 <p>class <code>ForeignKey</code>(to, on_delete, **<strong>options</strong>) <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/ref/models/fields/#django.db.models.ForeignKey">¶</a></p>
