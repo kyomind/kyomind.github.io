@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    
+    <lastmod>2024-01-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2024-01-02</lastmod>
@@ -83,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -128,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -137,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -308,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
+    <loc>https://blog.kyomind.tw/think-riverside/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -317,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/think-riverside/</loc>
+    <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -461,7 +470,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -470,7 +479,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -515,7 +524,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
+    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -524,7 +533,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
+    <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -552,15 +561,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/python-poetry/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -931,7 +931,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-01-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
