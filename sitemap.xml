@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/django/index.html</loc>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
-    <lastmod>2024-01-03</lastmod>
+    <lastmod>2024-01-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    <loc>https://blog.kyomind.tw/django/index.html</loc>
     
-    <lastmod>2024-01-02</lastmod>
+    <lastmod>2024-01-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -407,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -416,7 +416,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
+    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
