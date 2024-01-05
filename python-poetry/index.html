@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-04T16:13:36+08:00" />
+  <meta property="article:modified_time" content="2024-01-05T07:28:30+08:00" />
 
 
 
@@ -175,7 +175,7 @@
         <span class="post-time">
           2022-04-06
         </span><span class="post-update">
-            →  2023-12-30
+            →  2024-01-05
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -186,11 +186,11 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">Poetry 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B%EF%BC%9A%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%AE%A1%E7%90%86%E3%80%81%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E3%80%81%E7%9B%B8%E4%BE%9D%E6%80%A7%E7%AE%A1%E7%90%86"><span class="toc-text">名詞解釋：虛擬環境管理、套件管理、相依性管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">pip 的最大不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry"><span class="toc-text">pip 替代方案選擇——Pipenv vs Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87-Poetry-%E7%9A%84%E5%85%A9%E5%80%8B%E7%90%86%E7%94%B1"><span class="toc-text">選擇 Poetry 的兩個理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8-Poetry"><span class="toc-text">從零開始使用 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Poetry"><span class="toc-text">安裝 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">設定 PATH 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry-%E5%B0%88%E6%A1%88"><span class="toc-text">初始化 Poetry 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">管理 Poetry 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9config%EF%BC%8C%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E5%85%A7%E7%9A%84-venv%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">修改config，建立專案內的.venv虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%8C%87%E4%BB%A4"><span class="toc-text">Poetry 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 新增套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies"><span class="toc-text">新增套件至 dev-dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%9B%B4%E6%96%B0%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 更新套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%85%A8%E9%83%A8%E5%A5%97%E4%BB%B6%E6%B8%85%E5%96%AE"><span class="toc-text">列出全部套件清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 移除套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BC%B8%E5%87%BA-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%9A%84-requirements-txt"><span class="toc-text">輸出 Poetry 虛擬環境的 requirements.txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE"><span class="toc-text">Poetry 常用指令清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA"><span class="toc-text">Poetry 常見使用情境與操作 QA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">結語：井然有序的複雜</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">Poetry 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B"><span class="toc-text">名詞解釋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">pip 的最大不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry"><span class="toc-text">pip 替代方案選擇——Pipenv vs Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87-Poetry-%E7%9A%84%E5%85%A9%E5%80%8B%E7%90%86%E7%94%B1"><span class="toc-text">選擇 Poetry 的兩個理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Poetry"><span class="toc-text">安裝 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">設定 PATH 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry"><span class="toc-text">初始化 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">管理 Poetry 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9config%EF%BC%8C%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E5%85%A7%E7%9A%84-venv%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">修改config，建立專案內的.venv虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 新增套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D"><span class="toc-text">指定套件「版本」範圍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies"><span class="toc-text">新增套件至 dev-dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%9B%B4%E6%96%B0%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 更新套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%85%A8%E9%83%A8%E5%A5%97%E4%BB%B6%E6%B8%85%E5%96%AE"><span class="toc-text">列出全部套件清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 移除套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BC%B8%E5%87%BA-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%9A%84-requirements-txt"><span class="toc-text">輸出 Poetry 虛擬環境的 requirements.txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE"><span class="toc-text">Poetry 常用指令清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA"><span class="toc-text">Poetry 常見使用情境與操作 QA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">結語：井然有序的複雜</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"><span class="cap">by Feifei Ruan on Behance</span></p>
 <blockquote>
-<p><code>2023/12/30</code>更新：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」一節內容。</p>
+<p><code>2024/01/05</code>更新：新增「<a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件「版本」範圍</a>」章節。<br><code>2023/12/30</code>更新：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」章節。</p>
 </blockquote>
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
@@ -214,18 +214,17 @@
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><p>方便快速跳轉到有興趣的部分，桌面版用戶可和右下角的「回到最上方」搭配使用：</p>
 <ol>
 <li><a href="#Poetry-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F">Poetry 是什麼？</a></li>
-<li><a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B%EF%BC%9A%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83%E7%AE%A1%E7%90%86%E3%80%81%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E3%80%81%E7%9B%B8%E4%BE%9D%E6%80%A7%E7%AE%A1%E7%90%86">名詞解釋：虛擬環境管理、套件管理、相依性管理</a></li>
+<li><a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a></li>
 <li><a href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a></li>
 <li><a href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a></li>
 <li><a href="#%E9%81%B8%E6%93%87-Poetry-%E7%9A%84%E5%85%A9%E5%80%8B%E7%90%86%E7%94%B1">選擇 Poetry 的兩個理由</a></li>
-<li><a href="#%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8-Poetry">從零開始使用 Poetry</a></li>
 <li><a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a></li>
 <li><a href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8">設定 PATH 環境變數</a></li>
-<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry-%E5%B0%88%E6%A1%88">初始化 Poetry 專案</a></li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry">初始化 Poetry</a></li>
 <li><a href="#%E7%AE%A1%E7%90%86-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">管理 Poetry 虛擬環境</a></li>
 <li><a href="#%E4%BF%AE%E6%94%B9config%EF%BC%8C%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E5%85%A7%E7%9A%84-venv%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83">修改 config，建立專案內的 .venv 虛擬環境</a></li>
-<li><a href="#Poetry-%E6%8C%87%E4%BB%A4">Poetry 指令</a></li>
 <li><a href="#Poetry-%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6">Poetry 新增套件</a></li>
+<li><a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件「版本」範圍</a></li>
 <li><a href="#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies">新增套件至 dev-dependencies</a></li>
 <li><a href="#Poetry-%E6%9B%B4%E6%96%B0%E5%A5%97%E4%BB%B6">Poetry 更新套件</a></li>
 <li><a href="#%E5%88%97%E5%87%BA%E5%85%A8%E9%83%A8%E5%A5%97%E4%BB%B6%E6%B8%85%E5%96%AE">列出全部套件清單</a></li>
@@ -249,7 +248,7 @@
 <li>套件的打包與發布</li>
 </ul>
 <p>其中<strong>最為關鍵</strong>的是「<strong>套件的相依性管理</strong>」，也是本文的重點，而「套件的打包與發布」與本文主題無關，所以不會提及。</p>
-<h2 id="名詞解釋：虛擬環境管理、套件管理、相依性管理"><a href="#名詞解釋：虛擬環境管理、套件管理、相依性管理" class="headerlink" title="名詞解釋：虛擬環境管理、套件管理、相依性管理"></a>名詞解釋：虛擬環境管理、套件管理、相依性管理</h2><p>開始前，要先大致說明標題中這三者的區別，才不易混淆文中的內容。這裡的定義可能不盡準確，但至少對理解文中的表達能有所幫助。</p>
+<h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>開始前，要先大致說明下列三者的區別，才不易混淆文中的內容。這裡的定義可能不盡準確，但至少對理解文中的表達能有所幫助。</p>
 <h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>指的是使用內建的 venv 或 virtualenv 套件來建立及管理 Python 的虛擬環境，不同的虛擬環境間各自獨立，也就是對應的路徑各不相同。</p>
 <h3 id="套件管理、依賴管理（dependency-management）"><a href="#套件管理、依賴管理（dependency-management）" class="headerlink" title="套件管理、依賴管理（dependency management）"></a>套件管理、依賴管理（dependency management）</h3><p>指的是使用 pip 這類的套件管理器來管理 Python 環境（未必是虛擬環境），即管理環境中所安裝的全部套件（package、dependency）及其版本。</p>
 <p>在這個<strong>語境</strong>下，dependency 基本上就是指你安裝的 package。</p>
@@ -293,7 +292,6 @@
 <p>我們可以藉由 Poetry 指令（後續介紹）來查看，目前這唯二安裝套件的<strong>依賴關係樹</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── mypy-extensions &gt;=0.4.3</span><br><span class="line">├── pathspec &gt;=0.9.0</span><br><span class="line">├── platformdirs &gt;=2</span><br><span class="line">├── tomli &gt;=1.1.0</span><br><span class="line">└── typing-extensions &gt;=3.10.0.0</span><br><span class="line">flask 2.1.2 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br></pre></td></tr></table></figure>
 
-
 <p>可以明顯看出，<strong>兩者都依賴了<code>click</code>套件</strong>。可想而知，移除 Flask 時，如果你同時把<code>click</code>也<strong>跟著一併移除</strong>，會發生什麼樣的悲劇——<strong>你的 Black 壞了</strong>——因為它缺少了必要的依賴套件<code>click</code>。</p>
 <p>簡言之，直接 pip 手動移除依賴套件存在下列兩大疑慮，不建議輕易嘗試：</p>
 <h4 id="一、無法確定想移除的套件還有多少依賴套件"><a href="#一、無法確定想移除的套件還有多少依賴套件" class="headerlink" title="一、無法確定想移除的套件還有多少依賴套件"></a>一、無法確定想移除的套件還有多少依賴套件</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
@@ -331,7 +329,7 @@
 <blockquote>
 <p>這幾年 Pipenv 收獲了很多用戶，但是也暴露了很多問題。雖然 Lock 太慢、Windows 支持不好和 bug 太多的問題都已經改進了很多，但對我來說，仍然不能接受隨時更新鎖定依賴的設定，在上一篇文章《<a target="_blank" rel="noopener" href="http://greyli.com/do-not-use-pipenv/">不要用 Pipenv</a>》裡也吐槽了很多相關的問題。</p>
 </blockquote>
-<p>兩篇的引述內容總結就是一句話：不要用 Pipenv。</p>
+<p>兩篇的引述內容總結就是一句話：「<strong>不要用 Pipenv。</strong>」</p>
 <p>目前 Pipenv 已經由 <a target="_blank" rel="noopener" href="https://github.com/pypa">PyPA</a>（同時也維護 pip 及 virtualenv）接手，上述「<strong>擺爛</strong>」的情況相信已有所改善，不過我似乎還沒看到有什麼文章大力鼓吹或宣告 Pipenv 已經「great again」，所以個人對它的未來發展還是持保留態度。</p>
 <h3 id="理由二：pyproject-toml"><a href="#理由二：pyproject-toml" class="headerlink" title="理由二：pyproject.toml"></a>理由二：pyproject.toml</h3><p>pyproject.toml 是 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0518/">PEP 518</a> 所提出的新標準：</p>
 <blockquote>
@@ -349,17 +347,11 @@
 </blockquote>
 <hr>
 <p>好，漫長的前言到此結束，讓我們進入正題，開始上手學習 Poetry。</p>
-<h2 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h2><blockquote>
+<h3 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h3><blockquote>
 <p><code>2023/04/08</code>：本文最初創作於 Poetry 版本 1.1.19 時期，目前最新版為 1.4.x，部分指令的參數可能略有變動（但不影響理解），請以官方文件為準。</p>
 </blockquote>
-<p>本文所有的參考資料會放在文末的「參考」一欄中，不過在此還是要特別提及主要的參考對象，總共有二：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://python-poetry.org/docs/">Poetry 官方文件</a></li>
-<li><a target="_blank" rel="noopener" href="https://realpython.com/dependency-management-python-poetry/">Dependency Management With Python Poetry</a></li>
-</ul>
-<p>如果在本文找不到你需要的內容，以上二處可能會有，所以主動列出。</p>
-<p>另外本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。</p>
-<p>不過，即使有問題，應該也是集中在安裝與設定階段，本文其餘部分仍可適用。</p>
+<p>本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。</p>
+<p>不過，即使有問題，應該也是集中在安裝與設定階段，其餘部分仍可適用。</p>
 <h2 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h2><blockquote>
 <p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，帶有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
@@ -418,7 +410,7 @@
 
 <p>alias 是方便自己使用，但本文基於表達清晰考量，下面的解說除了圖片外，原則上並不會使用 alias 表示。</p>
 <hr>
-<h2 id="初始化-Poetry-專案"><a href="#初始化-Poetry-專案" class="headerlink" title="初始化 Poetry 專案"></a>初始化 Poetry 專案</h2><p>為了方便解說，我們先建立一個全新的專案，名為<code>poetry-demo</code>。</p>
+<h2 id="初始化-Poetry"><a href="#初始化-Poetry" class="headerlink" title="初始化 Poetry"></a>初始化 Poetry</h2><p>為了方便解說，我們先建立一個全新的專案，名為<code>poetry-demo</code>。</p>
 <p>指令都很簡單，但還是建議可以一步一步跟著操作。</p>
 <p>就像 git 專案需要初始化，Poetry 也需要，因為每一個使用了 Poetry 的專案中一定要有一個<code>pyproject.toml</code>作為它的<strong>設定檔</strong>。否則直接使用<code>poetry</code>相關指令就會出現下列錯誤訊息：</p>
 <blockquote>
@@ -493,7 +485,7 @@
 <p>可以看到，Poetry 的錯誤訊息非常清楚，讓你很容易知曉修正的方向，這是作為一個優秀命令列工具的必要條件。</p>
 <p>退出就簡單多了，只需要<code>exit</code>即可。</p>
 <hr>
-<h2 id="Poetry-指令"><a href="#Poetry-指令" class="headerlink" title="Poetry 指令"></a>Poetry 指令</h2><p>Poetry 是一個獨立的命令列工具，就像 pyenv，它有自己的指令，需要花費額外的心力學習，且較 pip 更加複雜，這可能是使用 Poetry 的<strong>第二道關卡</strong>。好在常用的指令，其實也不超過 10 個，下面就來一一介紹。</p>
+<h3 id="Poetry-指令"><a href="#Poetry-指令" class="headerlink" title="Poetry 指令"></a>Poetry 指令</h3><p>Poetry 是一個獨立的命令列工具，就像 pyenv，它有自己的指令，需要花費額外的心力學習，且較 pip 更加複雜，這可能是使用 Poetry 的<strong>第二道關卡</strong>。好在常用的指令，其實也不超過 10 個，下面就來一一介紹。</p>
 <p>在此我們繼續使用前面提過的 Flask 和 Black 套件，來示範並說明 Poetry 的優勢以及它和 pip 的不同之處。</p>
 <h2 id="Poetry-新增套件"><a href="#Poetry-新增套件" class="headerlink" title="Poetry 新增套件"></a>Poetry 新增套件</h2><p>使用指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add</span><br></pre></td></tr></table></figure>
@@ -531,6 +523,29 @@
 </blockquote>
 <p>因此，在執行完<code>poetry lock</code>指令後，你必須再使用<code>poetry install</code>來安裝套件。否則就會出現<code>poetry.lock</code>和虛擬環境<strong>不一致</strong>的狀況。</p>
 <p>更多<code>poetry lock</code>細節可參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#lock">官方文件</a>，其中特別值得注意的是<code>--no-update</code>參數。</p>
+<hr>
+<h2 id="指定套件「版本」範圍"><a href="#指定套件「版本」範圍" class="headerlink" title="指定套件「版本」範圍"></a>指定套件「版本」範圍</h2><p>Poetry 的<code>add</code>指令，可以用下列不同的方式來指定套件版本，我們以安裝 Django 4.2 LTS 為例。</p>
+<h3 id="一、使用-符號"><a href="#一、使用-符號" class="headerlink" title="一、使用@符號"></a>一、使用<code>@</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;5.0.0（允許 4.2.9 及以上版本，但不包括 5.0.0，即最大版號不能變更）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2.9</span><br></pre></td></tr></table></figure>
+<p>這意味著<strong>它會接受所有 4.x.x 的更新</strong>，只要它們不超過 5.0.0。這是一個常見的做法，因為它允許套件自動更新到任何非重大變更的新版本。</p>
+<h3 id="二、使用-符號"><a href="#二、使用-符號" class="headerlink" title="二、使用~符號"></a>二、使用<code>~</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;4.3.0（允許 4.2.9 及以上版本，但不包括 4.3.0，即只能升級最小版號）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@~4.2.9</span><br></pre></td></tr></table></figure>
+
+<p>這個選項比較保守，<strong>只會接受 4.2.x 系列的更新</strong>。這適合於當你想要限制更新的範圍，僅包括 bug 修正和小幅度的改進。</p>
+<h3 id="三、使用-符號"><a href="#三、使用-符號" class="headerlink" title="三、使用&gt;=符號"></a>三、使用<code>&gt;=</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9（沒有上限）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意，只有這個需要使用「字串」表示</span></span><br><span class="line">poetry add <span class="string">&quot;django&gt;=4.2.9&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、固定版本"><a href="#四、固定版本" class="headerlink" title="四、固定版本"></a>四、固定版本</h3><p>僅允許 Django 的 4.2.9 版本（嚴格限制在這個版本）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django==4.2.9</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>依我個人經驗，<strong>最常用的是第 1 和第 4 種方式。</strong></p>
+<h3 id="一次安裝複數套件"><a href="#一次安裝複數套件" class="headerlink" title="一次安裝複數套件"></a>一次安裝複數套件</h3><p>Poetry 的<code>add</code>指令，也可以一次安裝複數套件，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2.9 requests@^2.26.0</span><br></pre></td></tr></table></figure>
+<p>或不指定版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django requests</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h2 id="新增套件至-dev-dependencies"><a href="#新增套件至-dev-dependencies" class="headerlink" title="新增套件至 dev-dependencies"></a>新增套件至 dev-dependencies</h2><p>有些套件，比如<code>pytest</code>、<code>flake8</code>等等，<strong>只會在開發環境中使用</strong>，產品的<strong>部署環境</strong>並不需要。</p>
 <p>Poetry 允許你<strong>區分</strong>這兩者，將上述的套件安裝至<code>dev-dependencies</code>區塊，方便讓你<strong>輕鬆建立一份「不包含」<code>dev-dependencies</code>開發套件的安裝清單</strong>。</p>
