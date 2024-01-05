@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-01-02T02:45:59+08:00" />
+  <meta property="article:modified_time" content="2024-01-05T16:40:41+08:00" />
 
 
 
@@ -182,7 +182,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B7%A3%E8%B5%B7"><span class="toc-text">緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">工作上我還未採用 Ruff 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B7%A3%E8%B5%B7"><span class="toc-text">緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">工作上我還未採用 Ruff 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然在去年就聽過它，但我卻一直沒有任何行動。</p>
@@ -195,6 +195,7 @@
 <li><a href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87">Ruff 介紹篇</a></li>
 <li><a href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89">Linter 部分：取代 Flake8 與 isort 等等</a></li>
 <li><a href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black">Formatter 部分：取代 Black</a></li>
+<li><a href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C">單、雙引號議題</a></li>
 <li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87">Ruff 設定篇</a></li>
 <li><a href="#pyproject-toml-%E8%A8%AD%E5%AE%9A">pyproject.toml 設定</a></li>
 <li><a href="##Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A">Ruff VS Code 套件設定</a></li>
@@ -273,10 +274,10 @@
 <p>而 Flake8 作為 Python 開發中最流行的 linter，自然是 Ruff 首要取代的目標。所以 Ruff 連錯誤代碼都盡可能與 Flake8 一致，也是考慮到遷移的成本。</p>
 <h3 id="Autofix-功能"><a href="#Autofix-功能" class="headerlink" title="Autofix 功能"></a>Autofix 功能</h3><p>不僅如此，Ruff 還能取代一眾「<strong>帶有 formatter 功能的 linter</strong>」，isort 就是其中的代表。而常見的 <a target="_blank" rel="noopener" href="https://github.com/asottile/pyupgrade">pyupgrade</a> 也是。</p>
 <p>這就有趣了，從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——其實就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
-<p>這樣的特性帶來一些方便與複雜。</p>
-<p>方便的是，你可以只安裝 Ruff 就啟用<strong>多種 linter 附帶的 format 行為</strong>。而複雜則在於設定上的細節也更多。</p>
-<p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具——但事實並非如此。</p>
-<p>我們只要記得：<strong>Ruff linter 有著簡易 format（autofix）的能力。</strong></p>
+<p>這個特性<strong>真的很方便</strong>，但也帶來了一定的複雜。</p>
+<p>方便的是，你可以只安裝 Ruff linter，就<strong>獲得多種 linter 附帶的 format 行為</strong>。而複雜則在於：設定上的細節也比一般 linter 更多。</p>
+<h3 id="簡易版-formatter"><a href="#簡易版-formatter" class="headerlink" title="簡易版 formatter"></a>簡易版 formatter</h3><p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
+<p>總之，我們只要記得：<strong>Ruff linter 有著簡易 format（autofix）能力</strong>——它是個簡易版的 formatter。</p>
 <p>這和 Flake8 只做單純的靜態分析不同，Ruff linter 在檢查過程中，<strong>能夠直接對程式碼進行修改</strong>。當然，如果你不喜歡，這功能是可以關閉的。</p>
 <hr>
 <h2 id="Formatter-部分：取代-Black"><a href="#Formatter-部分：取代-Black" class="headerlink" title="Formatter 部分：取代 Black"></a>Formatter 部分：取代 Black</h2><p>我相信從 Ruff 的開源之初，就已經想過要成為一個 All-in-One 工具。畢竟 Rust 這麼快，只做 linter 未免太可惜了！</p>
@@ -306,14 +307,14 @@
 <p>所謂的 beta 並不是還有很多 bug，更像是「設計與方向上」還沒有完全底定——比如下面要討論的「單、雙引號」議題。所以才會在前面加上「production-ready」。</p>
 <p>如果你想要在個人的生產環境中使用，我相信是沒什麼問題。畢竟 <a target="_blank" rel="noopener" href="https://github.com/tiangolo/fastapi/pull/10517">FastAPI 專案已經直接使用了</a>！</p>
 <p>不過如果是公司專案，我還是會選擇觀望，不急於一時。</p>
-<h3 id="單、雙引號議題"><a href="#單、雙引號議題" class="headerlink" title="單、雙引號議題"></a>單、雙引號議題</h3><p>Python 允許開發者自由選擇要在程式碼中使用單引號或雙引號。</p>
+<h2 id="單、雙引號議題"><a href="#單、雙引號議題" class="headerlink" title="單、雙引號議題"></a>單、雙引號議題</h2><p>Python 允許開發者自由選擇要在程式碼中使用單引號或雙引號。</p>
 <p>只有在比如 docstring 這種<strong>連續使用 3 個引號</strong>的場景——即<code>&quot;&quot;&quot; &lt;內容&gt; &quot;&quot;&quot;</code>——時，慣例上要求使用雙引號。見 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0257/#what-is-a-docstring">PEP 257</a>：</p>
 <blockquote>
 <p>For consistency, always use <code>&quot;&quot;&quot;triple double quotes&quot;&quot;&quot;</code> around docstrings.</p>
 </blockquote>
-<p>如果你對 Black 有一些了解，應該會知道，早期 Black 是<strong>完全不管</strong>你習慣用單引號還是雙引號，它一律把你的 Python 程式碼格式化為雙引號！</p>
+<p>如果你對 Black 有一些了解，應該會知道，早期 Black 是<strong>完全不管</strong>你習慣用單引號還是雙引號，<strong>它一律把你的 Python 程式碼格式化為雙引號！</strong></p>
 <p>這小小的硬性規則帶來了<strong>巨大的反彈</strong>，畢竟 Python 開發者中想必有不少人和我一樣，是「單引號」的支持者。</p>
-<p>最後，Black 開發團隊也不得不妥協（這是 Black 少數的妥協，因為該工具本身就是以「不妥協」為賣點與 slogan🤣），加入了<code>skip-string-normalization</code>選項。</p>
+<p>最後，Black 開發團隊也不得不妥協（這是 Black 少數的妥協，因為該工具本身就是以「不妥協」為賣點、slogan🤣），加入了<code>skip-string-normalization</code>選項。</p>
 <h3 id="Ruff-Formatter-發展中"><a href="#Ruff-Formatter-發展中" class="headerlink" title="Ruff Formatter 發展中"></a>Ruff Formatter 發展中</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quote-style = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -388,6 +389,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/astral-sh/ruff-pre-commit</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v0.1.4</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--fix</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff-format</span></span><br></pre></td></tr></table></figure>
 
 <p>這裡只要注意版本和 hook 的 id 即可。</p>
+<hr>
 <h2 id="Ruff-設定篇小結"><a href="#Ruff-設定篇小結" class="headerlink" title="Ruff 設定篇小結"></a>Ruff 設定篇小結</h2><p>Ruff 的設定真的滿多樣且可以很複雜——儘管它的預設值已能滿足大多數人。</p>
 <p>如果你不清楚究竟有哪些項目可以調整，又想了解更多。除了研究官方文件、Github 首頁的 README 外，去看看那些<a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff?tab=readme-ov-file#whos-using-ruff">已經採用了 Ruff  的開源專案</a>的設定檔，也是很好的學習！</p>
 <p>比如，我就習慣參考 <a target="_blank" rel="noopener" href="https://github.com/tiangolo/fastapi/blob/master/pyproject.toml#L125">FastAPI 的 Ruff 設定</a>：</p>
