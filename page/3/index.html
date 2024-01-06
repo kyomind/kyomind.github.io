@@ -110,7 +110,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
           
-            <a href="/categories/Django/">Django (4)</a>
+            <a href="/categories/Django/">Django (5)</a>
           
             <a href="/categories/VS-Code/">VS Code (10)</a>
           
@@ -149,6 +149,39 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-08-19
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"></p>
+<p>我們繼續《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記，這是第 2 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
+<li><strong>《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</strong></li>
+<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="第-6-章：寫出-Pythonic-風格的程式碼"><a href="#第-6-章：寫出-Pythonic-風格的程式碼" class="headerlink" title="第 6 章：寫出 Pythonic 風格的程式碼"></a>第 6 章：寫出 Pythonic 風格的程式碼</h2><p>我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。</p>
+<p>不過，<strong>充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫</strong>（不重複造輪子——因為你自己造的輪子往往<strong>不會</strong>更好、更方便、更有效），顯然是大家都認同的部分。</p>
+<p>至於遵守上篇提到的 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">PEP 8</a>，自然不在話下。如果你的變數命名使用了小駝峰式命名法（lower camel case），那麼在「形式上」就已經不太 Pythonic 了。</p>
+<p>話說回來，本書雖然是一本優秀的 Clean Code in Python 入門書，但不知為何，書中的函式命名皆是採用小駝峰，讓我不甚理解。</p>
+<p>但我們要知道：好孩子不要學。至於為什麼，不用問，問就是 PEP 8。</p>
+          <div class="read-more">
+            <a href="/beyond-the-basic-stuff-with-python-02/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/apple-studio-display/">Apple Studio Display 適合你嗎？——我的心得與選購指南</a>
         </h1>
@@ -370,31 +403,6 @@
 <p>此外，這篇文章是以<strong>我的核心需求</strong>——<a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>——為出發點，對同為軟體工程師的讀者而言，可能更具參考價值。</p>
           <div class="read-more">
             <a href="/mac-mini/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-06-25
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a> 系列的第 1 篇。</p>
-<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。更多 Django 教學，請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
-<hr>
-<p>工作上使用 Django 近 2 年，卻很少發表關於 Django 主題的文章，是時候該來補一補了。</p>
-<p>那就從 Django ORM 開始吧！因為 ORM（<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.2/topics/db/models/">Django Models</a>）可以說是無論你怎麼使用 Django（全端或前後端分離），都不得不學的核心部分。</p>
-<p>怎麼說？我們先來看看，在「<strong>前後端分離</strong>」的開發趨勢下，Django 的三大核心——MTV——的重要性有哪些變動。</p>
-          <div class="read-more">
-            <a href="/django-models/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">

@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    
+    <lastmod>2024-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
+    
+    <lastmod>2024-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django/index.html</loc>
+    
+    <lastmod>2024-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2024-01-06</lastmod>
@@ -83,15 +110,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
-    
-    <lastmod>2024-01-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/black-and-isort/</loc>
     
     <lastmod>2024-01-04</lastmod>
@@ -122,15 +140,6 @@
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-01-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django/index.html</loc>
-    
-    <lastmod>2024-01-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

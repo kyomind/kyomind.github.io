@@ -110,7 +110,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
           
-            <a href="/categories/Django/">Django (4)</a>
+            <a href="/categories/Django/">Django (5)</a>
           
             <a href="/categories/VS-Code/">VS Code (10)</a>
           
@@ -149,6 +149,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-01-07
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<p>這是 <a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a> 連載的第 2 篇。</p>
+<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。更多 Django 教學，請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
+<h3 id="系列：Django-ORM-入門"><a href="#系列：Django-ORM-入門" class="headerlink" title="系列：Django ORM 入門"></a>系列：Django ORM 入門</h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
+<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯（本篇）</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇我們介紹完 Django ORM 的關聯設定，接下來本應該要進入查詢部分。不過，由於「反向關聯」在 ORM 查詢中扮演著十分重要的角色。</p>
+<p>所以我決定專門寫這個（中）篇，好好介紹 Django ORM 的「<strong>反向關聯</strong>」。</p>
+          <div class="read-more">
+            <a href="/reverse-relationships/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/four-thousand-weeks-01/">《人生 4 千個禮拜》筆記（一）病態的生產力</a>
         </h1>
@@ -320,39 +350,6 @@
 <p>無數次 trial and error，看起來勤勤懇懇，實際上是<strong>最低效的開發手段</strong>。我覺得，試個兩、三次行不通，就應該<strong>重新思考問題的本質——而非繼續嘗試。</strong></p>
           <div class="read-more">
             <a href="/stop-trial-and-error/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-tutorial/">Django Tutorial：系列介紹與導讀</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-09-30
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a> 系列的第 0 篇——<strong>序言</strong>。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。</p>
-<p>本站所有 Django 教學文章，已整理於 <a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>。</p>
-<p>嘗試寫作這樣「單一主題長系列連載」的靈感，源於下列二者：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.maxlist.xyz/2020/01/01/author/">Max 行銷誌</a>的 <a target="_blank" rel="noopener" href="https://www.maxlist.xyz/2020/05/01/flask-list/">2023 Flask 入門指南</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.aotoki.me/">蒼時弦也</a>的<a target="_blank" rel="noopener" href="https://blog.aotoki.me/series/">系列連載</a></li>
-</ul>
-<p>兩位都是「<strong>既能做又能寫</strong>」的優秀開發者，值得我們學習。</p>
-<hr>
-<h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然 blog 上本來就有少數被我歸類為「系列」的文章，比如 <a href="https://blog.kyomind.tw/tags/%E7%B3%BB%E5%88%97%EF%BC%9ASimple-Notion/">Simple Notion 系列</a>。但最多就是 3-4 篇，這是我有意控制的結果，希望整個創作週期不要拉得太長。</p>
-<p>而且用 3-4 篇呈現、表達一個我認為重要的主題，通常也足夠了。</p>
-<p>後來想到自己雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。讓我不免覺得，自己有違作為一個 Django 開發者的「義務」。</p>
-<p>所以起心動念，想說至少寫個「Django Models」三部曲，也就是目前整個系列中，在時間軸上第一篇發表的文章〈<a href="https://blog.kyomind.tw/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a>〉。</p>
-<p>寫完後又沉寂了好一段時間，才有了這篇序言。</p>
-          <div class="read-more">
-            <a href="/django-tutorial/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
