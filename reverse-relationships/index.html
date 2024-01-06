@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 入門" />
     
 
-  <meta property="article:modified_time" content="2024-01-06T18:29:12+08:00" />
+  <meta property="article:modified_time" content="2024-01-06T19:17:32+08:00" />
 
 
 
@@ -187,7 +187,7 @@
 <h3 id="系列：Django-ORM-入門"><a href="#系列：Django-ORM-入門" class="headerlink" title="系列：Django ORM 入門"></a>系列：Django ORM 入門</h3><blockquote>
 <ol>
 <li><a href="https://blog.kyomind.tw/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
-<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯（本篇）</strong></li>
+<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯</strong></li>
 </ol>
 </blockquote>
 <hr>
@@ -244,7 +244,7 @@
 <h2 id="一對一反向關聯"><a href="#一對一反向關聯" class="headerlink" title="一對一反向關聯"></a>一對一反向關聯</h2><p>請看 Post 與 Subtitle 這兩個模型，它們是典型的一對一關係。</p>
 <p>Subtitle 實例有著「正向關聯」屬性（欄位）——<code>post</code>，可以關聯 Post 模型的<strong>一個</strong>特定實例。</p>
 <p>反之，Post 有著「反向關聯」屬性，即<code>related_name=&#39;subtitle&#39;</code>中的<code>subtitle</code>。不過，即使你沒有特別定義<code>related_name</code>，這裡的「預設」反向關聯屬性名稱，也是<code>subtitle</code>（即關聯模型名稱的「小寫」型態）。</p>
-<p>用圖形說明，如下：</p>
+<p>圖形說明如下：</p>
 <p><img src="https://i.imgur.com/zbZqGeh.png" alt="正向關聯與反向關聯"><span class="cap">正向關聯與反向關聯</span></p>
 <h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>我們假設上述兩個模型的實例分別為<code>post_1</code>、<code>subtitle_1</code>。</p>
 <p>想要查詢<code>post_1</code>所的關聯 Subtile 實例，有兩種查法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
