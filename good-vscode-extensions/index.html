@@ -33,7 +33,7 @@
     <meta property="og:tag" content="後端" />
     
 
-  <meta property="article:modified_time" content="2024-01-04T16:13:36+08:00" />
+  <meta property="article:modified_time" content="2024-01-06T05:02:30+08:00" />
 
 
 
@@ -170,7 +170,7 @@
         <span class="post-time">
           2022-05-02
         </span><span class="post-update">
-            →  2023-11-08
+            →  2024-01-06
           </span>
         <span class="post-category">
             <a href="/categories/VS-Code/">VS Code</a>
@@ -347,13 +347,13 @@
 
 <hr>
 <h2 id="排版與視覺化"><a href="#排版與視覺化" class="headerlink" title="排版與視覺化"></a>排版與視覺化</h2><p>程式碼呈現與版面相關。</p>
-<h3 id="11-TODO-Highlight"><a href="#11-TODO-Highlight" class="headerlink" title="11. TODO Highlight"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">11. TODO Highlight</a></h3><p>對「<strong>TODO、FIXME</strong>」這類被稱為「<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0350/">Codetags</a>」的特殊註解的關鍵字加以<strong>突顯</strong>，關鍵字本身與外觀樣式皆可以自訂，開發很常用。至於這些註解幾時能因為落實而被拿掉，就，不得而知了。😎</p>
+<h3 id="11-TODO-Highlight"><a href="#11-TODO-Highlight" class="headerlink" title="11. TODO Highlight"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">11. TODO Highlight</a></h3><p>對「<strong>TODO、FIXME</strong>」這類被稱為「<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0350/">Codetags</a>」的特殊註解的關鍵字加以<strong>突顯</strong>，關鍵字本身與外觀樣式皆可以自訂，開發很常用。至於這些註解幾時能因為落實而被拿掉，就不得而知了。😎</p>
 <p><img src="https://i.imgur.com/eLnerlP.png"></p>
 <blockquote>
 <p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️</p>
 </blockquote>
 <p>類似的替代方案還有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments">Better Comments</a>，可以參考這篇〈<a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/vscode-better-comments/">VS Code 擴充推薦 - Better Comments</a>〉的介紹。</p>
-<p> 常常一併安裝的套件為 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a>，方便你快速尋找程式中的所有 TODO 類標籤。</p>
+<p> 經常一併安裝的套件為 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a>，方便你快速尋找專案程式庫中的所有 Codetags，並以樹狀結構或列表呈現。</p>
 <h3 id="12-Rainbow-CSV"><a href="#12-Rainbow-CSV" class="headerlink" title="12. Rainbow CSV"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">12. Rainbow CSV</a></h3><p>讓 csv 檔的每一欄位有不同的顏色，方便檢視，簡單實用！以前處理資料比較常用。</p>
 <p><img src="https://i.imgur.com/DWPplh2.png"></p>
 <blockquote>
@@ -414,10 +414,11 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/NilsJPWerner/autoDocstring/blob/HEAD/docs/one-line-sphinx.md">one-line-sphinx</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/NilsJPWerner/autoDocstring/blob/HEAD/docs/pep257.md">pep257</a></li>
 </ul>
-<p>我目前工作都採用 google 格式。如果你已經很積極在寫 Python type hints，那格式還可以選擇上述分支的「<code>notypes</code>」版本。比如「<code>google-notypes</code>」。</p>
-<p>如此一來，產生的 docstring 會自動省略「型別」欄位，維護起來更簡單，只要專注於程式碼本身的 type hints，而不用再去標示 docstring 中的型別。省去<strong>同步</strong>麻煩。</p>
+<p>我目前工作都採用 google 格式中的「<code>google-notypes</code>」。</p>
+<p>如果你像我們一樣，已經很積極在寫 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">Python type hints</a>，函式的簽名中本來就已經有了完整的型別標註。那上述格式都有各自的「<code>notypes</code>」版本可選。</p>
+<p>如此一來，產生的 docstring 模板，<strong>會自動省略「型別」欄位</strong>，維護起來更簡單。讓你只需專注於程式碼本身的 type hints，而不用再去標示 docstring 中的型別。省去兩者<strong>同步</strong>的麻煩。</p>
 <blockquote>
-<p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️</p>
+<p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️⭐️</p>
 </blockquote>
 <h3 id="Python-docstring-之我見"><a href="#Python-docstring-之我見" class="headerlink" title="Python docstring 之我見"></a>Python docstring 之我見</h3><p>我個人非常建議在一些重要的函式或類別，<strong>必須要有 docstring</strong>。</p>
 <p>換言之，在我看來，無論程式寫得如何簡潔易讀，對一些比較複雜的函式或類別而言，<strong>docstring 終究是不可少的</strong>。因為文字的<strong>詮釋能力</strong>和程式碼相比，<strong>絕不在同一個層次</strong>，相信這也是為何 docstring 會有屬於自己的獨立 PEP 加以規範的理由。</p>
@@ -426,12 +427,18 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://medium.com/geekculture/why-todays-code-documentation-is-a-heap-of-garbage-c66ac8aa6cb6">Why today’s code documentation is a heap of garbage</a></li>
 </ul>
-<h3 id="如何寫好-docstring？"><a href="#如何寫好-docstring？" class="headerlink" title="如何寫好 docstring？"></a>如何寫好 docstring？</h3><p>在此我非常推薦，可以用<strong>寫文章</strong>來練習唷！</p>
-<p>不誇張，兩者的差別其實只在於——文章是寫給讀者看，docstring 則是寫同事（協作者）、自己看。以及一些功能面的考量不同。</p>
-<p>而兩者的共通之處，在於「<strong>讀者意識</strong>」——懷抱著「我希望寫出好讀又好懂的內容」的心態，才能寫出優秀的 docstring。</p>
+<h3 id="如何寫好-docstring？"><a href="#如何寫好-docstring？" class="headerlink" title="如何寫好 docstring？"></a>如何寫好 docstring？</h3><p>「如何寫好 docstring」絕對是一門學問，我認為其中最重要的是<strong>讀者意識</strong>。</p>
+<p>就像我在〈<a href="https://blog.kyomind.tw/weekly-review-18/">18，論軟體工程師常見的「路徑依賴」問題（上）</a>〉一文中提到的：</p>
+<blockquote>
+<p>「<strong>讀者意識的欠缺</strong>」在軟體工程師中確實是一個<strong>普遍存在的問題</strong>。有時候，我們可能過於專注於自己的程式碼和技術細節，而忽略了將這些複雜的概念和思維以易於理解的方式傳達給他人。</p>
+</blockquote>
+<p>Docstring 的終極目標，就是要<strong>讓讀者快速理解程式碼的功能</strong>，而不必花大量時間去閱讀程式碼，才能看出程式的<strong>行為與意圖</strong>。</p>
+<p>這需要你同時扮演好<strong>作者（開發者）</strong>與<strong>讀者（函式、模組的調用者）</strong>兩種角色，透過身為作者對程式碼的熟悉，以及<strong>從讀者閱讀的角度</strong>，來撰寫 docstring。</p>
+<p>與寫文章相比，兩者的共通之處，都在於「<strong>讀者意識</strong>」——懷抱著「我希望寫出好讀又好懂的內容」的心態，才能寫出優秀的 docstring。</p>
 <p>畢竟自己剛寫完程式的當下，對於所有實作的邏輯與細節，當然都記憶猶新，確實可以不靠 docstring 就明白程式大概在做什麼。</p>
-<p>但對於三個月後的你，就難說了。而你的同事，就更難說了。</p>
+<p>但對於三個月後的你（如果是複雜的邏輯，則不出一個月），就難說了。而你的同事，就更難說了。</p>
 <hr>
+<p>一個簡單的 docstring 套件，可以讓我寫這麼一大段，可見 Python docstring 在我心中的地位☺️</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>沒有明確分類的套件，放這裡。</p>
 <h3 id="18-Sublime-Text-Keymap-and-Settings-Importer"><a href="#18-Sublime-Text-Keymap-and-Settings-Importer" class="headerlink" title="18. Sublime Text Keymap and Settings Importer"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings">18. Sublime Text Keymap and Settings Importer</a></h3><p>雖然沒真的用過 <a target="_blank" rel="noopener" href="https://www.sublimetext.com/">Sublime Text</a> 寫程式，但它的鍵盤快捷鍵配置也稱得上遠近馳名。我最常用的是複製、選取與刪除游標所在的當前行。</p>
 <p>Sublime Text 的快捷鍵大全可參考<a target="_blank" rel="noopener" href="https://shortcuts.design/tools/toolspage-sublimetext/">這個</a>，但肯定不是每一項都能在 VS Code 上運作，使用上主要還是以「編輯類」（即上述頁面中的「Editing」）的快捷鍵功能為主。</p>
