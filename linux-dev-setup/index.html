@@ -38,7 +38,7 @@
     <meta property="og:tag" content="yadm" />
     
 
-  <meta property="article:modified_time" content="2024-01-04T16:13:36+08:00" />
+  <meta property="article:modified_time" content="2024-01-08T18:36:11+08:00" />
 
 
 
@@ -186,9 +186,12 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-yadm-%E7%AE%A1%E7%90%86-dotfiles"><span class="toc-text">用 yadm 管理 dotfiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-yadm-%E7%9A%84%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B%EF%BC%882023-12-25%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="toc-text">用 yadm 的環境設定流程（2023&#x2F;12&#x2F;25更新）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">一、設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A8%AD%E5%AE%9A-zsh%E3%80%81zinit%E3%80%81Powerlevel10k"><span class="toc-text">二、設定 zsh、zinit、Powerlevel10k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">三、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">四、設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-Docker"><span class="toc-text">五、安裝 Docker</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-yadm-%E7%AE%A1%E7%90%86-dotfiles"><span class="toc-text">用 yadm 管理 dotfiles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E4%BA%86-yadm-%E7%9A%84%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B"><span class="toc-text">有了 yadm 的環境設定流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">一、設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A8%AD%E5%AE%9A-zsh%E3%80%81zinit%E3%80%81Powerlevel10k"><span class="toc-text">二、設定 zsh、zinit、Powerlevel10k</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv"><span class="toc-text">三、設定 pyenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">四、設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-Docker"><span class="toc-text">五、安裝 Docker</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/wuqTPvs.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<blockquote>
+<p><code>2023/12/25</code>：新增「<a href="#%E6%9C%89%E4%BA%86-yadm-%E7%9A%84%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B">有了 yadm 的環境設定流程</a>」章節。</p>
+</blockquote>
 <p>最近為了升級 <a target="_blank" rel="noopener" href="https://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu</a> 版本，重建了工作上的 Linux VM（直接升級會怕），所以又得重新設定一次開發環境。</p>
 <p>軟體界有一句名言叫「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%90%83%E8%87%AA%E5%B7%B1%E7%9A%84%E7%8B%97%E7%B2%AE">吃自己的狗糧</a>」，通常指的是自己開發的工具，自己先使用。而每次重設 Linux 開發環境時，我也都在吃自己的狗糧——看自己寫的教學文章。</p>
 <p>不誇張，就是一篇篇看，把指令複製貼上，一步一步將環境設定到位。</p>
@@ -198,16 +201,21 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>沒錯！本篇講述的是：當我拿到一個<strong>全新的 Linux VM</strong>，為了開發方便，一定會安裝、設定的工具——主要基於「<strong>Python 後端</strong>」角度。</p>
 <p>內容參考自以往數篇文章，且只關注在<strong>建立開發環境的必要步驟</strong>，並適時給出一些額外的提醒與建議。</p>
 <p>如此一來，我們就不必在文章間穿梭，力求節省時間、一步到位！</p>
-<p>本文是以 <strong>Ubuntu 22.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
+<p>本文是以 <strong>Ubuntu 20.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
 <hr>
 <h2 id="用-yadm-管理-dotfiles"><a href="#用-yadm-管理-dotfiles" class="headerlink" title="用 yadm 管理 dotfiles"></a>用 yadm 管理 dotfiles</h2><p>Dofiles 是指「<strong>設定檔</strong>」，例如 <code>.zshrc</code>、<code>.vimrc</code>、<code>.gitconfig</code> 等等。</p>
 <p>使用 zinit、Powerlevel10k、pyenv 之前，都要先設定<code>.zshrc</code>。</p>
 <p>如果你有使用工具來管理你的 dotfiles（包括<code>.zshrc</code>、<code>.zprofile</code>），那麼<strong>以下所有關於<code>.zshrc</code>內容的新增、修改，都可以跳過</strong>——直接透過工具<strong>同步</strong>即可。</p>
 <p>如果你還沒接觸過任何 dotfiles 管理工具，那麼我推薦 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a>，可參考文章：</p>
+<blockquote>
 <ul>
 <li><a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
 </ul>
-<h2 id="用-yadm-的環境設定流程（2023-12-25更新）"><a href="#用-yadm-的環境設定流程（2023-12-25更新）" class="headerlink" title="用 yadm 的環境設定流程（2023/12/25更新）"></a>用 yadm 的環境設定流程（<code>2023/12/25</code>更新）</h2><p>透過 yadm 與你的 dotfiles 遠端倉庫，整個流程<strong>略有不同</strong>（<strong>粗體字部分</strong>）：</p>
+</blockquote>
+<h2 id="有了-yadm-的環境設定流程"><a href="#有了-yadm-的環境設定流程" class="headerlink" title="有了 yadm 的環境設定流程"></a>有了 yadm 的環境設定流程</h2><blockquote>
+<p><code>2023/12/25</code>新增。</p>
+</blockquote>
+<p>透過 yadm 與你的 dotfiles 遠端倉庫，整個流程<strong>略有不同</strong>（<strong>粗體字部分</strong>）：</p>
 <ol>
 <li>設定 VM 與 GitHub 連線。</li>
 <li><strong>安裝 yadm。</strong></li>
@@ -272,7 +280,6 @@
 <p>一律在<code>.zshrc</code>或<code>.bashrc</code>中，新增下列內容：<strong>（有 yadm 同步可以跳過）</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-
 <h3 id="pyenv-安裝-Python-3-10-10-並設為全域"><a href="#pyenv-安裝-Python-3-10-10-並設為全域" class="headerlink" title="pyenv 安裝 Python 3.10.10 並設為全域"></a>pyenv 安裝 Python 3.10.10 並設為全域</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.10</span><br></pre></td></tr></table></figure>
 
 <p>通常需要等待好一段時間，安裝才會完成。🐸</p>
@@ -281,6 +288,9 @@
 
 <h3 id="不安裝-pyenv-virtualenv"><a href="#不安裝-pyenv-virtualenv" class="headerlink" title="不安裝 pyenv-virtualenv"></a>不安裝 pyenv-virtualenv</h3><p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只使用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
 <p>這也是我目前覺得<strong>最簡潔</strong>的做法。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></p>
+</blockquote>
 <hr>
 <h2 id="四、設定-Poetry"><a href="#四、設定-Poetry" class="headerlink" title="四、設定 Poetry"></a>四、設定 Poetry</h2><blockquote>
 <p>參考原文：<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></p>
