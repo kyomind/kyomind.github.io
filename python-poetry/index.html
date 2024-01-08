@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-05T08:30:20+08:00" />
+  <meta property="article:modified_time" content="2024-01-08T17:53:44+08:00" />
 
 
 
@@ -175,7 +175,7 @@
         <span class="post-time">
           2022-04-06
         </span><span class="post-update">
-            →  2024-01-05
+            →  2024-01-09
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -524,7 +524,19 @@
 <p>因此，在執行完<code>poetry lock</code>指令後，你必須再使用<code>poetry install</code>來安裝套件。否則就會出現<code>poetry.lock</code>和虛擬環境<strong>不一致</strong>的狀況。</p>
 <p>更多<code>poetry lock</code>細節可參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#lock">官方文件</a>，其中特別值得注意的是<code>--no-update</code>參數。</p>
 <hr>
-<h2 id="指定套件「版本」範圍"><a href="#指定套件「版本」範圍" class="headerlink" title="指定套件「版本」範圍"></a>指定套件「版本」範圍</h2><p>Poetry 的<code>add</code>指令，可以用下列不同的方式來指定套件版本，我們以安裝 Django 4.2 LTS 為例。</p>
+<h2 id="指定套件「版本」範圍"><a href="#指定套件「版本」範圍" class="headerlink" title="指定套件「版本」範圍"></a>指定套件「版本」範圍</h2><blockquote>
+<p><code>2024/01/05</code>新增。</p>
+</blockquote>
+<p>回想我們使用 pip 的時候，<code>requirements.txt</code>的內容通常是長這樣：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">blinker==1.6.3</span><br><span class="line">click==8.1.7</span><br><span class="line">flask==3.0.0</span><br><span class="line">itsdangerous==2.1.2</span><br><span class="line">jinja2==3.1.2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>所有套件的版本都是<strong>固定</strong>的！</p>
+<p>如前所述，那是因為 pip 並不擅長管理套件的版本衝突，所以固定是<strong>最保險的</strong>。</p>
+<p>但代價是<strong>專案無法輕易更新套件版本，容易過時，造成後續開發與維護的麻煩</strong>。尤其是因為 Python 版本的更新帶來的整體版本遷移。</p>
+<p>你可以試著手動修改<code>requirements.txt</code>，但隨之而來的是一陣陣<strong>手動處理版本衝突的痛苦</strong>😱</p>
+<h3 id="Poetry-的版本管理能力"><a href="#Poetry-的版本管理能力" class="headerlink" title="Poetry 的版本管理能力"></a>Poetry 的版本管理能力</h3><p>使用 Poetry，情況將<strong>大不相同</strong>，因為 Poetry 能夠管理套件的版本衝突，所以我們可以<strong>放心</strong>地透過「<strong>範圍</strong>」來指定套件的版本。</p>
+<p>這樣的好處當然是，在<strong>不影響專案穩定性（不發生套件版本衝突）</strong>的前提下，<strong>自動更新</strong>套件至最新版，且不需要手動修改<code>pyproject.toml</code>。</p>
+<p>當然，如果你覺得這樣不夠保險，還是可以手動修改<code>pyproject.toml</code>，或在安裝時，指定套件的版本。</p>
+<p>Poetry 的<code>add</code>指令，可以用下列不同的方式來指定套件版本，我們以安裝 Django 4.2 LTS 為例。</p>
 <h3 id="一、使用-符號"><a href="#一、使用-符號" class="headerlink" title="一、使用@符號"></a>一、使用<code>@</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;5.0.0（允許 4.2.9 及以上版本，但不包括 5.0.0，即最大版號不能變更）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2.9</span><br></pre></td></tr></table></figure>
 <p>這意味著<strong>它會接受所有 4.x.x 的更新</strong>，只要版本號小於 5.0.0。這是一個常見的做法，因為它允許套件自動更新到<strong>任何非重大變更</strong>的新版本。</p>

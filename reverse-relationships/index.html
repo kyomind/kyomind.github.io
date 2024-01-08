@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 入門" />
     
 
-  <meta property="article:modified_time" content="2024-01-06T19:31:23+08:00" />
+  <meta property="article:modified_time" content="2024-01-08T13:50:43+08:00" />
 
 
 
@@ -247,7 +247,7 @@
 <p>圖形說明如下：</p>
 <p><img src="https://i.imgur.com/zbZqGeh.png" alt="正向關聯與反向關聯"><span class="cap">正向關聯與反向關聯</span></p>
 <h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>我們假設上述兩個模型的實例分別為<code>post_1</code>、<code>subtitle_1</code>。</p>
-<p>想要查詢<code>post_1</code>所的關聯 Subtile 實例，有兩種查法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
+<p>想要查詢<code>post_1</code>所關聯的 Subtile 實例，有兩種方法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
 <p>一般查詢方式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subtitle = Subtitle.objects.<span class="built_in">filter</span>(post=post_1)</span><br></pre></td></tr></table></figure>
 
@@ -259,7 +259,7 @@
 <p>兩個「可以」建立關聯的模型物件，並非「一定要」建立關聯。因此，<code>post_1</code>的反向關聯屬性，不一定總是對應著一個 Subtitle 實例——有可能<strong>關聯不存在</strong>。</p>
 <p>當關聯不存在時，訪問<code>post_1.subtitle</code>會引發<code>RelatedObjectDoesNotExist</code>例外。</p>
 <p>考慮到「關聯不存在」的可能，我們的程式常常會這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    subtitle = post_1.subtitle</span><br><span class="line"><span class="keyword">except</span> ObjectDoesNotExist:</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># 做其它事</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    subtitle = post_1.subtitle</span><br><span class="line"><span class="keyword">except</span> ObjectDoesNotExist:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <p>其中<code>ObjectDoesNotExist</code>是<code>RelatedObjectDoesNotExist</code>的父類別，因為你無法直接引用<code>RelatedObjectDoesNotExist</code>。</p>
 <p>這種寫法雖然不算優雅，但它<strong>明確地表達了你的意圖</strong>。</p>
 <hr>
@@ -297,11 +297,11 @@
 
 <p>因為此時的<code>comments</code>變數內容是一個<strong>關係管理器物件</strong>，它一定會被視為 <a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/truthy-and-falsy-values-in-python/">truthy</a>。意即這個判斷條件<strong>永遠會成立</strong>。</p>
 <hr>
-<h2 id="以「反向關聯是否存在」為查詢條件"><a href="#以「反向關聯是否存在」為查詢條件" class="headerlink" title="以「反向關聯是否存在」為查詢條件"></a>以「反向關聯是否存在」為查詢條件</h2><p>如果你想以「反向關聯是否存在」作為<strong>查詢的條件</strong>，比如我想查詢所有「沒有留言的文章」有哪些，要怎麼做呢？答案是——<code>isnull</code>。</p>
+<h2 id="以「反向關聯是否存在」為查詢條件"><a href="#以「反向關聯是否存在」為查詢條件" class="headerlink" title="以「反向關聯是否存在」為查詢條件"></a>以「反向關聯是否存在」為查詢條件</h2><p>如果你想以「反向關聯是否存在」作為<strong>查詢的條件</strong>，比如我想查詢「<strong>沒有留言的文章</strong>」有哪些，要怎麼做呢？答案是——<code>isnull</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts_without_comments = Post.<span class="built_in">object</span>.<span class="built_in">filter</span>(comments__isnull=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
 <p>注意其中的<strong>雙底線</strong>，這是典型的 ORM 查詢條件使用方式。</p>
-<p>同理，我想要查詢「有副標題（subtitle）的文章」則是：</p>
+<p>同理，我想要查詢「<strong>有副標題（subtitle）的文章</strong>」則是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts_with_subtitle = Post.<span class="built_in">object</span>.<span class="built_in">filter</span>(subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
 <p>可以看到，上面兩個例子，都用透過 Post 的「反向關聯屬性」來進行過濾查詢——就像是一個普通的欄位一樣。</p>
