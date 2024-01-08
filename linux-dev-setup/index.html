@@ -26,8 +26,7 @@
 <meta property="og:site_name" content="Code and Me" />
 <meta property="article:publisher" content="https://blog.kyomind.tw" />
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
-            <meta property="og:tag" content="Python" />
-    <meta property="og:tag" content="Linux" />
+            <meta property="og:tag" content="Linux" />
     <meta property="og:tag" content="Ubuntu" />
     <meta property="og:tag" content="zsh" />
     <meta property="og:tag" content="zinit" />
@@ -38,7 +37,7 @@
     <meta property="og:tag" content="yadm" />
     
 
-  <meta property="article:modified_time" content="2024-01-08T18:36:11+08:00" />
+  <meta property="article:modified_time" content="2024-01-08T18:38:42+08:00" />
 
 
 
@@ -198,11 +197,11 @@
 <p>做了好幾次以後，這次不禁想到：「<strong>咦？我乾脆整理成一篇就好了啊！</strong>」</p>
 <span id="more"></span>
 
+<hr>
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>沒錯！本篇講述的是：當我拿到一個<strong>全新的 Linux VM</strong>，為了開發方便，一定會安裝、設定的工具——主要基於「<strong>Python 後端</strong>」角度。</p>
 <p>內容參考自以往數篇文章，且只關注在<strong>建立開發環境的必要步驟</strong>，並適時給出一些額外的提醒與建議。</p>
 <p>如此一來，我們就不必在文章間穿梭，力求節省時間、一步到位！</p>
 <p>本文是以 <strong>Ubuntu 20.04</strong> 實作，如果你用的是別的 Linux 發行版，肯定會有一些差別，這部分還請留意。</p>
-<hr>
 <h2 id="用-yadm-管理-dotfiles"><a href="#用-yadm-管理-dotfiles" class="headerlink" title="用 yadm 管理 dotfiles"></a>用 yadm 管理 dotfiles</h2><p>Dofiles 是指「<strong>設定檔</strong>」，例如 <code>.zshrc</code>、<code>.vimrc</code>、<code>.gitconfig</code> 等等。</p>
 <p>使用 zinit、Powerlevel10k、pyenv 之前，都要先設定<code>.zshrc</code>。</p>
 <p>如果你有使用工具來管理你的 dotfiles（包括<code>.zshrc</code>、<code>.zprofile</code>），那麼<strong>以下所有關於<code>.zshrc</code>內容的新增、修改，都可以跳過</strong>——直接透過工具<strong>同步</strong>即可。</p>
@@ -212,6 +211,7 @@
 <li><a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
 </ul>
 </blockquote>
+<hr>
 <h2 id="有了-yadm-的環境設定流程"><a href="#有了-yadm-的環境設定流程" class="headerlink" title="有了 yadm 的環境設定流程"></a>有了 yadm 的環境設定流程</h2><blockquote>
 <p><code>2023/12/25</code>新增。</p>
 </blockquote>
@@ -336,9 +336,8 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-pyenv/" title="Ubuntu 安裝使用 pyenv + pyenv-virtualenv" rel="bookmark">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="Python 套件管理器——Poetry 完全入門指南" rel="bookmark">Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/poetry-pyenv-practical-tips/" title="Poetry + pyenv 教學：常用指令與注意事項" rel="bookmark">Poetry + pyenv 教學：常用指令與注意事項</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-zsh-zinit/" title="Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit" rel="bookmark">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/yadm/" title="是時候同步你的 dotfiles 了——我選擇 yadm" rel="bookmark">是時候同步你的 dotfiles 了——我選擇 yadm</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-pyenv/" title="Ubuntu 安裝使用 pyenv + pyenv-virtualenv" rel="bookmark">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/Python/">Python</a>
             <a href="/tags/Linux/">Linux</a>
             <a href="/tags/Ubuntu/">Ubuntu</a>
             <a href="/tags/zsh/">zsh</a>
