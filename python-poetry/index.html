@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-08T18:04:47+08:00" />
+  <meta property="article:modified_time" content="2024-01-08T18:08:53+08:00" />
 
 
 
@@ -530,8 +530,7 @@
 <p>回想我們使用 pip 的時候，<code>requirements.txt</code>的內容通常是長這樣：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">blinker==1.6.3</span><br><span class="line">click==8.1.7</span><br><span class="line">flask==3.0.0</span><br><span class="line">itsdangerous==2.1.2</span><br><span class="line">jinja2==3.1.2</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>所有套件的版本都是<strong>固定</strong>的！</p>
-<p>如前所述，那是因為 pip 並不擅長管理套件的版本衝突，所以固定是<strong>最保險的</strong>。</p>
-<p>但代價是，<strong>專案無法輕易更新套件版本，容易過時，造成後續開發與維護的麻煩</strong>。</p>
+<p>如前所述，那是因為 pip 並不擅長管理套件的版本衝突，所以固定是<strong>最保險的</strong>。但代價是，<strong>專案無法輕易更新套件版本，容易過時，造成後續開發與維護的麻煩</strong>。</p>
 <p>你可以試著手動修改<code>requirements.txt</code>，但隨之而來的是一陣陣<strong>手動處理版本衝突的痛苦</strong>😱</p>
 <h3 id="Poetry-的版本管理能力"><a href="#Poetry-的版本管理能力" class="headerlink" title="Poetry 的版本管理能力"></a>Poetry 的版本管理能力</h3><p>使用 Poetry，情況將<strong>大不相同</strong>，因為 Poetry 能夠管理套件的版本衝突，所以我們可以<strong>放心</strong>地透過「<strong>範圍</strong>」來指定套件的版本。</p>
 <p>這樣的好處當然是，在<strong>不影響專案穩定性（不發生套件版本衝突）</strong>的前提下，<strong>自動更新</strong>套件至<strong>範圍內的最新版</strong>，且不需要手動修改<code>pyproject.toml</code>。</p>
