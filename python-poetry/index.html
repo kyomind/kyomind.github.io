@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-09T04:56:56+08:00" />
+  <meta property="article:modified_time" content="2024-01-09T05:27:58+08:00" />
 
 
 
@@ -251,14 +251,14 @@
 <h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>開始前，要先大致說明下列三者的區別，才不易混淆文中的內容。這裡的定義可能不盡準確，但至少對理解文中的表達能有所幫助。</p>
 <h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>指的是使用內建的 venv 或 virtualenv 套件來建立及管理 Python 的虛擬環境，不同的虛擬環境間各自獨立，也就是<strong>對應的路徑</strong>各不相同。</p>
 <h3 id="套件管理（dependency-management）"><a href="#套件管理（dependency-management）" class="headerlink" title="套件管理（dependency management）"></a>套件管理（dependency management）</h3><p>指的是使用 pip 這類的套件管理器來管理 Python 環境（未必是虛擬環境），即管理環境中所安裝的全部套件（package、dependency）及其版本。</p>
-<p>在這個<strong>語境</strong>下，dependency 基本上就是指你安裝的 package。</p>
-<h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>這個有點難定義，它並不是一個非常有共識的名詞，我在英文中也難找到對應的單字。這裡指<strong>管理套件之間的「依賴關係」及「版本衝突」這兩件事</strong>：</p>
+<p>在這個<strong>語境</strong>下，<strong>dependency</strong> 基本上就是你安裝的<strong>套件（package）</strong>。</p>
+<h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>這個有點難定義，因為它不是一個很有共識的名詞，我在英文中也難找到對應的單字。這裡指<strong>管理套件之間的「依賴關係」及「版本衝突」這兩件事</strong>：</p>
 <ol>
 <li><strong>依賴關係</strong>指的是，當一個套件被安裝時，它所依賴的套件也必須一併安裝（這個很簡單）。反之，當一個套件被移除時，它所依賴的套件也必須一併移除——<strong>除非這些套件還被其他套件所依賴（這個就比較複雜了）。</strong></li>
 <li>而<strong>版本衝突</strong>，指的是單一套件被兩個以上的套件所依賴，但不同的套件對依賴的套件有著不同的<strong>最低或最高版本要求</strong>，若兩者要求的範圍「<strong>沒有交集</strong>」，則會發生衝突而導致套件<strong>失效</strong>或<strong>無法安裝</strong>。</li>
 </ol>
 <p>這兩大問題，都是 pip 所無法解決的，也是 Python 開發上的<strong>兩大痛點</strong>。</p>
-<p>而 Poetry 就是為了解決它們而生。</p>
+<p><strong>而 Poetry 就是為了解決它們而生。</strong></p>
 <hr>
 <h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><p>大概在 2 年前就聽過 Poetry 的大名，不過那時我還沒有套件相依性管理的強烈需求，加上看起來需要一些學習成本（確實如此），所以就一直擱在一旁，直到真正體會到了 pip 的不足。</p>
 <p>pip 是 Python 內建的套件管理工具，而它的最大罩門，就是對於「套件間的相依性管理」能力不足。尤其是在「<strong>移除</strong>」套件時的依賴解析——可以說沒有。這也是我提議改用 Poetry 的根本原因。</p>
@@ -284,27 +284,30 @@
 <blockquote>
 <p><strong>很遺憾，答案是否定的</strong>。</p>
 </blockquote>
-<h3 id="pip-的致命缺陷：缺乏移除套件時的依賴解析（相依性管理）"><a href="#pip-的致命缺陷：缺乏移除套件時的依賴解析（相依性管理）" class="headerlink" title="pip 的致命缺陷：缺乏移除套件時的依賴解析（相依性管理）"></a>pip 的致命缺陷：缺乏移除套件時的依賴解析（相依性管理）</h3><p>僅執行<code>pip uninstall flask</code>的話，pip 就<strong>真的只會</strong>幫你移除<code>flask</code>這個套件<strong>本身</strong>而已。那剩下的、再也用不到的套件怎麼辦？你只能一個一個手動移除！</p>
+<h3 id="pip-的致命缺陷：缺乏移除套件時的相依性管理"><a href="#pip-的致命缺陷：缺乏移除套件時的相依性管理" class="headerlink" title="pip 的致命缺陷：缺乏移除套件時的相依性管理"></a>pip 的致命缺陷：缺乏移除套件時的相依性管理</h3><p>僅執行<code>pip uninstall flask</code>的話，pip 就<strong>真的只會</strong>幫你移除<code>flask</code>這個套件<strong>本身</strong>而已。那剩下的、再也用不到的套件怎麼辦？你只能一個一個手動移除！</p>
 <p>但你千萬不要真的嘗試手動移除依賴套件！——因為你無法確定這些依賴套件<strong>是否同時被別的套件所依賴</strong>。</p>
+<p>也就是 pip 做不到上面「<a href="#%E5%A5%97%E4%BB%B6%E7%9A%84%E3%80%8C%E7%9B%B8%E4%BE%9D%E6%80%A7%E7%AE%A1%E7%90%86%E3%80%8D%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89">套件的相依性管理</a>」中的<strong>第一點</strong>：<strong>移除套件時的相依性管理</strong>。（其實第二點也做不到，但這裡先不談）</p>
 <h3 id="pip-手動移除依賴套件的潛在風險：以-Flask-Black-為例"><a href="#pip-手動移除依賴套件的潛在風險：以-Flask-Black-為例" class="headerlink" title="pip 手動移除依賴套件的潛在風險：以 Flask + Black 為例"></a>pip 手動移除依賴套件的潛在風險：以 Flask + Black 為例</h3><p>繼續以 Flask 為例，還記得其中一個依賴套件是<code>click</code>，如前所述，它是一個協助製作命令列界面的工具。</p>
-<p>假設專案中已同時安裝了 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a> 這個 Python code formatter 來統一程式碼排版（沒錯！我現在個人開發也都改用 Black 取代 <a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a> 了），Black 是一個可以透過 CLI 指令執行的格式化工具，剛好，它也是使用<code>click</code>來實作命令列功能。</p>
+<p>假設專案中已同時安裝了 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a> 這個 formatter，Black 是一個可以透過 CLI 指令執行的格式化工具，<strong>剛好，它也是使用<code>click</code>來實作命令列功能。</strong></p>
 <blockquote>
-<p><strong>Black formatter</strong> 相關文章：</p>
+<p><strong>Black Formatter</strong> 相關文章：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/black-and-isort/">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></li>
-<li><a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></li>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
 </ul>
 </blockquote>
-<p>我們可以藉由 Poetry 指令（後續介紹）來查看，目前這唯二安裝套件的<strong>依賴關係樹</strong>：</p>
+<p>我們可以藉由 Poetry 指令來查看，目前這兩個套件的<strong>依賴關係狀態</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── mypy-extensions &gt;=0.4.3</span><br><span class="line">├── pathspec &gt;=0.9.0</span><br><span class="line">├── platformdirs &gt;=2</span><br><span class="line">├── tomli &gt;=1.1.0</span><br><span class="line">└── typing-extensions &gt;=3.10.0.0</span><br><span class="line">flask 2.1.2 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br></pre></td></tr></table></figure>
 
-<p>可以明顯看出，<strong>兩者都依賴了<code>click</code>套件</strong>。可想而知，移除 Flask 時，如果你同時把<code>click</code>也<strong>跟著一併移除</strong>，會發生什麼樣的悲劇——<strong>你的 Black 壞了</strong>——因為它缺少了必要的依賴套件<code>click</code>。</p>
+<p>可以明顯看出，<strong>兩者都依賴了<code>click</code>套件</strong>。</p>
+<p>可想而知，移除 Flask 時，如果你同時把<code>click</code>也<strong>跟著一併手動移除</strong>，會發生什麼樣的悲劇——<strong>你的 Black 壞了</strong>——因為它缺少了必要的依賴套件<code>click</code>。</p>
+<hr>
 <p>簡言之，直接 pip 手動移除依賴套件存在下列兩大疑慮，不建議輕易嘗試：</p>
-<h4 id="一、無法確定想移除的套件還有多少依賴套件"><a href="#一、無法確定想移除的套件還有多少依賴套件" class="headerlink" title="一、無法確定想移除的套件還有多少依賴套件"></a>一、無法確定想移除的套件還有多少依賴套件</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
+<h4 id="一、不確定想移除的套件「有多少依賴套件」"><a href="#一、不確定想移除的套件「有多少依賴套件」" class="headerlink" title="一、不確定想移除的套件「有多少依賴套件」"></a>一、不確定想移除的套件「有多少依賴套件」</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ pip show flask</span><br><span class="line">Name: Flask</span><br><span class="line">Version: 2.1.1</span><br><span class="line">Summary: A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">Home-page: https://palletsprojects.com/p/flask</span><br><span class="line">Author: Armin Ronacher</span><br><span class="line">Author-email: armin.ronacher@active-4.com</span><br><span class="line">License: BSD-3-Clause</span><br><span class="line">Location: /Users/kyo/.pyenv/versions/3.8.12/envs/test/lib/python3.8/site-packages</span><br><span class="line">Requires: importlib-metadata, Werkzeug, click, Jinja2, itsdangerous</span><br><span class="line">Required-by:</span><br></pre></td></tr></table></figure>
 
 <p>可以看到，<code>Requires:</code>只顯示了 5 個依賴套件，因為剩下的 2 個（<code>zipp</code>、<code>markupsafe</code>）是「<strong>依賴的依賴</strong>」，在更下層，並未顯示。</p>
-<h4 id="二、即使確定所有依賴套件，也無法確定這些套件是否還被其他套件所依賴"><a href="#二、即使確定所有依賴套件，也無法確定這些套件是否還被其他套件所依賴" class="headerlink" title="二、即使確定所有依賴套件，也無法確定這些套件是否還被其他套件所依賴"></a>二、即使確定所有依賴套件，也無法確定這些套件是否還被其他套件所依賴</h4><p>好繞口啊！上述的<code>click</code>例子就是解釋這個困境。</p>
+<h4 id="二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」"><a href="#二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」" class="headerlink" title="二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」"></a>二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」</h4><p>好繞口啊！上述的<code>click</code>例子就是解釋這個困境。</p>
 <h3 id="小結：pip-只適合小型專案或「只新增不移除」套件的專案"><a href="#小結：pip-只適合小型專案或「只新增不移除」套件的專案" class="headerlink" title="小結：pip 只適合小型專案或「只新增不移除」套件的專案"></a>小結：pip 只適合小型專案或「只新增不移除」套件的專案</h3><p>以前我的個人或工作上的專案往往規模不大，pip 就真的只負責新增，鮮少需要考慮移除套件的情況，所以缺少移除套件時的依賴解析，似乎也沒什麼大問題。</p>
 <p>但稍具模規的專案往往就需要考慮套件的退場，以維持開發及部署環境的簡潔，尤其在使用容器化部署時，<strong>過多不必要的套件會徒增 image 肥大，產生額外的成本與資源浪費不說，同時也提升了「套件之間發生衝突」的可能。</strong></p>
 <p>然而透過上述的例子可知，僅靠 pip 想要<strong>乾淨移除</strong>過時的套件，且不影響既有的套件，簡直是<strong>不可能的任務！</strong>所以我們需要擁有「<strong>完整套件相依性管理功能</strong>」的套件管理器。</p>
