@@ -36,7 +36,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-09T15:07:37+08:00" />
+  <meta property="article:modified_time" content="2024-01-09T15:10:21+08:00" />
 
 
 
@@ -230,7 +230,7 @@
 
 <p>如<a href="https://blog.kyomind.tw/linux-dev-setup/">上一篇</a>所言：</p>
 <blockquote>
-<p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只使用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
+<p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
 </blockquote>
 <p>即使在不同專案需要多版本 Python 情況下，pyenv-virtualenv 也不是必須。只要善用<code>pyenv local</code>和<code>poetry env use</code>兩大指令即可。</p>
 <p>綜上所述，這也是為什麼我認為 Poetry 的教學<strong>應該涵蓋對 pyenv 的整合</strong>，因為在「虛擬環境管理」方面，兩者的功能有一定重疊。</p>
@@ -249,10 +249,11 @@
 <p>初始化後的<code>pyproject.toml</code>內容：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.poetry]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;poetry-demo&quot;</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">&quot;0.1.0&quot;</span></span><br><span class="line"><span class="attr">description</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="attr">authors</span> = [<span class="string">&quot;kyo &lt;odinxp@gmail.com&gt;&quot;</span>]</span><br><span class="line"><span class="attr">readme</span> = <span class="string">&quot;README.md&quot;</span></span><br><span class="line"><span class="attr">packages</span> = [&#123;include = <span class="string">&quot;poetry_demo&quot;</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.poetry.dependencies]</span></span><br><span class="line"><span class="attr">python</span> = <span class="string">&quot;^3.8&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[build-system]</span></span><br><span class="line"><span class="attr">requires</span> = [<span class="string">&quot;poetry-core&quot;</span>]</span><br><span class="line"><span class="attr">build-backend</span> = <span class="string">&quot;poetry.core.masonry.api&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>比起一開始的我使用的 1.19，新版又多了這兩行：</p>
+<p>比起一開始使用的 v1.19，新版多了這兩行：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">readme</span> = <span class="string">&quot;README.md&quot;</span></span><br><span class="line"><span class="attr">packages</span> = [&#123;include = <span class="string">&quot;poetry_demo&quot;</span>&#125;]</span><br></pre></td></tr></table></figure>
 
-<p>我習慣——<strong>直接刪除</strong>。因為未必用得到，但如果設定錯誤，反而會造成不必要的困擾。</p>
+<p>我習慣——<strong>直接刪除</strong>。</p>
+<p>因為未必用得到，但如果設定錯誤，反而會造成不必要的困擾。</p>
 <hr>
 <h2 id="二、為專案建立-Python-虛擬環境"><a href="#二、為專案建立-Python-虛擬環境" class="headerlink" title="二、為專案建立 Python 虛擬環境"></a>二、為專案建立 Python 虛擬環境</h2><p>這裡是「重頭戲」之一，但做法上並不是那麼「直觀」，常常容易讓人混淆。僅使用 pyenv 的前提下，再安裝<code>pyenv-virtualenv</code>來建立虛擬環境，確實不難。</p>
 <p>但現在有了 Poetry，兩者的<strong>搭配使用方式</strong>就很重要，這也是為什麼我一再強調，有了 Poetry，乾脆就不要再裝<code>pyenv-virtualenv</code>了。</p>
