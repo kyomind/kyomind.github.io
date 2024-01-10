@@ -11,6 +11,24 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    
+    <lastmod>2024-01-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
+    
+    <lastmod>2024-01-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
     
     <lastmod>2024-01-10</lastmod>
@@ -30,24 +48,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django/index.html</loc>
-    
-    <lastmod>2024-01-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
-    
-    <lastmod>2024-01-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2024-01-09</lastmod>
     
