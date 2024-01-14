@@ -11,7 +11,34 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/not-by-ai/</loc>
+    
+    <lastmod>2024-01-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-docker-sdk/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/docker-learning/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -299,6 +326,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
+    
+    <lastmod>2024-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/bear/</loc>
     
     <lastmod>2024-01-05</lastmod>
@@ -471,15 +507,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -704,15 +731,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-docker-sdk/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/notion-markdown/</loc>
     
     <lastmod>2024-01-02</lastmod>
@@ -849,15 +867,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/docker-learning/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
