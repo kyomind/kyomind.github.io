@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-05/</loc>
+    
+    <lastmod>2024-01-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2024-01-14</lastmod>
@@ -597,15 +606,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-04/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-05/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
