@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T13:59:40+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T15:14:21+08:00" />
 
 
 
@@ -252,7 +252,7 @@
 <p>在這個<strong>語境</strong>下，<strong>dependency</strong> 基本上就是你安裝的<strong>套件（package）</strong>。</p>
 <h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>這個有點難定義，因為它不是一個很有共識的名詞，我在英文中也難找到對應的單字。這裡指<strong>管理套件之間的「依賴關係」及「版本衝突」這兩件事</strong>：</p>
 <ol>
-<li><strong>依賴關係</strong>指的是，當一個套件被安裝時，它所依賴的套件也必須一併安裝（這個很簡單）。反之，當一個套件被移除時，它所依賴的套件也必須一併移除——<strong>除非這些套件還被其他套件所依賴（這個就比較複雜了）。</strong></li>
+<li><strong>依賴關係</strong>指的是，當一個套件被安裝時，它所依賴的套件也必須<strong>一併安裝</strong>（這個很簡單）。反之，當一個套件被移除時，它所依賴的套件也必須<strong>一併移除——除非這些套件還被其他套件所依賴（這個就比較複雜了）。</strong></li>
 <li>而<strong>版本衝突</strong>，指的是單一套件被兩個以上的套件所依賴，但不同的套件對依賴的套件有著不同的<strong>最低或最高版本要求</strong>，若兩者要求的範圍「<strong>沒有交集</strong>」，則會發生衝突而導致套件<strong>失效</strong>或<strong>無法安裝</strong>。</li>
 </ol>
 <p>這兩大問題，都是 pip 所無法解決的，也是 Python 開發上的<strong>兩大痛點</strong>。</p>
