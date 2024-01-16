@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="試用從 VS Code Python extension 拆分的 Black、isort 套件">
-  <meta property="og:title" content="試用從 VS Code Python extension 拆分的 Black、isort 套件">
+<meta property="og:type" content="article"><meta name="twitter:title" content="VS Code：試用從 Python extension 拆分的 Black、isort 套件">
+  <meta property="og:title" content="VS Code：試用從 Python extension 拆分的 Black、isort 套件">
 <meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
 
 
@@ -32,7 +32,7 @@
     <meta property="og:tag" content="flake8" />
     
 
-  <meta property="article:modified_time" content="2024-01-04T16:13:36+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T14:01:15+08:00" />
 
 
 
@@ -64,7 +64,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>試用從 VS Code Python extension 拆分的 Black、isort 套件 - Code and Me</title>
+    <title>VS Code：試用從 Python extension 拆分的 Black、isort 套件 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -160,7 +160,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">試用從 VS Code Python extension 拆分的 Black、isort 套件
+      <h1 class="post-title">VS Code：試用從 Python extension 拆分的 Black、isort 套件
         </h1>
 
       <div class="post-meta">
@@ -175,7 +175,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Black-Formatter"><span class="toc-text">Black Formatter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isort"><span class="toc-text">isort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Black-Formatter-%E6%93%B4%E5%85%85%E5%A5%97%E4%BB%B6"><span class="toc-text">Black Formatter 擴充套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isort-%E6%93%B4%E5%85%85%E5%A5%97%E4%BB%B6"><span class="toc-text">isort 擴充套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/LnNp1ye.png"></p>
 <p>前天看到 iThome 這篇〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/150798">微軟續拆解Python擴充套件，釋出3款獨立新套件</a>〉，才知道原來微軟正在把 VS Code「<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python 擴充套件</a>」中的一些功能陸續獨立拆分出來。</p>
@@ -193,7 +193,7 @@
 </blockquote>
 <p>以下是我的測試心得。</p>
 <hr>
-<h2 id="Black-Formatter"><a href="#Black-Formatter" class="headerlink" title="Black Formatter"></a><strong>Black Formatter</strong></h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">套件連結</a>。</p>
+<h2 id="Black-Formatter-擴充套件"><a href="#Black-Formatter-擴充套件" class="headerlink" title="Black Formatter 擴充套件"></a>Black Formatter 擴充套件</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">套件連結</a>。</p>
 <p>測試結果：繼續保留使用，供個人專案開發。</p>
 <p>於〈<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉中曾<a href="https://blog.kyomind.tw/python-poetry/#pip-%E6%89%8B%E5%8B%95%E7%A7%BB%E9%99%A4%E4%BE%9D%E8%B3%B4%E5%A5%97%E4%BB%B6%E7%9A%84%E6%BD%9B%E5%9C%A8%E9%A2%A8%E9%9A%AA%EF%BC%9A%E4%BB%A5-Flask-Black-%E7%82%BA%E4%BE%8B">提過</a>，雖然目前工作上是使用 <a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a>，但個人專案已一律改用 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>，所以自然很好奇：<strong>安裝使用 VS Code 套件版本的 Black 究竟有什麼好處？</strong></p>
 <h3 id="重大好處：One-Is-All-All-Is-One"><a href="#重大好處：One-Is-All-All-Is-One" class="headerlink" title="重大好處：One Is All, All Is One"></a>重大好處：One Is All, All Is One</h3><p>好處很明顯，那就是你<strong>只需要安裝「一個」Black Formatter 擴充套件</strong>，就能讓所有使用 Black 排版程式碼的專案<strong>共用</strong>，而不必在各專案的虛擬環境中另外安裝 Black，可以統一使用 VS Code 提供的那一個！</p>
@@ -214,7 +214,7 @@
 </ol>
 <p>此外，VS Code 套件本質上是為 Black 加上了一層封裝，多一層封裝就多一層複雜度，所以使用上可能存在一些難解的 bug 與環境設定衝突。</p>
 <p>總之，建議可以等正式版上線再來使用，但我目前還是保留。</p>
-<h2 id="isort"><a href="#isort" class="headerlink" title="isort"></a>isort</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort">套件連結</a>。</p>
+<h2 id="isort-擴充套件"><a href="#isort-擴充套件" class="headerlink" title="isort 擴充套件"></a>isort 擴充套件</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort">套件連結</a>。</p>
 <p>測試結果：暫時先刪除，但有額外收獲！</p>
 <p>之前〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到「<a href="https://blog.kyomind.tw/flake8-and-isort/#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort">原來 isort 早就被 VS Code 內建</a>」說法，後來發現其實不盡正確。嚴格來講它是被「Python 擴充套件」所內建，而現在正式被拆分出來。</p>
 <p>「為 import 排序」說起來恐怕稱不上是硬需求，我覺得它對團隊開發而言，主要意義還是在於<strong>規範「協作上的一致性」</strong>，至於對個人開發的意義，我想是<strong>美觀</strong>吧！不過話說回來，對我這種規範控而言，自然是硬需求。</p>
