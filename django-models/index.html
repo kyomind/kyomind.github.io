@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 外鍵入門" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T19:17:41+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T19:22:26+08:00" />
 
 
 
@@ -344,9 +344,9 @@
 <p>如果沒有定義<code>related_name</code>，則被關聯的 Post 將獲得 Django 預設的反向關聯屬性名稱「<code>comment_set</code>」。</p>
 <p>無論是自定義的<code>comments</code>或預設的<code>comment_set</code>，都表達它是一個「<strong>複數集合</strong>」，這是一對多的特色（多對多也是如此）。</p>
 <hr>
-<h2 id="好的-related-name-命名"><a href="#好的-related-name-命名" class="headerlink" title="好的 related_name 命名"></a>好的 related_name 命名</h2><p>實務中，把這個<code>related_name</code>命名好是值得的，雖然大部分時候可以<strong>無腦使用複數</strong>就簡單搞定，就像上面的<code>comments</code>名稱。</p>
+<h2 id="好的-related-name-命名"><a href="#好的-related-name-命名" class="headerlink" title="好的 related_name 命名"></a>好的 related_name 命名</h2><p>實務中，賦與<code>related_name</code>良好的命名是值得的。雖然大部分時候我們可以<strong>無腦使用複數</strong>即搞定，例如上面的<code>comments</code>名稱。</p>
 <p>但當<strong>關聯較多、情況複雜</strong>的時候，為了<strong>維持程式的可讀性</strong>，就需要你花費一點巧思。</p>
-<p>比如，任何專案都需要有憑證才能被存取，而一個憑證可以讓多個專案共用，此時我們可以這樣設計：</p>
+<p>舉例而言，想像下列情境：任何專案都需要有憑證才能被存取，而一個憑證可以讓多個專案共用，此時我們可以這樣設計：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Project</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line">    certificate = models.ForeignKey(<span class="string">&#x27;Certificate&#x27;</span>,</span><br><span class="line">                                    on_delete=models.PROTECT,</span><br><span class="line">                                    related_name=<span class="string">&#x27;used_by_projects&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這裡的 related_name 不再用死板板的<code>projects</code>來命名，因為當你透過<code>Certificate</code>物件要訪問「<strong>所有使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code>顯然會比<code>certificate.projects</code><strong>更具描述性</strong>——尤其在<code>Certificate</code>還有<strong>更多其它關聯</strong>的時候，太多<code>certificate.XXXs</code>容易讓人混淆。</p>
