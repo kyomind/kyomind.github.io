@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 外鍵入門" />
     
 
-  <meta property="article:modified_time" content="2024-01-10T08:08:20+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T19:38:13+08:00" />
 
 
 
@@ -240,11 +240,9 @@
 <hr>
 <p>接下來，我們就用上述的程式碼實例，來一一解說反向關聯。</p>
 <h2 id="一對一反向關聯"><a href="#一對一反向關聯" class="headerlink" title="一對一反向關聯"></a>一對一反向關聯</h2><p>請看 Post 與 Subtitle 這兩個模型，它們是典型的一對一關係。</p>
-<p>Subtitle 實例有著「正向關聯」屬性（欄位）——<code>post</code>，可以關聯 Post 模型的<strong>一個</strong>特定實例。</p>
-<p>反之，Post 有著「反向關聯」屬性，即<code>related_name=&#39;subtitle&#39;</code>中的<code>subtitle</code>。不過，即使你沒有特別定義<code>related_name</code>，這裡的「預設」反向關聯屬性名稱，也是<code>subtitle</code>（即關聯模型名稱的「小寫」型態）。</p>
-<p>圖形說明如下：</p>
-<p><img src="https://i.imgur.com/zbZqGeh.png" alt="正向關聯與反向關聯"><span class="cap">正向關聯與反向關聯</span></p>
-<h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>我們假設上述兩個模型的實例分別為<code>post_1</code>、<code>subtitle_1</code>。</p>
+<p>Subtitle 實例有著「正向關聯」屬性——<code>post</code>，關聯某個 Post 模型實例。</p>
+<p>Post 實例有著「反向關聯」屬性——<code>subtitle</code>，來自<code>related_name=&#39;subtitle&#39;</code>。不過，即使你沒有特別定義<code>related_name</code>，這裡的「預設」反向關聯屬性名稱，也是<code>subtitle</code>（即關聯模型名稱的「小寫」型態）。</p>
+<h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>假設 Post 模型的實例為<code>post_1</code>。</p>
 <p>想要查詢<code>post_1</code>所關聯的 Subtile 實例，有兩種方法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
 <p>一般查詢方式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subtitle = Subtitle.objects.<span class="built_in">filter</span>(post=post_1)</span><br></pre></td></tr></table></figure>
@@ -269,10 +267,10 @@
 <h3 id="一對多反向關聯查詢重點"><a href="#一對多反向關聯查詢重點" class="headerlink" title="一對多反向關聯查詢重點"></a>一對多反向關聯查詢重點</h3><p>一樣，我們假設上述模型實例分別為<code>post_1</code>、<code>comment_1</code>。</p>
 <p>其中<code>comment_1</code>有正向關聯屬性<code>post</code>（即 ForeignKey）。而<code>post_1</code>有「一對多」反向關聯屬性<code>comments</code>（從<code>related_name=&#39;comments&#39;</code>獲得）——注意這個複數。</p>
 <p>同理，想獲得<code>post_1</code>所有關聯 Comment 實例，有一般查詢和透過反向關聯查詢。</p>
-<p>一般查詢：</p>
+<p><strong>一般查詢：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments = Comment.objects.<span class="built_in">filter</span>(post=post_1)</span><br></pre></td></tr></table></figure>
 
-<p>反向關聯查詢：</p>
+<p><strong>反向關聯查詢：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments = post_1.comments.<span class="built_in">all</span>()</span><br></pre></td></tr></table></figure>
 
 <h3 id="與一對一關係的區別"><a href="#與一對一關係的區別" class="headerlink" title="與一對一關係的區別"></a>與一對一關係的區別</h3><p>訪問一對一反向關聯屬性，會得到兩種可能：</p>
