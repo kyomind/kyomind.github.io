@@ -37,7 +37,7 @@
     <meta property="og:tag" content="PEP 518" />
     
 
-  <meta property="article:modified_time" content="2024-01-04T16:13:36+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T13:06:26+08:00" />
 
 
 
@@ -257,7 +257,7 @@
 <p>In 2018, a Python code formatter named Black started to gain popularity. The <strong>only way</strong> to configure Black is to <strong>use pyproject.toml. Since then, more and more tools have started to support storing configuration in pyproject.toml</strong>, including pytest.</p>
 </blockquote>
 <p>可以想像，Flit 或 Poetry，在2018 年以前，使用人口畢竟不多，對 pyproject.toml 的套件支援率與專案採用率，自然起不到什麼推波助瀾的效果，但 Black 就不同了。</p>
-<p>一個中大型專案，基於協作一致性要求，少不了 formatter 的支持，而<strong>主流的選擇</strong>，如同〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a>〉所言，不外乎這三種：</p>
+<p>一個中大型專案，基於協作一致性要求，少不了 formatter 的支持，而<strong>主流的選擇</strong>，如同〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python Linter、 Formatter</a>〉所言，不外乎這三種：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a></li>
@@ -288,7 +288,7 @@
 <p>若要支援 pyproject.toml，就得遵循<strong>適用於 pyproject.toml 的格式與選項</strong>。</p>
 <p>因此，上述工具於 pyproject.toml 的<strong>設定格式為何、有哪些選項</strong>，至少要有一些文件能參考才行。下面會列出我找到的結果。</p>
 <h3 id="並非-VS-Code-專屬"><a href="#並非-VS-Code-專屬" class="headerlink" title="並非 VS Code 專屬"></a>並非 VS Code 專屬</h3><p>此外，還需要辨明一下，這些工具在 pyproject.toml 中的設定，可以用在 VS Code 開發（VS Code 會去自動讀取並套用），也可以用在別的地方，比如 CI 工具。</p>
-<h3 id="透過-VS-Code-settings-json-的-Args-設定-formatter"><a href="#透過-VS-Code-settings-json-的-Args-設定-formatter" class="headerlink" title="透過 VS Code settings.json 的 Args 設定 formatter"></a>透過 VS Code <code>settings.json</code> 的 Args 設定 formatter</h3><p>這類做法（如下）已於〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a>〉中介紹過，可直接點擊參考，本文不再贅述。效果和使用 pyproject.toml 基本相同，但可以想見，<strong>只對 VS Code 有效</strong>。</p>
+<h3 id="透過-VS-Code-settings-json-的-Args-設定-formatter"><a href="#透過-VS-Code-settings-json-的-Args-設定-formatter" class="headerlink" title="透過 VS Code settings.json 的 Args 設定 formatter"></a>透過 VS Code <code>settings.json</code> 的 Args 設定 formatter</h3><p>這類做法（如下）已於〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python Linter、 Formatter</a>〉中介紹過，可直接點擊參考，本文不再贅述。效果和使用 pyproject.toml 基本相同，但可以想見，<strong>只對 VS Code 有效</strong>。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.yapfArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;-p&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--style=&#123;column_limit=100&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>此外，敏銳的你應該已經想到：這兩種設定<strong>應該有優先順序</strong>。</p>
@@ -379,7 +379,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例" rel="bookmark">VS Code 設定 Python linter 與 formatter：以 Flake8、yapf 為例</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ruff/" title="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學" rel="bookmark">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/black-and-isort/" title="試用從 VS Code Python extension 拆分的 Black、isort 套件" rel="bookmark">試用從 VS Code Python extension 拆分的 Black、isort 套件</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python Linter、 Formatter" rel="bookmark">VS Code 設定 Python Linter、 Formatter</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ruff/" title="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學" rel="bookmark">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Python/">Python</a>
             <a href="/tags/VS-Code/">VS Code</a>
