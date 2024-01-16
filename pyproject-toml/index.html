@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學">
-  <meta property="og:title" content="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學"><meta name="twitter:description" content="作為一個平常沒有在開發 Python 套件的 Web 開發者，關於 pyproject.toml 在套件打包方面的功用，較無涉獵，故本文將聚焦在它作為「工具設定檔」部分。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Python 開發：pyproject.toml 介紹 + 使用教學">
+  <meta property="og:title" content="Python 開發：pyproject.toml 介紹 + 使用教學"><meta name="twitter:description" content="作為一個平常沒有在開發 Python 套件的 Web 開發者，關於 pyproject.toml 在套件打包方面的功用，較無涉獵，故本文將聚焦在它作為「工具設定檔」部分。">
   <meta property="og:description" content="作為一個平常沒有在開發 Python 套件的 Web 開發者，關於 pyproject.toml 在套件打包方面的功用，較無涉獵，故本文將聚焦在它作為「工具設定檔」部分。"><meta name="twitter:image" content="https://i.imgur.com/yXGtHZ1.jpg">
   <meta property="og:image" content="https://i.imgur.com/yXGtHZ1.jpg">
 <meta name="description" content="作為一個平常沒有在開發 Python 套件的 Web 開發者，關於 pyproject.toml 在套件打包方面的功用，較無涉獵，故本文將聚焦在它作為「工具設定檔」部分。" />
@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh-TW" />
 <meta property="og:site_name" content="Code and Me" />
 <meta property="article:publisher" content="https://blog.kyomind.tw" />
-<meta property="article:author" content="Kyo" /><meta property="article:section" content="VS Code" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             <meta property="og:tag" content="Python" />
     <meta property="og:tag" content="VS Code" />
     <meta property="og:tag" content="isort" />
@@ -37,7 +37,7 @@
     <meta property="og:tag" content="PEP 518" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T13:09:54+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T13:30:54+08:00" />
 
 
 
@@ -69,7 +69,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學 - Code and Me</title>
+    <title>Python 開發：pyproject.toml 介紹 + 使用教學 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -125,9 +125,9 @@
           
             <a href="/categories/Django/">Django (5)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (18)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (19)</a>
           
-            <a href="/categories/VS-Code/">VS Code (10)</a>
+            <a href="/categories/VS-Code/">VS Code (9)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -165,7 +165,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學
+      <h1 class="post-title">Python 開發：pyproject.toml 介紹 + 使用教學
         </h1>
 
       <div class="post-meta">
@@ -175,7 +175,7 @@
             →  2023-10-25
           </span>
         <span class="post-category">
-            <a href="/categories/VS-Code/">VS Code</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
             </span>
         </div>
     </header>
@@ -409,7 +409,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">33</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">18</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">33</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">19</span></a>
     </div>
   </div>
 </div>

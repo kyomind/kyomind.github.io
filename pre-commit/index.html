@@ -33,7 +33,7 @@
     <meta property="og:tag" content="pre-commit" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T13:20:54+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T13:30:54+08:00" />
 
 
 
@@ -121,9 +121,9 @@
           
             <a href="/categories/Django/">Django (5)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (18)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (19)</a>
           
-            <a href="/categories/VS-Code/">VS Code (10)</a>
+            <a href="/categories/VS-Code/">VS Code (9)</a>
           
             <a href="/categories/Docker/">Docker (2)</a>
           
@@ -275,7 +275,7 @@
 <p>一樣特別注意<code>args</code>，尤其像 isort、yapf 這類「<strong>formatter</strong>」，設定不一致會直接造成「在編輯器中格式化符合規範，但 commit 時卻被 hook 擋下來」的<strong>窘境</strong>。</p>
 <h3 id="yapf"><a href="#yapf" class="headerlink" title="yapf"></a>yapf</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/pre-commit/mirrors-yapf</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="string">v0.32.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">yapf</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">column_limit</span> <span class="string">=</span> <span class="number">100</span></span><br><span class="line">        <span class="attr">additional_dependencies:</span> [<span class="string">toml</span>]</span><br></pre></td></tr></table></figure>
 
-<p>yapf 有一個<a href="https://blog.kyomind.tw/pyproject-toml/#VS-Code-%E6%95%B4%E5%90%88%E6%99%82%E5%8F%AF%E8%83%BD%E7%9A%84-bug">很常見的問題</a>，之前在〈<a href="https://blog.kyomind.tw/pyproject-toml/">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a>〉中已提過。</p>
+<p>yapf 有一個<a href="https://blog.kyomind.tw/pyproject-toml/#VS-Code-%E6%95%B4%E5%90%88%E6%99%82%E5%8F%AF%E8%83%BD%E7%9A%84-bug">很常見的問題</a>，之前在〈<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a>〉中已提過。</p>
 <p>簡言之，只要你的專案中有<code>pyproject.toml</code>，無論裡面是否有關於 yapf 的設定項，yapf 都會試圖去解析（parse）它，此時<code>toml</code>套件就成了必不可少的一環。如果沒有<code>toml</code>，將進一步導致 yapf 無法正常運作。</p>
 <p>這個問題在 pre-commit 同樣會發生，所以如果專案中有<code>pyproject.toml</code>，就要額外設定<code>additional_dependencies: [toml]</code>，方能功德圓滿🙏</p>
 <hr>
@@ -322,7 +322,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ruff/" title="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學" rel="bookmark">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學" rel="bookmark">pyproject.toml 介紹 + VS Code 整合 Black、yapf、isort 教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort-local-module-sorting/" title="確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定" rel="bookmark">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ruff/" title="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學" rel="bookmark">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="Python 開發：pyproject.toml 介紹 + 使用教學" rel="bookmark">Python 開發：pyproject.toml 介紹 + 使用教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort-local-module-sorting/" title="確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定" rel="bookmark">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Flake8/">Flake8</a>
             <a href="/tags/isort/">isort</a>
@@ -350,7 +350,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">10</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">33</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">18</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">33</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">19</span></a>
     </div>
   </div>
 </div>
