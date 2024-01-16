@@ -31,7 +31,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T04:14:59+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T04:22:00+08:00" />
 
 
 
@@ -274,9 +274,6 @@
 <p>這個設定允許你，為「VS Code 整合命令列」<strong>額外新增環境變數</strong>，方便你在命令列中執行程式。</p>
 <p>上述的<code>env.linux</code>可以改為<code>env.osx</code>或<code>env.windows</code>，讓你依不同作業系統設定不同變數內容。如果都一致，就可以像文件中那樣，使用萬字元<code>env.*</code>即可。</p>
 <p>因為我只在 Linux VM 上執行，所以只設定了<code>.linux</code>。</p>
-<blockquote>
-<p><code>2024-01-16</code>：我錯了，還是用萬字元<code>env.*</code>好，今天難得在本機 Mac 上執行，發現無效，回來看本文，才想到我只有設定<code>.linux</code>啊！</p>
-</blockquote>
 <p>雖然文件表明，你也可以透過<code>.env</code>設定<code>PYTHONPATH</code>，但<code>.env</code>中的<code>PYTHONPATH</code>，<strong>可能只對 linter、formatter 等工具有效</strong>，而不會影響 VS Code 的整合命令列。至少我無法透過<code>.env</code> 來解決命令列的執行問題。</p>
 <hr>
 <h2 id="特別提醒"><a href="#特別提醒" class="headerlink" title="特別提醒"></a>特別提醒</h2><p><code>terminal.integrated</code>如它的名稱所述，<strong>只對</strong> VS Code 的整合命令列有效：</p>
