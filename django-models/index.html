@@ -34,7 +34,7 @@
     <meta property="og:tag" content="系列：Django ORM 外鍵入門" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T13:20:54+08:00" />
+  <meta property="article:modified_time" content="2024-01-16T19:17:41+08:00" />
 
 
 
@@ -180,7 +180,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%83%85%E5%A2%83%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案情境介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E8%88%87%E5%8F%8D%E5%90%91%E9%97%9C%E8%81%AF"><span class="toc-text">related_name 與反向關聯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name 在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E7%9A%84%E9%A0%90%E8%A8%AD%E5%90%8D%E7%A8%B1"><span class="toc-text">related_name 的預設名稱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%AF%E5%A5%BD%E7%9A%84-related-name-%E5%91%BD%E5%90%8D"><span class="toc-text">良好的 related_name 命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-Django-Model-%E5%9F%BA%E7%9F%B3"><span class="toc-text">小結：關聯是 Django Model 基石</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%BE%8C%E7%AB%AF%E5%88%86%E9%9B%A2%E4%B8%8B%E7%9A%84-Django-MTV"><span class="toc-text">前後端分離下的 Django MTV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼專案介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%87%8D%E9%BB%9E%EF%BC%9ADjango-ORM-%E5%A4%96%E9%8D%B5%E9%97%9C%E8%81%AF%E8%A8%AD%E5%AE%9A"><span class="toc-text">本文重點：Django ORM 外鍵關聯設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%83%85%E5%A2%83%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案情境介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9"><span class="toc-text">專案模型介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Model-%E4%B8%AD%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%8D%B5%E6%AC%84%E4%BD%8D"><span class="toc-text">在 Model 中建立外鍵欄位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E4%B8%80%E9%97%9C%E4%BF%82"><span class="toc-text">一對一關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E8%88%87%E5%8F%8D%E5%90%91%E9%97%9C%E8%81%AF"><span class="toc-text">related_name 與反向關聯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82"><span class="toc-text">一對多關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E5%9C%A8%E4%B8%80%E5%B0%8D%E5%A4%9A%E9%97%9C%E4%BF%82%E4%B8%AD%E7%9A%84%E9%87%8D%E9%BB%9E"><span class="toc-text">related_name 在一對多關係中的重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-name-%E9%A0%90%E8%A8%AD%E5%90%8D%E7%A8%B1"><span class="toc-text">related_name 預設名稱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E7%9A%84-related-name-%E5%91%BD%E5%90%8D"><span class="toc-text">好的 related_name 命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E9%97%9C%E8%81%AF%E6%98%AF-Django-Model-%E5%9F%BA%E7%9F%B3"><span class="toc-text">小結：關聯是 Django Model 基石</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 1 篇。</p>
@@ -331,7 +331,7 @@
 </blockquote>
 <p>這和一對一關係中，你呼叫反向關聯屬性時，可能得到一個<strong>關聯實例</strong>或拋出<code>RelatedObjectDoesNotExist</code>有明顯不同。</p>
 <hr>
-<h2 id="related-name-的預設名稱"><a href="#related-name-的預設名稱" class="headerlink" title="related_name 的預設名稱"></a>related_name 的預設名稱</h2><p>如果你在建立欄位時沒有給定<code>related_name</code>引數，那 Django 會自動給你預設名稱。</p>
+<h2 id="related-name-預設名稱"><a href="#related-name-預設名稱" class="headerlink" title="related_name 預設名稱"></a>related_name 預設名稱</h2><p>如果你在建立欄位時沒有給定<code>related_name</code>引數，那 Django 會自動給你預設名稱。</p>
 <h3 id="一對一"><a href="#一對一" class="headerlink" title="一對一"></a>一對一</h3><p>在一對一中，預設名稱為外鍵欄位所屬 Model 名稱的小寫。</p>
 <p>參考 Post 的一對一外鍵程式碼：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.OneToOneField(</span><br><span class="line">        <span class="string">&#x27;Title&#x27;</span>, on_delete=models.PROTECT, related_name=<span class="string">&#x27;post&#x27;</span>)</span><br></pre></td></tr></table></figure>
@@ -344,19 +344,22 @@
 <p>如果沒有定義<code>related_name</code>，則被關聯的 Post 將獲得 Django 預設的反向關聯屬性名稱「<code>comment_set</code>」。</p>
 <p>無論是自定義的<code>comments</code>或預設的<code>comment_set</code>，都表達它是一個「<strong>複數集合</strong>」，這是一對多的特色（多對多也是如此）。</p>
 <hr>
-<h2 id="良好的-related-name-命名"><a href="#良好的-related-name-命名" class="headerlink" title="良好的 related_name 命名"></a>良好的 related_name 命名</h2><p>實務中，把這個<code>related_name</code>命名好還是很重要的，雖然大部分時候用單純的複數就可以搞定，就像上面的<code>comments</code>，但為了<strong>增進程式的可讀性</strong>，也有需要你花費巧思的時候。</p>
-<p>比如，任何專案都需要有憑證才能被存取，而一個憑證可以讓多個專案共用，此時我們可能會這樣設計：</p>
+<h2 id="好的-related-name-命名"><a href="#好的-related-name-命名" class="headerlink" title="好的 related_name 命名"></a>好的 related_name 命名</h2><p>實務中，把這個<code>related_name</code>命名好是值得的，雖然大部分時候可以<strong>無腦使用複數</strong>就簡單搞定，就像上面的<code>comments</code>名稱。</p>
+<p>但當<strong>關聯較多、情況複雜</strong>的時候，為了<strong>維持程式的可讀性</strong>，就需要你花費一點巧思。</p>
+<p>比如，任何專案都需要有憑證才能被存取，而一個憑證可以讓多個專案共用，此時我們可以這樣設計：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Project</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line">    certificate = models.ForeignKey(<span class="string">&#x27;Certificate&#x27;</span>,</span><br><span class="line">                                    on_delete=models.PROTECT,</span><br><span class="line">                                    related_name=<span class="string">&#x27;used_by_projects&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這裡的 related_name 不再用死板板的<code>projects</code>來命名，因為當你透過<code>Certificate</code>物件要訪問「<strong>所有使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code>顯然會比<code>certificate.projects</code><strong>更具描述性</strong>——尤其在<code>Certificate</code>還有<strong>更多其它關聯</strong>的時候，太多<code>certificate.XXXs</code>容易讓人混淆。</p>
-<p>簡言之，<code>used_by_projects</code>命名<strong>讓程式更可讀</strong>，讓你一看就知道這個<code>related_name</code>的意義與用途。</p>
+<p>簡言之，<code>used_by_projects</code>命名<strong>讓程式更可讀</strong>，讓你一看就知道這個<code>related_name</code>所代表的<strong>意義與用途</strong>。</p>
 <hr>
 <h2 id="小結：關聯是-Django-Model-基石"><a href="#小結：關聯是-Django-Model-基石" class="headerlink" title="小結：關聯是 Django Model 基石"></a>小結：關聯是 Django Model 基石</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。</p>
 <p><strong>通過關聯，我們能夠模擬真實世界中的關係，使資料表之間建立起有意義的連結。</strong></p>
 <p>了解<strong>外鍵的關聯設定</strong>，以及<strong>反向關聯屬性的使用</strong>，我們能夠更好地應用 Django ORM，建構出高效且具有關聯性的資料模型。</p>
 <p>而辛苦建立這些模型與關聯，就是為了能夠充分利用它們！</p>
-<p>下篇文章將探討，如何有效對這些關聯模型進行查詢，輕鬆地從模型中檢索和篩選所需的資料。</p>
-<p>請敬期待。</p>
+<p>後續我們將探討，如何有效對這些關聯模型進行查詢，輕鬆地從模型中檢索和篩選所需資料。</p>
+<blockquote>
+<p>下一篇：<a href="https://blog.kyomind.tw/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></p>
+</blockquote>
 
       </div>
       
