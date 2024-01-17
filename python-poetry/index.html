@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-16T15:14:21+08:00" />
+  <meta property="article:modified_time" content="2024-01-17T18:36:30+08:00" />
 
 
 
@@ -360,10 +360,11 @@
 <p>本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。</p>
 <p>不過，即使有問題，應該也是集中在安裝與設定階段，其餘部分仍可適用。</p>
 <h2 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h2><blockquote>
-<p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，帶有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
+<p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，具有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
 <p>Poetry 和 pip、git、pyenv 等工具一樣，都是典型的<strong>命令列工具</strong>，需要先安裝才能下達指令——<code>poetry</code>。</p>
-<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
+<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 是一個 Python 套件，需要有 Python 執行環境（並安裝它的依賴套件）才能正常運行。</p>
+<p>Poetry 提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
 <ol>
 <li>使用<code>pipx</code>安裝。</li>
 <li>使用 official installer（即下述的安裝指令）安裝。</li>
@@ -373,7 +374,7 @@
 <h3 id="避免安裝-Poetry-至專案虛擬環境"><a href="#避免安裝-Poetry-至專案虛擬環境" class="headerlink" title="避免安裝 Poetry 至專案虛擬環境"></a>避免安裝 Poetry 至專案虛擬環境</h3><p>安裝 Poetry 的時候，一定將它安裝在一個<strong>「專用」的虛擬環境</strong>。上述兩種安裝方式都滿足這個條件。</p>
 <p>千萬不要為了方便，把 Poetry 直接安裝至你的專案虛擬環境，<strong>這麼做是危險的</strong>。</p>
 <p>因為 Poetry 所依賴的套件非常多，<strong>總計超過 30 個，會嚴重影響專案虛擬環境的整潔度</strong>。這些依賴套件可能和專案本身的套件<strong>發生衝突</strong>。</p>
-<p>所以文件才會提醒你：</p>
+<p>所以官方文件才會提醒你：</p>
 <blockquote>
 <p><strong>Poetry should always be installed in a dedicated virtual environment to isolate it from the rest of your system.</strong> In no case, it should be installed in the environment of the project that is to be managed by Poetry.</p>
 </blockquote>
@@ -398,7 +399,7 @@
 <blockquote>
 <p>至於 PATH 是什麼，可以參考良葛格這篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
 </blockquote>
-<p>總之，我們要新增<code>poetry</code>執行檔所在的路徑（目錄）至 PATH。</p>
+<p>總之，我們要將<code>poetry</code>執行檔所在的路徑（目錄）新增至 PATH。</p>
 <h3 id="在-macOS-或-Linux-上設定-PATH"><a href="#在-macOS-或-Linux-上設定-PATH" class="headerlink" title="在 macOS 或 Linux 上設定 PATH"></a>在 macOS 或 Linux 上設定 PATH</h3><p>使用 macOS 或 Linux，設定 PATH 的步驟相對簡單，只要在<code>.zshrc</code>或<code>.bashrc</code>或<code>.bash_profile</code>新增：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
