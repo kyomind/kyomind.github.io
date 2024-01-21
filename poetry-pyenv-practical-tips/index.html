@@ -36,7 +36,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-17T04:37:51+08:00" />
+  <meta property="article:modified_time" content="2024-01-21T00:51:41+08:00" />
 
 
 
@@ -171,7 +171,7 @@
         <span class="post-time">
           2023-06-05
         </span><span class="post-update">
-            →  2024-01-09
+            →  2024-01-21
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -186,7 +186,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/npnmhFE.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <blockquote>
-<p><code>2024/01/09</code>：刪除部分內容，使文章更緊湊、好讀。</p>
+<p><code>2024/01/21</code>：補充「<a href="https://blog.kyomind.tw/vscode-pythonpath/#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug">VS Code 自動套用 Python 虛擬環境 bug</a>」。這與本文「<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/#%E5%9B%9B%E3%80%81%E4%B8%8D%E5%90%8C%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C-Python-%E7%89%88%E6%9C%AC">四、不同專案使用不同 Python 版本</a>」部分有關。<br><code>2024/01/09</code>：刪除部分內容，使文章更緊湊、好讀。</p>
 </blockquote>
 <p>〈<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉發表至今，已過了 1 年多，這意味我也用了一年多的 Poetry。</p>
 <p>感覺如何？——我覺得還不錯！可見不是三分鐘熱度而已。</p>
@@ -304,7 +304,10 @@
 
 <p>因為已經有設定<code>global</code>，單純使用<code>poetry env use python</code>應該也是可以成功套用 3.10。但保險起見，使用指令時還是建議輸入<strong>完整的版本號</strong>，包括尾綴的<code>.11</code></p>
 <hr>
-<h2 id="四、不同專案使用不同-Python-版本"><a href="#四、不同專案使用不同-Python-版本" class="headerlink" title="四、不同專案使用不同 Python 版本"></a>四、不同專案使用不同 Python 版本</h2><p>即使有「多專案多 Python 版本」需求，也未必要變更前述的<code>virtualenvs.prefer-active-python</code>設定。</p>
+<h2 id="四、不同專案使用不同-Python-版本"><a href="#四、不同專案使用不同-Python-版本" class="headerlink" title="四、不同專案使用不同 Python 版本"></a>四、不同專案使用不同 Python 版本</h2><blockquote>
+<p><code>2024/01/21</code>：在多版本時，VS Code 自動啟動專案 Python 虛擬環境功能，可能會受影響，詳情可參考「<a href="https://blog.kyomind.tw/vscode-pythonpath/#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug">VS Code 自動套用 Python 虛擬環境 bug</a>」。</p>
+</blockquote>
+<p>即使有「多專案多 Python 版本」需求，也未必要變更前述的<code>virtualenvs.prefer-active-python</code>設定。</p>
 <p>透過<code>pyenv local</code>+<code>poetry env use</code>，可以為不同專案設定不同的 Python 版本。</p>
 <p>假設你有 a、b、c 三個專案，分別要使用 Python 3.7.11、3.9.12、3.10.11，依照前段介紹，我們可以這麼做。</p>
 <p>首先，<code>pyenv versions</code>確認這三個版本的 Python 都已經由 pyenv 安裝完成：</p>

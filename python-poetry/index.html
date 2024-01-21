@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-17T18:36:30+08:00" />
+  <meta property="article:modified_time" content="2024-01-20T00:08:37+08:00" />
 
 
 
@@ -363,7 +363,7 @@
 <p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，具有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
 <p>Poetry 和 pip、git、pyenv 等工具一樣，都是典型的<strong>命令列工具</strong>，需要先安裝才能下達指令——<code>poetry</code>。</p>
-<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 是一個 Python 套件，需要有 Python 執行環境（並安裝它的依賴套件）才能正常運行。</p>
+<h3 id="安裝方式選擇"><a href="#安裝方式選擇" class="headerlink" title="安裝方式選擇"></a>安裝方式選擇</h3><p>Poetry 是一個 Python 套件，需要有 Python 執行環境才能正常運行。</p>
 <p>Poetry 提供了<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installation">兩種主要的安裝方式</a>：</p>
 <ol>
 <li>使用<code>pipx</code>安裝。</li>
@@ -378,6 +378,7 @@
 <blockquote>
 <p><strong>Poetry should always be installed in a dedicated virtual environment to isolate it from the rest of your system.</strong> In no case, it should be installed in the environment of the project that is to be managed by Poetry.</p>
 </blockquote>
+<hr>
 <h3 id="使用-official-installer-安裝-Poetry-至家目錄"><a href="#使用-official-installer-安裝-Poetry-至家目錄" class="headerlink" title="使用 official installer 安裝 Poetry 至家目錄"></a>使用 official installer 安裝 Poetry 至家目錄</h3><p>我個人使用 <a target="_blank" rel="noopener" href="https://python-poetry.org/docs/#installing-with-the-official-installer">official installer</a> 安裝。</p>
 <p>要用 official installer 安裝 Poetry，只要在命令列輸入下列指令。</p>
 <h4 id="macOS-Linux-WSL（Windows-Subsystem-for-Linux）"><a href="#macOS-Linux-WSL（Windows-Subsystem-for-Linux）" class="headerlink" title="macOS &#x2F; Linux &#x2F; WSL（Windows Subsystem for Linux）"></a>macOS &#x2F; Linux &#x2F; WSL（Windows Subsystem for Linux）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 -</span><br></pre></td></tr></table></figure>
