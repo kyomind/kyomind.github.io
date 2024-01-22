@@ -32,7 +32,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-01-21T01:03:03+08:00" />
+  <meta property="article:modified_time" content="2024-01-21T06:33:57+08:00" />
 
 
 
@@ -116,7 +116,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (33)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
           
             <a href="/categories/Django/">Django (5)</a>
           
@@ -309,7 +309,7 @@
 
 <p>它竟然說「<code>ModuleNotFoundError: No module named &#39;django&#39;</code>」，這就奇了，明明確實啟動了虛擬環境，而且<code>django</code>也安裝在虛擬環境中了。</p>
 <p>而且使用別的套件指令，完全正常，這個問題八成是出在 <strong>Python 的路徑設定</strong>上。</p>
-<p>我大概觀察了一下，此時<code>sys.path</code>的中並沒有<code>.venv</code>虛擬環境中的 Python 執行檔所在目錄，即<code>&lt;專案路徑&gt;/.venv/bin/</code>。</p>
+<h3 id="問題定位"><a href="#問題定位" class="headerlink" title="問題定位"></a>問題定位</h3><p>我大概觀察了一下，此時<code>sys.path</code>的中並沒有<code>.venv</code>虛擬環境中的 Python 執行檔所在目錄，即<code>&lt;專案路徑&gt;/.venv/bin/</code>。</p>
 <p>但這也合理，因為虛擬環境中的 Python，其實是以<strong>軟連結</strong>的方式存在。連結目標仍是 pyenv 中的 Python 3.11.7。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx 1 kyo kyo   47 Jan  5 06:19 python -&gt; /home/kyo/.pyenv/versions/3.11.7/bin/python3.11*</span><br><span class="line">lrwxrwxrwx 1 kyo kyo    6 Jan  5 06:19 python3 -&gt; python*</span><br><span class="line">lrwxrwxrwx 1 kyo kyo    6 Jan  5 06:19 python3.11 -&gt; python*</span><br></pre></td></tr></table></figure>
 
@@ -381,7 +381,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">33</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">19</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">5</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">34</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">6</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">19</span></a>
     </div>
   </div>
 </div>
