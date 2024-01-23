@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
+    
+    <lastmod>2024-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
+    
+    <lastmod>2024-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/less-is-more/</loc>
     
     <lastmod>2024-01-23</lastmod>
@@ -425,15 +443,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
-    
-    <lastmod>2024-01-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/django-tutorial/</loc>
     
     <lastmod>2024-01-09</lastmod>
@@ -768,15 +777,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
