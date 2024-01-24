@@ -281,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
+    <loc>https://blog.kyomind.tw/pre-commit/</loc>
     
     <lastmod>2024-01-16</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/pre-commit/</loc>
+    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2024-01-16</lastmod>
     
@@ -416,6 +416,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -435,15 +444,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -506,7 +506,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-07/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
     
     <lastmod>2024-01-04</lastmod>
     
@@ -515,7 +515,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-07/</loc>
     
     <lastmod>2024-01-04</lastmod>
     
@@ -614,7 +614,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -623,7 +623,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -958,7 +958,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-01-23</lastmod>
+    <lastmod>2024-01-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
