@@ -4,7 +4,25 @@
   <url>
     <loc>https://blog.kyomind.tw/less-is-more/</loc>
     
-    <lastmod>2024-01-24</lastmod>
+    <lastmod>2024-01-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bear/</loc>
+    
+    <lastmod>2024-01-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
+    
+    <lastmod>2024-01-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -47,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
-    
-    <lastmod>2024-01-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
     
     <lastmod>2024-01-23</lastmod>
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/on-writing/</loc>
-    
-    <lastmod>2024-01-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/bear/</loc>
     
     <lastmod>2024-01-23</lastmod>
     
@@ -958,7 +958,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-01-24</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
