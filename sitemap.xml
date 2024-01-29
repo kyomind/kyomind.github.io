@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
+    
+    <lastmod>2024-01-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/notion-database/</loc>
+    
+    <lastmod>2024-01-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
+    
+    <lastmod>2024-01-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2024-01-29</lastmod>
     
@@ -92,15 +119,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
-    
-    <lastmod>2024-01-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
     
     <lastmod>2024-01-24</lastmod>
@@ -129,15 +147,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/on-writing/</loc>
-    
-    <lastmod>2024-01-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2024-01-23</lastmod>
     
@@ -777,15 +786,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/snyk-advisor/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
