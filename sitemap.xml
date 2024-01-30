@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
+    <loc>https://blog.kyomind.tw/bear/</loc>
     
     <lastmod>2024-01-30</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/less-is-more/</loc>
+    
+    <lastmod>2024-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
     
     <lastmod>2024-01-30</lastmod>
     
@@ -66,15 +75,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
-    
-    <lastmod>2024-01-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/bear/</loc>
     
     <lastmod>2024-01-28</lastmod>
     
