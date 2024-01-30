@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/not-by-ai/</loc>
+    
+    <lastmod>2024-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/notion-database/</loc>
     
     <lastmod>2024-01-30</lastmod>
@@ -95,15 +104,6 @@
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-01-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/not-by-ai/</loc>
-    
-    <lastmod>2024-01-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
