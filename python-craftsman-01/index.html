@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀筆記" />
     
 
-  <meta property="article:modified_time" content="2024-02-28T05:32:39+08:00" />
+  <meta property="article:modified_time" content="2024-02-28T05:50:29+08:00" />
 
 
 
@@ -212,15 +212,18 @@
 <p>我回想一下，不得不說，這類被註解的程式碼，<strong>十之八九都是不會再用到了！</strong>如果這類「程式碼註解」愈積愈多，真的會讓人看了很「阿雜」！</p>
 <p>所以基本上，現在比較正規的做法，都是建議你直接刪除，以後真的需要時，再透過版控回復即可。</p>
 <p>對此我基本認同，所以工作上 code review 時，我「不會」放行這種直接註解的程式碼。</p>
-<h3 id="偶有例外"><a href="#偶有例外" class="headerlink" title="偶有例外"></a>偶有例外</h3><p>但，你我都知道，事情有時也沒那麼簡單。</p>
+<h3 id="僅有的例外"><a href="#僅有的例外" class="headerlink" title="僅有的例外"></a>僅有的例外</h3><p>但，你我都知道，有時事情也沒那麼簡單。</p>
 <p>用 Git 版控回復的前提是：你的團隊 commit 記錄要寫好！不然真的要「回復」的時候，你可能連它在哪一個 commit 都要找好一陣子。</p>
 <p>所以，基於方便與實際考量，事實上我還是有<strong>一點點折衷</strong>：原則上不可以註解程式碼，但如果確定只是「<strong>暫時</strong>」用不到，等別的元件完成後，就會繼續開發、使用，例外可以暫時註解就好——但必須加上 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0350/">codetag</a> 標記。</p>
 <p>一般我們用 <code>TODO</code> 這個 codetag。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO 日後改回一對一時，請用下面方式重寫：</span></span><br><span class="line"><span class="comment"># user = User.objects.select_related(&#x27;oversee_tenant&#x27;)</span></span><br><span class="line"><span class="comment"># .prefetch_related(&#x27;oversee_projects&#x27;).get(user_uuid=user_uuid)</span></span><br></pre></td></tr></table></figure>
 
-<p>不過大原則還是：別註解了，刪除吧！</p>
+<p>不過<strong>大原則</strong>還是：</p>
+<blockquote>
+<p><strong>別註解了，刪除吧！</strong></p>
+</blockquote>
 <hr>
-<h2 id="二、僅用註解「重述」程式碼行為"><a href="#二、僅用註解「重述」程式碼行為" class="headerlink" title="二、僅用註解「重述」程式碼行為"></a>二、僅用註解「重述」程式碼行為</h2><p>這應該是我們最常看到的爛註解的形式，也是你在所有討論程式碼註解的書中，一定會看到的。</p>
+<h2 id="二、僅用註解「重述」程式碼行為"><a href="#二、僅用註解「重述」程式碼行為" class="headerlink" title="二、僅用註解「重述」程式碼行為"></a>二、僅用註解「重述」程式碼行為</h2><p>這應該是我們最常看到的爛註解的形式，也是你在所有討論程式碼註解的書中，一定會提及的。</p>
 <p>而且它真的爛，沒有藉口。比如這樣：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化 x 為 0</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 檢查 x 是否小於 10</span></span><br><span class="line"><span class="keyword">if</span> x &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="comment"># 印出 x 小於 10</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x is less than 10&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -232,22 +235,23 @@
 <p>應該儘量提供那些讀者<strong>無法</strong>從程式碼裡讀出來的資訊。描述程式<strong>為什麼</strong>要這麼做，而不是簡單複述程式碼本身。</p>
 </blockquote>
 <p>不過，光寫「為什麼」註解，有時候還是遠遠不夠的。</p>
-<h2 id="指引型註解"><a href="#指引型註解" class="headerlink" title="指引型註解"></a>指引型註解</h2><p>因此，本書更進一步提出所謂的「指引性註解」。</p>
+<h2 id="指引型註解"><a href="#指引型註解" class="headerlink" title="指引型註解"></a>指引型註解</h2><p>因此，本書更進一步提出所謂的「<strong>指引性註解</strong>」：</p>
 <blockquote>
 <p>這種註解並不「直接」複述程式，而是簡明扼地概括程式碼功能，起到「<strong>程式碼導讀</strong>」的效果。</p>
 </blockquote>
-<p>書中的「指引性註解」例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化存取服務的 client 物件</span></span><br><span class="line">token = token_service.get_token()</span><br><span class="line">service_client = ServiceClient(token=token)</span><br><span class="line">service_client.ready()</span><br><span class="line"><span class="comment"># 呼叫服務取得資料，然後進行過濾</span></span><br><span class="line">data = service_client.fetch_full_data()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">		<span class="keyword">if</span> item.value &gt; SOME_VALUE:</span><br><span class="line">				...</span><br></pre></td></tr></table></figure>
+<p>書中的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化存取服務的 client 物件</span></span><br><span class="line">token = token_service.get_token()</span><br><span class="line">service_client = ServiceClient(token=token)</span><br><span class="line">service_client.ready()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 呼叫服務取得資料，然後進行過濾</span></span><br><span class="line">data = service_client.fetch_full_data()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">    <span class="keyword">if</span> item.value &gt; SOME_VALUE:</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
 
 <p>不難看出，這種指引型註解，<strong>其實就是 docstring 在做的事</strong>。換句話說，docstring 就是一種指引型註解。</p>
-<p>但是，docstring 畢竟只出現在元件的開頭，對複雜的程式而言，在元件的內容，往往也需要這樣的註解，作為閱讀複雜程式碼的指引。</p>
-<p>這需要你內心清楚——「這段程式碼的哪些部分，別人可能會看不懂！」，這也是為什麼我總說，要寫好註解，就一定要培養好「讀者意識」的理由。</p>
+<p>但是，docstring 畢竟只出現在元件的開頭，對複雜的程式而言，在元件的內容，往往也需要這樣的註解，作為閱讀<strong>複雜程式碼</strong>的指引。</p>
+<p>要寫好指引型註解，甚至知曉「什麼時候」應該要寫下指引型註解，需要你內心清楚——「這段程式碼的哪些部分，別人可能會看不懂！」</p>
+<p>這也是為什麼我總說，要寫好註解，就一定要培養好「<strong>讀者意識</strong>」的理由。</p>
 <blockquote>
 <p>指引性註解並不提供程式碼裡讀不到的東西——如果沒有註解，耐心讀完所有程式碼，你也能知道程式做了什麼事。指引性註解的主要作用是<strong>降低程式碼的認知成本</strong>，讓我們能<strong>更容易理解</strong>程式碼的<strong>意圖</strong>。</p>
 </blockquote>
 <p>說得非常好。</p>
 <h2 id="提煉為獨立函式"><a href="#提煉為獨立函式" class="headerlink" title="提煉為獨立函式"></a>提煉為獨立函式</h2><p>對於複雜而冗長的程式流程，書寫「指引性註解」是一個協助閱讀理解的好方法。</p>
-<p>而另一個有效的方法，就是把這些程式碼片段獨立成一個又一個的函式，改為透過<strong>有意義的函式名稱</strong>來描述流程，此時就可以刪除指引性註解：</p>
+<p>而另一個有效的方法，就是把這些程式碼片段獨立成一個又一個的函式，透過<strong>有意義的函式名稱</strong>來描述流程，此時就可以刪除指引性註解：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service_client = make_client()</span><br><span class="line">data = fetch_and_filter(service_client)</span><br></pre></td></tr></table></figure>
 
 <p>其中的重點在於，你要能判斷，什麼時候該寫「指引性註解」，而什麼時候則適合獨立成函式、方法。</p>
@@ -266,7 +270,7 @@
 <blockquote>
 <p>為什麼這樣是不妥的？細節不是很好嗎？</p>
 </blockquote>
-<p>對，但大部分時候，docstring 或「指引型註解」的主要寫作目的，是為了讓讀者不用一行一行閱讀程式碼，就能夠快速知道目前程式碼的<strong>流程與意圖</strong>。</p>
+<p>對，但大部分時候，docstring 或「指引型註解」的主要寫作<strong>目的</strong>，是為了讓讀者不用一行一行閱讀程式碼，就能夠快速知道目前程式碼的<strong>流程與意圖</strong>。</p>
 <p>這種過多細節的寫法，恰恰與這個目標<strong>背道而馳</strong>——增加了太多理解上的「<strong>雜訊</strong>」。</p>
 <p>書中給出的改善版本如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">resize_image</span>(<span class="params">image, size</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;將圖片縮放為指定尺寸，並返回新的圖片。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    注意：當文件超過 5MB 時，請使用 resize_big_image()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param image: 圖片文件對象</span></span><br><span class="line"><span class="string">    :param size: 包含寬高的元組：（width, height）</span></span><br><span class="line"><span class="string">    :return: 新圖片對象</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
@@ -274,20 +278,21 @@
 <hr>
 <h2 id="自言自語的註解"><a href="#自言自語的註解" class="headerlink" title="自言自語的註解"></a>自言自語的註解</h2><p>你有沒有一個疑問，為什麼說註解寫了太多細節，是「弄錯受眾」？</p>
 <p>我是這樣看的：留下這麼多細節的註解，與其說是註解，更像寫給自己看的<strong>筆記</strong>——而且是給「現在」的自己，真的就像在作筆記一樣！</p>
-<p>我要強調，<strong>「現在的自己」並不是註解的受眾！</strong>因為現在的自己對程式細節非常清楚，即使沒有註解也能讀懂程式碼。</p>
-<p>而註解是為<strong>沒時間慢慢讀程式碼</strong>的人服務的。</p>
-<p>換句話說，未來的你，再回來看這段程式，絕對不會想要在 docstring 看到這麼多「廢話」。這種寫法依舊是搞錯了對象。</p>
-<p>當然，你的同事也不會想看這麼多資訊——同事往往更關心「這函式到底要怎麼用」！</p>
-<h2 id="抽象層次混亂"><a href="#抽象層次混亂" class="headerlink" title="抽象層次混亂"></a>抽象層次混亂</h2><p>我覺得還有另一種「弄錯受眾」的註解也很經典，甚至更加常見！那就是混合實作與業務邏輯：</p>
+<p>我想強調，<strong>「現在的自己」並不是註解的受眾！</strong>因為現在的自己對程式細節非常清楚，即使沒有註解也能讀懂程式碼。</p>
+<p>相反的，註解是為<strong>沒時間慢慢讀程式碼</strong>的人服務的。</p>
+<p>未來的你，再回來看這段程式，絕對不會想要在 docstring 看到這麼多「<strong>廢話</strong>」。這種寫法無疑是搞錯了對象。</p>
+<p>當然，你的同事也不會想看這麼多雜訊——同事往往更關心「這函式到底要怎麼用」！</p>
+<h2 id="抽象層次混亂"><a href="#抽象層次混亂" class="headerlink" title="抽象層次混亂"></a>抽象層次混亂</h2><p>我覺得還有另一種「弄錯受眾」的註解也很經典，甚至更加常見！那就是混合底層實作與業務邏輯：</p>
 <blockquote>
 <p>註解中參雜了業務邏輯，又不時會出現底層實作的細節描述。</p>
 </blockquote>
-<p>事實上，我倒覺得實務中會願意寫一大串 docstring 的人，可以說是少之又少。大部分的問題其實是：有寫，但寫不好。</p>
-<h2 id="Docstring-與讀者意識"><a href="#Docstring-與讀者意識" class="headerlink" title="Docstring 與讀者意識"></a>Docstring 與讀者意識</h2><p>Docstring 絕對能看出一個人的基本寫作能力，以及是否具備「讀者意識」。</p>
+<p>事實上，我倒覺得實務中會願意寫一大串 docstring 的人，可以說是少之又少。大部分的問題其實是：有寫，但寫得「<strong>零零落落</strong>」。</p>
+<h2 id="Docstring-與讀者意識"><a href="#Docstring-與讀者意識" class="headerlink" title="Docstring 與讀者意識"></a>Docstring 與讀者意識</h2><p>Docstring 絕對能看出一個人的<strong>基本寫作能力</strong>，以及是否具備「<strong>讀者意識</strong>」。</p>
+<p>說真的，這不止是作為一個軟體工程師的核心技能——更是任何<strong>表達者</strong>的核心技能。而程式，只是表達的其中一種形式。</p>
 <p>我很想要寫一篇「如何寫好 docstring」，這需要再構思一番。但常見的錯誤不外乎：</p>
 <ol>
 <li><strong>預知能力</strong>：知曉「函式以外」的事、不僅知道函式會怎麼被調用，還會在 docstring 中寫下呼叫時的與函式無關的情境與注意事項與——<strong>你知道的太多了！</strong></li>
-<li><strong>太多底層細節</strong>：跟上面一樣，只是我覺得真實開發中，往往是東寫一點、西寫一點，不會真的像寫筆記一樣完整——所以讀起來更痛苦，真的是自言自語！除了開發者自己，誰能輕易讀懂那些細節？</li>
+<li><strong>太多底層細節</strong>：跟上面一樣，只是我覺得真實開發中，往往是<strong>東寫一點、西寫一點</strong>，不會真的像寫筆記一樣完整——所以讀起來更痛苦，真的是自言自語！除了開發者自己，誰能輕易讀懂那些細節？</li>
 <li><strong>業務邏輯與底層實作的用詞混雜</strong>：一下子是「無法取得租戶資訊」一下子卻又是「防止 SQL insert 錯誤、RabbitMQ 如何如何」——讓人大腦很混亂。</li>
 </ol>
 <p>總的來說，無論是「自言自語」還是「抽象層次混亂」，它們的本質都差不多——這些註解都像是寫給「<strong>現在的自己</strong>」看的<strong>筆記</strong>。</p>
