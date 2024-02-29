@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀筆記" />
     
 
-  <meta property="article:modified_time" content="2024-02-29T07:58:56+08:00" />
+  <meta property="article:modified_time" content="2024-02-29T08:02:55+08:00" />
 
 
 
@@ -247,20 +247,20 @@
 <p>要寫好指引型註解，甚至知曉「什麼時候」應該要寫下指引型註解，需要你內心清楚——「這段程式碼的哪些部分，別人可能會看不懂！」</p>
 <p>這是為什麼我總說，要寫好註解，就一定要培養好「<strong>讀者意識</strong>」的理由。</p>
 <h3 id="指引型註解的價值"><a href="#指引型註解的價值" class="headerlink" title="指引型註解的價值"></a>指引型註解的價值</h3><p>前面提到，寫註解時「應該儘量提供那些讀者<strong>無法從程式碼裡讀出來</strong>的資訊」，這是我們寫註解的大原則。</p>
-<p>但指引性註解和上述註解<strong>所有區別</strong>，它的獨特<strong>價值</strong>，如書中所言：</p>
+<p>但指引性註解和上述註解<strong>所有區別</strong>，它的<strong>獨特價值</strong>，如書中所言：</p>
 <blockquote>
 <p>指引性註解<strong>並不提供</strong>程式碼裡<strong>讀不到</strong>的東西——如果沒有註解，耐心讀完所有程式碼，你也能知道程式做了什麼事。指引性註解的主要作用是<strong>降低程式碼的認知成本</strong>，讓我們能<strong>更容易理解</strong>程式碼的<strong>意圖</strong>。</p>
 </blockquote>
 <p>說得非常好。</p>
 <h2 id="提煉為獨立函式"><a href="#提煉為獨立函式" class="headerlink" title="提煉為獨立函式"></a>提煉為獨立函式</h2><p>對於複雜而冗長的程式流程，書寫「指引性註解」是一個協助閱讀理解的好方法。</p>
-<p>而另一個有效的方法，就是把這些程式碼片段獨立成一個又一個的函式，透過<strong>有意義的函式名稱</strong>來描述流程，此時就可以刪除指引性註解：</p>
+<p>而另一個有效的方法，就是把這些程式碼片段<strong>獨立成一個又一個的函式</strong>，透過<strong>有意義的函式名稱</strong>來描述流程、展現意圖，此時就可以刪除指引性註解：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service_client = make_client()</span><br><span class="line">data = fetch_and_filter(service_client)</span><br></pre></td></tr></table></figure>
 
 <p>其中的重點在於，你要能判斷，什麼時候該寫「指引性註解」，而什麼時候則適合獨立成函式、方法。</p>
 <p>這當然需要經驗累積，但我們心中要先有這樣的意識，不是嗎？</p>
 <hr>
 <h2 id="三、弄錯註解的「受眾」"><a href="#三、弄錯註解的「受眾」" class="headerlink" title="三、弄錯註解的「受眾」"></a>三、弄錯註解的「受眾」</h2><p>本書這段主要適用的是 docstring，不過我覺得「指引型註解」也有類似議題，所以本段提到「註解」一詞時，皆包括這兩者。</p>
-<p>註解的正確受眾，或說讀者，應該是誰？我想基本上是這兩種人：</p>
+<p>註解的正確<strong>受眾</strong>，或說<strong>讀者</strong>，應該是誰？我想基本上是這兩種人：</p>
 <ol>
 <li><strong>未來</strong>的自己（注意「未來」二字）</li>
 <li>專案<strong>協作者</strong>（同事、主管）</li>
@@ -268,11 +268,11 @@
 <p>我們先看看書中所舉的「反例」：（我直接引用<a target="_blank" rel="noopener" href="https://www.piglei.com/book/ch01_variables.html">網頁</a>上的內容，所以技術名詞並非台灣用語，還請見諒）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">resize_image</span>(<span class="params">image, size</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;將圖片縮放為指定尺寸，並返回新的圖片。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    該函數將使用 Pilot 模塊讀取文件對象，然後調用 .resize() 方法將其縮放為指定尺寸。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    但由於 Pilot 模塊自身限制，這個函數不能很好的處理尺寸過大的文件，當文件大小</span></span><br><span class="line"><span class="string">    超過 5MB 時，resize() 方法的性能就會因為內存分配問題急劇下降，詳見 Pilot 模塊的</span></span><br><span class="line"><span class="string">    Issue #007。因此，對於超過 5MB 的圖片文件，請使用 resize_big_image() 替代，後者</span></span><br><span class="line"><span class="string">    基於 Pillow 模塊開發，很好的解決了內存分配問題，性能更好。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param image: 圖片文件對象</span></span><br><span class="line"><span class="string">    :param size: 包含寬高的元組：（width, height）</span></span><br><span class="line"><span class="string">    :return: 新圖片對象</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>這個例子的最大問題，是寫了太多「實作細節」，講白了就是提供了「太多」程式碼讀者並不關心的內容！</p>
+<p>這個例子的最大問題，是寫了太多「實作細節」，講白了就是提供了「太多」程式碼的讀者<strong>並不關心</strong>的內容！</p>
 <blockquote>
 <p>為什麼這樣是不妥的？細節不是很好嗎？</p>
 </blockquote>
-<p>對，但大部分時候，docstring 或「指引型註解」的主要寫作<strong>目的</strong>，是為了讓讀者不用一行一行閱讀程式碼，就能夠快速知道目前程式碼的<strong>流程與意圖</strong>。</p>
+<p>對，但大部分時候，docstring 或「指引型註解」的主要寫作<strong>目的</strong>，是為了讓讀者<strong>不用一行一行閱讀程式碼</strong>，就能夠快速知道目前程式碼的<strong>流程與意圖</strong>。</p>
 <p>這種過多細節的寫法，恰恰與這個目標<strong>背道而馳</strong>——增加了太多理解上的「<strong>雜訊</strong>」。</p>
 <p>書中給出的改善版本如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">resize_image</span>(<span class="params">image, size</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;將圖片縮放為指定尺寸，並返回新的圖片。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    注意：當文件超過 5MB 時，請使用 resize_big_image()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param image: 圖片文件對象</span></span><br><span class="line"><span class="string">    :param size: 包含寬高的元組：（width, height）</span></span><br><span class="line"><span class="string">    :return: 新圖片對象</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
