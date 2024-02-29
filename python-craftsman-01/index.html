@@ -32,7 +32,7 @@
     <meta property="og:tag" content="閱讀筆記" />
     
 
-  <meta property="article:modified_time" content="2024-02-28T08:30:38+08:00" />
+  <meta property="article:modified_time" content="2024-02-29T07:58:56+08:00" />
 
 
 
@@ -203,7 +203,7 @@
 <p>簡言之，下面提到「註解」二字時，對上述兩種 Python 註解都適用。</p>
 <h2 id="新手常犯的三種註解錯誤"><a href="#新手常犯的三種註解錯誤" class="headerlink" title="新手常犯的三種註解錯誤"></a>新手常犯的三種註解錯誤</h2><p>你可能聽過「很多註解都是爛註解」這種說法。不得不承認，這相當程度是對的！我確實看過很多爛註解——但這不是我們因此不寫註解的理由。</p>
 <p>實務上會有很多爛註解，正是因為我們沒有正視註解的價值，認真學習如何寫好註解。</p>
-<p>因此，就讓我們用書中所舉三種常見的註解錯誤，作為學習的切入點。</p>
+<p>因此，<strong>就讓我們用書中所舉三種常見的註解錯誤，作為學習的切入點。</strong></p>
 <p>書中提到的這三點——尤其是第 3 點，應盡可能避免。作者也提出了相應的解決之道，而我會適時補充我的看法。</p>
 <p>附帶一提，本書是從作者過去的網路文章整理、出版——但內容增加了很多。而且作者也很大方，在網路上公開了部分的內容。而本文整理的部分恰恰是公開的部分。有興趣的話可以直接參考<a target="_blank" rel="noopener" href="https://www.piglei.com/book/ch01_variables.html">本頁</a>。</p>
 <p>當然，我還是強烈建議，為自己入手一本，你絕對不會後悔。</p>
@@ -242,12 +242,14 @@
 <p>書中的例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化存取服務的 client 物件</span></span><br><span class="line">token = token_service.get_token()</span><br><span class="line">service_client = ServiceClient(token=token)</span><br><span class="line">service_client.ready()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 呼叫服務取得資料，然後進行過濾</span></span><br><span class="line">data = service_client.fetch_full_data()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">    <span class="keyword">if</span> item.value &gt; SOME_VALUE:</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
 
-<p>不難看出，這種指引型註解，<strong>其實就是 docstring 在做的事</strong>。換句話說，docstring 就是一種指引型註解。</p>
-<p>但是，docstring 畢竟只出現在元件的開頭，對複雜的程式而言，在元件的內容，往往也需要這樣的註解，作為閱讀<strong>複雜程式碼</strong>的指引。</p>
+<p>不難看出，這種描述「程式碼流程大綱」的指引型註解，<strong>很像 docstring 在做的事</strong>。從這個角度，我們可以說 docstring <strong>也是</strong>一種指引型註解。</p>
+<p>但是，docstring 畢竟只出現在元件的「<strong>開頭</strong>」，對複雜的程式而言，在元件的內部，往往也需要這樣的註解，作為閱讀<strong>複雜程式碼</strong>的指引。</p>
 <p>要寫好指引型註解，甚至知曉「什麼時候」應該要寫下指引型註解，需要你內心清楚——「這段程式碼的哪些部分，別人可能會看不懂！」</p>
-<p>這也是為什麼我總說，要寫好註解，就一定要培養好「<strong>讀者意識</strong>」的理由。</p>
+<p>這是為什麼我總說，要寫好註解，就一定要培養好「<strong>讀者意識</strong>」的理由。</p>
+<h3 id="指引型註解的價值"><a href="#指引型註解的價值" class="headerlink" title="指引型註解的價值"></a>指引型註解的價值</h3><p>前面提到，寫註解時「應該儘量提供那些讀者<strong>無法從程式碼裡讀出來</strong>的資訊」，這是我們寫註解的大原則。</p>
+<p>但指引性註解和上述註解<strong>所有區別</strong>，它的獨特<strong>價值</strong>，如書中所言：</p>
 <blockquote>
-<p>指引性註解並不提供程式碼裡讀不到的東西——如果沒有註解，耐心讀完所有程式碼，你也能知道程式做了什麼事。指引性註解的主要作用是<strong>降低程式碼的認知成本</strong>，讓我們能<strong>更容易理解</strong>程式碼的<strong>意圖</strong>。</p>
+<p>指引性註解<strong>並不提供</strong>程式碼裡<strong>讀不到</strong>的東西——如果沒有註解，耐心讀完所有程式碼，你也能知道程式做了什麼事。指引性註解的主要作用是<strong>降低程式碼的認知成本</strong>，讓我們能<strong>更容易理解</strong>程式碼的<strong>意圖</strong>。</p>
 </blockquote>
 <p>說得非常好。</p>
 <h2 id="提煉為獨立函式"><a href="#提煉為獨立函式" class="headerlink" title="提煉為獨立函式"></a>提煉為獨立函式</h2><p>對於複雜而冗長的程式流程，書寫「指引性註解」是一個協助閱讀理解的好方法。</p>
