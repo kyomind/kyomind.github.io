@@ -36,7 +36,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-01-21T00:51:41+08:00" />
+  <meta property="article:modified_time" content="2024-03-07T04:38:29+08:00" />
 
 
 
@@ -337,16 +337,16 @@
 <p>光專案初始化與虛擬環境管理就用掉了 5 個 h2 標題，可見其複雜。現在，我們進入第二部分——套件的安裝與管理。</p>
 <h2 id="六、安裝套件至-main-dependencies"><a href="#六、安裝套件至-main-dependencies" class="headerlink" title="六、安裝套件至 main dependencies"></a>六、安裝套件至 main dependencies</h2><p>使用<code>poetry add</code>指令。</p>
 <p>參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#add">文件</a>，可以發現<code>add</code>指令的用法還挺多元的！</p>
-<p>我覺得對一般使用者而言，<code>poetry add</code>有兩個重點：</p>
+<p>我覺得對一般使用者而言，<code>poetry add</code>有<strong>兩個重點</strong>：</p>
 <ol>
 <li>了解<code>poetry add</code>的「多階段行為」。</li>
 <li>了解<code>--group</code>參數用法。</li>
 </ol>
-<h3 id="重點一：poetry-add多階段行為"><a href="#重點一：poetry-add多階段行為" class="headerlink" title="重點一：poetry add多階段行為"></a>重點一：<code>poetry add</code>多階段行為</h3><p>如上篇文章所言，<code>poetry add</code>實際上會做 3 件事，依序為：</p>
+<h3 id="重點一：poetry-add多階段行為"><a href="#重點一：poetry-add多階段行為" class="headerlink" title="重點一：poetry add多階段行為"></a>重點一：<code>poetry add</code>多階段行為</h3><p>如前文所言，<code>poetry add</code>實際上會做這 3 件事，依序為：</p>
 <ol>
 <li>更新<code>pyproject.toml</code>。</li>
-<li>依照<code>pyproject.toml</code>的內容，更新<code>poetry.lock</code>。（相當於<code>poetry lock</code>）</li>
-<li>依照<code>poetry.lock</code>的內容，更新虛擬環境。（相當於<code>poetry install</code>）</li>
+<li>依照<code>pyproject.toml</code>的內容，更新<code>poetry.lock</code>。（相當於執行<code>poetry lock</code>指令）</li>
+<li>依照<code>poetry.lock</code>的內容，更新虛擬環境。（相當於<code>poetry install</code>指令）</li>
 </ol>
 <blockquote>
 <p>為什麼知道這個很重要？</p>
@@ -371,8 +371,10 @@
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Poetry pre-1.2.x style, understood by Poetry 1.0–1.2</span></span><br><span class="line"><span class="section">[tool.poetry.dev-dependencies]</span></span><br><span class="line"><span class="attr">pytest</span> = <span class="string">&quot;^6.0.0&quot;</span></span><br><span class="line"><span class="attr">pytest-mock</span> = <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>兩者的<strong>差異</strong>，是版本過渡時要特別注意的。</p>
-<p>雖然彈性變大，但我個人目前還是只有使用 main 和 dev 而已。</p>
-<h3 id="poetry-demo-操作-1"><a href="#poetry-demo-操作-1" class="headerlink" title="poetry-demo 操作"></a>poetry-demo 操作</h3><p>至此，我們也安裝 Django 3.2.x 至 main dependencies 中：</p>
+<p>雖然彈性變大，但我個人目前還是只有使用 main 和 dev 而已，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --group dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="poetry-demo-操作-1"><a href="#poetry-demo-操作-1" class="headerlink" title="poetry-demo 操作"></a>poetry-demo 操作</h3><p>至此，我們來安裝 Django 3.2.x 至 main dependencies 中：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry add django@^3.2</span><br><span class="line"></span><br><span class="line">Updating dependencies</span><br><span class="line">Resolving dependencies... (0.5s)</span><br><span class="line"></span><br><span class="line">Package operations: 5 installs, 0 updates, 0 removals</span><br><span class="line"></span><br><span class="line">  • Installing typing-extensions (4.6.3)</span><br><span class="line">  • Installing asgiref (3.7.2)</span><br><span class="line">  • Installing pytz (2023.3)</span><br><span class="line">  • Installing sqlparse (0.4.4)</span><br><span class="line">  • Installing django (3.2.19)</span><br><span class="line"></span><br><span class="line">Writing lock file</span><br></pre></td></tr></table></figure>
 
 <p>這個<code>@</code>符號（運算子）要怎麼用，請參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/dependency-specification/#using-the--operator">文件</a>或「<a href="https://blog.kyomind.tw/python-poetry/#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件版本範圍</a>」。</p>
@@ -401,9 +403,9 @@
 <blockquote>
 <p>所幸 Poetry 依舊可以輸出<code>requirements.txt</code>，Docker 部署環境就繼續使用這個舊方案即可，而且 Poetry 本來主要就是用於「開發」時的套件管理，對部署差別不大。</p>
 </blockquote>
-<p>說是這樣說，但一年多用下來，我發現這個做法也<strong>不盡理想</strong>，它至少存在兩個問題：</p>
+<p>說是這樣說，但一年多用下來，我發現這個做法也<strong>不盡理想</strong>，它至少存在<strong>兩個問題</strong>：</p>
 <ol>
-<li>套件有變動時，常常會<strong>忘記匯出</strong><code>requirements.txt</code>：你可以說這是人的問題，但這個 export <code>requirements.txt</code>做法，就真的很容易讓人忘記。</li>
+<li>套件有變動時，常常會<strong>忘記匯出</strong><code>requirements.txt</code>。你可以說這是人的問題，但這個 export <code>requirements.txt</code>做法，就<strong>真的</strong>很容易讓人忘記🤣</li>
 <li>由 Poetry 匯出的<code>requirements.txt</code>，不一定能透過 pip 正常安裝套件——兩者存在<strong>輕微的相容性問題</strong>。</li>
 </ol>
 <p>怎麼解？我在原文也已經補充了：</p>
