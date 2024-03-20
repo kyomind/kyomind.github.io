@@ -116,7 +116,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (24)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (25)</a>
           
         </div>
       </li>
@@ -147,6 +147,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-11-15
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/FFvdkOl.jpg"></p>
+<blockquote>
+<p><strong>替代方案（推薦！）</strong>：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+</blockquote>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/isort-local-module-sorting/">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></p>
+</blockquote>
+<hr>
+<p>最近發現，VS Code Python 擴充套件<a href="https://blog.kyomind.tw/flake8-and-isort/#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort">附帶的 isort 功能</a>失效了！打開<code>settings.json</code>查看相關設定：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.sortImports.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>VS Code 會提示這樣的訊息：</p>
+<blockquote>
+<p>This setting <strong>will be removed soon</strong>. Use <code>isort.args</code> instead.</p>
+</blockquote>
+<p>果然該來的還是要來，在〈<a href="https://blog.kyomind.tw/black-and-isort/">VS Code：試用從 Python extension 拆分的 Black、isort 套件</a>〉中提過，微軟一直在積極拆分 Python 擴充套件功能，試圖為其「<strong>減肥</strong>」與<strong>解耦</strong>。</p>
+<p>而 linter 和 formatter 正是拆分的一大重心所在，前者目前已有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.pylint">Pylint</a> 和 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.flake8">Flake8</a>，後者則有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">Black</a>，都是微軟官方出品。（yapf 表示：因為我來自 Google 就差別待遇？）</p>
+<p>再參考 iThome 這篇〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/154035">VS Code Python擴充套件現在會預設安裝匯入項目排序擴充套件isort</a>〉，顯然 VS Code 官方認為，isort 的正式獨立時機已到。</p>
+          <div class="read-more">
+            <a href="/isort/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-02/">02，關於寫程式到 70 歲的想像</a>
         </h1>
@@ -323,55 +359,6 @@
 <p>鑑於 Powerlevel10k 已成為我使用 zsh 時，<strong>必搭的佈景主題</strong>。所以，僅僅設定好 zinit 並不足夠，我還須補上 Powerlevel10k 這塊拼圖才行，於是有了本文的誕生。</p>
           <div class="read-more">
             <a href="/powerlevel10k/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/a-mind-for-blogs/">Hexo 部落格心得：一週年總結與持續寫作策略</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-07-02
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/cb0gqQa.jpg" alt="by Elizaveta Rusalskaya"></p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-07/">07，年末特輯上：2022 寫作反省與明年目標</a></p>
-</blockquote>
-<p>2018 年 2 月，我開始<a target="_blank" rel="noopener" href="https://medium.com/code-and-me">在 Medium 平台上寫作</a>，並持續了好幾年。直到去年 6 月，我終於下定決心，雖不完全脫離 Medium，但改用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo</a> 靜態框架、<a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>、獨立網域「kyomind.tw」，建立自己的 blog 來進行文字創作。</p>
-<p>其中的原因與方案選擇過程，以及如何透過 Notion、VS Code 實踐 Markdown 寫作，我已透過下列三篇文章，詳加表述。</p>
-<h3 id="系列：我的部落格寫作"><a href="#系列：我的部落格寫作" class="headerlink" title="系列：我的部落格寫作"></a>系列：我的部落格寫作</h3><blockquote>
-<ol>
-<li><a href="https://blog.kyomind.tw/my-own-blog-part-one/">我自架部落格的理由與選擇（上）理由篇</a></li>
-<li><a href="https://blog.kyomind.tw/my-own-blog-part-two/">我自架部落格的理由與選擇（下）選擇篇</a></li>
-<li><a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></li>
-<li><strong>Hexo 部落格心得：一週年總結與持續寫作策略</strong></li>
-</ol>
-</blockquote>
-<h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
-<li><a href="#Hexo-%E9%83%A8%E8%90%BD%E6%A0%BC%E4%B8%80%E9%80%B1%E5%B9%B4%EF%BC%9A%E7%82%BA%E4%BB%80%E9%BA%BC%E6%88%91%E9%81%B8%E6%93%87%E7%8D%A8%E7%AB%8B%EF%BC%9F">Hexo 部落格一週年：為什麼我選擇獨立？</a></li>
-<li><a href="#%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E6%B5%81%E9%87%8F%EF%BC%9F">如何看待流量？</a></li>
-<li><a href="#%E6%B5%81%E9%87%8F%E7%9A%84%E9%99%B7%E9%98%B1">流量的陷阱</a></li>
-<li><a href="#%E5%AF%AB%E4%BD%9C%E6%96%B9%E5%90%91%E7%9A%84%E6%91%B8%E7%B4%A2">寫作方向的摸索</a></li>
-<li><a href="#%E5%AF%AB%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B9%BE%E5%80%8B%E5%A5%BD%E8%99%95">寫部落格的幾個好處</a></li>
-<li><a href="#%E6%9C%80%E5%A4%A7%E5%A5%BD%E8%99%95%EF%BC%9A%E5%AF%AB%E4%BD%9C%E5%8D%B3%E6%80%9D%E8%80%83">最大好處：寫作即思考</a></li>
-<li><a href="#%E8%90%AC%E5%B9%B4%E8%8B%A6%E6%83%B1%EF%BC%9A%E7%99%BC%E6%96%87%E7%9A%84%E9%A0%BB%E7%8E%87%E8%88%87%E9%95%B7%E5%BA%A6">萬年苦惱：發文的頻率與長度</a></li>
-<li><a href="#%E5%90%88%E9%81%A9%E7%9A%84%E6%96%87%E9%95%B7%E8%88%87%E6%88%91%E7%9A%84%E6%89%93%E7%AE%97">合適的文長與我的打算</a></li>
-<li><a href="#%E5%A6%82%E4%BD%95%E6%8C%81%E7%BA%8C%E5%AF%AB%E4%BD%9C-Part-2">如何持續寫作 Part 2</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%AF%AB%E6%BB%BF%E4%B8%80%E5%B9%B4%EF%BC%8C%E4%BD%A0%E7%9A%84%E6%95%85%E4%BA%8B%E6%89%8D%E5%89%9B%E5%89%9B%E9%96%8B%E5%A7%8B">結語：寫滿一年，你的故事才剛剛開始</a></li>
-</ol>
-<p>就以本文，為整個系列劃上階段性句點。</p>
-<hr>
-<h2 id="Hexo-部落格一週年：為什麼我選擇獨立？"><a href="#Hexo-部落格一週年：為什麼我選擇獨立？" class="headerlink" title="Hexo 部落格一週年：為什麼我選擇獨立？"></a>Hexo 部落格一週年：為什麼我選擇獨立？</h2><p>本站第一篇文章是去年 6 月 24 日發表，也就是上述的「理由篇」，最近剛滿一年了，是時候該來好好整理一下，這一年之間，有關部落格寫作的心得與總結。</p>
-<p>這篇剛好是全站第 40 篇文章，可謂別具意義。</p>
-<p>有別於常見的個人年度回顧與展望，既然是部落格的週年紀念文章，闡述重心自然會落在「寫作」這個主題上。其中也包括最重要的——<strong>寫作對我的影響</strong>。</p>
-          <div class="read-more">
-            <a href="/a-mind-for-blogs/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/8/">
