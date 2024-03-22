@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
     
-    <lastmod>2024-03-21</lastmod>
+    <lastmod>2024-03-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2024-03-21</lastmod>
     

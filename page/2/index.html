@@ -335,7 +335,7 @@
 
     <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <blockquote>
-<p><code>2024-03-22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時重新編輯全文，刪除部分內容，使文章更緊湊、好讀。</p>
+<p><code>2024-03-22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
 </blockquote>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列的第 0 篇——<strong>序言</strong>。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。</p>
 <p>本站所有 Django 教學文章，已整理於 <a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>。</p>
@@ -360,20 +360,22 @@
 <li>Django ORM：一對一、一對多外鍵教學（下）查詢篇</li>
 </ol>
 <p>而且，整個 Django 框架中，我最愛的部分就是 Django ORM——它<strong>強大而優雅</strong>。</p>
-<h2 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h2><p>我相信，沒有單元測試的開發，是「不健全」的開發。</p>
-<p>自己的程式自己測，優秀的開發者不會把「低級錯誤」留給 QA，讓 QA 當保姆。</p>
-<p>哪怕只是最基本的，為每一個 API 加上 200 回傳值的單元測試，都遠比沒有來得強。有了測試，再來就是覆蓋率報告。</p>
-<p>文章預計有下：</p>
+<h2 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h2><p>我相信，沒有單元測試的開發，是「<strong>不健全</strong>」的開發。</p>
+<p><strong>自己的程式自己測，優秀的開發者不會把「低級錯誤」留給 QA，讓 QA 當保姆。</strong></p>
+<p>哪怕只是最基本的，為每一個 API 加上 200 回傳值的單元測試，都遠比沒有來得強。有了測試以後，再來就是覆蓋率報告。</p>
+<p>文章預計如下：</p>
 <ol>
 <li>Django 測試指南：用 pytest 撰寫 API 單元測試——環境設定篇</li>
 <li>Django 測試指南：用 pytest 撰寫 API 單元測試——Fixtures 篇</li>
 <li>Django 測試指南：使用 pytest + pytest-cov 計算 Test Coverage</li>
 </ol>
 <h2 id="三、Django-API"><a href="#三、Django-API" class="headerlink" title="三、Django API"></a>三、Django API</h2><blockquote>
-<p><code>2024-03-21</code>更新：因為工作上的新專案已轉向 Django Ninja，所以我會以 Django Ninja 為主，但也會有一些 DRF 的文章。</p>
+<p><code>2024-03-22</code>更新：因為工作上的新專案皆已轉向 Django Ninja，所以我會以 Django Ninja 為主，但也會有一些 DRF 的文章。</p>
 </blockquote>
 <p>講到 Django API，就不得不提 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（下稱 DRF），尤其是它提供的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/views/">API view</a>（無論 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">CBV 或 FBV</a>）與<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>。</p>
-<p>當然，時代在變遷，如今開發 Django API 並非只能選擇 DRF，後起之秀 <a target="_blank" rel="noopener" href="https://django-ninja.rest-framework.com/">Django Ninja</a> 也值得一試。</p>
+<p>當然，時代在變，如今開發 Django API 並非只能選擇 DRF，受到 FastAPI 啟發而誕生的後起之秀——<a target="_blank" rel="noopener" href="https://django-ninja.rest-framework.com/">Django Ninja</a>，也值得你一試。</p>
+<!-- ![Django Ninja 近半年下載量成長趨勢。資料來源：PyPI Stats](https://i.imgur.com/ApnQ0zy.png) -->
+
 <p>尤其它支援 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/">Pydantic</a>，可以<strong>依程式碼自動生成 API 文件</strong>。你可以簡單想成，它就像是「Django 版的 FastAPI」。</p>
 <p>預計主題有下，目前文章標題皆未定：</p>
 <ul>
