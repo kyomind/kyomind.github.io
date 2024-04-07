@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-25/</loc>
+    
+    <lastmod>2024-04-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
     
     <lastmod>2024-04-02</lastmod>
@@ -83,9 +92,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-25/</loc>
+    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
     
-    <lastmod>2024-03-21</lastmod>
+    <lastmod>2024-03-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -128,15 +137,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
-    
-    <lastmod>2024-03-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-03-07</lastmod>
@@ -149,6 +149,15 @@
     <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
     
     <lastmod>2024-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bear/</loc>
+    
+    <lastmod>2024-03-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -210,15 +219,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/not-by-ai/</loc>
-    
-    <lastmod>2024-01-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/bear/</loc>
     
     <lastmod>2024-01-30</lastmod>
     
@@ -650,7 +650,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -659,7 +659,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
