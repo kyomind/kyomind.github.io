@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="《強健的 Python》筆記（一）Type Hints 的成本與挑戰">
-  <meta property="og:title" content="《強健的 Python》筆記（一）Type Hints 的成本與挑戰"><meta name="twitter:description" content="本文介紹為 Python 專案加入 type hints 時，你會遇到的困難，與應對的思考。">
-  <meta property="og:description" content="本文介紹為 Python 專案加入 type hints 時，你會遇到的困難，與應對的思考。"><meta name="twitter:image" content="https://i.imgur.com/nqKDYbc.png">
+  <meta property="og:title" content="《強健的 Python》筆記（一）Type Hints 的成本與挑戰"><meta name="twitter:description" content="本文介紹為 Python 專案加入 type hints 時，你一定會遇到的困難，與對應的思考。如果你還不熟悉 Python type hints，也可以作為認識它的起點。">
+  <meta property="og:description" content="本文介紹為 Python 專案加入 type hints 時，你一定會遇到的困難，與對應的思考。如果你還不熟悉 Python type hints，也可以作為認識它的起點。"><meta name="twitter:image" content="https://i.imgur.com/nqKDYbc.png">
   <meta property="og:image" content="https://i.imgur.com/nqKDYbc.png">
-<meta name="description" content="本文介紹為 Python 專案加入 type hints 時，你會遇到的困難，與應對的思考。" />
+<meta name="description" content="本文介紹為 Python 專案加入 type hints 時，你一定會遇到的困難，與對應的思考。如果你還不熟悉 Python type hints，也可以作為認識它的起點。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -32,7 +32,7 @@
     <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-04-08T09:25:42+08:00" />
+  <meta property="article:modified_time" content="2024-04-08T16:02:51+08:00" />
 
 
 
@@ -202,7 +202,7 @@
 <p>之所以寫這篇筆記，主要是深刻感受到，在工作上要落實 type hints、把它們加入到 Python 專案中，整個環節<strong>最難的部分</strong>，絕不是關於 type hints 語法的學習。</p>
 <p>而是其它種種因素。</p>
 <p>事實上，我去年就打算<a href="https://blog.kyomind.tw/weekly-review-08/#%E5%B0%8F%E7%B5%90%EF%BC%9A2023-%E4%B8%8A%E5%8D%8A%E5%B9%B4%E7%9B%AE%E6%A8%99">為 Django 專案全面導入 type hints</a>，但是失敗了！直到本次的時機「更加成熟」，才下定決心推行。</p>
-<p>本文藉由對書中內容的整理與我的經驗，好好介紹一下，為專案加入 type hints 時，<strong>你一定會遇到的困難</strong>，與應對的思考。</p>
+<p>本文藉由對書中內容的整理與我的經驗，好好介紹一下，為專案加入 type hints 時，<strong>你一定會遇到的困難</strong>，與對應的思考。</p>
 <hr>
 <h2 id="Python-type-hints-簡介"><a href="#Python-type-hints-簡介" class="headerlink" title="Python type hints 簡介"></a>Python type hints 簡介</h2><p>Python  3.5 首次導入了 type hints，詳情請見〈<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484 – Type Hints</a>〉，該 PEP 提案的共同發起人除了 Python 之父 Guido van Rossum，還有 Mypy 的作者。</p>
 <p>接下來的每一版 Python，都少不了對 type hints 的擴充與增強。可以說，type hints 是經過「一系列」漫長的發展與迭代，才有了今日的氣象。</p>
