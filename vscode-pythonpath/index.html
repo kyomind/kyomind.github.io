@@ -32,7 +32,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-04-13T06:38:25+08:00" />
+  <meta property="article:modified_time" content="2024-04-13T08:29:36+08:00" />
 
 
 
@@ -181,9 +181,6 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-import-%E5%9F%BA%E7%A4%8E"><span class="toc-text">Python import 基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E5%B9%ABsys-path%E3%80%8C%E5%8A%A0%E6%96%99%E3%80%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">兩個幫sys.path「加料」的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%A8%AD%E5%AE%9APYTHONPATH"><span class="toc-text">VS Code 設定PYTHONPATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9APYTHONPATH%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">設定PYTHONPATH的三種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%A8%AD%E5%AE%9A-settings-json%EF%BC%88%E5%B7%B2%E5%BB%A2%E6%A3%84%EF%BC%89"><span class="toc-text">第一種方式：直接設定 settings.json（已廢棄）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%80%8F%E9%81%8E-env-%E6%AA%94"><span class="toc-text">第二種方式：透過 env 檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E3%80%8C%E6%95%B4%E5%90%88-terminal%E3%80%8D%E8%A8%AD%E5%AE%9A"><span class="toc-text">第三種方式：「整合 terminal」設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%88%A5%E6%8F%90%E9%86%92"><span class="toc-text">特別提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89"><span class="toc-text">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/VHCKtxW.jpg"></p>
-<blockquote>
-<p><code>2024/01/21</code>：補充「<a href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</a>」章節。</p>
-</blockquote>
 <p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定——<code>DeployStatus</code>，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，需要另外 import。</p>
 <p>因此，<code>debugger.py</code>的開頭程式碼如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">...</span><br><span class="line"><span class="keyword">from</span> configs.config <span class="keyword">import</span> DeployStatus</span><br></pre></td></tr></table></figure>

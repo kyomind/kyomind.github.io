@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
+    
+    <lastmod>2024-04-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-04-13</lastmod>
@@ -185,15 +194,6 @@
     <loc>https://blog.kyomind.tw/django/index.html</loc>
     
     <lastmod>2024-03-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
-    
-    <lastmod>2024-03-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
