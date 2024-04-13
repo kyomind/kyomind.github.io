@@ -32,7 +32,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-01-21T06:33:57+08:00" />
+  <meta property="article:modified_time" content="2024-04-13T05:51:10+08:00" />
 
 
 
@@ -178,11 +178,11 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-import-%E5%9F%BA%E7%A4%8E"><span class="toc-text">Python import 基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E5%B9%ABsys-path%E3%80%8C%E5%8A%A0%E6%96%99%E3%80%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">兩個幫sys.path「加料」的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%A8%AD%E5%AE%9APYTHONPATH"><span class="toc-text">VS Code 設定PYTHONPATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9APYTHONPATH%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">設定PYTHONPATH的三種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%A8%AD%E5%AE%9A-settings-json%EF%BC%88%E5%B7%B2%E5%BB%A2%E6%A3%84%EF%BC%89"><span class="toc-text">第一種方式：直接設定 settings.json（已廢棄）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%80%8F%E9%81%8E-env-%E6%AA%94"><span class="toc-text">第二種方式：透過 env 檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E3%80%8C%E6%95%B4%E5%90%88-terminal%E3%80%8D%E8%A8%AD%E5%AE%9A"><span class="toc-text">第三種方式：「整合 terminal」設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%88%A5%E6%8F%90%E9%86%92"><span class="toc-text">特別提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug"><span class="toc-text">VS Code 自動套用 Python 虛擬環境 bug</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-import-%E5%9F%BA%E7%A4%8E"><span class="toc-text">Python import 基礎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E5%80%8B%E5%B9%ABsys-path%E3%80%8C%E5%8A%A0%E6%96%99%E3%80%8D%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">兩個幫sys.path「加料」的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%A8%AD%E5%AE%9APYTHONPATH"><span class="toc-text">VS Code 設定PYTHONPATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9APYTHONPATH%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">設定PYTHONPATH的三種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%A8%AD%E5%AE%9A-settings-json%EF%BC%88%E5%B7%B2%E5%BB%A2%E6%A3%84%EF%BC%89"><span class="toc-text">第一種方式：直接設定 settings.json（已廢棄）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%80%8F%E9%81%8E-env-%E6%AA%94"><span class="toc-text">第二種方式：透過 env 檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%A8%AE%E6%96%B9%E5%BC%8F%EF%BC%9A%E3%80%8C%E6%95%B4%E5%90%88-terminal%E3%80%8D%E8%A8%AD%E5%AE%9A"><span class="toc-text">第三種方式：「整合 terminal」設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%88%A5%E6%8F%90%E9%86%92"><span class="toc-text">特別提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89"><span class="toc-text">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/VHCKtxW.jpg"></p>
 <blockquote>
-<p><code>2024/01/21</code>：補充「<a href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug">VS Code 自動套用 Python 虛擬環境 bug</a>」。</p>
+<p><code>2024/01/21</code>補充：「<a href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</a>」章節。</p>
 </blockquote>
 <p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定——<code>DeployStatus</code>，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，需要另外 import。</p>
 <p>因此，<code>debugger.py</code>的開頭程式碼如下：</p>
@@ -286,13 +286,13 @@
 <p>舉例而言，如果你自行開一個 terminal 去執行<code>debugger.py</code>，則還是一樣會出現<code>ModuleNotFoundError</code>。</p>
 <p>如果這對你造成困擾，那麼採用「在程式碼加入<code>sys.path</code>」的方式，或許才是適合的選擇。</p>
 <hr>
-<h2 id="VS-Code-自動套用-Python-虛擬環境-bug"><a href="#VS-Code-自動套用-Python-虛擬環境-bug" class="headerlink" title="VS Code 自動套用 Python 虛擬環境 bug"></a>VS Code 自動套用 Python 虛擬環境 bug</h2><blockquote>
-<p><code>2024/01/21</code>更新。</p>
+<h2 id="VS-Code-自動套用-Python-虛擬環境-bug（與-pyenv-有關）"><a href="#VS-Code-自動套用-Python-虛擬環境-bug（與-pyenv-有關）" class="headerlink" title="VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）"></a>VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</h2><blockquote>
+<p><code>2024/01/21</code>更新。注意，本 bug 可能有時效性或須基於特定情境，酌供參考。</p>
 </blockquote>
 <p>說是 bug 可能也不盡準確，但我在使用 VS Code 的整合命令列時，發現一個小問題。</p>
 <p>這個問題，會讓你在使用 VS Code 的整合命令列時，出現<code>ModuleNotFoundError</code>。但其它情況不會，因為<strong>只有 VS Code 才有自動套用虛擬環境的功能。</strong></p>
 <p>平常我們開啟 VS Code Python 專案，IDE 都會先要求你要某選擇一個 Python 環境，我們通常是選擇專案虛擬環境。</p>
-<p>下次你再打開 VS Code 時，它會記得你的選擇，並自動套用。而且打開整合 terminal 時，也會<strong>自動切換</strong>到專案虛擬環境。</p>
+<p>下次你再打開 VS Code 時，<strong>它會記得你的選擇，並自動套用</strong>。而且打開整合 terminal 時，也會<strong>自動切換</strong>到專案虛擬環境。</p>
 <p>這絕對是非常方便且必要的功能！畢竟開發中「反覆重啟」整合命令列的頻率很高，若每次都要手動切換虛擬環境，也太麻煩了。</p>
 <p>但我發現在在我的某個專案失效了。應該說，<strong>雖然有切換，但功能不健全</strong>。</p>
 <h3 id="具體問題說明"><a href="#具體問題說明" class="headerlink" title="具體問題說明"></a>具體問題說明</h3><p>舉個例子，我在某專案透過<code>pyenv local</code>設定專案要用 Python 3.11.7 版本，指令會在專案中產生一個<code>.python-version</code>檔，內容就是：</p>
@@ -313,8 +313,8 @@
 <p>但這也合理，因為虛擬環境中的 Python，其實是以<strong>軟連結</strong>的方式存在。連結目標仍是 pyenv 中的 Python 3.11.7。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lrwxrwxrwx 1 kyo kyo   47 Jan  5 06:19 python -&gt; /home/kyo/.pyenv/versions/3.11.7/bin/python3.11*</span><br><span class="line">lrwxrwxrwx 1 kyo kyo    6 Jan  5 06:19 python3 -&gt; python*</span><br><span class="line">lrwxrwxrwx 1 kyo kyo    6 Jan  5 06:19 python3.11 -&gt; python*</span><br></pre></td></tr></table></figure>
 
-<p>這應該是 pyenv 的設計，因為它不想每個專案都複製一份 Python 執行檔，所以只是建立一個連結而已。</p>
-<p>雖然發生問題原因的細節我不太清楚，但這是顯然工具之間的「協調問題」。</p>
+<p>這應該是 pyenv 的設計，因為它不想每個專案都複製一份 Python 執行檔，所以只是建立一個軟連結而已。</p>
+<p>雖然發生問題原因的細節我不太清楚，但這應該屬於<strong>工具之間的「協調問題」</strong>。</p>
 <p>附帶一提，<strong>如果專案的 pyenv local 版本和 global 版本一致，則不會出現這個問題。</strong></p>
 <hr>
 <h3 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h3><p>解決方法很簡單，有兩種。</p>
