@@ -32,7 +32,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-04-13T05:51:10+08:00" />
+  <meta property="article:modified_time" content="2024-04-13T06:38:25+08:00" />
 
 
 
@@ -182,7 +182,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/VHCKtxW.jpg"></p>
 <blockquote>
-<p><code>2024/01/21</code>補充：「<a href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</a>」章節。</p>
+<p><code>2024/01/21</code>：補充「<a href="#VS-Code-%E8%87%AA%E5%8B%95%E5%A5%97%E7%94%A8-Python-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-bug%EF%BC%88%E8%88%87-pyenv-%E6%9C%89%E9%97%9C%EF%BC%89">VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</a>」章節。</p>
 </blockquote>
 <p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定——<code>DeployStatus</code>，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，需要另外 import。</p>
 <p>因此，<code>debugger.py</code>的開頭程式碼如下：</p>
@@ -287,7 +287,10 @@
 <p>如果這對你造成困擾，那麼採用「在程式碼加入<code>sys.path</code>」的方式，或許才是適合的選擇。</p>
 <hr>
 <h2 id="VS-Code-自動套用-Python-虛擬環境-bug（與-pyenv-有關）"><a href="#VS-Code-自動套用-Python-虛擬環境-bug（與-pyenv-有關）" class="headerlink" title="VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）"></a>VS Code 自動套用 Python 虛擬環境 bug（與 pyenv 有關）</h2><blockquote>
-<p><code>2024/01/21</code>更新。注意，本 bug 可能有時效性或須基於特定情境，酌供參考。</p>
+<p><code>2024/01/21</code>更新。注意，本 bug 可能有<strong>時效性</strong>或須基於特定情境，僅供參考。</p>
+</blockquote>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></p>
 </blockquote>
 <p>說是 bug 可能也不盡準確，但我在使用 VS Code 的整合命令列時，發現一個小問題。</p>
 <p>這個問題，會讓你在使用 VS Code 的整合命令列時，出現<code>ModuleNotFoundError</code>。但其它情況不會，因為<strong>只有 VS Code 才有自動套用虛擬環境的功能。</strong></p>
@@ -295,13 +298,10 @@
 <p>下次你再打開 VS Code 時，<strong>它會記得你的選擇，並自動套用</strong>。而且打開整合 terminal 時，也會<strong>自動切換</strong>到專案虛擬環境。</p>
 <p>這絕對是非常方便且必要的功能！畢竟開發中「反覆重啟」整合命令列的頻率很高，若每次都要手動切換虛擬環境，也太麻煩了。</p>
 <p>但我發現在在我的某個專案失效了。應該說，<strong>雖然有切換，但功能不健全</strong>。</p>
-<h3 id="具體問題說明"><a href="#具體問題說明" class="headerlink" title="具體問題說明"></a>具體問題說明</h3><p>舉個例子，我在某專案透過<code>pyenv local</code>設定專案要用 Python 3.11.7 版本，指令會在專案中產生一個<code>.python-version</code>檔，內容就是：</p>
+<h3 id="問題說明"><a href="#問題說明" class="headerlink" title="問題說明"></a>問題說明</h3><p>舉個例子，我在某專案透過<code>pyenv local</code>設定專案要用 Python 3.11.7 版本，指令會在專案中產生一個<code>.python-version</code>檔，內容就是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.11.7</span><br></pre></td></tr></table></figure>
 
 <p>然後在專案根目錄下，以<code>poetry env use 3.11</code>指令建立 Python 虛擬環境。注意，<strong>此時 pyenv 中的 global 版本仍是 3.10.11。</strong></p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></p>
-</blockquote>
 <p>這裡的一個重點是：<strong>專案虛擬環境和 pyenv global 的 Python 版本「並不一致」</strong>。</p>
 <p>現在，用 VS Code 開啟專案，並打開整合命令列，你會發現，使用虛擬環境中的套件沒問題，比如<code>black</code>、<code>flake8</code>等，都能正常運作。</p>
 <p>但當我執行<code>python manage.py runserver</code>這樣的指令時，就會出現錯誤：</p>
