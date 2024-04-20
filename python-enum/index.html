@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T04:26:03+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T04:41:54+08:00" />
 
 
 
@@ -319,8 +319,9 @@
 <h3 id="對問題一的改善"><a href="#對問題一的改善" class="headerlink" title="對問題一的改善"></a>對問題一的改善</h3><p>現在，你想要驗證 input 值是否屬於列舉成員，可以這樣寫（我們假設 input 值為 2，代表<code>&#39;unless-stopped&#39;</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> payload.restart_policy <span class="keyword">in</span> [p.value <span class="keyword">for</span> p <span class="keyword">in</span> RestartPolicy]:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>因為 <code>RestartPolicy</code> 類別現在是可以用 <code>for</code> 迭代了（而每一個元素則是成員實例，有<code>.value</code>屬性），所以可以像上面那樣寫。</p>
-<p>乍看之下，好像也沒有方便到哪去？但如果你有用 Pydantic 對資料預處理，通常<code>payload.restart_policy</code>的值，就已經是一個 Enum 實例了。</p>
+<p>因為 <code>RestartPolicy</code> 類別現在是可以用 <code>for</code> 迭代了！而每一個元素則是成員實例，需要透過<code>value</code>屬性取值，所以可以像上面那樣寫。</p>
+<p>乍看之下，好像也沒有方便到哪去？確實如此😅，沒關係，我們還有<a href="#%E9%80%8F%E9%81%8E%E3%80%8C%E5%BB%BA%E7%AB%8B-Enum-%E5%AF%A6%E4%BE%8B%E3%80%8D%E9%80%B2%E8%A1%8C%E9%A9%97%E8%AD%89">後手</a>。</p>
+<h3 id="Pydantic-預處理"><a href="#Pydantic-預處理" class="headerlink" title="Pydantic 預處理"></a>Pydantic 預處理</h3><p>如果你有用 Pydantic 對資料預處理（FastAPI、Django Ninja 等後端框架會自動做這件事），通常<code>payload.restart_policy</code>的值，就已經是一個 Enum 實例了。</p>
 <blockquote>
 <p>當然，如果有用 Pydantic 預處理，這個驗證根本不需要XD，這裡只是為了舉例。</p>
 </blockquote>
@@ -332,7 +333,8 @@
 <hr>
 <h2 id="透過「建立-Enum-實例」進行驗證"><a href="#透過「建立-Enum-實例」進行驗證" class="headerlink" title="透過「建立 Enum 實例」進行驗證"></a>透過「建立 Enum 實例」進行驗證</h2><p>但如果你的<code>payload.restart_policy</code>，就<strong>只是一般的值</strong>，而不是 Enum 成員。那該怎麼辦？難道真的要像上面那樣，寫落落長的<code>[p.value in p in RestartPolicy]</code>嗎？</p>
 <p>當然不！其實做法一樣非常簡單，那就是「<strong>直接用這個值來建立實例</strong>」。</p>
-<p><strong>只要能成功建立實例，就是合法的成員</strong>！所以你可以這樣寫：</p>
+<p><a href="#Enum-%E5%AF%A6%E4%BE%8B%E7%9A%84%E5%BB%BA%E6%A7%8B%E8%88%87%E6%A2%9D%E4%BB%B6">前面</a>說過，Enum 實例<strong>只能由 Enum 成員值建構而來</strong>。所以，如果你輸入的值不是<strong>合法</strong>的 Enum 成員，建構實例時就會拋出<code>ValueError</code>。</p>
+<p>換句話說，<strong>只要能成功建立實例，就是合法的成員</strong>！所以你可以這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    RestartPolicy(payload.restart_policy)</span><br><span class="line"><span class="keyword">except</span> ValueError:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>如果是不合法的，比如 4，則會拋出<code>ValueError</code>：</p>
