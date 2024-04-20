@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T04:21:10+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T04:26:03+08:00" />
 
 
 
@@ -324,10 +324,11 @@
 <blockquote>
 <p>當然，如果有用 Pydantic 預處理，這個驗證根本不需要XD，這裡只是為了舉例。</p>
 </blockquote>
-<p>如來一來，驗證成員身分的寫法將<strong>異常簡單</strong>：</p>
+<p>如此一來，驗證成員身分的寫法將<strong>異常簡單</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> payload.restart_policy <span class="keyword">in</span> RestartPolicy:</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 
-<p>對，就這麼簡單！因為<code>in</code>運算子本來就會迭代後面接的物件了——所以<code>in</code>後面必須接 iterable，<strong>而 Enum 類別正是一個 iterable。</strong></p>
+<p>對，就這麼簡單！</p>
+<p>因為<code>in</code>運算子的內部，本來就會迭代後面接的物件了——所以<code>in</code>後面必須緊接一個 iterable，<strong>而 Enum 類別正是一個 iterable。</strong></p>
 <hr>
 <h2 id="透過「建立-Enum-實例」進行驗證"><a href="#透過「建立-Enum-實例」進行驗證" class="headerlink" title="透過「建立 Enum 實例」進行驗證"></a>透過「建立 Enum 實例」進行驗證</h2><p>但如果你的<code>payload.restart_policy</code>，就<strong>只是一般的值</strong>，而不是 Enum 成員。那該怎麼辦？難道真的要像上面那樣，寫落落長的<code>[p.value in p in RestartPolicy]</code>嗎？</p>
 <p>當然不！其實做法一樣非常簡單，那就是「<strong>直接用這個值來建立實例</strong>」。</p>
@@ -359,7 +360,7 @@
 <hr>
 <p>除了上述的「<strong>數字列舉</strong>」版，我同時再附上「<strong>字串列舉</strong>」版本，看圖你應該就能理解，為何我一開始說，有時候列舉資料用字串會更好。</p>
 <p><img src="https://i.imgur.com/9eCQcFB.png"></p>
-<p>直接採用字串選項，對前端人員更加友善——<strong>更容易理解每個選項代表的意義。</strong></p>
+<p>直接採用字串選項，對前端人員更加友善——<strong>更容易了解每個選項代表的意義。</strong></p>
 
       </div>
       
