@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T04:03:57+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T04:06:53+08:00" />
 
 
 
@@ -205,7 +205,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Container</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line">    RESTART_POLICIES = (</span><br><span class="line">        (<span class="string">&#x27;no&#x27;</span>, <span class="string">&#x27;no&#x27;</span>),</span><br><span class="line">        (<span class="string">&#x27;always&#x27;</span>, <span class="string">&#x27;always&#x27;</span>),</span><br><span class="line">        (<span class="string">&#x27;unless-stopped&#x27;</span>, <span class="string">&#x27;unless-stopped&#x27;</span>),</span><br><span class="line">        (<span class="string">&#x27;on-failure&#x27;</span>, <span class="string">&#x27;on-failure&#x27;</span>),</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 
 <p>這是一個<strong>重要的細節</strong>，以後會另篇討論：什麼時候列舉成員應該用數字，而什麼時候用字串更好。</p>
-<p>為了專注於對 Enum 的學習，這裡採最常見「數字」版本。</p>
+<p>為了專注於對 Enum 的學習，這裡採最常見的「數字」版本。</p>
 <hr>
 <h2 id="以往的做法"><a href="#以往的做法" class="headerlink" title="以往的做法"></a>以往的做法</h2><p>以前用 DRF（<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>）開發 API 列舉資料時，除了在 model 增加了上述的 choices 限制，我並沒有使用 Enum。</p>
 <p>這裡有一個問題：那前端人員怎麼知道列舉的「成員」<strong>有幾個、有哪些？</strong>當然只能靠 API 文件！</p>
