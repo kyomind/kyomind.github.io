@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T03:50:23+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T04:01:04+08:00" />
 
 
 
@@ -338,14 +338,22 @@
 <h3 id="對問題二的改善"><a href="#對問題二的改善" class="headerlink" title="對問題二的改善"></a>對問題二的改善</h3><p>既然 Enum 類別本身就可以用 for 迭代以取得所有成員（甚至直接使用<code>in</code>運算子），那就<strong>完全沒必要</strong>再寫前面像<code>ALL</code>一樣的屬性，然後還要維護它。</p>
 <p>由此可見，Enum 真的棒！</p>
 <hr>
-<h2 id="補充：Enum-類別在-Django-Ninja-中的應用"><a href="#補充：Enum-類別在-Django-Ninja-中的應用" class="headerlink" title="補充：Enum 類別在 Django Ninja 中的應用"></a>補充：Enum 類別在 Django Ninja 中的應用</h2><p>前面說到我會開始用 Enum，正是因為 Django Ninja（其實就是 Pydantic）。</p>
-<p>我們可以看一下使用了 Enum 型別標記 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/">Django Ninja Schema</a>：</p>
+<h2 id="補充：Enum-類別在-Django-Ninja-中的應用"><a href="#補充：Enum-類別在-Django-Ninja-中的應用" class="headerlink" title="補充：Enum 類別在 Django Ninja 中的應用"></a>補充：Enum 類別在 Django Ninja 中的應用</h2><p>前面說到我會開始用 Enum，正是因為 Django Ninja。</p>
+<p>Django Ninja 的 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/">Schema</a> 實際上就是 Pydantic 的 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/models/#validation">BaseModel</a>。</p>
+<p>Schema 用來描述 API 輸入與輸出的資料結構。主要的功能有二：</p>
+<ol>
+<li><strong>驗證</strong>輸入資料是否符合規範。</li>
+<li><strong>自動產生</strong> API 文件。</li>
+</ol>
+<p>我們看一下使用了 Enum 型別後的 Schema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateContainerRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    restart_policy: RestartPolicy</span><br></pre></td></tr></table></figure>
 
-<p>Django Ninja 的 Schema 實際上就是 Pydantic 的 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/models/#validation">BaseModel</a>。</p>
 <p>直接將<code>restart_policy</code>欄位型別標記為<code>RestartPolicy</code>，如此渲染出的 API 文件，不止能限定輸入資料的型別，連「<strong>值域</strong>」也會有<strong>明確標示</strong>：</p>
 <p><img src="https://i.imgur.com/A8RgBlS.png" alt="型別：integer；值域：僅限 0、1、2、3"><span class="cap">型別：integer；值域：僅限 0、1、2、3</span></p>
 <p>甚至還能把<code>RestartPolicy</code>類別中的<code>docstring</code><strong>直接渲染成欄位說明</strong>，太貼心了吧！偉哉 Pydantic！</p>
+<p>好處不止如此，一旦你<strong>變更</strong>了<code>RestartPolicy</code>的內容（比如<strong>增加了成員選項</strong>），API 文件也會<strong>自動更新</strong>。</p>
+<p>不必再手動修改 API 文件，也不必修改 Schema 的 type hints，完全省去了「同步」的煩惱。</p>
+<hr>
 <p>除了上述的「<strong>數字列舉</strong>」版，我同時再附上「<strong>字串列舉</strong>」版本，看圖你應該就能理解，為何我一開始說，有時候列舉資料用字串會更好。</p>
 <p><img src="https://i.imgur.com/9eCQcFB.png"></p>
 <p>直接採用字串選項，對前端人員更加友善。</p>
