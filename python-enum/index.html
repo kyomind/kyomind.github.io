@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T04:41:54+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T05:01:39+08:00" />
 
 
 
@@ -209,8 +209,8 @@
 <hr>
 <h2 id="以往的做法"><a href="#以往的做法" class="headerlink" title="以往的做法"></a>以往的做法</h2><p>以前用 DRF（<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>）開發 API 列舉資料時，除了在 model 增加了上述的 choices 限制，我並沒有使用 Enum。</p>
 <p>這裡有一個問題：那前端人員怎麼知道列舉的「成員」<strong>有幾個、有哪些？</strong>當然只能靠 API 文件！</p>
-<p>以往我們都是用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a> 寫 API 文件。說真的，我不喜歡，太多手刻細節了——難怪它的普及率也不高🙂‍↔️</p>
-<p>雖然你在 codebase 中看不到 Enum 的身影，但是，為了增加<strong>程式碼可讀性</strong>，我們還會額外設計這樣的類別（這是為了後端開發者們在維護上的考慮）：</p>
+<p>以往我們都是用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a> 寫 API 文件。說真的，<strong>我不喜歡（我的後端同事們也都不喜歡XD）</strong>，太多手刻細節了——難怪它的普及率不高🙂‍↔️</p>
+<p>雖然在 codebase 中看不到 Enum 的身影，但是，為了增加<strong>程式碼可讀性</strong>，我們還是會額外設計這樣的類別（這是為了後端開發者們在維護上的考慮）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RestartPolicy</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    所有容器重啟策略</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    NO = <span class="number">0</span></span><br><span class="line">    ALWAYS = <span class="number">1</span></span><br><span class="line">    UNLESS_STOPPED = <span class="number">2</span></span><br><span class="line">    ON_FAILURE = <span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <p>如何使用這個類別？</p>
