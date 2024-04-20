@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T03:42:22+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T03:50:23+08:00" />
 
 
 
@@ -342,11 +342,13 @@
 <p>我們可以看一下使用了 Enum 型別標記 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/">Django Ninja Schema</a>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateContainerRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    restart_policy: RestartPolicy</span><br></pre></td></tr></table></figure>
 
-<p>直接讓 type hints 的型別就是 RestartPolicy，如此渲染出的 API 文件，對於輸入資料的<strong>值域</strong>，也會有<strong>明確的標示</strong>：</p>
-<p><img src="https://i.imgur.com/A8RgBlS.png"></p>
+<p>Django Ninja 的 Schema 實際上就是 Pydantic 的 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/models/#validation">BaseModel</a>。</p>
+<p>直接將<code>restart_policy</code>欄位型別標記為<code>RestartPolicy</code>，如此渲染出的 API 文件，不止能限定輸入資料的型別，連「<strong>值域</strong>」也會有<strong>明確標示</strong>：</p>
+<p><img src="https://i.imgur.com/A8RgBlS.png" alt="型別：integer；值域：僅限 0、1、2、3"><span class="cap">型別：integer；值域：僅限 0、1、2、3</span></p>
 <p>甚至還能把<code>RestartPolicy</code>類別中的<code>docstring</code><strong>直接渲染成欄位說明</strong>，太貼心了吧！偉哉 Pydantic！</p>
 <p>除了上述的「<strong>數字列舉</strong>」版，我同時再附上「<strong>字串列舉</strong>」版本，看圖你應該就能理解，為何我一開始說，有時候列舉資料用字串會更好。</p>
 <p><img src="https://i.imgur.com/9eCQcFB.png"></p>
+<p>直接採用字串選項，對前端人員更加友善。</p>
 
       </div>
       
