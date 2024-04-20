@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T04:06:53+08:00" />
+  <meta property="article:modified_time" content="2024-04-20T04:10:56+08:00" />
 
 
 
@@ -217,7 +217,7 @@
 <p>一個典型的情境是，在 view 函式中<strong>將變數值與列舉成員進行比較</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> restart_policy == RestartPolicy.UNLESS_STOPPED</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 <p>有了<code>RestartPolicy</code>，程式碼變得更加<strong>直觀</strong>，<strong>易讀</strong>。</p>
-<p>換句話說，我們不會直接這樣寫：</p>
+<p>換句話說，我們<strong>不會</strong>直接這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> restart_policy == <span class="number">2</span>  <span class="comment"># 咦，2 是什麼東西？</span></span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 
 <hr>
@@ -242,6 +242,7 @@
 <li>要驗證 input 資料是否為合法列舉成員，太囉嗦、冗長了。</li>
 <li>如果加上<code>ALL</code>這類自定義屬性，雖然可以減緩程式碼冗長問題，又產生了潛在的同步問題。</li>
 </ol>
+<p>事實上，即使沒有<code>ALL</code>屬性，<strong>第一種寫法一樣存在同步問題</strong>。因為你要<strong>手動</strong>維護這個驗證條件。</p>
 <hr>
 <h2 id="Python-Enum-三大特性"><a href="#Python-Enum-三大特性" class="headerlink" title="Python Enum 三大特性"></a>Python Enum 三大特性</h2><p>自從寫 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 後，為了渲染出理想的 API 文件，我不得不用 Enum 了（可參考文章最後的<a href="/python-enum/#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8">補充</a>部分），同時也感受到了它的強大！</p>
 <p>我們來看看，採用 Enum 之後會有什麼改變。</p>
