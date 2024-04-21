@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-20T05:01:39+08:00" />
+  <meta property="article:modified_time" content="2024-04-21T04:24:37+08:00" />
 
 
 
@@ -176,7 +176,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E6%9E%B6%E6%A7%8B"><span class="toc-text">本文主旨與架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%8F%E9%A1%8C%E6%83%85%E5%A2%83"><span class="toc-text">問題情境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%BE%80%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">以往的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%97%E8%AD%89%E5%88%97%E8%88%89%E6%88%90%E5%93%A1"><span class="toc-text">驗證列舉成員</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E5%AF%AB%E6%B3%95%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">目前寫法的問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-Enum-%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-text">Python Enum 三大特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Enum-%E9%A1%9E%E5%88%A5%E5%8F%AF%E4%BB%A5%E7%94%A8-for-%E8%BF%B4%E5%9C%88%E8%BF%AD%E4%BB%A3"><span class="toc-text">一、Enum 類別可以用 for 迴圈迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BA%86%E8%A7%A3-Enum-%E5%AF%A6%E4%BE%8B"><span class="toc-text">二、了解 Enum 實例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enum-%E9%A1%9E%E5%88%A5%E5%B1%AC%E6%80%A7%E3%80%8C%E5%B0%B1%E6%98%AF%E3%80%8DEnum-%E5%AF%A6%E4%BE%8B"><span class="toc-text">Enum 類別屬性「就是」Enum 實例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enum-%E5%AF%A6%E4%BE%8B%E7%9A%84%E5%85%A9%E5%80%8B%E5%B1%AC%E6%80%A7"><span class="toc-text">Enum 實例的兩個屬性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Enum-%E5%AF%A6%E4%BE%8B%E4%B9%8B%E9%96%93%E5%8F%AF%E4%BB%A5%E9%80%B2%E8%A1%8C%E6%AF%94%E8%BC%83"><span class="toc-text">三、Enum 實例之間可以進行比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Enum-%E6%94%B9%E9%80%B2%EF%BC%81"><span class="toc-text">使用 Enum 改進！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E9%81%8E%E3%80%8C%E5%BB%BA%E7%AB%8B-Enum-%E5%AF%A6%E4%BE%8B%E3%80%8D%E9%80%B2%E8%A1%8C%E9%A9%97%E8%AD%89"><span class="toc-text">透過「建立 Enum 實例」進行驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8"><span class="toc-text">補充：Enum 類別在 Django Ninja 中的應用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E6%9E%B6%E6%A7%8B"><span class="toc-text">本文主旨與架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%95%8F%E9%A1%8C%E6%83%85%E5%A2%83"><span class="toc-text">第一部分：問題情境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%BE%80%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">以往的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%97%E8%AD%89%E5%88%97%E8%88%89%E6%88%90%E5%93%A1"><span class="toc-text">驗證列舉成員</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E7%9B%AE%E5%89%8D%E5%AF%AB%E6%B3%95%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">小結：目前寫法的問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E4%BB%8B%E7%B4%B9-Python-Enum-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-text">第二部分：介紹 Python Enum 的三大特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Enum-%E9%A1%9E%E5%88%A5%E5%8F%AF%E4%BB%A5%E7%94%A8-for-%E8%BF%B4%E5%9C%88%E8%BF%AD%E4%BB%A3"><span class="toc-text">一、Enum 類別可以用 for 迴圈迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BA%86%E8%A7%A3-Enum-%E5%AF%A6%E4%BE%8B"><span class="toc-text">二、了解 Enum 實例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enum-%E9%A1%9E%E5%88%A5%E5%B1%AC%E6%80%A7%E3%80%8C%E5%B0%B1%E6%98%AF%E3%80%8DEnum-%E5%AF%A6%E4%BE%8B"><span class="toc-text">Enum 類別屬性「就是」Enum 實例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Enum-%E5%AF%A6%E4%BE%8B%E7%9A%84%E5%85%A9%E5%80%8B%E5%B1%AC%E6%80%A7"><span class="toc-text">Enum 實例的兩個屬性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Enum-%E5%AF%A6%E4%BE%8B%E4%B9%8B%E9%96%93%E5%8F%AF%E4%BB%A5%E9%80%B2%E8%A1%8C%E6%AF%94%E8%BC%83"><span class="toc-text">三、Enum 實例之間可以進行比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E4%BD%BF%E7%94%A8-Enum-%E6%94%B9%E9%80%B2%E5%8E%9F%E6%9C%89%E7%A8%8B%E5%BC%8F%EF%BC%81"><span class="toc-text">第三部分：使用 Enum 改進原有程式！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%8F%E9%81%8E%E3%80%8C%E5%BB%BA%E7%AB%8B-Enum-%E5%AF%A6%E4%BE%8B%E3%80%8D%E9%80%B2%E8%A1%8C%E9%A9%97%E8%AD%89"><span class="toc-text">透過「建立 Enum 實例」進行驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8"><span class="toc-text">補充：Enum 類別在 Django Ninja 中的應用</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5lvKO0a.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p>想必你知道 Python 中有一個內建的特殊類別叫 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html#enum.Enum">Enum</a>（來自 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html">enum</a> 模組），專門用來處理「列舉」態型的資料集合。</p>
@@ -194,7 +194,7 @@
 
 <hr>
 <p>我們先從的問題情境開始。</p>
-<h2 id="問題情境"><a href="#問題情境" class="headerlink" title="問題情境"></a>問題情境</h2><p>為了有效講解，舉個<strong>實例</strong>是必要的，但我會<strong>盡可能簡化</strong>，著眼於能夠彰顯 Enum 價值的部分。</p>
+<h2 id="第一部分：問題情境"><a href="#第一部分：問題情境" class="headerlink" title="第一部分：問題情境"></a>第一部分：問題情境</h2><p>為了有效講解，舉個<strong>實例</strong>是必要的，但我會<strong>盡可能簡化</strong>，著眼於能夠彰顯 Enum 價值的部分。</p>
 <p>作為一個 Django API 開發者，不管是什麼專案，幾乎都會出現「列舉型」資料。此時 Django ORM 中對應的就是「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/models/fields/#django.db.models.Field.choices">choices</a>」欄位。</p>
 <p>假設我們現在要開發一個 Docker 相關的服務（這是我實際遇到的情境），其中一個 API 是「新增容器」。而容器有一個需要使用者輸入的設定是：restart policy。</p>
 <p>從官方文件可知，Docker 容器的 restart policy <a target="_blank" rel="noopener" href="https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy">總共就只有 4 種而已</a>——沒錯，它屬於<strong>列舉型資料</strong>！</p>
@@ -237,7 +237,7 @@
 <p>只要你有寫序列化器，通常也不需要像上述程式碼一般手工驗證。</p>
 <p>但畢竟寫序列化器需要一定的成本與維護，一些相對簡單的 POST API，你可能未必有相關的序列化器。</p>
 <p>退萬步言，你就是要在某些自定義的邏輯進行手動驗證，上面的程式碼還是會出現。</p>
-<h2 id="目前寫法的問題"><a href="#目前寫法的問題" class="headerlink" title="目前寫法的問題"></a>目前寫法的問題</h2><p>假設沒有序列化器輔助，要在程式碼中進行手工驗證，上述寫法有兩個不妥之處：</p>
+<h2 id="小結：目前寫法的問題"><a href="#小結：目前寫法的問題" class="headerlink" title="小結：目前寫法的問題"></a>小結：目前寫法的問題</h2><p>假設沒有序列化器輔助，要在程式碼中進行手工驗證，上述寫法有兩個不妥之處：</p>
 <ol>
 <li>要驗證 input 資料是否為合法列舉成員，太囉嗦、冗長了。</li>
 <li>如果加上<code>ALL</code>這類自定義屬性，雖然可以減緩程式碼冗長問題，又產生了潛在的同步問題。</li>
@@ -246,7 +246,7 @@
 <p><code>ALL</code>屬性只是把這個「<strong>新增、刪除列舉成員</strong>」的<strong>同步議題</strong>從 view 函式中（或任何其它用到的地方）抽離出來，統一移到類別中控管。</p>
 <p>這或許可以算是一個<strong>改進</strong>：當情況變動時，需要跟著修改的地方<strong>只剩下一個</strong>——<code>ALL</code>本身。<strong>但依舊不是最佳解法。</strong></p>
 <hr>
-<h2 id="Python-Enum-三大特性"><a href="#Python-Enum-三大特性" class="headerlink" title="Python Enum 三大特性"></a>Python Enum 三大特性</h2><p>自從寫 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 後，為了渲染出嚴謹的 API 文件，我不得不用 Enum 了（可參考文章最後的<a href="/python-enum/#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8">補充</a>部分），同時也感受到了它的強大！</p>
+<h2 id="第二部分：介紹-Python-Enum-的三大特性"><a href="#第二部分：介紹-Python-Enum-的三大特性" class="headerlink" title="第二部分：介紹 Python Enum 的三大特性"></a>第二部分：介紹 Python Enum 的三大特性</h2><p>自從寫 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 後，為了渲染出嚴謹的 API 文件，我不得不用 Enum 了（可參考文章最後的<a href="/python-enum/#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8">補充</a>部分），同時也感受到了它的強大！</p>
 <p>我們來看看，採用 Enum 之後會有什麼改變。</p>
 <p>在此之前，我們要先介紹 Enum 中，<strong>我認為最重要的三大特性</strong>。至少在我的例子中，知道這三個特性會非常有用。</p>
 <p>我們看一下加入了 Enum 後的類別模樣：</p>
@@ -302,15 +302,15 @@
 <p>綜上所述，如果用 for 迴圈迭代<code>RestartPolicy</code>，你將得到（這裡使用<code>repr</code>突顯）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> RestartPolicy:</span><br><span class="line"><span class="meta">... </span>   <span class="built_in">print</span>(<span class="built_in">repr</span>(i))</span><br><span class="line"></span><br><span class="line">&lt;RestartPolicy.NO: <span class="number">0</span>&gt;</span><br><span class="line">&lt;RestartPolicy.ALWAYS: <span class="number">1</span>&gt;</span><br><span class="line">&lt;RestartPolicy.UNLESS_STOPPED: <span class="number">2</span>&gt;</span><br><span class="line">&lt;RestartPolicy.ON_FAILURE: <span class="number">3</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p><strong>得到<code>RestartPolicy</code>每一個成員實例。</strong></p>
+<p><strong>得到<code>RestartPolicy</code>的每一個成員實例。</strong></p>
 <hr>
 <h2 id="三、Enum-實例之間可以進行比較"><a href="#三、Enum-實例之間可以進行比較" class="headerlink" title="三、Enum 實例之間可以進行比較"></a>三、Enum 實例之間可以進行比較</h2><p>Enum 成員之間，支援身分比較（<code>is</code>）和等值（<code>==</code>）比較。</p>
-<p>只不過，如前所述，每一個 Enum 成員都是「<strong>單例</strong>」。所以身分比較和等值比較對於 Enum 成員是<strong>等價</strong>的，因為每個成員都是<strong>唯一</strong>的。</p>
+<p>只不過，如前所述，每一個 Enum 成員都是「<strong>單例</strong>」。所以身分比較和等值比較對於 Enum 成員是<strong>等價</strong>的，也就是<strong>結果都相同</strong>。因為每個成員都是<strong>唯一</strong>的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>RestartPolicy(<span class="number">2</span>) == RestartPolicy.UNLESS_STOPPED</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>RestartPolicy(<span class="number">2</span>) <span class="keyword">is</span> RestartPolicy.UNLESS_STOPPED</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
-<p>大部分時候，使用等值比較就已經足夠。</p>
+<p>我認為大部分時候，使用等值（<code>==</code>）比較就已經足夠了。</p>
 <hr>
-<h2 id="使用-Enum-改進！"><a href="#使用-Enum-改進！" class="headerlink" title="使用 Enum 改進！"></a>使用 Enum 改進！</h2><p>現在你對 Enum 的特性已經有了相當的了解。我們來看看原來的程式碼在使用 Enum 版本後，會發生什麼樣的變化。</p>
+<h2 id="第三部分：使用-Enum-改進原有程式！"><a href="#第三部分：使用-Enum-改進原有程式！" class="headerlink" title="第三部分：使用 Enum 改進原有程式！"></a>第三部分：使用 Enum 改進原有程式！</h2><p>現在你對 Enum 的特性已經有了相當的了解。我們來看看原來的程式碼在使用 Enum 版本後，會發生什麼樣的變化。</p>
 <p>回顧一下之前的問題：</p>
 <ol>
 <li>要驗證 input 資料是否為合法列舉成員，太囉嗦、冗長了。</li>
