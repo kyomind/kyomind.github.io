@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-21T04:24:37+08:00" />
+  <meta property="article:modified_time" content="2024-04-21T09:17:44+08:00" />
 
 
 
@@ -237,7 +237,7 @@
 <p>只要你有寫序列化器，通常也不需要像上述程式碼一般手工驗證。</p>
 <p>但畢竟寫序列化器需要一定的成本與維護，一些相對簡單的 POST API，你可能未必有相關的序列化器。</p>
 <p>退萬步言，你就是要在某些自定義的邏輯進行手動驗證，上面的程式碼還是會出現。</p>
-<h2 id="小結：目前寫法的問題"><a href="#小結：目前寫法的問題" class="headerlink" title="小結：目前寫法的問題"></a>小結：目前寫法的問題</h2><p>假設沒有序列化器輔助，要在程式碼中進行手工驗證，上述寫法有兩個不妥之處：</p>
+<h2 id="小結：目前寫法的問題"><a href="#小結：目前寫法的問題" class="headerlink" title="小結：目前寫法的問題"></a>小結：目前寫法的問題</h2><p>假設沒有序列化器輔助，要在程式碼中進行手動驗證，則上述寫法有兩個不妥之處：</p>
 <ol>
 <li>要驗證 input 資料是否為合法列舉成員，太囉嗦、冗長了。</li>
 <li>如果加上<code>ALL</code>這類自定義屬性，雖然可以減緩程式碼冗長問題，又產生了潛在的同步問題。</li>
@@ -248,7 +248,7 @@
 <hr>
 <h2 id="第二部分：介紹-Python-Enum-的三大特性"><a href="#第二部分：介紹-Python-Enum-的三大特性" class="headerlink" title="第二部分：介紹 Python Enum 的三大特性"></a>第二部分：介紹 Python Enum 的三大特性</h2><p>自從寫 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 後，為了渲染出嚴謹的 API 文件，我不得不用 Enum 了（可參考文章最後的<a href="/python-enum/#%E8%A3%9C%E5%85%85%EF%BC%9AEnum-%E9%A1%9E%E5%88%A5%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E6%87%89%E7%94%A8">補充</a>部分），同時也感受到了它的強大！</p>
 <p>我們來看看，採用 Enum 之後會有什麼改變。</p>
-<p>在此之前，我們要先介紹 Enum 中，<strong>我認為最重要的三大特性</strong>。至少在我的例子中，知道這三個特性會非常有用。</p>
+<p>在此之前，我們要先介紹 Enum 中，<strong>我認為最重要的三大特性</strong>。至少在我的例子中，知道這三個特性會<strong>非常有用</strong>。</p>
 <p>我們看一下加入了 Enum 後的類別模樣：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RestartPolicy</span>(<span class="title class_ inherited__">Enum</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    所有容器重啟策略</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    NO = <span class="number">0</span></span><br><span class="line">    ALWAYS = <span class="number">1</span></span><br><span class="line">    UNLESS_STOPPED = <span class="number">2</span></span><br><span class="line">    ON_FAILURE = <span class="number">3</span></span><br></pre></td></tr></table></figure>
 
@@ -265,7 +265,7 @@
 <h3 id="Enum-實例的建構與條件"><a href="#Enum-實例的建構與條件" class="headerlink" title="Enum 實例的建構與條件"></a>Enum 實例的建構與條件</h3><p>沒錯，和一般的類別相同，都是從建構與初始化開始，依舊使用上面的例子，我們可以像這樣獲得 Enum 實例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = RestartPolicy(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
-<p>和一般類別不同的是，這裡的建構引數，<strong>只能是「Enum 任一成員的屬性值」。</strong></p>
+<p>和一般類別不同的是，這裡的建構引數，<strong>只能是「任一 Enum 成員的屬性值」。</strong>也就是範例類別中的<code>0</code>、<code>1</code>、<code>2</code>、<code>3</code>。</p>
 <p>換句話說，<strong>所有 Enum 實例都是由 Enum 成員值（比如上述的 2）建構而來的</strong>。</p>
 <p>此外，<strong>沒有引數也不行！</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沒有引數會報錯</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>RestartPolicy()</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">TypeError: EnumMeta.__call__() missing <span class="number">1</span> required positional argument: <span class="string">&#x27;value&#x27;</span></span><br></pre></td></tr></table></figure>
