@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-21T09:27:35+08:00" />
+  <meta property="article:modified_time" content="2024-04-21T09:42:38+08:00" />
 
 
 
@@ -266,7 +266,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = RestartPolicy(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 <p>和一般類別<strong>不同</strong>的是，這裡的建構<strong>引數</strong>，<strong>只能</strong>是「<strong>任一 Enum 成員的屬性值</strong>」。也就是範例類別中的<code>0</code>、<code>1</code>、<code>2</code>、<code>3</code>。</p>
-<p>這是 Enum 類別的<strong>限制</strong>，也是它的<strong>特性</strong>。</p>
+<p>這是 Enum 類別的<strong>限制</strong>，也是它的<strong>重要特性</strong>。</p>
 <p>換句話說，<strong>所有 Enum 類別的實例，都一定是由 Enum 成員值（比如上述的 2）建構而來的</strong>。</p>
 <p>此外，<strong>沒有引數也不行！</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沒有引數會報錯</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>RestartPolicy()</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">TypeError: EnumMeta.__call__() missing <span class="number">1</span> required positional argument: <span class="string">&#x27;value&#x27;</span></span><br></pre></td></tr></table></figure>
