@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-21T09:42:38+08:00" />
+  <meta property="article:modified_time" content="2024-04-21T09:49:12+08:00" />
 
 
 
@@ -186,15 +186,18 @@
 <h2 id="本文主旨與架構"><a href="#本文主旨與架構" class="headerlink" title="本文主旨與架構"></a>本文主旨與架構</h2><p>本文分享我最近才開始把 Enum 應用在 API 開發中的經驗——從它的三大特性入手，並輔以一個實際問題情境。</p>
 <p>Enum 的特性不少，但只要知曉這三件事，就可以在遇到「列舉」欄位時，善用 Enum 來提升開發效率，同時增進程式碼的簡潔與穩健。</p>
 <p>不過話說回來，即使不是開發 API，也不影響你對本文的理解。只是我的經驗是從後端開發而來。</p>
-<h3 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h3><p>為了讓你感受 Enum 的強大與美妙，<strong>本文的架構經過精心設計。</strong></p>
-<p>我會先提出一個<strong>問題情境</strong>，然後再介紹 Enum 的<strong>三大特性</strong>，最後看看 Enum 的特性在問題情境中<strong>如何有效發揮</strong>，讓程式碼變得更加優雅。</p>
-<p>也就是它<strong>解決了什麼痛點！</strong></p>
+<h3 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h3><p>為了讓你感受 Enum 的強大與美妙，<strong>本文的架構經過精心設計。</strong>共分為<strong>三個部分</strong>：</p>
+<ol>
+<li><strong>問題情境</strong>：我會先提出一個<strong>問題情境</strong>，突顯舊方法的不足。</li>
+<li>然後再介紹 Enum 的<strong>三大特性</strong>，帶你進入 Enum 的世界。</li>
+<li>最後看 Enum 特性在問題情境中<strong>如何有效發揮</strong>，讓程式碼變得更加優雅——也就是它<strong>解決的痛點</strong>。</li>
+</ol>
 <p>藉由這個流程，相信你對 Enum 會有更進一步的理解。</p>
 <span id="more"></span>
 
 <hr>
-<p>我們先從的問題情境開始。</p>
-<h2 id="第一部分：問題情境"><a href="#第一部分：問題情境" class="headerlink" title="第一部分：問題情境"></a>第一部分：問題情境</h2><p>為了有效講解，舉個<strong>實例</strong>是必要的，但我會<strong>盡可能簡化</strong>，著眼於能夠彰顯 Enum 價值的部分。</p>
+<p>話不多說，先從問題情境開始。</p>
+<h2 id="第一部分：問題情境"><a href="#第一部分：問題情境" class="headerlink" title="第一部分：問題情境"></a>第一部分：問題情境</h2><p>為了有效講解，舉個<strong>實例</strong>是必要的，但我會<strong>盡可能簡化</strong>，只著眼於能夠彰顯 Enum 價值的部分。</p>
 <p>作為一個 Django API 開發者，不管是什麼專案，幾乎都會出現「列舉型」資料。此時 Django ORM 中對應的就是「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/models/fields/#django.db.models.Field.choices">choices</a>」欄位。</p>
 <p>假設我們現在要開發一個 Docker 相關的服務（這是我實際遇到的情境），其中一個 API 是「新增容器」。而容器有一個需要使用者輸入的設定是：restart policy。</p>
 <p>從官方文件可知，Docker 容器的 restart policy <a target="_blank" rel="noopener" href="https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy">總共就只有 4 種而已</a>——沒錯，它屬於<strong>列舉型資料</strong>！</p>
