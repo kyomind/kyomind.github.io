@@ -38,7 +38,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-04-16T02:25:44+08:00" />
+  <meta property="article:modified_time" content="2024-04-23T14:33:37+08:00" />
 
 
 
@@ -547,11 +547,11 @@
 <h3 id="Poetry-的版本管理能力"><a href="#Poetry-的版本管理能力" class="headerlink" title="Poetry 的版本管理能力"></a>Poetry 的版本管理能力</h3><p>使用 Poetry，情況將<strong>大不相同</strong>，因為 Poetry 能夠管理套件的版本衝突，所以我們可以<strong>放心</strong>地透過「<strong>範圍</strong>」來指定套件的版本。</p>
 <p>這樣的好處是，在<strong>不影響專案穩定性（不發生套件版本衝突）</strong>的前提下，<strong>自動更新</strong>套件至<strong>範圍內的最新版</strong>，且不需要手動修改<code>pyproject.toml</code>。</p>
 <p>當然，如果你認為這不夠保險，還是可以在安裝時，指定套件的「特定」版本。或後續手動修改<code>pyproject.toml</code>，讓套件版本固定。</p>
-<p>Poetry 的<code>add</code>指令，可以用下列不同的方式來指定套件版本，我們以安裝 Django 4.2 LTS 為例。</p>
-<h3 id="一、使用-符號"><a href="#一、使用-符號" class="headerlink" title="一、使用@符號"></a>一、使用<code>@</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;5.0.0（允許 4.2.9 及以上版本，但不包括 5.0.0，即最大版號不能變更）:</p>
+<p>Poetry 的<code>add</code>指令，可以用下列方式指定套件版本（前二者須搭配<code>@</code>運算子），我們以安裝 Django 4.2 LTS 為例。</p>
+<h3 id="一、使用-符號（文件）"><a href="#一、使用-符號（文件）" class="headerlink" title="一、使用^符號（文件）"></a>一、使用<code>^</code>符號（<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/dependency-specification/#caret-requirements">文件</a>）</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;5.0.0（允許 4.2.9 及以上版本，但不包括 5.0.0，即最大版號不能變更）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2.9</span><br></pre></td></tr></table></figure>
 <p>這意味著<strong>它會接受所有 4.x.x 的更新</strong>，只要版本號小於 5.0.0。這是一個常見的做法，因為它允許套件自動更新到<strong>任何非重大變更</strong>的新版本。</p>
-<h3 id="二、使用-符號"><a href="#二、使用-符號" class="headerlink" title="二、使用~符號"></a>二、使用<code>~</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;4.3.0（允許 4.2.9 及以上版本，但不包括 4.3.0，即<strong>只能升級最小版號</strong>）:</p>
+<h3 id="二、使用-符號（文件）"><a href="#二、使用-符號（文件）" class="headerlink" title="二、使用~符號（文件）"></a>二、使用<code>~</code>符號（<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/dependency-specification/#tilde-requirements">文件</a>）</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;4.3.0（允許 4.2.9 及以上版本，但不包括 4.3.0，即<strong>只能升級最小版號</strong>）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@~4.2.9</span><br></pre></td></tr></table></figure>
 
 <p>這個選項比較保守，<strong>只會接受 4.2.x 系列的更新</strong>。這適合於當你想要限制更新的範圍，僅包括 bug 修正和小幅度的改進。</p>
