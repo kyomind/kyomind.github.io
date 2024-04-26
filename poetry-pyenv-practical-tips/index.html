@@ -36,7 +36,7 @@
     <meta property="og:tag" content="系列：Python Poetry 三部曲" />
     
 
-  <meta property="article:modified_time" content="2024-04-26T07:37:50+08:00" />
+  <meta property="article:modified_time" content="2024-04-26T07:45:07+08:00" />
 
 
 
@@ -240,9 +240,9 @@
 </blockquote>
 <p>即使在不同專案需要多版本 Python 情況下，pyenv-virtualenv 也不是必須。只要善用<code>pyenv local</code>和<code>poetry env use</code>兩大指令即可。</p>
 <p>綜上所述，這也是為什麼我認為 Poetry 的教學<strong>應該涵蓋對 pyenv 的整合</strong>，因為在「虛擬環境管理」方面，兩者的功能有一定重疊。</p>
-<p>而且退萬步言，當然你的 Python 專案愈來愈多的時候，你會深深感受到「一個專案一個虛擬環境」<strong>（而且最好就直接放在專案裡面）</strong>的<strong>必要性</strong>。</p>
+<p>退萬步言，當你的 Python 專案愈來愈多的時候，你就會深深感受到「一個專案<strong>只</strong>對應一個虛擬環境」（而且<strong>最好就直接放在專案裡面</strong>）的<strong>必要性</strong>。</p>
 <h3 id="小結：最佳實踐"><a href="#小結：最佳實踐" class="headerlink" title="小結：最佳實踐"></a>小結：最佳實踐</h3><p>所以，不要麻煩了！</p>
-<p>直接使用 Poetry 的虛擬環境管理功能，並將<code>virtualenvs.in-project</code>設為<code>true</code>，這就是<strong>我認為的最佳實踐</strong>。</p>
+<p>直接使用 Poetry 的虛擬環境管理功能，並將<code>virtualenvs.in-project</code>設為<code>true</code>，就是<strong>我認為的最佳實踐</strong>。</p>
 <p>什麼，你還沒打開？沒關係，給你指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
