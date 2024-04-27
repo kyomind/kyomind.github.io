@@ -32,7 +32,7 @@
     <meta property="og:tag" content="PYTHONPATH" />
     
 
-  <meta property="article:modified_time" content="2024-04-25T06:41:37+08:00" />
+  <meta property="article:modified_time" content="2024-04-27T09:33:10+08:00" />
 
 
 
@@ -205,7 +205,7 @@
 <h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><p>因為，在這個例子中，沒有額外設定的情況下，專案根目錄並不在<code>sys.path</code>裡（除非<code>debugger.py</code>就在專案根目錄底下，容後述），直譯器自然找不到<code>configs</code>模組。</p>
 <p>換句話說，Python 直譯器在執行 import 時，會從<code>sys.path</code>中，由<strong>左至右依序嘗試</strong>要 import 的路徑。一般而言，<code>sys.path</code>的值可以例示如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python38.zip&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/lib-dynload&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/site-packages&#x27;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>第一個元素是空字串，代表<strong>當前目錄</strong>。下面會再說明這個「當前目錄」的意義。</p>
+<p>第一個元素是空字串，代表<strong>當前目錄</strong>。下面會再說明這個「<a href="#%E6%89%80%E8%AC%82%E7%9A%84%E3%80%8C%E7%95%B6%E5%89%8D%E7%9B%AE%E9%8C%84%E3%80%8D">當前目錄</a>」的意義。</p>
 <h2 id="兩個幫sys-path「加料」的方法"><a href="#兩個幫sys-path「加料」的方法" class="headerlink" title="兩個幫sys.path「加料」的方法"></a>兩個幫<code>sys.path</code>「加料」的方法</h2><p>因此，若想要正確執行<code>debugger.py</code>，我們需要把「專案根目錄」的路徑，加入到<code>sys.path</code>，此時有兩個常見方法。</p>
 <h3 id="一、在程式碼中手動加入sys-path"><a href="#一、在程式碼中手動加入sys-path" class="headerlink" title="一、在程式碼中手動加入sys.path"></a>一、在程式碼中手動加入<code>sys.path</code></h3><p>也就是在<code>from configs.config...</code>之前，先手動加入這段<code>sys.path.append(&#39;專案根目錄&#39;)</code>。</p>
 <p>這樣的好處是，別人不需要額外設定<code>PYTHONPATH</code>，因為程式已經幫我們做完了。</p>
@@ -239,8 +239,8 @@
 <blockquote>
 <p><strong>By default, the interpreter looks for a module within the current directory.</strong> To make the interpreter search in some other directory you just simply have to change the current directory.</p>
 </blockquote>
-<p>這也符合了前述<code>sys.path</code>的第一個元素是<strong>空字串（即當前目錄）</strong>的說法。現在我們知道，所謂的<strong>當前目錄</strong>，就是<strong>執行檔所在的資料夾</strong>。</p>
-<h3 id="所謂的「當前目錄」"><a href="#所謂的「當前目錄」" class="headerlink" title="所謂的「當前目錄」"></a>所謂的「當前目錄」</h3><p>這部分可同時參考 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys_path_init.html">Python 官方文件</a>中的說明：</p>
+<p>這也符合了前述<code>sys.path</code>的第一個元素是<strong>空字串（即當前目錄）</strong>的說法。現在我們知道，所謂的<strong>當前目錄</strong>，就是<strong>執行檔所在的目錄</strong>。</p>
+<h3 id="所謂的「當前目錄」"><a href="#所謂的「當前目錄」" class="headerlink" title="所謂的「當前目錄」"></a>所謂的「當前目錄」</h3><p>我們再參考 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/sys_path_init.html">Python 官方文件</a>中的說明：</p>
 <blockquote>
 <p>The first entry in the module search path <strong>is the directory that contains the input script, if there is one</strong>. Otherwise, the first entry is the current directory, which is the case when executing the interactive shell, a -c command, or -m module.</p>
 </blockquote>
