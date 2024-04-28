@@ -31,7 +31,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-04-28T09:29:21+08:00" />
+  <meta property="article:modified_time" content="2024-04-28T12:48:07+08:00" />
 
 
 
@@ -178,7 +178,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 3 篇。</p>
-<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。更多 Django 教學，請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
 <hr>
 <p>如〈<a href="https://blog.kyomind.tw/django-tutorial/">Django Tutorial：系列介紹與導讀</a>〉所言，這個系列主要是圍繞著「Django API」教學展開的。</p>
 <p>但無論是用 Django 建立全端網站，還是開發 API，Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/">HttpRequest</a>——也就是我們熟悉的<code>request</code>參數——都是必不可少的元素。</p>
@@ -218,7 +218,7 @@
 <h2 id="二、HttpRequest-GET"><a href="#二、HttpRequest-GET" class="headerlink" title="二、HttpRequest.GET"></a>二、HttpRequest.GET</h2><blockquote>
 <p>A dictionary-like object containing all given HTTP GET parameters. See the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.QueryDict"><code>QueryDict</code></a> documentation below.</p>
 </blockquote>
-<p>用來獲得 GET 請求的「<strong>URL 參數</strong>」內容，比如你透過 GET 方法存取下列網址：</p>
+<p>用來獲得 HTTP request 的「<strong>URL 參數</strong>」內容，比如你透過 GET 方法存取下列網址：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.books.com/search?category=novel&amp;author=Asimov</span><br></pre></td></tr></table></figure>
 
 <p>這個屬性可取得<code>?</code>後面的「<code>category=novel&amp;author=Asimov</code>」這段資訊。</p>
@@ -226,16 +226,19 @@
 <p>關於<code>QueryDict</code>，你目前只需要知道，它所有鍵的值「<strong>都是字串</strong>」就可以了。這也符合 URL 參數本質上都是字串的特性。</p>
 <p>以下是用法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_books</span>(<span class="params">request</span>):</span><br><span class="line">    category = request.GET.get(<span class="string">&#x27;category&#x27;</span>)</span><br><span class="line">    author = request.GET.get(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-
+<h3 id="不限於-GET-方法"><a href="#不限於-GET-方法" class="headerlink" title="不限於 GET 方法"></a>不限於 GET 方法</h3><p>雖然叫做<code>GET</code>，但實際上這個屬性不限於 GET 方法，只要是 URL 參數，都可以透過這個屬性取得。</p>
+<p>畢竟除了 GET 方法，還有 DELETE、PATCH 等方法，也都可以透過 URL 參數傳遞資訊。只是因為 GET 方法最常見，所以這個屬性叫做<code>GET</code>。</p>
+<p>我覺得這個命名<strong>多少有點誤導性</strong>，但不算是大問題。</p>
 <h3 id="使用-DRF-框架"><a href="#使用-DRF-框架" class="headerlink" title="使用 DRF 框架"></a>使用 DRF 框架</h3><p>在 DRF（<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>）的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/requests/#request-parsing">request</a> 中，官文推薦你使用 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/requests/#query_params">query_params</a> 屬性代替<code>GET</code>屬性：</p>
 <blockquote>
 <p>For clarity inside your code, we recommend using <code>request.query_params</code> instead of the Django’s standard <code>request.GET</code>.</p>
 </blockquote>
+<p>如前所述，<code>GET</code>屬性名稱有點誤導性，而 DRF 的<code>query_params</code>確實比較合理。</p>
 <p>至於是不是要遵守這個建議，我覺得最大的重點是「整個專案的<strong>一致性</strong>」——不要有人寫<code>query_params</code>、有人寫<code>GET</code>。</p>
 <p>而 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 則沒有這個問題（不需要用到<code>GET</code>屬性），以後介紹 Django Ninja 再詳談。</p>
 <hr>
 <h2 id="三、HttpRequest-POST"><a href="#三、HttpRequest-POST" class="headerlink" title="三、HttpRequest.POST"></a>三、HttpRequest.POST</h2><blockquote>
-<p>A dictionary-like object containing all given HTTP POST parameters, providing that the request contains form data.</p>
+<p>A dictionary-like object containing all given HTTP <strong>POST</strong> parameters, providing that the request contains <strong>form data</strong>.</p>
 </blockquote>
 <blockquote>
 <p>See the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.QueryDict"><code>QueryDict</code></a> documentation below.</p>
@@ -254,28 +257,30 @@
 <li>如果想取得 form data 以外的內容，要使用<code>HttpRequest.body</code>。（對應第三段）</li>
 <li>不包含上傳的檔案。因為已經有<code>FILES</code>屬性。（對應第四段）</li>
 </ol>
-<h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h3><p>簡單來說，這個屬性值對應 POST 請求中的 body，但 header 的<code>Content-Type</code>必須為<code>application/x-www-form-urlencoded</code>才行。</p>
-<p>即 body 必須是 form data，否則<code>POST</code>屬性不會有值。</p>
+<h3 id="只限-form-data"><a href="#只限-form-data" class="headerlink" title="只限 form data"></a>只限 form data</h3><p>簡單來說，這個屬性值對應 POST 請求中的 body，但 header 的<code>Content-Type</code>必須為<code>application/x-www-form-urlencoded</code>才行。</p>
+<p>即 body <strong>必須是 form data</strong>，否則<code>POST</code>屬性不會有值。</p>
 <p>當<code>Content-Type</code>是<code>application/json</code>或其他非表單的類型時，<code>HttpRequest.POST</code> 將會是<strong>空的</strong>，因為 Django 不會自動解析這些類型的資訊到 <code>POST</code> 屬性中。</p>
-<h3 id="實務上使用"><a href="#實務上使用" class="headerlink" title="實務上使用"></a>實務上使用</h3><p>上述細節可能會新手有點眼花撩亂，不過別擔心，我們從一個更 high level 的角度看。</p>
-<p>如果你寫的是「全端」的 Django 網站，也就是包括了 Django Form 和模板，那這個屬性應該會<strong>很常用</strong>。</p>
-<p>因為你的前端（也就是 Django 模板）會常常傳來大量的 form data。</p>
-<p>但如果你是寫 API，則這個屬性基本上不會用到。因為 API 的前端請求，往往是 JSON 格式，即<code>Content-Type</code>為<code>application/json</code>，而不會是 form data。</p>
+<h3 id="只限-POST-方法"><a href="#只限-POST-方法" class="headerlink" title="只限 POST 方法"></a>只限 POST 方法</h3><p>和<code>GET</code>屬性不同，<code>POST</code>屬性「<strong>只限</strong>」使用 POST 方法，這點要特別注意。</p>
+<p>可是，其餘帶有 body 的方法，比如 PUT、PATCH、DELETE，也可能有 form data，但 Django 也不會自動解析到<code>POST</code>屬性中。此時該怎麼辦？</p>
+<p>答案是：使用<code>request.body</code>屬性，自行解析。</p>
+<h3 id="HttpRequest-body"><a href="#HttpRequest-body" class="headerlink" title="HttpRequest.body"></a>HttpRequest.body</h3><p>上述的<code>request.POST</code>有一定的限制，而<code>body</code>屬性更加全面。它也是代表 HTTP 請求 body 資料，且不限於 form data。不過，<strong>它的屬性值型別是 bytestring：</strong></p>
+<blockquote>
+<p>The raw HTTP request body as a bytestring.</p>
+</blockquote>
+<p>你需要手動處理這個 bytestring，比如使用<code>json.loads()</code>來解析 JSON 格式的 body。</p>
+<p>所以，實際上我們比較少用到<code>request.body</code>，而是用 DRF 的<code>request.data</code>屬性，它會自動解析 body 資料，並轉換成 Python 物件。</p>
 <h3 id="程式碼實例"><a href="#程式碼實例" class="headerlink" title="程式碼實例"></a>程式碼實例</h3><p>想像一個申請表單：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">submit_form</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        name = request.POST.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">        email = request.POST.get(<span class="string">&#x27;email&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>其中要注意的是，HTTP POST 方法才會有<code>request.POST</code>屬性值，所以一定要先檢查方法<code>if request.method == &#39;POST&#39;</code>。</p>
 <p>而且如上所述，即使是 POST 方法，如果請求的 body 內容格式不是 form data，那麼<code>request.POST</code>依舊是空的。</p>
-<h3 id="HttpRequest-body"><a href="#HttpRequest-body" class="headerlink" title="HttpRequest.body"></a>HttpRequest.body</h3><p>上述的<code>request.POST</code>有一定的限制，而<code>body</code>屬性更加全面。它也是代表 HTTP 請求 body 資料，且不限於 form data。不過，<strong>它的屬性值型別是 bytestring：</strong></p>
-<blockquote>
-<p>The raw HTTP request body as a bytestring.</p>
-</blockquote>
-<p>你需要自行解析！</p>
-<p>所以，實際上我們比較少會用到這個屬性。</p>
+<h3 id="實務使用建議"><a href="#實務使用建議" class="headerlink" title="實務使用建議"></a>實務使用建議</h3><p>上述細節可能會新手有點眼花撩亂，不過別擔心，我們從一個更 high level 的角度看。</p>
+<p>如果你寫的是「全端」Django，也就是包括了 Django Form 和模板，那這個<code>POST</code>屬性應該會<strong>很常用</strong>。因為前端（也就是 Django 模板）會傳來大量的 form data。</p>
+<p>但如果你是寫 API，則這個屬性基本上不會用到。因為 API 的前端請求，往往是 JSON 格式，即<code>Content-Type</code>為<code>application/json</code>，而不會是 form data。</p>
 <p>簡言之：</p>
 <ul>
 <li>寫全端 Django 用<code>request.POST</code>屬性。</li>
-<li>寫 API 則是用別的屬性，比如 DRF 的<code>request.data</code>。</li>
+<li>寫 API 則是用<strong>別的屬性</strong>，比如 DRF 的<code>request.data</code>。</li>
 </ul>
 <hr>
 <h2 id="四、HttpRequest-FILES"><a href="#四、HttpRequest-FILES" class="headerlink" title="四、HttpRequest.FILES"></a>四、HttpRequest.FILES</h2><blockquote>
