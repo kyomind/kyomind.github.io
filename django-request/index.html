@@ -31,7 +31,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-04-28T13:07:52+08:00" />
+  <meta property="article:modified_time" content="2024-04-28T13:17:12+08:00" />
 
 
 
@@ -223,7 +223,7 @@
 
 <p>這個屬性可取得<code>?</code>後面的「<code>category=novel&amp;author=Asimov</code>」這段資訊。</p>
 <p>而且屬性值的資料型別，是一個<code>QueryDict</code>。</p>
-<p>關於<code>QueryDict</code>，你目前只需要知道，它所有鍵的值「<strong>都是字串</strong>」就可以了。這也符合 URL 參數本質上都是字串的特性。</p>
+<p>關於<code>QueryDict</code>，你目前只需要知道，它是一個類似字典的物件，而<strong>值</strong>是主要是<strong>字串</strong>或<strong>元素為字串的 Python list</strong>。</p>
 <p>以下是用法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_books</span>(<span class="params">request</span>):</span><br><span class="line">    category = request.GET.get(<span class="string">&#x27;category&#x27;</span>)</span><br><span class="line">    author = request.GET.get(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <h3 id="不限於-GET-方法"><a href="#不限於-GET-方法" class="headerlink" title="不限於 GET 方法"></a>不限於 GET 方法</h3><p>雖然叫做<code>GET</code>，但實際上這個屬性不限於 GET 方法，只要是 URL 參數，都可以透過這個屬性取得。</p>
