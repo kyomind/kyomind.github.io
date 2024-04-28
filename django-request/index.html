@@ -31,7 +31,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-04-28T13:33:45+08:00" />
+  <meta property="article:modified_time" content="2024-04-28T13:38:31+08:00" />
 
 
 
@@ -182,7 +182,7 @@
 <hr>
 <p>如〈<a href="https://blog.kyomind.tw/django-tutorial/">Django Tutorial：系列介紹與導讀</a>〉所言，這個系列主要是圍繞著「Django API」教學展開的。</p>
 <p>但無論是用 Django 建立全端網站，還是開發 API，Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/">HttpRequest</a>——也就是我們熟悉的<code>request</code>參數——都是必不可少的元素。</p>
-<p><code>HttpRequest</code>封裝了來自前端的 HTTP 請求，而 Django 會將<code>HttpRequest</code>物件自動帶入 view 函式的<strong>第一位置參數</strong>（通常叫<code>request</code>），讓我們可以直接使用。</p>
+<p><code>HttpRequest</code>封裝了來自前端的 HTTP 請求，而 Django 會將<code>HttpRequest</code>物件自動帶入 view 函式的<strong>第一位置參數</strong>（通常就叫<code>request</code>），讓我們可以直接使用。</p>
 <h2 id="為何需要了解-HttpRequest-物件"><a href="#為何需要了解-HttpRequest-物件" class="headerlink" title="為何需要了解 HttpRequest 物件"></a>為何需要了解 <code>HttpRequest</code> 物件</h2><p>在我剛開始寫 Django 的時候，根本不太清楚<code>HttpRequest</code>具體有哪些屬性。</p>
 <p>通常是看教學或為了實作某個功能而 Google 的時候，看到範例程式碼使用某個屬性，然後才知道這個屬性的存在。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
