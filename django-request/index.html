@@ -31,7 +31,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-04-28T08:21:35+08:00" />
+  <meta property="article:modified_time" content="2024-04-28T08:49:11+08:00" />
 
 
 
@@ -202,7 +202,7 @@
 <p>本文對<code>HttpRequest</code>屬性與介紹內容，主要整理自<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">官方文件</a>，<strong>我會適度引用原文，並加上我的經驗、看法。</strong></p>
 <p>提醒你，看完之後，如果依舊覺得不熟悉這些屬性，那也無妨，<strong>有基本的認識就很好了！</strong></p>
 <p>以下依各個屬性在文件中出現的順序，一一介紹。</p>
-<h2 id="一、HttpRequest-method"><a href="#一、HttpRequest-method" class="headerlink" title="一、HttpRequest.method"></a>一、<strong>HttpRequest.method</strong></h2><blockquote>
+<h2 id="一、HttpRequest-method"><a href="#一、HttpRequest-method" class="headerlink" title="一、HttpRequest.method"></a>一、HttpRequest.method</h2><blockquote>
 <p>A string representing the HTTP method used in the request. This is guaranteed to be uppercase.</p>
 </blockquote>
 <p>表示請求所使用的 HTTP 方法，有兩個重點：</p>
@@ -215,7 +215,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="二、HttpRequest-GET"><a href="#二、HttpRequest-GET" class="headerlink" title="二、HttpRequest.GET"></a><strong>二、HttpRequest.GET</strong></h2><blockquote>
+<h2 id="二、HttpRequest-GET"><a href="#二、HttpRequest-GET" class="headerlink" title="二、HttpRequest.GET"></a>二、HttpRequest.GET</h2><blockquote>
 <p>A dictionary-like object containing all given HTTP GET parameters. See the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.QueryDict"><code>QueryDict</code></a> documentation below.</p>
 </blockquote>
 <p>用來獲得 GET 請求的「<strong>URL 參數</strong>」內容，比如你透過 GET 方法存取下列網址：</p>
@@ -244,7 +244,7 @@
 <p>If you need to access raw or non-form data posted in the request, access this through the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.body"><code>HttpRequest.body</code></a> attribute instead.</p>
 </blockquote>
 <blockquote>
-<p><strong><code>POST</code></strong> does <em>not</em> include file-upload information. See <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.FILES"><code>FILES</code></a>.</p>
+<p><code>POST</code> does <em>not</em> include file-upload information. See <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.FILES"><code>FILES</code></a>.</p>
 </blockquote>
 <p>我故意把一段原文分 4 段引用，因為它有下列重點：</p>
 <ol>
@@ -293,19 +293,19 @@
 </ol>
 <p>至於在 view 函式中的程式碼使用，較為複雜，可自行參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/files/">文件</a>，在此不介紹。</p>
 <hr>
-<h2 id="五、關於-Headers"><a href="#五、關於-Headers" class="headerlink" title="五、關於 Headers"></a>五、關於 Headers</h2><p><strong><code>HttpRequest.META</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.META">¶</a></strong></p>
+<h2 id="五、關於-Headers"><a href="#五、關於-Headers" class="headerlink" title="五、關於 Headers"></a>五、關於 Headers</h2><p><code>HttpRequest.META</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.META">¶</a></p>
 <blockquote>
 <p>A dictionary containing all available HTTP headers.</p>
 </blockquote>
-<p><strong><code>HttpRequest.headers</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.headers">¶</a></strong></p>
+<p><code>HttpRequest.headers</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.headers">¶</a></p>
 <blockquote>
-<p>A case insensitive, dict-like object that provides access to all HTTP-prefixed headers (plus <strong><code>Content-Length</code></strong> and <strong><code>Content-Type</code></strong>) from the request.</p>
+<p>A case insensitive, dict-like object that provides access to all HTTP-prefixed headers (plus <code>Content-Length</code> and <code>Content-Type</code>) from the request.</p>
 </blockquote>
 <p>這部分我們已經有過專文介紹，可直接參考：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></li>
 </ul>
-<h2 id="六、Attributes-set-by-middleware"><a href="#六、Attributes-set-by-middleware" class="headerlink" title="六、Attributes set by middleware"></a>六、<strong>Attributes set by middleware</strong></h2><p>從 Django 的 middleware 整合而獲得的屬性，這些屬性的值「不屬於」HTTP 請求中的資料，而是 Django 基於方便開發，自動幫你加上去的。</p>
+<h2 id="六、Attributes-set-by-middleware"><a href="#六、Attributes-set-by-middleware" class="headerlink" title="六、Attributes set by middleware"></a>六、Attributes set by middleware</h2><p>從 Django 的 middleware 整合而獲得的屬性，這些屬性的值「不屬於」HTTP 請求中的資料，而是 Django 基於方便開發，自動幫你加上去的。</p>
 <p>比較重要且常用的是這兩個：</p>
 <ul>
 <li><code>HttpRequest.session</code></li>
