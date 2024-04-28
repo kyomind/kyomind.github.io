@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django request（HttpRequest）常用屬性介紹">
+  <meta property="og:title" content="Django request（HttpRequest）常用屬性介紹"><meta name="twitter:description" content="本文介紹 Django 初學者最常用或需要知道的`HttpRequest`屬性，讓你在學習 Django 的路上更加踏實。">
+  <meta property="og:description" content="本文介紹 Django 初學者最常用或需要知道的`HttpRequest`屬性，讓你在學習 Django 的路上更加踏實。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
+<meta name="description" content="本文介紹 Django 初學者最常用或需要知道的`HttpRequest`屬性，讓你在學習 Django 的路上更加踏實。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
+            <meta property="og:tag" content="Django" />
+    <meta property="og:tag" content="Django Tutorial" />
+    <meta property="og:tag" content="HTTP" />
+    
+
+  <meta property="article:modified_time" content="2024-04-28T08:21:35+08:00" />
+
+
+
+
+
+  <meta property="article:published_time" content="2024-04-28T07:08:53+08:00" />
+
+
+
+<meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" />
+<meta name="author" content="Kyo" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/django-request/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django request（HttpRequest）常用屬性介紹 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top/">
+        <li class="mobile-menu-item">熱門
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
+          
+            <a href="/categories/Django/">Django (6)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (28)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (20)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top/">
+          熱門
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django request（HttpRequest）常用屬性介紹
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-04-28
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3-HttpRequest-%E7%89%A9%E4%BB%B6"><span class="toc-text">為何需要了解 HttpRequest 物件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81HttpRequest-method"><span class="toc-text">一、HttpRequest.method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81HttpRequest-GET"><span class="toc-text">二、HttpRequest.GET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81HttpRequest-POST"><span class="toc-text">三、HttpRequest.POST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81HttpRequest-FILES"><span class="toc-text">四、HttpRequest.FILES</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%97%9C%E6%96%BC-Headers"><span class="toc-text">五、關於 Headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81Attributes-set-by-middleware"><span class="toc-text">六、Attributes set by middleware</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 3 篇。</p>
+<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。更多 Django 教學，請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
+<hr>
+<p>如〈<a href="https://blog.kyomind.tw/django-tutorial/">Django Tutorial：系列介紹與導讀</a>〉所言，這個系列主要是圍繞著「Django API」教學展開的。</p>
+<p>但無論是用 Django 建立全端網站，還是開發 API，Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/">HttpRequest</a>，也就是我們熟悉的<code>request</code>，都是必不可少的物件。</p>
+<p><code>HttpRequest</code>封裝了來自前端的 HTTP 請求，方便我們在 view 函式中操作、使用——Django 會將<code>request</code>物件自動帶入函式的<strong>第一位置參數</strong>。</p>
+<h2 id="為何需要了解-HttpRequest-物件"><a href="#為何需要了解-HttpRequest-物件" class="headerlink" title="為何需要了解 HttpRequest 物件"></a>為何需要了解 <code>HttpRequest</code> 物件</h2><p>在我剛開始寫 Django 的時候，根本不太清楚<code>HttpRequest</code>具體有哪些屬性。</p>
+<p>通常是看教學或為了實作某個功能而 Google 的時候，看到範例程式碼使用某個屬性，然後才知道這個屬性的存在。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
+
+<p>看到這段，才知道<code>request</code>有一個<code>method</code>屬性。</p>
+<p>這樣學當然也可以，但如果一開始就對常用的<code>HttpRequest</code>屬性有<strong>基本了解</strong>，會讓你在學習 Django 的路上<strong>更加踏實</strong>。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>基於上述考量，我覺得還是有必要整理一下，對於 Django 初學者而言，最常用或需要了解的<code>HttpRequest</code>屬性。</p>
+<p>不求多深，或知悉所有屬性的具體用法。面對<code>HttpRequest</code>這樣內容豐富的物件，我們掌握 80&#x2F;20 法則，了解其中<strong>最重要的幾個</strong>，往往就能很有收獲。</p>
+<p>至少，如果讓我重來，我會希望自己一開始就對這些屬性有一定認識。</p>
+<h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>本文的目標讀者，是 <strong>Django 初學者</strong>。</p>
+<p>無論想寫 Django 全端網站（也就是會用到 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/forms/">Django Form</a> 與 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/templates/language/">Template</a>），還是開發 API。這些屬性都相對重要，或至少要知道它有何「替代品」。</p>
+<p>因此，我還會適時補充，使用框架（DRF、Django Ninja）開發 API 時，這些屬性是否被框架提供的新屬性取代。</p>
+<hr>
+<p>本文對<code>HttpRequest</code>屬性與介紹內容，主要整理自<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">官方文件</a>，<strong>我會適度引用原文，並加上我的經驗、看法。</strong></p>
+<p>提醒你，看完之後，如果依舊覺得不熟悉這些屬性，那也無妨，<strong>有基本的認識就很好了！</strong></p>
+<p>以下依各個屬性在文件中出現的順序，一一介紹。</p>
+<h2 id="一、HttpRequest-method"><a href="#一、HttpRequest-method" class="headerlink" title="一、HttpRequest.method"></a>一、<strong>HttpRequest.method</strong></h2><blockquote>
+<p>A string representing the HTTP method used in the request. This is guaranteed to be uppercase.</p>
+</blockquote>
+<p>表示請求所使用的 HTTP 方法，有兩個重點：</p>
+<ol>
+<li>型別為字串。</li>
+<li>而且字串值一定是全大寫。比如<code>&quot;GET&quot;</code>、<code>&quot;POST&quot;</code>等。</li>
+</ol>
+<p>這或許是新手一開始最常呼叫的屬性XD。當然，前提是你寫的是 FBV（function-based view）。</p>
+<p>在 view 函式中的用法前面已經提過：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、HttpRequest-GET"><a href="#二、HttpRequest-GET" class="headerlink" title="二、HttpRequest.GET"></a><strong>二、HttpRequest.GET</strong></h2><blockquote>
+<p>A dictionary-like object containing all given HTTP GET parameters. See the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.QueryDict"><code>QueryDict</code></a> documentation below.</p>
+</blockquote>
+<p>用來獲得 GET 請求的「<strong>URL 參數</strong>」內容，比如你透過 GET 方法存取下列網址：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.books.com/search?category=novel&amp;author=Asimov</span><br></pre></td></tr></table></figure>
+
+<p>這個屬性可取得<code>?</code>後面的「<code>category=novel&amp;author=Asimov</code>」這段資訊。</p>
+<p>而且屬性值的資料型別，是一個<code>QueryDict</code>。</p>
+<p>關於<code>QueryDict</code>，你目前只需要知道，它所有鍵的值「<strong>都是字串</strong>」就可以了。這也符合 URL 參數本質上都是字串的特性。</p>
+<p>以下是用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_books</span>(<span class="params">request</span>):</span><br><span class="line">    category = request.GET.get(<span class="string">&#x27;category&#x27;</span>)</span><br><span class="line">    author = request.GET.get(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-DRF-框架"><a href="#使用-DRF-框架" class="headerlink" title="使用 DRF 框架"></a>使用 DRF 框架</h3><p>在 DRF（<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>）的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/requests/#request-parsing">request</a> 中，官文推薦你使用 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/requests/#query_params">query_params</a> 屬性代替<code>GET</code>屬性：</p>
+<blockquote>
+<p>For clarity inside your code, we recommend using <code>request.query_params</code> instead of the Django’s standard <code>request.GET</code>.</p>
+</blockquote>
+<p>至於是不是要遵守這個建議，我覺得最大的重點是「整個專案的<strong>一致性</strong>」——不要有人寫<code>query_params</code>、有人寫<code>GET</code>。</p>
+<p>而 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 則沒有這個問題（不需要用到<code>GET</code>屬性），以後介紹 Django Ninja 再詳談。</p>
+<hr>
+<h2 id="三、HttpRequest-POST"><a href="#三、HttpRequest-POST" class="headerlink" title="三、HttpRequest.POST"></a>三、HttpRequest.POST</h2><blockquote>
+<p>A dictionary-like object containing all given HTTP POST parameters, providing that the request contains form data.</p>
+</blockquote>
+<blockquote>
+<p>See the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.QueryDict"><code>QueryDict</code></a> documentation below.</p>
+</blockquote>
+<blockquote>
+<p>If you need to access raw or non-form data posted in the request, access this through the <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.body"><code>HttpRequest.body</code></a> attribute instead.</p>
+</blockquote>
+<blockquote>
+<p><strong><code>POST</code></strong> does <em>not</em> include file-upload information. See <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.FILES"><code>FILES</code></a>.</p>
+</blockquote>
+<p>我故意把一段原文分 4 段引用，因為它有下列重點：</p>
+<ol>
+<li>這個<code>POST</code>屬性，必須你的 HTTP 請求是 POST 方法。（對應第一段）</li>
+<li>內容是 POST 請求中附帶的「表單資訊（form data）」。（對應第一段，這是最重要的一點！）</li>
+<li>值的型別也是<code>QueryDict</code>。如前所述，值必為字串。（對應第二段）</li>
+<li>如果想取得 form data 以外的內容，要使用<code>HttpRequest.body</code>。（對應第三段）</li>
+<li>不包含上傳的檔案。因為已經有<code>FILES</code>屬性。（對應第四段）</li>
+</ol>
+<h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application&#x2F;x-www-form-urlencoded"></a>application&#x2F;x-www-form-urlencoded</h3><p>簡單來說，這個屬性值對應 POST 請求中的 body，但 header 的<code>Content-Type</code>必須為<code>application/x-www-form-urlencoded</code>才行。</p>
+<p>即 body 必須是 form data，否則<code>POST</code>屬性不會有值。</p>
+<p>當<code>Content-Type</code>是<code>application/json</code>或其他非表單的類型時，<code>HttpRequest.POST</code> 將會是<strong>空的</strong>，因為 Django 不會自動解析這些類型的資訊到 <code>POST</code> 屬性中。</p>
+<h3 id="實務上使用"><a href="#實務上使用" class="headerlink" title="實務上使用"></a>實務上使用</h3><p>上述細節可能會新手有點眼花撩亂，不過別擔心，我們從一個更 high level 的角度看。</p>
+<p>如果你寫的是「全端」的 Django 網站，也就是包括了 Django Form 和模板，那這個屬性應該會<strong>很常用</strong>。</p>
+<p>因為你的前端（也就是 Django 模板）會常常傳來大量的 form data。</p>
+<p>但如果你是寫 API，則這個屬性基本上不會用到。因為 API 的前端請求，往往是 JSON 格式，即<code>Content-Type</code>為<code>application/json</code>，而不會是 form data。</p>
+<h3 id="程式碼實例"><a href="#程式碼實例" class="headerlink" title="程式碼實例"></a>程式碼實例</h3><p>想像一個申請表單：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">submit_form</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        name = request.POST.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">        email = request.POST.get(<span class="string">&#x27;email&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其中要注意的是，HTTP POST 方法才會有<code>request.POST</code>屬性值，所以一定要先檢查方法<code>if request.method == &#39;POST&#39;</code>。</p>
+<p>而且如上所述，即使是 POST 方法，如果請求的 body 內容格式不是 form data，那麼<code>request.POST</code>依舊是空的。</p>
+<h3 id="HttpRequest-body"><a href="#HttpRequest-body" class="headerlink" title="HttpRequest.body"></a>HttpRequest.body</h3><p>上述的<code>request.POST</code>有一定的限制，而<code>body</code>屬性更加全面。它也是代表 HTTP 請求 body 資料，且不限於 form data。不過，<strong>它的屬性值型別是 bytestring：</strong></p>
+<blockquote>
+<p>The raw HTTP request body as a bytestring.</p>
+</blockquote>
+<p>你需要自行解析！</p>
+<p>所以，實際上我們比較少會用到這個屬性。</p>
+<p>簡言之：</p>
+<ul>
+<li>寫全端 Django 用<code>request.POST</code>屬性。</li>
+<li>寫 API 則是用別的屬性，比如 DRF 的<code>request.data</code>。</li>
+</ul>
+<hr>
+<h2 id="四、HttpRequest-FILES"><a href="#四、HttpRequest-FILES" class="headerlink" title="四、HttpRequest.FILES"></a>四、HttpRequest.FILES</h2><blockquote>
+<p>A dictionary-like object containing all uploaded files. Each key in <code>FILES</code> is the <code>name</code> from the <code>&lt;input type=&quot;file&quot; name=&quot;&quot;&gt;</code>. Each value in <code>FILES</code> is an <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/files/uploads/#django.core.files.uploadedfile.UploadedFile"><code>UploadedFile</code></a>.</p>
+</blockquote>
+<p>上傳檔案必備！</p>
+<p>注意，這個<code>FILES</code>只是一個類字典，字典的每一個 key 的<strong>值</strong>才是你上傳的檔案。</p>
+<blockquote>
+<p><code>FILES</code> will only contain data if the request method was POST and the <code>&lt;form&gt;</code> that posted to the request had <code>enctype=&quot;multipart/form-data&quot;</code>. Otherwise, <code>FILES</code> will be a blank dictionary-like object.</p>
+</blockquote>
+<p>重點：</p>
+<ol>
+<li>必須使用 POST 方法。</li>
+<li>而且<code>Content-Type</code>為<code>multipart/form-data</code>。</li>
+</ol>
+<p>至於在 view 函式中的程式碼使用，較為複雜，可自行參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/files/">文件</a>，在此不介紹。</p>
+<hr>
+<h2 id="五、關於-Headers"><a href="#五、關於-Headers" class="headerlink" title="五、關於 Headers"></a>五、關於 Headers</h2><p><strong><code>HttpRequest.META</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.META">¶</a></strong></p>
+<blockquote>
+<p>A dictionary containing all available HTTP headers.</p>
+</blockquote>
+<p><strong><code>HttpRequest.headers</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.headers">¶</a></strong></p>
+<blockquote>
+<p>A case insensitive, dict-like object that provides access to all HTTP-prefixed headers (plus <strong><code>Content-Length</code></strong> and <strong><code>Content-Type</code></strong>) from the request.</p>
+</blockquote>
+<p>這部分我們已經有過專文介紹，可直接參考：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></li>
+</ul>
+<h2 id="六、Attributes-set-by-middleware"><a href="#六、Attributes-set-by-middleware" class="headerlink" title="六、Attributes set by middleware"></a>六、<strong>Attributes set by middleware</strong></h2><p>從 Django 的 middleware 整合而獲得的屬性，這些屬性的值「不屬於」HTTP 請求中的資料，而是 Django 基於方便開發，自動幫你加上去的。</p>
+<p>比較重要且常用的是這兩個：</p>
+<ul>
+<li><code>HttpRequest.session</code></li>
+<li><code>HttpRequest.user</code></li>
+</ul>
+<p>這些可以等用到相關 Django 模組時，再深入了解即可。</p>
+
+      </div>
+      
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/reverse-relationships/" title="Django ORM：一對一、一對多外鍵教學（中）反向關聯" rel="bookmark">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-request-headers/" title="Django：以 request.headers 而非 META 獲取 HTTP header 資訊" rel="bookmark">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定" rel="bookmark">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            <a href="/tags/HTTP/">HTTP</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/weekly-review-28/">
+        <span class="next-text nav-default">28，去了 2 個月圖書館之後</span>
+        <span class="prev-text nav-mobile">28，去了 2 個月圖書館之後</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">6</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">28</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">34</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">20</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kyomind.tw/" class="iconfont icon-instagram" title="instagram"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

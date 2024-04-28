@@ -108,7 +108,7 @@
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
           
-            <a href="/categories/Django/">Django (5)</a>
+            <a href="/categories/Django/">Django (6)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (28)</a>
           
@@ -148,6 +148,34 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-06-12
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/yXGtHZ1.jpg" alt="by Eugene Frost on Behance"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+</blockquote>
+<blockquote>
+<p><code>2024/01/16</code>：刪除部分內容，使文章更緊湊、好讀。</p>
+</blockquote>
+<p>在〈<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉中，我提到了自己選擇 Poetry 而非 Pipenv 的兩大理由之一，是因為 Poetry 採用了<code>pyproject.toml</code>作為它的<strong>工具設定檔</strong>。</p>
+<p>本文則<strong>直接以 pyproject.toml 為主角</strong>，用一半以上的篇幅對其做進一步介紹。</p>
+<p>第二部分則大概講解一下：在 VS Code 中如何透過<code>pyproject.toml</code>，作為 Black、yapf、isort 這幾個常用的 Python 開發工具的<strong>共同設定檔</strong>，而非使用 VS Code 自身的<code>settings.json</code>來儲存設定。並提醒一些使用上的細節。</p>
+          <div class="read-more">
+            <a href="/pyproject-toml/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a>
         </h1>
 
@@ -161,7 +189,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
-<p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
+<p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
 <p>而這個<code>HttpRequest</code>物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
 <p>我們經常使用<code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
@@ -283,28 +311,6 @@
 <p>話雖如此，卻遲遲沒有下筆，原因是這類文章網路上已經有不少，要怎麼寫得有個人特色，無疑是一大挑戰。所以我決定累積一定的 VS Code 使用經驗後，再來分享。</p>
           <div class="read-more">
             <a href="/good-vscode-extensions/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/introducing-python/">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-04-26
-        </span><span class="post-category">
-            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/Odq7Yly.png" alt="精通 Python 第二版"></p>
-<p>近年來拜大數據、人工智慧所賜，Python 這門程式語言的能見度得到了驚人的提升。甚至，說誇張一點，光是「寫程式」這件事，其火熱程度就遠遠不是十年前可以比擬，好像不學點程式，在不久的將來就要跟不上時代了？</p>
-<p>未來如何發展，我們尚且無法預料。不過，跟風也好，興趣使然也罷，當你起心動念想要開始學程式並主動 Google 搜尋相關資訊後，可能會發現：<strong>似乎很多人都推薦初學者從 Python 這門語言開始上手與入門。</strong></p>
-<p>所以，Python 真的是程式入門的最佳選擇嗎？</p>
-          <div class="read-more">
-            <a href="/introducing-python/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/10/">
