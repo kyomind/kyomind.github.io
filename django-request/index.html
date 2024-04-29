@@ -31,7 +31,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-04-28T13:38:31+08:00" />
+  <meta property="article:modified_time" content="2024-04-29T05:14:02+08:00" />
 
 
 
@@ -200,7 +200,12 @@
 <p>因此，我還會適時補充，使用框架（DRF、Django Ninja）開發 API 時，這些屬性是否被框架提供的新屬性取代。</p>
 <hr>
 <p>本文對<code>HttpRequest</code>屬性與介紹內容，主要整理自<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">官方文件</a>，<strong>我會適度引用原文，並加上我的經驗、看法。</strong></p>
-<p>提醒你，看完之後，如果依舊覺得不熟悉這些屬性，那也無妨，<strong>有基本的認識就很好了！</strong></p>
+<p>提醒你：</p>
+<ol>
+<li>看完之後，如果<strong>依舊覺得不熟悉</strong>這些屬性，那也無妨，<strong>有基本的認識就很好了！</strong></li>
+<li>所有的例示以 FBV（function-based view）為主，這是 Django 初學者最常接觸的 view 寫法。</li>
+</ol>
+<hr>
 <p>以下依各個屬性在文件中出現的順序，一一介紹。</p>
 <h2 id="一、HttpRequest-method"><a href="#一、HttpRequest-method" class="headerlink" title="一、HttpRequest.method"></a>一、HttpRequest.method</h2><blockquote>
 <p>A string representing the HTTP method used in the request. This is guaranteed to be uppercase.</p>
@@ -299,7 +304,7 @@
 <li>必須使用 POST 方法。</li>
 <li>而且<code>Content-Type</code>為<code>multipart/form-data</code>。</li>
 </ol>
-<p>至於在 view 函式中的程式碼使用，較為複雜，可自行參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/files/">文件</a>，在此不介紹。</p>
+<p>至於在 view 函式中的操作與使用，較為複雜（牽涉到 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/models/fields/#filefield">FileField</a>），可自行參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/files/">文件</a>，在此先略不介紹。</p>
 <hr>
 <h2 id="五、關於-Headers"><a href="#五、關於-Headers" class="headerlink" title="五、關於 Headers"></a>五、關於 Headers</h2><p><code>HttpRequest.META</code><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#django.http.HttpRequest.META">¶</a></p>
 <blockquote>
