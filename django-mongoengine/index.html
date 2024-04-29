@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學">
-  <meta property="og:title" content="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學">
-<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+  <meta property="og:title" content="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學"><meta name="twitter:description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。">
+  <meta property="og:description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。"><meta name="twitter:image" content="https://i.imgur.com/TBQKYrC.png">
+  <meta property="og:image" content="https://i.imgur.com/TBQKYrC.png">
+<meta name="description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -31,7 +33,7 @@
     <meta property="og:tag" content="MongoDB" />
     
 
-  <meta property="article:modified_time" content="2024-01-02T02:45:59+08:00" />
+  <meta property="article:modified_time" content="2024-04-29T04:54:26+08:00" />
 
 
 
@@ -176,8 +178,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9AODM-vs-ORM"><span class="toc-text">前言：ODM vs ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoEngine-%E7%B0%A1%E4%BB%8B"><span class="toc-text">MongoEngine 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E5%B0%88%E6%A1%88%E8%A8%AD%E5%AE%9A-MongoEngine"><span class="toc-text">Django 專案設定 MongoEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-MongoEngine-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">Django-MongoEngine 主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Django-MongoEngine"><span class="toc-text">安裝 Django-MongoEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-settings-py-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django settings.py 設定</span></a></li></ol>
     </div>
-  </div><div class="post-content"><!-- ![by Sam Chivers on Behance](https://i.imgur.com/Xv6e27P.jpg) -->
-<p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
 <p>專案開發難免要使用到 NoSQL，其中最具代表性也最常用的，無疑就是儲存資料結構和 JSON 十分貼近的 MongoDB。</p>
 <p>目前工作專案中，存在著需要大量儲存 IoT gateway config 設定的需求，這些 config 記載著所有連接 gateway 的 sensor 設定狀態，是典型的多層結構，且不同 sensor 的 config，其層級、數量並不完全一致，而不同 gateway 之間的差異更大。</p>
 <p>本來使用 MySQL 儲存，table 間的關係十分凌亂且複雜，ERD 都畫得很辛苦。</p>
@@ -232,7 +233,6 @@
 
 <p>支援類似 Django 的<code>DATABASES</code>設定，名為<code>MONGODB_DATABASES</code>，要讓此設定生效，必須把<code>django_mongoengine</code>加入<code>INSTALLED_APPS</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;django_mongoengine&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
 
 <h3 id="二、未安裝-Django-MongoEngine"><a href="#二、未安裝-Django-MongoEngine" class="headerlink" title="二、未安裝 Django-MongoEngine"></a>二、未安裝 Django-MongoEngine</h3><p>如果沒有安裝 Django-MongoEngine，則需要在<code>settings.py</code>新增下列設定：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> connect</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">connect(host=<span class="string">&quot;mongodb://127.0.0.1:27017/my_db&quot;</span>)</span><br></pre></td></tr></table></figure>

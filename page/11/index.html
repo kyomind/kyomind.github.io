@@ -189,6 +189,9 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
+</blockquote>
 <p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
 <p>而這個<code>HttpRequest</code>物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
 <p>我們經常使用<code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
@@ -237,8 +240,7 @@
         </div>
     </header>
 
-    <div class="post-content"><!-- ![by Sam Chivers on Behance](https://i.imgur.com/Xv6e27P.jpg) -->
-<p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+    <div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
 <p>專案開發難免要使用到 NoSQL，其中最具代表性也最常用的，無疑就是儲存資料結構和 JSON 十分貼近的 MongoDB。</p>
 <p>目前工作專案中，存在著需要大量儲存 IoT gateway config 設定的需求，這些 config 記載著所有連接 gateway 的 sensor 設定狀態，是典型的多層結構，且不同 sensor 的 config，其層級、數量並不完全一致，而不同 gateway 之間的差異更大。</p>
 <p>本來使用 MySQL 儲存，table 間的關係十分凌亂且複雜，ERD 都畫得很辛苦。</p>
