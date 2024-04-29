@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-04-24T02:11:58+08:00" />
+  <meta property="article:modified_time" content="2024-04-29T16:32:36+08:00" />
 
 
 
@@ -187,7 +187,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然在去年就聽過它，但我卻一直沒有任何行動。</p>
-<p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，畢竟前一版可是 v0.0.292），我覺得時機已到，所以進行了一番研究、嘗試，於是有了本文的誕生。</p>
+<p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，前一版可是 v0.0.292），我感覺<strong>時機已到</strong>，所以進行了一番研究、嘗試，並寫下了本文。</p>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
 <li><a href="#%E7%B7%A3%E8%B5%B7">緣起</a></li>
 <li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
@@ -208,7 +208,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 分別是常見的 Flake8、isort、yapf。這在以往的文章有多次提及。</p>
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 分別是常見的 Flake8、isort、yapf。這在以往的文章已有多次提及。</p>
 <p>隨著 Ruff 的聲量與能見度日漸提高，作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 愛好者，我自然也是躍躍欲試——最好是能夠直接應用到工作開發上！</p>
 <p>因為團隊還不大（含我共 3 個後端開發者），所以改用 Ruff 是完全有可能的。</p>
 <p>不過經過一番研究與考慮，我還是暫時推遲了工作上對 Ruff 的採用（只是把 formatter 從 yapf 換成 Black），原因會在<a href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1">文末說明</a>。</p>
@@ -217,9 +217,9 @@
 <blockquote>
 <p>考慮到「pre-commit」這個主題已經有數篇文章珠玉在前，我下筆前都已拜讀完。<strong>本文的論述重心會盡可能與這些文章錯開，或乾脆直接引用，以降低不必要的重複感。</strong></p>
 </blockquote>
-<p>而 Ruff 也是如此，推薦你先讀過這篇〈<a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-linter-ruff/">新世代的 Python Linter - Ruff</a>〉，然後再繼續閱讀本文，將有助於獲得<strong>更全面的理解</strong>。</p>
-<p>接下來對 Ruff 的介紹，會有不同的側重與著墨，與更多的設定細節。</p>
-<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>本文主要分為三大部分：</p>
+<p>而 Ruff 也是如此，推薦你先讀過這篇〈<a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-linter-ruff/">新世代的 Python Linter - Ruff</a>〉，然後再繼續閱讀本文，以獲得<strong>更全面的理解</strong>。</p>
+<p>接下來對 Ruff 的介紹，將有<strong>不同的側重與著墨</strong>，以及<strong>更多設定細節。</strong></p>
+<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>本文主要分為<strong>三大部分</strong>：</p>
 <ol>
 <li>前言。</li>
 <li>Ruff 介紹篇。</li>
@@ -227,27 +227,27 @@
 </ol>
 <p>一開始不免俗地先講述我研究與使用 Ruff 的動機與理由，接著介紹 Ruff 的主要功能——linter 與 formatter。這也是它的最大賣點。</p>
 <p>而「設定篇」著重的，則是在初步了解 Ruff 之後，如果真要採用它，我們還需要處理好哪些環節，才能在開發中流暢地使用它。</p>
-<p>畢竟，<strong>開發工具的設定與整合</strong>，可算是本站文章的一大類型。☺️</p>
+<p>畢竟，<strong>開發工具的設定與整合</strong>，可算是本站文章的一大類型☺️</p>
 <h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>本文的目標讀者有三：</p>
 <ol>
 <li>Python 開發中還沒有認真用過 linter、formatter 作為規範工具，想要開始導入，並希望用 Ruff 一次解決的人。</li>
 <li>長期使用「<strong>Flake8 + isort + Black</strong>」這套 Python 開發經典組合，對 Ruff 有高度興趣，想要試試看的人。</li>
 <li>Code Formatting in Python 愛好者。</li>
 </ol>
-<p>這篇文章是寫給「已經用 Python 開發一段時間」的人，而非 Python 初學者。</p>
-<p>不過話說回來，如果初學者一開始就肯使用 Ruff 好好規範自己所寫的 Python code，不正是一個絕佳的開端嗎？😎</p>
+<p>這篇文章是寫給「<strong>已經用 Python 開發一段時間</strong>」的人，而非 Python 初學者。</p>
+<p>不過話說回來，如果初學者一開始就肯使用 Ruff 好好規範自己所寫的 Python code，不正是一個<strong>絕佳的開端</strong>嗎？😎</p>
 <hr>
 <h2 id="Why-Ruff？"><a href="#Why-Ruff？" class="headerlink" title="Why Ruff？"></a>Why Ruff？</h2><p>什麼是 Ruff，一句話說就是：</p>
 <blockquote>
 <p>An extremely fast Python linter and code formatter, written in Rust.</p>
 </blockquote>
-<p>而我認為採用 Ruff 主要基於下面兩大理由。</p>
-<h3 id="一、快，就是快"><a href="#一、快，就是快" class="headerlink" title="一、快，就是快"></a>一、快，就是快</h3><p>下圖來自 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff 的 GitHub 首頁</a>，很好表達了為何要採用 Ruff——因為快。</p>
+<p>而我認為採用 Ruff 主要基於下面<strong>兩大理由</strong>。</p>
+<h3 id="一、快，就是快"><a href="#一、快，就是快" class="headerlink" title="一、快，就是快"></a>一、快，就是快</h3><p>下圖來自 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff 的 GitHub 首頁</a>，很好表達了為何要採用 Ruff——<strong>因為快。</strong></p>
 <p><img src="https://i.imgur.com/rjPXQg4.png"></p>
 <p>用 Rust 寫的，快，自然不在話下。</p>
 <p>而「極致的快」在很多時候會大幅改變你做事的方式——不過這對於大型專案可能才更有感。</p>
 <p>對於中、小型專案，我覺得以下第二個理由更加重要。</p>
-<h3 id="二、All-in-One：整合眾多套件"><a href="#二、All-in-One：整合眾多套件" class="headerlink" title="二、All-in-One：整合眾多套件"></a>二、All-in-One：整合眾多套件</h3><p>不止是速度，Ruff 的「整合」能力也不可小覷。</p>
+<h3 id="二、All-in-One：整合眾多套件"><a href="#二、All-in-One：整合眾多套件" class="headerlink" title="二、All-in-One：整合眾多套件"></a>二、All-in-One：整合眾多套件</h3><p>不止是速度，Ruff 的「<strong>整合能力</strong>」也不容小覷。</p>
 <p>按照官方文件，有了 Ruff 後，以下的工具都不必再安裝了：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://pypi.org/project/flake8/">Flake8</a> 和一堆 Flake8 外掛</li>
@@ -262,28 +262,28 @@
 <p>上述這些工具，尤其是最常用的 Flake8、isort、Black，如果現在只需要用一個工具就能實現，而且還更快、更好。</p>
 <p>那我們何樂而不為？</p>
 <hr>
-<h2 id="本文範例程式碼"><a href="#本文範例程式碼" class="headerlink" title="本文範例程式碼"></a>本文範例程式碼</h2><p>本文中所提到的 Ruff 設定具體內容，包括 pyproject、VS Code、pre-commit 部分，都會加到 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a> 這個專案中。</p>
+<h2 id="本文範例程式碼"><a href="#本文範例程式碼" class="headerlink" title="本文範例程式碼"></a>本文範例程式碼</h2><p>本文中所提到的 Ruff 設定具體內容，包括 pyproject、VS Code、pre-commit 部分，都會加到這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>中。</p>
 <p>它是我「<a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a>」系列文章的範例程式碼，恰好也適合作為其它教學文章的實際素材展示。</p>
 <p><code>git clone</code>本專案後，可以直接<code>git checkout</code>到<code>02-ruff</code>分支。這個分支所在的 commit，就是本文的具體設定內容與改動。</p>
 <p>你也可以直接在 GitHub 上查看 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/commit/42a5a678ba5fbcc38f4463f593fad024636941ec">commit 內容</a>。</p>
 <hr>
-<p>前言結束，接下來我們進入正題。首先是對 Ruff 的整體介紹。</p>
+<p>前言結束，接下來我們進入正題。首先是對 Ruff 的介紹。</p>
 <h2 id="Ruff-介紹篇"><a href="#Ruff-介紹篇" class="headerlink" title="Ruff 介紹篇"></a>Ruff 介紹篇</h2><p>Ruff 是一個 Python linter + formatter，雖然大部分人可能只使用它的 linter 部分，因為 formatter 還處於 beta 階段。</p>
 <p>Ruff formatter 是一個相對獨立的功能，在開源後才開始建構。你完全可以只用 Ruff 的 linter，而依舊使用 Black 或 yapf 來格式化程式碼。</p>
 <p>不過，即使只看 Ruff 的 linter 部分，它也並不是一個「單純的 linter」而已。因為它的實際行為超過了<strong>靜態分析</strong>（static analysis）。</p>
-<p>所以，想要全面了解 Ruff，我們需要具體知曉：它究竟能夠做到哪些事、取代哪些工具。</p>
+<p>所以，想要全面了解 Ruff，我們需要具體知曉，<strong>它能夠做到哪些事、取代哪些工具。</strong></p>
 <h2 id="Linter-部分：取代-Flake8-與-isort-等等"><a href="#Linter-部分：取代-Flake8-與-isort-等等" class="headerlink" title="Linter 部分：取代 Flake8 與 isort 等等"></a>Linter 部分：取代 Flake8 與 isort 等等</h2><p>Ruff 的核心部分就是它的 linter，這點無庸置疑。</p>
-<p>而 Flake8 作為 Python 開發中最流行的 linter，自然是 Ruff 首要取代的目標。所以 Ruff 連錯誤代碼都盡可能與 Flake8 一致，也是考慮到遷移的成本。</p>
+<p>而 Flake8 作為 Python 開發中最流行的 linter，自然是 Ruff 首要取代的目標。所以 Ruff 連<strong>錯誤代碼都盡可能與 Flake8 一致</strong>，也是考慮到<strong>遷移的成本</strong>。</p>
 <h3 id="Autofix-功能"><a href="#Autofix-功能" class="headerlink" title="Autofix 功能"></a>Autofix 功能</h3><p>不僅如此，Ruff 還能取代一眾「<strong>帶有 formatter 功能的 linter</strong>」，isort 就是其中的代表。而常見的 <a target="_blank" rel="noopener" href="https://github.com/asottile/pyupgrade">pyupgrade</a> 也是。</p>
-<p>這就有趣了，從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——其實就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
-<p>這個特性<strong>真的很方便</strong>，但也帶來了一定的複雜。</p>
-<p>方便的是，你可以只安裝 Ruff linter，就<strong>獲得多種 linter 附帶的 format 行為</strong>。而複雜則在於：設定上的細節也比一般 linter 更多。</p>
-<h3 id="簡易版-formatter"><a href="#簡易版-formatter" class="headerlink" title="簡易版 formatter"></a>簡易版 formatter</h3><p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
+<p>這就有趣了，從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——也就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
+<p>這個特性<strong>真的很方便</strong>，但同時帶來了一定的複雜性。</p>
+<p>方便的是，你可以只安裝 Ruff linter，就<strong>獲得多種 linter 附帶的 format 行為</strong>。而複雜則在於：<strong>設定上的細節也比一般 linter 更多。</strong></p>
+<h3 id="小結：Ruff-linter-是個簡易版-formatter"><a href="#小結：Ruff-linter-是個簡易版-formatter" class="headerlink" title="小結：Ruff linter 是個簡易版 formatter"></a>小結：Ruff linter 是個簡易版 formatter</h3><p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
 <p>總之，我們只要記得：<strong>Ruff linter 有著簡易 format（autofix）能力</strong>——它是個簡易版的 formatter。</p>
-<p>這和 Flake8 只做單純的靜態分析不同，Ruff linter 在檢查過程中，<strong>能夠直接對程式碼進行修改</strong>。當然，如果你不喜歡，這功能是可以關閉的。</p>
+<p>這和 Flake8 只做單純的靜態分析不同，Ruff linter 在檢查過程中，<strong>能夠直接對程式碼進行修改</strong>。當然，如果你不喜歡，這功能是<strong>可以關閉的。</strong></p>
 <hr>
 <h2 id="Formatter-部分：取代-Black"><a href="#Formatter-部分：取代-Black" class="headerlink" title="Formatter 部分：取代 Black"></a>Formatter 部分：取代 Black</h2><p>我相信從 Ruff 的開源之初，就已經想過要成為一個 All-in-One 工具。畢竟 Rust 這麼快，只做 linter 未免太可惜了！</p>
-<p>和 linter 不同，formatter 具有<strong>強烈的排它性</strong>。不同的 formatter 之間，<strong>沒有相容可言</strong>。不像 linter 還可以疊加使用——如果你不嫌煩XD。</p>
+<p>和 linter 不同，formatter 具有<strong>強烈的排它性</strong>。不同的 formatter 之間，<strong>沒有相容可言</strong>。不像<strong>多個 linter 還可以疊加使用</strong>——如果你不嫌一堆警告很煩XD。</p>
 <p>如果寫一個全新的 formatter，就必須要有足夠的理由，讓開發者願意放棄當前方案，採用你的新工具——這很不容易。</p>
 <p>比較可行的做法，是<strong>相容並取代</strong>市場上現有的 formatter。</p>
 <p>既然要選一個，那當然是選 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>——目前最流行的 Python formatter。</p>
@@ -299,9 +299,9 @@
 <blockquote>
 <p>Specifically, the formatter is intended to emit near-identical output when run over Black-formatted code. When run over extensive Black-formatted projects like Django and Zulip, <strong>&gt; 99.9% of lines are formatted identically</strong>. When migrating an existing project from Black to Ruff, you should expect to see a few differences on the margins, <strong>but the vast majority of your code should be unchanged.</strong></p>
 </blockquote>
-<p>兩者的相容性（一致性）高達 99.9% 以上，基本可以放心遷移。</p>
+<p>兩者的相容性（一致性）<strong>高達 99.9% 以上</strong>，基本可以放心遷移。</p>
 <p>附帶一提，如果你是從 yapf 遷移到 Black，就能夠明顯感受到格式化風格差異所帶來的困擾——程式碼變動的地方太多了！</p>
-<p>這種情況最好還是<strong>獨立一個分支或 commit，一次就把所有格式化差異都處理掉。</strong>而不要直接繼續開發，讓開發中的程式碼、檔案隨著開發進度被新 formatter 自動格式化，因為這會很影響 code review——格式化變動和開發變動混雜。</p>
+<p>這種情況最好還是<strong>獨立一個分支或 commit，一次就把所有格式化差異都處理掉。</strong>而不要直接繼續開發，讓開發中的程式碼、檔案隨著開發進度被新 formatter 自動格式化，因為<strong>這會很影響 code review</strong>——格式化變動和開發變動<strong>混雜</strong>。</p>
 <h3 id="還處於-Beta-階段"><a href="#還處於-Beta-階段" class="headerlink" title="還處於 Beta 階段"></a>還處於 Beta 階段</h3><blockquote>
 <p>The Ruff formatter is available as a <a target="_blank" rel="noopener" href="https://astral.sh/blog/the-ruff-formatter">production-ready Beta</a> as of Ruff v0.1.2.</p>
 </blockquote>
@@ -316,15 +316,15 @@
 </blockquote>
 <p>如果你對 Black 有一些了解，應該會知道，早期 Black 是<strong>完全不管</strong>你習慣用單引號還是雙引號，<strong>它一律把你的 Python 程式碼格式化為雙引號！</strong></p>
 <p>這小小的硬性規則帶來了<strong>巨大的反彈</strong>，畢竟 Python 開發者中想必有不少人和我一樣，是「單引號」的支持者。</p>
-<p>最後，Black 開發團隊也不得不妥協（這是 Black 少數的妥協，因為該工具本身就是以「不妥協」為賣點、slogan🤣），加入了<code>skip-string-normalization</code>選項。</p>
+<p>最後，Black 開發團隊也不得不妥協（這是 Black <strong>少數的妥協</strong>，因為該工具本身就是以「<strong>不妥協</strong>」為賣點🤣），加入了<code>skip-string-normalization</code>選項。</p>
 <h3 id="Ruff-Formatter-發展中"><a href="#Ruff-Formatter-發展中" class="headerlink" title="Ruff Formatter 發展中"></a>Ruff Formatter 發展中</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quote-style = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>即使你選了 single，在上述的慣例部分，Ruff 還是會格式化為雙引號，不用擔心。</p>
 <p>至於要不要像 Black 加上<code>skip-string-normalization</code>，目前似乎還沒有定論。</p>
-<p>整體而言，這個議題仍然在持續中，有興趣可以關注這個 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/issues/7615">GitHub Issue 討論串</a>。</p>
-<p>這裡只是提醒你，採用 Ruff formatter 會有「單、雙引號」議題（而且和 Black 的處理方式不完全相同）。</p>
-<p>至少對我而言，這非常重要。</p>
+<p>整體而言，這個議題仍然在持續中，有興趣可以關注這個 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/issues/7615">GitHub Issue 討論串</a>。（這個 issue 已經 close，但請留意最後一個 comment）</p>
+<p>這裡只是提醒你，<strong>採用 Ruff formatter 會有「單、雙引號」議題</strong>（而且和 Black 的處理方式不完全相同）。</p>
+<p><strong>至少對我而言，這非常重要。</strong></p>
 <hr>
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
 <h2 id="Ruff-設定篇"><a href="#Ruff-設定篇" class="headerlink" title="Ruff 設定篇"></a>Ruff 設定篇</h2><p>當要採用一個新的 linter、formatter 時（尤其站在團隊開發考量），以下這三個部分的支援成熟度，是我一定會慎重考慮的。</p>
@@ -366,7 +366,7 @@
 <p>當然，另一方面也因為我已習慣看 linter 提示👀——沒有會很不自在！</p>
 <h3 id="安裝與設定-Ruff-套件"><a href="#安裝與設定-Ruff-套件" class="headerlink" title="安裝與設定 Ruff 套件"></a>安裝與設定 Ruff 套件</h3><p>套件安裝後就可以直接使用，如果你的專案中已有專屬的 Ruff 設定檔，我覺得<strong>不需要再特別設定</strong> VS Code Ruff 套件部分。</p>
 <p>不過還是提供我的設定：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.lint.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.showNotifications&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onError&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.showNotifications&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onWarning&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="建議設定-Python-行為"><a href="#建議設定-Python-行為" class="headerlink" title="建議設定 Python 行為"></a>建議設定 Python 行為</h3><p>Ruff 套件我覺得不設定也沒關係，有設定檔就夠了。</p>
 <p>除非你不想要為每個專案一一建立 Ruff 設定檔，那就還是得弄一下（會套用到每一個專案）。同時也要考慮不同專案間的設定衝突問題——使用者全局設定 vs 專案設定。</p>

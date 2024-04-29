@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/ruff/</loc>
+    
+    <lastmod>2024-04-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-request/</loc>
     
     <lastmod>2024-04-29</lastmod>
@@ -104,15 +113,6 @@
     <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2024-04-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ruff/</loc>
-    
-    <lastmod>2024-04-24</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
