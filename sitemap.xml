@@ -164,6 +164,33 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-27/</loc>
+    
+    <lastmod>2024-04-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
+    
+    <lastmod>2024-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
+    
+    <lastmod>2024-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
     
     <lastmod>2024-04-17</lastmod>
@@ -173,18 +200,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-27/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
     
-    <lastmod>2024-04-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
-    
-    <lastmod>2024-04-14</lastmod>
+    <lastmod>2024-04-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -210,15 +228,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
-    
-    <lastmod>2024-04-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
     
     <lastmod>2024-04-11</lastmod>
     
@@ -497,15 +506,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
-    
-    <lastmod>2024-01-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/black-and-isort/</loc>
     
     <lastmod>2024-01-16</lastmod>
@@ -650,6 +650,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -669,15 +678,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -758,7 +758,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -767,7 +767,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -812,7 +812,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -821,7 +821,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
     
     <lastmod>2024-01-02</lastmod>
     

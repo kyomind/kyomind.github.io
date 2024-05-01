@@ -42,9 +42,9 @@
     
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
-    <category term="重構" scheme="https://blog.kyomind.tw/tags/%E9%87%8D%E6%A7%8B/"/>
-    
     <category term="部落格" scheme="https://blog.kyomind.tw/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/"/>
+    
+    <category term="重構" scheme="https://blog.kyomind.tw/tags/%E9%87%8D%E6%A7%8B/"/>
     
   </entry>
   
@@ -81,9 +81,9 @@
     
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
-    
     <category term="HTTP" scheme="https://blog.kyomind.tw/tags/HTTP/"/>
+    
+    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
   </entry>
   
@@ -118,9 +118,9 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
     <category term="圖書館" scheme="https://blog.kyomind.tw/tags/%E5%9C%96%E6%9B%B8%E9%A4%A8/"/>
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
   </entry>
   
@@ -159,9 +159,9 @@
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
     <category term="Enum" scheme="https://blog.kyomind.tw/tags/Enum/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
     
@@ -174,7 +174,7 @@
     <link href="https://blog.kyomind.tw/weekly-review-27/"/>
     <id>https://blog.kyomind.tw/weekly-review-27/</id>
     <published>2024-04-14T15:17:50.000Z</published>
-    <updated>2024-04-15T01:20:54.993Z</updated>
+    <updated>2024-04-19T03:44:10.072Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>Weekly Review 原則上著眼於「<strong>非程式類</strong>」內容，而這是一本程式相關的書，所以這期不會討論書中的技術細節，只聊聊<strong>我的主觀感受</strong>。</p><p>講它，是因為我對這本書的<strong>期待很高</strong>，它絕對有這個地位與份量，更別說它真的很厚！（量了一下有 5 公分厚，打算這星期拿去影印店<strong>拆成 3 本</strong>）</p><p>趁著清明連假的天瓏日（滿千折百活動），我總算入手了 Python 進階書籍中的口碑之作——《<a href="https://www.tenlong.com.tw/products/9786263246331">流暢的 Python</a>》，第二版。</p><p>還沒有開始讀，但先簡單分享一下<strong>我的看法與期待。</strong></p><span id="more"></span><h2 id="作為第一版讀者"><a href="#作為第一版讀者" class="headerlink" title="作為第一版讀者"></a>作為第一版讀者</h2><p>早在我開始 Python 軟體工程師職涯之前，即 2019 上半年準備轉職的期間，就讀過了《流暢的 Python》第一版——的一部分。</p><p>所以在面試 StreetVoice 寫程式測驗試題的時候（其中一題就是「以 mutable 資料作為函式參數預設值」的經典題目），立刻就想到了書中「幽靈公車」的例子。</p><p>不過，那時只讀了一部分，就早早束之高閣了。因為剩下部分對當時的我來說，還太過進階。</p><h2 id="2021-年，第二版消息與精讀計畫"><a href="#2021-年，第二版消息與精讀計畫" class="headerlink" title="2021 年，第二版消息與精讀計畫"></a>2021 年，第二版消息與精讀計畫</h2><p>2021，已經當了 2 年的 Python 工程師，這一年我總算把《流暢的 Python》讀完了。</p><p>但說真的，讀完也沒用。如果工作中用不到，這些東西，對我來說依舊是「書上的知識」，而不是我真實能力的一部分。</p><p>所以有點失落，不知該如何是好，想說是不是再認真細讀一次、兩次……結果下半年就得知了第二版正在撰寫中的消息。</p><p>喜新厭舊如我，自然不想再看舊書（以前對法律的參考書也是如此），想等中文版出了再說。於是這個「精讀」計畫就被無限期延後了。</p><h2 id="繁體中文版，正式出爐"><a href="#繁體中文版，正式出爐" class="headerlink" title="繁體中文版，正式出爐"></a>繁體中文版，正式出爐</h2><p>台灣中文版在英文出版後的一年內，遲遲沒有消息（我的判斷方式是繁中的第一版是否絕版不賣了），讓我不禁擔心：該不會不引進繁中版了吧？</p><p>還好，我想多了，應該只是第二版書更厚，翻譯花了更多時間而已。去年 10 月，本書的繁體中文版正式在台灣上市。</p><p><strong>但我並沒有在第一時間入手。</strong></p><h2 id="眾裡尋他千百度"><a href="#眾裡尋他千百度" class="headerlink" title="眾裡尋他千百度"></a>眾裡尋他千百度</h2><p>因為我不禁在想，是不是有「<strong>更好、更簡單</strong>」的選擇。</p><p>說來矛盾，明明是學 Python 的進階特性（也就是<strong>比較難</strong>的部分），我卻希望能「更簡單」。</p><p>但也不奇怪，這裡的更簡單，指的是「<strong>更容易上手、入門</strong>」——也就是<strong>更少痛苦</strong>。對於這些<strong>相對棘手</strong>的主題，我總是想找到一個「<strong>比較好啃</strong>」的方式。</p><p>所以我開始把期望寄託在其它書上，這些書本來就買了好多本，一直只是都沒讀！</p><p>所幸，過去一個多月的「<a href="https://www.facebook.com/kyomind/posts/pfbid02eQaYDFtE13cfsDofWPXZuiHjBuSqjr1nhBGiYpysGDktveGRiEVB9SxaKnJjy2zpl">圖書館時間</a>」，我基本把它們都翻完了。</p><p>並初步確認了每一本書對我的價值，以及後續還要投入多少時間。</p><h2 id="燈火闌珊處"><a href="#燈火闌珊處" class="headerlink" title="燈火闌珊處"></a>燈火闌珊處</h2><p>翻完這些書，我明白了一件事——《流暢的 Python》確實是最好的！</p><p>當然，無論《Python 精粹》或是《Python 神乎其技》，都有其可看之處。但《流暢的 Python》終歸還是 Python 進階書籍中的佼佼者。</p><p>正因為看過了其它書，所以我才更明白本書的精彩與不可取代。</p><p>前兩本書，我不會想從頭到尾精讀，但《流暢的 Python》有這個價值。</p><p>一言以蔽之，如果只打算好好讀一本 Python 進階書籍，就這本吧！</p>]]></content>
     
@@ -203,7 +203,7 @@
     <link href="https://blog.kyomind.tw/weekly-review-26/"/>
     <id>https://blog.kyomind.tw/weekly-review-26/</id>
     <published>2024-04-10T14:22:04.000Z</published>
-    <updated>2024-04-11T13:15:51.972Z</updated>
+    <updated>2024-04-13T08:29:15.780Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>去年 2 月，部落格新增了「email 文章訂閱」功能，採用的方案是免費的 <a href="http://follow.it/">follow.it</a>。</p><p>它會把我的 RSS 新文章轉成 email，然後寄送給訂閱的讀者。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-12/">12，blog 新增文章訂閱功能——使用 follow.it</a></p></blockquote><p>如該篇中所言，「<strong>文章訂閱功能</strong>」確實是現代部落格的一大需求。</p><p>網路上的資訊眾多，我自己作為讀者，也常常感覺<strong>被淹沒</strong>。遇到一個喜歡的作者，想要追蹤，此時<strong>作者是否提供了訂閱功能，就至關重要。</strong></p><p>文章訂閱功能，可以由寫作平台提供，比如 Medium、Substack。不然就得自己來，因此我一開始就為 blog 提供了 RSS 訂閱。</p><p>但 RSS 畢竟不是一般人常用的資訊接收方式（<strong>我自己也不用</strong>），它只能滿足小眾人口的需求。所以最終我還是選擇了像 follow.it 這樣的「RSS to email」服務。</p><span id="more"></span><h2 id="為何選擇-follow-it"><a href="#為何選擇-follow-it" class="headerlink" title="為何選擇 follow.it"></a>為何選擇 follow.it</h2><p>用過電子報服務的都知道，這些服務<strong>真的不便宜！</strong></p><p>比如其中相對「高貴」的 ConvertKit，從它的 <a href="https://convertkit.com/pricing">pricing</a> 頁面可以看到，它的付費版僅僅 300 個訂戶，每月就要 9 美元！（而且這還是基於<strong>年繳</strong>的「優惠價」）</p><p>這也是為何很多人選擇在 Substack 上寫作，它對於需要發送「大量」電子報給讀者的創作者非常友好——<strong>不用錢。</strong></p><p>但我既已從 Medium 獨立，有了自己的 blog，自然不會再跑去 Substack 上寫作。選擇免費的 follow.it，也是情理之中。</p><blockquote><p>相關文章：</p><ul><li><a href="https://blog.kyomind.tw/my-own-blog-part-one/">我自架部落格的理由與選擇（上）理由篇</a></li><li><a href="https://blog.kyomind.tw/my-own-blog-part-two/">我自架部落格的理由與選擇（下）選擇篇</a></li></ul></blockquote><h2 id="改用-Buttondown"><a href="#改用-Buttondown" class="headerlink" title="改用 Buttondown"></a>改用 Buttondown</h2><p>一年過去，在佛系經營下（畢竟我的「電子報」就只是純粹的新文章通知，也不好意思鼓吹訂閱），訂戶也超過了 100 人，讓我不禁尋思更好的文章訂閱方案。</p><p>畢竟免費有一定<strong>代價</strong>，follow.it 的電子報會在你文章的開頭、結尾夾帶大量廣告。而且廣告的<strong>格調不高</strong>，讓人看了不禁有點<strong>傷眼</strong>🤡</p><p>那為何不一開始就採用電子報供應商的方案？主要有兩個原因：</p><ol><li>不是每家都有「RSS to email」功能，有提供這個功能的，都要花錢！</li><li>那時覺得 follow.it 就完全滿足我了。</li></ol><p>不過，此一時，彼一時。</p><p>就在今年 3 月上旬，我決定正式付費改用 <a href="https://buttondown.email/pricing">Buttondown</a>。</p><blockquote><p>如果你有興趣，可以考慮使用我的<a href="https://buttondown.email/refer/kyo">推薦連結</a>註冊。</p></blockquote><h2 id="為何選擇-Buttondown"><a href="#為何選擇-Buttondown" class="headerlink" title="為何選擇 Buttondown"></a>為何選擇 Buttondown</h2><p>知道它，以及決定選擇它，主要有兩個原因。</p><p>一方面，它是我有在 follow 的兩位作者都推薦過的電子報服務，可參考這兩篇文章：</p><ul><li><a href="https://vocus.cc/article/61a48a31fd89780001ed3b87">我念念不忘的電子報平台 Buttondown</a></li><li><a href="https://pinchlime.com/blog/first-impression-of-buttondown/">令人忍不住想掏錢支持的 Buttondown</a></li></ul><p>另一方面，以我預想的長期訂戶數量（5 年內不超過 1000 人）——也就是 1000 人以內，Buttondown 的價格<strong>還算是可接受的</strong>。</p><p>一年要價 90 美元（月付則是每個月 9 美元），雖然稱不上便宜，但相比於市面上其他常見選擇（必須有「RSS to email」功能），仍有一定的競爭力。</p><p>在嘗試性地付費了一個月、寄了 2 次信以後，我覺得不錯，就決定直接轉年費了。在達到 1000 訂戶以前，應該不會變動。</p><h2 id="一年-90-美元，值得嗎？"><a href="#一年-90-美元，值得嗎？" class="headerlink" title="一年 90 美元，值得嗎？"></a>一年 90 美元，值得嗎？</h2><p>一年 90 美元，相當於我租 DigitalOcean VM 一年的費用，值得嗎？</p><p>我想還是值得的，畢竟它帶來的好處<strong>非常直接</strong>——讓讀者透過電子報，第一時間收到你的文章內容。</p><p><strong>既沒有廣告，也不需要綁定任何創作平台，算是用金錢換來更大的「創作自由」。</strong></p><p>再說，我幾乎所有的文章，都需要等待 SEO 慢慢發酵。這過程往往須耗時數週到數月不等，說真的有點難熬，而且也不一定有亮眼的結果。</p><p>有了電子報文章通知，至少我能<strong>確信</strong>，在發文的當下，有<strong>一小部分人</strong>能夠立刻知曉。</p><p>對作者而言，這無疑能帶來一定的<strong>欣慰</strong>，與<strong>安全感</strong>。</p>]]></content>
     
@@ -228,9 +228,9 @@
     
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
-    <category term="電子報" scheme="https://blog.kyomind.tw/tags/%E9%9B%BB%E5%AD%90%E5%A0%B1/"/>
-    
     <category term="部落格" scheme="https://blog.kyomind.tw/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/"/>
+    
+    <category term="電子報" scheme="https://blog.kyomind.tw/tags/%E9%9B%BB%E5%AD%90%E5%A0%B1/"/>
     
   </entry>
   
@@ -260,11 +260,11 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
+    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Type Hints" scheme="https://blog.kyomind.tw/tags/Type-Hints/"/>
-    
-    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
@@ -321,13 +321,13 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
+    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="系列：Python 工匠" scheme="https://blog.kyomind.tw/tags/%E7%B3%BB%E5%88%97%EF%BC%9APython-%E5%B7%A5%E5%8C%A0/"/>
-    
-    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
@@ -354,11 +354,11 @@
     <category term="書評 × 筆記" scheme="https://blog.kyomind.tw/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/"/>
     
     
-    <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
+    <category term="人生管理系統" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1/"/>
     
     <category term="生產力" scheme="https://blog.kyomind.tw/tags/%E7%94%9F%E7%94%A2%E5%8A%9B/"/>
     
-    <category term="人生管理系統" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1/"/>
+    <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
     <category term="系列：人生 4 千個禮拜" scheme="https://blog.kyomind.tw/tags/%E7%B3%BB%E5%88%97%EF%BC%9A%E4%BA%BA%E7%94%9F-4-%E5%8D%83%E5%80%8B%E7%A6%AE%E6%8B%9C/"/>
     

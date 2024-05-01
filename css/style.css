@@ -969,7 +969,9 @@ h6 {
   width: 100%;
   margin-bottom: 20px;
   overflow: auto;
-  border: 3px double #f4efe1;
+}
+.post .post-content .table-responsive td, .post .post-content .table-responsive th {
+  border-color: #CCC;
 }
 .post .post-content table {
   width: 100%;
@@ -978,12 +980,21 @@ h6 {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.125);
 }
 .post .post-content table thead {
-  background: #f8f5ec;
+  background-color: #e9e9d4;
+  color: #34495e;
 }
 .post .post-content table th,
 .post .post-content table td {
+  color: #34495e;
   padding: 5px 15px;
-  border: 0px double #f4efe1;
+  border: 1px double #f4efe1;
+  font-size: medium;
+}
+.post .post-content table .table-responsive td, .post .post-content table .table-responsive th {
+  border-color: #ccc;
+}
+.post .post-content table td {
+  background-color: #f1f1e4;
 }
 .post .post-content pre {
   padding: 7px;
