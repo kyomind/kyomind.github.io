@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
     
     <lastmod>2024-05-01</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-29/</loc>
+    
+    <lastmod>2024-05-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-05-01</lastmod>
     
@@ -194,15 +203,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
     
     <lastmod>2024-04-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
-    
-    <lastmod>2024-04-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
