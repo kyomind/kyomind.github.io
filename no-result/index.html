@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T17:47:27+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T20:28:17+08:00" />
 
 
 
@@ -210,7 +210,7 @@
 <p>其中的代價，不可謂不大。</p>
 <hr>
 <h2 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>我認為這是<strong>最重要</strong>的一條，一言以蔽之：<strong>你不應該使用 result 來表示「狀態」</strong>。</p>
+<p>這是我認為<strong>最重要</strong>的一條守則，簡言之：<strong>你不應該使用 result 來表示「狀態」</strong>。</p>
 <p>尤其當這個狀態是一個<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97_(%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B)">布林值</a>時，代表「操作成功與否」或「特定條件是否符合」等等情況，你更應該使用<strong>具體的名稱</strong>。</p>
 <p>這個時候，我們可以考慮使用充滿了「<strong>布林味</strong>」的變數名稱，比如<code>has_permission</code>、<code>is_valid</code>、<code>is_success</code>等等——而不是<code>result</code>。</p>
 <h3 id="為什麼布林值最不適合用-result？"><a href="#為什麼布林值最不適合用-result？" class="headerlink" title="為什麼布林值最不適合用 result？"></a>為什麼布林值最不適合用 result？</h3><p>回傳內容如果由<strong>很多部分組成，此時確實不容易概括成一個名稱</strong>。</p>
