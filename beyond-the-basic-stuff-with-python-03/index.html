@@ -32,7 +32,7 @@
     <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-05-01T17:25:19+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T20:18:48+08:00" />
 
 
 
@@ -174,7 +174,10 @@
       <div class="post-meta">
         <span class="post-time">
           2023-10-21
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2024-05-05
+          </span>
+        <span class="post-category">
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
             </span>
         </div>
@@ -183,12 +186,14 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">第 10 章：寫出有效率的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A6%8F%E6%A8%A1%EF%BC%9A%E5%B0%8F%E5%B0%B1%E6%98%AF%E5%A5%BD%EF%BC%9F"><span class="toc-text">函式的規模：小就是好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC%EF%BC%88return%EF%BC%89%E6%87%89%E8%A9%B2%E9%83%BD%E8%A6%81%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-text">返回值（return）應該都要有相同的資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E8%A1%93%E5%82%B5%E8%88%87%E8%AA%8D%E7%9F%A5%E8%B2%A0%E6%93%94"><span class="toc-text">技術債與認知負擔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%8D%E5%AF%AB%E5%A5%BD%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9C%8B%E6%B3%95"><span class="toc-text">我對寫好函式的基本看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">一、Docstring 真的很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A1%8C%E7%82%BA%E8%88%87%E5%91%BD%E5%90%8D%E8%A6%81%E4%B8%80%E8%87%B4"><span class="toc-text">二、函式的行為與命名要一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%B3%A8%E9%87%8B%E3%80%81docstring-%E5%92%8C-type-hints"><span class="toc-text">第 11 章：注釋、docstring 和 type hints</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA%E6%9C%89%E6%95%88%E7%8E%87%E7%9A%84%E5%87%BD%E5%BC%8F"><span class="toc-text">第 10 章：寫出有效率的函式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A6%8F%E6%A8%A1%EF%BC%9A%E5%B0%8F%E5%B0%B1%E6%98%AF%E5%A5%BD%EF%BC%9F"><span class="toc-text">函式的規模：小就是好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#return-%E6%87%89%E8%A9%B2%E8%A6%81%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5"><span class="toc-text">return 應該要有相同的資料型別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E8%A1%93%E5%82%B5%E8%88%87%E8%AA%8D%E7%9F%A5%E8%B2%A0%E6%93%94"><span class="toc-text">技術債與認知負擔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%B0%8D%E5%AF%AB%E5%A5%BD%E5%87%BD%E5%BC%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9C%8B%E6%B3%95"><span class="toc-text">我對寫好函式的基本看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">一、Docstring 真的很重要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%BD%E5%BC%8F%E7%9A%84%E8%A1%8C%E7%82%BA%E8%88%87%E5%91%BD%E5%90%8D%E8%A6%81%E4%B8%80%E8%87%B4"><span class="toc-text">二、函式的行為與命名要一致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%B3%A8%E9%87%8B%E3%80%81docstring-%E5%92%8C-type-hints"><span class="toc-text">第 11 章：注釋、docstring 和 type hints</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
-<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，也是最後一篇。</p>
-<p>你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
-<p>本文整理書中的第 10、11 章，而且篇幅幾乎集中在前者。畢竟無論什麼語言，「<strong>寫好函式</strong>」這件事總是如此重要，Python 自然也不例外。</p>
+<blockquote>
+<p><code>2024/05/05</code>：重新編輯全文並刪除部分內容，使文章更緊湊。</p>
+</blockquote>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記的第 3 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>本文整理書中的第 10、11 章，且篇幅幾乎集中在前者。無論什麼語言，「<strong>寫好函式</strong>」這件事總是如此重要，Python 自然也不例外。</p>
 <h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
 <ol>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
@@ -198,9 +203,8 @@
 </blockquote>
 <hr>
 <h2 id="第-10-章：寫出有效率的函式"><a href="#第-10-章：寫出有效率的函式" class="headerlink" title="第 10 章：寫出有效率的函式"></a>第 10 章：寫出有效率的函式</h2><p>有效率的函式（或說「<strong>好的</strong>」函式）需要你在「<strong>命名、規模大小（行數）、參數數量和複雜性</strong>」之間，做出許多決定和<strong>取捨</strong>。</p>
-<p>這無疑是極具挑戰的事——尤其是取捨。</p>
-<p>人生之難，就難在取捨。</p>
-<p>本章探討的正是這些取捨之間的利弊得失，以及編寫函式的重要原則。不用說，絕對是關鍵的一章。</p>
+<p>本章探討的正是這些取捨之間的利弊得失，以及編寫函式的重要原則。</p>
+<p>不用說，這是關鍵的一章。</p>
 <span id="more"></span>
 
 <hr>
@@ -226,7 +230,7 @@
 <p>作者認為，一味追求短函式，確實可以讓各別函式變得簡單，但卻很可能讓程式的「整體」變得複雜，適得其反。</p>
 <p>他的經驗是，理想情況下，函式最好少於 30 行，最多不超過 200 行。<strong>讓函式在合理情況下盡可能短少</strong>，但不只是為了短少而縮減。</p>
 <hr>
-<h2 id="返回值（return）應該都要有相同的資料型別"><a href="#返回值（return）應該都要有相同的資料型別" class="headerlink" title="返回值（return）應該都要有相同的資料型別"></a>返回值（return）應該都要有相同的資料型別</h2><p>對此，我想說：</p>
+<h2 id="return-應該要有相同的資料型別"><a href="#return-應該要有相同的資料型別" class="headerlink" title="return 應該要有相同的資料型別"></a>return 應該要有相同的資料型別</h2><p>對此，我想說：</p>
 <blockquote>
 <p><strong>這真的好重要啊！</strong>（吶喊）</p>
 </blockquote>
@@ -238,25 +242,25 @@
 <p>必須說明，發生錯誤時不拋出而選擇<code>return False</code>未必總是不好的，就像 Django REST framework 序列化器的<code>is_valid</code>方法，預設也是返回一個布林值（可以用<code>raise_exception=True</code>參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
 <p>不過，<strong>如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>，</strong>以保持回傳型別的一致性。</p>
 <p>而且<strong>函式命名</strong>也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。這些都是常見的最佳實踐。</p>
-<h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，其目的是從一個<code>JSON</code>文件中讀取配置資訊。如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常並返回<code>False</code>。</p>
+<h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，目的是從一個 JSON 文件中讀取設定資訊。</p>
+<p>如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常——並返回<code>False</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            config = json.load(f)</span><br><span class="line">        <span class="keyword">return</span> config</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># 這裡是問題所在</span></span><br></pre></td></tr></table></figure>
 
 <p>這個函式在<code>except</code>區塊裡面直接返回<code>False</code>，這會導致以下問題：</p>
 <ol>
 <li><strong>資料型別不一致</strong>：正常情況下返回一個字典，異常情況下返回<code>False</code>（布林值）。</li>
-<li><strong>誤導函式使用者</strong>：使用者可能會誤以為<code>False</code>是一個有效的配置，進而嘗試在其上進行操作，這會導致更多的錯誤。</li>
+<li><strong>誤導函式使用者</strong>：使用者可能會<strong>誤以為</strong><code>False</code>是一個<strong>有效的設定</strong>（只是設定值為<code>False</code>），進而嘗試在其上進行操作，導致更多的錯誤。</li>
 <li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為<code>False</code>，然後再決定是否進行後續的操作。</li>
 </ol>
 <hr>
-<p>其實「<code>return</code>型別不確定」肯定不只發生在例外處理，但它<strong>確實「很常發生」在例外處理</strong>，因為我看過<strong>不止一次</strong>類似的真實案例。</p>
-<p>很多人本能地會這樣寫，這往往是因為不習慣、不擅長處理錯誤，所以想要用自己平常更熟悉的<code>False</code>。</p>
+<p>「<code>return</code>型別不確定」不只發生在例外處理，但它確實<strong>很常發生</strong>在例外處理，我看過<strong>不止一次</strong>類似的真實案例。</p>
 <p>除此之外，還有「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息」這種非常<strong>反直覺</strong>的設計。彷彿是在告訴我們：</p>
 <blockquote>
 <p>這個函式的回傳值，可能是一個物件，也可能是一個 tuple，<strong>你自己判斷吧！</strong></p>
 </blockquote>
 <p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
-<p><strong>充滿了技術債味的寫法。</strong></p>
-<h2 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h2><p>這類「<strong>雙型別 return</strong>」的函式，對於<strong>函式使用者</strong>（有可能是你的同事）的認知，有著「<strong>更高的要求</strong>」——呼叫方必須很了解這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
+<p>這些無疑都是<strong>充滿了「技術債味」的做法。</strong></p>
+<h2 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h2><p>這類「<strong>雙型別 return</strong>」函式，對於<strong>函式使用者</strong>（比如你的同事）的認知與理解，有著「<strong>更高的要求</strong>」——呼叫方必須<strong>很了解</strong>這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
 <p>這在多行或有多個 return 值的<strong>複雜函式時，真是一場災難。</strong></p>
 <blockquote>
 <p>期望他人知道自己做了什麼「特別的事」，不是我所知曉的軟體開發之道。</p>
@@ -268,12 +272,10 @@
 <h2 id="我對寫好函式的基本看法"><a href="#我對寫好函式的基本看法" class="headerlink" title="我對寫好函式的基本看法"></a>我對寫好函式的基本看法</h2><p>寫好函式的重點實在太多了，而本文的篇幅有限，只能擇要為之。</p>
 <p>我也講講我認為函式的撰寫中，最重要的兩點。</p>
 <p>至少遵守這兩點，你的同事會很感激你。</p>
-<h2 id="一、Docstring-真的很重要"><a href="#一、Docstring-真的很重要" class="headerlink" title="一、Docstring 真的很重要"></a>一、Docstring 真的很重要</h2><p>其一是盡可能地寫 docstring，這不容易，畢竟維護 docstring 也需要心力。</p>
-<blockquote>
+<h2 id="一、Docstring-真的很重要"><a href="#一、Docstring-真的很重要" class="headerlink" title="一、Docstring 真的很重要"></a>一、Docstring 真的很重要</h2><p>盡量寫 docstring，儘管這真的不容易，畢竟維護 docstring 也需要心力。</p>
 <p>Docstring 就跟所有開發文件一樣——自己很懶得寫，但如果我想調用別人寫好的程式時，卻希望它們越詳細越好。</p>
-</blockquote>
 <p>而且 docstring 也不是有寫就行，還需要從「<strong>讀者</strong>（也就是你的同事）」的角度去思考與表達。不然看起來會很像開發者的自言自語——沒人看得懂。</p>
-<p>然而我也承認，為所有的模組、類別、函式寫 docstring，未免有點不切實際。在眾多函式中，下列兩種是我認為<strong>一定要寫 docstring</strong> 的：</p>
+<h3 id="何時建議寫-docstring？"><a href="#何時建議寫-docstring？" class="headerlink" title="何時建議寫 docstring？"></a>何時建議寫 docstring？</h3><p>我承認，要為「所有」的模組、類別、函式寫 docstring，<strong>未免有點不切實際</strong>。在眾多函式中，下列兩種是我認為<strong>一定要寫 docstring</strong> 的：</p>
 <ol>
 <li><strong>專案「自定義」成份濃厚</strong>：除了開發者本人，沒人知道這段程式在幹什麼。這通常源於特殊的業務需求，而且往往行數超多、邏輯超手刻，各種 if&#x2F;else、for 迴圈滿天飛，aka——<strong>沒人想看的程式碼</strong>。</li>
 <li><strong>流程相對複雜</strong>的函式：愈複雜就愈難理解，這時候 docstring 就是你的好朋友。用文字描述函式的<strong>輸入、輸出、邏輯</strong>，能大大提升我們理解程式碼的效率。</li>
@@ -281,12 +283,13 @@
 <p>畢竟，看<strong>有描述性的文字</strong>，總比看一長串程式碼，要簡單且友善得多。</p>
 <p>上述兩種情況，若不寫 docstring，那麼<strong>閱讀程式碼的成本</strong>就會大大提升。這相當於在告訴你的同事：</p>
 <blockquote>
-<p>我離開公司後，誰還想維護這段程式碼，先學習<strong>通靈之術</strong>吧！</p>
+<p>我離開公司後，誰還想維護這段程式碼，先學習<strong>通靈術</strong>吧！</p>
 </blockquote>
-<p>關於我對 docstring 的其它討論，可以參考這兩個部分：</p>
+<p>關於我對 docstring 的其它討論，可參考下面內容：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
 <li><a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
+<li><a href="https://blog.kyomind.tw/python-craftsman-01/#Docstring-%E8%88%87%E8%AE%80%E8%80%85%E6%84%8F%E8%AD%98">Docstring 與讀者意識</a></li>
 </ul>
 <p>我的觀點一向如此：<strong>不寫好 docstring，就稱不上是一流的 Python 開發者。</strong></p>
 <hr>
