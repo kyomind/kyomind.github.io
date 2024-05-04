@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T10:12:28+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T10:14:08+08:00" />
 
 
 
@@ -225,7 +225,7 @@
 <p>在這個例子中，使用 response 作為變數名稱會比使用 result <strong>更加清晰和具描述性。</strong></p>
 <p>當其他開發者（或是你自己）看到這段程式碼時，會立即明白這個變數存儲的是一個 HTTP response，而不是某個抽象的「結果」。</p>
 <p>如果隨意地命名為 result，後續使用該變數時，result 應該要有什麼屬性？什麼方法？<strong>一切都不明朗</strong>，因為它有<strong>無限可能</strong>。</p>
-<p>可能要回去看變數的<strong>初始化</strong>部分，才知道 result 代表什麼。</p>
+<p>可能要回去看變數的<strong>定義</strong>，才知道 result 究竟代表什麼。</p>
 <p><strong>當這變數的生命週期愈長、呼叫的次數愈多，使用 result 名稱造成的「可讀性問題」就愈嚴重。</strong></p>
 <p>這個例子還有一個常見的「<strong>變形</strong>」——<code>res</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(res.json())</span><br></pre></td></tr></table></figure>
