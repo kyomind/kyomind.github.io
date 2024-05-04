@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T10:24:57+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T10:26:50+08:00" />
 
 
 
@@ -199,7 +199,7 @@
 
 <hr>
 <h2 id="3-個代表性案例"><a href="#3-個代表性案例" class="headerlink" title="3 個代表性案例"></a>3 個代表性案例</h2><p>不誇張地說，code review 時我看到 result 這個變數名稱，<strong>幾乎都會建議改掉</strong>。因為它<strong>太過籠統</strong>，讓人無法立刻了解這個變數的內容與用途。</p>
-<p><strong>甚至有一種噁心感。</strong>（內心 OS：你就這麼懶得想名字？）</p>
+<p><strong>甚至有一種噁心感。</strong>（內心 OS：就這麼懶得想名字？）</p>
 <p>下面我們就舉 3 個代表性案例，來看看 result 到底有多糟糕。以及應該要用什麼名稱來取代它——基本上就是<strong>更直接、具體、精確</strong>的名稱。</p>
 <h2 id="一、從資料庫查詢訂單"><a href="#一、從資料庫查詢訂單" class="headerlink" title="一、從資料庫查詢訂單"></a>一、從資料庫查詢訂單</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">orders = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
