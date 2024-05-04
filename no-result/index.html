@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T15:54:01+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T16:58:58+08:00" />
 
 
 
@@ -210,29 +210,29 @@
 <p>其中的代價，不可謂不大。</p>
 <hr>
 <h2 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>我認為這是<strong>最重要</strong>的一種，概括而言：<strong>你不應該使用 result 來表示「狀態」</strong>。</p>
+<p>我認為這是<strong>最重要</strong>的守則，一言以蔽之：<strong>你不應該使用 result 來表示「狀態」</strong>。</p>
 <p>尤其當這個狀態是一個<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97_(%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B)">布林值</a>時，代表「操作成功與否」或「特定條件是否符合」等等情況，你更應該使用<strong>具體的名稱</strong>。</p>
-<p>這個時候，我們可以考慮使用充滿了「<strong>布林味</strong>」的變數名稱，比如<code>has_permission</code>、<code>is_valid</code>、<code>is_success</code>等等。而不是<code>result</code>。</p>
+<p>這個時候，我們可以考慮使用充滿了「<strong>布林味</strong>」的變數名稱，比如<code>has_permission</code>、<code>is_valid</code>、<code>is_success</code>等等——而不是<code>result</code>。</p>
 <h3 id="為什麼布林值最不適合用-result？"><a href="#為什麼布林值最不適合用-result？" class="headerlink" title="為什麼布林值最不適合用 result？"></a>為什麼布林值最不適合用 result？</h3><p>回傳內容如果由<strong>很多部分組成，此時確實不容易概括成一個名稱</strong>。</p>
-<p>要命名好這類的回傳結果，需要花一定時間思考、考慮其合適性，<strong>這很正常</strong>。所以有些開發者乾脆用 result 來表示，姑且算是一種 <strong>workaround</strong> 吧！</p>
+<p>要命名好這類的回傳結果，<strong>需要花一定時間思考、評估其合適性，並不輕鬆</strong>。所以有些開發者乾脆用 result 來表示，姑且算是一種 <strong>workaround</strong> 吧！情有可原。</p>
 <p>但如果回傳只是一個布林值，那就沒有「<strong>內涵太複雜以至於不易命名</strong>」問題。因為布林就只有兩種可能性：<strong>True 或 False</strong>。</p>
-<p>此時再偷懶用 result，<strong>就是真的懶</strong>。</p>
+<p>此時再偷懶用 result，恐怕就說不太過去了。</p>
 <hr>
 <h2 id="三、使用-requests-發出-HTTP-請求"><a href="#三、使用-requests-發出-HTTP-請求" class="headerlink" title="三、使用 requests 發出 HTTP 請求"></a>三、使用 requests 發出 HTTP 請求</h2><p>終於來你最常見到的情境了，使用<code>requests</code>（或<code>httpx</code>）發出 HTTP 請求，並將回傳的結果存入 result。</p>
 <p>雖然大部分人都會將這個變數命名為 response，但<strong>還是有人會用 result</strong>——而且覺得兩者「<strong>其實也沒什麼不同</strong>」啊！</p>
-<p>（這種「都差不多」思維才是真正嚇人的，你懂的。）</p>
+<p>（這種「我覺得都差不多」的思維才是真正嚇人的，你懂的。）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> result.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(result.json())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">response = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(response.json())</span><br></pre></td></tr></table></figure>
 <p>在這個例子中，使用 response 作為變數名稱會比使用 result <strong>更加清晰和具描述性。</strong></p>
 <p>當其他開發者（或是你自己）看到這段程式碼時，會立即明白這個變數存儲的是一個 HTTP response，而不是某個抽象的「結果」。</p>
-<p>如果隨意地命名為 result，後續使用該變數時，result 應該要有什麼屬性？什麼方法？<strong>一切都不明朗</strong>，因為它有<strong>無限可能</strong>。</p>
-<p>可能要回去看變數的<strong>定義</strong>，才知道 result 究竟代表什麼。</p>
+<p>如果隨意地命名為 result，後續使用該變數時，result <strong>預期</strong>會有什麼屬性？什麼方法？<strong>一切都不明朗</strong>，因為它有<strong>無限可能</strong>。</p>
+<p>可能要回去看變數的<strong>定義</strong>段落，才能知曉 result 究竟代表什麼。</p>
 <p><strong>當這變數的生命週期愈長、呼叫的次數愈多，使用 result 名稱造成的「可讀性問題」就愈嚴重。</strong></p>
 <p>這個例子還有一個常見的「<strong>變形</strong>」——<code>res</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(res.json())</span><br></pre></td></tr></table></figure>
 <p>這麼巧！response 和 result 兩者恰好都是以 res 為前綴，只要命名為<code>res</code>就天下太平了——才怪。</p>
 <p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了。</strong></p>
 <hr>
-<h2 id="小結：No-result"><a href="#小結：No-result" class="headerlink" title="小結：No result"></a>小結：No result</h2><p>總的來說，data 至少還有例外情況，但關於 result，<strong>我真的想不到。</strong></p>
+<h2 id="小結：No-result"><a href="#小結：No-result" class="headerlink" title="小結：No result"></a>小結：No result</h2><p>總的來說，data 至少還有適用的例外情況，但 result，<strong>我真的想不到。</strong></p>
 <p>我非常確信，打從我轉職後工作的第二年起（第一年還懵懂無知），再就也沒有使用過 result 這個變數名稱。</p>
 <p><strong>一次也沒有。</strong></p>
 
