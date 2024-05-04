@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T09:45:53+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T10:12:28+08:00" />
 
 
 
@@ -220,7 +220,7 @@
 <hr>
 <h2 id="三、使用-requests-發出-HTTP-請求"><a href="#三、使用-requests-發出-HTTP-請求" class="headerlink" title="三、使用 requests 發出 HTTP 請求"></a>三、使用 requests 發出 HTTP 請求</h2><p>終於來你最常見到的情境了，使用<code>requests</code>（或<code>httpx</code>）發出 HTTP 請求，並將回傳的結果存入 result。</p>
 <p>雖然大部分人都會將這個變數命名為 response，但<strong>還是有人會用 result</strong>——而且覺得兩者「<strong>其實也沒什麼不同</strong>」啊！</p>
-<p>（這種「都差不多」思維才是真正嚇人的，相信你懂的。）</p>
+<p>（這種「都差不多」思維才是真正嚇人的，你懂的。）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> result.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(result.json())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">response = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(response.json())</span><br></pre></td></tr></table></figure>
 <p>在這個例子中，使用 response 作為變數名稱會比使用 result <strong>更加清晰和具描述性。</strong></p>
 <p>當其他開發者（或是你自己）看到這段程式碼時，會立即明白這個變數存儲的是一個 HTTP response，而不是某個抽象的「結果」。</p>
@@ -232,8 +232,8 @@
 <p>這麼巧！response 和 result 兩者恰好都是以 res 為前綴，只要命名為<code>res</code>就天下太平了——才怪。</p>
 <p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了。</strong></p>
 <hr>
-<h2 id="小結：No-result"><a href="#小結：No-result" class="headerlink" title="小結：No result"></a>小結：No result</h2><p>說真的，data 至少還有例外情況，但關於 result，<strong>我真的想不到。</strong></p>
-<p>我非常確信，打從我工作的第二年起（第一年可能還懵懂無知），再就也沒有使用過 result 這個變數名稱。</p>
+<h2 id="小結：No-result"><a href="#小結：No-result" class="headerlink" title="小結：No result"></a>小結：No result</h2><p>總的來說，data 至少還有例外情況，但關於 result，<strong>我真的想不到。</strong></p>
+<p>我非常確信，打從我轉職後工作的第二年起（第一年還懵懂無知），再就也沒有使用過 result 這個變數名稱。</p>
 <p><strong>一次也沒有。</strong></p>
 
       </div>
