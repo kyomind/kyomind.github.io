@@ -34,7 +34,7 @@
     <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T15:41:33+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T16:40:35+08:00" />
 
 
 
@@ -304,7 +304,8 @@
 <p>實務上，我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX PATCH 做的事情太多了，很容易發生狀態殘留問題</span></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;PATCH&#x27;</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>畢竟異味不一定都會造成問題，也不是所有的異味都要被修正（因為很多），甚至隨著後續開發，原本看起來的異味可能隨之消散或減緩——但這屬於少見情況。大部分都是愈來愈糟，不然怎麼會有「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8A%80%E6%9C%AF%E8%B4%9F%E5%80%BA">技術債</a>」這個詞呢？</p>
+<p>畢竟異味不一定都會造成問題，也不是所有的異味都必須被修正——因為<strong>太多了</strong>，你修也修不完的🤣</p>
+<p>甚至，隨著後續開發，原本看起來的異味，可能隨之消散或趨緩，但這<strong>屬於少數情況</strong>。<strong>大部分都是愈來愈糟</strong>😎，不然怎麼會有「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8A%80%E6%9C%AF%E8%B4%9F%E5%80%BA">技術債</a>」這個詞呢？</p>
 <p>書中所舉的異味種類很多，也都很經典，值一一細讀。不過限於篇幅，只舉其中幾個我個人認為<strong>比較有代表性</strong>的異味。</p>
 <h3 id="一、重複的程式碼"><a href="#一、重複的程式碼" class="headerlink" title="一、重複的程式碼"></a>一、重複的程式碼</h3><p>重複程式碼肯定不是錯誤，卻很可能造成後續維護上的困擾。典型的困境是：改一個地方，結果多處也要跟著一起改——我稱之為程式碼的「<strong>同步</strong>」問題。</p>
 <blockquote>
