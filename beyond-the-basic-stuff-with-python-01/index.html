@@ -34,7 +34,7 @@
     <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T14:43:13+08:00" />
+  <meta property="article:modified_time" content="2024-05-04T15:41:33+08:00" />
 
 
 
@@ -191,6 +191,9 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E7%B7%A3%E8%B5%B7"><span class="toc-text">系列緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E8%AC%9B%E9%87%8D%E9%BB%9E"><span class="toc-text">只講重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E4%BD%BF%E7%94%A8-Black-%E9%80%B2%E8%A1%8C%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">第 3 章：使用 Black 進行程式碼格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Black%EF%BC%9F"><span class="toc-text">Why Black？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E9%81%B8%E7%94%A8%E6%98%93%E6%87%82%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">第 4 章：選用易懂的命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B2%E4%B8%8A%E6%9C%80%E7%B3%9F%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%E2%80%94%E2%80%94data"><span class="toc-text">史上最糟的變數名稱——data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-5-%E7%AB%A0%EF%BC%9A%E6%89%BE%E5%87%BA%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%9A%84%E7%95%B0%E5%91%B3"><span class="toc-text">第 5 章：找出程式碼的異味</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%95%B0%E5%91%B3%E7%9A%84%E8%BF%B7%E6%80%9D"><span class="toc-text">程式碼異味的迷思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F"><span class="toc-text">註解是不需要的？</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
+<blockquote>
+<p><code>2024/05/04</code>：重新編輯全文，部分內容獨立成篇。</p>
+</blockquote>
 <p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
 <h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
 <ol>
@@ -294,16 +297,16 @@
 <li>該變數的<strong>生命週期很短</strong>——<strong>我絕對不會將任何長生命週期的變數命名為 data</strong>，那簡直是在<strong>噁心隊友</strong>。上述例子中，data 的生命週期就只有寥寥幾行，所以我覺得還可以。</li>
 <li>HTTP response 的<strong>欄位名稱</strong>就是 data。這種情況下，我也會考慮使用 data 作為變數名稱，因為這樣可以<strong>保持一致性</strong>。</li>
 </ol>
-<p>但一般而言，<strong>我還是會盡可能避免使用 data 命名變數，這是一種習慣</strong>。</p>
+<p>但一般而言，<strong>我還是會盡可能避免使用 data 命名變數，這是為了養成好習慣。</strong></p>
 <hr>
-<h2 id="第-5-章：找出程式碼的異味"><a href="#第-5-章：找出程式碼的異味" class="headerlink" title="第 5 章：找出程式碼的異味"></a>第 5 章：找出程式碼的異味</h2><p>程式碼異味（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3">code smell</a>）指的就是程式中看起來「不對勁」，且有可能在後續引發問題的地方。</p>
-<p>如果可以，我們當然要盡可能避免異味，至少要給予一定關注才行。</p>
+<h2 id="第-5-章：找出程式碼的異味"><a href="#第-5-章：找出程式碼的異味" class="headerlink" title="第 5 章：找出程式碼的異味"></a>第 5 章：找出程式碼的異味</h2><p>程式碼異味（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3">code smell</a>）指的是程式中看起來「不對勁」，且可能在後續引發問題的地方。</p>
+<p>如果可以，我們當然要盡可能避免異味，至少要<strong>給予一定的關注</strong>才行。</p>
 <p>實務上，我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX PATCH 做的事情太多了，很容易發生狀態殘留問題</span></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;PATCH&#x27;</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>畢竟異味不一定都會造成問題，也不是所有的異味都要被修正（因為太多了），甚至隨著後續開發，原本看起來的異味可能隨之消散或減緩——但這屬於少見的情況。大部分都是愈來愈糟，不然怎麼會有「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8A%80%E6%9C%AF%E8%B4%9F%E5%80%BA">技術債</a>」這個詞呢？</p>
+<p>畢竟異味不一定都會造成問題，也不是所有的異味都要被修正（因為很多），甚至隨著後續開發，原本看起來的異味可能隨之消散或減緩——但這屬於少見情況。大部分都是愈來愈糟，不然怎麼會有「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8A%80%E6%9C%AF%E8%B4%9F%E5%80%BA">技術債</a>」這個詞呢？</p>
 <p>書中所舉的異味種類很多，也都很經典，值一一細讀。不過限於篇幅，只舉其中幾個我個人認為<strong>比較有代表性</strong>的異味。</p>
-<h3 id="一、重複的程式碼"><a href="#一、重複的程式碼" class="headerlink" title="一、重複的程式碼"></a>一、重複的程式碼</h3><p>重複程式碼肯定不是一個錯誤（error），卻很可能造成後續維護上的困擾。典型的困境就是改一個地方結果多處也要跟著一起改時，我稱之為程式碼的「<strong>同步</strong>」問題。</p>
+<h3 id="一、重複的程式碼"><a href="#一、重複的程式碼" class="headerlink" title="一、重複的程式碼"></a>一、重複的程式碼</h3><p>重複程式碼肯定不是錯誤，卻很可能造成後續維護上的困擾。典型的困境是：改一個地方，結果多處也要跟著一起改——我稱之為程式碼的「<strong>同步</strong>」問題。</p>
 <blockquote>
 <p>需要手動同步，就是壞味道。</p>
 </blockquote>
@@ -311,30 +314,30 @@
 <p>不過，書中也說了，重複一、兩次通常沒有關係；而重複三、四次時，就要好好考慮了是否重構或刪除。</p>
 <p>而且有些時候，重複反而是比較簡潔的做法——無腦但直觀，可讀性最高。</p>
 <p>確實，單憑形式上的「是否重複」來判斷要不要修改程式碼，往往是不足夠的。還要看<strong>使用的場景</strong>。比如前面說的那種會發生同步問題的重複，哪怕只有一次，我也會特地抽出來。</p>
-<p>顯然，這需要一些經驗，與一次又一次的思考。</p>
+<p>當然，這需要一些經驗，更重要的是，一次又一次的思考。</p>
 <h3 id="二、魔術數字"><a href="#二、魔術數字" class="headerlink" title="二、魔術數字"></a>二、魔術數字</h3><p>有些數字我們很容易知曉其含意，比如 3.14，而有些則否。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expiration = time.time() + <span class="number">604800</span></span><br></pre></td></tr></table></figure>
 
-<p>這 604800 究竟代表什麼？我們肯定需要停下來思考，可能需要花一些時間才能想出來。這樣的寫法顯然太不直觀。</p>
+<p>上述 604800 究竟代表什麼？我們肯定需要停下來思考，可能需要花一些時間才能想出來。這樣的寫法顯然太不直觀。</p>
 <p>重點是，<strong>你縱使猜得到，也無法 100% 確定</strong>。</p>
 <p>一種改進方式是<strong>加上註解</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expiration = time.time() + <span class="number">604800</span>  <span class="comment"># 一星期後失效</span></span><br></pre></td></tr></table></figure>
 
 <p>原來 604800 代表的是一週的秒數！</p>
-<p>這樣寫好很多，但書中建議我們採取更經典的做法——使用<strong>常數</strong>。</p>
+<p>加上註解好很多，但書中建議我們採取更經典的做法——使用<strong>常數</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SECONDS_PER_MINUTE = <span class="number">60</span></span><br><span class="line">SECONDS_PER_HOUR = <span class="number">60</span> * SECONDS_PER_MINUTE</span><br><span class="line">SECONDS_PER_DAY = <span class="number">24</span> * SECONDS_PER_HOUR</span><br><span class="line">SECONDS_PER_WEEK = <span class="number">7</span> * SECONDS_PER_DAY</span><br><span class="line"></span><br><span class="line">expiration = time.time() + SECONDS_PER_WEEK  <span class="comment"># 一星期後失效</span></span><br></pre></td></tr></table></figure>
 
-<p>常數是在程式中使用的<strong>固定值</strong>，原則上是<strong>不能被改變</strong>的。在使用常數時，我們應該採取<strong>有描述性的命名</strong>，這樣有助於提高程式的可讀性和可維護性。</p>
+<p>常數是在程式中使用的<strong>固定值</strong>，意味著<strong>不會改變</strong>。使用常數時，我們應該採取<strong>有描述性的命名</strong>，以提高程式的可讀性和可維護性。</p>
 <p>常數 + 有描述性的命名，就是應對魔術數字的絕佳手段。</p>
-<p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>（DRF）中的<code>status</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> JsonResponse(context, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure>
+<p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a> 中的<code>status</code>模組（<a target="_blank" rel="noopener" href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/status.py">原始碼</a>）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Response(context, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure>
 <p>除了 200，常見的還有：</p>
 <ul>
 <li><code>status.HTTP_400_BAD_REQUEST</code></li>
 <li><code>status.HTTP_404_NOT_FOUND</code></li>
 </ul>
 <p>我們當然可以直接寫<code>status=200</code>、<code>400</code>、<code>404</code>，看起來也很直觀，但對於那些我們<strong>沒那麼熟悉</strong>的 HTTP 狀態碼，比如 <a target="_blank" rel="noopener" href="https://http.cat/status/509">509</a>，則又需要陷入停頓與思考。</p>
-<p>而使用常數的話，則所有成員都會<strong>更加一視同仁</strong>：</p>
+<p>而使用常數的話，則所有成員都更加<strong>一目了然</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status.HTTP_509_BANDWIDTH_LIMIT_EXCEEDED</span><br></pre></td></tr></table></figure>
 
 <h3 id="三、雙層生成式"><a href="#三、雙層生成式" class="headerlink" title="三、雙層生成式"></a>三、雙層生成式</h3><p>書中的例子是，你想把一個二維 list「攤平」成一維，於是寫了<strong>雙層串列生成式</strong>（List <a target="_blank" rel="noopener" href="https://steam.oxxostudio.tw/category/python/basic/comprehension.html">Comprehension</a>）進行處理，像這樣：</p>
@@ -349,8 +352,9 @@
 <p>程式碼裡有：一層迴圈是壞味道，兩層迴圈是罪惡，三層迴圈是罪大惡極<br>　<br>因為這些都是程式中的「手工藝」，乏缺架構思維，除了當下用起來很「方便」，日後更可能是難以維護，畢竟正常人無法一眼就看出第二、三層迴圈到底在做什麼（仔細看也一樣啦！）<br>　<br>此乃典型的技術債，而且是很廉價的那種</p>
 </blockquote>
 <p>雙重迴圈有時是不得已——總會有這樣的時候，但我們仍必須<strong>視之為罪惡</strong>。</p>
+<hr>
 <h2 id="程式碼異味的迷思"><a href="#程式碼異味的迷思" class="headerlink" title="程式碼異味的迷思"></a>程式碼異味的迷思</h2><p>這是第 5 章的最後一節，但我覺得特別精彩，值得獨立拿出來講。</p>
-<p>書中所謂「程式碼異味的迷思」，指的是<strong>作者不認為那是異味</strong>，但常常會被視為異味的情況。</p>
+<p>書中所謂「程式碼異味的迷思」，指的是<strong>作者不認為那是異味</strong>，但<strong>常被誤認為是異味</strong>的情況。</p>
 <p>書中列舉了 5 個迷思（作者<strong>不認同</strong>的命題），分別如下：</p>
 <ol>
 <li>迷思：函式末尾應該只有一個 return</li>
