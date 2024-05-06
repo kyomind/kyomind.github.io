@@ -30,7 +30,7 @@
     <meta property="og:tag" content="程式設計" />
     
 
-  <meta property="article:modified_time" content="2024-05-06T06:24:17+08:00" />
+  <meta property="article:modified_time" content="2024-05-06T06:32:25+08:00" />
 
 
 
@@ -200,15 +200,15 @@
 <hr>
 <h2 id="3-個代表性案例"><a href="#3-個代表性案例" class="headerlink" title="3 個代表性案例"></a>3 個代表性案例</h2><p>不誇張地說，code review 時我看到 result 這個變數名稱，<strong>幾乎都會建議改掉</strong>。因為它<strong>太過籠統</strong>，讓人無法立刻了解這個變數的內容與用途。</p>
 <p><strong>甚至有一種噁心感。</strong>（內心 OS：就這麼懶得想名字？）</p>
-<p>不過，如果我細看後發現，眼前的情況<strong>是真的不容易命名</strong>，我會睜一隻眼閉一隻眼，就算了吧！</p>
-<p>但平心而論，這<strong>真的是少數</strong>。我遇到大部分使用 result 的情況，都是懶得想名字XD。無論如何，我自己寫程式時，不會考慮使用 result，<strong>而且我認為這並不難。</strong></p>
+<p>不過，若細看後發現，眼前的情況<strong>真的不容易命名</strong>，我可能會選擇睜一隻眼閉一隻眼，暫時就先算了吧！😷</p>
+<p>但平心而論，這<strong>真的是少數</strong>。我遇到大部分使用 result 的情況，都是<strong>懶得想名字XD</strong>。無論如何，我自己寫程式時，不會考慮使用 result，<strong>而且我認為這並不難。</strong></p>
 <p>下面我們就舉 3 個代表性案例，來看看 result 到底有多糟糕。以及應該要用什麼名稱來取代它——基本上就是<strong>更直接、具體、精確</strong>的名稱。</p>
 <h2 id="一、從資料庫查詢訂單"><a href="#一、從資料庫查詢訂單" class="headerlink" title="一、從資料庫查詢訂單"></a>一、從資料庫查詢訂單</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">orders = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>第一種典型的情況是，<strong>明明有更具體的名稱可以使用</strong>，卻偏偏用了籠統的 result。</p>
 <p>這樣的寫法，讓人看了一頭霧水，不確定 result 到底是指什麼。</p>
 <p>類似的例子還有求平均值、性別、數量等等，太多了，都有一個 result，但明顯都可以用更具體的名稱來取代。</p>
-<p>事實上，無論是這 3 種情況中的哪一種，會叫 result，通常是因為<strong>懶得想名字</strong>。可是這份懶惰，<strong>會讓你的程式碼變得難讀</strong>。</p>
+<p>事實上，如前所述，會把變數命名為 result，<strong>往往不是真的遇到什麼難以命名的情境</strong>，而是因為懶XD。可是這份懶惰，<strong>會讓你的程式碼變得難讀</strong>。</p>
 <p>其中的代價，不可謂不大。</p>
 <hr>
 <h2 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
