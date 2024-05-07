@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-05-07T17:42:03+08:00" />
+  <meta property="article:modified_time" content="2024-05-07T17:47:14+08:00" />
 
 
 
@@ -346,7 +346,7 @@
 <h3 id="關於in運算子"><a href="#關於in運算子" class="headerlink" title="關於in運算子"></a>關於<code>in</code>運算子</h3><p>因為<code>in</code>運算子的內部，本來就會<strong>「視情況」迭代後面接的物件</strong>了——<code>in</code>會優先調用<code>__contains__</code>方法，沒有實作此方法，才退回<code>__iter__</code>，也就是所謂的迭代。</p>
 <p>所以<code>in</code>後面可以接兩種物件，以落實成員的查找：</p>
 <ol>
-<li>有實作<code>__contains__</code>方法的物件。比如<code>list</code>、<code>set</code>、<code>dict</code>等。</li>
+<li>有實作<code>__contains__</code>方法的物件。比如<code>set</code>、<code>dict</code>等。</li>
 <li>有實作<code>__iter__</code>方法的物件。（所有的 iterable 都有）</li>
 </ol>
 <p><strong>而 Enum 類別正是一個 iterable——它實作了<code>__iter__</code>方法</strong>。</p>
