@@ -33,7 +33,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-04-21T09:49:12+08:00" />
+  <meta property="article:modified_time" content="2024-05-07T17:42:03+08:00" />
 
 
 
@@ -246,8 +246,7 @@
 <p>但如果在別的列舉場合，偶爾甚至不時會增加成員時，我們的 ALL 屬性的值也要跟著修正，這會產生潛在的「同步」問題——<strong>忘記</strong>一併更新 ALL 屬性。</p>
 <h3 id="使用序列化器驗證"><a href="#使用序列化器驗證" class="headerlink" title="使用序列化器驗證"></a>使用序列化器驗證</h3><p>話說回來，DRF 有<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器模組</a>，作為驗證輸入資料正確性的手段。</p>
 <p>只要你有寫序列化器，通常也不需要像上述程式碼一般手工驗證。</p>
-<p>但畢竟寫序列化器需要一定的成本與維護，一些相對簡單的 POST API，你可能未必有相關的序列化器。</p>
-<p>退萬步言，你就是要在某些自定義的邏輯進行手動驗證，上面的程式碼還是會出現。</p>
+<p>本文適用於<strong>沒有序列化器輔助</strong>的情況，或者說，你就是要在某些自定義的邏輯進行手動驗證。</p>
 <h2 id="小結：目前寫法的問題"><a href="#小結：目前寫法的問題" class="headerlink" title="小結：目前寫法的問題"></a>小結：目前寫法的問題</h2><p>假設沒有序列化器輔助，要在程式碼中進行手動驗證，則上述寫法有兩個不妥之處：</p>
 <ol>
 <li>要驗證 input 資料是否為合法列舉成員，太囉嗦、冗長了。</li>
@@ -266,7 +265,7 @@
 <p>我把<code>ALL</code>屬性移除了，因為它不再需要。</p>
 <p>我們就以這個新類別為例，來看看 Enum 的三大特性。</p>
 <hr>
-<h2 id="一、Enum-類別可以用-for-迴圈迭代"><a href="#一、Enum-類別可以用-for-迴圈迭代" class="headerlink" title="一、Enum 類別可以用 for 迴圈迭代"></a>一、Enum 類別可以用 for 迴圈迭代</h2><p>一般的類別並不能以 for 迴圈迭代，因為沒有實作<code>__iter__</code>方法，但 Enum 有！</p>
+<h2 id="一、Enum-類別可以用-for-迴圈迭代"><a href="#一、Enum-類別可以用-for-迴圈迭代" class="headerlink" title="一、Enum 類別可以用 for 迴圈迭代"></a>一、Enum 類別可以用 for 迴圈迭代</h2><p>一般的類別並不能以 for 迴圈迭代，因為沒有實作<code>__iter__</code>方法，<strong>但 Enum 有！</strong></p>
 <p>對於「列舉」這種有限成員的情況，能迭代它非常重要。</p>
 <p>還記得原來的<code>ALL</code>屬性嗎？ <code>ALL = [0, 1, 2, 3]</code></p>
 <p>這個<code>ALL</code>屬性的值，其實就是<strong>為了取得類別中的每一個屬性值</strong>。但有了 Enum，我們不用這麼麻煩了！</p>
@@ -333,15 +332,24 @@
 
 <p>因為 <code>RestartPolicy</code> 類別現在是可以用 <code>for</code> 迭代了！而每一個元素則是成員實例，需要透過<code>value</code>屬性取值，所以可以像上面那樣寫。</p>
 <p>乍看之下，好像也沒有方便到哪去？確實如此😅，沒關係，我們還有<a href="#%E9%80%8F%E9%81%8E%E3%80%8C%E5%BB%BA%E7%AB%8B-Enum-%E5%AF%A6%E4%BE%8B%E3%80%8D%E9%80%B2%E8%A1%8C%E9%A9%97%E8%AD%89">後手</a>。</p>
-<h3 id="Pydantic-預處理"><a href="#Pydantic-預處理" class="headerlink" title="Pydantic 預處理"></a>Pydantic 預處理</h3><p>如果你有用 Pydantic 對資料預處理（FastAPI、Django Ninja 等後端框架會自動做這件事），通常<code>payload.restart_policy</code>的值，就已經是一個 Enum 實例了。</p>
+<h3 id="Pydantic-預處理"><a href="#Pydantic-預處理" class="headerlink" title="Pydantic 預處理"></a>Pydantic 預處理</h3><p>如果你有用 Pydantic 對資料預處理（FastAPI、Django Ninja 等後端框架會自動做這件事），通常<code>payload.restart_policy</code>的值，就<strong>已經是一個 Enum 實例了。</strong></p>
 <blockquote>
 <p>當然，如果有用 Pydantic 預處理，這個驗證根本不需要XD，這裡只是為了舉例。</p>
 </blockquote>
-<p>如此一來，驗證成員身分的寫法將<strong>異常簡單</strong>：</p>
+<p>無論如何，現在你有一個 Enum 實例，那驗證成員身分的寫法將<strong>異常簡單</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> payload.restart_policy <span class="keyword">in</span> RestartPolicy:</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 
 <p>對，就這麼簡單！</p>
-<p>因為<code>in</code>運算子的內部，本來就會迭代後面接的物件了——所以<code>in</code>後面必須緊接一個 iterable，<strong>而 Enum 類別正是一個 iterable。</strong></p>
+<p>也就是你可以輕鬆寫下這樣的句型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;Enum 實例&gt; <span class="keyword">in</span> &lt;Enum 類別&gt;:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="關於in運算子"><a href="#關於in運算子" class="headerlink" title="關於in運算子"></a>關於<code>in</code>運算子</h3><p>因為<code>in</code>運算子的內部，本來就會<strong>「視情況」迭代後面接的物件</strong>了——<code>in</code>會優先調用<code>__contains__</code>方法，沒有實作此方法，才退回<code>__iter__</code>，也就是所謂的迭代。</p>
+<p>所以<code>in</code>後面可以接兩種物件，以落實成員的查找：</p>
+<ol>
+<li>有實作<code>__contains__</code>方法的物件。比如<code>list</code>、<code>set</code>、<code>dict</code>等。</li>
+<li>有實作<code>__iter__</code>方法的物件。（所有的 iterable 都有）</li>
+</ol>
+<p><strong>而 Enum 類別正是一個 iterable——它實作了<code>__iter__</code>方法</strong>。</p>
 <hr>
 <h2 id="透過「建立-Enum-實例」進行驗證"><a href="#透過「建立-Enum-實例」進行驗證" class="headerlink" title="透過「建立 Enum 實例」進行驗證"></a>透過「建立 Enum 實例」進行驗證</h2><p>但如果你的<code>payload.restart_policy</code>，就<strong>只是一般的值</strong>，而不是 Enum 成員。那該怎麼辦？難道真的要像上面那樣，寫落落長的<code>[p.value in p in RestartPolicy]</code>嗎？</p>
 <p>當然不！其實做法一樣非常簡單，那就是「<strong>直接用這個值來建立實例</strong>」。</p>
@@ -371,8 +379,7 @@
 <p>甚至還能把<code>RestartPolicy</code>類別中的<code>docstring</code><strong>直接渲染成欄位說明</strong>，太貼心了吧！偉哉 Pydantic！</p>
 <p>好處不止如此，一旦你<strong>變更</strong>了<code>RestartPolicy</code>的內容（比如<strong>增加了成員選項</strong>），API 文件也會<strong>自動更新</strong>。</p>
 <p>不必再手動修改 API 文件，也不必修改 Schema 的 type hints，完全省去了「同步」的煩惱。</p>
-<hr>
-<p>除了上述的「<strong>數字列舉</strong>」版，我同時再附上「<strong>字串列舉</strong>」版本，看圖你應該就能理解，為何我一開始說，有時候列舉資料用字串會更好。</p>
+<h3 id="使用「字串」列舉"><a href="#使用「字串」列舉" class="headerlink" title="使用「字串」列舉"></a>使用「字串」列舉</h3><p>除了上述的「<strong>數字列舉</strong>」版，我同時再附上「<strong>字串列舉</strong>」版本，看圖你應該就能理解，為何我一開始說，有時候列舉資料用字串會更好。</p>
 <p><img src="https://i.imgur.com/9eCQcFB.png"></p>
 <p>直接採用字串選項，對前端人員更加友善——<strong>更容易了解每個選項代表的意義。</strong></p>
 
