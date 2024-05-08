@@ -33,7 +33,7 @@
     <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-05-01T17:23:30+08:00" />
+  <meta property="article:modified_time" content="2024-05-08T05:01:37+08:00" />
 
 
 
@@ -300,7 +300,7 @@
 <p>我們先看看書中所舉的「反例」：（我直接引用<a target="_blank" rel="noopener" href="https://www.piglei.com/book/ch01_variables.html">網頁</a>上的內容，所以技術名詞並非台灣用語，還請見諒）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">resize_image</span>(<span class="params">image, size</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;將圖片縮放為指定尺寸，並返回新的圖片。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    該函數將使用 Pilot 模塊讀取文件對象，然後調用 .resize() 方法將其縮放為指定尺寸。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    但由於 Pilot 模塊自身限制，這個函數不能很好的處理尺寸過大的文件，當文件大小</span></span><br><span class="line"><span class="string">    超過 5MB 時，resize() 方法的性能就會因為內存分配問題急劇下降，詳見 Pilot 模塊的</span></span><br><span class="line"><span class="string">    Issue #007。因此，對於超過 5MB 的圖片文件，請使用 resize_big_image() 替代，後者</span></span><br><span class="line"><span class="string">    基於 Pillow 模塊開發，很好的解決了內存分配問題，性能更好。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param image: 圖片文件對象</span></span><br><span class="line"><span class="string">    :param size: 包含寬高的元組：（width, height）</span></span><br><span class="line"><span class="string">    :return: 新圖片對象</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>這個例子的最大問題，是寫了太多「實作細節」，講白了就是提供了「太多」程式碼的讀者<strong>並不關心</strong>的內容！</p>
+<p>這個例子的最大問題，是寫了太多「實作細節」，講白了就是提供了太多程式碼的讀者<strong>並不關心</strong>的內容！</p>
 <blockquote>
 <p>為什麼這樣是不妥的？細節不是很好嗎？</p>
 </blockquote>
