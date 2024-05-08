@@ -35,7 +35,7 @@
     <meta property="og:tag" content="pip" />
     
 
-  <meta property="article:modified_time" content="2024-05-01T17:26:08+08:00" />
+  <meta property="article:modified_time" content="2024-05-08T02:35:51+08:00" />
 
 
 
@@ -237,7 +237,8 @@
 <h3 id="設定-pyenv-global-與-local"><a href="#設定-pyenv-global-與-local" class="headerlink" title="設定 pyenv global 與 local"></a>設定 pyenv global 與 local</h3><p>如果只需要一種 Python 版本，那將其設定為<code>global</code>已足：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.10.11</span><br></pre></td></tr></table></figure>
 
-<p>但你也可以<strong>同時設定兩者</strong>，這樣在特定專案中會使用特定 Python 版本，而在<strong>不指定</strong>時則使用<code>global</code>設定的 Python 版本。比如幫某個舊專案設定為 3.8.12：</p>
+<p>但你也可以<strong>同時設定兩者</strong>，這樣在特定專案中會使用特定 Python 版本，而在<strong>不指定</strong>時則使用<code>global</code>設定的 Python 版本。</p>
+<p>比如幫某個舊專案設定為 3.8.12：（要先<code>cd</code>至該專案目錄）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
 
 <p>此時專案中會新增一個<code>.python-version</code>檔案，內容就是你設定的 Python 版本。</p>
@@ -275,7 +276,7 @@
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">readme</span> = <span class="string">&quot;README.md&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>我習慣——<strong>直接刪除</strong>。</p>
-<p>因為但如果沒有<code>README.md</code>，反而會造成錯誤。如果有的話就可以保留。</p>
+<p>因為沒有<code>README.md</code>，反而會造成錯誤。如果有就可以保留。</p>
 <hr>
 <h2 id="二、為專案建立-Python-虛擬環境"><a href="#二、為專案建立-Python-虛擬環境" class="headerlink" title="二、為專案建立 Python 虛擬環境"></a>二、為專案建立 Python 虛擬環境</h2><p>這裡是<strong>重頭戲</strong>之一，但做法上<strong>並不是那麼直觀</strong>，容易讓人混淆。僅使用 pyenv 的前提下，再安裝<code>pyenv-virtualenv</code>來建立虛擬環境，確實不難。</p>
 <p>但現在有了 Poetry，兩者的<strong>搭配使用方式</strong>就很重要，這也是為什麼我一再強調，有了 Poetry，乾脆就不要再裝<code>pyenv-virtualenv</code>了。</p>
@@ -294,7 +295,7 @@
 <blockquote>
 <p>If you use a tool like <strong><a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">pyenv</a></strong> to manage different Python versions, you can set the <strong>experimental</strong> <code>virtualenvs.prefer-active-python</code> option to <code>true</code>. Poetry will then try to find the current <code>python</code> of your shell.</p>
 </blockquote>
-<p>「experimental」表示這是一個實驗性功能，所以我不偏好這個做法，在此省略。有興趣的讀者可以自行參考文件。</p>
+<p>「experimental」表示這是一個實驗性功能，我不偏好這個做法，在此省略。有興趣的讀者可以自行參考文件。</p>
 <h2 id="我偏好的做法：poetry-env-use"><a href="#我偏好的做法：poetry-env-use" class="headerlink" title="我偏好的做法：poetry env use"></a>我偏好的做法：<code>poetry env use</code></h2><p>將想用的 Python 版本設定為<code>global</code>或<code>local</code>後，使用<code>poetry env use</code>指令來<strong>確保</strong>專案虛擬環境的 Python 版本，是<strong>簡單且穩健</strong>的做法。</p>
 <p><code>poetry env use</code>有下列幾種表示方式：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use /full/path/to/python</span><br></pre></td></tr></table></figure>
