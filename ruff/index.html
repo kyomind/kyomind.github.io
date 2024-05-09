@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學">
-  <meta property="og:title" content="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學"><meta name="twitter:description" content="本文闡述了 Ruff 作為一個高效 Python linter 和 formatter 的優勢，包括其對多種工具的整合。並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。">
-  <meta property="og:description" content="本文闡述了 Ruff 作為一個高效 Python linter 和 formatter 的優勢，包括其對多種工具的整合。並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。"><meta name="twitter:image" content="https://i.imgur.com/klPlw0x.jpg">
+  <meta property="og:title" content="Python 開發：Ruff Linter、Formatter 介紹 + 設定教學"><meta name="twitter:description" content="本文介紹 Ruff 這個高效的 Python linter、formatter，並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。">
+  <meta property="og:description" content="本文介紹 Ruff 這個高效的 Python linter、formatter，並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。"><meta name="twitter:image" content="https://i.imgur.com/klPlw0x.jpg">
   <meta property="og:image" content="https://i.imgur.com/klPlw0x.jpg">
-<meta name="description" content="本文闡述了 Ruff 作為一個高效 Python linter 和 formatter 的優勢，包括其對多種工具的整合。並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。" />
+<meta name="description" content="本文介紹 Ruff 這個高效的 Python linter、formatter，並示範如何在 VS Code、pre-commit 中設定 Ruff，附程式碼。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T06:37:43+08:00" />
+  <meta property="article:modified_time" content="2024-05-09T03:32:58+08:00" />
 
 
 
@@ -180,7 +180,7 @@
         <span class="post-time">
           2023-12-18
         </span><span class="post-update">
-            →  2024-01-06
+            →  2024-05-09
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -216,7 +216,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 分別是常見的 Flake8、isort、yapf。這在以往的文章已有多次提及。</p>
+<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 是常見的 Flake8、isort、yapf。這在以往的文章已有多次提及。</p>
 <p>隨著 Ruff 的聲量與能見度日漸提高，作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 愛好者，我自然也是躍躍欲試——最好是能夠直接應用到工作開發上！</p>
 <p>因為團隊還不大（含我共 3 個後端開發者），所以改用 Ruff 是完全有可能的。</p>
 <p>不過經過一番研究與考慮，我還是暫時推遲了工作上對 Ruff 的採用（只是把 formatter 從 yapf 換成 Black），原因會在<a href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1">文末說明</a>。</p>
@@ -229,20 +229,19 @@
 <p>接下來對 Ruff 的介紹，將有<strong>不同的側重與著墨</strong>，以及<strong>更多設定細節。</strong></p>
 <h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>本文主要分為<strong>三大部分</strong>：</p>
 <ol>
-<li>前言。</li>
-<li>Ruff 介紹篇。</li>
-<li>Ruff 設定篇。</li>
+<li><strong>前言。</strong></li>
+<li><strong>Ruff 介紹篇。</strong></li>
+<li><strong>Ruff 設定篇。</strong></li>
 </ol>
-<p>一開始不免俗地先講述我研究與使用 Ruff 的動機與理由，接著介紹 Ruff 的主要功能——linter 與 formatter。這也是它的最大賣點。</p>
-<p>而「設定篇」著重的，則是在初步了解 Ruff 之後，如果真要採用它，我們還需要處理好哪些環節，才能在開發中流暢地使用它。</p>
-<p>畢竟，<strong>開發工具的設定與整合</strong>，可算是本站文章的一大類型☺️</p>
+<p>一開始不免俗地先講述我研究與使用 Ruff 的動機與理由，接著介紹 Ruff 的主要功能——linter 與 formatter。包括<strong>它能取代的工具、特色、優勢。</strong></p>
+<p>而「設定篇」著重的，則是在初步了解 Ruff 之後，如果真要採用它，我們還需要<strong>處理好哪些環節</strong>，才能在開發中流暢地使用它。</p>
 <h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>本文的目標讀者有三：</p>
 <ol>
 <li>Python 開發中還沒有認真用過 linter、formatter 作為規範工具，想要開始導入，並希望用 Ruff 一次解決的人。</li>
 <li>長期使用「<strong>Flake8 + isort + Black</strong>」這套 Python 開發經典組合，對 Ruff 有高度興趣，想要試試看的人。</li>
 <li>Code Formatting in Python 愛好者。</li>
 </ol>
-<p>這篇文章是寫給「<strong>已經用 Python 開發一段時間</strong>」的人，而非 Python 初學者。</p>
+<p>簡言之，這篇文章是寫給「<strong>已經用 Python 一段時間</strong>」的人，而非 Python 初學者。</p>
 <p>不過話說回來，如果初學者一開始就肯使用 Ruff 好好規範自己所寫的 Python code，不正是一個<strong>絕佳的開端</strong>嗎？😎</p>
 <hr>
 <h2 id="Why-Ruff？"><a href="#Why-Ruff？" class="headerlink" title="Why Ruff？"></a>Why Ruff？</h2><p>什麼是 Ruff，一句話說就是：</p>
@@ -254,12 +253,12 @@
 <p><img src="https://i.imgur.com/rjPXQg4.png"></p>
 <p>用 Rust 寫的，快，自然不在話下。</p>
 <p>而「極致的快」在很多時候會大幅改變你做事的方式——不過這對於大型專案可能才更有感。</p>
-<p>對於中、小型專案，我覺得以下第二個理由更加重要。</p>
+<p>對於中、小型專案，<strong>我覺得以下第二個理由更加重要。</strong></p>
 <h3 id="二、All-in-One：整合眾多套件"><a href="#二、All-in-One：整合眾多套件" class="headerlink" title="二、All-in-One：整合眾多套件"></a>二、All-in-One：整合眾多套件</h3><p>不止是速度，Ruff 的「<strong>整合能力</strong>」也不容小覷。</p>
-<p>按照官方文件，有了 Ruff 後，以下的工具都不必再安裝了：</p>
+<p>按照官方文件，有了 Ruff 後，以下的工具都<strong>不必再安裝了：</strong></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://pypi.org/project/flake8/">Flake8</a> 和一堆 Flake8 外掛</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>（或其它 Python formatter）</li>
 <li><a target="_blank" rel="noopener" href="https://pypi.org/project/isort/">isort</a></li>
 <li><a target="_blank" rel="noopener" href="https://pypi.org/project/pydocstyle/">pydocstyle</a></li>
 <li><a target="_blank" rel="noopener" href="https://pypi.org/project/pyupgrade/">pyupgrade</a></li>
@@ -267,13 +266,19 @@
 <li>還有更多！</li>
 </ul>
 <p>想想是不是有一點「<a href="https://blog.kyomind.tw/pyproject-toml/#pyproject-toml-%E4%BB%8B%E7%B4%B9">pyproject.toml</a>」企圖統一天下，整合眾多工具設定檔的味道呢？</p>
+<blockquote>
+<p>相關文章：Python 開發設定檔——pyproject.toml 的崛起（待發表）</p>
+</blockquote>
 <p>上述這些工具，尤其是最常用的 Flake8、isort、Black，如果現在只需要用一個工具就能實現，而且還更快、更好。</p>
 <p>那我們何樂而不為？</p>
 <hr>
-<h2 id="本文範例程式碼"><a href="#本文範例程式碼" class="headerlink" title="本文範例程式碼"></a>本文範例程式碼</h2><p>本文中所提到的 Ruff 設定具體內容，包括 pyproject、VS Code、pre-commit 部分，都會加到這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>中。</p>
-<p>它是我「<a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a>」系列文章的範例程式碼，恰好也適合作為其它教學文章的實際素材展示。</p>
-<p><code>git clone</code>本專案後，可以直接<code>git checkout</code>到<code>02-ruff</code>分支。這個分支所在的 commit，就是本文的具體設定內容與改動。</p>
-<p>你也可以直接在 GitHub 上查看 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/commit/42a5a678ba5fbcc38f4463f593fad024636941ec">commit 內容</a>。</p>
+<h2 id="本文範例程式碼"><a href="#本文範例程式碼" class="headerlink" title="本文範例程式碼"></a>本文範例程式碼</h2><p>本文中所提到的 Ruff <strong>具體設定內容</strong>，包括 pyproject、VS Code、pre-commit 部分，都會加到這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>中。</p>
+<p>其中值得參考的檔案有：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/pyproject.toml">pyproject.toml</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/.vscode/settings.json">.vscode&#x2F;settings.json</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/.pre-commit-config.yaml">.pre-commit-config.yaml</a></li>
+</ol>
 <hr>
 <p>前言結束，接下來我們進入正題。首先是對 Ruff 的介紹。</p>
 <h2 id="Ruff-介紹篇"><a href="#Ruff-介紹篇" class="headerlink" title="Ruff 介紹篇"></a>Ruff 介紹篇</h2><p>Ruff 是一個 Python linter + formatter，雖然大部分人可能只使用它的 linter 部分，因為 formatter 還處於 beta 階段。</p>
@@ -282,17 +287,17 @@
 <p>所以，想要全面了解 Ruff，我們需要具體知曉，<strong>它能夠做到哪些事、取代哪些工具。</strong></p>
 <h2 id="Linter-部分：取代-Flake8-與-isort-等等"><a href="#Linter-部分：取代-Flake8-與-isort-等等" class="headerlink" title="Linter 部分：取代 Flake8 與 isort 等等"></a>Linter 部分：取代 Flake8 與 isort 等等</h2><p>Ruff 的核心部分就是它的 linter，這點無庸置疑。</p>
 <p>而 Flake8 作為 Python 開發中最流行的 linter，自然是 Ruff 首要取代的目標。所以 Ruff 連<strong>錯誤代碼都盡可能與 Flake8 一致</strong>，也是考慮到<strong>遷移的成本</strong>。</p>
-<h3 id="Autofix-功能"><a href="#Autofix-功能" class="headerlink" title="Autofix 功能"></a>Autofix 功能</h3><p>不僅如此，Ruff 還能取代一眾「<strong>帶有 formatter 功能的 linter</strong>」，isort 就是其中的代表。而常見的 <a target="_blank" rel="noopener" href="https://github.com/asottile/pyupgrade">pyupgrade</a> 也是。</p>
-<p>這就有趣了，從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——也就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
-<p>這個特性<strong>真的很方便</strong>，但同時帶來了一定的複雜性。</p>
+<h3 id="Autofix-功能"><a href="#Autofix-功能" class="headerlink" title="Autofix 功能"></a>Autofix 功能</h3><p>不僅如此，Ruff 還能取代一眾「<strong>帶有 formatter 功能的 linter</strong>」——isort 就是其中的代表。而常見的 <a target="_blank" rel="noopener" href="https://github.com/asottile/pyupgrade">pyupgrade</a> 也是。</p>
+<p>從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——也就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
+<p>這個特性<strong>真的很方便</strong>，但同時帶來了一定的複雜。</p>
 <p>方便的是，你可以只安裝 Ruff linter，就<strong>獲得多種 linter 附帶的 format 行為</strong>。而複雜則在於：<strong>設定上的細節也比一般 linter 更多。</strong></p>
 <h3 id="小結：Ruff-linter-是個簡易版-formatter"><a href="#小結：Ruff-linter-是個簡易版-formatter" class="headerlink" title="小結：Ruff linter 是個簡易版 formatter"></a>小結：Ruff linter 是個簡易版 formatter</h3><p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
 <p>總之，我們只要記得：<strong>Ruff linter 有著簡易 format（autofix）能力</strong>——它是個簡易版的 formatter。</p>
 <p>這和 Flake8 只做單純的靜態分析不同，Ruff linter 在檢查過程中，<strong>能夠直接對程式碼進行修改</strong>。當然，如果你不喜歡，這功能是<strong>可以關閉的。</strong></p>
 <hr>
-<h2 id="Formatter-部分：取代-Black"><a href="#Formatter-部分：取代-Black" class="headerlink" title="Formatter 部分：取代 Black"></a>Formatter 部分：取代 Black</h2><p>我相信從 Ruff 的開源之初，就已經想過要成為一個 All-in-One 工具。畢竟 Rust 這麼快，只做 linter 未免太可惜了！</p>
+<h2 id="Formatter-部分：取代-Black"><a href="#Formatter-部分：取代-Black" class="headerlink" title="Formatter 部分：取代 Black"></a>Formatter 部分：取代 Black</h2><p>我相信從 Ruff 的開源之初，想過要做 formatter 功能。畢竟 Rust 這麼快，只做 linter 未免太可惜了！而且兩者在使用上往往密不可分。</p>
 <p>和 linter 不同，formatter 具有<strong>強烈的排它性</strong>。不同的 formatter 之間，<strong>沒有相容可言</strong>。不像<strong>多個 linter 還可以疊加使用</strong>——如果你不嫌一堆警告很煩XD。</p>
-<p>如果寫一個全新的 formatter，就必須要有足夠的理由，讓開發者願意放棄當前方案，採用你的新工具——這很不容易。</p>
+<p>如果要寫一個全新的 formatter，就必須有足夠的理由，讓開發者願意<strong>放棄當前方案</strong>，採用你的新工具——<strong>這很不容易。</strong></p>
 <p>比較可行的做法，是<strong>相容並取代</strong>市場上現有的 formatter。</p>
 <p>既然要選一個，那當然是選 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>——目前最流行的 Python formatter。</p>
 <blockquote>
@@ -307,32 +312,19 @@
 <blockquote>
 <p>Specifically, the formatter is intended to emit near-identical output when run over Black-formatted code. When run over extensive Black-formatted projects like Django and Zulip, <strong>&gt; 99.9% of lines are formatted identically</strong>. When migrating an existing project from Black to Ruff, you should expect to see a few differences on the margins, <strong>but the vast majority of your code should be unchanged.</strong></p>
 </blockquote>
-<p>兩者的相容性（一致性）<strong>高達 99.9% 以上</strong>，基本可以放心遷移。</p>
-<p>附帶一提，如果你是從 yapf 遷移到 Black，就能夠明顯感受到格式化風格差異所帶來的困擾——程式碼變動的地方太多了！</p>
-<p>這種情況最好還是<strong>獨立一個分支或 commit，一次就把所有格式化差異都處理掉。</strong>而不要直接繼續開發，讓開發中的程式碼、檔案隨著開發進度被新 formatter 自動格式化，因為<strong>這會很影響 code review</strong>——格式化變動和開發變動<strong>混雜</strong>。</p>
-<h3 id="還處於-Beta-階段"><a href="#還處於-Beta-階段" class="headerlink" title="還處於 Beta 階段"></a>還處於 Beta 階段</h3><blockquote>
-<p>The Ruff formatter is available as a <a target="_blank" rel="noopener" href="https://astral.sh/blog/the-ruff-formatter">production-ready Beta</a> as of Ruff v0.1.2.</p>
-</blockquote>
-<p>引言中的「<a target="_blank" rel="noopener" href="https://astral.sh/blog/the-ruff-formatter">production-ready Beta</a>」超連結，指向 Ruff Formatter 的官方介紹文章與發展現況總結。</p>
-<p>所謂的 beta 並不是還有很多 bug，更像是「設計與方向上」還沒有完全底定——比如下面要討論的「單、雙引號」議題。所以才會在前面加上「production-ready」。</p>
-<p>如果你想要在個人的生產環境中使用，我相信是沒什麼問題。畢竟 <a target="_blank" rel="noopener" href="https://github.com/tiangolo/fastapi/pull/10517">FastAPI 專案已經直接使用了</a>！</p>
-<p>不過如果是公司專案，我還是會選擇觀望，不急於一時。</p>
-<h2 id="單、雙引號議題"><a href="#單、雙引號議題" class="headerlink" title="單、雙引號議題"></a>單、雙引號議題</h2><p>Python 允許開發者自由選擇要在程式碼中使用單引號或雙引號。</p>
-<p>只有在比如 docstring 這種<strong>連續使用 3 個引號</strong>的場景——即<code>&quot;&quot;&quot; &lt;內容&gt; &quot;&quot;&quot;</code>——時，慣例上要求使用雙引號。見 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0257/#what-is-a-docstring">PEP 257</a>：</p>
-<blockquote>
-<p>For consistency, always use <code>&quot;&quot;&quot;triple double quotes&quot;&quot;&quot;</code> around docstrings.</p>
-</blockquote>
+<p>兩者的相容性（一致性）<strong>高達 99.9% 以上</strong>。意味著你可以放心地從 Black 換到 Ruff，而不用擔心格式化結果的差異。</p>
+<p>（但是有一個「<strong>但書</strong>」，請見下面的「<a href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C">單、雙引號議題</a>」）</p>
+<p>友善提醒：formatter 遷移的變動，最好<strong>獨立一個分支或 commit，一次就把所有格式化差異都處理掉。</strong>而不要和其他功能性的變動混在一起。</p>
+<hr>
+<h2 id="單、雙引號議題"><a href="#單、雙引號議題" class="headerlink" title="單、雙引號議題"></a>單、雙引號議題</h2><p>Python 允許開發者<strong>自由選擇</strong>要在程式碼中使用單引號或雙引號。</p>
+<p>只有在比如 docstring 這種<strong>連續使用 3 個引號</strong>的場景，<strong>慣例</strong>上要求使用 3 個<strong>雙引號</strong>。</p>
 <p>如果你對 Black 有一些了解，應該會知道，早期 Black 是<strong>完全不管</strong>你習慣用單引號還是雙引號，<strong>它一律把你的 Python 程式碼格式化為雙引號！</strong></p>
 <p>這小小的硬性規則帶來了<strong>巨大的反彈</strong>，畢竟 Python 開發者中想必有不少人和我一樣，是「單引號」的支持者。</p>
 <p>最後，Black 開發團隊也不得不妥協（這是 Black <strong>少數的妥協</strong>，因為該工具本身就是以「<strong>不妥協</strong>」為賣點🤣），加入了<code>skip-string-normalization</code>選項。</p>
-<h3 id="Ruff-Formatter-發展中"><a href="#Ruff-Formatter-發展中" class="headerlink" title="Ruff Formatter 發展中"></a>Ruff Formatter 發展中</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quote-style = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>即使你選了 single，在上述的慣例部分，Ruff 還是會格式化為雙引號，不用擔心。</p>
-<p>至於要不要像 Black 加上<code>skip-string-normalization</code>，目前似乎還沒有定論。</p>
-<p>整體而言，這個議題仍然在持續中，有興趣可以關注這個 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/issues/7615">GitHub Issue 討論串</a>。（這個 issue 已經 close，但請留意最後一個 comment）</p>
-<p>這裡只是提醒你，<strong>採用 Ruff formatter 會有「單、雙引號」議題</strong>（而且和 Black 的處理方式不完全相同）。</p>
-<p><strong>至少對我而言，這非常重要。</strong></p>
+<h3 id="Ruff-Formatter-的不同處理方式"><a href="#Ruff-Formatter-的不同處理方式" class="headerlink" title="Ruff Formatter 的不同處理方式"></a>Ruff Formatter 的不同處理方式</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 選項有 &quot;single&quot; 和 &quot;double&quot;</span></span><br></pre></td></tr></table></figure>
+<p>如果設為<code>&quot;single&quot;</code>，Ruff 會把專案中的<strong>所有</strong>雙引號，都替換為單引號。不過，在上述<strong>慣例</strong>部分，Ruff 還是保留雙引號，不用擔心。</p>
+<p>需要提醒的是：如果你的專案目前是<strong>單雙引號混用</strong>，因為 Ruff 會<strong>強制統一</strong>引號風格，<strong>這勢必會帶來不少的格式化差異。</strong></p>
 <hr>
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
 <h2 id="Ruff-設定篇"><a href="#Ruff-設定篇" class="headerlink" title="Ruff 設定篇"></a>Ruff 設定篇</h2><p>當要採用一個新的 linter、formatter 時（尤其站在團隊開發考量），以下這三個部分的支援成熟度，是我一定會慎重考慮的。</p>
