@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-09T03:32:58+08:00" />
+  <meta property="article:modified_time" content="2024-05-10T09:04:20+08:00" />
 
 
 
@@ -180,7 +180,7 @@
         <span class="post-time">
           2023-12-18
         </span><span class="post-update">
-            →  2024-05-09
+            →  2024-05-10
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -194,6 +194,9 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B7%A3%E8%B5%B7"><span class="toc-text">緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">工作上我還未採用 Ruff 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff"><span class="toc-text">結語：Time to Ruff</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<blockquote>
+<p><code>2024/05/10</code>：重新編輯全文，新增、刪除部分內容，調整大量段落表述方式，提升文章的易讀與流暢度。可視為<code>v1.5</code>版。</p>
+</blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然在去年就聽過它，但我卻一直沒有任何行動。</p>
 <p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，前一版可是 v0.0.292），我感覺<strong>時機已到</strong>，所以進行了一番研究、嘗試，並寫下了本文。</p>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
@@ -328,78 +331,80 @@
 <hr>
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
 <h2 id="Ruff-設定篇"><a href="#Ruff-設定篇" class="headerlink" title="Ruff 設定篇"></a>Ruff 設定篇</h2><p>當要採用一個新的 linter、formatter 時（尤其站在團隊開發考量），以下這三個部分的支援成熟度，是我一定會慎重考慮的。</p>
-<h3 id="設定檔（pyproject-toml-支援）"><a href="#設定檔（pyproject-toml-支援）" class="headerlink" title="設定檔（pyproject.toml 支援）"></a>設定檔（pyproject.toml 支援）</h3><p>不用說，複雜的工具都一定有自己的設定檔，讓你可以客製化一些需求。如果能支援 pyproject.toml 則會更受到我的青睞。</p>
+<h3 id="設定檔（pyproject-toml-支援）"><a href="#設定檔（pyproject-toml-支援）" class="headerlink" title="設定檔（pyproject.toml 支援）"></a>設定檔（pyproject.toml 支援）</h3><p>複雜的工具都會有自己的設定檔，讓你可以客製化需求。如果能支援 pyproject.toml 則會更受到我的青睞。</p>
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></p>
 </blockquote>
 <h3 id="VS-Code-套件支援"><a href="#VS-Code-套件支援" class="headerlink" title="VS Code 套件支援"></a>VS Code 套件支援</h3><p>它能讓你在寫程式的同時，就能夠看到 linter 發出的警告，而不必等到 commit 之際才被 pre-commit 擋下來。</p>
 <p>相較於 linter，<strong>formatter 更需要有自己的 VS Code 套件</strong>。讓你能直接在 VS Code 中進行格式化，而不用透過 CLI 指令或等到 pre-commit 時才自動修正。</p>
-<p>而且，雖然你可以只用 Ruff 的 linter 功能，但因為有「autofix」存在，本質上它也是一個<strong>簡易（附帶）的格式化器</strong>，所以最好有 VS Code 整合。</p>
+<p>即使我們只用 Ruff 的 linter 功能，但因為有「autofix」存在，如前所述，它本質上也是一個<strong>簡易的格式化器</strong>，所以最好有 VS Code 整合。</p>
 <h3 id="pre-commit-支援"><a href="#pre-commit-支援" class="headerlink" title="pre-commit 支援"></a>pre-commit 支援</h3><p>pre-commit 是團隊協作中一道重要的關卡，我在「<a href="https://blog.kyomind.tw/pre-commit/#%E7%82%BA%E4%BB%80%E9%BA%BC%E8%A6%81%E4%BD%BF%E7%94%A8-pre-commit%EF%BC%9F">為什麼要使用 pre-commit？</a>」中已有相當的闡述。</p>
 <p>對於一個開發工具，我們主要關心的是：「它是否提供 pre-commit hook？」</p>
 <hr>
-<p>以上 3 點，Ruff 都有完整支援。下面就來一一解說。</p>
+<p>以上 3 點，<strong>Ruff 都有完整支援</strong>。下面就來一一解說。</p>
 <h2 id="pyproject-toml-設定"><a href="#pyproject-toml-設定" class="headerlink" title="pyproject.toml 設定"></a>pyproject.toml 設定</h2><p>Ruff 總共支援三種設定檔：<code>pyproject.toml</code>、<code>ruff.toml</code>、<code>.ruff.toml</code>。</p>
-<p>如果設定不算多，那我一律推薦放<code>pyproject.toml</code>。反之如果有大量的客製，那獨立一個設定檔可能是比較好的選擇。</p>
-<p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。文件中的範例內容同時有著註解式的解說。</p>
-<p><strong>不過大部分時候，我們只需要設定一些基本的項目</strong>。比如以下是我目前的設定，包含了 linter 與 formatter 部分：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;UP&quot;</span>]</span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py310&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="設定解說"><a href="#設定解說" class="headerlink" title="設定解說"></a>設定解說</h3><p>首先，因為在<code>pyproject.toml</code>中，所以設定的 key 定是<code>[tool.xxx]</code>格式。</p>
+<p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。以下的範例與解說，我採用設定檔格式是<code>pyproject.toml</code>。</p>
+<p>Ruff 因為功能眾多，設定上較為複雜。所幸，<strong>大部分時候，我們只需要設定一些基本的項目</strong>。</p>
+<h3 id="基本設定與解說"><a href="#基本設定與解說" class="headerlink" title="基本設定與解說"></a>基本設定與解說</h3><p>首先，因為在<code>pyproject.toml</code>中，所以設定的 key 定是<code>[tool.xxx]</code>格式。</p>
 <p>Linter 部分，一些基本的設定比如<code>line-length</code>和 Flake8 類似。其中<code>select</code>和沒有列出的<code>ignore</code>相對重要。</p>
-<p>Ruff 預設只會顯示 <code>E</code> 和 <code>F</code> 系列的錯誤訊息（而 Flake8 還有 <code>W</code> 系列）。想要增加或排除特定部分的錯誤訊息警示（包含 autofix），就得透過上述兩個欄位調整。比如：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="comment"># 1. Enable flake8-bugbear (`B`) rules, in addition to the defaults.</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E4&quot;</span>, <span class="string">&quot;E7&quot;</span>, <span class="string">&quot;E9&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;B&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. Avoid enforcing line-length violations (`E501`)</span></span><br><span class="line"><span class="attr">ignore</span> = [<span class="string">&quot;E501&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>Ruff 預設只會顯示 <code>E</code> 和 <code>F</code> 系列的錯誤訊息</strong>（而 Flake8 還有 <code>W</code> 系列）。想要增加或排除特定部分的錯誤訊息警示，就得透過<code>select</code>欄位調整。比如我的設定：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py310&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;UP&quot;</span>]  <span class="comment"># I 和 UP 是 isort 和 pyupgrade</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>在我的設定中，<code>select</code>加上了<code>I</code>和<code>UP</code>。分別代表了 isort 和 pyupgrade。一旦你開啟了它們，Ruff 就會提示相關錯誤，並在有錯誤時自動修正。（autofix 預設為開啟）</p>
+<p><code>select</code>加上了<code>I</code>和<code>UP</code>。分別代表了 isort 和 pyupgrade。一旦你開啟了它們，Ruff 就會提示相關錯誤，並在有錯誤時<strong>自動修正</strong>。（<strong>autofix 預設為開啟</strong>）</p>
 <p>因為開啟了<code>UP</code>，所以我必須設定<code>target-version</code>（這裡為<code>py310</code>），意味著 Ruff 會將程式碼中<strong>舊的寫法</strong>自動轉換（autofix）為 Python 3.10 的寫法。</p>
 <p>總之，可設定的項目非常豐富。</p>
+<h3 id="設定懶人包"><a href="#設定懶人包" class="headerlink" title="設定懶人包"></a>設定懶人包</h3><p>如果你剛開始用 Ruff，不知道該設定哪些項目。我建議你可以先設定以下幾個：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span>  <span class="comment"># 依照自己的專案需求設定</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>]  <span class="comment"># 至少會加入 I，因為 isort 是必要的</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 依照自己的喜好或專案需求設定</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="Ruff-VS-Code-套件設定"><a href="#Ruff-VS-Code-套件設定" class="headerlink" title="Ruff VS Code 套件設定"></a>Ruff VS Code 套件設定</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff 的 VS Code 套件</a>在 2022 年 12 月首次發表。</p>
-<p>說真的，如果一個全新的 linter 或 formatter 沒有相關的 VS Code 套件，我絕不會考慮使用。</p>
 <p>套件的重要性前面有提過，在此再次闡述：</p>
 <ul>
-<li>Linter：在 IDE 中有直接的提示，不必等到 commit 才發現錯誤。</li>
-<li>Formatter：直接執行格式化（尤其配合「<strong>存檔時格式化</strong>」），不需透過指令。</li>
+<li>Linter：在 IDE 中<strong>直接提示</strong>，不必等到後續流程才發現錯誤。</li>
+<li>Formatter：在 IDE <strong>直接格式化</strong>（尤其配合「<a href="https://blog.kyomind.tw/flake8-yapf-setting/#VS-Code-%E4%BD%BF%E7%94%A8-formatter-%E5%B0%8F%E6%92%87%E6%AD%A5">存檔時格式化</a>」），不需透過指令。</li>
 </ul>
-<p>絕大部分情況下，linter 提示的錯誤都會直接被 formatter 自動修正，感覺上沒有開啟 linter 提示似乎也無妨？</p>
-<p>但是，兩者在少數時候會有<strong>不同的行為</strong>，所以我認為 linter 的提示仍是必要的。</p>
-<p>當然，另一方面也因為我已習慣看 linter 提示👀——沒有會很不自在！</p>
+<p>基於上述兩個需求，如果一個全新的 linter 或 formatter 沒有相關的 VS Code 套件，我不會考慮使用。</p>
 <h3 id="安裝與設定-Ruff-套件"><a href="#安裝與設定-Ruff-套件" class="headerlink" title="安裝與設定 Ruff 套件"></a>安裝與設定 Ruff 套件</h3><p>套件安裝後就可以直接使用，如果你的專案中已有專屬的 Ruff 設定檔，我覺得<strong>不需要再特別設定</strong> VS Code Ruff 套件部分。</p>
 <p>不過還是提供我的設定：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.showNotifications&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onWarning&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="建議設定-Python-行為"><a href="#建議設定-Python-行為" class="headerlink" title="建議設定 Python 行為"></a>建議設定 Python 行為</h3><p>Ruff 套件我覺得不設定也沒關係，有設定檔就夠了。</p>
-<p>除非你不想要為每個專案一一建立 Ruff 設定檔，那就還是得弄一下（會套用到每一個專案）。同時也要考慮不同專案間的設定衝突問題——使用者全局設定 vs 專案設定。</p>
-<p>相對的，VS Code 的 Python 部分則建議一定要設定。</p>
-<p>這部分的具體內容，Ruff 套件首頁也有完整說明。我們直接看最完整的版本：</p>
+<p>特別提醒，如果你在專案中有已經有自己的 Ruff 設定檔，那就不要設定 VS Code Ruff 套件的「<code>args</code>」部分。比如：（以下為<code>settings.json</code>中的內容）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.lint.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.format.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>因為 VS Code 會<strong>優先使用<code>settings.json</code>的設定。</strong></p>
+<h3 id="建議設定-VS-Code-Python"><a href="#建議設定-VS-Code-Python" class="headerlink" title="建議設定 VS Code Python"></a>建議設定 VS Code Python</h3><p>因此，Ruff 套件我覺得不特別設定也沒關係，有專案中的 Ruff 設定檔就夠了。</p>
+<p>相對的，VS Code 的 Python 部分則<strong>建議要設定。</strong>開發會更順手。</p>
+<p>具體內容，Ruff 套件首頁有範例。我們直接看<strong>最完整的版本</strong>：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;[python]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.codeActionsOnSave&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;source.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span><span class="punctuation">:</span> <span class="string">&quot;charliermarsh.ruff&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>效果：</p>
+<p>效果說明：</p>
 <ol>
 <li><code>editor.formatOnSave</code>：存檔時自動格式化（對所有 formatter 都有效）。</li>
 <li><code>source.fixAll</code>：存檔時自動 fix。（類似 pre-commit 時，hook 的自動修正）</li>
 <li><code>source.organizeImports</code>：存檔時自動排序 imports。</li>
 </ol>
 <p>我想上述這些 Python 設定才是 Ruff 在 VS Code 中流暢使用的重點。</p>
-<h3 id="不同專案間切換"><a href="#不同專案間切換" class="headerlink" title="不同專案間切換"></a>不同專案間切換</h3><p>還有一個小細節，就是專案之間的切換問題。</p>
-<p>因為不一定每個專案都用 Ruff。比如我，只在個人專案使用 Ruff，但工作上還沒有。或是相反的情況。</p>
-<p>此時記得要把可能發生衝突的 VS Code 套件（主要是 linter 和 isort）在「工作區」範圍內停用！做法如下圖。不然 linter 部分很可能一起運作，產生意料之外的結果。</p>
+<h3 id="不同專案間切換"><a href="#不同專案間切換" class="headerlink" title="不同專案間切換"></a>不同專案間切換</h3><p>不一定每個專案都用 Ruff。在不使用 Ruff 的專案中，Ruff linter 還一直提示你錯誤，這樣會很煩。</p>
+<p>此時可以讓 Ruff 在這個「工作區」停用！做法如下圖。</p>
 <p><img src="https://i.imgur.com/lknGhsJ.png"></p>
-<p>Formatter 部分，因為每個專案只能選定一種格式化器，比較沒有衝突問題。</p>
+<p>Formatter 部分，因為每個專案只能選定一種格式化器，選好就沒有衝突問題。</p>
 <hr>
 <h2 id="pre-commit-設定"><a href="#pre-commit-設定" class="headerlink" title="pre-commit 設定"></a>pre-commit 設定</h2><p>pre-commit 設定相對單純，更細部的行為，hook 會自動讀取設定檔中的內容。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/astral-sh/ruff-pre-commit</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v0.1.4</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--fix</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff-format</span></span><br></pre></td></tr></table></figure>
 
 <p>這裡只要注意版本和 hook 的 id 即可。</p>
 <hr>
-<h2 id="Ruff-設定篇小結"><a href="#Ruff-設定篇小結" class="headerlink" title="Ruff 設定篇小結"></a>Ruff 設定篇小結</h2><p>Ruff 的設定真的滿多樣且可以很複雜——儘管它的預設值已能滿足大多數人。</p>
-<p>如果你不清楚究竟有哪些項目可以調整，又想了解更多。除了研究官方文件、Github 首頁的 README 外，去看看那些<a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff?tab=readme-ov-file#whos-using-ruff">已經採用了 Ruff  的開源專案</a>的設定檔，也是很好的學習！</p>
+<h2 id="Ruff-設定篇小結"><a href="#Ruff-設定篇小結" class="headerlink" title="Ruff 設定篇小結"></a>Ruff 設定篇小結</h2><p>Ruff 的設定真的滿多樣且<strong>可以很複雜</strong>。但是，如果你只是想要<strong>快速上手</strong>，其實只需要設定一些基本的項目。</p>
+<p>如果你不清楚究竟有哪些項目可以調整，又想了解更多。</p>
+<p>除了研究<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/">官方文件</a>、<a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Github 頁面</a>的 README 外，去看看那些<a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff?tab=readme-ov-file#whos-using-ruff">已經採用了 Ruff  的開源專案</a>設定檔，也是很好的學習！</p>
 <p>比如，我就習慣參考 <a target="_blank" rel="noopener" href="https://github.com/tiangolo/fastapi/blob/master/pyproject.toml#L139">FastAPI 的 Ruff 設定</a>：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">select</span> = [</span><br><span class="line">    <span class="string">&quot;E&quot;</span>,  <span class="comment"># pycodestyle errors</span></span><br><span class="line">    <span class="string">&quot;W&quot;</span>,  <span class="comment"># pycodestyle warnings</span></span><br><span class="line">    <span class="string">&quot;F&quot;</span>,  <span class="comment"># pyflakes</span></span><br><span class="line">    <span class="string">&quot;I&quot;</span>,  <span class="comment"># isort</span></span><br><span class="line">    <span class="string">&quot;C&quot;</span>,  <span class="comment"># flake8-comprehensions</span></span><br><span class="line">    <span class="string">&quot;B&quot;</span>,  <span class="comment"># flake8-bugbear</span></span><br><span class="line">    <span class="string">&quot;UP&quot;</span>,  <span class="comment"># pyupgrade</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="attr">ignore</span> = [</span><br><span class="line">    <span class="string">&quot;E501&quot;</span>,  <span class="comment"># line too long, handled by black</span></span><br><span class="line">    <span class="string">&quot;B008&quot;</span>,  <span class="comment"># do not perform function calls in argument defaults</span></span><br><span class="line">    <span class="string">&quot;C901&quot;</span>,  <span class="comment"># too complex</span></span><br><span class="line">    <span class="string">&quot;W191&quot;</span>,  <span class="comment"># indentation contains tabs</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.isort]</span></span><br><span class="line"><span class="attr">known-third-party</span> = [<span class="string">&quot;fastapi&quot;</span>, <span class="string">&quot;pydantic&quot;</span>, <span class="string">&quot;starlette&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.pyupgrade]</span></span><br><span class="line"><span class="comment"># Preserve types, even if a file imports `from __future__ import annotations`.</span></span><br><span class="line"><span class="attr">keep-runtime-typing</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>而且 FastAPI 真的很貼心，還加了註解！</p>
 <hr>
-<h2 id="工作上我還未採用-Ruff-的理由"><a href="#工作上我還未採用-Ruff-的理由" class="headerlink" title="工作上我還未採用 Ruff 的理由"></a>工作上我還未採用 Ruff 的理由</h2><p>結語之前，講講我在一番研究後，仍未建議團隊在此刻就採用 Ruff 的理由。</p>
+<h2 id="工作上我還未採用-Ruff-的理由"><a href="#工作上我還未採用-Ruff-的理由" class="headerlink" title="工作上我還未採用 Ruff 的理由"></a>工作上我還未採用 Ruff 的理由</h2><blockquote>
+<p><code>2024/05/10</code>：目前團隊已經全面採用 Ruff。</p>
+</blockquote>
+<p>結語之前，講講我在一番研究後，仍未建議團隊在此刻就採用 Ruff 的理由。</p>
 <p>放到最後不是為了賣關子，而是看到這裡，你應該比較能夠理解其中的顧慮。</p>
 <p>主要有三個。</p>
 <h3 id="一、設定相對複雜"><a href="#一、設定相對複雜" class="headerlink" title="一、設定相對複雜"></a>一、設定相對複雜</h3><p>首先我覺得 Ruff 的設定太多樣了，畢竟它一口氣整合了這麼多的工具。</p>
@@ -411,7 +416,7 @@
 <p>我打算等 Ruff formatter 的「beta」字樣拿掉後，直接「一換三」一次到位。</p>
 <p>所以，不妨讓子彈再飛一會兒。</p>
 <hr>
-<h2 id="結語：Time-to-Ruff"><a href="#結語：Time-to-Ruff" class="headerlink" title="結語：Time to Ruff"></a>結語：Time to Ruff</h2><p>Ruff 現階段對我的重要性，顯然還遠不如 <a href="https://blog.kyomind.tw/python-poetry/">Poetry 套件管理器</a>。但這樣的工具依舊讓人興奮且充滿期待。</p>
+<h2 id="結語：Time-to-Ruff"><a href="#結語：Time-to-Ruff" class="headerlink" title="結語：Time to Ruff"></a>結語：Time to Ruff</h2><p>Ruff 對我的重要性，雖然不如 <a href="https://blog.kyomind.tw/python-poetry/">Poetry 套件管理器</a>。但這樣的工具依舊讓人興奮且充滿期待。</p>
 <p>我並不認為目前的 Python 開發一定要用上 Ruff，但值得你嘗試一下。</p>
 <p>如果你也是一個 Code Formatting 愛好者，那麼 Ruff 絕對是一個值得你花時間研究的工具。</p>
 <p>更重要的是，由 Rust 所引發的 Python 生態革命，現在才剛剛開始。</p>
