@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-10T09:04:20+08:00" />
+  <meta property="article:modified_time" content="2024-05-10T09:13:45+08:00" />
 
 
 
@@ -364,10 +364,10 @@
 </ul>
 <p>基於上述兩個需求，如果一個全新的 linter 或 formatter 沒有相關的 VS Code 套件，我不會考慮使用。</p>
 <h3 id="安裝與設定-Ruff-套件"><a href="#安裝與設定-Ruff-套件" class="headerlink" title="安裝與設定 Ruff 套件"></a>安裝與設定 Ruff 套件</h3><p>套件安裝後就可以直接使用，如果你的專案中已有專屬的 Ruff 設定檔，我覺得<strong>不需要再特別設定</strong> VS Code Ruff 套件部分。</p>
-<p>不過還是提供我的設定：</p>
+<p>不過還是提供我的設定：（以下為 VS Code <code>settings.json</code>內容）</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.showNotifications&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onWarning&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
-<p>特別提醒，如果你在專案中有已經有自己的 Ruff 設定檔，那就不要設定 VS Code Ruff 套件的「<code>args</code>」部分。比如：（以下為<code>settings.json</code>中的內容）</p>
+<p>特別提醒，如果你在專案中有已經有自己的 Ruff 設定檔，那就<strong>不要設定 VS Code Ruff 套件的「<code>args</code>」部分</strong>。比如：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.lint.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.format.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>因為 VS Code 會<strong>優先使用<code>settings.json</code>的設定。</strong></p>
