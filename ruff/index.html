@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-10T17:09:28+08:00" />
+  <meta property="article:modified_time" content="2024-05-10T17:20:56+08:00" />
 
 
 
@@ -327,7 +327,7 @@
 <h3 id="Ruff-Formatter-的不同處理方式"><a href="#Ruff-Formatter-的不同處理方式" class="headerlink" title="Ruff Formatter 的不同處理方式"></a>Ruff Formatter 的不同處理方式</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 選項有 &quot;single&quot; 和 &quot;double&quot;</span></span><br></pre></td></tr></table></figure>
 <p>如果設為<code>&quot;single&quot;</code>，Ruff 會把專案中的<strong>所有</strong>雙引號，都替換為單引號。不過，在上述<strong>慣例</strong>部分，Ruff 還是保留雙引號，不用擔心。</p>
-<p>需要提醒的是：如果你的專案目前是<strong>單雙引號混用</strong>，因為 Ruff 會<strong>強制統一</strong>引號風格，<strong>這勢必會帶來不少的格式化差異。</strong>如上所述，這些變動最好<strong>統一獨立處理</strong>。</p>
+<p>需要提醒的是，如果你的專案目前是<strong>單雙引號混用</strong>，因為 Ruff 會<strong>強制統一</strong>引號風格，<strong>這勢必會帶來不少的格式化差異。</strong>如上所述，這些變動最好<strong>統一獨立處理</strong>。</p>
 <hr>
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
 <h2 id="Ruff-設定篇"><a href="#Ruff-設定篇" class="headerlink" title="Ruff 設定篇"></a>Ruff 設定篇</h2><p>當要採用一個新的 linter、formatter 時（尤其站在團隊開發考量），以下這三個部分的支援成熟度，是我一定會慎重考慮的。</p>
