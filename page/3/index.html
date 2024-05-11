@@ -111,7 +111,7 @@
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
           
-            <a href="/categories/Django/">Django (6)</a>
+            <a href="/categories/Django/">Django (7)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (29)</a>
           
@@ -155,6 +155,33 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/not-by-ai/">為文章標註 Not By AI？ 我覺得大可不必</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-01-15
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/917fAxf.png" alt="notbyai.fyi"></p>
+<p>前陣子，我得知了「<a target="_blank" rel="noopener" href="https://notbyai.fyi/">Not By AI</a>」這個徽章的存在。</p>
+<p>它提倡為你的創作（以下都指文章）加上這個標籤，<strong>聲明是由人類所寫</strong>。</p>
+<p>我們先看一下這個徽章的<a target="_blank" rel="noopener" href="https://notbyai.fyi/#not-by-ai-mission">創立使命</a>（中文為 Google 翻譯）：</p>
+<blockquote>
+<p><strong>使命</strong><br>「Not By AI」徽章的創建是為了鼓勵更多的人製作原創內容並幫助用戶識別人類生成的內容。最終目標是確保人類繼續進步。<br>　<br>專家估計，到 2025 年，90% 的線上內容將由人工智慧產生。隨著人工智慧產生內容的激增，值得注意的是人工智慧是根據人類生成的內容進行訓練的。如果人類僅僅依靠人工智慧來產生前進的內容，那麼人工智慧產生的任何新內容都可能只是過去的內容的回收。這可能對人類進步構成重大障礙。只有限制對人工智慧的依賴並繼續創造原創內容才能推動我們作為一個物種向前發展。</p>
+</blockquote>
+<p>我乍一看覺得<strong>有點心動</strong>，而且作為一個長期創作的部落格作者，像「Not By AI」這種「自我主張型」的標籤，僅是在本能情感上，就有股莫名的吸引力。</p>
+<p>但同時又覺得，好像哪裡<strong>怪怪的</strong>。</p>
+          <div class="read-more">
+            <a href="/not-by-ai/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a>
         </h1>
@@ -331,37 +358,6 @@
 <p>以下排名同時也是重要性排名，就讓我們從最重要的開始吧！</p>
           <div class="read-more">
             <a href="/essential-subscriptions-2023/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/stop-trial-and-error/">別依賴「試誤法」寫程式</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-10-05
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/cr4Ay4E.jpg" alt="from Pixabay"></p>
-<p>這個情況真的太普遍，尤其是知識不夠紮實（指<strong>為開發所做的功課太少</strong>）的開發者。但如下所述，這其實是一個「<strong>開發習慣</strong>」議題。</p>
-<p>無論如何，我不得不為此發聲：「<strong>請停止用『試誤法』來寫程式</strong>！」</p>
-<p>我們先看看維基百科對於「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B0%9D%E8%AF%95%E9%94%99%E8%AF%AF%E6%B3%95">試誤法</a>」的闡述：</p>
-<blockquote>
-<p><strong>嘗試錯誤法</strong>，又稱<strong>試誤法</strong>（英語：trial and error），簡稱<strong>試錯</strong>，是用來解決問題、獲取知識。此種方法可以視為簡易解決問題的方法中的一種，與使用洞察力／直覺或理論推理的方法正好相反。</p>
-</blockquote>
-<p>就像這句「此種方法可以視為簡易解決問題的方法中的一種」說的，在我看來，試誤法常常會得到 workaround（雖不能根本解決，但能<strong>暫時繞過問題</strong>的替代方法）等級的答案——這肯定不是好事。</p>
-<p>首先我得說，「試誤」在軟體開發中，是一個常見且實用的手段。</p>
-<p>我自己寫一些邏輯時，也常常在 jupyter notebook 先執行嘗試執行一下程式碼片段，看看結果，以確保我的想法沒錯。<strong>但，這只是一種輔助。</strong></p>
-<p>本文想強調的是：<strong>不要以「試誤」作為開發的基調，或解決問題的主要方式</strong>。換言之，<strong>不要濫用試誤</strong>。</p>
-<p>否則那將是一場災難。</p>
-<p>無數次 trial and error，看起來勤勤懇懇，實際上是<strong>最低效的開發手段</strong>。我覺得，試個兩、三次行不通，就應該<strong>重新思考問題的本質——而非繼續嘗試。</strong></p>
-          <div class="read-more">
-            <a href="/stop-trial-and-error/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">

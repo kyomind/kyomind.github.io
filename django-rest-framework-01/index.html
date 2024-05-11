@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="DRF 入門教學（一）前言篇">
+  <meta property="og:title" content="DRF 入門教學（一）前言篇"><meta name="twitter:description" content="本文將介紹 Django 與 DRF 兩者間的關係，以及為何有了 Django，我們還需要 Django Rest Framework。">
+  <meta property="og:description" content="本文將介紹 Django 與 DRF 兩者間的關係，以及為何有了 Django，我們還需要 Django Rest Framework。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
+<meta name="description" content="本文將介紹 Django 與 DRF 兩者間的關係，以及為何有了 Django，我們還需要 Django Rest Framework。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
+            <meta property="og:tag" content="Django" />
+    <meta property="og:tag" content="Django Tutorial" />
+    <meta property="og:tag" content="Django Ninja" />
+    <meta property="og:tag" content="API 開發" />
+    
+
+  <meta property="article:modified_time" content="2024-05-11T17:57:44+08:00" />
+
+
+
+
+
+  <meta property="article:published_time" content="2024-05-11T17:15:37+08:00" />
+
+
+
+<meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" />
+<meta name="author" content="Kyo" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/django-rest-framework-01/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>DRF 入門教學（一）前言篇 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/top/">
+        <li class="mobile-menu-item">熱門
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
+          
+            <a href="/categories/Django/">Django (7)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (29)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/top/">
+          熱門
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">DRF 入門教學（一）前言篇
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-05-12
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Rest-Framework-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django Rest Framework 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-DRF"><span class="toc-text">為何需要 DRF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E8%88%87-DRF-%E6%AF%94%E8%BC%83"><span class="toc-text">Django 與 DRF 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CBV-vs-FBV"><span class="toc-text">CBV vs FBV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRF-vs-Django-Ninja"><span class="toc-text">DRF vs Django Ninja</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%88%9D%E5%AD%B8%E8%80%85%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-text">小結：初學者的選擇</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 4 篇。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="https://blog.kyomind.tw/django/">Django 文章總覽</a>」。</p>
+<hr>
+<p>終於要進入「Django API」的世界了！</p>
+<p>不過，在開始 DRF 教學之前，我要先介紹 Django 和 DRF 兩者間的「關係」。</p>
+<p>為什麼 Django 不乾脆自己實作 API 功能就好了？而是把這個任務交給別的套件，比如本文的 Django Rest Framework。</p>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>因此，本文的主要目的是建構一個「high level」的世界觀，讓你了解為何在 Django 之餘，我們還需要 Django Rest Framework。</p>
+<p>了解兩者的關係，更能體會它們所扮演的不同角色。</p>
+<p>換句話說，這一篇還沒有要開始真正寫 API。</p>
+<h3 id="系列：DRF-入門教學"><a href="#系列：DRF-入門教學" class="headerlink" title="系列：DRF 入門教學"></a>系列：DRF 入門教學</h3><ul>
+<li><a href="/series/#DRF-%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li>
+</ul>
+<span id="more"></span>
+
+<hr>
+<h2 id="Django-介紹"><a href="#Django-介紹" class="headerlink" title="Django 介紹"></a>Django 介紹</h2><p>Django 是一個<strong>全端框架</strong>（附有<strong>前端模板</strong>的<strong>後端框架</strong>），它強大而靈活，能處理從模板渲染、表單生成、管理界面、資料庫模型等，幾乎所有事情。</p>
+<p>我們常說 Python 是「<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Batteries_Included">Batteries Included</a>」（意味有豐富的標準函式庫），<strong>而 Django 也是如此——它大而全。</strong></p>
+<p>在這個設計理念下，Django 關心的是「<strong>整個網站的建構</strong>」，所以它必須要從前端包到後端，而不會只專注在後端 API。</p>
+<h2 id="Django-Rest-Framework-介紹"><a href="#Django-Rest-Framework-介紹" class="headerlink" title="Django Rest Framework 介紹"></a>Django Rest Framework 介紹</h2><p>當涉及到現代的 Web 應用，尤其是需要與前端框架如 React、Vue 配合，我們需要<strong>更專注於 API 的開發方式</strong>。畢竟「前後端分離」是現在 Web 開發主流。</p>
+<p>於是我們有了 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django Rest Framework</a>，以下簡稱 DRF。</p>
+<p>DRF 引入了專門針對 API 的功能，如強大的序列化器、權限管理、通用 API 視圖。</p>
+<p>這些功能使得 DRF 不僅能夠擴充 Django 的原有能力，而且提供了對 RESTful API 開發的專門支持。</p>
+<p>不得不承認，在「前後端分離」已成顯學的今日，有了 DRF 這樣的框架，能有效維持 Django 作為一個開源後端框架的<strong>競爭力</strong>。</p>
+<hr>
+<h2 id="為何需要-DRF"><a href="#為何需要-DRF" class="headerlink" title="為何需要 DRF"></a>為何需要 DRF</h2><p>但又話說回來，為何 Django 不自己強化 API 功能，而是交給 DRF 這類套件呢？</p>
+<p>我們可以從這兩個方向上考慮：</p>
+<h3 id="一、專注與專業分工"><a href="#一、專注與專業分工" class="headerlink" title="一、專注與專業分工"></a>一、專注與專業分工</h3><ul>
+<li>Django 的核心團隊專注於框架的<strong>基礎功能</strong>——ORM、Middleware，這些是所有使用 Django 的開發者都需要的核心功能。</li>
+<li>API 開發則是一個<strong>專業領域</strong>，涉及不同的需求和專業知識，如資料驗證與序列化。DRF 對 REST API 的構建進行擴充，提供了一整套工具與實踐。</li>
+</ul>
+<h3 id="二、模組化與彈性"><a href="#二、模組化與彈性" class="headerlink" title="二、模組化與彈性"></a>二、模組化與彈性</h3><ul>
+<li>通過將 API 功能外包給如 DRF 這樣的套件，Django <strong>保持了核心的簡潔</strong>，同時提供了一定<strong>彈性</strong>。讓開發者可以根據需求，選擇合適自己的工具。</li>
+<li>換句話說，Django 專注在核心功能而不是 API，可以讓它<strong>更全面、更具擴充性。</strong></li>
+<li>模組化也意味著你可以<strong>只在需要時</strong>引入 DRF，以保持專案的<strong>輕量</strong>。畢竟，Django 本身已經非常豐富。</li>
+</ul>
+<h2 id="Django-與-DRF-比較"><a href="#Django-與-DRF-比較" class="headerlink" title="Django 與 DRF 比較"></a>Django 與 DRF 比較</h2><p>綜上所述，我們直接用表格來比較兩者的功能與角色差異：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Django</th>
+<th>DRF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要目的</td>
+<td>全面的 Web 框架，提供完整的 Web 應用開發支持。</td>
+<td>專注於 Web API 的建立，特別是 RESTful API。</td>
+</tr>
+<tr>
+<td>設計哲學</td>
+<td>提供高度可重用性和快速開發元件，比如 Django ORM。</td>
+<td>API 優先：提供 API 特定的工具和功能，比如序列化器。</td>
+</tr>
+<tr>
+<td>核心功能</td>
+<td>模板渲染、表單生成、管理界面、資料庫模型。</td>
+<td>序列化、權限控制、API 視圖。</td>
+</tr>
+<tr>
+<td>目標用戶</td>
+<td>面向所有類型的 Web 開發者，包括初學者和專業人士。</td>
+<td>面向需要建立複雜 API 的開發者。</td>
+</tr>
+</tbody></table>
+<hr>
+<p>了解 Django 與 DRF 的差異後，還有一個議題也很重要——CBV 與 FBV。</p>
+<h2 id="CBV-vs-FBV"><a href="#CBV-vs-FBV" class="headerlink" title="CBV vs FBV"></a>CBV vs FBV</h2><p>Class based view 與 Function based view，兩者都是實現 Django 中 View 的手段，各有適合的場景。</p>
+<p>CBV 有著<strong>重用程式碼</strong>的優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p>
+<p>老實說，我只寫過 FBV，而且我也更愛 FBV。</p>
+<h3 id="DRF-更擅長-CBV"><a href="#DRF-更擅長-CBV" class="headerlink" title="DRF 更擅長 CBV"></a>DRF 更擅長 CBV</h3><p>不過，DRF 本身對於 CBV 有著「<strong>更完整的支援</strong>」。</p>
+<p>所以如果你想要將 DRF 發揮到極致，那它提供的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview">GenericAPIView</a> 非常值得學習。並且和 DRF 其它元件有著<strong>高度的整合。</strong></p>
+<h3 id="本系列只會使用-FBV"><a href="#本系列只會使用-FBV" class="headerlink" title="本系列只會使用 FBV"></a>本系列只會使用 FBV</h3><p>不過因為我沒真正大量使用過 CBV，而且 DRF 系列只是入門教學，所以我只會用 FBV 進行示範。</p>
+<p>另一方面，Django Ninja、FastAPI、Flask 都是以 FBV 為主，或許對大部分人而言，能善用 FBV 已然足夠。</p>
+<hr>
+<h2 id="DRF-vs-Django-Ninja"><a href="#DRF-vs-Django-Ninja" class="headerlink" title="DRF vs Django Ninja"></a>DRF vs Django Ninja</h2><p>長期以來，DRF 一直是開發 Django API 的主要甚至唯一選擇——直到 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 的出現。</p>
+<p>Django Ninja 是烏克蘭開發者 <a target="_blank" rel="noopener" href="https://github.com/vitalik">Vitaliy Kucheryaviy</a> 力作，可以想成是「<strong>Django 版的 FastAPI</strong>」。</p>
+<p>它提供不同於傳統寫法的 FBV，高度整合了 Python type hints。並使用 Pydantic 進行資料的驗證與序列化，還有最重要的——自動產生 API 文件。</p>
+<p>關於 Django Ninja，以及它和 DRF 的比較，我會放到 Django Ninja 系列，再行介紹。</p>
+<hr>
+<h2 id="小結：初學者的選擇"><a href="#小結：初學者的選擇" class="headerlink" title="小結：初學者的選擇"></a>小結：初學者的選擇</h2><p>本文講述了 Django 與 DRF 在現代開發中扮演的角色，與它們相輔相成的關係。</p>
+<p>如果你是剛開始接觸 Django API 的開發者，我相信 DRF 還是第一選擇。因為它更加成熟，而且累積了大量的歷史資料。</p>
+<p>在熟悉了基本的 Django API 開發流程與常見元素後，再學習 Django Ninja 也不遲。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-tutorial/" title="Django Tutorial：系列介紹與導讀" rel="bookmark">Django Tutorial：系列介紹與導讀</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/reverse-relationships/" title="Django ORM：一對一、一對多外鍵教學（中）反向關聯" rel="bookmark">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定" rel="bookmark">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/API-%E9%96%8B%E7%99%BC/">API 開發</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/no-result/">
+        <span class="next-text nav-default">我絕不用 result 作為變數名稱</span>
+        <span class="prev-text nav-mobile">我絕不用 result 作為變數名稱</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">7</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">29</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">34</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">21</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kyomind.tw/" class="iconfont icon-instagram" title="instagram"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
