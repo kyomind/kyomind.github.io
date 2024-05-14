@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/less-is-more/</loc>
+    
+    <lastmod>2024-05-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-rest-framework-01/</loc>
     
     <lastmod>2024-05-14</lastmod>
@@ -329,15 +338,6 @@
     <loc>https://blog.kyomind.tw/vscode-pythonpath/</loc>
     
     <lastmod>2024-04-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/less-is-more/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
