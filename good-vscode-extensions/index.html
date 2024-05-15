@@ -33,7 +33,7 @@
     <meta property="og:tag" content="後端" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T06:39:47+08:00" />
+  <meta property="article:modified_time" content="2024-05-15T04:45:54+08:00" />
 
 
 
@@ -124,7 +124,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (34)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
           
@@ -238,19 +238,14 @@
 <li>二星 ⭐️⭐️：覺得實用。</li>
 <li>三星 ⭐️⭐️⭐️：不能沒有！</li>
 </ul>
+<hr>
 <h2 id="必備的前置套件"><a href="#必備的前置套件" class="headerlink" title="必備的前置套件"></a>必備的前置套件</h2><p>以下套件沒有入列標題的 18 個套件之中，因為這部分<strong>沒有所謂的推不推薦</strong>，它們基本上是<strong>必須</strong>的。</p>
 <h3 id="Python-Extension"><a href="#Python-Extension" class="headerlink" title="Python Extension"></a>Python Extension</h3><p>直接參考 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python extension</a> 的介紹：</p>
 <blockquote>
 <p><strong>Python extension for Visual Studio Code</strong><br>IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more.</p>
 </blockquote>
-<p>這個套件應該不太需要解釋，不裝就不用寫 Python 了。</p>
-<p>它有一個<strong>缺點</strong>，就是太「<strong>包山包海</strong>」了——除了 Python 基本功能，還包括了 isort、Jupyter 和 linter 與 formatter 的整合，難怪微軟打算將一部分功能<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/150798">陸續拆分出來</a>。</p>
-<p>目前<strong>已完成拆分</strong>的套件有 Flake8、Black、isort 等，相關文章如下：</p>
-<ul>
-<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
-<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
-</ul>
-<h3 id="Pylance"><a href="#Pylance" class="headerlink" title="Pylance"></a>Pylance</h3><p>由微軟自行研發的 <a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/python/introducing-the-python-language-server/">Python language server</a>，可簡單想成前述 Python 套件的強化補充包，藉以提供更多 Python 相關的實用功能，比如靜態語法分析、型別驗證（使用微軟自家的 <a target="_blank" rel="noopener" href="https://github.com/microsoft/pyright">Pyright</a>）等。</p>
+<p>這個套件應該不太需要解釋，不裝不行。但它有一個<strong>缺點</strong>，就是內容太「<strong>包山包海</strong>」，所幸目前一部分功能已<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/150798">陸續拆分出來</a>。</p>
+<h3 id="Pylance"><a href="#Pylance" class="headerlink" title="Pylance"></a>Pylance</h3><p>由微軟自行研發的 <a target="_blank" rel="noopener" href="https://devblogs.microsoft.com/python/introducing-the-python-language-server/">Python language server</a>，可簡單想成前述 Python 套件的強化補充包，藉以提供更多 Python 相關的實用功能，比如<strong>靜態語法分析、型別檢查</strong>（使用微軟自家的 <a target="_blank" rel="noopener" href="https://github.com/microsoft/pyright">Pyright</a>）等。</p>
 <p>詳細功能可參考<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">套件首頁</a>，目前已經是前項 Python 套件的<strong>預設</strong> language server。</p>
 <h3 id="各式-Linter、Formatter、Type-Checker"><a href="#各式-Linter、Formatter、Type-Checker" class="headerlink" title="各式 Linter、Formatter、Type Checker"></a>各式 Linter、Formatter、Type Checker</h3><p>隨著微軟不斷把 Python 套件的功能拆分出來，我們可以根據自己的需求，選擇安裝：</p>
 <ul>
@@ -261,7 +256,14 @@
 <li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.autopep8">autopep8</a></li>
 <li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort">isort</a></li>
 </ul>
-<p>作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 狂人☺️，這些套件肯定是我必裝的，且已經在其它文章中介紹過，這裡就不再贅述。</p>
+<p>作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 狂人☺️，這些套件肯定是我必裝的，且已經在其它文章中介紹過，清單如下，這裡就不再贅述。</p>
+<p>相關文章：</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></li>
+<li><a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a></li>
+<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
+</ul>
 <hr>
 <p>前言結束。現在，讓我們進入正題。</p>
 <h2 id="佈景主題"><a href="#佈景主題" class="headerlink" title="佈景主題"></a>佈景主題</h2><p>編輯器外觀設定。</p>
@@ -511,7 +513,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">7</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">29</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">34</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">21</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">7</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">29</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">35</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">21</span></a>
     </div>
   </div>
 </div>
