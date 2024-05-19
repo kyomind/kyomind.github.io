@@ -27,12 +27,12 @@
 <meta property="article:publisher" content="https://blog.kyomind.tw" />
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
             <meta property="og:tag" content="書" />
-    <meta property="og:tag" content="讀書心得" />
     <meta property="og:tag" content="Python" />
     <meta property="og:tag" content="Type Hints" />
+    <meta property="og:tag" content="讀書心得" />
     
 
-  <meta property="article:modified_time" content="2024-05-09T02:22:03+08:00" />
+  <meta property="article:modified_time" content="2024-05-19T00:31:37+08:00" />
 
 
 
@@ -119,15 +119,15 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/Django/">Django (7)</a>
-          
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
+            <a href="/categories/Django/">Django (7)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (29)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (21)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -174,7 +174,10 @@
       <div class="post-meta">
         <span class="post-time">
           2024-04-07
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2024-05-19
+          </span>
+        <span class="post-category">
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
             </span>
         </div>
@@ -187,7 +190,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/nqKDYbc.png" alt="強健的 Python"><span class="cap">強健的 Python</span></p>
 <p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9786263241015">強健的 Python｜撰寫潔淨且可維護的程式碼</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
-<p>本書翻譯自《<a target="_blank" rel="noopener" href="https://www.amazon.com/-/zh_TW/Patrick-Viafore/dp/1098100662">Robust Python: Write Clean and Maintainable Code</a>》，原文的副標題容易讓人以為這又是另一本關於「Clean Code in Python」的書。</p>
+<p>本書翻譯自《<a target="_blank" rel="noopener" href="https://www.amazon.com/-/zh_TW/Patrick-Viafore/dp/1098100662">Robust Python: Write Clean and Maintainable Code</a>》，原文的副標題容易讓人<strong>誤以為</strong>這又是另一本關於「Clean Code in Python」的書。</p>
 <p>實際上，本書所聚焦的，是 Python 的一大特性——<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">type hints</a>。全書大半篇幅都圍繞著這個核心主軸。</p>
 <p>所以它並非教你「如何寫出 Pythonic 程式碼」的書，而是介紹 type hints 寫法與使用相關工具（比如 Mypy）以確保 type hints 有效落實的作品。</p>
 <p>如果你還不熟悉 Python type hints，本文也可以作為認識 type hints 的起點。</p>
@@ -206,13 +209,13 @@
 <p>這個過程並不困難，但還是需要一番摸索才能順利到位，這部分我會另外寫成一篇文章作為教學。</p>
 <p>本文的重點，在於<strong>專案落實 type hints 的挑戰</strong>。</p>
 <h2 id="專案落實-type-hints-的真正難點"><a href="#專案落實-type-hints-的真正難點" class="headerlink" title="專案落實 type hints 的真正難點"></a>專案落實 type hints 的真正難點</h2><p>在為 Django 專案導入 Mypy 之前，我讀了本書——前後讀了兩次。</p>
-<p>之所以寫這篇筆記，主要是深刻感受到，在工作上要落實 type hints、把它們加入到 Python 專案中，整個環節<strong>最難的部分</strong>，絕不是關於 type hints 語法的學習。</p>
+<p>之所以寫這篇筆記，主要是深刻感受到，在工作上要落實 type hints、把它們加入到 Python 專案中，整個環節<strong>最難的部分</strong>，並非關於 type hints 語法的學習。</p>
 <p>而是其它種種因素。</p>
 <p>事實上，我去年就打算<a href="https://blog.kyomind.tw/weekly-review-08/#%E5%B0%8F%E7%B5%90%EF%BC%9A2023-%E4%B8%8A%E5%8D%8A%E5%B9%B4%E7%9B%AE%E6%A8%99">為 Django 專案全面導入 type hints</a>，但是失敗了！直到本次的時機「更加成熟」，才下定決心推行。</p>
 <p>本文藉由對書中內容的整理與我的經驗，好好介紹一下，為專案加入 type hints 時，<strong>你一定會遇到的困難</strong>，與對應的思考。</p>
 <hr>
-<h2 id="Python-type-hints-簡介"><a href="#Python-type-hints-簡介" class="headerlink" title="Python type hints 簡介"></a>Python type hints 簡介</h2><p>Python  3.5 首次導入了 type hints，詳情請見〈<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484 – Type Hints</a>〉，該 PEP 提案的共同發起人除了 Python 之父 Guido van Rossum，還有 Mypy 的作者。</p>
-<p>接下來的每一版 Python，都少不了對 type hints 的擴充與增強。可以說，type hints 是經過「一系列」漫長的發展與迭代，才有了今日的氣象。</p>
+<h2 id="Python-type-hints-簡介"><a href="#Python-type-hints-簡介" class="headerlink" title="Python type hints 簡介"></a>Python type hints 簡介</h2><p>Python  3.5 首次導入了 type hints，可見〈<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484 – Type Hints</a>〉，該 PEP 提案的共同發起人除了 Python 之父 Guido van Rossum，還有 Mypy 作者。</p>
+<p>接下來的每一版 Python，<strong>都少不了對 type hints 的擴充與增強</strong>。可以說，type hints 是經過「一系列」漫長的發展與迭代，才有了今日的氣象。</p>
 <h2 id="Type-hints-的野心"><a href="#Type-hints-的野心" class="headerlink" title="Type hints 的野心"></a>Type hints 的野心</h2><p>Guido van Rossum 本人對 type hints 非常重視，從良葛格的〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/116983">Type Hints 的野心</a>〉中這一段話可知：</p>
 <blockquote>
 <p>本來 Python 在動態定型語言中，相對來說，就是極為重視工程性的語言，然而曾經在某個地方看過的說法是，<strong>Guido 長年以來的野心，就是讓 Python 在工程性上更進一步</strong>，而在靜態分析工具上投入精力會是必要的。事實上，從 2000 年以來，Guido 一直想在 Python 中，加入可選的靜態定型，一直到 PEP 484、526 的實現，本人也在 PyCon 2015 親自上場講演〈<a target="_blank" rel="noopener" href="https://goo.gl/wPZYWo">Type Hints</a>〉，似乎也印證了這點。</p>
@@ -220,14 +223,14 @@
 <h3 id="Type-hints-的價值"><a href="#Type-hints-的價值" class="headerlink" title="Type hints 的價值"></a>Type hints 的價值</h3><p>專案程式碼加入 type hints 的好處顯而易見，它們賦予 Python 在開發階段就能如靜態型別語言般，為變數、參數、回傳值<strong>明示型別</strong>的能力，從而提高專案的穩定性和可維護性——這在大型專案中尤其重要。</p>
 <p>說真的，很多時候我光是看型別，對於程式碼的理解就有<strong>明顯的提升</strong>，這對於程式碼的<strong>閱讀、維護、重構</strong>都有<strong>很大的幫助</strong>。</p>
 <p>搭配 Mypy 這類 type checker，加上 IDE 整合，更是妙不可言！</p>
-<p>這直接提高了 Python 在團隊協作的競爭力，讓大型專案採用 Python 變得更加可能——當然，我知道，有些人並不這麼認為😎</p>
+<p>這直接提高了 Python 在團隊協作的競爭力，讓大型專案採用 Python 變得更加可能。</p>
 <h3 id="Type-hints-的代價"><a href="#Type-hints-的代價" class="headerlink" title="Type hints 的代價"></a>Type hints 的代價</h3><p>儘管 type hints 有種種好，但平心而論，它的<strong>代價也不小</strong>！（後面會提到）</p>
-<p>所以有時候，你決定不採用 type hints，或許是「明智」的，尤其是在一些不需要長期維護的專案。</p>
+<p>所以，有時候你不寫 type hints，可能是「明智」的，尤其是在一些不需要長期維護，或是小型個人專案中。</p>
 <p>但是，要徹底了解 type hints 的優點與缺點，我們需要<strong>更加全面且務實</strong>的的觀點。</p>
 <hr>
 <p>呼，鋪陳有點長，以下才是本書的重點整理！</p>
 <h2 id="Type-hints-的利弊分析"><a href="#Type-hints-的利弊分析" class="headerlink" title="Type hints 的利弊分析"></a>Type hints 的利弊分析</h2><p>關於採用 type hints 的利弊分析，本書的第 100 頁，有相對完整的論述。</p>
-<p>利的部分上面已經說了，這裡我們主要關注導入 type hints 的「缺點」。</p>
+<p>利的部分上面已經說了，這裡我們主要關注導入 type hints 的「<strong>缺點</strong>」。</p>
 <p>在此直接引用書中所舉的內容（我加上<strong>粗體</strong>作為<strong>重點標示</strong>），講述專案導入 type hints 的<strong>阻力與成本</strong>，包括：</p>
 <blockquote>
 <ul>
@@ -256,9 +259,9 @@
 <blockquote>
 <p>你的成本<strong>一開始會很高</strong>，但隨著採用率的提高會變得更和緩。你的效益一開始會很低，但隨著你注釋 codebase，你會看到更多的價值。<strong>在這兩條曲線相遇之前，你不會看到投資的回報。為了使價值最大化，你需要儘早達到這個交叉點。</strong></p>
 </blockquote>
-<p>講白了就是，寫愈多，阻力就會愈低。這雖然像是「廢話」，但也給了我們希望！🤣</p>
-<p>對於這張圖，我的看法是：type hints 的收益<strong>絕對是累積出來的</strong>，但成本的下降<strong>不一定有這麼快</strong>。</p>
-<p>畢竟每次寫 type hints，多少都需要思考（所幸我們有 GitHub Copilot 🥰），這個成本<strong>未必</strong>會隨著時間而<strong>快速</strong>降低——<strong>但肯定會逐漸降低</strong>，因為習慣了。</p>
+<p>講白了就是，寫愈多，阻力就會愈低。這雖然像是「廢話」，但也給了我們希望！</p>
+<p>對於這張圖，我的看法是：type hints 的收益<strong>絕對是累積出來的</strong>，但成本的下降<strong>也許沒這麼快</strong>。</p>
+<p>畢竟每次寫 type hints，多少都需要思考（所幸我們有 GitHub Copilot 🥰），它不會是完全機械性的反射動作。</p>
 <hr>
 <p>文末我會提出自己對於「降低導入 type hints 阻力」的看法。我們先來看書中的建議。</p>
 <h2 id="書中的一些建議"><a href="#書中的一些建議" class="headerlink" title="書中的一些建議"></a>書中的一些建議</h2><blockquote>
@@ -273,7 +276,7 @@
 <li>型別注釋「複雜」的程式碼</li>
 </ul>
 <p>以上這幾點取自書中的小標題，但我想說的是——這些看法雖然有道理，但其實<strong>大部分都很難操作！</strong></p>
-<p>什麼叫賺錢的程式碼？怎麼樣才算複雜？書中並非沒有解釋，但這些都需要<strong>人為定義</strong>，而且有「<strong>標準浮動</strong>」之嫌，根本難以一體適用。</p>
+<p>什麼叫賺錢的程式碼？怎麼樣才算複雜？書中並非沒有解釋，但這些都需要<strong>人為定義</strong>，而且有「<strong>標準浮動</strong>」之嫌，難以一體適用。</p>
 <h3 id="為新程式碼加上-type-hints"><a href="#為新程式碼加上-type-hints" class="headerlink" title="為新程式碼加上 type hints"></a>為新程式碼加上 type hints</h3><p>「為新程式碼加上 type hints 」部分，是我唯一認為<strong>值得參考且可行</strong>的！</p>
 <blockquote>
 <p>考慮讓你當前未注釋的程式碼保持原樣，並<strong>根據這兩條規則</strong>來注釋程式碼：</p>
@@ -282,9 +285,9 @@
 <li>注釋你<strong>變更</strong>的任何<strong>舊程式碼</strong>。</li>
 </ul>
 </blockquote>
-<p>對於已經完成的舊專案，我們就是採用這個策略！畢竟要把舊專案整個翻新成有 type hints 的版本，成本往往很高。</p>
-<p>所以採<strong>折衷方案</strong>，比如修改舊函式的其中幾行、或寫一個全新的函式時，該函式就必須有完整的 type hints——我會在 code review 時進行檢查。</p>
-<p>這樣的好處是標準清晰、判斷簡單，而且不用一次到位。</p>
+<p>對於已經完成的舊專案，我們就是採用這個策略！</p>
+<p>意即修改舊函式的其中幾行、或寫一個全新的函式時，該函式就必須有完整的 type hints——我會在 code review 時進行檢查。</p>
+<p>這樣的好處是<strong>標準清晰、判斷簡單，而且不用一次到位。</strong></p>
 <p>當然，想要透過慢慢更新，最終讓整個專案都可以通過 Mypy 檢查，還是不太現實的。這算是一種「對舊的、暫時無力全面適用 type hints 專案的<strong>折衷</strong>」。</p>
 <h2 id="並非所有程式碼都要加上-type-hints"><a href="#並非所有程式碼都要加上-type-hints" class="headerlink" title="並非所有程式碼都要加上 type hints"></a>並非所有程式碼都要加上 type hints</h2><p>有件事必須<strong>釐清與強調</strong>，以免造成誤解。</p>
 <p>所謂「<strong>完整</strong>」的 type hints，並不是把專案程式碼中的每一個地方都加上 type hints。</p>
@@ -300,13 +303,13 @@
 <p>主要有兩個原因：</p>
 <ol>
 <li>DRF 本身並不要求型別，而且專案誕生的早，也沒有完整的型別支援。不過現在有 stubs 套件（專門標示 type hints 的套件，比如 <a target="_blank" rel="noopener" href="https://github.com/typeddjango/djangorestframework-stubs">djangorestframework-stubs</a>），這應該不至於成為關鍵難點。</li>
-<li>這個才是我覺得最難的，那就是<strong>「不易說服」成員寫 type hints</strong>。儘管 type hints 肯定有好處，但我沒有信心，這好處會<strong>明顯超過</strong>投入的心力——尤其在一開始的時候。</li>
+<li>這個才是我覺得<strong>最難的</strong>，那就是<strong>「不易說服」成員寫 type hints</strong>。儘管 type hints 肯定有好處，但我沒有信心，這好處會<strong>明顯超過</strong>投入的心力——尤其在一開始的時候。</li>
 </ol>
 <p>顯然我不太可能只是給同事看上面那張圖，就能輕易說服大家要開始寫 type hints 🐸</p>
 <p>所以最後我還是放棄「完整」type hints 的企圖，只是要求大家要開始「試著」寫 type hints。（事實證明，這樣也不錯，至少大家開始有了 type hints 的概念）</p>
 <h2 id="Django-Ninja-與-Pydantic"><a href="#Django-Ninja-與-Pydantic" class="headerlink" title="Django Ninja 與 Pydantic"></a>Django Ninja 與 Pydantic</h2><p>那怎樣才能讓我在「<strong>事前</strong>」就有足夠信心說服大家呢？</p>
 <p>就是採用像 FastAPI、Django Ninja 這類，透過 Pydantic 來產生 API 文件的框架！</p>
-<p>API 文件是後端開發的一大痛點，DRF 雖然也有 <a target="_blank" rel="noopener" href="https://github.com/axnsan12/drf-yasg">drf-yasg</a> 這樣的套件，但說真的，和 Pydantic 這種原生採用 type hints 來產生 API 文件相比，肯定有所不及。</p>
+<p>撰寫高品質的 API 文件是後端開發的一大痛點，DRF 雖然也有 <a target="_blank" rel="noopener" href="https://github.com/axnsan12/drf-yasg">drf-yasg</a> 這樣，可以依程式碼產生文件的套件。但說真的，和 Pydantic 這種透過<strong>採用 type hints 產生 API 文件</strong>的工具相比，依舊有所不及。</p>
 <p>今年的新專案開始用了 Django Ninja，因此情況大不相同——即<strong>時機成熟</strong>了。</p>
 <h3 id="Type-hints-輔助輪"><a href="#Type-hints-輔助輪" class="headerlink" title="Type hints 輔助輪"></a>Type hints 輔助輪</h3><p>寫 Django Ninja（或 FastAPI），你本來就要書寫大量 type hints，來產生正確、合理的 API 文件。那要求為專案的其餘部分，比如自定義的函式、類別加上 type hints，阻力相對就小得多。</p>
 <p>這主要差別在於，大家能因為 API 文件的自動渲染，<strong>直接感受到 type hints 的價值！</strong></p>
@@ -314,7 +317,7 @@
 <blockquote>
 <p>竟然可以充分運用 Python type hints 到這般程度，讓它不僅僅是為了型別安全而服務，而是融入到整個 api 流程中</p>
 </blockquote>
-<p>在我看來，這類採用了 Pydantic 框架所帶來的效應，就像腳踏車的輔助輪，在剛起步使用 type hints 時，有著明顯的正面引導效果。</p>
+<p>在我看來，這類採用了 Pydantic 框架所帶來的效應，就像腳踏車的輔助輪，在剛起步使用 type hints 時，<strong>有著明顯的正面引導效果。</strong></p>
 <hr>
 <h2 id="小結與整理"><a href="#小結與整理" class="headerlink" title="小結與整理"></a>小結與整理</h2><p>然而，我並不是說，只有寫 FastAPI 或 Django Ninja 才能成功落實 type hints，只不過<strong>它們遇到的阻力會相對小</strong>。</p>
 <p>如果能夠先有這類專案作為「甜頭」，那要在其餘專案落實可能會容易得多。因為要讓成員「相信」寫 type hints 有價值，確實不容易。</p>
@@ -360,9 +363,9 @@
     </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-01/" title="《Python 工匠》筆記（一）如何寫好註解" rel="bookmark">《Python 工匠》筆記（一）如何寫好註解</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-02/" title="《Python 工匠》筆記（二）對「單元測試」的看法與建議" rel="bookmark">《Python 工匠》筆記（二）對「單元測試」的看法與建議</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/introducing-python/" title="《精通 Python 第二版》心得：給入門者的 Python 學習藍圖" rel="bookmark">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E6%9B%B8/">書</a>
-            <a href="/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/">讀書心得</a>
             <a href="/tags/Python/">Python</a>
             <a href="/tags/Type-Hints/">Type Hints</a>
+            <a href="/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/">讀書心得</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/weekly-review-26/">
