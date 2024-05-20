@@ -2,16 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/a-mind-for-blogs/</loc>
+    <loc>https://blog.kyomind.tw/top/index.html</loc>
     
-    <lastmod>2024-05-19</lastmod>
+    <lastmod>2024-05-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/top/index.html</loc>
+    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
+    
+    <lastmod>2024-05-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/a-mind-for-blogs/</loc>
     
     <lastmod>2024-05-19</lastmod>
     
@@ -59,15 +68,6 @@
     <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2024-05-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
-    
-    <lastmod>2024-05-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1093,7 +1093,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-05-19</lastmod>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
