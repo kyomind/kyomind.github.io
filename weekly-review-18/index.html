@@ -16,7 +16,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="18，論軟體工程師常見的「路徑依賴」問題（上）">
-  <meta property="og:title" content="18，論軟體工程師常見的「路徑依賴」問題（上）">
+  <meta property="og:title" content="18，論軟體工程師常見的「路徑依賴」問題（上）"><meta name="twitter:image" content="https://i.imgur.com/3auatX0.png">
+  <meta property="og:image" content="https://i.imgur.com/3auatX0.png">
 <meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
 
 
@@ -25,9 +26,10 @@
 <meta property="article:publisher" content="https://blog.kyomind.tw" />
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Weekly Review" />
             <meta property="og:tag" content="軟體工程師" />
+    <meta property="og:tag" content="壞味道（Bad Smell）" />
     
 
-  <meta property="article:modified_time" content="2024-01-06T04:44:07+08:00" />
+  <meta property="article:modified_time" content="2024-05-21T04:05:30+08:00" />
 
 
 
@@ -169,7 +171,10 @@
       <div class="post-meta">
         <span class="post-time">
           2023-05-14
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2024-05-21
+          </span>
+        <span class="post-category">
             <a href="/categories/Weekly-Review/">Weekly Review</a>
             </span>
         </div>
@@ -180,17 +185,26 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E4%BD%95%E8%AC%82%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">前言：何謂路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E8%AC%82%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4%EF%BC%9F"><span class="toc-text">何謂軟體工程師的路徑依賴？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A8%8B%E5%BC%8F%E8%A8%BB%E8%A7%A3%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">一、程式註解的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E8%A1%A8%E9%81%94%E6%96%B9%E5%BC%8F%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%91%E4%BE%9D%E8%B3%B4"><span class="toc-text">二、工作表達方式上的路徑依賴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E8%AE%80%E8%80%85%E6%84%8F%E8%AD%98%E7%9A%84%E6%AC%A0%E7%BC%BA"><span class="toc-text">小結：讀者意識的欠缺</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://i.imgur.com/mmEzb21.png"></p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<blockquote>
+<p><code>2024/05/21</code>：更新文章內容，加入一些折衷看法。</p>
+</blockquote>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/stop-trial-and-error/">別依賴「試誤法」寫程式</a></p>
+</blockquote>
 <p>我常常覺得，軟體工程師可能是最能體現「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B7%A5%E5%85%B7%E8%A7%84%E5%BE%8B">當你手裡只有鎚子，看什麼都會像釘子</a>」的一群人😂</p>
-<p>我們在工作中，有時會陷入一種被稱為「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96">路徑依賴</a>」的困境。本文將探討「路徑依賴」在軟體工程師的工作與職涯發展中，所造成的各種影響和受困者會有的具體表現。</p>
+<p>我們在工作中，有時會陷入一種被稱為「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%B7%AF%E5%BE%84%E4%BE%9D%E8%B5%96">路徑依賴</a>」的困境。</p>
+<p>本文將探討「路徑依賴」在軟體工程師的工作與職涯發展中，所造成的各種影響，以及「受困者」會有的具體表現。</p>
 <p>或許會讓你感到有點熟悉。</p>
+<hr>
 <h2 id="前言：何謂路徑依賴？"><a href="#前言：何謂路徑依賴？" class="headerlink" title="前言：何謂路徑依賴？"></a>前言：何謂路徑依賴？</h2><p>「<strong>路徑依賴</strong>」是個社會科學的概念，用來描述一種現象，即一旦人們在某一方面選擇了特定的路徑或方式，他們就可能變得<strong>過度依賴這條路徑，並且可能難以改變。</strong></p>
 <p>這種依賴性可能源於各種因素，包括習慣、成本、學習曲線等，並可能在多個層面上產生影響，包括個人的行為、團隊的運作，甚至是整個社會的結構和制度。</p>
-<p>在這裡，我們將專注於討論「<strong>軟體工程師常見的路徑依賴</strong>」。以下的內容主要是基於我個人在工作上的觀察，可能會帶有一點偏見，但絕大部分都是基於事實。</p>
+<p>在這裡，我們將專注於討論「<strong>軟體工程師常見的路徑依賴</strong>」。</p>
+<p>以下的內容主要是基於我個人在工作上的觀察，可能帶有一點偏見，所以<strong>閱讀時請保持批判性思考。</strong></p>
 <span id="more"></span>
 
 <h2 id="何謂軟體工程師的路徑依賴？"><a href="#何謂軟體工程師的路徑依賴？" class="headerlink" title="何謂軟體工程師的路徑依賴？"></a><strong>何謂軟體工程師的路徑依賴？</strong></h2><p>文章標題與開頭把「路徑依賴」稱為一種「<strong>困境</strong>」，這樣的說法可能<strong>有失公允</strong>。</p>
-<p>事實上，在大部分情況下，遵循既定的路徑可以顯著提高效率、增加確定性，同時也是我們發展專業的基礎。</p>
+<p>事實上，<strong>在大部分情況下，遵循既定的路徑可以顯著提高效率、增加確定性</strong>，同時也是我們發展專業的基礎。</p>
 <p>所以嚴格來說，本文要討論的，是軟體工程師在工作與職涯中，那些「<strong>造成不良影響</strong>」的路徑依賴。</p>
 <p>這類依賴帶來了<strong>一系列問題</strong>，例如<strong>低效率產出、溝通不順暢，甚至限制了我們的視野</strong>。因此，對於軟體工程師來說，了解這些路徑依賴的存在，確實有其必要。</p>
 <p>接下來，我將從我自己以及我曾接觸和共事過的軟體工程師身上，舉出四個常見的路徑依賴觀察實例。</p>
@@ -201,33 +215,42 @@
 <p>所謂的「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%A8%BB%E8%A7%A3_(%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88)">程式註解</a>」，指的是在程式碼中<strong>以特定格式或符號添加的文字或說明</strong>，用於解釋程式碼的功能、邏輯或用途。</p>
 <p>程式註解是為了提供給開發人員或其他讀者（通常是一起開發的工程師）更容易理解和閱讀本段程式碼的<strong>附加資訊</strong>。它們<strong>不會影響程式的執行</strong>，但對於增進開發上的溝通與協作效率，有著重要地位，尤其是程式中<strong>特別複雜</strong>的部分。</p>
 <p>註解通常使用<strong>自然語言</strong>（例如英文、中文）撰寫，而且要力求<strong>好讀、好理解</strong>。</p>
-<h3 id="「程式晶晶體」註解"><a href="#「程式晶晶體」註解" class="headerlink" title="「程式晶晶體」註解"></a>「程式晶晶體」註解</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%99%B6%E6%99%B6%E9%AB%94">晶晶體</a>是一種流行於臺灣以中文為基底，夾雜英語不成句的單字或片語的表達方式。</p>
+<h3 id="太多細節與「程式晶晶體」註解"><a href="#太多細節與「程式晶晶體」註解" class="headerlink" title="太多細節與「程式晶晶體」註解"></a>太多細節與「程式晶晶體」註解</h3><blockquote>
+<p><code>2024/05/21</code>：適度使用英文詞彙，通常是為了<strong>專業術語</strong>或<strong>標準化</strong>，這類用法<strong>有其必要性</strong>。所以以下說的是「<strong>過度使用</strong>」，尤其是涉及太多<strong>底層、實作細節</strong>，造成程式碼閱讀者的<strong>認知負擔</strong>。</p>
 </blockquote>
-<p>某些人在撰寫註解時，容易過度依賴程式碼的「<strong>實作細節</strong>」表達（比如<code>用 excutemany 大量插入資料至 User Table</code>、<code>以 bulk_create 批次建立 obj</code>），而非使用<strong>簡潔清晰的自然語言</strong>（比如<code>將用戶資料存入資料庫</code>、<code>一次性建立大量用戶資料</code>）。</p>
-<p>在中文夾雜大量的程式碼片語，堪稱「<strong>程式晶晶體</strong>」，語意不清、主詞不明，常常讓人無法一望即知。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%99%B6%E6%99%B6%E9%AB%94">晶晶體</a>是一種流行於臺灣以中文為基底，夾雜英語不成句的單字或片語的表達方式。</p>
+<p>某些人在撰寫註解時，容易過度依賴程式碼的「<strong>實作細節</strong>」表達，比如<code>用 excutemany 大量插入資料至 User Table</code>、<code>以 bulk_create 批次建立 obj</code>——簡單說就是「<strong>講太細了！</strong>」</p>
+<p>很多時候，這些細節描述應該使用「<strong>高抽象層次</strong>」且<strong>簡潔清晰的自然語言</strong>來替代。比如<code>將用戶資料存入資料庫</code>、<code>一次性建立大量用戶資料</code>——這才是<strong>給人看的註解。</strong></p>
+<h3 id="給人看的註解"><a href="#給人看的註解" class="headerlink" title="給人看的註解"></a>給人看的註解</h3><p>在中文夾雜<strong>大量</strong>的程式碼片語，堪稱「<strong>程式晶晶體</strong>」，語意不清、主詞不明，常常讓人無法一望即知。</p>
 <p>其實也有完全用自然語言書寫的註解，但你讀起來並不覺得那是「<strong>通順</strong>」的句子，比較像 10 歲小學生寫的作文。</p>
-<p>為什麼會這樣？因為開發者普遍「<strong>比較擅長</strong>」寫程式，而非文字表達。所以乾脆用寫程式的思路來寫註解——毫無疑問，這樣真的比較輕鬆。</p>
+<p>為什麼會這樣？因為開發者普遍「<strong>比較擅長</strong>」寫程式，而非文字表達。</p>
+<p><strong>所以乾脆用寫程式的思路來寫註解——毫無疑問，這樣真的比較輕鬆</strong>。只是讀者可能會覺得「<strong>這註解是在說什麼？</strong>」</p>
 <p>這種在思考與陳述上，<strong>嚴重依賴程式碼邏輯</strong>的敘事方式，常常導致註解<strong>難以理解</strong>、重複程式碼的內容（即<strong>冗餘的註解</strong>），甚至可能<strong>產生混淆</strong>。</p>
 <h3 id="從他人角度自我審視：為什麼作者都需要好的編輯？"><a href="#從他人角度自我審視：為什麼作者都需要好的編輯？" class="headerlink" title="從他人角度自我審視：為什麼作者都需要好的編輯？"></a>從他人角度自我審視：為什麼作者都需要好的編輯？</h3><p>你可能會認為：「只要提醒對方注意一下，問題就解決了吧？自己的文字是否易懂，應該很容易看得出來吧！」可惜，事實往往不是如此。</p>
 <p>對於開發程式的「當事人」而言，即使註解中夾雜了大量不必要的程式細節，自己也常常會<strong>深陷其中，難以察覺</strong>，甚至覺得看起來<strong>很合理</strong>！——這就是為什麼作者都需要好的編輯，因為<strong>自身的盲點是很難完全發現並避免的</strong>。</p>
 <p>少部分工程師甚至會覺得「我的程式能跑且執行結果正確」就算稱職了。至於註解有沒有寫、寫得好不好，不能算是評價我工作品質的範圍與指標。</p>
-<p>這想法不能說毫無道理，只不過，寫程式若只顧自己，終究難登大雅之堂。這些程式碼看起來就像是<strong>一個人的自言自語</strong>（只要自己有完成任務就好）——<strong>它並沒有在溝通</strong>。</p>
+<p>這想法不能說毫無道理，只不過，<strong>寫程式若只顧自己，終究難登大雅之堂</strong>。這些程式碼看起來就像是<strong>一個人的自言自語</strong>（只要自己有完成任務就好）——<strong>它並沒有在溝通</strong>。</p>
 <h3 id="註解只是冰山一角"><a href="#註解只是冰山一角" class="headerlink" title="註解只是冰山一角"></a>註解只是冰山一角</h3><p>本段以「程式註解」為例，試圖說明工程師在「撰寫易讀程式碼」的路上常見的路徑依賴（可以說是一種協作上的「阻礙」）。</p>
-<p>然而，這種「<strong>缺乏溝通意識</strong>」所帶來的影響，不僅存在於註解中，<strong>也往往貫穿整個程式寫作過程</strong>。</p>
+<p>然而，這種「<strong>缺乏溝通意識（或說意願）</strong>」的開發心態所帶來的影響，不僅存在於註解中，<strong>也往往貫穿整個程式寫作過程</strong>。</p>
 <p>這種心態的影響實際上<strong>遠遠超越了程式碼的範疇</strong>，接下來，我們將繼續探討這種心態在「<strong>工作表達方式</strong>」上所展現的路徑依賴特徵。</p>
+<hr>
 <h2 id="二、工作表達方式上的路徑依賴"><a href="#二、工作表達方式上的路徑依賴" class="headerlink" title="二、工作表達方式上的路徑依賴"></a>二、工作表達方式上的路徑依賴</h2><p>看完第一個路徑依賴，我想你已經能猜到，這第二個會是什麼模樣了。</p>
-<p>很多軟體 PM 在會議中常常會覺得，聽不太懂工程師在說些什麼。而我想說的是，你的感覺是對的！其實我也聽不懂。</p>
+<p>很多軟體 PM 在會議中常常會覺得，聽不太懂工程師在說些什麼。而我想說的是，你是對的！其實我也聽不懂。</p>
 <p>既然寫註解、<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Docstring">docstring</a> 這種應該要用「簡潔清晰的自然語言」表達的場合，都容易<strong>藉由程式邏輯與實作細節含混帶過</strong>。那麼軟體工程師在會議中的表達，自然也會受到此「<strong>慣性</strong>」影響。</p>
-<p>以我個人的經驗，工程師在描述自己工作上的要解決的問題、解決方式、可能的方向、已完成的任務等等，非常容易陷入類似的路徑依賴。</p>
+<h3 id="工作溝通上的路徑依賴"><a href="#工作溝通上的路徑依賴" class="headerlink" title="工作溝通上的路徑依賴"></a>工作溝通上的路徑依賴</h3><p>以我個人的經驗，工程師在描述自己工作上的要解決的問題、解決方式、可能的方向、已完成的任務等等，非常容易陷入類似的路徑依賴。</p>
 <p>其結果就跟前面提到的程式註解一樣，你不會覺得對方是在講「人話」，而像是一種對技術方案、程式邏輯的「<strong>輪廓描述</strong>」。</p>
-<p>至於所要解決的問題、背後的痛點究竟是什麼？選擇的依據為何？常常會直接予以忽略——因為他們滿腦子都是技術思維。</p>
-<p>導致重點還沒說清楚，相關細節卻講了一堆，本末倒置。</p>
-<h3 id="請說人話"><a href="#請說人話" class="headerlink" title="請說人話"></a>請說人話</h3><p>前面提到，不好的程式註解，就像一個人的自言自語。而這樣的表達方式，又何嘗不是如此？導致我們常常需要提醒對方「等等！我想要先知道的是……」</p>
-<p>不過平心而論，良好的溝通、表達，對任何人都不容易，都需要一定的練習。</p>
+<p>至於所要解決的問題、背後的痛點究竟是什麼？選擇的依據為何？常常會直接予以忽略——因為滿腦子都是技術思維。</p>
+<p>導致<strong>重點還沒說清楚，相關細節卻講了一堆</strong>，本末倒置。</p>
+<h3 id="練習：以他人的角度思考"><a href="#練習：以他人的角度思考" class="headerlink" title="練習：以他人的角度思考"></a>練習：以他人的角度思考</h3><p>前面提到，不好的程式註解，就像一個人的自言自語。而這樣的表達方式，又何嘗不是如此？導致我們常常需要提醒對方「等等！我想要先知道的是……」</p>
+<p>不過平心而論，<strong>良好的溝通、表達，對任何人都不容易，都需要一定的練習。</strong></p>
 <p>換句話說，要把一件事情講好，絕對需要先構思、自我反芻、察覺他人容易產生的疑問，並且<strong>以他人的角度去思考</strong>，才能真正做到「<strong>說人話</strong>」。</p>
-<p>只不過軟體工程師基於職業上的特性，在感到<strong>表達困難</strong>的當下，<strong>容易反射性地躲回自己熟悉的技術與專業領域，以求得一定的自適與安全感。</strong></p>
+<p>只不過軟體工程師基於職業上的特性，在感到<strong>表達困難</strong>的當下，<strong>容易反射性地躲回自己熟悉的技術與專業領域，以獲得一定的自適與安全感。</strong></p>
+<blockquote>
+<p><code>2024/05/21</code>：我得強調一件事，要用簡單的自然語言，把複雜的開發邏輯講清楚、好討論，<strong>本來就很難</strong>！所以本文著眼的，是那份「<strong>願意好好表達」的意識，與背後的用心，而非「表達能力」。</strong></p>
+</blockquote>
+<p>這樣的<strong>路徑依賴</strong>，對於工程師的<strong>溝通能力</strong>和<strong>團隊協作</strong>，都會帶來一定的<strong>負面影響</strong>。</p>
 <p>這無疑會讓沒有技術背景的人，感到困惑和隔閡。</p>
+<p>更不用說，如前所述，其實我也聽不懂😂</p>
 <hr>
 <h2 id="小結：讀者意識的欠缺"><a href="#小結：讀者意識的欠缺" class="headerlink" title="小結：讀者意識的欠缺"></a>小結：讀者意識的欠缺</h2><p>講完前兩項，本篇要收尾了，我們作個小結。</p>
 <p>前兩個路徑依賴凸顯的都是當事人對於「<strong>他人很可能會不理解</strong>」這個意識的強烈欠缺，以至於常常用一種旁人看來近乎「<strong>自言自語</strong>」的方式在表達自我。</p>
@@ -235,12 +258,9 @@
 <blockquote>
 <p>所謂的「<strong>讀者意識</strong>」，指的是作者在寫作時預見到讀者的理解困難，並通過語言表達和組織結構來幫助讀者，使讀者更容易理解的能力。</p>
 </blockquote>
-<p>我很想說「本文只是指出少數軟體工程師在工作上……」，但你我都知道（這裡的「你我」指的是工程師群體），說「少」恐怕是騙人的。</p>
-<p>「<strong>讀者意識的欠缺</strong>」在軟體工程師中確實是一個<strong>普遍存在的問題</strong>。有時候，我們可能過於專注於自己的程式碼和技術細節，而忽略了將這些複雜的概念和思維以易於理解的方式傳達給他人。</p>
+<p>「<strong>讀者意識的欠缺</strong>」在軟體工程師中確實是一個<strong>普遍存在的問題</strong>。</p>
+<p>有時候，我們可能過於專注於自己的程式碼和技術細節，而忽略了將這些複雜的概念和思維以易於理解的方式傳達給他人。</p>
 <p>我也不敢說自己已經完全擺脫了上述的困境，在「讓自己與自己的工作產出容易被他人理解」這個面向上，我們還可以不斷努力，一直努力。</p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/stop-trial-and-error/">別依賴「試誤法」寫程式</a></p>
-</blockquote>
 
       </div>
 
@@ -270,9 +290,10 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-02/" title="02，關於寫程式到 70 歲的想像" rel="bookmark">02，關於寫程式到 70 歲的想像</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-06/" title="06，十年後，還能繼續當軟體工程師嗎？" rel="bookmark">06，十年後，還能繼續當軟體工程師嗎？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-08/" title="08，年末特輯下：2022 工作與程式學習總結" rel="bookmark">08，年末特輯下：2022 工作與程式學習總結</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/stop-trial-and-error/" title="別依賴「試誤法」寫程式" rel="bookmark">別依賴「試誤法」寫程式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-02/" title="02，關於寫程式到 70 歲的想像" rel="bookmark">02，關於寫程式到 70 歲的想像</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-06/" title="06，十年後，還能繼續當軟體工程師嗎？" rel="bookmark">06，十年後，還能繼續當軟體工程師嗎？</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/%E5%A3%9E%E5%91%B3%E9%81%93%EF%BC%88Bad-Smell%EF%BC%89/">壞味道（Bad Smell）</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/poetry-pyenv-practical-tips/">
