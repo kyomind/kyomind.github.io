@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/top/index.html</loc>
+    
+    <lastmod>2024-05-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
     
     <lastmod>2024-05-21</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://blog.kyomind.tw/no-result/</loc>
     
     <lastmod>2024-05-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/top/index.html</loc>
-    
-    <lastmod>2024-05-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
