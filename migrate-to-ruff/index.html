@@ -36,7 +36,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-25T13:10:03+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T13:33:42+08:00" />
 
 
 
@@ -271,15 +271,17 @@
 <h2 id="補充：pyupgrade-真是棒！"><a href="#補充：pyupgrade-真是棒！" class="headerlink" title="補充：pyupgrade 真是棒！"></a>補充：pyupgrade 真是棒！</h2><p>Ruff 整合了 pyupgrade，讓我第一次認識到這個強大的工具。</p>
 <p>我強烈建議，一定要開啟 pyupgrade 功能！讓專案中的 Python 語法維持<strong>更高程度的一致性。</strong></p>
 <p>畢竟，<strong>在團隊協作中，「一致性」有時比慣例更加重要。</strong></p>
-<p>比如 Python type hints 中，關於 Optional 的寫法，3.9 以前會這樣寫：</p>
+<h3 id="例示：修正-type-hints-語法"><a href="#例示：修正-type-hints-語法" class="headerlink" title="例示：修正 type hints 語法"></a>例示：修正 type hints 語法</h3><p>比如 Python type hints 中，關於 Optional 的寫法，3.9 以前會這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Optional</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="type">Optional</span>[<span class="built_in">int</span>]</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <p>Optional 本身是 Union 在特定情況下的<strong>別名</strong>，但它常常讓人<strong>感到困惑。</strong></p>
 <p>而在 Python 3.10 之後，上述寫法可以改為：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="built_in">int</span> | <span class="literal">None</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>後者顯然<strong>更加簡潔且直觀。</strong>（讓你一望即知，參數型別不是 int 就是 None）</p>
-<p>啟用 pyupgrade 可以自動幫你把這些舊語法轉換為新版（由 requires-python 指定目標 Python 版本）語法。</p>
-<p>這不僅讓你的程式碼更乾淨，也能避免不同成員寫出風格不一的 Python 程式碼。</p>
+<p>不過話說回來，這個例子<strong>並不是</strong>一個好的 type hints 示範，理由可參考<a target="_blank" rel="noopener" href="https://haosquare.com/python-type-hints-3-beginner-mistakes/">這篇文章</a>底下，良葛格的留言。</p>
+<h3 id="pyupgrade-小結"><a href="#pyupgrade-小結" class="headerlink" title="pyupgrade 小結"></a>pyupgrade 小結</h3><p>pyupgrade 會修正的部分，遠不止 type hints，上面只是一個例示。</p>
+<p>啟用 pyupgrade 可以<strong>自動幫你把這些舊語法轉換為新版</strong>（由 requires-python 指定目標 Python 版本）語法。</p>
+<p>這不僅讓你的程式碼更乾淨，也能避免不同成員寫出風格不一致的 Python 程式碼。</p>
 
       </div>
 
