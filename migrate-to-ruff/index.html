@@ -36,7 +36,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-25T13:51:50+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T16:47:48+08:00" />
 
 
 
@@ -278,7 +278,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="built_in">int</span> | <span class="literal">None</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>後者顯然<strong>更加簡潔且直觀。</strong>（讓你一望即知，參數型別不是 int 就是 None）</p>
-<p>不過話說回來，這個例子<strong>並不是</strong>一個好的 type hints 示範，理由可參考<a target="_blank" rel="noopener" href="https://haosquare.com/python-type-hints-3-beginner-mistakes/">這篇文章</a>底下，良葛格的留言。</p>
+<p>不過話說回來，這個例子<strong>並不是</strong>一個好的 type hints 示範，理由可參考這篇〈<a target="_blank" rel="noopener" href="https://haosquare.com/python-type-hints-3-beginner-mistakes/">Python Type Hints 教學：我犯過的 3 個菜鳥錯誤</a>〉底下，良葛格的留言。</p>
 <h3 id="pyupgrade-功能與小結"><a href="#pyupgrade-功能與小結" class="headerlink" title="pyupgrade 功能與小結"></a>pyupgrade 功能與小結</h3><p>具體來說，pyupgrade 會自動將舊的 type hints 語法轉換為新版語法。</p>
 <p>上述的<code>Optional</code>，將自動修正為<code>|</code>寫法——只要我指定了 Python 3.10 以上的版本。</p>
 <p><strong>但 pyupgrade 會修正的部分，遠不止 type hints</strong>，這只是一個例子。</p>
