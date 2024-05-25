@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-25T05:49:10+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T06:01:59+08:00" />
 
 
 
@@ -191,7 +191,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff"><span class="toc-text">結語：Time to Ruff</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">一、pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">二、VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff"><span class="toc-text">結語：Time to Ruff</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <blockquote>
@@ -208,9 +208,9 @@
 <li><a href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black">Formatter 部分：取代 Black</a></li>
 <li><a href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C">單、雙引號議題</a></li>
 <li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87">Ruff 設定篇</a></li>
-<li><a href="#pyproject-toml-%E8%A8%AD%E5%AE%9A">pyproject.toml 設定</a></li>
-<li><a href="##Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A">Ruff VS Code 套件設定</a></li>
-<li><a href="#pre-commit-%E8%A8%AD%E5%AE%9A">pre-commit 設定</a></li>
+<li><a href="#%E4%B8%80%E3%80%81pyproject-toml-%E8%A8%AD%E5%AE%9A">一、pyproject.toml 設定</a></li>
+<li><a href="#%E4%BA%8C%E3%80%81VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A">二、VS Code 套件設定</a></li>
+<li><a href="#%E4%B8%89%E3%80%81pre-commit-%E8%A8%AD%E5%AE%9A">三、pre-commit 設定</a></li>
 <li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90">Ruff 設定篇小結</a></li>
 <li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff">結語：Time to Ruff</a></li>
 </ol>
@@ -338,7 +338,7 @@
 <p>對於一個開發工具，我們主要關心的是：「它是否提供 pre-commit hook？」</p>
 <hr>
 <p>以上 3 點，<strong>Ruff 都有完整支援</strong>。下面就來一一解說。</p>
-<h2 id="pyproject-toml-設定"><a href="#pyproject-toml-設定" class="headerlink" title="pyproject.toml 設定"></a>pyproject.toml 設定</h2><p>Ruff 總共支援三種設定檔：<code>pyproject.toml</code>、<code>ruff.toml</code>、<code>.ruff.toml</code>。</p>
+<h2 id="一、pyproject-toml-設定"><a href="#一、pyproject-toml-設定" class="headerlink" title="一、pyproject.toml 設定"></a>一、pyproject.toml 設定</h2><p>Ruff 總共支援三種設定檔：<code>pyproject.toml</code>、<code>ruff.toml</code>、<code>.ruff.toml</code>。</p>
 <p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。以下的範例與解說，我採用設定檔格式是<code>pyproject.toml</code>。</p>
 <p>Ruff 因為功能眾多，設定上較為複雜。所幸，<strong>大部分時候，我們只需要設定一些基本的項目</strong>。</p>
 <h3 id="基本設定與解說"><a href="#基本設定與解說" class="headerlink" title="基本設定與解說"></a>基本設定與解說</h3><p>首先，因為在<code>pyproject.toml</code>中，所以設定的 key 定是<code>[tool.xxx]</code>格式。</p>
@@ -352,7 +352,7 @@
 <h3 id="設定懶人包"><a href="#設定懶人包" class="headerlink" title="設定懶人包"></a>設定懶人包</h3><p>如果你剛開始用 Ruff，不知道該設定哪些項目。我建議你可以先設定以下幾個：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span>  <span class="comment"># 依照自己的專案需求設定</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>]  <span class="comment"># 至少會加入 I，因為 isort 是必要的</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 依照自己的喜好或專案需求設定</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="Ruff-VS-Code-套件設定"><a href="#Ruff-VS-Code-套件設定" class="headerlink" title="Ruff VS Code 套件設定"></a>Ruff VS Code 套件設定</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff 的 VS Code 套件</a>在 2022 年 12 月首次發表。</p>
+<h2 id="二、VS-Code-套件設定"><a href="#二、VS-Code-套件設定" class="headerlink" title="二、VS Code 套件設定"></a>二、VS Code 套件設定</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff 的 VS Code 套件</a>在 2022 年 12 月首次發表。</p>
 <p>套件的重要性前面有提過，在此再次闡述：</p>
 <ul>
 <li>Linter：在 IDE 中<strong>直接提示</strong>，不必等到後續流程才發現錯誤。</li>
@@ -384,7 +384,7 @@
 <p><img src="https://i.imgur.com/lknGhsJ.png"></p>
 <p>Formatter 部分，因為每個專案只能選定一種格式化器，選好就沒有衝突問題。</p>
 <hr>
-<h2 id="pre-commit-設定"><a href="#pre-commit-設定" class="headerlink" title="pre-commit 設定"></a>pre-commit 設定</h2><p>pre-commit 設定相對單純，更細部的行為，hook 會自動讀取設定檔中的內容。</p>
+<h2 id="三、pre-commit-設定"><a href="#三、pre-commit-設定" class="headerlink" title="三、pre-commit 設定"></a>三、pre-commit 設定</h2><p>pre-commit 設定相對單純，更細部的行為，hook 會自動讀取設定檔中的內容。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/astral-sh/ruff-pre-commit</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v0.1.4</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--fix</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff-format</span></span><br></pre></td></tr></table></figure>
 
 <p>這裡只要注意版本和 hook 的 id 即可。</p>
