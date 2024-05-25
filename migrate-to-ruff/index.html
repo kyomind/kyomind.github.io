@@ -36,7 +36,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-25T13:44:24+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T13:51:50+08:00" />
 
 
 
@@ -268,7 +268,7 @@
 <p>詳情可參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/formatter/#ruff-format">官方文件</a>。</p>
 <p>注意，有些檔案<strong>沒必要格式化</strong>，比如 Django 專案 migrations 目錄下的資料庫遷移檔，可以在 pyproject.toml 中設定<code>exclude</code>。</p>
 <hr>
-<h2 id="補充：pyupgrade-真是棒！"><a href="#補充：pyupgrade-真是棒！" class="headerlink" title="補充：pyupgrade 真是棒！"></a>補充：pyupgrade 真是棒！</h2><p>Ruff 整合了 pyupgrade，讓我第一次認識到這個強大的工具。</p>
+<h2 id="補充：pyupgrade-真是棒！"><a href="#補充：pyupgrade-真是棒！" class="headerlink" title="補充：pyupgrade 真是棒！"></a>補充：pyupgrade 真是棒！</h2><p>Ruff 整合了 <a target="_blank" rel="noopener" href="https://github.com/asottile/pyupgrade">pyupgrade</a>，讓我第一次認識到這個強大的工具。</p>
 <p>我強烈建議，一定要開啟 pyupgrade 功能！讓專案中的 Python 語法維持<strong>更高程度的一致性。</strong></p>
 <p>畢竟，<strong>在團隊協作中，「一致性」有時比慣例更加重要。</strong></p>
 <h3 id="例示：修正-type-hints-語法"><a href="#例示：修正-type-hints-語法" class="headerlink" title="例示：修正 type hints 語法"></a>例示：修正 type hints 語法</h3><p>比如 Python type hints 中，關於 Optional 的寫法，3.9 以前會這樣寫：</p>
