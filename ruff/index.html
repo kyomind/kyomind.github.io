@@ -37,7 +37,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-10T17:47:55+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T05:49:10+08:00" />
 
 
 
@@ -180,7 +180,7 @@
         <span class="post-time">
           2023-12-18
         </span><span class="post-update">
-            →  2024-05-10
+            →  2024-05-25
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -191,16 +191,15 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B7%A3%E8%B5%B7"><span class="toc-text">緣起</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">工作上我還未採用 Ruff 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff"><span class="toc-text">結語：Time to Ruff</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Ruff%EF%BC%9F"><span class="toc-text">Why Ruff？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">本文範例程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87"><span class="toc-text">Ruff 介紹篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89"><span class="toc-text">Linter 部分：取代 Flake8 與 isort 等等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black"><span class="toc-text">Formatter 部分：取代 Black</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C"><span class="toc-text">單、雙引號議題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87"><span class="toc-text">Ruff 設定篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyproject-toml-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pyproject.toml 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">Ruff VS Code 套件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pre-commit-%E8%A8%AD%E5%AE%9A"><span class="toc-text">pre-commit 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90"><span class="toc-text">Ruff 設定篇小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff"><span class="toc-text">結語：Time to Ruff</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <blockquote>
-<p><code>2024/05/10</code>：重新編輯全文，新增、刪除部分內容，補充更多設定實例。調整大量段落表述方式，提升文章流暢度。可視為 v1.5 版。</p>
+<p><code>2024/05/25</code>：新增系列第二篇〈<a href="/migrate-to-ruff/">Python 專案從 Flake8、isort、Black 遷移至 Ruff 指南</a>〉；刪除「緣起」、「工作上我還未採用 Ruff 的理由」段落。<br><code>2024/05/10</code>：重新編輯全文，新增、刪除部分內容，補充更多設定實例。調整大量段落表述方式，提升文章流暢度。可視為 v1.5 版。</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然在去年就聽過它，但我卻一直沒有任何行動。</p>
 <p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，前一版可是 v0.0.292），我感覺<strong>時機已到</strong>，所以進行了一番研究、嘗試，並寫下了本文。</p>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
-<li><a href="#%E7%B7%A3%E8%B5%B7">緣起</a></li>
 <li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
 <li><a href="#Why-Ruff%EF%BC%9F">Why Ruff？</a></li>
 <li><a href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC">本文範例程式碼</a></li>
@@ -213,17 +212,14 @@
 <li><a href="##Ruff-VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A">Ruff VS Code 套件設定</a></li>
 <li><a href="#pre-commit-%E8%A8%AD%E5%AE%9A">pre-commit 設定</a></li>
 <li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90">Ruff 設定篇小結</a></li>
-<li><a href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1">工作上我還未採用 Ruff 的理由</a></li>
 <li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff">結語：Time to Ruff</a></li>
 </ol>
 <span id="more"></span>
 
+<h3 id="系列：Python-Ruff-教學"><a href="#系列：Python-Ruff-教學" class="headerlink" title="系列：Python Ruff 教學"></a>系列：Python Ruff 教學</h3><ul>
+<li><a href="/series/#Python-Ruff-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li>
+</ul>
 <hr>
-<h2 id="緣起"><a href="#緣起" class="headerlink" title="緣起"></a>緣起</h2><p>工作上，我們團隊使用的 linter、formatter 是常見的 Flake8、isort、yapf。這在以往的文章已有多次提及。</p>
-<p>隨著 Ruff 的聲量與能見度日漸提高，作為一個 <a href="https://blog.kyomind.tw/tags/Code-Formatting/">Code Formatting</a> 愛好者，我自然也是躍躍欲試——最好是能夠直接應用到工作開發上！</p>
-<p>因為團隊還不大（含我共 3 個後端開發者），所以改用 Ruff 是完全有可能的。</p>
-<p>不過經過一番研究與考慮，我還是暫時推遲了工作上對 Ruff 的採用（只是把 formatter 從 yapf 換成 Black），原因會在<a href="#%E5%B7%A5%E4%BD%9C%E4%B8%8A%E6%88%91%E9%82%84%E6%9C%AA%E6%8E%A1%E7%94%A8-Ruff-%E7%9A%84%E7%90%86%E7%94%B1">文末說明</a>。</p>
-<p>但是！我還是很推薦，<strong>從現在就開始使用 Ruff 作為你「個人開發」的預設 linter 甚至 formatter</strong>。而 Ruff 究竟有哪些吸引人之處？且容我娓娓道來。</p>
 <h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>我在〈<a href="https://blog.kyomind.tw/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a>〉曾提過：</p>
 <blockquote>
 <p>考慮到「pre-commit」這個主題已經有數篇文章珠玉在前，我下筆前都已拜讀完。<strong>本文的論述重心會盡可能與這些文章錯開，或乾脆直接引用，以降低不必要的重複感。</strong></p>
@@ -400,21 +396,6 @@
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">select</span> = [</span><br><span class="line">    <span class="string">&quot;E&quot;</span>,  <span class="comment"># pycodestyle errors</span></span><br><span class="line">    <span class="string">&quot;W&quot;</span>,  <span class="comment"># pycodestyle warnings</span></span><br><span class="line">    <span class="string">&quot;F&quot;</span>,  <span class="comment"># pyflakes</span></span><br><span class="line">    <span class="string">&quot;I&quot;</span>,  <span class="comment"># isort</span></span><br><span class="line">    <span class="string">&quot;C&quot;</span>,  <span class="comment"># flake8-comprehensions</span></span><br><span class="line">    <span class="string">&quot;B&quot;</span>,  <span class="comment"># flake8-bugbear</span></span><br><span class="line">    <span class="string">&quot;UP&quot;</span>,  <span class="comment"># pyupgrade</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="attr">ignore</span> = [</span><br><span class="line">    <span class="string">&quot;E501&quot;</span>,  <span class="comment"># line too long, handled by black</span></span><br><span class="line">    <span class="string">&quot;B008&quot;</span>,  <span class="comment"># do not perform function calls in argument defaults</span></span><br><span class="line">    <span class="string">&quot;C901&quot;</span>,  <span class="comment"># too complex</span></span><br><span class="line">    <span class="string">&quot;W191&quot;</span>,  <span class="comment"># indentation contains tabs</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.isort]</span></span><br><span class="line"><span class="attr">known-third-party</span> = [<span class="string">&quot;fastapi&quot;</span>, <span class="string">&quot;pydantic&quot;</span>, <span class="string">&quot;starlette&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.pyupgrade]</span></span><br><span class="line"><span class="comment"># Preserve types, even if a file imports `from __future__ import annotations`.</span></span><br><span class="line"><span class="attr">keep-runtime-typing</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>而且 FastAPI 真的很貼心，還加了註解！</p>
-<hr>
-<h2 id="工作上我還未採用-Ruff-的理由"><a href="#工作上我還未採用-Ruff-的理由" class="headerlink" title="工作上我還未採用 Ruff 的理由"></a>工作上我還未採用 Ruff 的理由</h2><blockquote>
-<p><code>2024/05/10</code>：目前團隊已經全面採用 Ruff。</p>
-</blockquote>
-<p>結語之前，講講我在一番研究後，仍未建議團隊在此刻就採用 Ruff 的理由。</p>
-<p>放到最後不是為了賣關子，而是看到這裡，你應該比較能夠理解其中的顧慮。</p>
-<p>主要有三個。</p>
-<h3 id="一、設定相對複雜"><a href="#一、設定相對複雜" class="headerlink" title="一、設定相對複雜"></a>一、設定相對複雜</h3><p>首先我覺得 Ruff 的設定太多樣了，畢竟它一口氣整合了這麼多的工具。</p>
-<p>而且要同時考慮 pyproject.toml、VS Code、pre-commit 的整合，加上各種 linter 在設定上的開關，想想有點頭痛。</p>
-<p>這會帶來一定的認知負擔，同事可能會覺得「搞這些真的有必要嗎？」——其實我也這麼想🤣</p>
-<h3 id="二、需求不足"><a href="#二、需求不足" class="headerlink" title="二、需求不足"></a>二、需求不足</h3><p>我們目前的專案最多只能算中型，用「Flake8 + isort + Black Formatter」經典組合已能運作良好。改用 Ruff，可能看不出太大差別。</p>
-<p>如果看不出差別，設定又要重新調整、學習，難免讓人卻步。</p>
-<h3 id="三、讓子彈再飛一會兒"><a href="#三、讓子彈再飛一會兒" class="headerlink" title="三、讓子彈再飛一會兒"></a>三、讓子彈再飛一會兒</h3><p>說起來，前兩個理由並不算什麼重大阻礙，只是也沒有明顯的動力。</p>
-<p>我打算等 Ruff formatter 的「beta」字樣拿掉後，直接「一換三」一次到位。</p>
-<p>所以，不妨讓子彈再飛一會兒。</p>
 <hr>
 <h2 id="結語：Time-to-Ruff"><a href="#結語：Time-to-Ruff" class="headerlink" title="結語：Time to Ruff"></a>結語：Time to Ruff</h2><p>Ruff 對我的重要性，雖然不如 <a href="https://blog.kyomind.tw/python-poetry/">Poetry 套件管理器</a>。但這樣的工具依舊讓人興奮且充滿期待。</p>
 <p>我並不認為目前的 Python 開發一定要用上 Ruff，但值得你嘗試一下。</p>
