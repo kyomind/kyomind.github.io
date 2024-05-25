@@ -36,7 +36,7 @@
     <meta property="og:tag" content="Ruff" />
     
 
-  <meta property="article:modified_time" content="2024-05-25T03:37:10+08:00" />
+  <meta property="article:modified_time" content="2024-05-25T03:53:18+08:00" />
 
 
 
@@ -271,10 +271,10 @@
 <p>個人強烈建議，一定要開啟 pyupgrade 功能！讓專案中的 Python 語法維持更高程度的一致性。</p>
 <p>畢竟，<strong>在團隊協作中，「一致性」有時比慣例更加重要。</strong></p>
 <p>比如 Python type hints 中，關於 Optional 的寫法，3.9 以前會這樣寫：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Optional</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="type">Optional</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">Optional</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="type">Optional</span>[<span class="built_in">int</span>] = <span class="literal">None</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>而在 Python 3.10 之後，可以簡化為：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="built_in">int</span> | <span class="literal">None</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">arg: <span class="built_in">int</span> | <span class="literal">None</span> = <span class="literal">None</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>後者寫法顯然更加簡潔且直觀。</p>
 <p>啟用 pyupgrade 可以自動幫你把這些舊語法轉換為新版（由 requires-python 指定目標 Python 版本）語法。</p>
