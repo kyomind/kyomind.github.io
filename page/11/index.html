@@ -113,7 +113,7 @@
           
             <a href="/categories/Django/">Django (7)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (29)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (30)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (22)</a>
           
@@ -155,6 +155,32 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-01/">01，為何他們可以，但我不行</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-11-06
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><!-- ![](https://i.imgur.com/sWgUbzT.png) -->
+<p><img src="https://i.imgur.com/mmEzb21.png"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-10/">10，Weekly Review 寫滿 10 回：我的心得與改進</a></p>
+</blockquote>
+<p>Weekly Review，也就是週記，主要內容為：<strong>從我本週的 Logseq  日誌中，挑 1-3 則作為公開記錄發表。</strong></p>
+<p>自從使用 Logseq 後，我每天日誌中的筆記數，介於 5-15 則之間，且絕大部分都不是每天固定記錄的內容。有些事，若只留在筆記中，未免有點可惜，所以想成文並發表出來。這樣的「創作摩擦力」也相對低，雖然依舊需要一定的編輯。</p>
+<p>這系列主要是為了記錄，自己對一些重要事情的<strong>思考與反省</strong>。而公開發表有助於強化這些事物的影響與形成，無論是對外還是對內——因為不再只有我自己知道。</p>
+          <div class="read-more">
+            <a href="/weekly-review-01/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/logseq/">Logseq 心得：一顆冉冉升起的「卡片筆記」新星</a>
         </h1>
@@ -359,32 +385,6 @@
 <p>第二部分則大概講解一下：在 VS Code 中如何透過<code>pyproject.toml</code>，作為 Black、yapf、isort 這幾個常用的 Python 開發工具的<strong>共同設定檔</strong>，而非使用 VS Code 自身的<code>settings.json</code>來儲存設定。並提醒一些使用上的細節。</p>
           <div class="read-more">
             <a href="/pyproject-toml/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-06-05
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
-</blockquote>
-<p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
-<p>而這個<code>HttpRequest</code>物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
-<p>我們經常使用<code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/django-request-headers/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/10/">

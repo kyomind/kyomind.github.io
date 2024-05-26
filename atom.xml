@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-05-25T16:47:48.274Z</updated>
+  <updated>2024-05-26T06:28:18.928Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>30，如何持續寫作——Part 3</title>
+    <link href="https://blog.kyomind.tw/weekly-review-30/"/>
+    <id>https://blog.kyomind.tw/weekly-review-30/</id>
+    <published>2024-05-26T05:51:05.000Z</published>
+    <updated>2024-05-26T06:28:18.928Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>你寫作嗎？你持續寫作嗎？</p><p>我一直覺得，持續寫作<strong>真的很不容易！</strong></p><p>所以我們需要一些方法或看法，來增加持續的可能性、降低其中的門檻。</p><p>在過去的文章中，我曾兩次討論「<strong>持續寫作</strong>」這個議題。本文將整理從上一次到現在，<strong>我的 3 個新想法。</strong></p><h2 id="回顧-Part-1、Part-2"><a href="#回顧-Part-1、Part-2" class="headerlink" title="回顧 Part 1、Part 2"></a>回顧 Part 1、Part 2</h2><p>前兩次討論，其實都只是某篇文章的一個<strong>段落</strong>，分別是：</p><ol><li><a href="/on-writing/#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%A6%82%E4%BD%95%E7%9B%A1%E5%8F%AF%E8%83%BD%E6%8C%81%E7%BA%8C%E5%AF%AB%EF%BC%9F">小結：如何盡可能持續寫？</a>（2021 年）</li><li><a href="/a-mind-for-blogs/#%E5%A6%82%E4%BD%95%E6%8C%81%E7%BA%8C%E5%AF%AB%E4%BD%9C-Part-2">如何持續寫作 Part 2</a>（2022 年）</li></ol><p>它們代表了我不同時期的看法，不過都是<strong>一脈相承</strong>的，後者可能是對前者的<strong>追加、補充或是具體化。</strong></p><p>本文也是如此，我會提出新想法，也會對過去的看法提出更加具體的建議。</p><p>純個人見解！但保證都是我的肺腑之言。讓我們開始。</p><span id="more"></span><hr><h2 id="一、再論流量的重要性"><a href="#一、再論流量的重要性" class="headerlink" title="一、再論流量的重要性"></a>一、再論流量的重要性</h2><p>前兩次我都強調過流量的重要，事實上，在寫作早期，我認為它就是<strong>最重要</strong>的事！</p><p>不過這次我要再度補充，讓這個建議更有「<strong>可操作性</strong>」。</p><p>要知曉流量，首先得要有流量的監控後台，最常見的是 GA4。如果你重視（讀者的）隱私，也可以考慮我曾介紹過的 <a href="https://github.com/umami-software/umami">Umami</a>。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-21/">21，在 VM 上部署 Umami 替代 GA4</a></p></blockquote><h2 id="多少才算「有流量」？"><a href="#多少才算「有流量」？" class="headerlink" title="多少才算「有流量」？"></a>多少才算「有流量」？</h2><p>Part 2 提過，<strong>流量是雙面刃，但又不能沒有。</strong></p><p>那麼，具體而言，對於流量的追求，究竟<strong>什麼時候</strong>才能停止或放慢腳步呢？</p><p>我建議以「每個月有 500、1000 個瀏覽數（二擇一即可）」為目標——這是我架站的第 6、7 個月才做到的🥹</p><blockquote><p>PS：本文專指<strong>部落格寫作</strong>，如果是社群平台，目標數字可能要高得多。</p></blockquote><p>對此，也許有人不服，心想：「寫作不就是應該要表達自我，怎麼可以被流量綁架？」</p><h2 id="折衷方案"><a href="#折衷方案" class="headerlink" title="折衷方案"></a>折衷方案</h2><p>確實如此！不過考慮到持續下去（活下去）才是我們<strong>起步時的第一要務</strong>，這類看法<strong>可以有一些折衷。</strong></p><p>比如，在自己想要的寫作方向上（對我而言是程式相關），試著<strong>優先</strong>寫一些流量「<strong>相對較多</strong>」的主題。</p><p>以我自己為例，就是 pyenv：</p><ul><li><a href="https://blog.kyomind.tw/pyenv-setup/">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a></li><li><a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></li></ul><p>這兩篇文章在我架站的初期，帶來了一定的流量，並建立起信心。</p><hr><h2 id="二、專業內容與個人心得交錯"><a href="#二、專業內容與個人心得交錯" class="headerlink" title="二、專業內容與個人心得交錯"></a>二、專業內容與個人心得交錯</h2><p>第一個建議是面向寫作入門者，以下兩點則是我自己喜歡的做法——可以<strong>增加我寫作的動力。</strong></p><p>觀察本站「<a href="https://blog.kyomind.tw/archives/">文章列表</a>」，細心的讀者或許能看出，我的主題存在一定程度的「<strong>交錯</strong>」。</p><p>沒錯，這是我有意為之。</p><p>有別於大部分技術部落格以程式為主，<strong>我自己很難連續兩、三篇都寫程式相關內容</strong>——因為很累，而且心理上會有一種<strong>厭倦、排斥感</strong>。</p><p>所以我通常寫完一篇技術文章，下一篇就會寫和程式無關的事。</p><p>這對於「專注耕耘特定議題」顯然一種「拖累」，所以我的 <a href="https://blog.kyomind.tw/tags/Django-Tutorial/">Django Tutorial</a> 系列進展緩慢XD</p><p>但是，這麼做也讓我<strong>更容易持續發文</strong>，而且<strong>創作壓力較小。</strong></p><p>有得必有失，而這樣的結果，我自己是可以接受的。</p><hr><h2 id="三、短一點，好一點"><a href="#三、短一點，好一點" class="headerlink" title="三、短一點，好一點"></a>三、短一點，好一點</h2><p>在很長一段時間裡，我對「<strong>長文</strong>」（2000 字以上）存在著一定程度的偏好甚至迷戀。</p><p>但現在的我覺得：<strong>不要這樣——不要以創作長文為榮。</strong></p><p>雖然，不可否認，本站大部分的流量，都來自於長文XD。它們動輒三四五千字，沒完沒了。</p><p>但我還是認為，為了寫作的可持續性，甚至是為了讀者，請試著把文章寫短一點。</p><p>這裡的短，指的是 1000 到 2000 字之間。</p><h2 id="短，也需要練習"><a href="#短，也需要練習" class="headerlink" title="短，也需要練習"></a>短，也需要練習</h2><p>我寫作很常遇到一個情況：本來打算寫 1500 字，結果完稿後往往超過 3000 字。</p><p>為什麼？因為<strong>想把事情說好、說完整</strong>。想要做到盡善盡美。</p><p>對此，我斗膽建議：<strong>不要「總」這麼想——儘管這是好的追求。</strong></p><p>因為我發現，文章只要一長，就很容易<strong>寫偏</strong>。</p><p>所謂的寫偏，不一定是文不對題，只不過這段內容對於讀者而言，<strong>其實沒有你想得那麼重要。</strong></p><p>你需要很強的<strong>自我覺察</strong>（作者都覺得自己的東西好——但讀者未必買帳）和駕馭能力，才能<strong>持續把論述緊扣在主軸上</strong>——這一點也不容易，而長文更是如此。</p><p>「短」這個議題，我還有更多想法，但為了遵守自己對 Weekly Review 的字數上限。且容我另篇再談。</p><p>總之，寫短一點吧！</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;你寫作嗎？你持續寫作嗎？&lt;/p&gt;
+&lt;p&gt;我一直覺得，持續寫作&lt;strong&gt;真的很不容易！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以我們需要一些方法或看法，來增加持續的可能性、降低其中的門檻。&lt;/p&gt;
+&lt;p&gt;在過去的文章中，我曾兩次討論「&lt;strong&gt;持續寫作&lt;/strong&gt;」這個議題。本文將整理從上一次到現在，&lt;strong&gt;我的 3 個新想法。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;回顧-Part-1、Part-2&quot;&gt;&lt;a href=&quot;#回顧-Part-1、Part-2&quot; class=&quot;headerlink&quot; title=&quot;回顧 Part 1、Part 2&quot;&gt;&lt;/a&gt;回顧 Part 1、Part 2&lt;/h2&gt;&lt;p&gt;前兩次討論，其實都只是某篇文章的一個&lt;strong&gt;段落&lt;/strong&gt;，分別是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;/on-writing/#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%A6%82%E4%BD%95%E7%9B%A1%E5%8F%AF%E8%83%BD%E6%8C%81%E7%BA%8C%E5%AF%AB%EF%BC%9F&quot;&gt;小結：如何盡可能持續寫？&lt;/a&gt;（2021 年）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/a-mind-for-blogs/#%E5%A6%82%E4%BD%95%E6%8C%81%E7%BA%8C%E5%AF%AB%E4%BD%9C-Part-2&quot;&gt;如何持續寫作 Part 2&lt;/a&gt;（2022 年）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;它們代表了我不同時期的看法，不過都是&lt;strong&gt;一脈相承&lt;/strong&gt;的，後者可能是對前者的&lt;strong&gt;追加、補充或是具體化。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;本文也是如此，我會提出新想法，也會對過去的看法提出更加具體的建議。&lt;/p&gt;
+&lt;p&gt;純個人見解！但保證都是我的肺腑之言。讓我們開始。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 專案從 Flake8、isort、Black 遷移至 Ruff 指南</title>
@@ -357,42 +394,6 @@
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>26，改用 Buttondown 作為文章訂閱服務</title>
-    <link href="https://blog.kyomind.tw/weekly-review-26/"/>
-    <id>https://blog.kyomind.tw/weekly-review-26/</id>
-    <published>2024-04-10T14:22:04.000Z</published>
-    <updated>2024-05-01T16:30:16.427Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>去年 2 月，部落格新增了「email 文章訂閱」功能，採用的方案是免費的 <a href="http://follow.it/">follow.it</a>。</p><p>它會把我的 RSS 新文章轉成 email，然後寄送給訂閱的讀者。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/weekly-review-12/">12，blog 新增文章訂閱功能——使用 follow.it</a></p></blockquote><p>如該篇中所言，「<strong>文章訂閱功能</strong>」確實是現代部落格的一大需求。</p><p>網路上的資訊眾多，我自己作為讀者，也常常感覺<strong>被淹沒</strong>。遇到一個喜歡的作者，想要追蹤，此時<strong>作者是否提供了訂閱功能，就至關重要。</strong></p><p>文章訂閱功能，可以由寫作平台提供，比如 Medium、Substack。不然就得自己來，因此我一開始就為 blog 提供了 RSS 訂閱。</p><p>但 RSS 畢竟不是一般人常用的資訊接收方式（<strong>我自己也不用</strong>），它只能滿足小眾人口的需求。所以最終我還是選擇了像 follow.it 這樣的「RSS to email」服務。</p><span id="more"></span><h2 id="為何選擇-follow-it"><a href="#為何選擇-follow-it" class="headerlink" title="為何選擇 follow.it"></a>為何選擇 follow.it</h2><p>用過電子報服務的都知道，這些服務<strong>真的不便宜！</strong></p><p>比如其中相對「高貴」的 ConvertKit，從它的 <a href="https://convertkit.com/pricing">pricing</a> 頁面可以看到，它的付費版僅僅 300 個訂戶，每月就要 9 美元！（而且這還是基於<strong>年繳</strong>的「優惠價」）</p><p>這也是為何很多人選擇在 Substack 上寫作，它對於需要發送「大量」電子報給讀者的創作者非常友好——<strong>不用錢。</strong></p><p>但我既已從 Medium 獨立，有了自己的 blog，自然不會再跑去 Substack 上寫作。選擇免費的 follow.it，也是情理之中。</p><blockquote><p>相關文章：</p><ul><li><a href="https://blog.kyomind.tw/my-own-blog-part-one/">我自架部落格的理由與選擇（上）理由篇</a></li><li><a href="https://blog.kyomind.tw/my-own-blog-part-two/">我自架部落格的理由與選擇（下）選擇篇</a></li></ul></blockquote><h2 id="改用-Buttondown"><a href="#改用-Buttondown" class="headerlink" title="改用 Buttondown"></a>改用 Buttondown</h2><p>一年過去，在佛系經營下（畢竟我的「電子報」就只是純粹的新文章通知，也不好意思鼓吹訂閱），訂戶也超過了 100 人，讓我不禁尋思更好的文章訂閱方案。</p><p>畢竟免費有一定<strong>代價</strong>，follow.it 的電子報會在你文章的開頭、結尾夾帶大量廣告。而且廣告的<strong>格調不高</strong>，讓人看了不禁有點<strong>傷眼</strong>🤡</p><p>那為何不一開始就採用電子報供應商的方案？主要有兩個原因：</p><ol><li>不是每家都有「RSS to email」功能，有提供這個功能的，都要花錢！</li><li>那時覺得 follow.it 就完全滿足我了。</li></ol><p>不過，此一時，彼一時。</p><p>就在今年 3 月上旬，我決定正式付費改用 <a href="https://buttondown.email/pricing">Buttondown</a>。</p><blockquote><p>如果你有興趣，可以考慮使用我的<a href="https://buttondown.email/refer/kyo">推薦連結</a>註冊。</p></blockquote><h2 id="為何選擇-Buttondown"><a href="#為何選擇-Buttondown" class="headerlink" title="為何選擇 Buttondown"></a>為何選擇 Buttondown</h2><p>知道它，以及決定選擇它，主要有兩個原因。</p><p>一方面，它是我有在 follow 的兩位作者都推薦過的電子報服務，可參考這兩篇文章：</p><ul><li><a href="https://vocus.cc/article/61a48a31fd89780001ed3b87">我念念不忘的電子報平台 Buttondown</a></li><li><a href="https://pinchlime.com/blog/first-impression-of-buttondown/">令人忍不住想掏錢支持的 Buttondown</a></li></ul><p>另一方面，以我預想的長期訂戶數量（5 年內不超過 1000 人）——也就是 1000 人以內，Buttondown 的價格<strong>還算是可接受的</strong>。</p><p>一年要價 90 美元（月付則是每個月 9 美元），雖然稱不上便宜，但相比於市面上其他常見選擇（必須有「RSS to email」功能），仍有一定的競爭力。</p><p>在嘗試性地付費了一個月、寄了 2 次信以後，我覺得不錯，就決定直接轉年費了。在達到 1000 訂戶以前，應該不會變動。</p><h2 id="一年-90-美元，值得嗎？"><a href="#一年-90-美元，值得嗎？" class="headerlink" title="一年 90 美元，值得嗎？"></a>一年 90 美元，值得嗎？</h2><p>一年 90 美元，相當於我租 DigitalOcean VM 一年的費用，值得嗎？</p><p>我想還是值得的，畢竟它帶來的好處<strong>非常直接</strong>——讓讀者透過電子報，第一時間收到你的文章內容。</p><p><strong>既沒有廣告，也不需要綁定任何創作平台，算是用金錢換來更大的「創作自由」。</strong></p><p>再說，我幾乎所有的文章，都需要等待 SEO 慢慢發酵。這過程往往須耗時數週到數月不等，說真的有點難熬，而且也不一定有亮眼的結果。</p><p>有了電子報文章通知，至少我能<strong>確信</strong>，在發文的當下，有<strong>一小部分人</strong>能夠立刻知曉。</p><p>對作者而言，這無疑能帶來一定的<strong>欣慰</strong>，與<strong>安全感</strong>。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;去年 2 月，部落格新增了「email 文章訂閱」功能，採用的方案是免費的 &lt;a href=&quot;http://follow.it/&quot;&gt;follow.it&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;它會把我的 RSS 新文章轉成 email，然後寄送給訂閱的讀者。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;相關文章：&lt;a href=&quot;https://blog.kyomind.tw/weekly-review-12/&quot;&gt;12，blog 新增文章訂閱功能——使用 follow.it&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如該篇中所言，「&lt;strong&gt;文章訂閱功能&lt;/strong&gt;」確實是現代部落格的一大需求。&lt;/p&gt;
-&lt;p&gt;網路上的資訊眾多，我自己作為讀者，也常常感覺&lt;strong&gt;被淹沒&lt;/strong&gt;。遇到一個喜歡的作者，想要追蹤，此時&lt;strong&gt;作者是否提供了訂閱功能，就至關重要。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;文章訂閱功能，可以由寫作平台提供，比如 Medium、Substack。不然就得自己來，因此我一開始就為 blog 提供了 RSS 訂閱。&lt;/p&gt;
-&lt;p&gt;但 RSS 畢竟不是一般人常用的資訊接收方式（&lt;strong&gt;我自己也不用&lt;/strong&gt;），它只能滿足小眾人口的需求。所以最終我還是選擇了像 follow.it 這樣的「RSS to email」服務。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
-    
-    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
-    
-    <category term="電子報" scheme="https://blog.kyomind.tw/tags/%E9%9B%BB%E5%AD%90%E5%A0%B1/"/>
     
   </entry>
   
