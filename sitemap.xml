@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    
+    <lastmod>2024-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
+    
+    <lastmod>2024-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bear/</loc>
+    
+    <lastmod>2024-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
+    
+    <lastmod>2024-05-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/top/index.html</loc>
     
     <lastmod>2024-05-29</lastmod>
@@ -317,15 +353,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
-    
-    <lastmod>2024-05-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/python-poetry/</loc>
     
     <lastmod>2024-05-01</lastmod>
@@ -518,24 +545,6 @@
     <loc>https://blog.kyomind.tw/apple-studio-display/</loc>
     
     <lastmod>2024-03-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/bear/</loc>
-    
-    <lastmod>2024-03-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
-    
-    <lastmod>2024-02-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -965,15 +974,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/isort-local-module-sorting/</loc>
     
     <lastmod>2024-01-02</lastmod>
@@ -1111,7 +1111,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-05-29</lastmod>
+    <lastmod>2024-05-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
