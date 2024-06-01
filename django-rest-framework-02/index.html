@@ -31,7 +31,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-06-01T14:09:06+08:00" />
+  <meta property="article:modified_time" content="2024-06-01T14:56:54+08:00" />
 
 
 
@@ -187,7 +187,7 @@
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 5 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 2 篇。</p>
 <p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p>
-<p>本文所有程式碼改動，可參考這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/1">Pull Request</a>。</p>
+<p>本文所有程式碼改動，可參考這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/1">PR</a>。</p>
 <hr>
 <p>上一篇我們介紹了 Django 和 Django REST framework（以下簡稱 DRF）之間的區別，與它們各司其職的角色定位。</p>
 <p>兩者相輔相成，讓 Django 在這個「前後端分離」的時代，還能佔有一席之地。</p>
@@ -205,7 +205,6 @@
 <p>就這麼簡單，讓我們直接開始吧！</p>
 <span id="more"></span>
 
-
 <hr>
 <h2 id="安裝-Django-REST-framework-套件"><a href="#安裝-Django-REST-framework-套件" class="headerlink" title="安裝 Django REST framework 套件"></a>安裝 Django REST framework 套件</h2><p>安裝之前，請務必<strong>先啟動專案的虛擬環境</strong>，以下命令都是在虛擬環境中執行。</p>
 <p>首先，我們需要安裝 Django 和 Django REST framework。可以使用以下指令：</p>
@@ -222,6 +221,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject DjangoTutorial</span><br><span class="line"><span class="built_in">cd</span> DjangoTutorial</span><br><span class="line">django-admin startapp post</span><br></pre></td></tr></table></figure>
 
 <p>以下解說都直接採用我的<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">範例專案</a>。</p>
+<hr>
 <h2 id="我的-Django-project-命名習慣"><a href="#我的-Django-project-命名習慣" class="headerlink" title="我的 Django project 命名習慣"></a>我的 Django project 命名習慣</h2><p>一個尋常的 Django 專案，通常是這樣的結構：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├── django_project</span><br><span class="line">    ├── django_project</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── asgi.py</span><br><span class="line">    │   ├── settings.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── wsgi.py</span><br><span class="line">    ├── app1</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── admin.py</span><br><span class="line">    │   ├── models.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── views.py</span><br><span class="line">    ├── app2</span><br><span class="line">    ├── app3</span><br></pre></td></tr></table></figure>
 
@@ -241,8 +241,9 @@
 <p>新增部分是最後 2 行，其餘則是<strong>預設值</strong>。</p>
 <p>每一個我們建立的 Django app 都要加到這個<code>INSTALLED_APPS</code>，而 DRF 本身也要。</p>
 <hr>
-<h2 id="Django-路由設定"><a href="#Django-路由設定" class="headerlink" title="Django 路由設定"></a>Django 路由設定</h2><p>端點（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Endpoint">endpoint</a>）代表特定的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6">URL</a>，是 API 的「入口」。路徑（path）是 URL 的一部分。</p>
-<p><img src="https://i.imgur.com/o2JxS9I.png" alt="取自 en.wikipedia.org/wiki/URL，可點圖放大"><span class="cap">取自 en.wikipedia.org/wiki/URL，可點圖放大</span></p>
+<h2 id="Django-路由設定"><a href="#Django-路由設定" class="headerlink" title="Django 路由設定"></a>Django 路由設定</h2><p>端點（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Endpoint">endpoint</a>）代表特定的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6">URL</a>，是 API 的「入口」。</p>
+<p>路徑（path）是 URL 的一部分——而且是必要部分。圖解如下：</p>
+<p><img src="https://i.imgur.com/o2JxS9I.png" alt="en.wikipedia.org/wiki/URL，可點圖放大"><span class="cap">en.wikipedia.org/wiki/URL，可點圖放大</span></p>
 <p>而<strong>路由（router）</strong>則是<strong>連結端點與實際負責處理請求的 view 函式</strong>之間的<strong>橋樑</strong>。</p>
 <p>我們再複習一下 Django 的路由基本做法：</p>
 <ol>
