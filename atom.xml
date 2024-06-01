@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-05-26T15:09:58.408Z</updated>
+  <updated>2024-06-01T13:49:57.920Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django REST framework 教學（二）基本設定與路由</title>
+    <link href="https://blog.kyomind.tw/django-rest-framework-02/"/>
+    <id>https://blog.kyomind.tw/django-rest-framework-02/</id>
+    <published>2024-06-01T13:23:50.000Z</published>
+    <updated>2024-06-01T13:49:57.920Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p><p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 5 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 2 篇。</p><p>範例程式碼可參考我的 <a href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p><hr><p>上一篇我們介紹了 Django 和 Django REST framework（以下簡稱 DRF）之間的區別，與它們各司其職的角色定位。</p><p>兩者相輔相成，讓 Django 在這個「前後端分離」的時代，還能佔有一席之地。</p><p>接下來，我們要開始動手實作 API。</p><h3 id="系列：Django-REST-framework-教學"><a href="#系列：Django-REST-framework-教學" class="headerlink" title="系列：Django REST framework 教學"></a>系列：Django REST framework 教學</h3><ul><li><a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li></ul><h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的目標：<strong>建立一個 Django API，並確保它正常運行。</strong></p><p>為了達到這個目標，我們需要完成以下三件事：</p><ol><li>安裝 Django REST framework 套件。</li><li>設定 Django 的<code>settings.py</code>，加入 DRF 相關內容。</li><li>實作第一個路由（router）與 API。</li></ol><p>就這麼簡單，讓我們直接開始吧！</p><span id="more"></span><hr><h2 id="安裝-Django-REST-framework-套件"><a href="#安裝-Django-REST-framework-套件" class="headerlink" title="安裝 Django REST framework 套件"></a>安裝 Django REST framework 套件</h2><p>安裝之前，請務必<strong>先啟動專案的虛擬環境</strong>，以下命令都是在虛擬環境中執行。</p><p>首先，我們需要安裝 Django 和 Django REST framework。可以使用以下指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br><span class="line">pip install djangorestframework</span><br></pre></td></tr></table></figure><p>接著，建立一個新的 Django 專案和應用程式（Django app）：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject myproject</span><br><span class="line"><span class="built_in">cd</span> myproject</span><br><span class="line">django-admin startapp myapp</span><br></pre></td></tr></table></figure><p>以上是一般範例。</p><p>如果以 Django-Tutorial 為例（使用 Poetry），則指令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2</span><br><span class="line">poetry add djangorestframework</span><br></pre></td></tr></table></figure><p>建立 Django 專案與 app：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">django-admin startproject DjangoTutorial</span><br><span class="line"><span class="built_in">cd</span> DjangoTutorial</span><br><span class="line">django-admin startapp post</span><br></pre></td></tr></table></figure><p>以下解說都直接採用我的<a href="https://github.com/kyomind/Django-Tutorial">範例專案</a>。</p><h2 id="我的-Django-project-命名習慣"><a href="#我的-Django-project-命名習慣" class="headerlink" title="我的 Django project 命名習慣"></a>我的 Django project 命名習慣</h2><p>一個尋常的 Django 專案，通常是這樣的結構：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├── django_project</span><br><span class="line">    ├── django_project</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── asgi.py</span><br><span class="line">    │   ├── settings.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── wsgi.py</span><br><span class="line">    ├── app1</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── admin.py</span><br><span class="line">    │   ├── models.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── views.py</span><br><span class="line">    ├── app2</span><br><span class="line">    ├── app3</span><br></pre></td></tr></table></figure><p>最上層我稱為 repo 專案，也就是專案的<strong>根目錄</strong>。</p><p>第二層的 <code>django_project</code> 即本段標題中所謂 Django project，裡面有<code>settings.py</code>等「面向整個專案」的設定。</p><p>你可能注意到，我的 Django project 用的是<a href="https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB">大駱峰式命名</a>（DjangoTutorial），而不是典型的小寫加底線（django_tutorial）。</p><p>理由很簡單——為了輕鬆區別 Django project 和其它的 Django app 目錄。</p><h3 id="區別-Django-project-和-Django-app"><a href="#區別-Django-project-和-Django-app" class="headerlink" title="區別 Django project 和 Django app"></a>區別 Django project 和 Django app</h3><p>畢竟它們都一起放在整個 repo 專案底下（這是 Django 預設的專案組織方式，你可以改動它），隨著 Django app 愈來愈多，透過命名風格來快速區分二者，可能是最簡單且省力的方式。</p><p>雖然這和 PEP 8 的<strong>原則</strong>（即<strong>模組名稱</strong>應該使用「小寫 + 底線」命名）有點出入，但我還是推薦你這麼做。</p><p>至於 repo 專案的命名，則沒有限制，可依個人需求而定。我選擇 Django-Tutorial 是為了看起來顯眼且好辨識。</p><p>但如果是「認真的」開源專案，還是建議採用「<code>aa-bb-cc</code>」格式。</p><hr><p>講完命名，我們進入設定環節。</p><h2 id="設定settings-py"><a href="#設定settings-py" class="headerlink" title="設定settings.py"></a>設定<code>settings.py</code></h2><p>打開 <code>DjangoTutorial/settings.py</code>，為 <code>INSTALLED_APPS</code> 新增以下內容：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;rest_framework&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>新增部分是最後 2 行，其餘則是<strong>預設值</strong>。</p><p>每一個我們建立的 Django app 都要加到這個<code>INSTALLED_APPS</code>，而 DRF 本身也要。</p><hr><h2 id="Django-路由設定"><a href="#Django-路由設定" class="headerlink" title="Django 路由設定"></a>Django 路由設定</h2><p>端點（<a href="https://zh.wikipedia.org/zh-tw/Endpoint">endpoint</a>）代表特定的 <a href="https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6">URL</a>，是 API 的「入口」。路徑（path）是 URL 的一部分。</p><p><img src="https://i.imgur.com/o2JxS9I.png" alt="取自 en.wikipedia.org/wiki/URL，可點圖放大"><span class="cap">取自 en.wikipedia.org/wiki/URL，可點圖放大</span></p><p>而<strong>路由（router）</strong>則是<strong>連結端點與實際負責處理請求的 view 函式</strong>之間的<strong>橋樑</strong>。</p><p>我們再複習一下 Django 的路由基本做法：</p><ol><li>建立 app 的二級路由。</li><li>設定 project 的一級路由。</li></ol><p>我也看過把所有路由都統一放到 project 的<code>urls.py</code>做法，但這終究是少數。</p><h3 id="App-二級路由"><a href="#App-二級路由" class="headerlink" title="App 二級路由"></a>App 二級路由</h3><p>首先，在 Django app 底下新增<code>urls.py</code>。這個檔案預設上沒有，我們要自行建立。</p><p><code>post/urls.py</code>內容：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> post.views <span class="keyword">import</span> hello_world  <span class="comment"># 這個 view 函式目前還沒寫</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;hello/&#x27;</span>, hello_world),</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p><code>path</code>是 Django 內建的路由函式，沒有它，你的請求就<strong>到不了</strong>負責處理請求的 view 函式。</p><p><code>path</code>函式的第一個參數，是具體的 <strong>path 字串</strong>。如上圖，path 是端點的一部分，即上面程式碼中的<code>&#39;hello/&#39;</code></p><p>每一個 app 級路由，都要指向特定的 view 函式，也就是<code>path</code>函式的第二個參數——<code>hello_world</code>，儘管我們實際上還沒有撰寫它的內容。</p><h3 id="專案一級路由與前綴"><a href="#專案一級路由與前綴" class="headerlink" title="專案一級路由與前綴"></a>專案一級路由與前綴</h3><p><code>DjangoTutorial/urls.py</code>中的一級路由：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;post/&#x27;</span>, include(<span class="string">&#x27;post.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p><code>&#39;post.urls&#39;</code>就是 post app 的<code>urls.py</code>。</p><p>通常我們會對它加上一個 <strong>path 前綴</strong>，比如<code>&#39;post/&#39;</code>。</p><p>有了<code>&#39;post/&#39;</code>這個前綴，在 post app 的所有路由設定中，都不必再一一加上，這做法有助於路由的管理與維護。</p><p>經過這些設定，我們第一個路由就完成了。</p><p>但是，我們還沒有寫 API 的內部邏輯呢！</p><hr><h2 id="完成第一個-API"><a href="#完成第一個-API" class="headerlink" title="完成第一個 API"></a>完成第一個 API</h2><p>有了端點和路由，剩下的就是 view 函式。</p><p>在<code>post/views.py</code>中建立一個新的 view 函式：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, world!&quot;</span>&#125;)</span><br></pre></td></tr></table></figure><p>這還不是一個 DRF 的 view 函式，但它可以正常運作。</p><p>它將回應一個內容為 JSON 的 HTTP response——這是典型的 API 行為。</p><p>此時，我們在 path「<code>/post/hello/</code>」已經定義了一個 API。</p><h2 id="啟動伺服器，測試-API"><a href="#啟動伺服器，測試-API" class="headerlink" title="啟動伺服器，測試 API"></a>啟動伺服器，測試 API</h2><p>大功告成，我們立刻來測試它！</p><p>直接啟動 Django 的內建伺服器：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure><p>伺服器成功在本機啟動後，我們預期端點「<a href="http://127.0.0.1:8000/post/hello/">http://127.0.0.1:8000/post/hello/</a>」會有我們定義的 JSON response：</p><p><img src="https://i.imgur.com/KLcJTrD.png"></p><hr><h2 id="小結：路由很重要"><a href="#小結：路由很重要" class="headerlink" title="小結：路由很重要"></a>小結：路由很重要</h2><p>路由的設定不難，甚至有些死板。但它們是連接請求與處理邏輯的關鍵部分。</p><p>正確的路由確保 API 的正確運行。透過清晰、簡潔的路由設計，可以更容易地管理和擴展我們的 API 服務。</p><p>DRF 的路由規則幾乎遵循了 Django 的做法，所以本篇對於熟悉 Django 的人可能沒有太多新東西——這是好事。</p><p>下一篇，我們將進入重頭戲——view 函式。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/lyxUZv1.png&quot; alt=&quot;Let&amp;#39;s Django！&quot;&gt;&lt;/p&gt;
+&lt;p&gt;這是 &lt;a href=&quot;/tags/Django-Tutorial/&quot;&gt;Django Tutorial&lt;/a&gt; 的第 5 篇、&lt;a href=&quot;/series/#Django-REST-framework-%E6%95%99%E5%AD%B8&quot;&gt;DRF 系列&lt;/a&gt;的第 2 篇。&lt;/p&gt;
+&lt;p&gt;範例程式碼可參考我的 &lt;a href=&quot;https://github.com/kyomind/Django-Tutorial&quot;&gt;GitHub 專案&lt;/a&gt;，更多教學請見「&lt;a href=&quot;/django/&quot;&gt;Django 文章總覽&lt;/a&gt;」。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;上一篇我們介紹了 Django 和 Django REST framework（以下簡稱 DRF）之間的區別，與它們各司其職的角色定位。&lt;/p&gt;
+&lt;p&gt;兩者相輔相成，讓 Django 在這個「前後端分離」的時代，還能佔有一席之地。&lt;/p&gt;
+&lt;p&gt;接下來，我們要開始動手實作 API。&lt;/p&gt;
+&lt;h3 id=&quot;系列：Django-REST-framework-教學&quot;&gt;&lt;a href=&quot;#系列：Django-REST-framework-教學&quot; class=&quot;headerlink&quot; title=&quot;系列：Django REST framework 教學&quot;&gt;&lt;/a&gt;系列：Django REST framework 教學&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/series/#Django-REST-framework-%E6%95%99%E5%AD%B8&quot;&gt;系列文章清單（連載中）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;本文主旨&quot;&gt;&lt;a href=&quot;#本文主旨&quot; class=&quot;headerlink&quot; title=&quot;本文主旨&quot;&gt;&lt;/a&gt;本文主旨&lt;/h2&gt;&lt;p&gt;本文的目標：&lt;strong&gt;建立一個 Django API，並確保它正常運行。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;為了達到這個目標，我們需要完成以下三件事：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝 Django REST framework 套件。&lt;/li&gt;
+&lt;li&gt;設定 Django 的&lt;code&gt;settings.py&lt;/code&gt;，加入 DRF 相關內容。&lt;/li&gt;
+&lt;li&gt;實作第一個路由（router）與 API。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;就這麼簡單，讓我們直接開始吧！&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/lyxUZv1.png" type="image"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
+    
+    <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
+    
+    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
+    
+  </entry>
   
   <entry>
     <title>30，如何持續寫作——Part 3</title>
@@ -365,35 +411,6 @@
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
     
     <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>27，正式入手《流暢的 Python》第二版</title>
-    <link href="https://blog.kyomind.tw/weekly-review-27/"/>
-    <id>https://blog.kyomind.tw/weekly-review-27/</id>
-    <published>2024-04-14T15:17:50.000Z</published>
-    <updated>2024-04-19T03:44:10.072Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>Weekly Review 原則上著眼於「<strong>非程式類</strong>」內容，而這是一本程式相關的書，所以這期不會討論書中的技術細節，只聊聊<strong>我的主觀感受</strong>。</p><p>講它，是因為我對這本書的<strong>期待很高</strong>，它絕對有這個地位與份量，更別說它真的很厚！（量了一下有 5 公分厚，打算這星期拿去影印店<strong>拆成 3 本</strong>）</p><p>趁著清明連假的天瓏日（滿千折百活動），我總算入手了 Python 進階書籍中的口碑之作——《<a href="https://www.tenlong.com.tw/products/9786263246331">流暢的 Python</a>》，第二版。</p><p>還沒有開始讀，但先簡單分享一下<strong>我的看法與期待。</strong></p><span id="more"></span><h2 id="作為第一版讀者"><a href="#作為第一版讀者" class="headerlink" title="作為第一版讀者"></a>作為第一版讀者</h2><p>早在我開始 Python 軟體工程師職涯之前，即 2019 上半年準備轉職的期間，就讀過了《流暢的 Python》第一版——的一部分。</p><p>所以在面試 StreetVoice 寫程式測驗試題的時候（其中一題就是「以 mutable 資料作為函式參數預設值」的經典題目），立刻就想到了書中「幽靈公車」的例子。</p><p>不過，那時只讀了一部分，就早早束之高閣了。因為剩下部分對當時的我來說，還太過進階。</p><h2 id="2021-年，第二版消息與精讀計畫"><a href="#2021-年，第二版消息與精讀計畫" class="headerlink" title="2021 年，第二版消息與精讀計畫"></a>2021 年，第二版消息與精讀計畫</h2><p>2021，已經當了 2 年的 Python 工程師，這一年我總算把《流暢的 Python》讀完了。</p><p>但說真的，讀完也沒用。如果工作中用不到，這些東西，對我來說依舊是「書上的知識」，而不是我真實能力的一部分。</p><p>所以有點失落，不知該如何是好，想說是不是再認真細讀一次、兩次……結果下半年就得知了第二版正在撰寫中的消息。</p><p>喜新厭舊如我，自然不想再看舊書（以前對法律的參考書也是如此），想等中文版出了再說。於是這個「精讀」計畫就被無限期延後了。</p><h2 id="繁體中文版，正式出爐"><a href="#繁體中文版，正式出爐" class="headerlink" title="繁體中文版，正式出爐"></a>繁體中文版，正式出爐</h2><p>台灣中文版在英文出版後的一年內，遲遲沒有消息（我的判斷方式是繁中的第一版是否絕版不賣了），讓我不禁擔心：該不會不引進繁中版了吧？</p><p>還好，我想多了，應該只是第二版書更厚，翻譯花了更多時間而已。去年 10 月，本書的繁體中文版正式在台灣上市。</p><p><strong>但我並沒有在第一時間入手。</strong></p><h2 id="眾裡尋他千百度"><a href="#眾裡尋他千百度" class="headerlink" title="眾裡尋他千百度"></a>眾裡尋他千百度</h2><p>因為我不禁在想，是不是有「<strong>更好、更簡單</strong>」的選擇。</p><p>說來矛盾，明明是學 Python 的進階特性（也就是<strong>比較難</strong>的部分），我卻希望能「更簡單」。</p><p>但也不奇怪，這裡的更簡單，指的是「<strong>更容易上手、入門</strong>」——也就是<strong>更少痛苦</strong>。對於這些<strong>相對棘手</strong>的主題，我總是想找到一個「<strong>比較好啃</strong>」的方式。</p><p>所以我開始把期望寄託在其它書上，這些書本來就買了好多本，一直只是都沒讀！</p><p>所幸，過去一個多月的「<a href="https://www.facebook.com/kyomind/posts/pfbid02eQaYDFtE13cfsDofWPXZuiHjBuSqjr1nhBGiYpysGDktveGRiEVB9SxaKnJjy2zpl">圖書館時間</a>」，我基本把它們都翻完了。</p><p>並初步確認了每一本書對我的價值，以及後續還要投入多少時間。</p><h2 id="燈火闌珊處"><a href="#燈火闌珊處" class="headerlink" title="燈火闌珊處"></a>燈火闌珊處</h2><p>翻完這些書，我明白了一件事——《流暢的 Python》確實是最好的！</p><p>當然，無論《Python 精粹》或是《Python 神乎其技》，都有其可看之處。但《流暢的 Python》終歸還是 Python 進階書籍中的佼佼者。</p><p>正因為看過了其它書，所以我才更明白本書的精彩與不可取代。</p><p>前兩本書，我不會想從頭到尾精讀，但《流暢的 Python》有這個價值。</p><p>一言以蔽之，如果只打算好好讀一本 Python 進階書籍，就這本吧！</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Weekly Review 原則上著眼於「&lt;strong&gt;非程式類&lt;/strong&gt;」內容，而這是一本程式相關的書，所以這期不會討論書中的技術細節，只聊聊&lt;strong&gt;我的主觀感受&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;講它，是因為我對這本書的&lt;strong&gt;期待很高&lt;/strong&gt;，它絕對有這個地位與份量，更別說它真的很厚！（量了一下有 5 公分厚，打算這星期拿去影印店&lt;strong&gt;拆成 3 本&lt;/strong&gt;）&lt;/p&gt;
-&lt;p&gt;趁著清明連假的天瓏日（滿千折百活動），我總算入手了 Python 進階書籍中的口碑之作——《&lt;a href=&quot;https://www.tenlong.com.tw/products/9786263246331&quot;&gt;流暢的 Python&lt;/a&gt;》，第二版。&lt;/p&gt;
-&lt;p&gt;還沒有開始讀，但先簡單分享一下&lt;strong&gt;我的看法與期待。&lt;/strong&gt;&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
-    
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
   </entry>
   
