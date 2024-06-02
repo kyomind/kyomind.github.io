@@ -32,7 +32,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-06-02T04:07:49+08:00" />
+  <meta property="article:modified_time" content="2024-06-02T07:21:12+08:00" />
 
 
 
@@ -244,7 +244,7 @@
 <hr>
 <h2 id="Django-路由設定"><a href="#Django-路由設定" class="headerlink" title="Django 路由設定"></a>Django 路由設定</h2><p>端點（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Endpoint">endpoint</a>）代表特定的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6">URL</a>，是 API 的「入口」。</p>
 <p>路徑（path）是 URL 的一部分——而且是<strong>必要部分</strong>。圖解如下：</p>
-<p><img src="https://i.imgur.com/o2JxS9I.png" alt="en.wikipedia.org/wiki/URL，可點圖放大"><span class="cap">en.wikipedia.org/wiki/URL，可點圖放大</span></p>
+<p><img src="https://i.imgur.com/o2JxS9I.png" alt="en.wikipedia.org/wiki/URL，點圖可放大"><span class="cap">en.wikipedia.org/wiki/URL，點圖可放大</span></p>
 <p>而<strong>路由（router）</strong>則是<strong>連結端點與實際負責處理請求的 view 函式</strong>之間的<strong>橋樑</strong>，也就是「<strong>如何分配請求給處理者</strong>」的<strong>機制</strong>，或者說<strong>規則</strong>。</p>
 <p>我們再複習一下 Django 的路由基本做法：</p>
 <ol>
@@ -276,7 +276,7 @@
 <p>它將回應一個內容為 JSON 的 HTTP response——這是典型的 API 行為。</p>
 <p>此時，我們在 path「<code>/post/hello/</code>」已經定義了一個 API。</p>
 <h2 id="啟動伺服器，測試-API"><a href="#啟動伺服器，測試-API" class="headerlink" title="啟動伺服器，測試 API"></a>啟動伺服器，測試 API</h2><p>大功告成，我們立刻來測試它！</p>
-<p>直接啟動 Django 內建的<strong>開發用伺服器</strong>：</p>
+<p>直接啟動 Django 內建的<strong>開發伺服器</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ python manage.py runserver</span><br><span class="line">...</span><br><span class="line">Django version 4.2.13, using settings <span class="string">&#x27;DjangoTutorial.settings&#x27;</span></span><br><span class="line">Starting development server at http://127.0.0.1:8000/</span><br><span class="line">Quit the server with CONTROL-C.</span><br></pre></td></tr></table></figure>
 
 <p>伺服器在本機啟動後，我們預期<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/post/hello/">這個端點</a>，會回應我們剛定義的 JSON response：</p>
