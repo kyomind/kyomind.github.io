@@ -128,19 +128,19 @@
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
-    <category term="Flake8" scheme="https://blog.kyomind.tw/tags/Flake8/"/>
-    
-    <category term="isort" scheme="https://blog.kyomind.tw/tags/isort/"/>
-    
     <category term="Code Formatting" scheme="https://blog.kyomind.tw/tags/Code-Formatting/"/>
-    
-    <category term="Black Formatter" scheme="https://blog.kyomind.tw/tags/Black-Formatter/"/>
-    
-    <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
     
     <category term="pre-commit" scheme="https://blog.kyomind.tw/tags/pre-commit/"/>
     
     <category term="Ruff" scheme="https://blog.kyomind.tw/tags/Ruff/"/>
+    
+    <category term="Flake8" scheme="https://blog.kyomind.tw/tags/Flake8/"/>
+    
+    <category term="Black Formatter" scheme="https://blog.kyomind.tw/tags/Black-Formatter/"/>
+    
+    <category term="isort" scheme="https://blog.kyomind.tw/tags/isort/"/>
+    
+    <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
     
   </entry>
   
@@ -175,9 +175,9 @@
     
     <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
     
-    <category term="學習" scheme="https://blog.kyomind.tw/tags/%E5%AD%B8%E7%BF%92/"/>
-    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="學習" scheme="https://blog.kyomind.tw/tags/%E5%AD%B8%E7%BF%92/"/>
     
   </entry>
   
@@ -254,9 +254,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
-    
     <category term="程式設計" scheme="https://blog.kyomind.tw/tags/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/"/>
+    
+    <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="壞味道" scheme="https://blog.kyomind.tw/tags/%E5%A3%9E%E5%91%B3%E9%81%93/"/>
     
@@ -288,9 +288,9 @@
     
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
-    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
-    
     <category term="重構" scheme="https://blog.kyomind.tw/tags/%E9%87%8D%E6%A7%8B/"/>
+    
+    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
     
   </entry>
   
@@ -327,9 +327,9 @@
     
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
-    
     <category term="HTTP" scheme="https://blog.kyomind.tw/tags/HTTP/"/>
+    
+    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
   </entry>
   
@@ -403,15 +403,15 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
+    
+    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
+    
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Enum" scheme="https://blog.kyomind.tw/tags/Enum/"/>
     
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
-    
-    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
     
   </entry>
   

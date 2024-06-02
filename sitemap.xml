@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/top/index.html</loc>
+    
+    <lastmod>2024-06-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-rest-framework-02/</loc>
     
     <lastmod>2024-06-02</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/series/index.html</loc>
-    
-    <lastmod>2024-06-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/top/index.html</loc>
     
     <lastmod>2024-06-01</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
+    <loc>https://blog.kyomind.tw/no-result/</loc>
     
     <lastmod>2024-05-26</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/no-result/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-18/</loc>
     
     <lastmod>2024-05-26</lastmod>
     
@@ -839,7 +839,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -848,7 +848,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
