@@ -32,7 +32,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-06-02T03:37:09+08:00" />
+  <meta property="article:modified_time" content="2024-06-02T04:02:00+08:00" />
 
 
 
@@ -276,11 +276,12 @@
 <p>它將回應一個內容為 JSON 的 HTTP response——這是典型的 API 行為。</p>
 <p>此時，我們在 path「<code>/post/hello/</code>」已經定義了一個 API。</p>
 <h2 id="啟動伺服器，測試-API"><a href="#啟動伺服器，測試-API" class="headerlink" title="啟動伺服器，測試 API"></a>啟動伺服器，測試 API</h2><p>大功告成，我們立刻來測試它！</p>
-<p>直接啟動 Django 的內建伺服器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py runserver</span><br></pre></td></tr></table></figure>
+<p>直接啟動 Django 內建的<strong>開發用伺服器</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ python manage.py runserver</span><br><span class="line">...</span><br><span class="line">Django version 4.2.13, using settings <span class="string">&#x27;DjangoTutorial.settings&#x27;</span></span><br><span class="line">Starting development server at http://127.0.0.1:8000/</span><br><span class="line">Quit the server with CONTROL-C.</span><br></pre></td></tr></table></figure>
 
-<p>伺服器成功在本機啟動後，我們預期端點「<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/post/hello/">http://127.0.0.1:8000/post/hello/</a>」會有我們定義的 JSON response：</p>
+<p>伺服器在本機啟動後，我們預期<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/post/hello/">這個端點</a>，會回應我們剛定義的 JSON response：</p>
 <p><img src="https://i.imgur.com/KLcJTrD.png"></p>
+<p>果然如此！可見我們的 API 已正常運作。</p>
 <hr>
 <h2 id="小結：路由很重要"><a href="#小結：路由很重要" class="headerlink" title="小結：路由很重要"></a>小結：路由很重要</h2><p>Django 路由設定不難，甚至有些死板。但它們是連接請求與處理邏輯的關鍵部分。</p>
 <p>正確的路由確保 API 的正確運行。透過清晰、簡潔的路由設計，可以更容易地管理和擴展我們的 API 服務。</p>
