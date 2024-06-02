@@ -32,7 +32,7 @@
     <meta property="og:tag" content="API 開發" />
     
 
-  <meta property="article:modified_time" content="2024-06-02T04:02:00+08:00" />
+  <meta property="article:modified_time" content="2024-06-02T04:05:51+08:00" />
 
 
 
@@ -229,8 +229,8 @@
 <p>最上層我稱為 repo 專案，也就是專案的<strong>根目錄</strong>。</p>
 <p>第二層的 <code>django_project</code> 即本段標題中所謂 Django project，裡面有<code>settings.py</code>等「面向整個專案」的設定。</p>
 <p>你可能注意到，我的 Django project 用的是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB">大駱峰式命名</a>（DjangoTutorial），而不是典型的小寫加底線（django_tutorial）。</p>
-<p>理由很簡單——為了輕鬆區別 Django project 和其它的 Django app 目錄。</p>
-<h3 id="區別-Django-project-和-Django-app"><a href="#區別-Django-project-和-Django-app" class="headerlink" title="區別 Django project 和 Django app"></a>區別 Django project 和 Django app</h3><p>畢竟它們都一起放在整個 repo 專案底下（這是 Django 預設的專案組織方式，你可以改動它），隨著 Django app 愈來愈多，透過命名風格來快速區分二者，可能是最簡單且省力的方式。</p>
+<p>理由很簡單——為了<strong>快速區別</strong> Django project 和其它的 Django app 目錄。</p>
+<h3 id="區別-Django-project-和-Django-app"><a href="#區別-Django-project-和-Django-app" class="headerlink" title="區別 Django project 和 Django app"></a>區別 Django project 和 Django app</h3><p>畢竟它們都一起放在整個 repo 專案底下（這是 Django 預設的專案組織方式），隨著 Django app 愈來愈多，透過命名風格來區分二者，可能是最簡單且省力的方式。</p>
 <p>雖然這和 PEP 8 的<strong>原則</strong>（即<strong>模組名稱</strong>應該使用「小寫 + 底線」命名）有點出入，但我還是推薦你這麼做。</p>
 <p>至於 repo 專案的命名，則沒有限制，可依個人需求而定。我選擇 Django-Tutorial 是為了看起來顯眼且好辨識。</p>
 <p>但如果是「認真的」開源專案，建議還是採用「<code>aa-bb-cc</code>」格式。</p>
