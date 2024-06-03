@@ -30,7 +30,7 @@
     <meta property="og:tag" content="blog" />
     
 
-  <meta property="article:modified_time" content="2024-06-02T08:21:07+08:00" />
+  <meta property="article:modified_time" content="2024-06-03T02:40:41+08:00" />
 
 
 
@@ -119,7 +119,7 @@
           
             <a href="/categories/Django/">Django (8)</a>
           
-            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (11)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
           
@@ -214,15 +214,16 @@
 <p>這個堪稱石器時代的做法，連我自己都覺得不可思議。</p>
 <h2 id="自動化的契機與實作"><a href="#自動化的契機與實作" class="headerlink" title="自動化的契機與實作"></a>自動化的契機與實作</h2><p>直到我看到這篇〈<a target="_blank" rel="noopener" href="https://codingman.cc/how-to-use-google-analytics-data-api/">如何使用 Google Analytics Data API</a>〉才知道——原來還可以這樣搞！</p>
 <p>所以去年下半年，我就打算參考這篇文章，透過 GitHub Actions 進行自動更新（文中有教學）。</p>
-<p>但是，一拖又半年過去，因為 GitHub Actions 平常我沒在用，而且我的 blog 的依賴套件偏舊，要重新建立環境不容易（加上我對 Node.js 不熟），所以拖了又拖。</p>
-<h3 id="先弄個-MVP-吧！"><a href="#先弄個-MVP-吧！" class="headerlink" title="先弄個 MVP 吧！"></a>先弄個 MVP 吧！</h3><p>後來我想通了：我不應該卡在這種<strong>技術細節</strong>。索性暫時不管 GitHub Actions——我在<strong>本機</strong>建立這個流水線（pipeline）總行吧！</p>
+<p>但是，一拖又半年過去，因為我的 blog 的依賴套件偏舊，要重新建立環境不容易，我連在本機重建都沒什麼自信XD。加上對 Node.js 不熟，所以拖了又拖。</p>
+<h3 id="先弄個-MVP-吧！"><a href="#先弄個-MVP-吧！" class="headerlink" title="先弄個 MVP 吧！"></a>先弄個 MVP 吧！</h3><p>後來我想通了：我不應該卡在這種<strong>技術細節</strong>——當前最重要的是自動化，而不是用糾結著<strong>什麼方法</strong>來自動化。</p>
+<p>索性暫時不管 GitHub Actions，我在<strong>本機</strong>直接建立這個流水線，並使用 macOS 自帶的 cron job 來定時執行。</p>
 <p>花了一個晚上，參考上述文章，和 ChatGPT 同心協力，誕生了你目前看到、可以每天下午自動更新的新版。我感動🥹</p>
 <p>再次推薦〈<a target="_blank" rel="noopener" href="https://codingman.cc/how-to-use-google-analytics-data-api/">如何使用 Google Analytics Data API</a>〉這篇文章，文中對於 GA4 API 的申請、設定有較完整的圖解說明，很有參考價值。</p>
 <p>（我相信大部分開發者都不喜歡弄這些🤣）</p>
 <p>而我自己的實作，已放在<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-post-ranking">這個 GitHub repo</a>，有興趣的讀者可以隨意參考。</p>
 <hr>
 <h2 id="未來更新"><a href="#未來更新" class="headerlink" title="未來更新"></a>未來更新</h2><p>既然已經可以每日自動更新，就想讓這個排名頁面<strong>更具參考價值</strong>。</p>
-<p>目前僅有的瀏覽數排名，有一個<strong>明顯缺點</strong>是：前 10 名常常<strong>就是那些文章</strong>。沒辦法反應同時期內有顯著增長，但瀏覽數無法進入前 10 的文章。</p>
+<p>目前僅有的瀏覽數排名，有一個<strong>明顯缺點</strong>是：前 10 名<strong>常常就是那些文章</strong>。沒辦法反應同時期內有顯著增長，但瀏覽數無法進入前 10 的文章。</p>
 <p>所以接下的來更新，會增加「<strong>上升前 10 名</strong>」部分，以更加凸顯這些內容。</p>
 
       </div>
@@ -259,7 +260,12 @@
             <a href="/tags/blog/">blog</a>
             </div>
         
-        <nav class="post-nav"><a class="next" href="/django-rest-framework-02/">
+        <nav class="post-nav"><a class="prev" href="/effective-python-01/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">《Effective Python》筆記（一）以拆分代替索引</span>
+        <span class="prev-text nav-mobile">《Effective Python》筆記（一）以拆分代替索引</span>
+      </a>
+    <a class="next" href="/django-rest-framework-02/">
         <span class="next-text nav-default">Django REST framework 教學（二）基本設定與路由</span>
         <span class="prev-text nav-mobile">Django REST framework 教學（二）基本設定與路由</span>
         <i class="iconfont icon-right"></i>
@@ -271,7 +277,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">8</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">31</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">35</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">10</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">22</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">8</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">31</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">35</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">11</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">22</span></a>
     </div>
   </div>
 </div>

@@ -109,7 +109,7 @@
           
             <a href="/categories/Django/">Django (8)</a>
           
-            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (10)</a>
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (11)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
           
@@ -155,6 +155,39 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-01-07
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<blockquote>
+<p><code>2024/04/18</code>：重新編輯全文，提高可讀性。</p>
+</blockquote>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 2 篇。</p>
+<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。更多 Django 教學，請見「<a href="/django/">Django 文章總覽</a>」。</p>
+<h3 id="系列：Django-ORM-外鍵教學"><a href="#系列：Django-ORM-外鍵教學" class="headerlink" title="系列：Django ORM 外鍵教學"></a>系列：Django ORM 外鍵教學</h3><blockquote>
+<ol>
+<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
+<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇我們介紹完 Django ORM 的關聯設定，接下來本應該要進入查詢部分。不過，由於「反向關聯」在 ORM 查詢中<strong>扮演著十分重要的角色</strong>。</p>
+<p>所以我決定專門寫這個（中）篇，好好介紹 Django ORM 中的「<strong>反向關聯</strong>」。</p>
+          <div class="read-more">
+            <a href="/reverse-relationships/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/four-thousand-weeks-01/">《人生 4 千個禮拜》筆記（一）病態的生產力</a>
         </h1>
@@ -332,98 +365,6 @@
           <div class="read-more">
             <a href="/stop-trial-and-error/" class="read-more-link">閱讀更多</a>
           </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-tutorial/">Django Tutorial：系列介紹與導讀</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-09-30
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
-<blockquote>
-<p><code>2024-03-22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
-</blockquote>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列的第 0 篇——<strong>序言</strong>。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。</p>
-<p>本站所有 Django 教學文章，已整理於 <a href="/django/">Django 文章總覽</a>。</p>
-<hr>
-<h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。</p>
-<p>作為一個 Django 開發者兼作者，讓我不免覺得，自己有「<strong>義務</strong>」做些什麼。經過一番思考，我決定把工作中常見的 Django 實作寫成文章。</p>
-<p>尤其繁體中文世界對於 Django 的介紹，大多停留在<strong>製作整個網站</strong>（主要介紹模板、Form、View），而不是開發 API——<strong>用 Django 開發 API 的相關教材太少了。</strong></p>
-<p>這個現象不難理解，因為在台灣使用 Django 作為產品主要後端的公司相對有限，所以文章分享自然就不是那麼多。</p>
-<p>而工作中你幾乎不太可能用 Django 來開發整個網站，畢竟這是個<strong>前後端分離</strong>的時代。</p>
-<p>想到這裡，寫作 Django 系列教學的動力又提升了！這或許就是我的<strong>使命</strong>。</p>
-<h2 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h2><p>因此，這系列文章主要針對那些已有 Python 基礎，但想要進一步了解 Django 網頁開發，尤其是「<strong>用 Django 開發 Web API</strong>」的讀者。</p>
-<p>畢竟開發 API 才是我的 Django 日常。</p>
-<p>所以我不得不遺憾地表示，這個系列將不會有任何關於「Django 模板、表單」元件等介紹，也不會討論上述元件與 Django View 的整合議題。</p>
-<p>而是完全以「API」為核心。</p>
-<hr>
-<h2 id="文章規劃"><a href="#文章規劃" class="headerlink" title="文章規劃"></a>文章規劃</h2><p>目前計畫分成多個部分，每個部分有多篇文章。</p>
-<h2 id="一、Django-ORM-三部曲"><a href="#一、Django-ORM-三部曲" class="headerlink" title="一、Django ORM 三部曲"></a>一、Django ORM 三部曲</h2><p>無論全端還是前後端分離，<strong>Django ORM 的重要性與地位都不會有任何影響</strong>，所以 ORM 三部曲自然還是要一一介紹。</p>
-<p>目前規劃的文章為：</p>
-<ol>
-<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
-<li><a href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></li>
-<li>Django ORM：一對一、一對多外鍵教學（下）查詢篇</li>
-</ol>
-<p>而且，整個 Django 框架中，我最愛的部分就是 Django ORM——它<strong>強大而優雅</strong>。</p>
-<h2 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h2><p>我相信，沒有單元測試的開發，是「<strong>不健全</strong>」的開發。</p>
-<p><strong>自己的程式自己測，優秀的開發者不會把「低級錯誤」留給 QA，讓 QA 當保姆。</strong></p>
-<p>哪怕只是最基本的，為每一個 API 加上 200 回傳值的單元測試，都遠比沒有來得強。有了測試以後，再來就是覆蓋率報告。</p>
-<p>文章預計如下：</p>
-<ol>
-<li>Django 測試指南：用 pytest 撰寫 API 單元測試——環境設定篇</li>
-<li>Django 測試指南：用 pytest 撰寫 API 單元測試——Fixtures 篇</li>
-<li>Django 測試指南：使用 pytest + pytest-cov 計算 Test Coverage</li>
-</ol>
-<h2 id="三、Django-API"><a href="#三、Django-API" class="headerlink" title="三、Django API"></a>三、Django API</h2><blockquote>
-<p><code>2024-03-22</code>更新：因為工作上的新專案皆已轉向 Django Ninja，所以我會以 Django Ninja 為主，但也會有一些 DRF 的文章。</p>
-</blockquote>
-<p>講到 Django API，就不得不提 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（下稱 DRF），尤其是它提供的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/views/">API view</a>（無論 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">CBV 或 FBV</a>）與<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>。</p>
-<p>當然，時代在變，如今開發 Django API 並非只能選擇 DRF，受到 FastAPI 啟發而誕生的後起之秀——<a target="_blank" rel="noopener" href="https://django-ninja.rest-framework.com/">Django Ninja</a>，也值得你一試。</p>
-<!-- ![Django Ninja 近半年下載量成長趨勢。資料來源：PyPI Stats](https://i.imgur.com/ApnQ0zy.png) -->
-
-<p>尤其它支援 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/">Pydantic</a>，可以<strong>依程式碼自動生成 API 文件</strong>。你可以簡單想成，它就像是「Django 版的 FastAPI」。</p>
-<p>預計主題有下，目前文章標題皆未定：</p>
-<ul>
-<li>Django Ninja 教學：路由設定</li>
-<li>Django Ninja 教學：自動生成 API 文件</li>
-<li>Django Ninja 教學：API 與序列化</li>
-<li>用 DRF 開發 Django API</li>
-<li>DRF 序列化器</li>
-<li>檔案上傳</li>
-<li>DRF 分頁（Pagination）</li>
-</ul>
-<p>如你所見，<strong>這並不是一個「大而全」的 Django 教學</strong>，而是<strong>以我自己的實務經驗為主</strong>，介紹我認為最重要且相對熟悉的部分。</p>
-<p>主要的目標是讓讀者可以<strong>快速上手</strong>，並了解 Django API 開發的基本概念。</p>
-<h2 id="四、Django-通用功能"><a href="#四、Django-通用功能" class="headerlink" title="四、Django 通用功能"></a>四、Django 通用功能</h2><p>無論是後端 API 開發還是全端開發，都會有的通用主題，比如：</p>
-<ul>
-<li>國際化（i18n）</li>
-<li>logging</li>
-<li>Django 專案使用 Mypy</li>
-<li>Django 專案容器化</li>
-<li><a href="https://blog.kyomind.tw/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></li>
-<li><a href="https://blog.kyomind.tw/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a></li>
-</ul>
-<hr>
-<h2 id="範例程式碼-GitHub-專案介紹"><a href="#範例程式碼-GitHub-專案介紹" class="headerlink" title="範例程式碼 GitHub 專案介紹"></a>範例程式碼 GitHub 專案介紹</h2><p>最後，介紹與整個系列教學直接相關的 GitHub repository——<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。</p>
-<p>這個專案的定位是「<strong>讓有讀者實際程式碼可以參考</strong>」，所以基本上是拿來「看」的。但我會讓它也能夠真正運行，以方便想要自己動手嘗試的讀者。</p>
-<p>我相信這對學習大有幫助。</p>
-<h3 id="分支功能"><a href="#分支功能" class="headerlink" title="分支功能"></a>分支功能</h3><p>專案中會有許多分支，採<code>&lt;流水號-文章slug&gt;</code>的模式命名，比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01-django-models</span><br></pre></td></tr></table></figure>
-
-<p>分支主要是作為<strong>歷史記錄</strong>之用，以及快速查看該分支所對應的<strong>程式碼修改</strong>。</p>
-<h3 id="包括本站其它教學範例"><a href="#包括本站其它教學範例" class="headerlink" title="包括本站其它教學範例"></a>包括本站其它教學範例</h3><p>附帶一提，<strong>分支記錄「並非只限」Django Tutorial 系列文章</strong>，本站別的文章也會有！</p>
-<p>比如我某篇文章要講解「專案容器化」，用現有的專案來進行示範無疑再好不過，所以也會變動專案程式碼並留下分支記錄：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">02-dockerize</span><br></pre></td></tr></table></figure>
-
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
         <i class="iconfont icon-left"></i>

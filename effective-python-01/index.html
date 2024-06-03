@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="《Effective Python》筆記（一）以拆分代替索引">
+  <meta property="og:title" content="《Effective Python》筆記（一）以拆分代替索引"><meta name="twitter:description" content="本文介紹在 Python 中如何透過拆分（unpacking）技巧來代替索引取值，大幅提升程式碼的可讀性。">
+  <meta property="og:description" content="本文介紹在 Python 中如何透過拆分（unpacking）技巧來代替索引取值，大幅提升程式碼的可讀性。"><meta name="twitter:image" content="https://i.imgur.com/QpRyvxH.png">
+  <meta property="og:image" content="https://i.imgur.com/QpRyvxH.png">
+<meta name="description" content="本文介紹在 Python 中如何透過拆分（unpacking）技巧來代替索引取值，大幅提升程式碼的可讀性。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
+            <meta property="og:tag" content="書" />
+    <meta property="og:tag" content="讀書心得" />
+    <meta property="og:tag" content="Python" />
+    <meta property="og:tag" content="Clean Code" />
+    
+
+  <meta property="article:modified_time" content="2024-06-03T02:43:37+08:00" />
+
+
+
+
+
+  <meta property="article:published_time" content="2024-06-03T03:06:40+08:00" />
+
+
+
+<meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" />
+<meta name="author" content="Kyo" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/effective-python-01/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>《Effective Python》筆記（一）以拆分代替索引 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/Django/">Django (8)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (11)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (22)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (31)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">《Effective Python》筆記（一）以拆分代替索引
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-03
+        </span><span class="post-category">
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%8F%96%E5%80%BC%E7%9A%84%E4%B8%8D%E5%A6%A5%E4%B9%8B%E8%99%95"><span class="toc-text">索引取值的不妥之處</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%EF%BC%88unpacking%EF%BC%89"><span class="toc-text">拆分（unpacking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%E5%9C%A8%E5%8D%94%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%83%B9%E5%80%BC"><span class="toc-text">拆分在協作中的價值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E9%9A%8E%E6%8B%86%E5%88%86"><span class="toc-text">進階拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%AF%84%E4%BE%8B%E6%AC%A3%E8%B3%9E"><span class="toc-text">書中範例欣賞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/8lztFoJ.png" alt="Effective Python 中文版"><span class="cap">Effective Python 中文版</span></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865026325">Effective Python 中文版｜寫出良好 Python 程式的 90 個具體做法</a>》筆記的第 1 篇，你可以當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>毫無疑問，這又是一本關於「Clean Code in Python」的書——而且很可能是<strong>評價最高</strong>的一本。</p>
+<p>本書由 <strong>90 個具體做法</strong>所組成，搭配大量實例，助你寫出更 Pythonic 的程式碼。</p>
+<p>內容有初階也有進階（比如 metaclass），我會挑選書中我認為「<strong>重要且實用</strong>」部分，作為分享的準則。</p>
+<p>本文整理自書中的<strong>「做法 6：優先選用多重指定的拆分而非索引」。</strong></p>
+<p>附帶一提，作者已經把書中的程式碼範例都放在 <a target="_blank" rel="noopener" href="https://github.com/bslatkin/effectivepython">effectivepython</a> 這個 repo，這對於我這種要寫筆記、心得文章的人，真是再方便不過。</p>
+<hr>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的主旨只有一個：試圖說服你，<strong>不要</strong>在程式碼中使用<strong>索引取值</strong>——盡可能改用拆分（unpacking）來代替索引。</p>
+<p>這裡的索引取值，指的是像<code>items[2]</code>這樣，以序列（sequence）的<strong>數字索引</strong>來取值的情況。</p>
+<p>如果程式碼只有你一個人撰寫與維護，且日後也是如此，或許未必要堅持這個原則。</p>
+<p>但如果涉及<strong>多人協作</strong>，以及未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，也更容易維護。</p>
+<span id="more"></span>
+
+<h2 id="索引取值的不妥之處"><a href="#索引取值的不妥之處" class="headerlink" title="索引取值的不妥之處"></a>索引取值的不妥之處</h2><p>索引取值的<strong>根本問題</strong>，正是基於上述考量：</p>
+<ol>
+<li><strong>可讀性差</strong>：光憑<code>items[2]</code>，我們不知道 2 代表什麼。</li>
+<li><strong>容易出錯</strong>：索引值取錯，程式很可能也一起出錯。</li>
+<li><strong>維護困難</strong>：今天你還記得 2 是什麼意思，半年後就不一定了。</li>
+</ol>
+<p>就我的經驗，索引取值<strong>很常和 for 迴圈一起使用</strong>，因為它們都是<strong>爬取資料</strong>的常見手段，而且是很「<strong>手刻</strong>」的那種——也就是<strong>完全不通用。</strong></p>
+<p>一般而言，爬取資料的程式碼，對於非實際開發者，往往已經<strong>很不容易閱讀。</strong></p>
+<p>如果再加上索引取值，更容易讓人感到<strong>困惑</strong>。</p>
+<p>雖然寫註解確實是個方法，但依舊不是最好的那個。</p>
+<hr>
+<h2 id="拆分（unpacking）"><a href="#拆分（unpacking）" class="headerlink" title="拆分（unpacking）"></a>拆分（unpacking）</h2><p><strong>拆分</strong>（unpacking）無疑是更好的做法！</p>
+<p>拆分是指<strong>將序列、iterable 中的多個元素，一次賦值給多個變數的操作</strong>。</p>
+<p>這種方式可以提高可讀性，避免使用<strong>神秘的數字索引</strong>，讓你的程式碼更加清晰明瞭。</p>
+<p>拆分的基本用法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="索引-vs-拆分"><a href="#索引-vs-拆分" class="headerlink" title="索引 vs 拆分"></a>索引 vs 拆分</h3><p>拆分相對於索引取值，對可讀性有著明顯的進步。</p>
+<p>我們看書中的例子，這是索引取值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example 2</span></span><br><span class="line">item = (<span class="string">&#x27;Peanut butter&#x27;</span>, <span class="string">&#x27;Jelly&#x27;</span>)</span><br><span class="line">first = item[<span class="number">0</span>]</span><br><span class="line">second = item[<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(first, <span class="string">&#x27;and&#x27;</span>, second)</span><br></pre></td></tr></table></figure>
+
+<p>這是拆分：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example 4</span></span><br><span class="line">item = (<span class="string">&#x27;Peanut butter&#x27;</span>, <span class="string">&#x27;Jelly&#x27;</span>)</span><br><span class="line">first, second = item  <span class="comment"># Unpacking</span></span><br><span class="line"><span class="built_in">print</span>(first, <span class="string">&#x27;and&#x27;</span>, second)</span><br></pre></td></tr></table></figure>
+
+<p>拆分顯然更簡潔、更直接。</p>
+<p>雖然最後都是賦值給了變數<code>first</code>和<code>second</code>，但少了中間的索引取值，程式碼中的「<strong>視覺雜訊</strong>」也減少了——這很重要。</p>
+<hr>
+<h2 id="拆分在協作中的價值"><a href="#拆分在協作中的價值" class="headerlink" title="拆分在協作中的價值"></a>拆分在協作中的價值</h2><p>平心而論，索引取值對於撰寫程式的人而言，往往是<strong>比較輕鬆</strong>的做法，所以我們更偏愛用索引。</p>
+<p>但對於閱讀程式碼的人，就有點<strong>辛苦</strong>了。</p>
+<p>推薦使用拆分的目的很簡單，就是<strong>不要透過索引取值再賦值給變數</strong>，而是<strong>直接賦值多個變數</strong>，少掉那段中間流程，也少掉了視覺雜訊。</p>
+<h3 id="明確的意圖"><a href="#明確的意圖" class="headerlink" title="明確的意圖"></a>明確的意圖</h3><p><strong>重要的是——拆分可以讓你的程式意圖更加明確！</strong>比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [member[<span class="number">1</span>] <span class="keyword">for</span> member <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
+<p>這樣的寫法容易讓我有<strong>兩個疑問</strong>：</p>
+<ol>
+<li>索引 0 是什麼？完全不需要嗎？我可以忽略嗎？</li>
+<li>索引有 2 或 3 嗎？（<code>member</code>有更多元素嗎？——我們無法確定）</li>
+</ol>
+<p>總是存在一些不確定因素，雖然這些不確定，自己很清楚，但是對於閱讀程式碼的人，就<strong>不是 100% 確信</strong>了。</p>
+<p>而拆分的寫法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [name <span class="keyword">for</span> _, name <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
+
+<p>我們已經<strong>透過變數</strong>大聲宣布：<strong>總共只有兩個元素——而且我只要第二個！</strong></p>
+<hr>
+<h2 id="進階拆分"><a href="#進階拆分" class="headerlink" title="進階拆分"></a>進階拆分</h2><blockquote>
+<p>但我就是<strong>只需要其中一個變數</strong>，怎麼辦？就像上面的<code>items[2]</code></p>
+</blockquote>
+<p>沒錯，以拆分取代索引，常常需要一些「<strong>配套措拖</strong>」，才能夠用得方便、滑順。</p>
+<p>最常用的，就是<code>_</code>和<code>*</code>。</p>
+<h3 id="善用-來進行拆分"><a href="#善用-來進行拆分" class="headerlink" title="善用_來進行拆分"></a>善用<code>_</code>來進行拆分</h3><p>很簡單，把<strong>不要的內容</strong>丟給<code>_</code>變數。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_, _, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="善用-進行拆分"><a href="#善用-進行拆分" class="headerlink" title="善用*進行拆分"></a>善用<code>*</code>進行拆分</h3><p>如果你想要的元素在<strong>第一個</strong>或<strong>最後一個</strong>，而且<strong>拆分的元素較多</strong>，那用<code>*</code>會更加方便。</p>
+<p>使用星號（<code>*</code>）收集其餘的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first, *middle, last = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>*middle</code>的變數內容會是一個<strong>元素數量為 0 到多個</strong>的<code>list</code>。</p>
+<h3 id="結合-和"><a href="#結合-和" class="headerlink" title="結合_和*"></a>結合<code>_</code>和<code>*</code></h3><p>結合兩者，<strong>重構第一個例子：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*_, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>是不是非常簡潔？</p>
+<h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p><code>_</code>我很常用，而<code>*</code>拆分我比較少用，所以大概介紹即可。</p>
+<p>無論如何，只要有數字索引出現，<strong>第一時間就要想到「能否用拆分來取代？」</strong>——當然可以！</p>
+<p>這是一個很好的習慣，相信你的同事會感謝你。</p>
+<h2 id="書中範例欣賞"><a href="#書中範例欣賞" class="headerlink" title="書中範例欣賞"></a>書中範例欣賞</h2><p>我們看一段書中的程式碼，比較索引取值和拆分（其實還加了<code>enumerate</code>），兩者的差別<strong>究竟能有多大</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example 8 使用索引取值</span></span><br><span class="line">snacks = [(<span class="string">&#x27;bacon&#x27;</span>, <span class="number">350</span>), (<span class="string">&#x27;donut&#x27;</span>, <span class="number">240</span>), (<span class="string">&#x27;muffin&#x27;</span>, <span class="number">190</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(snacks)):</span><br><span class="line">    item = snacks[i]</span><br><span class="line">    name = item[<span class="number">0</span>]</span><br><span class="line">    calories = item[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example 9 使用拆分（加上 enumerate）</span></span><br><span class="line"><span class="keyword">for</span> rank, (name, calories) <span class="keyword">in</span> <span class="built_in">enumerate</span>(snacks, <span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;rank&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>當然，不可否認，上面的拆分寫法需要你認真閱讀才能讀懂，因為它有點複雜。</p>
+<p>但即使不了解其中的細節，也能輕易看出，後者更加優雅。</p>
+<p>而且<strong>大部分需要你拆分的情境，都比這個例子單純。</strong></p>
+<hr>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>總的來說，我覺得拆分是一個<strong>大大被低估</strong>卻<strong>異常實用</strong>的技巧。</p>
+<p>善用拆分能讓你的程式碼更加 Pythonic。</p>
+<p>從今天開始，在 for 迴圈中，就別再索引取值了吧！</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-01/" title="《Python 工匠》筆記（一）如何寫好註解" rel="bookmark">《Python 工匠》筆記（一）如何寫好註解</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-02/" title="《Python 工匠》筆記（二）對「單元測試」的看法與建議" rel="bookmark">《Python 工匠》筆記（二）對「單元測試」的看法與建議</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python-01/" title="《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道" rel="bookmark">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E6%9B%B8/">書</a>
+            <a href="/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/">讀書心得</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/weekly-review-31/">
+        <span class="next-text nav-default">31，打造新版「熱門文章排名」</span>
+        <span class="prev-text nav-mobile">31，打造新版「熱門文章排名」</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">8</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">31</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">35</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">11</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">22</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kyomind.tw/" class="iconfont icon-instagram" title="instagram"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
