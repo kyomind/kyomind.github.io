@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-03T02:51:08+08:00" />
+  <meta property="article:modified_time" content="2024-06-03T05:44:58+08:00" />
 
 
 
@@ -237,10 +237,10 @@
 <li>索引有 2 或 3 嗎？（<code>member</code>有更多元素嗎？——我們無法確定）</li>
 </ol>
 <p>總是存在一些不確定因素，雖然這些不確定，自己很清楚，但是對於閱讀程式碼的人，就<strong>不是 100% 確信</strong>了。</p>
-<p>而拆分的寫法：</p>
+<p>而拆分的寫法，就明確很多：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [name <span class="keyword">for</span> _, name <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
 
-<p>我們已經<strong>透過變數</strong>大聲宣布：<strong>總共只有兩個元素——而且我只要第二個！</strong></p>
+<p>因為我們已經<strong>透過變數</strong>大聲宣布：<strong>總共只有兩個元素——而且我只要第二個！</strong></p>
 <hr>
 <h2 id="進階拆分"><a href="#進階拆分" class="headerlink" title="進階拆分"></a>進階拆分</h2><blockquote>
 <p>但我就是<strong>只需要其中一個變數</strong>，怎麼辦？就像上面的<code>items[2]</code></p>
