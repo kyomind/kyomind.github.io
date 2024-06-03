@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-03T02:48:01+08:00" />
+  <meta property="article:modified_time" content="2024-06-03T02:51:08+08:00" />
 
 
 
@@ -212,9 +212,9 @@
 <hr>
 <h2 id="拆分（unpacking）"><a href="#拆分（unpacking）" class="headerlink" title="拆分（unpacking）"></a>拆分（unpacking）</h2><p><strong>拆分</strong>（unpacking）無疑是更好的做法！</p>
 <p>拆分是指<strong>將序列、iterable 中的多個元素，一次賦值給多個變數的操作</strong>。</p>
-<p>這種方式可以提高可讀性，避免使用<strong>神秘的數字索引</strong>，讓你的程式碼更加清晰明瞭。</p>
+<p>這種方式能提高可讀性，避免使用<strong>神秘的數字索引</strong>，讓你的程式碼更加清晰明瞭。</p>
 <p>拆分的基本用法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  <span class="comment"># sequence unpacking</span></span><br><span class="line">x, y, z = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;  <span class="comment"># iterable unpacking</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="索引-vs-拆分"><a href="#索引-vs-拆分" class="headerlink" title="索引 vs 拆分"></a>索引 vs 拆分</h3><p>拆分相對於索引取值，對可讀性有著明顯的進步。</p>
 <p>我們看書中的例子，這是索引取值：</p>
