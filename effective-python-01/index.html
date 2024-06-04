@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-04T03:16:18+08:00" />
+  <meta property="article:modified_time" content="2024-06-04T03:33:49+08:00" />
 
 
 
@@ -268,13 +268,13 @@
 
 <p>當然，不可否認，上面的拆分寫法需要你認真閱讀才能讀懂，因為它有點複雜。</p>
 <p>但即使不了解其中的細節，也能輕易看出，後者更加優雅。</p>
-<p>而且<strong>大部分需要你拆分的情境，都比這個例子單純。</strong></p>
+<p>而且<strong>大部分需要你拆分的情境，都比這個例子單純。</strong>比如以下我的實作。</p>
 <h2 id="我的實作"><a href="#我的實作" class="headerlink" title="我的實作"></a>我的實作</h2><p>在剛更新的〈<a href="/weekly-review-31/">31，打造新版「熱門文章排名」</a>〉一文的<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-post-ranking/">實作專案</a>中，我就用拆分重構了原有的<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-post-ranking/blob/main/src/functions.py#L105">程式碼</a>（內容已略有不同，以下為早前版本）：</p>
 <p>原有程式碼，使用索引取值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> page_views:</span><br><span class="line">   <span class="keyword">if</span> row[<span class="number">0</span>] <span class="keyword">in</span> ignored_paths:</span><br><span class="line">       <span class="keyword">continue</span></span><br><span class="line">   f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;row[<span class="number">1</span>]&#125;</span>](<span class="subst">&#123;row[<span class="number">0</span>]&#125;</span>)\n&#x27;</span>)</span><br><span class="line">   rank += <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-<p>如前所述，採用索引取值對於程式碼撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的——但<strong>真的不太好讀XD</strong></p>
-<p>以拆分<strong>重構</strong>，並使用了<code>_</code>來<strong>省略不需要的變數</strong>：</p>
+<p>如前所述，採用索引取值對於程式碼撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的——<strong>但真的不太好讀XD</strong></p>
+<p>用拆分<strong>重構</strong>，並使用了<code>_</code>來<strong>省略不需要的變數</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> path, title, _ <span class="keyword">in</span> page_views:</span><br><span class="line">    <span class="keyword">if</span> path <span class="keyword">in</span> ignored_paths:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;title&#125;</span>](<span class="subst">&#123;path&#125;</span>)\n&#x27;</span>)</span><br><span class="line">    rank += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
 <p>我覺得<strong>兩者的差距還是挺明顯的</strong>，拆分更好理解，也更容易閱讀。</p>
