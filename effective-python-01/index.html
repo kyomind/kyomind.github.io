@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-04T06:44:38+08:00" />
+  <meta property="article:modified_time" content="2024-06-04T06:57:17+08:00" />
 
 
 
@@ -229,15 +229,15 @@
 <h2 id="拆分在協作中的價值"><a href="#拆分在協作中的價值" class="headerlink" title="拆分在協作中的價值"></a>拆分在協作中的價值</h2><p>平心而論，索引取值對於撰寫程式的人而言，往往是<strong>比較輕鬆</strong>的做法，所以我們更偏愛用索引。</p>
 <p>但對於閱讀程式碼的人，就有點<strong>辛苦</strong>了。</p>
 <p>推薦使用拆分的目的很簡單——<strong>避免透過索引取值再賦值給變數</strong>，而是<strong>直接賦值</strong>給多個變數，<strong>減少中間流程，也減少視覺雜訊。</strong></p>
-<p>更別說，有些索引取值<strong>「並不會」再重新賦值</strong>給新變數，這類情況更應該使用拆分。（詳見最後「<a href="#%E6%88%91%E7%9A%84%E5%AF%A6%E4%BD%9C">我的實作</a>」）</p>
-<h3 id="明確的意圖"><a href="#明確的意圖" class="headerlink" title="明確的意圖"></a>明確的意圖</h3><p><strong>更重要的是，拆分可以讓你的「程式意圖」更加明確！</strong>比如：</p>
+<p>更別說，有些索引取值<strong>「並不會」再重新賦值</strong>給新變數，這類情況<strong>更應該</strong>使用拆分。（詳見最後「<a href="#%E6%88%91%E7%9A%84%E5%AF%A6%E4%BD%9C">我的實作</a>」）</p>
+<h3 id="明確的意圖"><a href="#明確的意圖" class="headerlink" title="明確的意圖"></a>明確的意圖</h3><p>除此之外，<strong>拆分還可以讓你的「程式意圖」更加明確！</strong>比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [member[<span class="number">1</span>] <span class="keyword">for</span> member <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
-<p>這樣的寫法容易讓我有<strong>兩個疑問</strong>：</p>
+<p>這樣的寫法容易讓我有<strong>兩個疑問</strong>（這是我自己寫過的程式碼）：</p>
 <ol>
 <li>索引 0 是什麼？完全不需要嗎？我可以忽略嗎？</li>
 <li>索引有 2 或 3 嗎？（即<code>member</code>有更多元素嗎？——我們無法確定）</li>
 </ol>
-<p>總是存在一些不確定因素，雖然這些不確定，自己很清楚，但是對於閱讀程式碼的人，就<strong>很難 100% 確信</strong>了。</p>
+<p>總是存在一些<strong>不確定因素</strong>，雖然這些不確定，自己很清楚，但是對於閱讀程式碼的人，就<strong>很難 100% 確信</strong>了。</p>
 <p>而拆分的寫法，可以讓情況<strong>明確許多：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [name <span class="keyword">for</span> _, name <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
 
