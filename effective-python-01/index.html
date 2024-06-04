@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-03T05:44:58+08:00" />
+  <meta property="article:modified_time" content="2024-06-04T03:16:18+08:00" />
 
 
 
@@ -183,13 +183,13 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%8F%96%E5%80%BC%E7%9A%84%E4%B8%8D%E5%A6%A5%E4%B9%8B%E8%99%95"><span class="toc-text">索引取值的不妥之處</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%EF%BC%88unpacking%EF%BC%89"><span class="toc-text">拆分（unpacking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%E5%9C%A8%E5%8D%94%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%83%B9%E5%80%BC"><span class="toc-text">拆分在協作中的價值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E9%9A%8E%E6%8B%86%E5%88%86"><span class="toc-text">進階拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%AF%84%E4%BE%8B%E6%AC%A3%E8%B3%9E"><span class="toc-text">書中範例欣賞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%8F%96%E5%80%BC%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="toc-text">索引取值的問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%EF%BC%88unpacking%EF%BC%89"><span class="toc-text">拆分（unpacking）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%86%E5%88%86%E5%9C%A8%E5%8D%94%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%83%B9%E5%80%BC"><span class="toc-text">拆分在協作中的價值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%B2%E9%9A%8E%E6%8B%86%E5%88%86"><span class="toc-text">進階拆分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%AF%84%E4%BE%8B%E6%AC%A3%E8%B3%9E"><span class="toc-text">書中範例欣賞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%AF%A6%E4%BD%9C"><span class="toc-text">我的實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/8lztFoJ.png" alt="Effective Python 中文版"><span class="cap">Effective Python 中文版</span></p>
 <p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865026325">Effective Python 中文版｜寫出良好 Python 程式的 90 個具體做法</a>》筆記的第 1 篇，你可以當作是一則重點整理，加上我個人的開發經驗與心得。</p>
 <p>毫無疑問，這又是一本關於「Clean Code in Python」的書——而且很可能是<strong>評價最高</strong>的一本。</p>
 <p>本書由 <strong>90 個具體做法</strong>所組成，搭配大量實例，助你寫出更 Pythonic 的程式碼。</p>
-<p>內容有初階也有進階（比如 metaclass），我會挑選書中我認為「<strong>重要且實用</strong>」部分，作為分享的準則。</p>
+<p>內容有初階也有進階（比如 metaclass），我會挑選書中我認為「<strong>重要且實用</strong>」部分，作為分享準則。簡言之，<strong>不會太深</strong>——但可能是常<strong>被忽略或低估</strong>的部分。</p>
 <p>本文整理自書中的<strong>「做法 6：優先選用多重指定的拆分而非索引」。</strong></p>
 <p>附帶一提，作者已經把書中的程式碼範例都放在 <a target="_blank" rel="noopener" href="https://github.com/bslatkin/effectivepython">effectivepython</a> 這個 repo，這對於我這種要寫筆記、心得文章的人，真是再方便不過。</p>
 <hr>
@@ -199,7 +199,7 @@
 <p>但如果涉及<strong>多人協作</strong>，以及未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，也更容易維護。</p>
 <span id="more"></span>
 
-<h2 id="索引取值的不妥之處"><a href="#索引取值的不妥之處" class="headerlink" title="索引取值的不妥之處"></a>索引取值的不妥之處</h2><p>索引取值的<strong>根本問題</strong>，正是基於上述考量：</p>
+<h2 id="索引取值的問題"><a href="#索引取值的問題" class="headerlink" title="索引取值的問題"></a>索引取值的問題</h2><p>索引取值的<strong>根本問題</strong>，正是基於上述考量：</p>
 <ol>
 <li><strong>可讀性差</strong>：光憑<code>items[2]</code>，我們不知道 2 代表什麼。</li>
 <li><strong>容易出錯</strong>：索引值取錯，程式很可能也一起出錯。</li>
@@ -262,14 +262,24 @@
 <h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p><code>_</code>我很常用，而<code>*</code>拆分我比較少用，所以大概介紹即可。</p>
 <p>無論如何，只要有數字索引出現，<strong>第一時間就要想到「能否用拆分來取代？」</strong>——當然可以！</p>
 <p>這是一個很好的習慣，相信你的同事會感謝你。</p>
+<hr>
 <h2 id="書中範例欣賞"><a href="#書中範例欣賞" class="headerlink" title="書中範例欣賞"></a>書中範例欣賞</h2><p>我們看一段書中的程式碼，比較索引取值和拆分（其實還加了<code>enumerate</code>），兩者的差別<strong>究竟能有多大</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example 8 使用索引取值</span></span><br><span class="line">snacks = [(<span class="string">&#x27;bacon&#x27;</span>, <span class="number">350</span>), (<span class="string">&#x27;donut&#x27;</span>, <span class="number">240</span>), (<span class="string">&#x27;muffin&#x27;</span>, <span class="number">190</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(snacks)):</span><br><span class="line">    item = snacks[i]</span><br><span class="line">    name = item[<span class="number">0</span>]</span><br><span class="line">    calories = item[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example 9 使用拆分（加上 enumerate）</span></span><br><span class="line"><span class="keyword">for</span> rank, (name, calories) <span class="keyword">in</span> <span class="built_in">enumerate</span>(snacks, <span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;rank&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>當然，不可否認，上面的拆分寫法需要你認真閱讀才能讀懂，因為它有點複雜。</p>
 <p>但即使不了解其中的細節，也能輕易看出，後者更加優雅。</p>
 <p>而且<strong>大部分需要你拆分的情境，都比這個例子單純。</strong></p>
+<h2 id="我的實作"><a href="#我的實作" class="headerlink" title="我的實作"></a>我的實作</h2><p>在剛更新的〈<a href="/weekly-review-31/">31，打造新版「熱門文章排名」</a>〉一文的<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-post-ranking/">實作專案</a>中，我就用拆分重構了原有的<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-post-ranking/blob/main/src/functions.py#L105">程式碼</a>（內容已略有不同，以下為早前版本）：</p>
+<p>原有程式碼，使用索引取值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> page_views:</span><br><span class="line">   <span class="keyword">if</span> row[<span class="number">0</span>] <span class="keyword">in</span> ignored_paths:</span><br><span class="line">       <span class="keyword">continue</span></span><br><span class="line">   f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;row[<span class="number">1</span>]&#125;</span>](<span class="subst">&#123;row[<span class="number">0</span>]&#125;</span>)\n&#x27;</span>)</span><br><span class="line">   rank += <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>如前所述，採用索引取值對於程式碼撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的——但<strong>真的不太好讀XD</strong></p>
+<p>以拆分<strong>重構</strong>，並使用了<code>_</code>來<strong>省略不需要的變數</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> path, title, _ <span class="keyword">in</span> page_views:</span><br><span class="line">    <span class="keyword">if</span> path <span class="keyword">in</span> ignored_paths:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;title&#125;</span>](<span class="subst">&#123;path&#125;</span>)\n&#x27;</span>)</span><br><span class="line">    rank += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>我覺得<strong>兩者的差距還是挺明顯的</strong>，拆分更好理解，也更容易閱讀。</p>
 <hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>總的來說，我覺得拆分是一個<strong>大大被低估</strong>卻<strong>異常實用</strong>的技巧。</p>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>總的來說，我覺得拆分是一個<strong>大大被低估</strong>卻<strong>異常實用</strong>的技巧。</p>
 <p>善用拆分能讓你的程式碼更加 Pythonic。</p>
 <p>從今天開始，在 for 迴圈中，就別再索引取值了吧！</p>
 
