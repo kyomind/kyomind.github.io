@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-04T06:57:17+08:00" />
+  <meta property="article:modified_time" content="2024-06-04T07:00:46+08:00" />
 
 
 
@@ -237,7 +237,7 @@
 <li>索引 0 是什麼？完全不需要嗎？我可以忽略嗎？</li>
 <li>索引有 2 或 3 嗎？（即<code>member</code>有更多元素嗎？——我們無法確定）</li>
 </ol>
-<p>總是存在一些<strong>不確定因素</strong>，雖然這些不確定，自己很清楚，但是對於閱讀程式碼的人，就<strong>很難 100% 確信</strong>了。</p>
+<p>總是存在一些<strong>不確定因素</strong>，雖然這些不確定，自己很清楚。但是對於程式碼的閱讀者，就<strong>很難 100% 確信</strong>了。</p>
 <p>而拆分的寫法，可以讓情況<strong>明確許多：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [name <span class="keyword">for</span> _, name <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
 
