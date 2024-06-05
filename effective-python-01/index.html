@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-05T02:37:49+08:00" />
+  <meta property="article:modified_time" content="2024-06-05T03:20:05+08:00" />
 
 
 
@@ -277,7 +277,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> page_views:</span><br><span class="line">   <span class="keyword">if</span> row[<span class="number">0</span>] <span class="keyword">in</span> ignored_paths:</span><br><span class="line">       <span class="keyword">continue</span></span><br><span class="line">   f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;row[<span class="number">1</span>]&#125;</span>](<span class="subst">&#123;row[<span class="number">0</span>]&#125;</span>)\n&#x27;</span>)</span><br><span class="line">   rank += <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
 <p>如前所述，索引取值對於程式撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的——<strong>但真的不太好讀XD</strong></p>
-<p><code>row[0]</code>、<code>row[1]</code><strong>到底是什麼？</strong>形成了<strong>認知負擔</strong>。</p>
+<p><code>row[0]</code>、<code>row[1]</code><strong>到底是什麼？</strong>有認知負擔。</p>
 <h3 id="以拆分重構"><a href="#以拆分重構" class="headerlink" title="以拆分重構"></a>以拆分重構</h3><p>改用拆分重構，並以<code>_</code><strong>省略不需要的變數</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> path, title, _ <span class="keyword">in</span> page_views:</span><br><span class="line">    <span class="keyword">if</span> path <span class="keyword">in</span> ignored_paths:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;title&#125;</span>](<span class="subst">&#123;path&#125;</span>)\n&#x27;</span>)</span><br><span class="line">    rank += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
