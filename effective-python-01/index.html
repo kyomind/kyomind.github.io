@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-05T03:20:05+08:00" />
+  <meta property="article:modified_time" content="2024-06-05T03:22:40+08:00" />
 
 
 
@@ -196,7 +196,7 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的主旨只有一個：試圖說服你，<strong>不要</strong>在程式碼中使用<strong>索引取值</strong>——盡可能改用拆分（unpacking）來代替索引。</p>
 <p>這裡的索引取值，指的是像<code>items[2]</code>這樣，以序列（sequence）的<strong>數字索引</strong>來取值的情況。</p>
 <p>如果程式碼只有你一個人撰寫與維護，且日後也是如此，或許未必要堅持這個原則。</p>
-<p>但如果涉及<strong>多人協作</strong>，以及未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，也更容易維護。</p>
+<p>但如果涉及<strong>多人協作</strong>，未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，同時更容易維護。</p>
 <span id="more"></span>
 
 <h2 id="索引取值的問題"><a href="#索引取值的問題" class="headerlink" title="索引取值的問題"></a>索引取值的問題</h2><p>索引取值的<strong>根本問題</strong>，正是基於上述考量：</p>
@@ -276,8 +276,8 @@
 <p>舊版，使用索引取值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> page_views:</span><br><span class="line">   <span class="keyword">if</span> row[<span class="number">0</span>] <span class="keyword">in</span> ignored_paths:</span><br><span class="line">       <span class="keyword">continue</span></span><br><span class="line">   f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;row[<span class="number">1</span>]&#125;</span>](<span class="subst">&#123;row[<span class="number">0</span>]&#125;</span>)\n&#x27;</span>)</span><br><span class="line">   rank += <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
-<p>如前所述，索引取值對於程式撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的——<strong>但真的不太好讀XD</strong></p>
-<p><code>row[0]</code>、<code>row[1]</code><strong>到底是什麼？</strong>有認知負擔。</p>
+<p>如前所述，索引取值對於程式撰寫者來說，可能是<strong>最直覺</strong>的做法，也相對輕鬆。所以我一開始也是這樣寫的，<strong>但真的不太好讀XD</strong></p>
+<p><code>row[0]</code>、<code>row[1]</code><strong>到底是什麼？</strong>不清楚——有認知負擔。</p>
 <h3 id="以拆分重構"><a href="#以拆分重構" class="headerlink" title="以拆分重構"></a>以拆分重構</h3><p>改用拆分重構，並以<code>_</code><strong>省略不需要的變數</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rank = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> path, title, _ <span class="keyword">in</span> page_views:</span><br><span class="line">    <span class="keyword">if</span> path <span class="keyword">in</span> ignored_paths:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    f.write(<span class="string">f&#x27;<span class="subst">&#123;rank&#125;</span>. [<span class="subst">&#123;title&#125;</span>](<span class="subst">&#123;path&#125;</span>)\n&#x27;</span>)</span><br><span class="line">    rank += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> rank &gt; <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 
