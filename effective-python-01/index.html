@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-05T02:08:34+08:00" />
+  <meta property="article:modified_time" content="2024-06-05T02:12:57+08:00" />
 
 
 
@@ -238,7 +238,7 @@
 <li>索引有 2 或 3 嗎？（即<code>member</code>有更多元素嗎？——我們無法確定）</li>
 </ol>
 <p>這些<strong>不確定因素</strong>，讓你的程式意圖變得<strong>模糊</strong>。雖然自己清楚，但對於程式碼的閱讀者，則是一種不必要的「<strong>認知負擔</strong>」。</p>
-<p>這些認知負擔累積起來，導致人們<strong>需要花更多時間</strong>，才能讀懂你的程式碼。</p>
+<p>這些認知負擔不斷累積，將導致人們<strong>需要花更多時間</strong>，才能讀懂你的程式碼。</p>
 <p>而拆分的寫法，可以讓情況<strong>明確許多：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member_names = [name <span class="keyword">for</span> _, name <span class="keyword">in</span> members]</span><br></pre></td></tr></table></figure>
 
