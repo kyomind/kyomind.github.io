@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-05T03:31:49+08:00" />
+  <meta property="article:modified_time" content="2024-06-06T05:03:49+08:00" />
 
 
 
@@ -252,20 +252,23 @@
 <h3 id="善用-來進行拆分"><a href="#善用-來進行拆分" class="headerlink" title="善用_來進行拆分"></a>善用<code>_</code>來進行拆分</h3><p>很簡單，把<strong>不要的內容</strong>丟給<code>_</code>變數。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_, _, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
 
+<p>這樣寫的最大好處，就是<strong>明確告訴讀者</strong>：我不需要前兩個元素，所以直接丟給<code>_</code>。</p>
 <h3 id="善用-進行拆分"><a href="#善用-進行拆分" class="headerlink" title="善用*進行拆分"></a>善用<code>*</code>進行拆分</h3><p>如果你想要的元素在<strong>第一個</strong>或<strong>最後一個</strong>，而且<strong>拆分的元素較多</strong>，那用<code>*</code>會更加方便。</p>
-<p>使用星號（<code>*</code>）收集其餘的值：</p>
+<p>使用星號（<code>*</code>）<strong>收集其餘的值：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first, *middle, last = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>*middle</code>的變數內容，會是一個<strong>擁有 0 到多個元素</strong>的<code>list</code>。</p>
-<h3 id="結合-和"><a href="#結合-和" class="headerlink" title="結合_和*"></a>結合<code>_</code>和<code>*</code></h3><p>結合兩者，<strong>重構第一個例子：</strong></p>
+<h3 id="結合-和"><a href="#結合-和" class="headerlink" title="結合_和*"></a>結合<code>_</code>和<code>*</code></h3><p>第一個例子只有 3 個元素，而第二個例子有 5 個元素。</p>
+<p>如果有更多元素，比如 10 個，但我們依舊<strong>只需要最後一個</strong>，那豈不是要寫很多<code>_</code>？</p>
+<p>這時，可以結合兩者，<strong>重構第一個例子：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*_, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
 
 <p>是不是非常簡潔？</p>
-<h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p><code>_</code>很常用，而<code>*</code>拆分我比較少用。</p>
-<p>無論如何，只要有數字索引出現，<strong>第一時間就要想到「能否用拆分來取代？」</strong>——通常可以！</p>
+<h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p><code>_</code>很常用，而<code>*</code>拆分我比較少用（拆分 3 個以上的情況對我相對少見）。</p>
+<p>無論如何，只要有數字索引出現，我們<strong>第一時間就要想到「能否用拆分來取代？」</strong>——通常可以！</p>
 <p>這是一個很好的習慣，相信你的同事會感謝你。</p>
 <hr>
-<h2 id="書中範例欣賞"><a href="#書中範例欣賞" class="headerlink" title="書中範例欣賞"></a>書中範例欣賞</h2><p>我們看一段書中的程式碼，比較索引取值和拆分（其實還加了<code>enumerate</code>），兩者的差別<strong>究竟能有多大</strong>：</p>
+<h2 id="書中範例欣賞"><a href="#書中範例欣賞" class="headerlink" title="書中範例欣賞"></a>書中範例欣賞</h2><p>我們看一段書中的程式碼，比較索引取值和拆分（其實還用了<code>enumerate</code>），兩者的差別<strong>究竟能有多大</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">snacks = [(<span class="string">&#x27;bacon&#x27;</span>, <span class="number">350</span>), (<span class="string">&#x27;donut&#x27;</span>, <span class="number">240</span>), (<span class="string">&#x27;muffin&#x27;</span>, <span class="number">190</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example 8 使用索引取值</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(snacks)):</span><br><span class="line">    item = snacks[i]</span><br><span class="line">    name = item[<span class="number">0</span>]</span><br><span class="line">    calories = item[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example 9 使用拆分（加上 enumerate）</span></span><br><span class="line"><span class="keyword">for</span> rank, (name, calories) <span class="keyword">in</span> <span class="built_in">enumerate</span>(snacks, <span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;#<span class="subst">&#123;rank&#125;</span>: <span class="subst">&#123;name&#125;</span> has <span class="subst">&#123;calories&#125;</span> calories&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>不過，不可否認，上面的拆分寫法需要你認真閱讀才能讀懂，因為它有點複雜。</p>
