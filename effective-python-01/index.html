@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-06T05:14:44+08:00" />
+  <meta property="article:modified_time" content="2024-06-06T13:14:42+08:00" />
 
 
 
@@ -194,7 +194,7 @@
 <p>附帶一提，作者已經把書中的程式碼範例都放在 <a target="_blank" rel="noopener" href="https://github.com/bslatkin/effectivepython">effectivepython</a> 這個 repo，這對於我這種要寫筆記、心得文章的人，真是再方便不過。</p>
 <hr>
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的主旨只有一個：試圖說服你，<strong>不要</strong>在程式碼中使用<strong>索引取值</strong>——盡可能改用拆分（unpacking）來代替索引。</p>
-<p>這裡的索引取值，指的是像<code>items[2]</code>這樣，以序列（sequence）的<strong>數字索引</strong>來取值的情況。</p>
+<p>這裡的索引取值，指的是像<code>items[2]</code>這樣，以序列（<a target="_blank" rel="noopener" href="https://realpython.com/python-sequences/">sequence</a>）的<strong>數字索引</strong>來取值的情況。</p>
 <p>如果程式碼只有你一個人撰寫與維護，且日後也是如此，或許未必要堅持這個原則。</p>
 <p>但如果涉及<strong>多人協作</strong>，未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，同時更容易維護。</p>
 <span id="more"></span>
@@ -207,11 +207,11 @@
 </ol>
 <p>就我的經驗，索引取值<strong>很常和 for 迴圈一起使用</strong>，因為它們都是<strong>爬取資料</strong>的常見手段，而且是很「<strong>手刻</strong>」的那種——即<strong>完全不通用。</strong></p>
 <p>一般而言，爬取資料的程式碼，對於非實際開發者，往往已經<strong>很不容易閱讀。</strong></p>
-<p>如果再加上索引取值，更容易讓人倍感<strong>困惑</strong>。</p>
+<p>如果再加上索引取值，容易讓人倍感<strong>困惑</strong>。</p>
 <p>為索引值寫註解，是一個折衷辦法，但依舊不是最好的那個。</p>
 <hr>
 <h2 id="拆分（unpacking）"><a href="#拆分（unpacking）" class="headerlink" title="拆分（unpacking）"></a>拆分（unpacking）</h2><p>使用<strong>拆分</strong>（unpacking）才是更好的做法。</p>
-<p>拆分是指<strong>將序列、iterable 中的多個元素，一次性賦值給多個變數的操作</strong>。</p>
+<p>拆分是指<strong>將 sequence、iterable 中的多個元素，一次性賦值給多個變數的操作</strong>。</p>
 <p>這個方式能提高可讀性，避免使用<strong>神秘的數字索引</strong>，讓你的程式碼更加清晰明瞭。</p>
 <p>拆分的基本用法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  <span class="comment"># sequence unpacking</span></span><br><span class="line">x, y, z = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;  <span class="comment"># iterable unpacking</span></span><br></pre></td></tr></table></figure>
