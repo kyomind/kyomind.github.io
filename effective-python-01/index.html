@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-06T05:13:01+08:00" />
+  <meta property="article:modified_time" content="2024-06-06T05:14:44+08:00" />
 
 
 
@@ -259,8 +259,8 @@
 
 <p>其中<code>middle</code>的變數內容，會是一個<strong>擁有 0 到多個元素</strong>的<code>list</code>。</p>
 <h3 id="結合-和"><a href="#結合-和" class="headerlink" title="結合_和*"></a>結合<code>_</code>和<code>*</code></h3><p>第一個例子只有 3 個元素，而第二個例子有 5 個元素。</p>
-<p>如果有更多元素，比如 10 個，但我們依舊<strong>只需要最後一個</strong>，那豈不是要寫很多<code>_</code>？</p>
-<p>這時，可以結合兩者，<strong>重構第一個例子：</strong></p>
+<p>如果有更多，比如 10 個，而我們依舊<strong>只需要最後一個</strong>，難道要寫一堆<code>_</code>？</p>
+<p>當然不！這時可以結合兩者，<strong>重構第一個例子：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*_, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
 
 <p>是不是非常簡潔？</p>
