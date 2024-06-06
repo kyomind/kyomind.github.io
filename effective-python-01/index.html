@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Clean Code" />
     
 
-  <meta property="article:modified_time" content="2024-06-06T05:03:49+08:00" />
+  <meta property="article:modified_time" content="2024-06-06T05:13:01+08:00" />
 
 
 
@@ -252,12 +252,12 @@
 <h3 id="善用-來進行拆分"><a href="#善用-來進行拆分" class="headerlink" title="善用_來進行拆分"></a>善用<code>_</code>來進行拆分</h3><p>很簡單，把<strong>不要的內容</strong>丟給<code>_</code>變數。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_, _, last = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>]</span><br></pre></td></tr></table></figure>
 
-<p>這樣寫的最大好處，就是<strong>明確告訴讀者</strong>：我不需要前兩個元素，所以直接丟給<code>_</code>。</p>
+<p>這樣寫最大的好處，是<strong>明確告訴讀者</strong>：我不需要前兩個元素，所以直接丟給<code>_</code>。</p>
 <h3 id="善用-進行拆分"><a href="#善用-進行拆分" class="headerlink" title="善用*進行拆分"></a>善用<code>*</code>進行拆分</h3><p>如果你想要的元素在<strong>第一個</strong>或<strong>最後一個</strong>，而且<strong>拆分的元素較多</strong>，那用<code>*</code>會更加方便。</p>
 <p>使用星號（<code>*</code>）<strong>收集其餘的值：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first, *middle, last = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">first, *middle, last = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(middle)  <span class="comment"># [2, 3, 4]</span></span><br></pre></td></tr></table></figure>
 
-<p>其中<code>*middle</code>的變數內容，會是一個<strong>擁有 0 到多個元素</strong>的<code>list</code>。</p>
+<p>其中<code>middle</code>的變數內容，會是一個<strong>擁有 0 到多個元素</strong>的<code>list</code>。</p>
 <h3 id="結合-和"><a href="#結合-和" class="headerlink" title="結合_和*"></a>結合<code>_</code>和<code>*</code></h3><p>第一個例子只有 3 個元素，而第二個例子有 5 個元素。</p>
 <p>如果有更多元素，比如 10 個，但我們依舊<strong>只需要最後一個</strong>，那豈不是要寫很多<code>_</code>？</p>
 <p>這時，可以結合兩者，<strong>重構第一個例子：</strong></p>
