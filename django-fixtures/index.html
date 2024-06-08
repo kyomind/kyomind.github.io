@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="用 Django Fixture 匯入與導出資料">
+  <meta property="og:title" content="用 Django Fixture 匯入與導出資料"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
+<meta name="description" content="分享程式、寫作、筆記工具與學習心得" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
+            <meta property="og:tag" content="Django" />
+    <meta property="og:tag" content="Django Tutorial" />
+    
+
+  <meta property="article:modified_time" content="2024-06-08T10:29:56+08:00" />
+
+
+
+
+
+  <meta property="article:published_time" content="2024-06-08T10:12:44+08:00" />
+
+
+
+<meta name="keywords" content="Python, 程式, 寫作, Notion, VS Code, Logseq" />
+<meta name="author" content="Kyo" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/leaf.svg?v=2.11.0" />
+<link rel="canonical" href="https://blog.kyomind.tw/django-fixtures/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>用 Django Fixture 匯入與導出資料 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/Django/">Django (9)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (11)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (22)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (31)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">用 Django Fixture 匯入與導出資料
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-08
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Django-Fixture"><span class="toc-text">什麼是 Django Fixture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Fixture-%E7%9A%84%E4%B8%89%E5%A4%A7%E7%94%A8%E9%80%94"><span class="toc-text">Django Fixture 的三大用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%AF%84%E4%BE%8B%E8%B3%87%E6%96%99%E4%B8%A6%E5%B0%8E%E5%87%BA%E7%82%BA-Fixture"><span class="toc-text">建立範例資料並導出為 Fixture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%AF%E5%85%A5-Fixture"><span class="toc-text">匯入 Fixture</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 6 篇。</p>
+<p>範例程式碼可參考我的 <a href="/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p>
+<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/2">PR</a>。</p>
+<hr>
+<p>本文可視為 <a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">Django ORM 外鍵教學</a>第三部分——查詢篇——的<strong>前置教學</strong>，因為我們需要一些範例資料作為<strong>查詢的標的。</strong></p>
+<p>為了快速且輕鬆地建立這些範例，我們要善用 Django fixture。</p>
+<p>本文將簡單介紹 Django fixture，以及它的用法。</p>
+<h2 id="什麼是-Django-Fixture"><a href="#什麼是-Django-Fixture" class="headerlink" title="什麼是 Django Fixture"></a>什麼是 Django Fixture</h2><p>Django fixture 是一種用來管理資料庫數據的工具。</p>
+<p>它允許你以 JSON 或 XML 等格式將資料庫中的數據<strong>導出（序列化）到特定文件中</strong>，並在需要時將這些數據<strong>匯入到資料庫。</strong></p>
+<p>你可以輕鬆地透過 Django fixture 初始化資料庫內容，設置測試數據，或者在不同環境間傳輸數據。</p>
+<p>顯然的，它也很適合用來「快速建立」（或說匯入）我文章教學所需要的資料。</p>
+<p>更多細節與介紹，可參考 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/db/fixtures/">Django 文件</a>。</p>
+<span id="more"></span>
+
+<h2 id="Django-Fixture-的三大用途"><a href="#Django-Fixture-的三大用途" class="headerlink" title="Django Fixture 的三大用途"></a>Django Fixture 的三大用途</h2><p>Django fixture 主要有三種用途。我覺得第一種情況是最有實務價值的。</p>
+<h3 id="一、初始化資料庫"><a href="#一、初始化資料庫" class="headerlink" title="一、初始化資料庫"></a>一、初始化資料庫</h3><ul>
+<li>在開發或部署初期，用於建立資料庫中的初始數據。</li>
+<li>常用於設定預設的用戶、權限或其他需要的基礎數據。</li>
+</ul>
+<p>這很實用，資料庫中總有一些，在整個專案<strong>部署初期就必須存在</strong>的資料。</p>
+<p>比如「服務類型」為了<strong>未來的擴充彈性</strong>，選擇不寫成簡單的 enum（Django <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/models/fields/#choices">choices</a>）欄位，而是直接獨立一個 db table，table 中的每一筆資料都是現有的服務類型。</p>
+<p>而我們需要在部署初期，把<strong>當前所有服務類型</strong>預先寫入 db，即<strong>資料初始化</strong>。</p>
+<p>這個需求很常見，也很適合用 Django fixture 來處理。</p>
+<h3 id="二、測試"><a href="#二、測試" class="headerlink" title="二、測試"></a><strong>二、測</strong>試</h3><ul>
+<li>測試時用來準備一致的測試數據，確保測試的可靠性和可重現性。</li>
+<li>測試資料可以被重複使用，不需要每次手動建立。</li>
+</ul>
+<p>如果有用 pytest，基本上會被 <a target="_blank" rel="noopener" href="https://docs.pytest.org/en/latest/explanation/fixtures.html">pytest fixture</a> 取代，我幾乎沒這麼用過。</p>
+<h3 id="三、資料的備份與還原"><a href="#三、資料的備份與還原" class="headerlink" title="三、資料的備份與還原"></a>三、資料的備份與還原</h3><ul>
+<li>可以用來導出資料庫的部分或全部數據，方便做數據備份。</li>
+<li>在需要時可以通過 fixture 還原資料庫的狀態。</li>
+</ul>
+<p>備份大量資料顯然有更好、更標準的方式，所以這比較適合備份簡單的資料。</p>
+<p>比如我們後續教學用的範例資料，恰好適合！</p>
+<hr>
+<p>進入正題。</p>
+<p>我們要為 Django Tutorial 的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/post/models.py">models</a> 建立一些簡單的範例資料。</p>
+<h2 id="建立範例資料並導出為-Fixture"><a href="#建立範例資料並導出為-Fixture" class="headerlink" title="建立範例資料並導出為 Fixture"></a>建立範例資料並導出為 Fixture</h2><p>這是建立資料的 Python script：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post, Subtitle, Comment</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Post</span></span><br><span class="line">post1 = Post.objects.create(title=<span class="string">&quot;Django Fixtures&quot;</span>, content=<span class="string">&quot;Content of Django Fixtures&quot;</span>)</span><br><span class="line">post2 = Post.objects.create(title=<span class="string">&quot;ORM Basics&quot;</span>, content=<span class="string">&quot;Content of ORM Basics&quot;</span>)</span><br><span class="line">post3 = Post.objects.create(title=<span class="string">&quot;Advanced Queries&quot;</span>, content=<span class="string">&quot;Content of Advanced Queries&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Subtitle</span></span><br><span class="line">subtitle1 = Subtitle.objects.create(content=<span class="string">&quot;An Overview&quot;</span>, post=post1)</span><br><span class="line">subtitle2 = Subtitle.objects.create(content=<span class="string">&quot;Introduction to ORM&quot;</span>, post=post2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Comment</span></span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Great article!&quot;</span>, post=post1)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Very informative.&quot;</span>, post=post2)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Helped a lot!&quot;</span>, post=post3)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Need more examples.&quot;</span>, post=post3)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Thanks for the tips!&quot;</span>, post=post3)</span><br></pre></td></tr></table></figure>
+
+<p>要使用這段程式碼來建立 db 實例，需要進入 Django shell 並執行程式碼。</p>
+<p>我本來想用這種方式，讓讀者也可以自行建立資料並重現教學環境，但這樣的方式顯然不夠友好。</p>
+<p>更好的方式是使用 Django fixture。</p>
+<h3 id="導出為-Fixture"><a href="#導出為-Fixture" class="headerlink" title="導出為 Fixture"></a>導出為 Fixture</h3><p>一旦導出為 Django fixture，讀者只需要透過 Django 指令匯入，就可以重現整個 db 的資料環境，無疑是更好的選擇！</p>
+<p>如何導出，使用<code>dumpdata</code>指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py dumpdata post --output=post_data.json</span><br></pre></td></tr></table></figure>
+
+<p>可以用<code>post</code>（Django app 名稱）來<strong>限定</strong>要輸出的 model 資料範圍。</p>
+<p>如果不指定 app，<code>dumpdata</code> 指令會嘗試匯出整個專案的所有資料，包括 Django 本身的內建 db 資料。這通常包括大量不必要的內容，並且讓輸出文件變得過於複雜。</p>
+<h2 id="匯入-Fixture"><a href="#匯入-Fixture" class="headerlink" title="匯入 Fixture"></a>匯入 Fixture</h2><p>輸出之後就是匯入，匯入也非常簡單，使用<code>loaddata</code>指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py loaddata post_data.json</span><br></pre></td></tr></table></figure>
+
+<p>實際執行結果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ python manage.py loaddata post_data.json</span><br><span class="line">Installed 10 object(s) from 1 fixture(s)</span><br></pre></td></tr></table></figure>
+
+<p>會顯示總共匯入了幾筆資料，以及來源總共是幾筆 Django fixture(s)。</p>
+<p>附帶一提，匯入之前，記得先確保已完成所有的 db 遷移！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-request/" title="Django HttpRequest 常用屬性介紹" rel="bookmark">Django HttpRequest 常用屬性介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-rest-framework-01/" title="Django REST framework 教學（一）前言篇" rel="bookmark">Django REST framework 教學（一）前言篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-rest-framework-02/" title="Django REST framework 教學（二）基本設定與路由" rel="bookmark">Django REST framework 教學（二）基本設定與路由</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/effective-python-01/">
+        <span class="next-text nav-default">《Effective Python》筆記（一）以拆分代替索引</span>
+        <span class="prev-text nav-mobile">《Effective Python》筆記（一）以拆分代替索引</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">9</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">31</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">35</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">11</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">22</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://facebook.com/kyomind" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/kyomind.tw/" class="iconfont icon-instagram" title="instagram"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
