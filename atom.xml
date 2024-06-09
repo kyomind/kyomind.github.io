@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-06-09T06:39:50.957Z</updated>
+  <updated>2024-06-09T08:02:05.925Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>現代軟體的「鍵盤快捷鍵」記憶爭奪戰</title>
+    <link href="https://blog.kyomind.tw/keyboard-shortcuts/"/>
+    <id>https://blog.kyomind.tw/keyboard-shortcuts/</id>
+    <published>2024-06-09T07:51:43.000Z</published>
+    <updated>2024-06-09T08:02:05.925Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"><span class="cap">by Sam Chivers</span></p><p>現代人每天都會用一堆軟體、app、線上服務。</p><p>其中比較複雜的工具（包括瀏覽器與作業系統），往往都有搭配「鍵盤快捷鍵」來加速你的操作。</p><p>然而，軟體很多，快捷鍵更多！究竟要怎麼選擇？哪些要記，哪些可以放棄？</p><p>本文簡要分享我的看法。</p><h2 id="本文所謂的快捷鍵"><a href="#本文所謂的快捷鍵" class="headerlink" title="本文所謂的快捷鍵"></a>本文所謂的快捷鍵</h2><p>首先說明，像<code>ctrl+c</code>、<code>ctrl+v</code>、<code>ctrl+b</code>（字體加粗）這種已經成為大家心中公認的快捷鍵設定，各大軟體廠商也幾乎不可能在設計上違背的，就不再討論範圍。</p><p>這裡講的是那些不同軟體之間<strong>特有</strong>的快捷鍵。而且也不是要討論這些快捷鍵的設計是否合理、好記。</p><p>而是要說，我<strong>如何選擇（取捨）</strong>要記得哪些、放棄哪些的思路，以及我對「記憶快捷鍵來增加效率（生產力）」的整體看法。</p><p>只是簡單的個人心得，供參。</p><span id="more"></span><hr><h2 id="鍵盤快捷鍵的優點"><a href="#鍵盤快捷鍵的優點" class="headerlink" title="鍵盤快捷鍵的優點"></a>鍵盤快捷鍵的優點</h2><p>鍵盤快捷鍵的優點在於<strong>提高工作效率</strong>，自不待言。</p><p>想像一下，你需要頻繁地複製和貼上文字，如果每次都要用滑鼠點擊右鍵、選擇複製、移動滑鼠、再點擊右鍵……，想想就累人。</p><p>通過鍵盤快捷鍵，我們可以快速完成這些操作，節省大量時間。</p><p>而且，我覺得比起身體的勞累，能有效降低「重覆機械性行為」帶來的<strong>心理疲勞與排斥感</strong>，才是快捷鍵的最大價值。</p><h2 id="快捷鍵的兩難"><a href="#快捷鍵的兩難" class="headerlink" title="快捷鍵的兩難"></a>快捷鍵的兩難</h2><p>然而，記憶這些快捷鍵並不容易。不同軟體有不同的快捷鍵，有時甚至<strong>相互衝突</strong>。</p><p>上古時期（20 年前），我們只有微軟體 Office，所以問題不大。甚至很多人像我一樣，除了複製、貼上外，都是使用軟體 UI 上的文字編輯器，而不是快捷鍵。</p><p>但時代不同了，現在的軟體太多了！每天常用的恐怕就超過 10 個，每個都有自己的快鍵設定——而且不一定都能自定義。</p><p>記住這些快捷鍵對於大腦來說是一個<del>不小</del>巨大的負擔，特別是那些包含多個按鍵組合的快捷鍵。</p><hr><p>以下是我「選擇」的基本思路。</p><h2 id="一、VS-Code-為王"><a href="#一、VS-Code-為王" class="headerlink" title="一、VS Code 為王"></a>一、VS Code 為王</h2><p>VS Code 是我願意投入最大心力去記憶快捷鍵的軟體工具。</p><p>原因無它——我要寫程式！而 VS Code 幾乎是我唯一的 IDE（整合開發編輯器）。</p><p>當然，VS Code 功能極多，快捷鍵是怎樣也記不完，光我常用的就超過 20 個了。但我願意，而且值得。</p><p>不僅如此，接下來我還打算寫 2 到 3 篇我常用的 VS Code 快捷鍵整理文章，因為我也是一段時間沒用就會忘記XD</p><p>但還是那句話，我願意。記憶 VS Code 快鍵能幫我省下的時間，與增加的開發樂趣，遠遠超過其它軟體。</p><p>它是<strong>唯一</strong>的。</p><h2 id="二、筆記軟體：以-Notion、Logseq-為主"><a href="#二、筆記軟體：以-Notion、Logseq-為主" class="headerlink" title="二、筆記軟體：以 Notion、Logseq 為主"></a>二、筆記軟體：以 Notion、Logseq 為主</h2><p>Notion 作為我最早開始記憶快鍵的筆記軟體，對它的快鍵的記憶無疑是最深刻的。</p><p>後來用了 Logseq、Bear，記的快鍵就相對少了。</p><p>但我主要也只記 Notion「<code>alt+cmd+0-9</code>」 這系列的快捷鍵，因為同時要按 3 個鍵，和其它筆記軟體衝突的情況較少，所以不會覺得太費力。</p><p>而 <a href="https://logseq.com/">Logseq</a> 只有這三組我最常用（以下都是 Mac）：</p><ul><li><code>cmd+shift+H</code>，highlight 文字。</li><li><code>ctrl+L</code>，清空該行。（相當於 zsh 的<code>ctrl+u</code>，這個我也很常用！）</li><li><code>cmd+K</code>，搜尋。</li></ul><p>筆記軟體是<strong>最容易發生快鍵衝突的生態系</strong>！這完全可以理解，畢竟編輯操作實在太多了。</p><p>比如我用 <a href="https://bear.app/">Bear</a> 時，就常常想不起來<strong>清單和 TODO</strong> 的快捷鍵：</p><ul><li><code>cmd+L</code>：無序清單。（用<code>-+space</code>會更快）</li><li><code>shift+cmd+L</code>：有序清單。</li><li><code>cmd+T</code>：TODO。</li></ul><p>這些快捷鍵和 Notion <strong>完全不同！</strong></p><p>對於筆記軟體，我的看法是，選一個常用 app 的記多一些。如果還有第二、三個筆記軟體，記一、兩個常用操作就好了，剩下就交給 UI 編輯器吧！</p><p>不需要把一切都「最佳化」——記憶是有限的，而且註定會不斷遺忘。</p><h2 id="三、60-分就是滿分"><a href="#三、60-分就是滿分" class="headerlink" title="三、60 分就是滿分"></a>三、60 分就是滿分</h2><p>我覺得記憶快捷鍵這件事，肯定不是多多益善。</p><p>因為記得多就忘得多，「取捨」在這個議題上顯然特別重要。</p><p>羨慕「高手寫程式手都不用碰滑鼠」嗎？<strong>我也羨慕，但我不會去追求。</strong></p><p>全用滑鼠操作固然低效，不過只要能減少滑鼠使用率達 50%，也很厲害了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YmlPRz1.jpg&quot; alt=&quot;by Sam Chivers&quot;&gt;&lt;/p&gt;
+&lt;p&gt;現代人每天都會用一堆軟體、app、線上服務。&lt;/p&gt;
+&lt;p&gt;其中比較複雜的工具（包括瀏覽器與作業系統），往往都有搭配「鍵盤快捷鍵」來加速你的操作。&lt;/p&gt;
+&lt;p&gt;然而，軟體很多，快捷鍵更多！究竟要怎麼選擇？哪些要記，哪些可以放棄？&lt;/p&gt;
+&lt;p&gt;本文簡要分享我的看法。&lt;/p&gt;
+&lt;h2 id=&quot;本文所謂的快捷鍵&quot;&gt;&lt;a href=&quot;#本文所謂的快捷鍵&quot; class=&quot;headerlink&quot; title=&quot;本文所謂的快捷鍵&quot;&gt;&lt;/a&gt;本文所謂的快捷鍵&lt;/h2&gt;&lt;p&gt;首先說明，像&lt;code&gt;ctrl+c&lt;/code&gt;、&lt;code&gt;ctrl+v&lt;/code&gt;、&lt;code&gt;ctrl+b&lt;/code&gt;（字體加粗）這種已經成為大家心中公認的快捷鍵設定，各大軟體廠商也幾乎不可能在設計上違背的，就不再討論範圍。&lt;/p&gt;
+&lt;p&gt;這裡講的是那些不同軟體之間&lt;strong&gt;特有&lt;/strong&gt;的快捷鍵。而且也不是要討論這些快捷鍵的設計是否合理、好記。&lt;/p&gt;
+&lt;p&gt;而是要說，我&lt;strong&gt;如何選擇（取捨）&lt;/strong&gt;要記得哪些、放棄哪些的思路，以及我對「記憶快捷鍵來增加效率（生產力）」的整體看法。&lt;/p&gt;
+&lt;p&gt;只是簡單的個人心得，供參。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/YmlPRz1.jpg" type="image"/>
+    
+    
+    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="Notion" scheme="https://blog.kyomind.tw/tags/Notion/"/>
+    
+    <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
+    
+    <category term="VS Code" scheme="https://blog.kyomind.tw/tags/VS-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>用 Django Fixture 匯入與導出資料</title>
@@ -369,38 +404,6 @@
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
     
     <category term="壞味道" scheme="https://blog.kyomind.tw/tags/%E5%A3%9E%E5%91%B3%E9%81%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>29，我編輯舊文的三個理由</title>
-    <link href="https://blog.kyomind.tw/weekly-review-29/"/>
-    <id>https://blog.kyomind.tw/weekly-review-29/</id>
-    <published>2024-04-30T18:50:09.000Z</published>
-    <updated>2024-05-01T16:49:49.825Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>作為一個 blog 創作者，我算是比較常<strong>編輯、翻修舊文</strong>的人。</p><p>編輯舊文往往需要花費不少時間，而且讀者也未必看得出有哪裡不同——所以我一定會在文章開頭備註、提醒☺️</p><p>部分文章，編輯過不止一次，比如〈<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉，我將它視為代表作之一，編輯的次數應該是全站之最。</p><p>這樣的行為，雖然源於<strong>對文字與表達的追求</strong>，但其中也有<strong>實際的理由</strong>。</p><p>這篇來就分享一下，我考慮編輯舊文的<strong>三個實際理由。</strong></p><span id="more"></span><hr><h2 id="一、流量起來了"><a href="#一、流量起來了" class="headerlink" title="一、流量起來了"></a>一、流量起來了</h2><p>這應該不用解釋，當一篇文章看的人變多時，你會有<strong>兩種感受</strong>：</p><ol><li><strong>虛榮感</strong>——受歡迎的感覺真好！</li><li><strong>責任感</strong>——我應該沒有哪邊寫錯了吧？👀</li></ol><p>即使不考慮上述感受，我認為「流量」仍可作為編輯舊文的<strong>首要理由</strong>。</p><p>如果該文章<strong>突顯你的個人風格或價值觀</strong>，花費心思去增進文字的精確度與表達的流暢，確實更加值得——因為它會被更多人看到。</p><p>儘管這不是一個高大上的理由，但我覺得它是<strong>最實際</strong>的理由。</p><p>倘若你身處於部落格寫作的第一年，建議以這個指標作為編輯舊文的主要依據。</p><h2 id="二、內容過時了"><a href="#二、內容過時了" class="headerlink" title="二、內容過時了"></a>二、內容過時了</h2><p>文章內容是否會過時，和主題的<strong>性質</strong>有很大關係。</p><p>個人情感抒發或價值觀表述，即使<strong>現在已經不這麼想了</strong>，也稱不上「過時」，因為那就是當時的想法。</p><p>相對的，技術類文章就比較容易遇到過時問題——尤其是工具教學！</p><p>面對這種「技術上的過時」，你有三種處理方式：</p><ol><li>不理它，反正有發文日期，雖然現在已經過時了，至少它曾經是對的！這屬於最簡單的做法——<strong>什麼都不做</strong>。說真的，通常讀者也不會苛責啦！</li><li>在文中（通常是開頭）表示：「本文部分內容已經過時，請讀者留意或自行查閱官方文件。」這已經算不錯的了，<strong>至少願意提醒讀者。</strong></li><li>依照新的事實，更新文章內容！雖然很累，<strong>但我願意為你喝采！</strong></li></ol><p>〈<a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a>〉就是很好的例子，以下是文章在重新編輯後新增的段落：</p><blockquote><p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經大幅簡化了設定操作，本段內容在新版仍可適用，但建議直接升級最新版 pyenv 並直接改用以下設定：（我把指令改成新版）</p></blockquote><p>而且，上述例子也不是單純更新指令就好。我往往還得判斷：哪些內容過時了，要直接刪除。哪些要留下，以及是否需要改寫等等。</p><p><strong>這通常不是一件有趣的事。但你的用心，讀者會看到。</strong></p><h2 id="三、廢話太多了"><a href="#三、廢話太多了" class="headerlink" title="三、廢話太多了"></a>三、廢話太多了</h2><p>為這個理由而編輯舊文，顯示出你<strong>身為作者的自我追求。</strong></p><p>容我解釋一下，所謂的「廢話太多」指的是，你發現文中有一些段落，和主軸<strong>沒有那麼大的關聯</strong>，或可能<strong>增加讀者閱讀上的負擔</strong>——讀者不明白你為什麼要寫這一段。</p><p>然而，作者對自己的內容，肯定都是有<strong>盲點</strong>的——否則就不需要編輯了。想要<strong>自行發現這類問題，說真的，著實不易</strong>！</p><p>畢竟，一字一句都是我的嘔心瀝血之作啊！</p><blockquote><p>那我要怎麼發現這些「廢話」呢？</p></blockquote><p>有一個簡單的判斷方式（雖然未必準確），那就是明明文章篇幅不短，但從後台數據的「平均閱讀時間」看，卻偏短。</p><p>這可能意味著，你的內容，讀者<strong>並不買帳</strong>！你覺得很棒的東西，<strong>他們只覺得很煩</strong>。所以選擇匆匆略過。</p><p>這時我會把<strong>編輯重心</strong>放在「<strong>閱讀流暢度</strong>」上，而提升閱讀流暢度的一個<strong>有效方法</strong>，就是<strong>刪掉那些冗餘的段落</strong>！（要注意刪除後的落段銜接，必要時甚至得增補）</p><p>這真的很不容易——都是自己的孩子啊啊啊！</p><p>但通常這類編輯，<strong>效果特別好，成就感也特別高。</strong></p><p>以下 3 篇是我認為「<strong>刪減後更佳</strong>」的適例（雖然還是很長XD），供讀者參考：</p><ol><li><a href="https://blog.kyomind.tw/the-quick-python-book/">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></li><li><a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></li><li><a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;作為一個 blog 創作者，我算是比較常&lt;strong&gt;編輯、翻修舊文&lt;/strong&gt;的人。&lt;/p&gt;
-&lt;p&gt;編輯舊文往往需要花費不少時間，而且讀者也未必看得出有哪裡不同——所以我一定會在文章開頭備註、提醒☺️&lt;/p&gt;
-&lt;p&gt;部分文章，編輯過不止一次，比如〈&lt;a href=&quot;https://blog.kyomind.tw/python-poetry/&quot;&gt;Python 套件管理器——Poetry 完全入門指南&lt;/a&gt;〉，我將它視為代表作之一，編輯的次數應該是全站之最。&lt;/p&gt;
-&lt;p&gt;這樣的行為，雖然源於&lt;strong&gt;對文字與表達的追求&lt;/strong&gt;，但其中也有&lt;strong&gt;實際的理由&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;這篇來就分享一下，我考慮編輯舊文的&lt;strong&gt;三個實際理由。&lt;/strong&gt;&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
-    
-    <category term="重構" scheme="https://blog.kyomind.tw/tags/%E9%87%8D%E6%A7%8B/"/>
-    
-    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
     
   </entry>
   

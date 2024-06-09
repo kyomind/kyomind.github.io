@@ -111,7 +111,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (11)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (35)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (36)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (22)</a>
           
@@ -155,6 +155,40 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-09-12
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gqhZSo.jpg" alt="by Aleksandar Pasaric from Pexels"></p>
+<blockquote>
+<p>合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
+</blockquote>
+<p><code>2022/03/18</code>重要更新：</p>
+<blockquote>
+<p>這兩天看到這篇〈<a target="_blank" rel="noopener" href="https://blog.einverne.info/post/2021/10/zinit-author-delete-repository-and-alternative.html">zinit 作者刪庫事件以及後續代替方案</a>〉，才知道原來 zinit 的原作者竟然無預警把 GitHub 上的 repo 刪除了！嚴格來說是把 organization 刪了，所以其下的好多 repo 都變成孤兒，包括一些常用的 zsh 套件。</p>
+</blockquote>
+<blockquote>
+<p>不過原來的 repo 已經有<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">社群的 fork 版</a>並持續維護中，所以本文內容除了 zinit 與部分套件的安裝網址、路徑有修正外，其餘使用上並不受影響，我暫時也沒打算換到新的管理器，因為其實都大同小異。</p>
+</blockquote>
+<hr>
+<p>〈<a href="https://blog.kyomind.tw/from-zplug-to-zinit/">將 zsh 套件管理器從 zplug 改為 zinit</a>〉曾提過要嘗試在自己新開的 VM 上面使用之前沒用過的 zsh 套件管理器——<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a>，取代原來在 Mac 上的 zplug 方案。安裝後也進行了簡單的<a href="https://blog.kyomind.tw/learning-topic/#%E5%9B%9E%E9%A1%A7">回顧</a>。</p>
+<p>後來工作上又開了好幾個 VM，也是裝 Ubuntu，因為覺得設定有點麻煩所以一直使用預設的 bash shell，但操作起來的效率與體驗，和 zsh 完全不能比。</p>
+<p>只能說 zsh 真的<strong>用過就回不去了！</strong>想想還是下定決心，把整個流程寫下來，作為日後重置 VM 時的參考。</p>
+<p>至於為何不選用最常見的套件管理器——<a target="_blank" rel="noopener" href="https://ohmyz.sh/">Oh My Zsh</a>，前述文章已有提及，基本上就是安裝了太多不必要的功能，著實不夠簡潔。</p>
+          <div class="read-more">
+            <a href="/ubuntu-zsh-zinit/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a>
         </h1>
@@ -304,41 +338,6 @@
 <p>如此的坦誠與赤裸，不禁覺得：「為什麼你能表述到這個程度？你不怕作為讀者的我們討厭你嗎？」只能說，佩服，我也想要有這樣的勇氣。</p>
           <div class="read-more">
             <a href="/hard-to-say/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/pyenv-setup/">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2021-07-10
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/rnvlF18.jpg" alt="by Koma Zhang on Behance"></p>
-<blockquote>
-<p><code>2024/04/25</code>：新增「<a href="#%E6%9B%B4%E6%96%B0-Python-%E7%89%88%E6%9C%AC">更新 Python 版本</a>」。</p>
-</blockquote>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></p>
-</blockquote>
-<p>「人生苦短，我用 Python」闡述了 Python 的易用與簡潔，但如果深入到 Python 的套件管理與版本隔離，則是一件十分複雜的事，有興趣的人可以參考下列內容：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://medium.com/@will.wang/90e398bb3785">撥開 Python, pip, site-packages 的藍色蜘蛛網 💢</a></li>
-<li><a target="_blank" rel="noopener" href="https://pythonhunter.org/episodes/ep15">《捕蛇者說》Ep 15. 和 PyPA 的成員聊聊 Python 開發工作流</a>（推薦！）</li>
-<li><a target="_blank" rel="noopener" href="https://josix.tw/pyenv-deep-dive/">建立一個方便開發的 Python 環境 （零）- 使用 Pyenv 管理 Python 版本</a></li>
-<li><a target="_blank" rel="noopener" href="https://shazi.info/pip-pipenv-%E5%92%8C-poetry-%E7%9A%84%E9%81%B8%E6%93%87/">pip, pipenv 和 poetry 的選擇</a></li>
-</ul>
-<h2 id="本文重點"><a href="#本文重點" class="headerlink" title="本文重點"></a>本文重點</h2><p>這次並沒有要細論上述內容，只是想把 Anaconda 移除掉——我現在的 Python 虛擬環境（virtualenv）都是用 Anaconda 附帶的 conda 建立與管理居多。</p>
-<p>而最常見的替代方案，就是 pyenv + virtualenv。</p>
-<p>本篇僅記錄一下設定上的重點，詳細用法請參考 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">pyenv 官方 GitHub</a>。</p>
-          <div class="read-more">
-            <a href="/pyenv-setup/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/15/">
