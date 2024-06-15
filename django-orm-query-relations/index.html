@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Django ORM" />
     
 
-  <meta property="article:modified_time" content="2024-06-15T20:42:03+08:00" />
+  <meta property="article:modified_time" content="2024-06-15T20:44:13+08:00" />
 
 
 
@@ -236,7 +236,7 @@
 <p>附帶一提，第二篇使用<strong>反向關聯欄位</strong>的方式，也可以算是外鍵關聯查詢的一種。</p>
 <hr>
 <p>了解雙底線的兩大用途後，<strong>才不會混淆查詢條件和關聯查詢。</strong></p>
-<p>以下例子不算複雜，但也<strong>未必很簡單</strong>。畢竟我們要展示的是「關聯查詢」，而不是單純的查詢。</p>
+<p>以下例子不算複雜，<strong>但也未必很簡單</strong>。畢竟我們要展示的是「關聯查詢」，而不是單純的查詢。</p>
 <h2 id="一、查詢「有副標題」的文章"><a href="#一、查詢「有副標題」的文章" class="headerlink" title="一、查詢「有副標題」的文章"></a>一、查詢「有副標題」的文章</h2><p>重點：使用<code>isnull</code>作為關聯查詢條件。判斷「<strong>關聯是否存在</strong>」。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢所有「有副標題」的文章</span></span><br><span class="line">posts_with_subtitle = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
@@ -272,7 +272,7 @@
 <p>雖然用別名的寫法感覺更加「道地」、更像內行人。但如果想保守起見，還是使用<code>post__id</code>比較好，這種寫法是<strong>最直觀</strong>的。</p>
 <p>我個人認為，不用別名也沒關係，<strong>explicit 至上。</strong></p>
 <h3 id="何時使用哪種寫法？"><a href="#何時使用哪種寫法？" class="headerlink" title="何時使用哪種寫法？"></a>何時使用哪種寫法？</h3><p>Django 入門者最常使用的是第 4 種，這樣寫很好懂，因為欄位值正是一個 db 物件！</p>
-<p>然而，它需要程式碼上下文中，先有一個<code>post</code>物件。如果沒有，就要像上面寫的，先查詢到<code>post</code>物件——這很可能是不必要的。</p>
+<p>然而，它需要程式碼上下文中，先有一個<code>post</code>物件。如果沒有，就要像上面寫的，先查詢到<code>post</code>物件——這可能是不必要的。</p>
 <p>如果當前上下文只有<code>post</code>的 id，強烈建議使用前 3 種寫法（個人推薦第 1 種），以減少額外的查詢負擔。</p>
 <h2 id="四、查詢標題有「Django」的所有留言"><a href="#四、查詢標題有「Django」的所有留言" class="headerlink" title="四、查詢標題有「Django」的所有留言"></a>四、查詢標題有「Django」的所有留言</h2><p>上面「三」是用 id 查詢，這裡改用<strong>特定字詞</strong>查詢。</p>
 <p>而且，不是直接查詢標題中包含「Django」的文章（這和外鍵查詢無關），而是文章標題中包括 Django 的<strong>所有留言</strong>。</p>
