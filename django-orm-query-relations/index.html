@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Django ORM" />
     
 
-  <meta property="article:modified_time" content="2024-06-15T10:49:18+08:00" />
+  <meta property="article:modified_time" content="2024-06-15T10:53:11+08:00" />
 
 
 
@@ -237,7 +237,7 @@
 <h2 id="一、查詢「有副標題」的文章"><a href="#一、查詢「有副標題」的文章" class="headerlink" title="一、查詢「有副標題」的文章"></a>一、查詢「有副標題」的文章</h2><p>使用<code>isnull</code>作為關聯查詢條件。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢所有「有副標題」的文章</span></span><br><span class="line">posts_with_subtitle = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
-<p><code>subtitle</code>是<code>Post</code>的一對一<strong>反向關聯欄位</strong>，如果<code>subtitle</code>是普通或正向關聯欄位，<strong>那相同寫法的效果將****截然不同</strong>，會變成限制欄位值是否為<code>None</code>。</p>
+<p><code>subtitle</code>是<code>Post</code>的一對一<strong>反向關聯欄位</strong>，如果<code>subtitle</code>是普通或正向關聯欄位，那相同寫法的效果將<strong>截然不同</strong>，會變成限制欄位值是否為<code>None</code>。</p>
 <p>查詢結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>posts_with_subtitles</span><br><span class="line">&lt;QuerySet [<span class="string">&#x27;Django Fixtures&#x27;</span>, <span class="string">&#x27;ORM Basics&#x27;</span>]&gt;</span><br></pre></td></tr></table></figure>
 
