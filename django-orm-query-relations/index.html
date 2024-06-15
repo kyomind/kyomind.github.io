@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Django ORM" />
     
 
-  <meta property="article:modified_time" content="2024-06-15T16:25:52+08:00" />
+  <meta property="article:modified_time" content="2024-06-15T20:42:03+08:00" />
 
 
 
@@ -222,7 +222,7 @@
 <li><strong>文章和留言（Comment）的一對多關聯</strong>，每個文章有不同數量的留言，這可以用來展示外鍵關聯的查詢。</li>
 </ol>
 <hr>
-<h2 id="使用-進行-Django-ORM-查詢"><a href="#使用-進行-Django-ORM-查詢" class="headerlink" title="使用__進行 Django ORM 查詢"></a>使用<code>__</code>進行 Django ORM 查詢</h2><p>開始學習前，還有一個重要的事情要提醒。</p>
+<h2 id="使用-進行-Django-ORM-查詢"><a href="#使用-進行-Django-ORM-查詢" class="headerlink" title="使用__進行 Django ORM 查詢"></a>使用<code>__</code>進行 Django ORM 查詢</h2><p>開始學習前，還有另一件重要的事要提醒。</p>
 <p>Django ORM 會大量使用雙底線（<code>__</code>）進行查詢。因此，你的 Django 模型欄位名稱<strong>不可以有雙底線</strong>。</p>
 <p>而這些查詢主要分為<strong>兩大類。</strong></p>
 <h3 id="一、以特定條件查詢欄位"><a href="#一、以特定條件查詢欄位" class="headerlink" title="一、以特定條件查詢欄位"></a>一、以特定條件查詢欄位</h3><p>利用雙底線來指定欄位的<strong>查詢條件</strong>，例如等於、不等於、大於、小於等。</p>
@@ -231,11 +231,12 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查詢標題包含 &#x27;Python&#x27; 的文章，不區分大小寫</span></span><br><span class="line">Post.objects.<span class="built_in">filter</span>(title__icontains=<span class="string">&#x27;Python&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、外鍵關聯查詢"><a href="#二、外鍵關聯查詢" class="headerlink" title="二、外鍵關聯查詢"></a>二、外鍵關聯查詢</h3><p>外鍵關聯查詢，就是「跨 table」的查詢。只用一次查詢，就能同時對兩個 table 進行條件過濾並獲得結果。</p>
+<p>此時的雙底線，代表的是外鍵欄位的<strong>屬性</strong>。比如<code>post</code>是<code>Comment</code>的外鍵欄位，而<code>post__title</code>指的是<code>Post</code>的<code>title</code>欄位。</p>
 <p>接來就用這些資料，示範常見的外鍵關聯查詢。</p>
 <p>附帶一提，第二篇使用<strong>反向關聯欄位</strong>的方式，也可以算是外鍵關聯查詢的一種。</p>
 <hr>
 <p>了解雙底線的兩大用途後，<strong>才不會混淆查詢條件和關聯查詢。</strong></p>
-<p>以下例子不算複雜，但也<strong>未必很簡單</strong>。因為我們要展示的是「關聯查詢」，而不是單純的查詢。</p>
+<p>以下例子不算複雜，但也<strong>未必很簡單</strong>。畢竟我們要展示的是「關聯查詢」，而不是單純的查詢。</p>
 <h2 id="一、查詢「有副標題」的文章"><a href="#一、查詢「有副標題」的文章" class="headerlink" title="一、查詢「有副標題」的文章"></a>一、查詢「有副標題」的文章</h2><p>重點：使用<code>isnull</code>作為關聯查詢條件。判斷「<strong>關聯是否存在</strong>」。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢所有「有副標題」的文章</span></span><br><span class="line">posts_with_subtitle = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
