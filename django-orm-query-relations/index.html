@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Django ORM" />
     
 
-  <meta property="article:modified_time" content="2024-06-16T08:13:41+08:00" />
+  <meta property="article:modified_time" content="2024-06-16T21:52:00+08:00" />
 
 
 
@@ -237,6 +237,8 @@
 <hr>
 <p>了解雙底線的兩大用途後，<strong>才不會混淆查詢條件和關聯查詢。</strong></p>
 <p>以下例子不算複雜，<strong>但也未必很簡單</strong>。畢竟我們要展示的是「關聯查詢」，而不是單純的查詢。</p>
+<p>第二篇介紹的「<strong>反向關聯</strong>」，是必須熟悉的內容。因為前兩個例子都與反向關聯有關。</p>
+<p>讓我們開始吧！</p>
 <h2 id="一、查詢「有副標題」的文章"><a href="#一、查詢「有副標題」的文章" class="headerlink" title="一、查詢「有副標題」的文章"></a>一、查詢「有副標題」的文章</h2><p>重點：使用<code>isnull</code>作為關聯查詢條件。判斷「<strong>關聯是否存在</strong>」。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢所有「有副標題」的文章</span></span><br><span class="line">posts_with_subtitle = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
