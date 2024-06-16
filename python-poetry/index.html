@@ -35,7 +35,7 @@
     <meta property="og:tag" content="pip" />
     
 
-  <meta property="article:modified_time" content="2024-06-16T18:59:27+08:00" />
+  <meta property="article:modified_time" content="2024-06-16T19:10:33+08:00" />
 
 
 
@@ -515,17 +515,17 @@
 <h3 id="二、使用-符號（文件）"><a href="#二、使用-符號（文件）" class="headerlink" title="二、使用~符號（文件）"></a>二、使用<code>~</code>符號（<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/dependency-specification/#tilde-requirements">文件</a>）</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9 且 &lt;4.3.0（允許 4.2.9 及以上版本，但不包括 4.3.0，即<strong>只能升級最小版號</strong>）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@~4.2.9</span><br></pre></td></tr></table></figure>
 
-<p>這個選項比較保守，<strong>只會接受 4.2.x 系列的更新</strong>。這適合於當你想要限制更新的範圍，僅包括 bug 修正和小幅度的改進。</p>
+<p>這個選項<strong>更加保守</strong>，<strong>只會接受 4.2.x 系列的更新</strong>。這適合想要<strong>進一步限制</strong>更新的範圍，但又保留一些更新的彈性——僅包括 bug 修正和小幅度的改進。</p>
 <h3 id="三、使用-符號"><a href="#三、使用-符號" class="headerlink" title="三、使用&gt;=符號"></a>三、使用<code>&gt;=</code>符號</h3><p>指定 Django 版本為 &gt;&#x3D;4.2.9（沒有上限）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意，這裡需要使用「字串」表示</span></span><br><span class="line">poetry add <span class="string">&quot;django&gt;=4.2.9&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>主版號</strong>（即上面的 4.x.x 中的 4）<strong>升級</strong>時，通常有更大機率會引入 <strong>API 變更</strong>、棄用舊有的 API 等。</p>
-<p>一旦更新，往往你的專案也要跟著改動，否則這些變更可能會導致你的程式碼無法正常運作，所以一般<strong>不建議</strong>使用這種方式。</p>
-<h3 id="四、固定版本"><a href="#四、固定版本" class="headerlink" title="四、固定版本"></a>四、固定版本</h3><p>僅允許 Django 的 4.2.9 版本（嚴格限制在這個版本）:</p>
+<p><strong>主版號</strong>（即上面的 4.x.x 中的 4）<strong>升級</strong>時，通常有更大機率引入 <strong>API 變更</strong>、棄用舊有的 API 等，也就是所謂的 <strong>breaking change。</strong></p>
+<p>這樣的更新可能會導致你的專案無法正常運作，需要一併修改程式碼。所以一般<strong>不建議</strong>使用這種方式。</p>
+<h3 id="四、固定版本"><a href="#四、固定版本" class="headerlink" title="四、固定版本"></a>四、固定版本</h3><p>僅允許 Django 的 4.2.9 版本（<strong>嚴格限制</strong>在這個版本）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django==4.2.9</span><br></pre></td></tr></table></figure>
 
-<p>安全、保險，但浪費了 Poetry 的版本管理能力。</p>
-<p>一般我只在 linter、formatter 等工具上使用固定版本，自己手動更新。因為<strong>它們必須和 pre-commit 設定檔中的版本一致</strong>，才比較妥當。所以我不會讓它們自動升級。</p>
+<p>安全、保險，但也<strong>浪費</strong>了 Poetry 的版本管理能力。</p>
+<p>一般我只在 linter、formatter 等工具上使用固定版本，自己手動更新。因為<strong>它們必須和 pre-commit 設定檔中的版本一致</strong>。所以我不會讓它們自動升級。</p>
 <hr>
 <p>依我個人經驗，<strong>最常用的是第 1 和第 4 種方式。</strong></p>
 <h3 id="一次安裝複數套件"><a href="#一次安裝複數套件" class="headerlink" title="一次安裝複數套件"></a>一次安裝複數套件</h3><p>Poetry 的<code>add</code>指令，也可以一次安裝複數套件，比如：</p>
