@@ -29,14 +29,13 @@
             <meta property="og:tag" content="長文" />
     <meta property="og:tag" content="Python" />
     <meta property="og:tag" content="pyproject.toml" />
-    <meta property="og:tag" content="Docker" />
     <meta property="og:tag" content="pyenv" />
     <meta property="og:tag" content="virtualenv" />
     <meta property="og:tag" content="Poetry" />
     <meta property="og:tag" content="pip" />
     
 
-  <meta property="article:modified_time" content="2024-06-09T03:27:22+08:00" />
+  <meta property="article:modified_time" content="2024-06-16T18:49:39+08:00" />
 
 
 
@@ -179,7 +178,7 @@
         <span class="post-time">
           2022-04-06
         </span><span class="post-update">
-            →  2024-03-13
+            →  2024-06-17
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -190,11 +189,11 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">Poetry 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B"><span class="toc-text">名詞解釋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">pip 的最大不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry"><span class="toc-text">pip 替代方案選擇——Pipenv vs Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87-Poetry-%E7%9A%84%E5%85%A9%E5%80%8B%E7%90%86%E7%94%B1"><span class="toc-text">選擇 Poetry 的兩個理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Poetry"><span class="toc-text">安裝 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">設定 PATH 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry"><span class="toc-text">初始化 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">管理 Poetry 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9config%EF%BC%8C%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E5%85%A7-venv%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">修改config，建立專案內.venv虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 新增套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D"><span class="toc-text">指定套件「版本」範圍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies"><span class="toc-text">新增套件至 dev-dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%9B%B4%E6%96%B0%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 更新套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%85%A8%E9%83%A8%E5%A5%97%E4%BB%B6%E6%B8%85%E5%96%AE"><span class="toc-text">列出全部套件清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 移除套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BC%B8%E5%87%BA-requirements-txt"><span class="toc-text">輸出 requirements.txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE"><span class="toc-text">Poetry 常用指令清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA"><span class="toc-text">Poetry 常見使用情境與操作 QA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">結語：井然有序的複雜</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">Poetry 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B"><span class="toc-text">名詞解釋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3"><span class="toc-text">pip 的最大不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry"><span class="toc-text">pip 替代方案選擇——Pipenv vs Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Poetry"><span class="toc-text">安裝 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8"><span class="toc-text">設定 PATH 環境變數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry"><span class="toc-text">初始化 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86-Poetry-%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">管理 Poetry 虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9config%EF%BC%8C%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88%E5%85%A7-venv%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">修改config，建立專案內.venv虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 新增套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D"><span class="toc-text">指定套件「版本」範圍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies"><span class="toc-text">新增套件至 dev-dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E6%9B%B4%E6%96%B0%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 更新套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%85%A8%E9%83%A8%E5%A5%97%E4%BB%B6%E6%B8%85%E5%96%AE"><span class="toc-text">列出全部套件清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E7%A7%BB%E9%99%A4%E5%A5%97%E4%BB%B6"><span class="toc-text">Poetry 移除套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BC%B8%E5%87%BA-requirements-txt"><span class="toc-text">輸出 requirements.txt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E6%B8%85%E5%96%AE"><span class="toc-text">Poetry 常用指令清單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA"><span class="toc-text">Poetry 常見使用情境與操作 QA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">結語：井然有序的複雜</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"><span class="cap">by Feifei Ruan on Behance</span></p>
 <blockquote>
-<p><code>2024/03/13</code>：補充<a href="#%E7%AF%84%E4%BE%8B-repository">範例 repository</a> 作為具體參考。<br><code>2024/01/09</code>：重新修訂「<a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a>」章節。具體說明 <strong>Poetry 解決的兩大痛點</strong>。<br><code>2024/01/05</code>：新增「<a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件版本範圍</a>」章節。<br><code>2023/12/30</code>：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」章節。</p>
+<p><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<a href="/python-poetry/#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a>」相關部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。<br><code>2024/03/13</code>：補充<a href="#%E7%AF%84%E4%BE%8B-repository">範例 repository</a> 作為具體參考。<br><code>2024/01/09</code>：重新修訂「<a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a>」章節。具體說明 <strong>Poetry 解決的兩大痛點</strong>。<br><code>2024/01/05</code>：新增「<a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件版本範圍</a>」章節。<br><code>2023/12/30</code>：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」章節。</p>
 </blockquote>
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
@@ -223,7 +222,6 @@
 <li><a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a></li>
 <li><a href="#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a></li>
 <li><a href="#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a></li>
-<li><a href="#%E9%81%B8%E6%93%87-Poetry-%E7%9A%84%E5%85%A9%E5%80%8B%E7%90%86%E7%94%B1">選擇 Poetry 的兩個理由</a></li>
 <li><a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a></li>
 <li><a href="#%E8%A8%AD%E5%AE%9A-PATH-%E7%92%B0%E5%A2%83%E8%AE%8A%E6%95%B8">設定 PATH 環境變數</a></li>
 <li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96-Poetry">初始化 Poetry</a></li>
@@ -272,7 +270,7 @@
 <h3 id="pip-uninstall的困境：以-Flask-為例"><a href="#pip-uninstall的困境：以-Flask-為例" class="headerlink" title="pip uninstall的困境：以 Flask 為例"></a><code>pip uninstall</code>的困境：以 Flask 為例</h3><p>假設現在你的工作專案中有開發 API 的需求，經過一番研究與討論，決定使用 <a target="_blank" rel="noopener" href="https://github.com/pallets/flask">Flask</a> 網頁框架來進行開發。</p>
 <p>我們知道，很多套件都有依賴的套件，也就是使用「別人已經造好的輪子」來構成套件功能的一部分。</p>
 <p>安裝主套件時，這些依賴套件也<strong>必須一併安裝，主套件才能正常運作</strong>，這裡的 Flask 就是如此。安裝 Flask 時，不會只安裝單一個<code>flask</code>套件，還會安裝所有 Flask 的必要構成部分——也就是依賴套件，結果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">❯ pip install flask</span><br><span class="line">Collecting flask</span><br><span class="line">  Downloading Flask-2.1.1-py3-none-any.whl (95 kB)</span><br><span class="line">     |████████████████████████████████| 95 kB 993 kB/s</span><br><span class="line">Collecting importlib-metadata&gt;=3.6.0</span><br><span class="line">  Using cached importlib_metadata-4.11.3-py3-none-any.whl (18 kB)</span><br><span class="line">Collecting itsdangerous&gt;=2.0</span><br><span class="line">  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)</span><br><span class="line">Collecting Werkzeug&gt;=2.0</span><br><span class="line">  Downloading Werkzeug-2.1.1-py3-none-any.whl (224 kB)</span><br><span class="line">     |████████████████████████████████| 224 kB 2.8 MB/s</span><br><span class="line">Collecting click&gt;=8.0</span><br><span class="line">  Downloading click-8.1.2-py3-none-any.whl (96 kB)</span><br><span class="line">     |████████████████████████████████| 96 kB 1.9 MB/s</span><br><span class="line">Collecting Jinja2&gt;=3.0</span><br><span class="line">  Downloading Jinja2-3.1.1-py3-none-any.whl (132 kB)</span><br><span class="line">     |████████████████████████████████| 132 kB 3.7 MB/s</span><br><span class="line">Collecting zipp&gt;=0.5</span><br><span class="line">  Using cached zipp-3.7.0-py3-none-any.whl (5.3 kB)</span><br><span class="line">Collecting MarkupSafe&gt;=2.0</span><br><span class="line">  Downloading MarkupSafe-2.1.1-cp38-cp38-macosx_10_9_x86_64.whl (13 kB)</span><br><span class="line">Installing collected packages: zipp, MarkupSafe, Werkzeug, Jinja2, itsdangerous, importlib-metadata, click, flask</span><br><span class="line">Successfully installed Jinja2-3.1.1 MarkupSafe-2.1.1 Werkzeug-2.1.1 click-8.1.2 flask-2.1.1 importlib-metadata-4.11.3 itsdangerous-2.1.2 zipp-3.7.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ pip install flask</span><br><span class="line">Collecting flask</span><br><span class="line">  Downloading Flask-2.1.1-py3-none-any.whl (95 kB)</span><br><span class="line">     |████████████████████████████████| 95 kB 993 kB/s</span><br><span class="line">...</span><br><span class="line">Installing collected packages: zipp, MarkupSafe, Werkzeug, Jinja2, itsdangerous, importlib-metadata, click, flask</span><br><span class="line">Successfully installed Jinja2-3.1.1 MarkupSafe-2.1.1 Werkzeug-2.1.1 click-8.1.2 flask-2.1.1 importlib-metadata-4.11.3 itsdangerous-2.1.2 zipp-3.7.0</span><br></pre></td></tr></table></figure>
 
 <p>從上可知，<code>pip install flask</code>還會一併安裝<code>importlib-metadata</code>、<code>itsdangerous</code>等 7 個依賴套件，實際上總共安裝了 8 個套件！</p>
 <p>可以說，pip 在「安裝」套件時的相依性管理還是可以的，這並不難，因為套件的依賴要求都寫在安裝檔裡了，根本不需要「管理」。</p>
@@ -317,49 +315,7 @@
 <h3 id="小結：pip-只適合小型專案或「只新增不移除」套件的專案"><a href="#小結：pip-只適合小型專案或「只新增不移除」套件的專案" class="headerlink" title="小結：pip 只適合小型專案或「只新增不移除」套件的專案"></a>小結：pip 只適合小型專案或「只新增不移除」套件的專案</h3><p>以前我的個人或工作上的專案往往規模不大，pip 就真的只負責新增，鮮少需要考慮移除套件的情況，所以缺少移除套件時的依賴解析，似乎也沒什麼大問題。</p>
 <p>但稍具模規的專案往往就需要考慮套件的退場，以維持開發及部署環境的簡潔，尤其在使用容器化部署時，<strong>過多不必要的套件會徒增 image 肥大，產生額外的成本與資源浪費不說，同時也提升了「套件之間發生衝突」的可能。</strong></p>
 <p>然而透過上述的例子可知，僅靠 pip 想要<strong>乾淨移除</strong>過時的套件，且不影響既有的套件，簡直是<strong>不可能的任務！</strong>所以我們需要擁有「<strong>完整套件相依性管理功能</strong>」的套件管理器。</p>
-<hr>
-<h2 id="pip-替代方案選擇——Pipenv-vs-Poetry"><a href="#pip-替代方案選擇——Pipenv-vs-Poetry" class="headerlink" title="pip 替代方案選擇——Pipenv vs Poetry"></a>pip 替代方案選擇——Pipenv vs Poetry</h2><p>關於 pip 的前世今生、它的歷史包袱，以及為何它難以演化成理想的、可以完美管理套件相依性的模樣，可以參考〈<a href="https://blog.kyomind.tw/pyenv-setup/">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a>〉中推薦過的單集 Podcast：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://pythonhunter.org/episodes/ep15">《捕蛇者說》Ep 15. 和 PyPA 的成員聊聊 Python 開發工作流</a></li>
-</ul>
-<p>從 Podcast 官方頁面中「時間節點」目錄中可知，該集對 Python 的虛擬環境與套件管理機制及相關工具，有著非常廣泛的討論，十分精彩，強力推薦！（為了寫這篇又聽了第 3 次）</p>
-<p><img src="https://i.imgur.com/gzcAU7e.png" alt="pythonhunter.org/episodes/ep15"><span class="cap">pythonhunter.org/episodes/ep15</span></p>
-<h3 id="Pipenv-vs-Poetry"><a href="#Pipenv-vs-Poetry" class="headerlink" title="Pipenv vs Poetry"></a>Pipenv vs Poetry</h3><p>因為 pip 存在這樣的致命弱點，所以很早就有相關的方案提出想要解決它，最知名的莫過於 <a target="_blank" rel="noopener" href="https://pipenv.pypa.io/en/latest/">Pipenv</a>！</p>
-<p>而講到需要有充分「<strong>套件相依性管理</strong>」功能的套件管理器，你基本上也只能從 Pipenv 和 Poetry 兩者之中二擇一了。</p>
-<p>如果是在兩年前，這道選擇題恐怕不容易回答，且 Pipenv 可能會有較大的機率勝出，<strong>但兩年後的今天，我會建議你毫不猶豫地選擇 Poetry。</strong></p>
-<h2 id="選擇-Poetry-的兩個理由"><a href="#選擇-Poetry-的兩個理由" class="headerlink" title="選擇 Poetry 的兩個理由"></a>選擇 Poetry 的兩個理由</h2><p>怎麼說呢？以下是我的理由。</p>
-<h3 id="理由一：Pipenv-的不足"><a href="#理由一：Pipenv-的不足" class="headerlink" title="理由一：Pipenv 的不足"></a>理由一：Pipenv 的不足</h3><p>當你搜尋「python poetry」關鍵字的時候，那些教你怎麼使用 Poetry 的文章，往往也會一併提及<strong>為何不選擇 Pipenv。</strong></p>
-<p>以下兩篇有著較為完整的說明，容我直接引用。</p>
-<p>〈<a target="_blank" rel="noopener" href="https://note.koko.guru/posts/using-poetry-manage-python-package-environments">Python - 取代 Pipenv 的新套件管理器 Poetry</a>〉：</p>
-<blockquote>
-<p>Pipenv 雖然強大，卻也暴露出了一些問題如 Lock 過慢、Windows 支援性差、對 PyPI 套件打包的友善度差…等更多其他問題，甚至有越來越多人表明 <a target="_blank" rel="noopener" href="http://greyli.com/do-not-use-pipenv/">不要使用 Pipenv</a> 或 <a target="_blank" rel="noopener" href="https://blog.gslin.org/archives/2019/12/21/9347/pipenv-%E7%9A%84%E5%87%8B%E9%9B%B6%E8%88%87%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88-poetry/">pipenv 的凋零與替代方案 poetry</a> 等。</p>
-</blockquote>
-<blockquote>
-<p>同時 Pipenv 的社群維護狀況也越來越差，有許多的 PR 都沒有被 Release，導致許多貢獻者抱怨，甚至有人發出了該篇 <a target="_blank" rel="noopener" href="https://github.com/pypa/pipenv/issues/4058">If this project is dead, just tell us</a> issue 想知道是否專案已經不在維護。</p>
-</blockquote>
-<p>〈<a target="_blank" rel="noopener" href="https://greyli.com/poetry-a-better-choice-than-pipenv/">相比 Pipenv，Poetry 是一個更好的選擇</a>〉（本文作者<a target="_blank" rel="noopener" href="https://greyli.com/about/">李輝</a>為 Flask 團隊成員）：</p>
-<blockquote>
-<p>Pipenv 描繪了一個美夢，讓我們以為 Python 也有了其他語言那樣完善的包管理器，不過這一切卻在後來者 Poetry 這裡得到了更好的實現。</p>
-</blockquote>
-<blockquote>
-<p>這幾年 Pipenv 收獲了很多用戶，但是也暴露了很多問題。雖然 Lock 太慢、Windows 支持不好和 bug 太多的問題都已經改進了很多，但對我來說，仍然不能接受隨時更新鎖定依賴的設定，在上一篇文章《<a target="_blank" rel="noopener" href="http://greyli.com/do-not-use-pipenv/">不要用 Pipenv</a>》裡也吐槽了很多相關的問題。</p>
-</blockquote>
-<p>兩篇的引述內容總結就是一句話：「<strong>不要用 Pipenv。</strong>」</p>
-<p>目前 Pipenv 已經由 <a target="_blank" rel="noopener" href="https://github.com/pypa">PyPA</a>（同時也維護 pip 及 virtualenv）接手，上述「<strong>擺爛</strong>」的情況相信已有所改善，不過我似乎還沒看到有什麼文章大力鼓吹或宣告 Pipenv 已經「great again」，所以個人對它的未來發展還是持保留態度。</p>
-<h3 id="理由二：pyproject-toml"><a href="#理由二：pyproject-toml" class="headerlink" title="理由二：pyproject.toml"></a>理由二：pyproject.toml</h3><p>pyproject.toml 是 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0518/">PEP 518</a> 所提出的新標準：</p>
-<blockquote>
-<p>The build system dependencies will be stored in a file named <code>pyproject.toml</code> that is written in the TOML format.</p>
-</blockquote>
-<p>原意是作為套件打包設定的標準格式，後來又有了 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0621/">PEP 621</a>，將其<strong>擴充定性</strong>為 <strong>Python 生態系工具的共同設定檔標準</strong>，現在已經被愈來愈多套件所支援，詳細可參考<a target="_blank" rel="noopener" href="https://github.com/carlosperate/awesome-pyproject">這個清單</a>及頁面中的說明：</p>
-<blockquote>
-<p><code>pyproject.toml</code> is a new configuration file defined in <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a> and expanded in <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0621/">PEP 621</a>. It is design to store build system requirements, <strong>but it can also store any tool configuration for your Python project</strong>, possibly replacing the need for <code>setup.cfg</code> or other tool-specific files.</p>
-</blockquote>
-<p>作為規範控，我很願意追隨這個標準。</p>
-<p>並且，Poetry 使用<code>pyproject.toml</code>，可遠遠不止是設定檔的程度，更是<strong>不可或缺</strong>的一部分。相當於 Pipenv 的<code>Pipfile</code>或 npm 的<code>package.json</code>。</p>
-<p>換句話說，少了<code>pyproject.toml</code>，Poetry 便無法運作。</p>
-<blockquote>
-<p>更多關於 <strong>pyproject.toml</strong> 的介紹與實踐，可參考：<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></p>
-</blockquote>
+<h2 id="pip-替代方案選擇——Pipenv-vs-Poetry"><a href="#pip-替代方案選擇——Pipenv-vs-Poetry" class="headerlink" title="pip 替代方案選擇——Pipenv vs Poetry"></a>pip 替代方案選擇——Pipenv vs Poetry</h2><p>考慮內容時效性與縮減篇幅，本段及「<strong>選擇 Poetry 的兩個理由</strong>」已移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion</a>。</p>
 <hr>
 <p>好，漫長的前言到此結束，讓我們進入正題，開始上手學習 Poetry。</p>
 <h3 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h3><blockquote>
@@ -776,7 +732,6 @@
             <a href="/tags/%E9%95%B7%E6%96%87/">長文</a>
             <a href="/tags/Python/">Python</a>
             <a href="/tags/pyproject-toml/">pyproject.toml</a>
-            <a href="/tags/Docker/">Docker</a>
             <a href="/tags/pyenv/">pyenv</a>
             <a href="/tags/virtualenv/">virtualenv</a>
             <a href="/tags/Poetry/">Poetry</a>

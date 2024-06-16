@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/python-poetry/</loc>
+    
+    <lastmod>2024-06-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-06-16</lastmod>
@@ -165,15 +174,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/my-way/</loc>
-    
-    <lastmod>2024-06-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-poetry/</loc>
     
     <lastmod>2024-06-09</lastmod>
     
