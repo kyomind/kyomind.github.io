@@ -28,7 +28,7 @@
     <meta property="og:tag" content="HTTP" />
     
 
-  <meta property="article:modified_time" content="2024-06-17T04:50:09+08:00" />
+  <meta property="article:modified_time" content="2024-06-18T01:45:46+08:00" />
 
 
 
@@ -179,7 +179,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E9%9C%80%E6%B1%82%EF%BC%9A%E6%AC%B2%E5%8F%96%E5%BE%97%E7%89%B9%E5%AE%9A-reqeust-header-%E5%85%A7%E5%AE%B9"><span class="toc-text">場景需求：欲取得特定 reqeust header 內容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%BE%80%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-reqeust-META"><span class="toc-text">以往做法：使用 reqeust.META</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-META-%E7%BC%BA%E9%BB%9E"><span class="toc-text">request.META 缺點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-reqeust-headers"><span class="toc-text">更好的做法：使用 reqeust.headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-request-headers-%E5%BE%8C%E7%9A%84%E6%94%B9%E5%96%84"><span class="toc-text">使用 request.headers 後的改善</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%8F%AF%E8%AE%80%E6%80%A7%E7%82%BA%E7%8E%8B"><span class="toc-text">小結：可讀性為王</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E9%9C%80%E6%B1%82%EF%BC%9A%E6%AC%B2%E5%8F%96%E5%BE%97%E7%89%B9%E5%AE%9A-request-header-%E5%85%A7%E5%AE%B9"><span class="toc-text">場景需求：欲取得特定 request header 內容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%BE%80%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-request-META"><span class="toc-text">以往做法：使用 request.META</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-META-%E7%BC%BA%E9%BB%9E"><span class="toc-text">request.META 缺點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-request-headers"><span class="toc-text">更好的做法：使用 request.headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-request-headers-%E5%BE%8C%E7%9A%84%E6%94%B9%E5%96%84"><span class="toc-text">使用 request.headers 後的改善</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%8F%AF%E8%AE%80%E6%80%A7%E7%82%BA%E7%8E%8B"><span class="toc-text">小結：可讀性為王</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
 <blockquote>
@@ -194,13 +194,13 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="場景需求：欲取得特定-reqeust-header-內容"><a href="#場景需求：欲取得特定-reqeust-header-內容" class="headerlink" title="場景需求：欲取得特定 reqeust header 內容"></a>場景需求：欲取得特定 reqeust header 內容</h2><p>在開發內部 API 相關功能時，一個很常見的需求，就是取得本次請求所帶的「驗證 token」 內容，加以重新封裝成一個新的請求，並轉發給內部 API。</p>
+<h2 id="場景需求：欲取得特定-request-header-內容"><a href="#場景需求：欲取得特定-request-header-內容" class="headerlink" title="場景需求：欲取得特定 request header 內容"></a>場景需求：欲取得特定 request header 內容</h2><p>在開發內部 API 相關功能時，一個很常見的需求，就是取得本次請求所帶的「驗證 token」 內容，加以重新封裝成一個新的請求，並轉發給內部 API。</p>
 <p>通常 token 會附在請求的 header 中，以下列鍵值對形式存在：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">accept-encoding</span><span class="punctuation">: </span>gzip, deflate, br</span><br><span class="line"><span class="attribute">accept-language</span><span class="punctuation">: </span>zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6</span><br><span class="line"><span class="attribute">cache-control</span><span class="punctuation">: </span>max-age=0</span><br><span class="line">...</span><br><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>Bearer &lt;token_string&gt;</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>Authorization</code>，就是我們要的，有關驗證 token 的 header 欄位。</p>
 <p>所以我們的需求是：原封不動地取得它的值——「<code>&#39;Bearer &lt;token_string&gt;&#39;</code>」，並複製到我們重新封裝的 HTTP 請求的 header 中，以維持認證的有效性。</p>
-<h2 id="以往做法：使用-reqeust-META"><a href="#以往做法：使用-reqeust-META" class="headerlink" title="以往做法：使用 reqeust.META"></a>以往做法：使用 reqeust.META</h2><p>過去撰寫內部 API 的相關請求，驗證 token 部分通常是透過上述「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.META">reqeust.META</a>」取得 request header 裡的 token 值。</p>
+<h2 id="以往做法：使用-request-META"><a href="#以往做法：使用-request-META" class="headerlink" title="以往做法：使用 request.META"></a>以往做法：使用 request.META</h2><p>過去撰寫內部 API 的相關請求，驗證 token 部分通常是透過上述「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.META">request.META</a>」取得 request header 裡的 token 值。</p>
 <p>申言之，<code>HttpRequest</code>有一個物件屬性叫<code>META</code>，其值為一個 Python 字典，並以字典中的每一個鍵值對代表 HTTP header 相關資訊。</p>
 <p>典型的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">HTTP header 欄位名稱</a>看起來像這樣：</p>
 <ul>
@@ -229,7 +229,7 @@
 <li><code>META</code>這個詞，太籠統太抽象：<code>request.META</code>究竟代表什麼？說真的第一時間你不太能和 HTTP header 聯想，多少會影響程式的<strong>可讀性</strong>。</li>
 </ol>
 <p>所以我一直不太喜歡「request.META」這個寫法——不易理解且存在較多出錯可能。</p>
-<h2 id="更好的做法：使用-reqeust-headers"><a href="#更好的做法：使用-reqeust-headers" class="headerlink" title="更好的做法：使用 reqeust.headers"></a>更好的做法：使用 reqeust.headers</h2><p>其實仔細想想就會覺得：使用<code>META</code>來取 header 資訊的做法實在<strong>很不直覺、不自然</strong>，對於一個成熟的框架，理論上應該要再給出「<strong>語法糖</strong>」加以簡化。</p>
+<h2 id="更好的做法：使用-request-headers"><a href="#更好的做法：使用-request-headers" class="headerlink" title="更好的做法：使用 request.headers"></a>更好的做法：使用 request.headers</h2><p>其實仔細想想就會覺得：使用<code>META</code>來取 header 資訊的做法實在<strong>很不直覺、不自然</strong>，對於一個成熟的框架，理論上應該要再給出「<strong>語法糖</strong>」加以簡化。</p>
 <h3 id="Django-2-2-更新"><a href="#Django-2-2-更新" class="headerlink" title="Django 2.2 更新"></a>Django 2.2 更新</h3><p>這個需求終於在 Django 2.2 獲得實現：加入了 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.headers">request.headers</a>。Django 文件也建議你，如果只是想單純取得 header 資訊，可以使用更簡潔的<code>headers</code>：</p>
 <blockquote>
 <p><strong><code>HttpRequest.headers</code></strong> is <strong>a simpler way</strong> to access all HTTP-prefixed headers</p>
