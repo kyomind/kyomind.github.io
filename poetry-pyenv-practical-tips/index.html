@@ -35,7 +35,7 @@
     <meta property="og:tag" content="pip" />
     
 
-  <meta property="article:modified_time" content="2024-05-14T16:30:31+08:00" />
+  <meta property="article:modified_time" content="2024-06-20T17:10:50+08:00" />
 
 
 
@@ -199,12 +199,12 @@
 <p>對我而言，Poetry 已是 Python 專案開發<strong>不可或缺</strong>的要素。</p>
 <p>它不僅提供了更加便捷的<strong>套件管理</strong>和<strong>版本控制</strong>。而且，Poetry 以 pyproject.toml 作為設定檔，讓我可以<strong>同時透過 pyproject.toml 管理其它工具</strong>，比如 Mypy、Ruff 等。</p>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></p>
+<p>相關文章：<a href="/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></p>
 </blockquote>
 <p>這是我喜歡的方式。</p>
 <h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
 <ol>
-<li><a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
+<li><a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
 <li><strong>Poetry + pyenv 教學：常用指令與注意事項</strong></li>
 <li>Docker 教學：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
 </ol>
@@ -212,7 +212,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將補充第一篇中「<a href="https://blog.kyomind.tw/python-poetry/#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA">情境與使用</a>」方面的不足，尤其針對<strong>同時使用 Poetry 和 pyenv</strong>可能出現的問題進行討論。這是第一篇所遺漏的內容。</p>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文將補充第一篇中「<a href="/python-poetry/#Poetry-%E5%B8%B8%E8%A6%8B%E4%BD%BF%E7%94%A8%E6%83%85%E5%A2%83%E8%88%87%E6%93%8D%E4%BD%9C-QA">情境與使用</a>」方面的不足，尤其針對<strong>同時使用 Poetry 和 pyenv</strong>可能出現的問題進行討論。這是第一篇所遺漏的內容。</p>
 <p>透過本文，我希望能夠提供更全面、更實用的 Poetry 使用建議，讓讀者在使用 Poetry 和 pyenv 時能夠充分發揮它們的優勢，並減少不必要的困惑。</p>
 <h2 id="範例與環境介紹"><a href="#範例與環境介紹" class="headerlink" title="範例與環境介紹"></a>範例與環境介紹</h2><p>poetry-demo 是本文作為例示的專案模版，但我們不會安裝太多套件，僅各取一個作為示範之用。</p>
 <p>有一個簡單的具體實例，比單純描述要容易理解。</p>
@@ -222,12 +222,12 @@
 <p>相關文章也有就新版設定內容進行更新，可參考：</p>
 <blockquote>
 <ul>
-<li><a href="https://blog.kyomind.tw/ubuntu-pyenv/#%E8%A8%AD%E5%AE%9A-pyenv">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></li>
-<li><a href="https://blog.kyomind.tw/pyenv-setup/#%E5%AE%89%E8%A3%9D%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a></li>
+<li><a href="/ubuntu-pyenv/#%E8%A8%AD%E5%AE%9A-pyenv">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></li>
+<li><a href="/pyenv-setup/#%E5%AE%89%E8%A3%9D%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">告別 Anaconda：在 macOS 上使用 pyenv 建立 Python 開發環境</a></li>
 </ul>
 </blockquote>
 <hr>
-<h2 id="安裝-Poetry、pyenv"><a href="#安裝-Poetry、pyenv" class="headerlink" title="安裝 Poetry、pyenv"></a>安裝 Poetry、pyenv</h2><p>請直接參考〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a>〉中的「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">三、設定 pyenv</a>」、「<a href="https://blog.kyomind.tw/linux-dev-setup/#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry">四、設定 Poetry</a>」部分。</p>
+<h2 id="安裝-Poetry、pyenv"><a href="#安裝-Poetry、pyenv" class="headerlink" title="安裝 Poetry、pyenv"></a>安裝 Poetry、pyenv</h2><p>請直接參考〈<a href="/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a>〉中的「<a href="/linux-dev-setup/#%E4%B8%89%E3%80%81%E8%A8%AD%E5%AE%9A-pyenv">三、設定 pyenv</a>」、「<a href="/linux-dev-setup/#%E5%9B%9B%E3%80%81%E8%A8%AD%E5%AE%9A-Poetry">四、設定 Poetry</a>」部分。</p>
 <p>不只是安裝，還包括<strong>設定 PATH</strong> 等環節，這些步驟都是<strong>必要</strong>的。完成後，我們就能使用 Poetry 和 pyenv 的指令了。</p>
 <h3 id="透過-pyenv-安裝-Python-3-10-11"><a href="#透過-pyenv-安裝-Python-3-10-11" class="headerlink" title="透過 pyenv 安裝 Python 3.10.11"></a>透過 pyenv 安裝 Python 3.10.11</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.10.11</span><br></pre></td></tr></table></figure>
 
@@ -238,11 +238,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.10.11</span><br></pre></td></tr></table></figure>
 
 <p>但你也可以<strong>同時設定兩者</strong>，這樣在特定專案中會使用特定 Python 版本，而在<strong>不指定</strong>時則使用<code>global</code>設定的 Python 版本。</p>
+<blockquote>
+<p><code>2024/06/21</code>補充：Poetry 有時就是不鳥你的<code>pyenv global</code>設定，而直接使用作業系統的預設 Python 版本。所以<strong>最好</strong>還是用<code>pyenv local</code>。</p>
+</blockquote>
 <p>比如幫某個舊專案設定為 3.8.12：（要先<code>cd</code>至該專案目錄）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
 
-<p>此時專案中會新增一個<code>.python-version</code>檔案，內容就是你設定的 Python 版本。</p>
-<h3 id="建議：不要使用-pyenv-virtualenv"><a href="#建議：不要使用-pyenv-virtualenv" class="headerlink" title="建議：不要使用 pyenv-virtualenv"></a>建議：不要使用 pyenv-virtualenv</h3><p>如<a href="https://blog.kyomind.tw/linux-dev-setup/">上一篇</a>所言：</p>
+<p><strong>此時專案中會新增一個<code>.python-version</code>檔案</strong>，內容就是你設定的 Python 版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.8.12</span><br></pre></td></tr></table></figure>
+
+<h3 id="建議：不要使用-pyenv-virtualenv"><a href="#建議：不要使用-pyenv-virtualenv" class="headerlink" title="建議：不要使用 pyenv-virtualenv"></a>建議：不要使用 pyenv-virtualenv</h3><p>如前文所言：</p>
 <blockquote>
 <p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
 </blockquote>

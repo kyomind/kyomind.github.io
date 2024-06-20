@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
+    
+    <lastmod>2024-06-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-poetry/</loc>
+    
+    <lastmod>2024-06-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/less-is-more/</loc>
     
     <lastmod>2024-06-20</lastmod>
     
@@ -12,6 +30,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-06-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
     
     <lastmod>2024-06-20</lastmod>
     
@@ -41,15 +68,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-01/</loc>
     
     <lastmod>2024-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-poetry/</loc>
-    
-    <lastmod>2024-06-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -120,15 +138,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
-    
-    <lastmod>2024-06-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/less-is-more/</loc>
     
     <lastmod>2024-06-10</lastmod>
     
@@ -464,15 +473,6 @@
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2024-05-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
-    
-    <lastmod>2024-05-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

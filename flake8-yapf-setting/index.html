@@ -36,7 +36,7 @@
     <meta property="og:tag" content="PEP 8" />
     
 
-  <meta property="article:modified_time" content="2024-06-20T08:22:55+08:00" />
+  <meta property="article:modified_time" content="2024-06-20T08:30:33+08:00" />
 
 
 
@@ -187,7 +187,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">前言：場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Linter%EF%BC%9F"><span class="toc-text">什麼是 Linter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-linter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-Flake8-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python linter 設定：以 Flake8 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Formatter 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-Formatter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-yapf-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python Formatter 設定：以 yapf 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-Formatter-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">不同 Formatter 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E4%BD%BF%E7%94%A8-Formatter-%E5%B0%8F%E6%92%87%E6%AD%A5"><span class="toc-text">VS Code 使用 Formatter 小撇步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AClean-Code-%E5%9F%BA%E7%9F%B3"><span class="toc-text">結語：Clean Code 基石</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">前言：場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Linter%EF%BC%9F"><span class="toc-text">什麼是 Linter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-Linter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-Flake8-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python Linter 設定：以 Flake8 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Formatter 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-Formatter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-yapf-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python Formatter 設定：以 yapf 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-Formatter-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">不同 Formatter 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E4%BD%BF%E7%94%A8-Formatter-%E5%B0%8F%E6%92%87%E6%AD%A5"><span class="toc-text">VS Code 使用 Formatter 小撇步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AClean-Code-%E5%9F%BA%E7%9F%B3"><span class="toc-text">結語：Clean Code 基石</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
 <blockquote>
@@ -219,7 +219,7 @@
 <p>上述 linter 都是 Python 的 package，同時也是 CLI 工具，皆可透過命令列，獨立執行與使用。</p>
 <p>而本文闡述的使用情境，是指<strong>整合在 VS Code 中</strong>，讓這些選定的 linter，在不需執行程式的情況下，自動幫你檢查程式碼、發現其中錯誤，並<strong>加以提示</strong>的功能。</p>
 <p>除了語法正確性，linter 還會檢查<strong>排版風格</strong>，比如程式碼是否符合 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> 要求的排版風格，也是上述 linter 檢查的一環，如此才有「排版風格一致」可言。換句話說，所謂的一致，原則上指的是<strong>與 PEP 8 規範一致</strong>。</p>
-<h2 id="VS-Code-Python-linter-設定：以-Flake8-為例"><a href="#VS-Code-Python-linter-設定：以-Flake8-為例" class="headerlink" title="VS Code Python linter 設定：以 Flake8 為例"></a>VS Code Python linter 設定：以 Flake8 為例</h2><p>無論是 pylint 或 Flake8，都必須安裝到專案使用的 Python 虛擬環境才行，因為它們本質上都是把 package 的功能整合進來，藉由 VS Code 在背景呼叫，方便你直接使用。如果沒裝的話，VS Code 會<strong>提醒你安裝</strong>，且不需要安裝額外的 VS Code 套件。</p>
+<h2 id="VS-Code-Python-Linter-設定：以-Flake8-為例"><a href="#VS-Code-Python-Linter-設定：以-Flake8-為例" class="headerlink" title="VS Code Python Linter 設定：以 Flake8 為例"></a>VS Code Python Linter 設定：以 Flake8 為例</h2><p>無論是 pylint 或 Flake8，都必須安裝到專案使用的 Python 虛擬環境才行，因為它們本質上都是把 package 的功能整合進來，藉由 VS Code 在背景呼叫，方便你直接使用。如果沒裝的話，VS Code 會<strong>提醒你安裝</strong>，且不需要安裝額外的 VS Code 套件。</p>
 <p><img src="https://i.imgur.com/Meszj6I.png" alt="VS Code：指定的 Linter 未安裝提示"><span class="cap">VS Code：指定的 Linter 未安裝提示</span></p>
 <p>VS Code 設定 Flake8 只有幾個重要的環節，依序如下：</p>
 <ol>
