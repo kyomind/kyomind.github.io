@@ -36,7 +36,7 @@
     <meta property="og:tag" content="PEP 8" />
     
 
-  <meta property="article:modified_time" content="2024-05-04T06:40:52+08:00" />
+  <meta property="article:modified_time" content="2024-06-20T08:22:55+08:00" />
 
 
 
@@ -187,7 +187,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">前言：場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-linter%EF%BC%9F"><span class="toc-text">什麼是 linter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-linter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-Flake8-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python linter 設定：以 Flake8 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Formatter 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-formatter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-yapf-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python formatter 設定：以 yapf 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-formatter-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">不同 formatter 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E4%BD%BF%E7%94%A8-formatter-%E5%B0%8F%E6%92%87%E6%AD%A5"><span class="toc-text">VS Code 使用 formatter 小撇步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AClean-Code-%E5%9F%BA%E7%9F%B3"><span class="toc-text">結語：Clean Code 基石</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">前言：場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Linter%EF%BC%9F"><span class="toc-text">什麼是 Linter？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-linter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-Flake8-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python linter 設定：以 Flake8 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Formatter-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Formatter 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-Python-Formatter-%E8%A8%AD%E5%AE%9A%EF%BC%9A%E4%BB%A5-yapf-%E7%82%BA%E4%BE%8B"><span class="toc-text">VS Code Python Formatter 設定：以 yapf 為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C-Formatter-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">不同 Formatter 的差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-%E4%BD%BF%E7%94%A8-Formatter-%E5%B0%8F%E6%92%87%E6%AD%A5"><span class="toc-text">VS Code 使用 Formatter 小撇步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AClean-Code-%E5%9F%BA%E7%9F%B3"><span class="toc-text">結語：Clean Code 基石</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
 <blockquote>
@@ -212,7 +212,7 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>主要介紹 linter 與 formatter 的定義與功能，並闡述如何在 VS Code 中設定好 Python 開發時，所需要的 linter 與 formatter。</p>
 <p>Linter 部分以最常見的 Flake8 為例，介紹其功能與使用方法。Formatter 部分則選用 Google 出品的 yapf，同時會比較和其餘兩個 formatter 在格式化結果上的差異。</p>
 <hr>
-<h2 id="什麼是-linter？"><a href="#什麼是-linter？" class="headerlink" title="什麼是 linter？"></a>什麼是 linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="https://blog.kyomind.tw/flake8-and-isort/">前文</a>的描述：</p>
+<h2 id="什麼是-Linter？"><a href="#什麼是-Linter？" class="headerlink" title="什麼是 Linter？"></a>什麼是 Linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="https://blog.kyomind.tw/flake8-and-isort/">前文</a>的描述：</p>
 <blockquote>
 <p>Linter，就是協助你檢查程式語法正確性的工具，大部分程式語言都有屬於自己的 linter，而 Python 最常見的 linter 不外乎<code>pylint</code>、<code>pep8</code>（現為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>。</p>
 </blockquote>
@@ -241,7 +241,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="使用-linter-後的效果"><a href="#使用-linter-後的效果" class="headerlink" title="使用 linter 後的效果"></a>使用 linter 後的效果</h3><ol>
+<h3 id="使用-Linter-後的效果"><a href="#使用-Linter-後的效果" class="headerlink" title="使用 Linter 後的效果"></a>使用 Linter 後的效果</h3><ol>
 <li>會出現<strong>波浪底線</strong>錯誤提示！</li>
 <li>滑鼠移至波浪底線，會顯示錯誤訊息，包含錯誤代號。</li>
 </ol>
@@ -257,7 +257,7 @@
 <p>換句話說，formatter 就是<strong>自動幫你修正這些排版問題的工具</strong>！而這個過程，就是「<strong>格式化</strong>」。</p>
 <p>程式語法錯誤——比如使用未設定的變數——雖然也可能被 linter 檢測出並提示，但這部分的修正通常得手動為之。Formatter 只能協助處理排版風格上的缺失。</p>
 <p>雖然修正排版一樣也可以手動為之，但是一來麻煩，二來難免會有遺漏，還是靠機器比較實在，也輕鬆得多。</p>
-<h2 id="VS-Code-Python-formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python formatter 設定：以 yapf 為例"></a>VS Code Python formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到<code>Python › Formatting: Provider</code>這項設定。有三種 formatter 可選：</p>
+<h2 id="VS-Code-Python-Formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-Formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python Formatter 設定：以 yapf 為例"></a>VS Code Python Formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到<code>Python › Formatting: Provider</code>這項設定。有三種 formatter 可選：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a></li>
@@ -269,7 +269,7 @@
 <p>整體的<code>settings.json</code>設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;yapf&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.formatting.yapfArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--style=&#123;column_limit=100&#125;&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 不支援 afterDelay 自動存檔</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="不同-formatter-的差異"><a href="#不同-formatter-的差異" class="headerlink" title="不同 formatter 的差異"></a>不同 formatter 的差異</h2><p>這些 formatter 的主要差別，主要是體現在<strong>格式化結果「彈性」上的差異</strong>。</p>
+<h2 id="不同-Formatter-的差異"><a href="#不同-Formatter-的差異" class="headerlink" title="不同 Formatter 的差異"></a>不同 Formatter 的差異</h2><p>這些 formatter 的主要差別，主要是體現在<strong>格式化結果「彈性」上的差異</strong>。</p>
 <h3 id="一、autopep8"><a href="#一、autopep8" class="headerlink" title="一、autopep8"></a>一、autopep8</h3><p>就我的使用經驗，autopep8 要求較寬鬆，輸出結果彈性最大，如果一段程式碼有兩、三種排版方式皆合乎 PEP 8 風格，則對 autopep8 而言都算是「合法」的——因為它只要求不違背 PEP 8 即可。此時它便不會再對程式碼進行修正。所以使用 autopep8，程式碼的排版風格未必能統一，我覺得這是一大缺點，個人無法接受。</p>
 <h3 id="二、yapf"><a href="#二、yapf" class="headerlink" title="二、yapf"></a>二、yapf</h3><p>yapf 是由 Google 推出的 formatter。</p>
 <p>和前述 autopep8 相比，大部分的時候格式化結果都是一致的，因為它會從兩、三種都合乎 PEP 8 的風格中，<strong>讓演算法依具體情況</strong>進一步<strong>選擇其中一種</strong>作為格式化結果（儘管可能未必是你最認同的那種），我覺得<strong>更適合團隊協作</strong>。</p>
@@ -283,7 +283,7 @@
 </blockquote>
 <hr>
 <p>Args 的設定一樣要特別注意，這上述例子中就能看出，不同工具的 args 字串格式真的會有一定差異（這是當然的，畢竟不同 CLI 工具，參數 flag 的命名與風格本來就不會相同），千萬不要打錯，否則 formatter 也會無法作用。</p>
-<h2 id="VS-Code-使用-formatter-小撇步"><a href="#VS-Code-使用-formatter-小撇步" class="headerlink" title="VS Code 使用 formatter 小撇步"></a>VS Code 使用 formatter 小撇步</h2><p>和 linter 開啟後就會自動生效並顯示錯誤提示不同，格式化器需要你<strong>主動使用</strong>，或設定為<strong>存檔時自動格式化</strong>。以下說明「<strong>主動使用</strong>」上的方式差異與要點：</p>
+<h2 id="VS-Code-使用-Formatter-小撇步"><a href="#VS-Code-使用-Formatter-小撇步" class="headerlink" title="VS Code 使用 Formatter 小撇步"></a>VS Code 使用 Formatter 小撇步</h2><p>和 linter 開啟後就會自動生效並顯示錯誤提示不同，格式化器需要你<strong>主動使用</strong>，或設定為<strong>存檔時自動格式化</strong>。以下說明「<strong>主動使用</strong>」上的方式差異與要點：</p>
 <ul>
 <li><strong>格式化文件：</strong>很簡單，在 VS Code 編輯器中打開文件後，按右鍵選單選擇「格式化文件」即可。這個功能我比較少直接使用，而且如果善用快捷鍵，它完全可以被下述的「格式化選取範圍」所取代。</li>
 <li><strong>格式化選取範圍</strong>：在反白選取範圍後按右鍵選單就會出現這個選項，沒有預設的快捷鍵。<ul>
