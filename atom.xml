@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-06-21T14:17:48.238Z</updated>
+  <updated>2024-06-21T15:25:41.423Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>32，下半年寫作目標</title>
+    <link href="https://blog.kyomind.tw/weekly-review-32/"/>
+    <id>https://blog.kyomind.tw/weekly-review-32/</id>
+    <published>2024-06-21T14:50:45.000Z</published>
+    <updated>2024-06-21T15:25:41.423Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>在〈<a href="/keyboard-shortcuts/">現代軟體的「鍵盤快捷鍵」記憶爭奪戰</a>〉一文的留言中，有讀者提到我最近似乎變多產了。</p><p>確實如此。</p><p>有人注意到這件事，讓我非常高興XD，甚至可以說感動。</p><p>而本文斗膽預告：下半年將會比上半年，更加多產🔥</p><hr><p>我通常不太想為自己立 flag，預告也屬於此類。尤其有〈<a href="/weekly-review-24/">24，收回「發文計畫」</a>〉的前車之鑑，心裡難免會暗暗擔憂：「是不是說出來就會更容易失敗？」</p><p>當然，我知道實際並非如此——很多事做不做，成不成，終究還是操之在己。</p><p>至少寫作是這樣的。</p><h3 id="三個寫作方向"><a href="#三個寫作方向" class="headerlink" title="三個寫作方向"></a>三個寫作方向</h3><p>這篇來聊聊我今年下半年的<strong>寫作目標</strong>，主要有<strong>三大方向</strong>。</p><p>看完這三個方向，想必你就能理解，為何說一定會比上半年更多產。</p><p>換言之，如果真的都能達成，多產只是必然的結果。</p><span id="more"></span><h2 id="一、Django-Tutorial"><a href="#一、Django-Tutorial" class="headerlink" title="一、Django Tutorial"></a>一、Django Tutorial</h2><p><a href="/tags/Django-Tutorial/">Django Tutorial</a> 目前出到第 8 篇了。</p><p>看一下上面的文章清單，其中一半都是這兩個月寫的！而第 1 篇，已經是近 1 年前的事了！</p><p>最近 2 個月我開始認真創作本系列。</p><p>因為想用 <a href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a> 作為範例程式碼專案，所以有些和 Django 沒有直接關係，但可以用同一個 repo 來示範的文章，寫作上都被這個系列卡住了XD。</p><p>比如「專案容器化」或「Poetry 多階段建構 image」，都需要這個專案有一定的雛形才會更有感！</p><p>而且我現在文章和 <a href="https://github.com/kyomind/Django-Tutorial/pull/2">PR</a>（範例程式碼改動）都是同時發，不太想用「先寫文章以後再補 code」的方式創作。</p><p>所以要加把勁寫 Django Tutorial（主要是 <a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">Django REST framework 系列</a>）。</p><h2 id="二、參加-iThome-鐵人賽"><a href="#二、參加-iThome-鐵人賽" class="headerlink" title="二、參加 iThome 鐵人賽"></a>二、參加 iThome 鐵人賽</h2><p>很多開發者都想過要參加<a href="https://ithelp.ithome.com.tw/2023ironman/event">鐵人賽</a>，我當然也不例外。想了好幾年了，但真正付諸行動並不容易。</p><p>首先要有合適的主題，我覺得「<strong>不大不小</strong>」的主題是最適合的。主題太大，不好下筆不說，可能已經有很多人寫過了，比如 Python 相關，需要自己再細分範疇。</p><p>其次，投入的心力更是不言而喻。</p><p>鐵人賽對我的額外挑戰之處在於——我太喜歡「修改」文章了。寫作時，很多心力都花在了「不算刀口的刀口」上。</p><p>而參加這種<strong>和時間賽跑</strong>的比賽（雖然可以提前備稿），<strong>我必須控制自己的改稿欲。</strong></p><h3 id="完賽優先"><a href="#完賽優先" class="headerlink" title="完賽優先"></a>完賽優先</h3><p>因此，我說服自己，以「<strong>完賽</strong>」為最高準則XD</p><p>嚴格控制每一篇的字數、篇幅，先壓抑想修改文章的欲望——我可以等比賽結束後，在我自己的 blog 上，想怎麼改就怎麼改。</p><p>對我而言，這算是一個小型專案了，且讓我們拭目以待。</p><p>當然，提前備稿一定是要的😎</p><h2 id="三、「告別法律，我的程式轉職之路」系列"><a href="#三、「告別法律，我的程式轉職之路」系列" class="headerlink" title="三、「告別法律，我的程式轉職之路」系列"></a>三、「告別法律，我的程式轉職之路」系列</h2><p>多年前，剛轉職不久，我在 Medium 寫過一篇〈<a href="https://medium.com/code-and-me/%E6%B3%95%E5%BE%8B%E4%BA%BA%E5%88%B0%E5%B7%A5%E7%A8%8B%E5%B8%AB-%E6%88%91%E7%9A%84%E7%A8%8B%E5%BC%8F%E8%BD%89%E8%81%B7%E4%B9%8B%E8%B7%AF-%E4%B8%80-%E5%89%8D%E8%A8%80%E7%AF%87-441a11089913">法律人到工程師，我的程式轉職之路（一）：前言篇</a>〉。然後，就沒有然後了😂</p><p>沒寫下去的原因很多，不過追根究柢，還是「創作方向」讓我<strong>缺乏動力。</strong></p><p>本來打算寫成「教你怎麼成功轉職軟體工程師」這類的文章。</p><p>而無心繼續，一方面是覺得自己成為軟體工程師後的起步實在稱不上順遂，嚴重影響「相信自己可以給後進者建議」的信心XD。</p><p>二是此後幾年，成功轉職軟體工程師的人數大增，所以也不值一提了。</p><h3 id="新的創作方向"><a href="#新的創作方向" class="headerlink" title="新的創作方向"></a>新的創作方向</h3><p>所以，這次我要換一個方向寫——以「<strong>記錄自己某一段人生經歷及當時的內心狀態</strong>」為目的。</p><p>因為現在的我，仍不時會想起，準備轉職的那段時光。如果能在此時此刻，趁著記憶還不算太久遠，寫下更多關於當時的心情。</p><p>相信 10 年後的我，會覺得欣慰與感激。</p><p>預計分成 4 篇：</p><ol><li>公務員篇。</li><li>律師國考篇。</li><li>資策會篇。</li><li>自學篇。</li></ol><p>可以看出，前兩篇講的都是我<strong>接觸程式之前</strong>的事。那時的我，自然不可能料到，後面將發生的一切。這也是人生的有趣之處。</p><p>這個系列需要等 11 月，鐵人賽結束後，才能正式開始創作，預計花費 2、3 個月寫完這 4 篇。</p><hr><h2 id="非技術類文章？"><a href="#非技術類文章？" class="headerlink" title="非技術類文章？"></a>非技術類文章？</h2><p>前兩部分是和「程式、技術」相關的主題，而第三部分則要等到鐵人賽後。</p><p>那非技術類文章還發嗎？</p><p><a href="/weekly-review-30/#%E4%BA%8C%E3%80%81%E5%B0%88%E6%A5%AD%E5%85%A7%E5%AE%B9%E8%88%87%E5%80%8B%E4%BA%BA%E5%BF%83%E5%BE%97%E4%BA%A4%E9%8C%AF">之前提過</a>，我很難一直寫程式類內容，因為心理上容易疲勞。所以當然會繼續寫非技術文章——主要發表在 <a href="https://blog.kyomind.tw/categories/Weekly-Review/">Weekly Review</a>。</p><p>創作 Weekly Review 的感受，和其它文章很不一樣，是我<strong>心靈上的避風港</strong>。</p><p>寫累了，就回到這裡，休息一日，整裝待發。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在〈&lt;a href=&quot;/keyboard-shortcuts/&quot;&gt;現代軟體的「鍵盤快捷鍵」記憶爭奪戰&lt;/a&gt;〉一文的留言中，有讀者提到我最近似乎變多產了。&lt;/p&gt;
+&lt;p&gt;確實如此。&lt;/p&gt;
+&lt;p&gt;有人注意到這件事，讓我非常高興XD，甚至可以說感動。&lt;/p&gt;
+&lt;p&gt;而本文斗膽預告：下半年將會比上半年，更加多產🔥&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;我通常不太想為自己立 flag，預告也屬於此類。尤其有〈&lt;a href=&quot;/weekly-review-24/&quot;&gt;24，收回「發文計畫」&lt;/a&gt;〉的前車之鑑，心裡難免會暗暗擔憂：「是不是說出來就會更容易失敗？」&lt;/p&gt;
+&lt;p&gt;當然，我知道實際並非如此——很多事做不做，成不成，終究還是操之在己。&lt;/p&gt;
+&lt;p&gt;至少寫作是這樣的。&lt;/p&gt;
+&lt;h3 id=&quot;三個寫作方向&quot;&gt;&lt;a href=&quot;#三個寫作方向&quot; class=&quot;headerlink&quot; title=&quot;三個寫作方向&quot;&gt;&lt;/a&gt;三個寫作方向&lt;/h3&gt;&lt;p&gt;這篇來聊聊我今年下半年的&lt;strong&gt;寫作目標&lt;/strong&gt;，主要有&lt;strong&gt;三大方向&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;看完這三個方向，想必你就能理解，為何說一定會比上半年更多產。&lt;/p&gt;
+&lt;p&gt;換言之，如果真的都能達成，多產只是必然的結果。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+    <category term="blog" scheme="https://blog.kyomind.tw/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>Django ORM：一對一、一對多外鍵教學（下）關聯查詢</title>
@@ -374,49 +410,6 @@
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
     <category term="學習" scheme="https://blog.kyomind.tw/tags/%E5%AD%B8%E7%BF%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django REST framework 教學（一）前言篇</title>
-    <link href="https://blog.kyomind.tw/django-rest-framework-01/"/>
-    <id>https://blog.kyomind.tw/django-rest-framework-01/</id>
-    <published>2024-05-11T17:15:37.000Z</published>
-    <updated>2024-06-21T14:18:24.128Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p><p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 5 篇。</p><p>範例程式碼可參考我的 <a href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p><hr><p>終於要進入 Django API 的世界了！</p><p>不過，在開始 DRF 教學之前，我要先介紹 Django、DRF 兩者間的<strong>關係</strong>。</p><p>為什麼 Django 不乾脆自己實作 API 功能就好？而是把這個任務交給第三方套件，比如本文的 Django REST framework。</p><h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>因此，本文的主要目標是：<strong>為讀者建立一個「high level」的世界觀</strong>。讓你了解為何在 Django 之外，我們還需要 Django REST framework。</p><p>了解兩者的關係，更能體會<strong>它們所扮演的不同角色。</strong></p><p>簡言之，這一篇還沒有要開始寫 API。</p><h3 id="系列：Django-REST-framework-教學"><a href="#系列：Django-REST-framework-教學" class="headerlink" title="系列：Django REST framework 教學"></a>系列：Django REST framework 教學</h3><ul><li><a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li></ul><span id="more"></span><hr><h2 id="Django-介紹"><a href="#Django-介紹" class="headerlink" title="Django 介紹"></a>Django 介紹</h2><p>Django 是一個<strong>全端框架</strong>（或說是<strong>附有前端元件</strong>的<strong>後端框架</strong>），它強大而靈活，能處理從模板渲染、表單生成、後台管理、資料庫模型等，幾乎所有事情。</p><p>我們常說 Python 是「<a href="https://en.wikipedia.org/wiki/Batteries_Included">Batteries Included</a>」（意味有豐富的標準函式庫），<strong>而 Django 也是如此——它大而全。</strong></p><p>在這個設計理念下，Django 關心的是「<strong>整個網站的建構</strong>」，所以它必須要從前端包到後端，而不會只專注在後端 API。</p><h2 id="Django-REST-framework-介紹"><a href="#Django-REST-framework-介紹" class="headerlink" title="Django REST framework 介紹"></a>Django REST framework 介紹</h2><p>當涉及到現代 Web 開發，尤其是與前端框架如 React、Vue 的配合，我們需要<strong>更專注於 API 的開發方式</strong>。畢竟「<strong>前後端分離</strong>」是當前 Web 開發主流。</p><p>於是我們有了 <a href="https://www.django-rest-framework.org/">Django REST framework</a>。</p><blockquote><p>我仔細看，<strong>f 真的是小寫，而 REST 要全大寫</strong>，這是官方的寫法。為了表述方便，以下簡稱為 DRF。</p></blockquote><p>DRF 引入了專門針對 API 的功能，如強大的序列化器、權限管理、通用 API 視圖。</p><p>這些功能使得 DRF 不僅能夠擴充 Django 的原有能力，而且提供了對 RESTful API 開發的專門支持。</p><p>不得不承認，在「前後端分離」已成顯學的今日，有了 DRF 這樣的框架，能有效維持 Django 作為一個開源後端框架的<strong>整體競爭力</strong>。</p><hr><h2 id="為何需要-DRF"><a href="#為何需要-DRF" class="headerlink" title="為何需要 DRF"></a>為何需要 DRF</h2><p>但又話說回來，為何 Django 不自己強化 API 功能，而是交給 DRF 這類套件呢？</p><p>我們可以從以下兩個方向考慮：</p><h3 id="一、專注與專業分工"><a href="#一、專注與專業分工" class="headerlink" title="一、專注與專業分工"></a>一、專注與專業分工</h3><ul><li>Django 的核心團隊專注於框架的<strong>基礎功能</strong>——比如 ORM、Middleware，這些是所有使用 Django 的開發者都需要的核心功能。</li><li>API 開發則是一個<strong>專業領域</strong>，涉及不同的需求和專業知識，如資料驗證與序列化。DRF 對建構 REST API 功能進行擴充，提供了<strong>一整套工具與實踐。</strong></li></ul><h3 id="二、模組化與彈性"><a href="#二、模組化與彈性" class="headerlink" title="二、模組化與彈性"></a>二、模組化與彈性</h3><ul><li>通過將 API 功能外包給如 DRF 這樣的套件，Django <strong>保持了核心的簡潔</strong>，同時提供了一定<strong>彈性</strong>。讓開發者可以<strong>根據需求</strong>，選擇合適自己的工具。</li><li>換句話說，Django 專注在核心功能而不是 API，可以讓它<strong>更全面、更靈活。</strong></li><li>這意味著你可以<strong>只在需要時</strong>引入 DRF，進而保持專案的<strong>輕量</strong>。畢竟，Django 本身已經非常豐富。</li></ul><h2 id="Django-與-DRF-比較"><a href="#Django-與-DRF-比較" class="headerlink" title="Django 與 DRF 比較"></a>Django 與 DRF 比較</h2><p>綜上所述，我們直接用表格來比較兩者的功能與角色差異：</p><table><thead><tr><th></th><th>Django</th><th>DRF</th></tr></thead><tbody><tr><td>主要目的</td><td>全面的 Web 框架，提供完整的 Web 應用開發支持。</td><td>專注於 Web API 的建立，特別是 RESTful API。</td></tr><tr><td>設計哲學</td><td>提供高度可重用性和快速開發元件，比如 Django ORM。</td><td>API 優先：提供 API 特定的工具和功能，比如序列化器。</td></tr><tr><td>核心功能</td><td>模板渲染、表單生成、管理界面、資料庫模型。</td><td>序列化、權限控制、API View。</td></tr><tr><td>目標用戶</td><td>面向所有類型的 Web 開發者，包括初學者和專業人士。</td><td>面向需要建立複雜 API 的開發者。</td></tr></tbody></table><hr><p>了解 Django 與 DRF 的差異後，還有一個議題也很重要——CBV 與 FBV。</p><h2 id="CBV-vs-FBV"><a href="#CBV-vs-FBV" class="headerlink" title="CBV vs FBV"></a>CBV vs FBV</h2><p>Class-based view 與 function-based view，兩者都是實現 Django 中 view 的手段，各有適合的場景。</p><p>CBV 有著<strong>重用程式碼</strong>優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p><p>老實說，我只寫過 FBV，而且我也更愛 FBV。</p><h3 id="DRF-更擅長-CBV"><a href="#DRF-更擅長-CBV" class="headerlink" title="DRF 更擅長 CBV"></a>DRF 更擅長 CBV</h3><p>不過，DRF 本身對於 CBV 有著「<strong>更完整的支援</strong>」。</p><p>所以如果你想要將 DRF 發揮到極致，那它提供的 <a href="https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview">GenericAPIView</a> 值得了解一下。並且和 DRF 其它元件有著<strong>高度整合。</strong></p><h3 id="本系列只會使用-FBV"><a href="#本系列只會使用-FBV" class="headerlink" title="本系列只會使用 FBV"></a>本系列只會使用 FBV</h3><p>不過因為我沒真正大量使用過 CBV，而且 DRF 系列只是入門教學，所以我只會用 FBV 進行示範。</p><p>另一方面，Django Ninja、FastAPI、Flask 都是以 FBV 為主，或許對大部分人而言，能善用 FBV 已然足夠。</p><hr><h2 id="DRF-vs-Django-Ninja"><a href="#DRF-vs-Django-Ninja" class="headerlink" title="DRF vs Django Ninja"></a>DRF vs Django Ninja</h2><p>長期以來，DRF 一直是開發 Django API 的主要甚至唯一選擇——直到 <a href="https://django-ninja.dev/">Django Ninja</a> 的出現。</p><p>Django Ninja 是烏克蘭開發者 <a href="https://github.com/vitalik">Vitaliy Kucheryaviy</a> 的力作，可以想成是「<strong>Django 版 FastAPI</strong>」。</p><p>它提供不同於傳統寫法的 FBV，高度整合了 Python type hints。並使用 Pydantic 進行資料的驗證與序列化，還有最重要的——自動產生 API 文件。</p><p>關於 Django Ninja，以及它和 DRF 的比較，我會放到 Django Ninja 系列，再行介紹。</p><hr><h2 id="小結：入門者的選擇"><a href="#小結：入門者的選擇" class="headerlink" title="小結：入門者的選擇"></a>小結：入門者的選擇</h2><p>本文講述了 Django 與 DRF 在現代開發中扮演的角色，與它們之間相輔相成的關係。</p><p>如果你是剛開始接觸 Django API 的開發者，我相信 DRF 仍是第一選擇。因為它更加成熟，而且累積了大量的歷史資料，可作為開發時的參考。</p><p>在熟悉了基本的 Django API 開發流程與常見元素後，再學習 Django Ninja 也不遲。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/lyxUZv1.png&quot; alt=&quot;Let&amp;#39;s Django！&quot;&gt;&lt;/p&gt;
-&lt;p&gt;這是 &lt;a href=&quot;/tags/Django-Tutorial/&quot;&gt;Django Tutorial&lt;/a&gt; 的第 5 篇。&lt;/p&gt;
-&lt;p&gt;範例程式碼可參考我的 &lt;a href=&quot;https://github.com/kyomind/Django-Tutorial&quot;&gt;GitHub 專案&lt;/a&gt;，更多教學請見「&lt;a href=&quot;/django/&quot;&gt;Django 文章總覽&lt;/a&gt;」。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;終於要進入 Django API 的世界了！&lt;/p&gt;
-&lt;p&gt;不過，在開始 DRF 教學之前，我要先介紹 Django、DRF 兩者間的&lt;strong&gt;關係&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;為什麼 Django 不乾脆自己實作 API 功能就好？而是把這個任務交給第三方套件，比如本文的 Django REST framework。&lt;/p&gt;
-&lt;h2 id=&quot;本文主旨&quot;&gt;&lt;a href=&quot;#本文主旨&quot; class=&quot;headerlink&quot; title=&quot;本文主旨&quot;&gt;&lt;/a&gt;本文主旨&lt;/h2&gt;&lt;p&gt;因此，本文的主要目標是：&lt;strong&gt;為讀者建立一個「high level」的世界觀&lt;/strong&gt;。讓你了解為何在 Django 之外，我們還需要 Django REST framework。&lt;/p&gt;
-&lt;p&gt;了解兩者的關係，更能體會&lt;strong&gt;它們所扮演的不同角色。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;簡言之，這一篇還沒有要開始寫 API。&lt;/p&gt;
-&lt;h3 id=&quot;系列：Django-REST-framework-教學&quot;&gt;&lt;a href=&quot;#系列：Django-REST-framework-教學&quot; class=&quot;headerlink&quot; title=&quot;系列：Django REST framework 教學&quot;&gt;&lt;/a&gt;系列：Django REST framework 教學&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/series/#Django-REST-framework-%E6%95%99%E5%AD%B8&quot;&gt;系列文章清單（連載中）&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/lyxUZv1.png" type="image"/>
-    
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
-    
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
-    
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
-    
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
-    
-    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
     
   </entry>
   
