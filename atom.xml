@@ -169,11 +169,11 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
+    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
-    
-    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
@@ -367,9 +367,9 @@
     
     <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
     
-    <category term="個人知識管理" scheme="https://blog.kyomind.tw/tags/%E5%80%8B%E4%BA%BA%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/"/>
-    
     <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="個人知識管理" scheme="https://blog.kyomind.tw/tags/%E5%80%8B%E4%BA%BA%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/"/>
     
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
@@ -412,11 +412,11 @@
     
     <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
+    
     <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
     
     <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
-    
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
   </entry>
   
