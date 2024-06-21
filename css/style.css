@@ -1607,7 +1607,7 @@ h6 {
   margin: 15px 0;
   font-weight: 400;
   font-family: "rubik", "nunito", sans-serif;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 24px;
   color: #34495e;
 }
@@ -1647,7 +1647,7 @@ h6 {
   }
   .archive .collection-title .archive-year {
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 20px;
   }
   .archive .archive-post {
     padding: 5px 10px;

@@ -412,11 +412,11 @@
     
     <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
     <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
     
     <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
   </entry>
   
