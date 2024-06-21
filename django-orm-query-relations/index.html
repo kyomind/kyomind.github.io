@@ -32,7 +32,7 @@
     <meta property="og:tag" content="Django ORM" />
     
 
-  <meta property="article:modified_time" content="2024-06-19T03:51:10+08:00" />
+  <meta property="article:modified_time" content="2024-06-21T05:23:57+08:00" />
 
 
 
@@ -186,7 +186,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E8%B3%87%E6%96%99%E7%B0%A1%E4%BB%8B"><span class="toc-text">範例資料簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-%E9%80%B2%E8%A1%8C-Django-ORM-%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用__進行 Django ORM 查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%9C%89%E5%89%AF%E6%A8%99%E9%A1%8C%E3%80%8D%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">一、查詢「有副標題」的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E8%A9%A2%E7%95%99%E8%A8%80%E4%B8%AD%E6%9C%89%E3%80%8CThanks%E3%80%8D%E4%B8%80%E8%A9%9E%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">二、查詢留言中有「Thanks」一詞的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E8%A9%A2-id-%E7%82%BA-1-%E7%9A%84%E6%96%87%E7%AB%A0%E7%95%99%E8%A8%80%E6%95%B8"><span class="toc-text">三、查詢 id 為 1 的文章留言數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E5%A4%96%E9%8D%B5-Primary-Key-%E7%9A%84%E4%B8%8D%E5%90%8C%E8%AE%8A%E9%AB%94"><span class="toc-text">查詢外鍵 Primary Key 的不同變體</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9F%A5%E8%A9%A2%E6%A8%99%E9%A1%8C%E6%9C%89%E3%80%8CDjango%E3%80%8D%E7%9A%84%E6%89%80%E6%9C%89%E7%95%99%E8%A8%80"><span class="toc-text">四、查詢標題有「Django」的所有留言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C%E7%9A%84%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D"><span class="toc-text">查詢結果的變數命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ADjangonic"><span class="toc-text">結語：Djangonic</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 6 篇、<a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">Django ORM 外鍵教學</a>的第 3 篇——完結篇。</p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 7 篇、<a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">Django ORM 外鍵教學</a>的第 3 篇——完結篇。</p>
 <p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p>
 <h3 id="系列：Django-ORM-外鍵教學"><a href="#系列：Django-ORM-外鍵教學" class="headerlink" title="系列：Django ORM 外鍵教學"></a>系列：Django ORM 外鍵教學</h3><blockquote>
 <ol>
