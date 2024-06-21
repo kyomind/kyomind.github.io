@@ -169,11 +169,11 @@
     
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
-    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
-    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Clean Code" scheme="https://blog.kyomind.tw/tags/Clean-Code/"/>
+    
+    <category term="讀書心得" scheme="https://blog.kyomind.tw/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/"/>
     
   </entry>
   
