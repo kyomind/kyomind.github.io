@@ -114,7 +114,7 @@ li {
 
 .archive-month {
   margin: 7px 0;
-  color: rgba(90, 124, 159, 0.9);
+  color: #5a7c9f;
 }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -1609,7 +1609,7 @@ h6 {
   font-family: "rubik", "nunito", sans-serif;
   font-size: 25px;
   line-height: 24px;
-  color: rgba(52, 73, 94, 0.9);
+  color: #34495e;
 }
 .archive .archive-post {
   padding: 3px 20px;
