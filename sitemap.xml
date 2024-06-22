@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-32/</loc>
+    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
     
     <lastmod>2024-06-22</lastmod>
     
@@ -12,6 +12,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-32/</loc>
     
     <lastmod>2024-06-22</lastmod>
     
@@ -365,15 +374,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-31/</loc>
     
     <lastmod>2024-06-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
-    
-    <lastmod>2024-05-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1046,7 +1046,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -1055,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
