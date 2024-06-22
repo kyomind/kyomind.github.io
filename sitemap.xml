@@ -866,6 +866,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -885,15 +894,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -1046,7 +1046,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -1055,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
