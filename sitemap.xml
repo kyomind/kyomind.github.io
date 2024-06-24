@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/mac-mini/</loc>
+    
+    <lastmod>2024-06-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-06-24</lastmod>
@@ -677,15 +686,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/mac-mini/</loc>
-    
-    <lastmod>2024-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
     
     <lastmod>2024-04-06</lastmod>
@@ -1046,7 +1046,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -1055,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-02/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
