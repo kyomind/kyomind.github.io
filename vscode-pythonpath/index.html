@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="VS Code" />
             
 
-  <meta property="article:modified_time" content="2024-04-27T09:33:10+08:00" />
+  <meta property="article:modified_time" content="2024-06-25T18:07:51+08:00" />
 
 
 
@@ -203,7 +203,7 @@
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196775">import雜談之二———export機制以及namespace package</a></li>
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196901">import雜談之三———sys.path的洪荒之時</a></li>
 </ul>
-<p>從上述引用內容可知，<code>debugger.py</code>所以會出現<code>ModuleNotFoundError</code>，是因為<code>from configs.config import DeployStatus</code>這段程式碼的「<strong>程式寫作意圖</strong>」，是希望從「<strong>專案根目錄</strong>」的角度出發去 import——但實際上 Python 直譯器卻沒有如預期地這麼做。</p>
+<p>綜合上述內容可知，<code>debugger.py</code>所以會出現<code>ModuleNotFoundError</code>，是因為<code>from configs.config import DeployStatus</code>這段程式碼的「<strong>意圖</strong>」，是希望從「<strong>專案根目錄</strong>」的角度出發去 import——但實際上 Python 直譯器卻沒有如預期地這麼做。</p>
 <h3 id="sys-path"><a href="#sys-path" class="headerlink" title="sys.path"></a>sys.path</h3><p>因為，在這個例子中，沒有額外設定的情況下，專案根目錄並不在<code>sys.path</code>裡（除非<code>debugger.py</code>就在專案根目錄底下，容後述），直譯器自然找不到<code>configs</code>模組。</p>
 <p>換句話說，Python 直譯器在執行 import 時，會從<code>sys.path</code>中，由<strong>左至右依序嘗試</strong>要 import 的路徑。一般而言，<code>sys.path</code>的值可以例示如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python38.zip&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/lib-dynload&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.8/site-packages&#x27;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
