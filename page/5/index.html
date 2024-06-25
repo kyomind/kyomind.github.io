@@ -283,9 +283,9 @@
 
     <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <blockquote>
-<p><code>2024-03-22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
+<p><code>2024/03/22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
 </blockquote>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列的第 2 篇——<strong>序言</strong>。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。</p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 2 篇——<strong>序言</strong>。主要說明整個系列的<strong>寫作動機、文章規劃</strong>，並介紹 GitHub 範例程式碼 repo 的使用方式。</p>
 <p>本站所有 Django 教學文章，已整理於 <a href="/django/">Django 文章總覽</a>。</p>
 <hr>
 <h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。</p>
@@ -305,7 +305,7 @@
 <ol>
 <li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
 <li><a href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></li>
-<li>Django ORM：一對一、一對多外鍵教學（下）查詢篇</li>
+<li><a href="/django-orm-query-relations/">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></li>
 </ol>
 <p>而且，整個 Django 框架中，我最愛的部分就是 Django ORM——它<strong>強大而優雅</strong>。</p>
 <h2 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h2><p>我相信，沒有單元測試的開發，是「<strong>不健全</strong>」的開發。</p>
@@ -350,7 +350,10 @@
 <h2 id="範例程式碼-GitHub-專案介紹"><a href="#範例程式碼-GitHub-專案介紹" class="headerlink" title="範例程式碼 GitHub 專案介紹"></a>範例程式碼 GitHub 專案介紹</h2><p>最後，介紹與整個系列教學直接相關的 GitHub repository——<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。</p>
 <p>這個專案的定位是「<strong>讓有讀者實際程式碼可以參考</strong>」，所以基本上是拿來「看」的。但我會讓它也能夠真正運行，以方便想要自己動手嘗試的讀者。</p>
 <p>我相信這對學習大有幫助。</p>
-<h3 id="分支功能"><a href="#分支功能" class="headerlink" title="分支功能"></a>分支功能</h3><p>專案中會有許多分支，採<code>&lt;流水號-文章slug&gt;</code>的模式命名，比如：</p>
+<h3 id="分支功能"><a href="#分支功能" class="headerlink" title="分支功能"></a>分支功能</h3><blockquote>
+<p><code>2024/06/26</code>：<strong>變更分支命名方式</strong>，直接採用文章 slug，捨棄流水號。</p>
+</blockquote>
+<p>專案中會有許多分支，採<code>&lt;流水號-文章slug&gt;</code>的模式命名，比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01-django-models</span><br></pre></td></tr></table></figure>
 
 <p>分支主要是作為<strong>歷史記錄</strong>之用，以及快速查看該分支所對應的<strong>程式碼修改</strong>。</p>

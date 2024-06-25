@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-06-21T14:18:30+08:00" />
+  <meta property="article:modified_time" content="2024-06-25T17:39:03+08:00" />
 
 
 
@@ -242,10 +242,10 @@
 <p>而<strong>路由</strong>（router）則是<strong>連結端點與實際負責處理請求的 view 函式</strong>之間的<strong>橋樑</strong>，也就是「<strong>如何分配請求給處理者</strong>」的<strong>機制</strong>，或者說<strong>規則</strong>。</p>
 <p>我們再複習一下 Django 的路由基本做法：</p>
 <ol>
-<li>建立 app 的二級路由。</li>
-<li>設定 project 的一級路由。</li>
+<li>建立 Django app 的二級路由。</li>
+<li>設定 Django project 的一級路由。</li>
 </ol>
-<p>我也看過把所有路由統一放到 project 的<code>urls.py</code>做法，但這屬少數。</p>
+<p>我也看過把所有路由統一放到 Django project 的<code>urls.py</code>做法，但這屬少數。</p>
 <h3 id="App-二級路由"><a href="#App-二級路由" class="headerlink" title="App 二級路由"></a>App 二級路由</h3><p>首先，在 Django app 底下新增<code>urls.py</code>。這個檔案預設上沒有，我們要自行建立。</p>
 <p><code>post/urls.py</code>內容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> post.views <span class="keyword">import</span> hello_world  <span class="comment"># 這個 view 函式目前還沒寫</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;hello/&#x27;</span>, hello_world),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
