@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-06-20T17:08:05+08:00" />
+  <meta property="article:modified_time" content="2024-06-26T08:52:02+08:00" />
 
 
 
@@ -592,7 +592,9 @@
 <p>預設的輸出結果會有 hash 值，很干擾閱讀。不想納入 hash 則要<strong>加上參數</strong>去除。<strong>以下就是我固定用來輸出<code>requirements.txt</code>的指令與參數：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes</span><br></pre></td></tr></table></figure>
 
+<blockquote>
 <p><code>2022/08/24</code>補充：網友提醒，<strong>hash 有其價值，並建議保留</strong>，詳見<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-reply/issues/5#issuecomment-1195904820">留言區</a>。</p>
+</blockquote>
 <p>我們再看一下輸出結果，雖然不盡相同，但也相去不遠了……嗎？等等，怎麼是空白？</p>
 <h3 id="輸出-dev-dependencies"><a href="#輸出-dev-dependencies" class="headerlink" title="輸出 dev-dependencies"></a>輸出 dev-dependencies</h3><p>因為<code>poetry export</code><strong>預設</strong>只會輸出<code>toml</code>中的<code>[tool.poetry.dependencies]</code>區塊的套件！還記得上面我們把 Black 安裝到<code>[tool.poetry.dev-dependencies]</code>了嗎？</p>
 <p>顯然 Poetry 認為你 export 基本上就為了部署，並不需要開發區的套件。</p>
