@@ -111,7 +111,7 @@
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (36)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (22)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (23)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (32)</a>
           
@@ -153,6 +153,86 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/mypy/">Python type checker：Mypy 介紹</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-28
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/rnvlF18.jpg" alt="by Koma Zhang"><span class="cap">by Koma Zhang</span></p>
+<p>在〈<a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a>〉一文中，我們闡述了為 Python 專案程式碼加上 type hints 的<strong>長期價值</strong>與<strong>需要付出的成本</strong>。</p>
+<p>文中多次提到了 <a target="_blank" rel="noopener" href="https://github.com/python/mypy">Mypy</a> 這個<strong>靜態類型檢查器</strong>。</p>
+<p>本文打算從歷史發展、其它可選的類型檢查器，從<strong>輪廓上</strong>介紹 Mypy 的特色。</p>
+<p>雖然沒有詳細的 Mypy 使用教學，但<strong>更了解 Mypy，也可能讓你對 Python 的型別檢查產生不同的看法。</strong></p>
+<p>我覺得 Mypy 不太需要學習，只要引入一些設定就好，我們會在下一篇文章中介紹。</p>
+<p>最後，我會分享一些使用 Mypy 時的心得與經驗。</p>
+<p>如果看過開頭那篇文章，你可能會認同：<strong>我們終將要成為 Python type hints 的信徒</strong>。而 Mypy 就是最佳的布道者。</p>
+<hr>
+<h2 id="為什麼需要-Mypy"><a href="#為什麼需要-Mypy" class="headerlink" title="為什麼需要 Mypy"></a>為什麼需要 Mypy</h2><p>Python 是一門廣受歡迎的「<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/87841">動態定型</a>」程式語言，以其簡潔的語法和靈活性著稱。</p>
+<p>然而，這種<strong>靈活性</strong>有時也會成為<strong>問題</strong>，特別是在大型專案中，型別錯誤可能會導致難以追蹤的 bug，從而降低程式碼的可靠性和可維護性。</p>
+<p>在這樣的背景下，Mypy 應運而生。</p>
+<h2 id="Mypy-介紹"><a href="#Mypy-介紹" class="headerlink" title="Mypy 介紹"></a>Mypy 介紹</h2><p>Mypy 是由 <a target="_blank" rel="noopener" href="https://x.com/jukkaleh">Jukka Lehtosalo</a> 開發的一個開源專案，它是一個<strong>靜態類型檢查工具</strong>，旨在通過閱讀 Python 程式碼中的<strong>型別註解（type hints、type annotations）</strong>來提供完善的型別檢查。及早發現類型錯誤，從而提高程式碼品質。</p>
+<h3 id="Mypy-的歷史發展"><a href="#Mypy-的歷史發展" class="headerlink" title="Mypy 的歷史發展"></a>Mypy 的歷史發展</h3><p>Mypy 的開發歷史可以追溯到 2012 年，當時 Jukka Lehtosalo 在他的博士論文中首次提出了這個想法。</p>
+<p>隨著專案的發展，Python 之父 Guido van Rossum 也對此<strong>表示支援</strong>——可參考良葛格的〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/116983">Type Hints的野心</a>〉一文。並在 2014 年共同提出了 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484</a>，該 PEP 正式將型別註解引入了 Python 語言標準，並在 Python 3.5 中實現。</p>
+<p>沒錯，Mypy 的存在甚至比 Python 3.5 <strong>更早</strong>。由此可知，Mypy 才是 Python type hints 的<strong>催生人</strong>😎</p>
+<h2 id="Mypy-的工作原理"><a href="#Mypy-的工作原理" class="headerlink" title="Mypy 的工作原理"></a>Mypy 的工作原理</h2><p>Mypy 的工作原理非常簡單：在開發者新增型別註解後，Mypy 會在檢查過程中<strong>閱讀這些註解</strong>，並根據註解所描述的類型來判斷程式碼是否正確。</p>
+<p>這樣一來，很多在運行時才會暴露的錯誤，可以在開發階段就被捕捉到。</p>
+<p>使用 Mypy 的主要好處包括：</p>
+<ul>
+<li><strong>提高程式碼的穩定性和可靠性</strong>：通過及早發現類型錯誤，可以避免很多運行時才會出現的 bug。</li>
+<li><strong>增強程式碼的可讀性</strong>：型別註解可以<strong>作為文件的一部分</strong>，使程式碼的用途和預期行為更加清晰。</li>
+<li><strong>提升團隊合作效率</strong>：當多個開發者協作時，型別註解可以幫助大家保持一致的理解和程式碼風格。</li>
+</ul>
+<hr>
+<h2 id="其他類型檢查器"><a href="#其他類型檢查器" class="headerlink" title="其他類型檢查器"></a>其他類型檢查器</h2><p>對我而言，Mypy 是型別檢查時的<strong>首選</strong>，因為它最親民，意思是它檢查時最「寬容」，所以<strong>最容易上手。</strong></p>
+<p>但也有其他類型檢查器可供選擇，這裡只介紹最常見的幾個：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>描述</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Pyright</strong></td>
+<td>由 Microsoft 開發的一個高效能、功能強大的靜態類型檢查工具，<strong>特別適合大型專案。</strong></td>
+<td><strong>直接整合 VSCode</strong>、支援 TypeScript 類型系統</td>
+<td>社區支持相對較少</td>
+</tr>
+<tr>
+<td><strong>Pyre</strong></td>
+<td>由 Facebook 開發的靜態類型檢查工具，強調高效能和高準確性的類型檢查。</td>
+<td>檢查速度快、精確度高</td>
+<td>設定較為複雜，學習曲線較陡</td>
+</tr>
+<tr>
+<td><strong>Pytype</strong></td>
+<td>由 Google 開發的靜態類型檢查工具，支持<strong>自動類型推斷</strong>和錯誤檢查。</td>
+<td>自動推斷類型</td>
+<td>設定和使用相對複雜</td>
+</tr>
+</tbody></table>
+<p>它們剛好都是由各個巨頭公司開發的XD</p>
+<p>其中值得一提的是 VS Code 中 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a> 套件，它採用的正是 Pyright，你可以在編輯器中<strong>直接開啟</strong>它的型別檢查功能。</p>
+<p>不過它的嚴格程度比 Mypy 還要高，要完全遵守真的很累（難怪說它適合大型專案），所以我還是比較喜歡 Mypy。</p>
+<hr>
+<h2 id="我的-Mypy-經驗與心得"><a href="#我的-Mypy-經驗與心得" class="headerlink" title="我的 Mypy 經驗與心得"></a>我的 Mypy 經驗與心得</h2><p>從今年 3 月開始寫 Django Ninja 而認真導入 Mypy，我覺得它對於發現潛在錯誤非常有幫助。</p>
+<p>這就是<strong>靜態類型檢查</strong>的魅力所在：幫助你在開發過程中<strong>提前發現問題</strong>。</p>
+<p>當然，為專案程式碼加上 type hints，會增加一定的工作量。但從獲得的收益，兩相權衡，我認為<strong>很值得</strong>。</p>
+<p>尤其要<strong>特別強調一點</strong>：預設的 Mypy 其實<strong>非常寬容</strong>，所以你可以<strong>慢慢地</strong>導入它，不用一下子就把大部分程式碼都加上 type hints。</p>
+<p>我想這也正是 Python type hints 的<strong>核心精神：取你所需，不必非黑即白。</strong></p>
+
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-32/">32，下半年寫作目標</a>
         </h1>
@@ -336,43 +416,6 @@
 <p><strong>那我們可以做什麼？</strong></p>
           <div class="read-more">
             <a href="/weekly-review-31/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-rest-framework-02/">Django REST framework 教學（二）基本設定與路由</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-01
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 6 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 2 篇。</p>
-<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p>
-<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/1">PR</a>。</p>
-<hr>
-<p>上一篇我們介紹了 Django 和 Django REST framework（以下簡稱 DRF）之間的區別，與它們各司其職的角色定位。</p>
-<p>兩者相輔相成，讓 Django 在這個「前後端分離」的時代，還能佔有一席之地。</p>
-<p>接下來，我們要開始動手實作 API。</p>
-<h3 id="系列：Django-REST-framework-教學"><a href="#系列：Django-REST-framework-教學" class="headerlink" title="系列：Django REST framework 教學"></a>系列：Django REST framework 教學</h3><ul>
-<li><a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li>
-</ul>
-<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的目標：<strong>建立一個 Django API，並確保它正常運行。</strong></p>
-<p>為了達到這個目標，我們需要完成以下三件事：</p>
-<ol>
-<li>安裝 Django REST framework 套件。</li>
-<li>設定 Django 的<code>settings.py</code>，加入 DRF 相關內容。</li>
-<li>實作第一個路由（router）與 API。</li>
-</ol>
-<p>就這麼簡單，讓我們直接開始吧！</p>
-          <div class="read-more">
-            <a href="/django-rest-framework-02/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

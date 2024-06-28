@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-06-22T09:32:30.670Z</updated>
+  <updated>2024-06-28T05:03:13.529Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python type checker：Mypy 介紹</title>
+    <link href="https://blog.kyomind.tw/mypy/"/>
+    <id>https://blog.kyomind.tw/mypy/</id>
+    <published>2024-06-28T03:02:23.000Z</published>
+    <updated>2024-06-28T05:03:13.529Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/rnvlF18.jpg" alt="by Koma Zhang"><span class="cap">by Koma Zhang</span></p><p>在〈<a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a>〉一文中，我們闡述了為 Python 專案程式碼加上 type hints 的<strong>長期價值</strong>與<strong>需要付出的成本</strong>。</p><p>文中多次提到了 <a href="https://github.com/python/mypy">Mypy</a> 這個<strong>靜態類型檢查器</strong>。</p><p>本文打算從歷史發展、其它可選的類型檢查器，從<strong>輪廓上</strong>介紹 Mypy 的特色。</p><p>雖然沒有詳細的 Mypy 使用教學，但<strong>更了解 Mypy，也可能讓你對 Python 的型別檢查產生不同的看法。</strong></p><p>我覺得 Mypy 不太需要學習，只要引入一些設定就好，我們會在下一篇文章中介紹。</p><p>最後，我會分享一些使用 Mypy 時的心得與經驗。</p><p>如果看過開頭那篇文章，你可能會認同：<strong>我們終將要成為 Python type hints 的信徒</strong>。而 Mypy 就是最佳的布道者。</p><hr><h2 id="為什麼需要-Mypy"><a href="#為什麼需要-Mypy" class="headerlink" title="為什麼需要 Mypy"></a>為什麼需要 Mypy</h2><p>Python 是一門廣受歡迎的「<a href="https://www.ithome.com.tw/voice/87841">動態定型</a>」程式語言，以其簡潔的語法和靈活性著稱。</p><p>然而，這種<strong>靈活性</strong>有時也會成為<strong>問題</strong>，特別是在大型專案中，型別錯誤可能會導致難以追蹤的 bug，從而降低程式碼的可靠性和可維護性。</p><p>在這樣的背景下，Mypy 應運而生。</p><h2 id="Mypy-介紹"><a href="#Mypy-介紹" class="headerlink" title="Mypy 介紹"></a>Mypy 介紹</h2><p>Mypy 是由 <a href="https://x.com/jukkaleh">Jukka Lehtosalo</a> 開發的一個開源專案，它是一個<strong>靜態類型檢查工具</strong>，旨在通過閱讀 Python 程式碼中的<strong>型別註解（type hints、type annotations）</strong>來提供完善的型別檢查。及早發現類型錯誤，從而提高程式碼品質。</p><h3 id="Mypy-的歷史發展"><a href="#Mypy-的歷史發展" class="headerlink" title="Mypy 的歷史發展"></a>Mypy 的歷史發展</h3><p>Mypy 的開發歷史可以追溯到 2012 年，當時 Jukka Lehtosalo 在他的博士論文中首次提出了這個想法。</p><p>隨著專案的發展，Python 之父 Guido van Rossum 也對此<strong>表示支援</strong>——可參考良葛格的〈<a href="https://www.ithome.com.tw/voice/116983">Type Hints的野心</a>〉一文。並在 2014 年共同提出了 <a href="https://peps.python.org/pep-0484/">PEP 484</a>，該 PEP 正式將型別註解引入了 Python 語言標準，並在 Python 3.5 中實現。</p><p>沒錯，Mypy 的存在甚至比 Python 3.5 <strong>更早</strong>。由此可知，Mypy 才是 Python type hints 的<strong>催生人</strong>😎</p><h2 id="Mypy-的工作原理"><a href="#Mypy-的工作原理" class="headerlink" title="Mypy 的工作原理"></a>Mypy 的工作原理</h2><p>Mypy 的工作原理非常簡單：在開發者新增型別註解後，Mypy 會在檢查過程中<strong>閱讀這些註解</strong>，並根據註解所描述的類型來判斷程式碼是否正確。</p><p>這樣一來，很多在運行時才會暴露的錯誤，可以在開發階段就被捕捉到。</p><p>使用 Mypy 的主要好處包括：</p><ul><li><strong>提高程式碼的穩定性和可靠性</strong>：通過及早發現類型錯誤，可以避免很多運行時才會出現的 bug。</li><li><strong>增強程式碼的可讀性</strong>：型別註解可以<strong>作為文件的一部分</strong>，使程式碼的用途和預期行為更加清晰。</li><li><strong>提升團隊合作效率</strong>：當多個開發者協作時，型別註解可以幫助大家保持一致的理解和程式碼風格。</li></ul><hr><h2 id="其他類型檢查器"><a href="#其他類型檢查器" class="headerlink" title="其他類型檢查器"></a>其他類型檢查器</h2><p>對我而言，Mypy 是型別檢查時的<strong>首選</strong>，因為它最親民，意思是它檢查時最「寬容」，所以<strong>最容易上手。</strong></p><p>但也有其他類型檢查器可供選擇，這裡只介紹最常見的幾個：</p><table><thead><tr><th>工具</th><th>描述</th><th>優點</th><th>缺點</th></tr></thead><tbody><tr><td><strong>Pyright</strong></td><td>由 Microsoft 開發的一個高效能、功能強大的靜態類型檢查工具，<strong>特別適合大型專案。</strong></td><td><strong>直接整合 VSCode</strong>、支援 TypeScript 類型系統</td><td>社區支持相對較少</td></tr><tr><td><strong>Pyre</strong></td><td>由 Facebook 開發的靜態類型檢查工具，強調高效能和高準確性的類型檢查。</td><td>檢查速度快、精確度高</td><td>設定較為複雜，學習曲線較陡</td></tr><tr><td><strong>Pytype</strong></td><td>由 Google 開發的靜態類型檢查工具，支持<strong>自動類型推斷</strong>和錯誤檢查。</td><td>自動推斷類型</td><td>設定和使用相對複雜</td></tr></tbody></table><p>它們剛好都是由各個巨頭公司開發的XD</p><p>其中值得一提的是 VS Code 中 <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a> 套件，它採用的正是 Pyright，你可以在編輯器中<strong>直接開啟</strong>它的型別檢查功能。</p><p>不過它的嚴格程度比 Mypy 還要高，要完全遵守真的很累（難怪說它適合大型專案），所以我還是比較喜歡 Mypy。</p><hr><h2 id="我的-Mypy-經驗與心得"><a href="#我的-Mypy-經驗與心得" class="headerlink" title="我的 Mypy 經驗與心得"></a>我的 Mypy 經驗與心得</h2><p>從今年 3 月開始寫 Django Ninja 而認真導入 Mypy，我覺得它對於發現潛在錯誤非常有幫助。</p><p>這就是<strong>靜態類型檢查</strong>的魅力所在：幫助你在開發過程中<strong>提前發現問題</strong>。</p><p>當然，為專案程式碼加上 type hints，會增加一定的工作量。但從獲得的收益，兩相權衡，我認為<strong>很值得</strong>。</p><p>尤其要<strong>特別強調一點</strong>：預設的 Mypy 其實<strong>非常寬容</strong>，所以你可以<strong>慢慢地</strong>導入它，不用一下子就把大部分程式碼都加上 type hints。</p><p>我想這也正是 Python type hints 的<strong>核心精神：取你所需，不必非黑即白。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/rnvlF18.jpg&quot; alt=&quot;by Koma Zhang&quot;&gt;&lt;span class=&quot;cap&quot;&gt;by Koma Zhang&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;在〈&lt;a href=&quot;/robust-python-01</summary>
+      
+    
+    
+    
+    <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
+    
+    
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
+    
+    <category term="Type Hints" scheme="https://blog.kyomind.tw/tags/Type-Hints/"/>
+    
+    <category term="Mypy" scheme="https://blog.kyomind.tw/tags/Mypy/"/>
+    
+  </entry>
   
   <entry>
     <title>32，下半年寫作目標</title>
@@ -373,43 +402,6 @@
     <category term="isort" scheme="https://blog.kyomind.tw/tags/isort/"/>
     
     <category term="pyproject.toml" scheme="https://blog.kyomind.tw/tags/pyproject-toml/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我寫「AI 對話筆記」的方法與思考</title>
-    <link href="https://blog.kyomind.tw/my-ai-dialogue-notes/"/>
-    <id>https://blog.kyomind.tw/my-ai-dialogue-notes/</id>
-    <published>2024-05-14T17:47:41.000Z</published>
-    <updated>2024-05-16T09:43:05.310Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"><span class="cap">by Sam Chivers</span></p><p>你會把「和 ChatGPT 的對話、問答」寫成筆記嗎？<a href="https://twitter.com/kyomind/status/1790032744598188070">顯然我會，而且很大量！</a></p><p>其中有 8 成以上都是程式相關，來自每天和 ChatGPT 的日常開發問答。</p><p>應該說，與 ChatGPT 對話<strong>早已成為我工作、學習的重要環節</strong>。在〈<a href="https://blog.kyomind.tw/stop-trial-and-error/">別依賴「試誤法」寫程式</a>〉中我也<a href="https://blog.kyomind.tw/stop-trial-and-error/#%E8%A9%A6%E8%AA%A4%E4%BE%9D%E8%B3%B4%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%95%8F%E9%A1%8C">強調過</a>，像 ChatGPT 這樣的工具，如果僅僅用來「獲得答案」，<strong>未免也太可惜。</strong></p><p>因此，我幾乎每天都會有新的「AI 對話筆記」。</p><p>話說回來，把 AI 的回答寫成筆記，並作為主要的知識來源，<strong>這是一個好的實踐嗎？</strong></p><p>本文無法回答這個問題XD，但我可以分享一下，做了一年 AI 對話筆記後，我的看法與注意事項。</p><span id="more"></span><p>附帶一提，我的筆記是 Logseq 閃卡（Flash card），大致做法可參考「<a href="https://blog.kyomind.tw/less-is-more/#%E6%88%91%E5%9C%A8-Logseq-%E7%9A%84%E5%B1%80%E9%83%A8%E5%AF%A6%E7%8F%BE">我在 Logseq 的局部實現</a>」或這篇<a href="https://www.facebook.com/fomo.kyo/posts/pfbid0KMyv8WAyMJSQBz8kvVQsmhXmHRspVknx3wwCcdjwvNJrH22bpZKZPMxcEZHECVJVl">臉書</a>。更多閃卡實作細節，我們另篇再談。</p><hr><h2 id="事實、觀點與幻覺"><a href="#事實、觀點與幻覺" class="headerlink" title="事實、觀點與幻覺"></a>事實、觀點與幻覺</h2><p>事實、觀點的定義與區別，這裡不多作闡述。只要能大概區分這兩者，就可以繼續往下閱讀。</p><p>筆記內容，往往是事實與觀點兼具，而我們常說 AI 有「<a href="https://zh.wikipedia.org/zh-tw/%E5%B9%BB%E8%A7%89_(%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD)">幻覺</a>」，主要著眼於它對事實的瞎掰胡扯。</p><p>如果你跟我一樣，把 AI 回答做成筆記並複習，而且為的是「專業技術養成」，那 AI 對於事實的幻覺，當然會是一個重要議題。</p><p>殘酷的是，幻覺目前還很難完全避免。</p><p>因此，把 AI 的回答寫成筆記，還是要有一些方法與準則才好。</p><h2 id="加上標籤"><a href="#加上標籤" class="headerlink" title="加上標籤"></a>加上標籤</h2><p>基於這個擔憂，所有對 AI 的回答整理，我會加上一個標籤，我自己是用 #Session，代表我和 AI 的對話內容。</p><p>貼上標籤只是一個提醒：告訴自己，這些內容是 AI 產生的，只能作為「參考」。雖然嚴格來說，我們所知道的一切，都是參考。</p><h2 id="預設相信八成"><a href="#預設相信八成" class="headerlink" title="預設相信八成"></a>預設相信八成</h2><p>我的看法是，在「<strong>一般情況</strong>（下面會討論「非一般」情況）」下，AI 的回答我會給予 80% 的相信程度。（這只是一種量化的表達方式，不必太認真）</p><p>所謂的「一般情況」，就是<strong>你大概能相信它不會講錯</strong>的情況，這好像是廢話XD。舉例而言，好比我問 ChatGPT 關於 Python 的議題。</p><p>而 Python 是一個很「<strong>一般（general）</strong>」的主題，意謂<strong>網路、文獻資料極多</strong>，我幾乎不擔心它會說謊（有幻覺）——除非是太新的功能。</p><p>對，我只會這樣分XD！所以很依賴個人判斷，但有這個「<strong>場景意識（知曉討論主題的一般與特殊程度）</strong>」確實很重要。</p><p>其實我覺得，加上標籤就很有幫助了！至少是對大腦的一種<strong>提醒</strong>。</p><p>此外，如果不是和 AI 的對話，但是我問了 AI 並用它的回答作為補充，也會上個標籤，此時我用 #GPT——但不限於 ChatGPT 的回答。</p><hr><h2 id="非一般情況——我半信半疑"><a href="#非一般情況——我半信半疑" class="headerlink" title="非一般情況——我半信半疑"></a>非一般情況——我半信半疑</h2><p>上述的「一般」議題我不怕它說謊，但<strong>只要討論主題稍為「特殊」一點，我對它可信度的把握，也隨之下降。</strong></p><p>比如，我工作中很常遇到的 Django 議題。Django 算是「一般」還是「特殊」議題，取決於你問的<strong>具體內容（子議題）</strong>是什麼。</p><p>Django 的<strong>基本概念</strong>，問 ChatGPT 沒問題，這些屬於一般議題。</p><p>但<strong>複雜的 ORM 查詢語法</strong>，就<strong>很不一般</strong>（相關資料少得多），你問 ChatGPT，它也都能說出個所以然，但我對它的回答就會半信半疑。</p><p>這時，我需要一些手段來確認。不然乾脆不要記錄，或者記錄時寫下「待驗證」之類的短語。</p><h2 id="降低不確定性的手段"><a href="#降低不確定性的手段" class="headerlink" title="降低不確定性的手段"></a>降低不確定性的手段</h2><p>遇到半信半疑的時候，有三種方法降低我的不確定性。</p><h3 id="一、看文件"><a href="#一、看文件" class="headerlink" title="一、看文件"></a>一、看文件</h3><p>看文件，這肯定是最重要的，文件說了算！——雖然文件有時候也會描述不清楚，讓人愈看愈糊塗。</p><p>但看文件是作為開發者的義務，可以罵文件沒寫好，但自己沒查，總是說不過去。</p><h3 id="二、Google"><a href="#二、Google" class="headerlink" title="二、Google"></a>二、Google</h3><p>老方法，其中 Stack Overflow 的回答還有 GitHub 上的 issue 討論，往往特別有幫助。</p><h3 id="二、問其它-AI-工具"><a href="#二、問其它-AI-工具" class="headerlink" title="二、問其它 AI 工具"></a>二、問其它 AI 工具</h3><p>除了 ChatGPT（GPT-4），是我的絕對開發主力，我使用的其它工具如下：（都沒有付費）</p><ol><li><a href="https://www.phind.com/">Phind</a></li><li><a href="https://claude.ai/">Claude</a></li><li><a href="https://devv.ai/">Devv AI</a></li></ol><p>上述順序恰恰也是我詢問的順序。不過通常問完 Phind 我就收手了，除非我非常想知道答案。（其實這個時候不會有答案，只有更多的疑問和不確定）</p><p>然而，如果我真問完一輪上述的 AI，那這個問題肯定是沒有讓我滿意的回答，<strong>我全部的回答都不信</strong>，只是想知道這些模型怎麼說而已😷</p><hr><h2 id="小結：就算正確，也可能是暫時的"><a href="#小結：就算正確，也可能是暫時的" class="headerlink" title="小結：就算正確，也可能是暫時的"></a>小結：就算正確，也可能是暫時的</h2><p>總的來說，我做筆記的基本態度是：所有的筆記，都只能算「<strong>我暫時相信的事</strong>」，後面有了新的事實、觀點，就要<strong>繼續修改或廢棄內容。</strong></p><p>當然，如果這些筆記參雜太多 AI 幻覺，也是挺困擾的！</p><p>所以我們<strong>需要一些 sense</strong>，知道什麼情況下，對它的回答<strong>不能認真</strong>。加上適時查證，我相信幻覺問題會大大減少。</p><p>而且，無論資訊是否來自 AI，筆記終歸是筆記，我們還是得保持一顆<strong>懷疑的心</strong>，即使是書中的內容，也不能盡信。</p><p>畢竟書的內容即使正確，也可能<strong>被我誤解地記錄下來</strong>。退萬步言，就算是正確的，這樣的正確，<strong>也可能只是暫時的。</strong></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YmlPRz1.jpg&quot; alt=&quot;by Sam Chivers&quot;&gt;&lt;/p&gt;
-&lt;p&gt;你會把「和 ChatGPT 的對話、問答」寫成筆記嗎？&lt;a href=&quot;https://twitter.com/kyomind/status/1790032744598188070&quot;&gt;顯然我會，而且很大量！&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其中有 8 成以上都是程式相關，來自每天和 ChatGPT 的日常開發問答。&lt;/p&gt;
-&lt;p&gt;應該說，與 ChatGPT 對話&lt;strong&gt;早已成為我工作、學習的重要環節&lt;/strong&gt;。在〈&lt;a href=&quot;https://blog.kyomind.tw/stop-trial-and-error/&quot;&gt;別依賴「試誤法」寫程式&lt;/a&gt;〉中我也&lt;a href=&quot;https://blog.kyomind.tw/stop-trial-and-error/#%E8%A9%A6%E8%AA%A4%E4%BE%9D%E8%B3%B4%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%95%8F%E9%A1%8C&quot;&gt;強調過&lt;/a&gt;，像 ChatGPT 這樣的工具，如果僅僅用來「獲得答案」，&lt;strong&gt;未免也太可惜。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;因此，我幾乎每天都會有新的「AI 對話筆記」。&lt;/p&gt;
-&lt;p&gt;話說回來，把 AI 的回答寫成筆記，並作為主要的知識來源，&lt;strong&gt;這是一個好的實踐嗎？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;本文無法回答這個問題XD，但我可以分享一下，做了一年 AI 對話筆記後，我的看法與注意事項。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/YmlPRz1.jpg" type="image"/>
-    
-    
-    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
-    
-    
-    <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
-    
-    <category term="個人知識管理" scheme="https://blog.kyomind.tw/tags/%E5%80%8B%E4%BA%BA%E7%9F%A5%E8%AD%98%E7%AE%A1%E7%90%86/"/>
-    
-    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
-    <category term="學習" scheme="https://blog.kyomind.tw/tags/%E5%AD%B8%E7%BF%92/"/>
     
   </entry>
   
