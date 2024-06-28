@@ -16,8 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Python type checker：Mypy 介紹">
-  <meta property="og:title" content="Python type checker：Mypy 介紹">
-<meta name="description" content="分享程式、寫作與學習心得" />
+  <meta property="og:title" content="Python type checker：Mypy 介紹"><meta name="twitter:description" content="本文就歷史發展與輪廓上介紹 Mypy 的特色。更了解 Mypy，也可能讓你對 Python 的型別檢查產生不同的看法。">
+  <meta property="og:description" content="本文就歷史發展與輪廓上介紹 Mypy 的特色。更了解 Mypy，也可能讓你對 Python 的型別檢查產生不同的看法。"><meta name="twitter:image" content="https://i.imgur.com/rnvlF18.jpg">
+  <meta property="og:image" content="https://i.imgur.com/rnvlF18.jpg">
+<meta name="description" content="本文就歷史發展與輪廓上介紹 Mypy 的特色。更了解 Mypy，也可能讓你對 Python 的型別檢查產生不同的看法。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -26,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-06-28T05:03:13+08:00" />
+  <meta property="article:modified_time" content="2024-06-28T05:06:50+08:00" />
 
 
 
@@ -189,6 +191,8 @@
 <h2 id="為什麼需要-Mypy"><a href="#為什麼需要-Mypy" class="headerlink" title="為什麼需要 Mypy"></a>為什麼需要 Mypy</h2><p>Python 是一門廣受歡迎的「<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/87841">動態定型</a>」程式語言，以其簡潔的語法和靈活性著稱。</p>
 <p>然而，這種<strong>靈活性</strong>有時也會成為<strong>問題</strong>，特別是在大型專案中，型別錯誤可能會導致難以追蹤的 bug，從而降低程式碼的可靠性和可維護性。</p>
 <p>在這樣的背景下，Mypy 應運而生。</p>
+<span id="more"></span>
+
 <h2 id="Mypy-介紹"><a href="#Mypy-介紹" class="headerlink" title="Mypy 介紹"></a>Mypy 介紹</h2><p>Mypy 是由 <a target="_blank" rel="noopener" href="https://x.com/jukkaleh">Jukka Lehtosalo</a> 開發的一個開源專案，它是一個<strong>靜態類型檢查工具</strong>，旨在通過閱讀 Python 程式碼中的<strong>型別註解（type hints、type annotations）</strong>來提供完善的型別檢查。及早發現類型錯誤，從而提高程式碼品質。</p>
 <h3 id="Mypy-的歷史發展"><a href="#Mypy-的歷史發展" class="headerlink" title="Mypy 的歷史發展"></a>Mypy 的歷史發展</h3><p>Mypy 的開發歷史可以追溯到 2012 年，當時 Jukka Lehtosalo 在他的博士論文中首次提出了這個想法。</p>
 <p>隨著專案的發展，Python 之父 Guido van Rossum 也對此<strong>表示支援</strong>——可參考良葛格的〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/116983">Type Hints的野心</a>〉一文。並在 2014 年共同提出了 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484</a>，該 PEP 正式將型別註解引入了 Python 語言標準，並在 Python 3.5 中實現。</p>
