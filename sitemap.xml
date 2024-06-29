@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/mypy/</loc>
+    <loc>https://blog.kyomind.tw/django-rest-framework-03/</loc>
     
     <lastmod>2024-06-29</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-rest-framework-03/</loc>
+    <loc>https://blog.kyomind.tw/mypy/</loc>
     
     <lastmod>2024-06-29</lastmod>
     
