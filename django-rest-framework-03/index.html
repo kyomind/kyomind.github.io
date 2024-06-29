@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-06-29T02:10:38+08:00" />
+  <meta property="article:modified_time" content="2024-06-29T02:41:01+08:00" />
 
 
 
@@ -227,18 +227,18 @@
 <p>如前所述，Django 的 view 本質上是一個 Python 函式，它接收一個 HTTP request，返回一個 HTTP response。</p>
 <p><strong>那 DRF 的 view function 又有什麼不同呢？</strong>——其實就是<strong>整合了 DRF 提供的功能。</strong></p>
 <p>我們來看看 DRF 究竟幫我們做了什麼，讓開發 API 變得更簡單。</p>
-<h2 id="一、api-view-裝飾器"><a href="#一、api-view-裝飾器" class="headerlink" title="一、api_view 裝飾器"></a>一、<code>api_view</code> 裝飾器</h2><p><code>api_view</code>裝飾器，主要目的是將普通的 Django view <strong>轉換為</strong> DRF 的 <strong>API view</strong>。它做了以下幾件事：</p>
+<h2 id="一、api-view-裝飾器"><a href="#一、api-view-裝飾器" class="headerlink" title="一、api_view 裝飾器"></a>一、<code>api_view</code> 裝飾器</h2><p><code>api_view</code>裝飾器，它的<strong>主要目的</strong>是將普通的 Django view <strong>轉換為</strong> DRF 的 <strong>API view</strong>。為此，它做了以下幾件事：</p>
 <ol>
-<li><strong>方法限制</strong>：<code>@api_view([&#39;GET&#39;])</code> 指定了這個 view 允許的 HTTP 方法。當請求方法不在允許列表中時，DRF 會自動回應 <code>405 Method Not Allowed</code>。</li>
+<li><strong>方法限制</strong>：<code>@api_view([&#39;GET&#39;])</code>指定了這個 view 允許的 HTTP 方法。當請求方法不在允許列表中時，DRF 會自動回應<code>405 Method Not Allowed</code>。</li>
 <li><strong>request</strong>：DRF 將 Django 的<code>HttpRequest</code>物件轉換為<code>Request</code>物件。它更加方便操作，比如可以通過<code>request.data</code>取得 POST 請求的資料，而不需要自己去處理<code>request.POST</code>或<code>request.body</code>。</li>
-<li><strong>例外處理</strong>：<code>api_view</code> 重新封裝了 view，提供了內建的錯誤處理機制。</li>
+<li><strong>例外處理</strong>：<code>api_view</code>重新封裝了 view，提供了內建的錯誤處理機制。</li>
 </ol>
 <p>其中<strong>第二點</strong>是最重要的，因為 DRF 的<code>Request</code>物件提供了更多的功能，包括實務中大量使用的<code>request.data</code>。</p>
-<p>原生的<code>HttpRequest</code>物件只提供了<code>request.POST</code>和<code>request.body</code>，兩者使用上都有<a href="/django-request/#%E4%B8%89%E3%80%81HttpRequest-POST">一定限制</a>。</p>
+<p>Django 原生的<code>HttpRequest</code>物件，只提供了<code>request.POST</code>和<code>request.body</code>，兩者在使用上都有<a href="/django-request/#%E4%B8%89%E3%80%81HttpRequest-POST">一定限制</a>。</p>
 <blockquote>
 <p>相關文章：<a href="/django-request/">Django HttpRequest 常用屬性介紹</a></p>
 </blockquote>
-<p>而 DRF 對此進行了簡化，讓我們可以更加專注在 API 的邏輯上，這確實是一大加分。</p>
+<p>而 DRF 對其進行了<strong>簡化</strong>，讓我們可以更加專注在 API 的邏輯上，這確實是一大加分。</p>
 <h2 id="二、Response-類別"><a href="#二、Response-類別" class="headerlink" title="二、Response 類別"></a>二、<code>Response</code> 類別</h2><p><code>Response</code>是 DRF 提供的<strong>自定義 response</strong>，它繼承自 Django 的<code>HttpResponse</code>，並提供了更多的功能。</p>
 <p>不過在我看來，<code>Response</code>的重要性沒有<code>api_view</code>裝飾器那麼高，使用 Django 的<code>JsonResponse</code>也能達到類似的效果：</p>
 <ol>

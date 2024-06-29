@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-06-21T14:18:57+08:00" />
+  <meta property="article:modified_time" content="2024-06-29T02:40:18+08:00" />
 
 
 
@@ -279,7 +279,7 @@
 <p>你需要<strong>手動處理</strong>這個 bytestring，比如使用<code>json.loads()</code>解析 JSON body：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">submit_data</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        body = request.body</span><br><span class="line">        request_data = json.loads(body)</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
 
-<p>有點麻煩！</p>
+<p>有點<strong>麻煩</strong>！</p>
 <p>因此，實際上我們比較少用到<code>request.body</code>，而是用 DRF 的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/requests/#data">request.data</a> 屬性，或 Django Ninja 的 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/body/">Schema</a>。</p>
 <p>它們會自動解析 body 資料，並轉換成 Python 物件。</p>
 <h3 id="程式碼實例"><a href="#程式碼實例" class="headerlink" title="程式碼實例"></a>程式碼實例</h3><p>想像一個申請表單：</p>
