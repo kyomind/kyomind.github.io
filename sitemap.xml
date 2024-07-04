@@ -2,6 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/notion-database/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-07-04</lastmod>
@@ -20,43 +83,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
-    
-    <lastmod>2024-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
-    
-    <lastmod>2024-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
-    
-    <lastmod>2024-07-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/mypy/</loc>
-    
-    <lastmod>2024-06-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
     
     <lastmod>2024-06-30</lastmod>
     
@@ -398,15 +425,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
-    
-    <lastmod>2024-06-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/effective-python-01/</loc>
     
     <lastmod>2024-06-10</lastmod>
@@ -662,24 +680,6 @@
     <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
     
     <lastmod>2024-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/notion-database/</loc>
-    
-    <lastmod>2024-05-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
-    
-    <lastmod>2024-05-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
