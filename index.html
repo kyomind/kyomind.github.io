@@ -113,7 +113,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (23)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (33)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (34)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -153,6 +153,31 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-34/">34，宜蘭二日遊與近況回顧</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-07-22
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>七月上旬不慎感冒，不知為何，這回特別嚴重。足足過了近兩星期，才逐漸恢復正常。</p>
+<p>而且，整個七月至今，<strong>狀態都不太好</strong>。不僅是身體，心情也低落，<strong>有一種找不到出口的感覺。</strong></p>
+<p>這樣的心情間接影響了我的寫作士氣，讓我感到心有餘而力不足。</p>
+<p>這星期四、五，和女友去了宜蘭，雖然是一次的短暫旅行，但至少能夠<strong>打破既有的生活節奏，讓自己放鬆一下。</strong></p>
+<p>宜蘭我還算熟悉，畢竟曾在宜蘭工作了 5 年多，想起這段過往，覺得人生真的有很多變化。</p>
+<p>本期結合旅記和近況回顧，篇幅會比以往略長。</p>
+          <div class="read-more">
+            <a href="/weekly-review-34/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/python-craftsman-03/">《Python 工匠》筆記（三）有關「變數」的程式設計建議</a>
         </h1>
@@ -340,45 +365,6 @@
 <p>換言之，如果真的都能達成，多產只是必然的結果。</p>
           <div class="read-more">
             <a href="/weekly-review-32/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-orm-query-relations/">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-15
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 8 篇、<a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">Django ORM 外鍵教學</a>的第 3 篇——完結篇。</p>
-<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>，更多教學請見「<a href="/django/">Django 文章總覽</a>」。</p>
-<h3 id="系列：Django-ORM-外鍵教學"><a href="#系列：Django-ORM-外鍵教學" class="headerlink" title="系列：Django ORM 外鍵教學"></a>系列：Django ORM 外鍵教學</h3><blockquote>
-<ol>
-<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
-<li><a href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></li>
-<li><strong>Django ORM：一對一、一對多外鍵教學（下）關聯查詢</strong></li>
-</ol>
-</blockquote>
-<hr>
-<p>經過前 2 篇的鋪墊，我們可以真正開始感受，使用 ORM 來<strong>查詢 db 關聯物件</strong>的方便與直觀之美。</p>
-<p>開始前，我們要先匯入範例資料，方式請參考〈<a href="/django-fixtures/">用 Django Fixture 匯入與導出資料</a>〉介紹的 Django fixture 與資料內容。</p>
-<p>打開<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">範例專案</a>，cd 至專案根目錄，並使用指令：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py loaddata post_data.json</span><br></pre></td></tr></table></figure>
-
-<p>好，現在我們的 db 已經有資料了。</p>
-<p>如果你已經不記得具體有哪些 table、它們代表什麼，可參考第一篇的<a href="/django-models/#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9">模型介紹</a>，以及第二篇<a href="/reverse-relationships/#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%A8%A1%E5%9E%8B%E8%AA%BF%E6%95%B4">對模型架構的調整</a>，或直接觀看 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/post/models.py">models.py</a> 原始碼。</p>
-<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文只專注介紹 Django ORM 中的<strong>外鍵關聯查詢</strong>。</p>
-<p>畢竟 Django ORM 的查詢語法實在太多了，很多時候都要回去看文件。</p>
-<p>而其中關聯查詢特別常用，值得我們專門學習，熟練掌握。</p>
-          <div class="read-more">
-            <a href="/django-orm-query-relations/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
