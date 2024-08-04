@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-07-22T15:42:49.923Z</updated>
+  <updated>2024-08-04T14:17:42.364Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>35，開始備戰 2024 iThome 鐵人賽</title>
+    <link href="https://blog.kyomind.tw/weekly-review-35/"/>
+    <id>https://blog.kyomind.tw/weekly-review-35/</id>
+    <published>2024-08-04T07:06:14.000Z</published>
+    <updated>2024-08-04T14:17:42.364Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>轉眼間就八月了！我的天，時間過得真快。</p><p>渡過了相對低迷的七月，這個月我要好好備戰鐵人賽——不然也沒有時間了XD</p><p>本期講一下我對於鐵人賽的看法、準備（雖然才剛開始），與個人期待。</p><hr><h2 id="iThome-鐵人賽"><a href="#iThome-鐵人賽" class="headerlink" title="iThome 鐵人賽"></a>iThome 鐵人賽</h2><p>2024 iThome 鐵人賽的<a href="https://ithelp.ithome.com.tw/2024ironman/event">官方頁面</a>已經上線，報名時間從八月到九月中。</p><p>今年新增了 <a href="https://ithelp.ithome.com.tw/2024ironman/python#ir-list">Python 組</a>和 <a href="https://ithelp.ithome.com.tw/2024ironman/javascript#ir-list">JavaScript 組</a>，這是個好消息，作為一個 Python 開發者，能在 Python 組參賽是最好。</p><p>尤其這是我第一次參加 iThome 鐵人賽，別具意義。</p><p>早在〈<a href="/weekly-review-32/">32，下半年寫作目標</a>〉中，我就<a href="/weekly-review-32/#%E4%BA%8C%E3%80%81%E5%8F%83%E5%8A%A0-iThome-%E9%90%B5%E4%BA%BA%E8%B3%BD">宣布要參加鐵人賽</a>，結果一個月過去，現在才開始動工😂</p><p>那時收到了一位，我覺得很厲害的開發者的來信，表示對鐵人賽如果有什麼疑問，可以協助，我當下真的是又驚又喜！</p><p>不過隨著七月一整個月的低迷（包括前半月的生病），這份驚喜逐漸轉變為一種<strong>淡淡的罪惡感</strong>：「可惡，我怎麼還沒開始！這樣豈不是浪費了別人的好意？」</p><span id="more"></span><hr><h2 id="事前準備"><a href="#事前準備" class="headerlink" title="事前準備"></a>事前準備</h2><p>個性使然，我做很多事都很講究事前準備，有時難免帶來一種<strong>變相的拖延</strong>。</p><p>不過，只要把其中的「<strong>度</strong>」拿捏好，<strong>事前準備往往是很值得的。</strong></p><p>讀者之中也許有跟我一樣，今年第一次參加鐵人賽的朋友，在此分享一下我的事前準備事項與想法。</p><h2 id="一、避開太常見的主題"><a href="#一、避開太常見的主題" class="headerlink" title="一、避開太常見的主題"></a>一、避開太常見的主題</h2><p>前人已經寫過太多的主題，讀者容易審美疲勞。</p><p>就像在〈<a href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a>〉中<a href="https://blog.kyomind.tw/ruff/#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">提到的</a>，我真的很不喜歡重複別人寫過的內容——<strong>尤其是那些人家已經寫得很好的內容。</strong></p><p>所以雖然一直有在部落格寫作，卻遲至今年才參加鐵人賽，也是因為此前我只能想到「Python 入門」之類的主題，這些都已經被寫爛了。</p><p>很難別出心裁不說，寫得可能也沒有前人好。</p><p>當然，<strong>這只是我個人的看法，或說偏好</strong>。寫作畢竟是為了自己——還有讀者。顧慮太多往往沒什麼必要。</p><p>如果心中真的有一個很想寫的主題，那就寫吧！不要被我這種想法給限制住，哪怕是個尋常的主題，也可以注入自己<strong>獨一無二的愛</strong>🥹</p><h2 id="二、觀摩得獎作品的結構與表達"><a href="#二、觀摩得獎作品的結構與表達" class="headerlink" title="二、觀摩得獎作品的結構與表達"></a>二、觀摩得獎作品的結構與表達</h2><p>這就要先提到<a href="https://s.itho.me/vendor/2024/iThome/iThome%E9%90%B5%E4%BA%BA%E8%B3%BD%E6%B4%BB%E5%8B%95%E7%B0%A1%E7%AB%A0-20240614.pdf">活動簡章</a>中的「陸、主題競賽評審要點」：</p><blockquote><ul><li><strong>主題</strong>：主題規劃符合該組別的立意，並能充份切合所選參賽主題下，參賽者所訂定之議題</li><li><strong>結構</strong>：<strong>30 篇文章組織良好、其所規劃結構足以引導讀者理解參賽者訂定之議題</strong></li><li><strong>內容</strong>：文章內容的技術或經驗具備專業性、豐富性、深入性</li><li><strong>表達</strong>：透過適當文字、圖片、程式碼或影片等方式，讓人更容易理解</li></ul></blockquote><p>其中我覺得相當重要的是「結構」與「表達」，尤其是這段「所規劃結構<strong>足以引導讀者理解</strong>」。</p><p>過去的得獎作品，肯定相當程度符合了上述標準。觀摩這些作品，可以幫助我們更好地理解<strong>如何組織文章</strong>，以及<strong>如何呈現</strong>。</p><p>畢竟<strong>系列長篇創作</strong>不同於<strong>單篇文章</strong>，<strong>結構的合理性</strong>對於讀者的理解<strong>至關重要。</strong></p><h2 id="三、與-AI-討論-30-天標題"><a href="#三、與-AI-討論-30-天標題" class="headerlink" title="三、與 AI 討論 30 天標題"></a>三、與 AI 討論 30 天標題</h2><p>想達到「30 篇文章組織良好」，<strong>絕不是一件容易的事。</strong></p><p>這就需要一個<strong>合理的寫作計畫</strong>，這個計畫不僅要考慮到<strong>主題的選擇</strong>，還要考慮<strong>每篇文章的內容</strong>，包括可能的篇幅大小。</p><p>先有一個<strong>粗略的計畫</strong>，肯定是好的、必要的。</p><p>此時 AI（ChatGPT、Claude、Gemini 等）就派上用場了，我們可以和它先討論一下，看看它有什麼建議。</p><p>我覺得一次就要決定好 30 天標題，未免強人所難，不太現實。不如退而求其次，優先討論<strong>前十天</strong>的內容，看看 AI 有什麼想法。</p><p>尤其要讓它當你的「<strong>編輯</strong>」，站在「<strong>讀者</strong>」的角度，看看這十天的內容安排——也就是<strong>結構</strong>——是否合理。</p><hr><h2 id="個人期待"><a href="#個人期待" class="headerlink" title="個人期待"></a>個人期待</h2><p>當然是得獎啦！哈哈哈，誰不想得獎呢？</p><p>具體的獎項，依照<a href="https://ithelp.ithome.com.tw/2024ironman/event#awardDiv">規則</a>，每一參賽組別都有「冠軍」、「優選」、「佳作」三種：</p><h4 id="冠軍"><a href="#冠軍" class="headerlink" title="冠軍"></a>冠軍</h4><ul><li>冠軍（每組 1 名）</li><li>頒發獎金 1 萬元、2024 賽季紀念品以及獎盃 1 座。各組完賽人數達 100 人，每逾 50 人，額外增設 1 個名額。</li></ul><h4 id="優選"><a href="#優選" class="headerlink" title="優選"></a>優選</h4><ul><li>優選（每組 2 名）</li><li>頒發2024 賽季紀念品以及獎盃 1 座。各組完賽人數達 100 人，每逾 50 人，額外增設 2 個名額。</li></ul><h4 id="佳作"><a href="#佳作" class="headerlink" title="佳作"></a>佳作</h4><ul><li>佳作（若干名）</li><li>獲頒2024 賽季紀念品以及獎牌 1 面。不分組別，由評審委員會依賽事整體作品水準，議定標準、擇優入選，名額不限。</li></ul><p>「冠軍 + 優選」其實就是傳統意義上的前三名。而且依組別<strong>參賽人數不同</strong>，想要獲得前三名的<strong>競爭激烈程度</strong>也不盡相同。</p><p>相較之下，「佳作」則是意味著<strong>你的作品是否達到一定水準。</strong></p><p>我的目標是「佳作」以上，不容退讓。</p><p>至於「冠軍」或「優選」，<strong>我覺得「期待」本身需要適度控制</strong>，這樣的心態會讓我比較<strong>自然、放鬆</strong>，是我喜歡的。</p><p>當然，你也可以<a href="https://life.huli.tw/2024/07/10/the-story-behind-my-xss-book/">像胡立一樣</a>，就是衝著「出書」的目標去的！</p><hr><h2 id="小結：以鐵人賽為主"><a href="#小結：以鐵人賽為主" class="headerlink" title="小結：以鐵人賽為主"></a>小結：以鐵人賽為主</h2><p>鐵人賽畢竟要寫 30 篇文章，一篇算 1000 字，30 篇就是 3 萬字，實在是一個不小的挑戰。</p><p>我希望在開賽前可以先寫完一半以上，這樣完賽的壓力才不會那麼大。因此最快要九月才會開始。</p><p>這段時間，<strong>我將以準備鐵人賽為主，其他技術文章暫時停止</strong>。Weekly Review 可能再發個一、兩篇。</p><p>我不是一個擅長壓榨自己，進而超越極限之人。反之，我更希望以<strong>平和的心態、穩定的節奏</strong>來面對這個挑戰，所以<strong>取捨</strong>是必要的。</p><p>總之，有捨有得囉！</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;轉眼間就八月了！我的天，時間過得真快。&lt;/p&gt;
+&lt;p&gt;渡過了相對低迷的七月，這個月我要好好備戰鐵人賽——不然也沒有時間了XD&lt;/p&gt;
+&lt;p&gt;本期講一下我對於鐵人賽的看法、準備（雖然才剛開始），與個人期待。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;iThome-鐵人賽&quot;&gt;&lt;a href=&quot;#iThome-鐵人賽&quot; class=&quot;headerlink&quot; title=&quot;iThome 鐵人賽&quot;&gt;&lt;/a&gt;iThome 鐵人賽&lt;/h2&gt;&lt;p&gt;2024 iThome 鐵人賽的&lt;a href=&quot;https://ithelp.ithome.com.tw/2024ironman/event&quot;&gt;官方頁面&lt;/a&gt;已經上線，報名時間從八月到九月中。&lt;/p&gt;
+&lt;p&gt;今年新增了 &lt;a href=&quot;https://ithelp.ithome.com.tw/2024ironman/python#ir-list&quot;&gt;Python 組&lt;/a&gt;和 &lt;a href=&quot;https://ithelp.ithome.com.tw/2024ironman/javascript#ir-list&quot;&gt;JavaScript 組&lt;/a&gt;，這是個好消息，作為一個 Python 開發者，能在 Python 組參賽是最好。&lt;/p&gt;
+&lt;p&gt;尤其這是我第一次參加 iThome 鐵人賽，別具意義。&lt;/p&gt;
+&lt;p&gt;早在〈&lt;a href=&quot;/weekly-review-32/&quot;&gt;32，下半年寫作目標&lt;/a&gt;〉中，我就&lt;a href=&quot;/weekly-review-32/#%E4%BA%8C%E3%80%81%E5%8F%83%E5%8A%A0-iThome-%E9%90%B5%E4%BA%BA%E8%B3%BD&quot;&gt;宣布要參加鐵人賽&lt;/a&gt;，結果一個月過去，現在才開始動工😂&lt;/p&gt;
+&lt;p&gt;那時收到了一位，我覺得很厲害的開發者的來信，表示對鐵人賽如果有什麼疑問，可以協助，我當下真的是又驚又喜！&lt;/p&gt;
+&lt;p&gt;不過隨著七月一整個月的低迷（包括前半月的生病），這份驚喜逐漸轉變為一種&lt;strong&gt;淡淡的罪惡感&lt;/strong&gt;：「可惡，我怎麼還沒開始！這樣豈不是浪費了別人的好意？」&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>34，宜蘭二日遊與近況回顧</title>
@@ -368,42 +403,6 @@
     <category term="Logseq" scheme="https://blog.kyomind.tw/tags/Logseq/"/>
     
     <category term="VS Code" scheme="https://blog.kyomind.tw/tags/VS-Code/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用 Django Fixture 匯入與導出資料</title>
-    <link href="https://blog.kyomind.tw/django-fixtures/"/>
-    <id>https://blog.kyomind.tw/django-fixtures/</id>
-    <published>2024-06-08T10:12:44.000Z</published>
-    <updated>2024-08-03T15:38:41.812Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p><p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 7 篇，範例程式碼可參考我的 <a href="/Django-Tutorial">GitHub 專案</a>。</p><p>本文相關的程式碼改動，都集中在這個 <a href="https://github.com/kyomind/Django-Tutorial/pull/2">PR</a>。</p><hr><p>本文可視為 <a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">Django ORM 外鍵教學</a>第三部分——查詢篇——的<strong>前置教學</strong>，因為我們需要一些範例資料作為<strong>查詢的標的。</strong></p><p>為了快速且輕鬆地建立這些範例，我們要善用 Django fixture。</p><p>本文介紹 Django fixture 的基本用法，並以 Django-Tutorial 的範例資料為例，示範如何導出與匯入 fixture。</p><h2 id="什麼是-Django-Fixture"><a href="#什麼是-Django-Fixture" class="headerlink" title="什麼是 Django Fixture"></a>什麼是 Django Fixture</h2><p>Django fixture 是一種用來管理資料庫數據的工具。</p><p>它允許你以 JSON 或 XML 等格式將資料庫中的數據<strong>導出（序列化）到特定文件中</strong>，並在需要時將這些數據<strong>匯入到資料庫。</strong></p><p>你可以輕鬆地透過 Django fixture 初始化資料庫內容，設置測試數據，或者在不同環境間傳輸數據。</p><p>顯然的，它也很適合用來「快速建立」（或說匯入）我文章教學所需要的資料。</p><p>更多細節與介紹，可參考 <a href="https://docs.djangoproject.com/en/5.0/topics/db/fixtures/">Django 文件</a>。</p><span id="more"></span><hr><h2 id="Django-Fixture-的三大用途"><a href="#Django-Fixture-的三大用途" class="headerlink" title="Django Fixture 的三大用途"></a>Django Fixture 的三大用途</h2><p>Django fixture 主要有三種用途。我覺得<strong>第一種情況</strong>是最有實務價值的。</p><h3 id="一、初始化資料庫"><a href="#一、初始化資料庫" class="headerlink" title="一、初始化資料庫"></a>一、初始化資料庫</h3><ul><li>在開發或首次部署，用於建立資料庫中的初始數據。</li><li>常用於設定預設的用戶、權限或其他需要的<strong>基礎選項</strong>數據。</li></ul><p>資料庫中總有一些，<strong>在專案部署階段就必須存在的資料</strong>。</p><p>比如「服務類型」為了<strong>未來的擴充彈性</strong>，選擇不寫成簡單的 enum（Django <a href="https://docs.djangoproject.com/en/5.0/ref/models/fields/#choices">choices</a>）欄位，而是直接獨立一個 db table，table 中的每一筆資料都是現有的服務類型。</p><p>而我們需要在<strong>首次部署</strong>時，把<strong>當前所有服務類型</strong>預先寫入 db，即<strong>資料初始化</strong>。</p><p>這個需求很常見，也很適合用 Django fixture 來處理。</p><h3 id="二、測試"><a href="#二、測試" class="headerlink" title="二、測試"></a><strong>二、測</strong>試</h3><ul><li>測試時用來準備一致的測試數據，確保測試的可靠性和可重現性。</li><li>測試資料可以被重複使用，不需要每次手動建立。</li></ul><p>如果有用 pytest，基本上會被 <a href="https://docs.pytest.org/en/latest/explanation/fixtures.html">pytest fixture</a> 取代，我幾乎沒這麼用過。</p><h3 id="三、資料的備份與還原"><a href="#三、資料的備份與還原" class="headerlink" title="三、資料的備份與還原"></a>三、資料的備份與還原</h3><ul><li>可以用來導出資料庫的部分或全部數據，方便做數據備份。</li><li>在需要時可以通過 fixture 還原資料庫的狀態。</li></ul><p>備份大量資料顯然有更好、更標準的方式，所以這比較適合備份簡單的資料。</p><p>比如我們後續教學用的範例資料，恰好適合！</p><hr><p>進入正題。</p><p>我們要為 Django Tutorial 的 <a href="https://github.com/kyomind/Django-Tutorial/blob/main/post/models.py">models</a> 建立一些簡單的範例資料。</p><h2 id="建立範例資料並導出為-Fixture"><a href="#建立範例資料並導出為-Fixture" class="headerlink" title="建立範例資料並導出為 Fixture"></a>建立範例資料並導出為 Fixture</h2><p>這是建立資料的 Python script：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post, Subtitle, Comment</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Post</span></span><br><span class="line">post1 = Post.objects.create(title=<span class="string">&quot;Django Fixtures&quot;</span>, content=<span class="string">&quot;Content of Django Fixtures&quot;</span>)</span><br><span class="line">post2 = Post.objects.create(title=<span class="string">&quot;ORM Basics&quot;</span>, content=<span class="string">&quot;Content of ORM Basics&quot;</span>)</span><br><span class="line">post3 = Post.objects.create(title=<span class="string">&quot;Advanced Queries&quot;</span>, content=<span class="string">&quot;Content of Advanced Queries&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Subtitle</span></span><br><span class="line">subtitle1 = Subtitle.objects.create(content=<span class="string">&quot;An Overview&quot;</span>, post=post1)</span><br><span class="line">subtitle2 = Subtitle.objects.create(content=<span class="string">&quot;Introduction to ORM&quot;</span>, post=post2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立 Comment</span></span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Great article!&quot;</span>, post=post1)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Very informative.&quot;</span>, post=post2)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Helped a lot!&quot;</span>, post=post3)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Need more examples.&quot;</span>, post=post3)</span><br><span class="line">Comment.objects.create(content=<span class="string">&quot;Thanks for the tips!&quot;</span>, post=post3)</span><br></pre></td></tr></table></figure><p>要使用這段程式碼來建立 db 實例，需要進入 Django shell 並執行程式碼。</p><p>我本來想用這種方式，讓讀者也可以自行建立資料並重現教學環境，但這樣的方式顯然不夠友好。</p><p>更好的方式是使用 Django fixture。</p><h3 id="導出為-Fixture"><a href="#導出為-Fixture" class="headerlink" title="導出為 Fixture"></a>導出為 Fixture</h3><p>一旦導出為 Django fixture，讀者只需要透過 Django 指令匯入，就可以重現整個 db 的資料環境，無疑是更好的選擇！</p><p>如何導出，使用<code>dumpdata</code>指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py dumpdata post --output=post_data.json</span><br></pre></td></tr></table></figure><p>可以用<code>post</code>（Django app 名稱）來<strong>限定</strong>要輸出的 model 資料範圍。</p><p>如果不指定 app，<code>dumpdata</code> 指令會嘗試匯出整個專案的所有資料，包括 Django 本身的內建 db 資料。這通常包括大量不必要的內容，並且讓輸出文件變得過於複雜。</p><h2 id="匯入-Fixture"><a href="#匯入-Fixture" class="headerlink" title="匯入 Fixture"></a>匯入 Fixture</h2><p>輸出之後就是匯入，匯入也非常簡單，使用<code>loaddata</code>指令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py loaddata post_data.json</span><br></pre></td></tr></table></figure><p>實際執行結果：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ python manage.py loaddata post_data.json</span><br><span class="line">Installed 10 object(s) from 1 fixture(s)</span><br></pre></td></tr></table></figure><p>會顯示總共匯入了幾筆資料，以及來源總共是幾筆 Django fixture(s)。</p><p>附帶一提，匯入之前，記得先確保已完成所有的 db 遷移！</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/lyxUZv1.png&quot; alt=&quot;Let&amp;#39;s Django！&quot;&gt;&lt;/p&gt;
-&lt;p&gt;這是 &lt;a href=&quot;/tags/Django-Tutorial/&quot;&gt;Django Tutorial&lt;/a&gt; 的第 7 篇，範例程式碼可參考我的 &lt;a href=&quot;/Django-Tutorial&quot;&gt;GitHub 專案&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;本文相關的程式碼改動，都集中在這個 &lt;a href=&quot;https://github.com/kyomind/Django-Tutorial/pull/2&quot;&gt;PR&lt;/a&gt;。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;本文可視為 &lt;a href=&quot;/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8&quot;&gt;Django ORM 外鍵教學&lt;/a&gt;第三部分——查詢篇——的&lt;strong&gt;前置教學&lt;/strong&gt;，因為我們需要一些範例資料作為&lt;strong&gt;查詢的標的。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;為了快速且輕鬆地建立這些範例，我們要善用 Django fixture。&lt;/p&gt;
-&lt;p&gt;本文介紹 Django fixture 的基本用法，並以 Django-Tutorial 的範例資料為例，示範如何導出與匯入 fixture。&lt;/p&gt;
-&lt;h2 id=&quot;什麼是-Django-Fixture&quot;&gt;&lt;a href=&quot;#什麼是-Django-Fixture&quot; class=&quot;headerlink&quot; title=&quot;什麼是 Django Fixture&quot;&gt;&lt;/a&gt;什麼是 Django Fixture&lt;/h2&gt;&lt;p&gt;Django fixture 是一種用來管理資料庫數據的工具。&lt;/p&gt;
-&lt;p&gt;它允許你以 JSON 或 XML 等格式將資料庫中的數據&lt;strong&gt;導出（序列化）到特定文件中&lt;/strong&gt;，並在需要時將這些數據&lt;strong&gt;匯入到資料庫。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;你可以輕鬆地透過 Django fixture 初始化資料庫內容，設置測試數據，或者在不同環境間傳輸數據。&lt;/p&gt;
-&lt;p&gt;顯然的，它也很適合用來「快速建立」（或說匯入）我文章教學所需要的資料。&lt;/p&gt;
-&lt;p&gt;更多細節與介紹，可參考 &lt;a href=&quot;https://docs.djangoproject.com/en/5.0/topics/db/fixtures/&quot;&gt;Django 文件&lt;/a&gt;。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/lyxUZv1.png" type="image"/>
-    
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
-    
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
-    
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
   </entry>
   
