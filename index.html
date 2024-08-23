@@ -127,7 +127,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (35)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (36)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -167,6 +167,35 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-36/">36：預計創作「訂戶限定」內容</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-08-23
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>這幾天在思考，如何有效利用目前使用的電子報服務，讓訂戶感到更有價值。</p>
+<p>畢竟一年也要付給供應商——<a target="_blank" rel="noopener" href="https://buttondown.email/refer/kyo">Buttondown</a>——90 美元，要讓這筆錢花得值得。</p>
+<p>但我現階段並不打算製作「付費訂閱」內容，只是想要為我的電子郵件訂戶，嘗試寫作「專屬」內容。</p>
+<p>作為感謝這些訂戶，願意留下自己 email 的小小心意。</p>
+<p>對作者而言，這是一種不言而喻的信任。</p>
+<hr>
+<p>「用戶郵件清單」無疑是現代行銷中的一大顯學，所以許多以「變現」為目標的網站、創作者，都會想方設法吸引用戶留下 email。</p>
+<p>我雖然沒有要變現（至少短期內無此打算），但站在創作者的角度，文章一發布就有人看見，誰能拒絕這樣的誘惑呢？</p>
+<p>所以很多網站會把<strong>訂閱電子報</strong>放在最顯眼的位置，甚至會有「訂閱即可獲得免費禮物」的活動。</p>
+<p>這些我多少明白，但我依舊沒有這麼做。</p>
+          <div class="read-more">
+            <a href="/weekly-review-36/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/cursor/">Cursor IDE 心得：三大亮點與三個阻礙</a>
         </h1>
@@ -334,46 +363,6 @@
 <p>我無須介紹太多，而是要聊聊，最近看了許多他的影片的一些感想。</p>
           <div class="read-more">
             <a href="/weekly-review-33/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-rest-framework-03/">Django REST framework 教學（三）View 函式</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-29
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 9 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 3 篇。</p>
-<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p>
-<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/4">PR</a>。</p>
-<hr>
-<p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/http/views/">Views</a> 是 Django 中<strong>處理 HTTP 請求的核心邏輯</strong>。它的作用是接收請求、處理請求，最後返回 response：</p>
-<blockquote>
-<p>A <strong>view function</strong>, or view for short, is a Python function that takes a web request and returns a web response.</p>
-</blockquote>
-<p>在 Django 中，我們可以使用兩種方式來撰寫 views：</p>
-<ol>
-<li>Function-Based Views（FBV），其實就是一個 Python 函式，也是 Django 預設的 view 寫法，所以又稱 <strong>view 函式</strong>。</li>
-<li><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/class-based-views/">Class-Based Views</a>（CBV）。CBV 是 Django 1.3 版本引入的，它是基於類別的 view 寫法。</li>
-</ol>
-<h2 id="CBV-與-FBV"><a href="#CBV-與-FBV" class="headerlink" title="CBV 與 FBV"></a>CBV 與 FBV</h2><p>「<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">CBV vs. FBV</a>」是初學 Django 一個常見的議題。如系列的<a href="/django-rest-framework-01/#CBV-vs-FBV">第一篇</a>所言：</p>
-<blockquote>
-<p>CBV 有著<strong>重用程式碼</strong>優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p>
-</blockquote>
-<p>究竟要選哪個，取決於個人喜好與專案需求。</p>
-<p>Django REST framework（以下簡稱 DRF）同時支援這兩種 views。</p>
-<p>事實上，DRF 顯然<strong>更加鼓勵使用 CBV</strong>，不僅提供了許多現成的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/generic-views/">generic views</a>，它的很多元件也是基於 CBV 設計的。</p>
-<p>不過，本文只打算介紹 DRF 中的 FBV，並實作一個 DRF view function。</p>
-          <div class="read-more">
-            <a href="/django-rest-framework-03/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
