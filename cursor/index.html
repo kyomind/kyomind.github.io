@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-08-16T02:12:37+08:00" />
+  <meta property="article:modified_time" content="2024-08-26T16:42:19+08:00" />
 
 
 
@@ -127,13 +127,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/Django/">Django (11)</a>
-          
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (36)</a>
-          
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (11)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (36)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (36)</a>
           
@@ -183,7 +183,7 @@
         <span class="post-time">
           2024-08-10
         </span><span class="post-update">
-            →  2024-08-16
+            →  2024-08-27
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -197,10 +197,10 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cursor-Editor-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Cursor Editor 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cursor-%E7%9A%84%E4%B8%89%E5%A4%A7%E8%B3%A3%E9%BB%9E"><span class="toc-text">Cursor 的三大賣點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Cursor-%E5%BF%83%E5%BE%97"><span class="toc-text">我的 Cursor 心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%8D%E4%B8%8D%E6%89%93%E7%AE%97%E6%94%B9%E7%94%A8-Cursor-%E7%9A%84%E4%B8%89%E5%80%8B%E7%90%86%E7%94%B1"><span class="toc-text">我仍不打算改用 Cursor 的三個理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%80%EF%BC%9A%E5%BF%AB%E6%8D%B7%E9%8D%B5%E8%A1%9D%E7%AA%81"><span class="toc-text">理由一：快捷鍵衝突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%BA%8C%EF%BC%9A%E6%AF%94%E8%BC%83%E9%86%9C"><span class="toc-text">理由二：比較醜</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%89%EF%BC%9A%E8%A6%81%E4%BB%98%E8%B2%BB-Pro-%E6%89%8D%E8%83%BD%E5%8F%96%E5%BE%97%E5%AE%8C%E6%95%B4%E5%8A%9F%E8%83%BD"><span class="toc-text">理由三：要付費 Pro 才能取得完整功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E7%AB%B6%E7%88%AD%E6%98%AF%E5%A5%BD%E4%BA%8B"><span class="toc-text">結語：競爭是好事</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/VhSp2Jb.png"></p>
-<p>主打 AI 輔助寫程式的編輯器——<a target="_blank" rel="noopener" href="https://cursor.com/">Cursor</a>，近日非常火紅。</p>
+<p>主打 AI 輔助寫程式的編輯器——<a target="_blank" rel="noopener" href="https://cursor.com/">Cursor</a>，這陣子非常火紅。</p>
 <p>剛好我在上星期經朋友推薦，認真試用了一下，還接了 OpenAI GPT-4o mini API 作為編輯器的 AI 助手。</p>
-<p>本文會簡單分享我試用 Cursor 的心得，以及我<strong>仍不打算</strong>從 VS Code 遷移至 Cursor 的三個理由。</p>
-<p>雖然是從個人角度出發，但我會考慮不同情況、需求的讀者，給出不同的建議。</p>
+<p>本文會分享我試用 Cursor 的心得，以及我<strong>仍不打算</strong>從 VS Code 遷移至 Cursor 的<strong>三個理由</strong>。</p>
+<p>雖然是從個人角度出發，但我會考慮不同狀況、不同需求的讀者，給出不同的建議。</p>
 <hr>
 <h2 id="Cursor-Editor-簡介"><a href="#Cursor-Editor-簡介" class="headerlink" title="Cursor Editor 簡介"></a>Cursor Editor 簡介</h2><p>Cursor 是一款主打 AI 輔助寫程式的新型態 IDE，它並非單純在既有編輯器加上外掛，而是<strong>將 AI 深度整合進編輯器中</strong>。</p>
 <p>它直接使用了 VS Code 的開源程式碼來建構。</p>
@@ -266,9 +266,11 @@
 <p>Cursor 是一個商業產品，它的 AI 功能需要<a target="_blank" rel="noopener" href="https://www.cursor.com/pricing">付費</a>。當然，你可以不付錢，先享用一定的免費額度，但這些額度<strong>只夠你淺嘗輒止。</strong></p>
 <p>想要用它來作為開發主力，還是得付費。</p>
 <p>雖然說，編輯器允許你<strong>自行串接語言模型 API</strong>，可以一定程度上緩解這個問題。但人家也不是吃素的。</p>
-<p><strong>自行接 API 和付費成為 Pro，待遇終究有所不同。</strong></p>
+<h3 id="付費成為-Pro"><a href="#付費成為-Pro" class="headerlink" title="付費成為 Pro"></a>付費成為 Pro</h3><p><strong>自行接 API 和付費成為 Pro，待遇終究有所不同。</strong></p>
 <p>比如，胡立文章中提到的「<strong>apply</strong>」功能，目前<strong>只有 Pro 用戶才能使用，而這個又非常重要——不然就得自己複製貼上。</strong></p>
 <p><img src="https://i.imgur.com/NeTrCMs.png" alt="想要 apply？請付費"><span class="cap">想要 apply？請付費</span></p>
+<p>自行複製貼上？這顯然不現實，直接讓開發效率大打折扣。</p>
+<p>所以想要享受 Cursor 的強大與便利，你就是得付費！</p>
 <h3 id="我暫時不想付費"><a href="#我暫時不想付費" class="headerlink" title="我暫時不想付費"></a>我暫時不想付費</h3><p>現在的 AI 應用，動不動就要收你<strong>一個月 20 美元</strong>，這不是筆小數目。</p>
 <p>更別說，手上可能已不止一個 20 美元的 AI 工具訂閱。</p>
 <p>對我來說，要我每月拿出 20 美元，需要有一定的「<strong>泛用性</strong>」，否則很難說服我。</p>
@@ -314,11 +316,12 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/good-vscode-extensions/" title="Python 後端開發：18 個我最常用的 VS Code 擴充套件推薦" rel="bookmark">Python 後端開發：18 個我最常用的 VS Code 擴充套件推薦</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-ai-dialogue-notes/" title="我寫「AI 對話筆記」的方法與思考" rel="bookmark">我寫「AI 對話筆記」的方法與思考</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/good-vscode-extensions/" title="Python 後端開發：18 個我最常用的 VS Code 擴充套件推薦" rel="bookmark">Python 後端開發：18 個我最常用的 VS Code 擴充套件推薦</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-ai-dialogue-notes/" title="我寫「AI 對話筆記」的方法與思考" rel="bookmark">我寫「AI 對話筆記」的方法與思考</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
             <a href="/tags/VS-Code/">VS Code</a>
             <a href="/tags/Cursor/">Cursor</a>
+            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/weekly-review-36/">

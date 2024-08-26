@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    
+    <lastmod>2024-08-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/cursor/</loc>
     
     <lastmod>2024-08-26</lastmod>
     
@@ -13,16 +22,25 @@
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-36/</loc>
     
-    <lastmod>2024-08-24</lastmod>
+    <lastmod>2024-08-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-28/</loc>
     
-    <lastmod>2024-08-20</lastmod>
+    <lastmod>2024-08-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-08-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -41,15 +59,6 @@
     <loc>https://blog.kyomind.tw/my-ai-dialogue-notes/</loc>
     
     <lastmod>2024-08-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/cursor/</loc>
-    
-    <lastmod>2024-08-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -245,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
+    <loc>https://blog.kyomind.tw/notion-database/</loc>
     
     <lastmod>2024-07-04</lastmod>
     
@@ -254,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/notion-database/</loc>
+    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2024-07-04</lastmod>
     
@@ -776,15 +785,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-28/</loc>
-    
-    <lastmod>2024-04-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
     
     <lastmod>2024-04-25</lastmod>
@@ -956,6 +956,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -975,15 +984,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
