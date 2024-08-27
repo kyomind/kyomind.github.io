@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-08-26T16:36:27.021Z</updated>
+  <updated>2024-08-27T03:44:05.637Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>36：預計創作「訂戶限定」內容</title>
+    <title>36，預計創作「訂戶限定」內容</title>
     <link href="https://blog.kyomind.tw/weekly-review-36/"/>
     <id>https://blog.kyomind.tw/weekly-review-36/</id>
     <published>2024-08-23T13:14:23.000Z</published>
-    <updated>2024-08-26T16:36:27.021Z</updated>
+    <updated>2024-08-27T03:44:05.637Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>這幾天在思考，如何有效利用目前使用的電子報服務，讓訂戶感到更有價值。</p><p>畢竟一年也要付給供應商——<a href="https://buttondown.email/refer/kyo">Buttondown</a>——90 美元，要讓這筆錢花得值得。</p><blockquote><p>相關文章：<a href="/weekly-review-26/">26，改用 Buttondown 作為文章訂閱服務</a></p></blockquote><p>現階段我並不打算製作「付費訂閱」內容，只是想要為我的<strong>電子郵件訂閱者</strong>，嘗試寫作「<strong>專屬</strong>」內容。</p><p>作為感謝這些訂戶，願意留下自己 email 的小小心意。</p><p>對作者而言，讀者願意訂閱，是一種<strong>不言而喻的信任。</strong></p><hr><p>「用戶郵件清單」無疑是現代行銷中的一大顯學，所以許多以「變現」為目標的網站、創作者，都會想方設法吸引用戶留下 email。</p><p>我雖然沒有要變現（至少短期內無此打算），但站在創作者的角度，文章一發布就有人看見，誰能拒絕這樣的誘惑呢？</p><p>所以很多網站會把<strong>訂閱電子報</strong>放在最顯眼的位置，甚至會有「訂閱即可獲得免費禮物」的活動。</p><p>這些我多少明白，但依舊沒有這麼做。</p><span id="more"></span><h2 id="為什麼我很少呼籲讀者訂閱我的電子報？"><a href="#為什麼我很少呼籲讀者訂閱我的電子報？" class="headerlink" title="為什麼我很少呼籲讀者訂閱我的電子報？"></a>為什麼我很少呼籲讀者訂閱我的電子報？</h2><p>如你所知，我目前的電子報，實際上只是<strong>部落格新文章的 RSS 轉發。</strong></p><p>然而，即使如此，其實還是可以多多呼籲讀者來訂閱，<strong>為什麼沒有積極做這件事？</strong></p><p>主要有兩個原因：</p><ol><li>我是<strong>雜食性創作者。</strong></li><li>我有 <strong>UI&#x2F;UX 潔癖。</strong></li></ol><h3 id="雜食性創作者"><a href="#雜食性創作者" class="headerlink" title="雜食性創作者"></a>雜食性創作者</h3><p>我是一個雜食性創作者，寫的主題相對多元，主要有幾大主軸：寫作、程式開發、筆記軟體、書評、生活感悟等等。</p><p>雖然「原則」上是技術部落客，但不滿足於只寫程式相關內容。</p><p>好處是，吸引的讀者群可以更廣泛，不會因為只寫技術文章而被限制。</p><p>不過這是把<strong>雙面刃</strong>，因為讀者缺乏一個<strong>非常明確的「期待」。</strong></p><p>換句話說，如果要呼籲讀者訂閱，我不知道該給讀者<strong>怎麼樣的承諾</strong>。我大概只能保證我會認真寫。</p><p>這是第一點，<strong>主題分散不利於吸引特定用戶</strong>。如果要搞自媒體，這種「不鮮明」應該是挺吃虧的。</p><h3 id="UI-UX-潔癖"><a href="#UI-UX-潔癖" class="headerlink" title="UI&#x2F;UX 潔癖"></a>UI&#x2F;UX 潔癖</h3><p>第二點，是我對於 UI&#x2F;UX 的潔癖。</p><p>這部分可參考「<a href="/weekly-review-12/#%E4%BA%8C%E3%80%81%E8%A8%82%E9%96%B1%E6%8C%89%E9%88%95%E6%94%BE%E5%93%AA%E5%A5%BD%EF%BC%9F">二、訂閱按鈕放哪好？</a>」，我有過較為詳細的討論。</p><p>我不喜歡網站上充斥「訂閱電子報」的按鈕，尤其是那種彈出式的——太煩了！</p><p>一直用彈出視窗來「提醒」我訂閱的網站，<strong>我會直接關掉。</strong></p><p>退而求其次的做法是，在每一篇文章最後，加上一個「訂閱電子報」的按鈕。讀者看完文章，如果覺得不錯，就可以順手訂閱。</p><p>但對我而言，這樣的「重複性」還是太高了！（尤其對於<strong>已經訂閱</strong>的讀者）</p><p>所以我最終選擇只放在右上角導覽列中一個連結——「<a href="/subscribe/">訂閱</a>」。</p><p>平心而論，<strong>我不認為這是一個很好的做法</strong>，它只是很簡潔，但往往不夠有效。</p><hr><h2 id="付費牆的兩難"><a href="#付費牆的兩難" class="headerlink" title="付費牆的兩難"></a>付費牆的兩難</h2><p>談到「訂戶限定」內容，就不得不提到「付費牆」。</p><p>雖然如前所述，我並不打算製作「付費訂閱」內容，但內容的「<strong>封閉性</strong>」，確實就像一道「<strong>牆</strong>」。</p><p>這構成一個<strong>常見的兩難</strong>：封閉內容有其<strong>特殊價值</strong>（比如最常見的<strong>收費</strong>），可是封閉內容<strong>無法讓更多人接觸</strong>，一定程度阻礙了創作者的影響力。</p><p>常見的解法是「部分內容開放」，這樣可以讓更多人看到，但同時也可以吸引有興趣的讀者進而付費。</p><p>我雖然沒有要收費，但我想要做的「訂戶限定」內容，也是一種「封閉」。</p><p>所以<strong>我多少需要調和這樣的矛盾。</strong></p><p>暫時我還沒有明確的想法——畢竟我根本還沒開始寫！</p><p>因此，這些「訂戶限定」內容，目前就是<strong>實驗性質、純封閉、不收費</strong>，只是為了讓訂戶感到更有價值。</p><p>不過考慮到未必每個人都有興趣，<strong>所以標題會特別標註「訂戶限定」</strong>，讓讀者可以自行選擇是否閱讀。</p><hr><h2 id="「訂戶限定」的創作方向"><a href="#「訂戶限定」的創作方向" class="headerlink" title="「訂戶限定」的創作方向"></a>「訂戶限定」的創作方向</h2><p>有一種電子報創作模式是我<strong>絕不考慮</strong>的，那就是「聚合型內容」。</p><p>聚合型指的是「<strong>就特定主題收集最新資訊</strong>」類的內容，畢竟我還信誓旦旦說過：<a href="/weekly-review-11/">我絕不當資訊的聚合者</a>XD</p><p>另一方面，聚合型內容已經有很多人在寫，我其實也寫不過人家😅，而且我對這種類型的創作沒有太多熱情。</p><p>又或者，把一些<strong>進階元素</strong>放在「訂戶限定」部分，這對於「付費訂閱」確實是不錯的做法，也相當合理。但顯然並不適合我這種<strong>以公開內容為主軸</strong>的創作者。</p><p>所以我現階段能想到的內容方向就是：<strong>個人化！</strong></p><h3 id="個人化"><a href="#個人化" class="headerlink" title="個人化"></a>個人化</h3><p>比 <a href="/weekly-review-25/#%E6%9B%B4%E7%A7%81%E4%BA%BA%E3%80%81%E6%9B%B4%E7%9B%B4%E7%99%BD">Weekly Review</a> 更個人的東西！</p><p>其中一種個人化，是表達<strong>對特定人事物的好惡</strong>。</p><p>畢竟你知道的，公開寫作，總是有一些東西不太方便寫，或者不太適合寫。我雖然沒有什麼「利益糾葛」，但發文之前還是不免會「自我審查」一下XD</p><p>在「訂戶限定」內容中，我可以更加<strong>放開自己</strong>，無須太過擔心。</p><hr><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>這篇文章，算是一個「預告」，也是一個「自我承諾」。</p><p>反正這東西是實驗性且不定期的，應該不會有太大的壓力。</p><p>我只要盡力確保，這些「訂戶限定」內容，是真的有價值，就可以了。</p>]]></content>
     
