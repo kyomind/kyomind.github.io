@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
             
 
-  <meta property="article:modified_time" content="2024-08-27T01:54:56+08:00" />
+  <meta property="article:modified_time" content="2024-08-27T16:09:22+08:00" />
 
 
 
@@ -183,7 +183,7 @@
         <span class="post-time">
           2024-04-07
         </span><span class="post-update">
-            →  2024-05-19
+            →  2024-08-27
           </span>
         <span class="post-category">
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
@@ -194,7 +194,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E8%88%87%E7%B7%A3%E7%94%B1"><span class="toc-text">場景與緣由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E8%90%BD%E5%AF%A6-type-hints-%E7%9A%84%E7%9C%9F%E6%AD%A3%E9%9B%A3%E9%BB%9E"><span class="toc-text">專案落實 type hints 的真正難點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-type-hints-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Python type hints 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-hints-%E7%9A%84%E9%87%8E%E5%BF%83"><span class="toc-text">Type hints 的野心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-hints-%E7%9A%84%E5%88%A9%E5%BC%8A%E5%88%86%E6%9E%90"><span class="toc-text">Type hints 的利弊分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%97%A9%E3%80%8C%E6%94%B6%E6%94%AF%E5%B9%B3%E8%A1%A1%E3%80%8D"><span class="toc-text">更早「收支平衡」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AD%B0"><span class="toc-text">書中的一些建議</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A6%E9%9D%9E%E6%89%80%E6%9C%89%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%83%BD%E8%A6%81%E5%8A%A0%E4%B8%8A-type-hints"><span class="toc-text">並非所有程式碼都要加上 type hints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%B6%93%E9%A9%97%E8%88%87%E7%9C%8B%E6%B3%95"><span class="toc-text">我的經驗與看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%88%87-Pydantic"><span class="toc-text">Django Ninja 與 Pydantic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E6%95%B4%E7%90%86"><span class="toc-text">小結與整理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E8%88%87%E7%B7%A3%E7%94%B1"><span class="toc-text">場景與緣由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E8%90%BD%E5%AF%A6-type-hints-%E7%9A%84%E7%9C%9F%E6%AD%A3%E9%9B%A3%E9%BB%9E"><span class="toc-text">專案落實 type hints 的真正難點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-type-hints-%E7%B0%A1%E4%BB%8B"><span class="toc-text">Python type hints 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-hints-%E7%9A%84%E9%87%8E%E5%BF%83"><span class="toc-text">Type hints 的野心</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-hints-%E7%9A%84%E5%88%A9%E5%BC%8A%E5%88%86%E6%9E%90"><span class="toc-text">Type hints 的利弊分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%97%A9%E3%80%8C%E6%94%B6%E6%94%AF%E5%B9%B3%E8%A1%A1%E3%80%8D"><span class="toc-text">更早「收支平衡」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B8%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BB%BA%E8%AD%B0"><span class="toc-text">書中的一些建議</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A6%E9%9D%9E%E6%89%80%E6%9C%89%E7%A8%8B%E5%BC%8F%E7%A2%BC%E9%83%BD%E8%A6%81%E5%8A%A0%E4%B8%8A-type-hints"><span class="toc-text">並非所有程式碼都要加上 type hints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%B6%93%E9%A9%97%E8%88%87%E7%9C%8B%E6%B3%95"><span class="toc-text">我的經驗與看法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%88%87-Pydantic"><span class="toc-text">Django Ninja 與 Pydantic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AB%96%E8%88%87%E6%95%B4%E7%90%86"><span class="toc-text">結論與整理</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/nqKDYbc.png" alt="強健的 Python"><span class="cap">強健的 Python</span></p>
 <blockquote>
@@ -330,7 +330,7 @@
 </blockquote>
 <p>在我看來，這類採用了 Pydantic 框架所帶來的效應，就像腳踏車的輔助輪，在剛起步使用 type hints 時，<strong>有著明顯的正面引導效果。</strong></p>
 <hr>
-<h2 id="小結與整理"><a href="#小結與整理" class="headerlink" title="小結與整理"></a>小結與整理</h2><p>然而，我並不是說，只有寫 FastAPI 或 Django Ninja 才能成功落實 type hints，只不過<strong>它們遇到的阻力會相對小</strong>。</p>
+<h2 id="結論與整理"><a href="#結論與整理" class="headerlink" title="結論與整理"></a>結論與整理</h2><p>然而，我並不是說，只有寫 FastAPI 或 Django Ninja 才能成功落實 type hints，只不過<strong>它們遇到的阻力會相對小</strong>。</p>
 <p>如果能夠先有這類專案作為「甜頭」，那要在其餘專案落實可能會容易得多。因為要讓成員「相信」寫 type hints 有價值，確實不容易。</p>
 <p>經過一段時間，目前我與我的同事們，都對 type hints 抱持著正面態度，因為很多錯誤可以在<strong>非常早的階段（也就是開發的當下）</strong>就被發現。（比如 Django ORM 物件的屬性根本寫錯了！）</p>
 <p>省去了後續來回修正的時間浪費。</p>
@@ -340,6 +340,11 @@
 <li>建議從 FastAPI、Django Ninja，或其它採用了 Pydantic 的專案開始，成員會<strong>更有動力</strong>。</li>
 <li>雖然 type hints 對大專案有更顯著的效益，但建議<strong>從小型專案開始著手</strong>，以降低成員們<strong>練習、適應與接納</strong>的阻力。</li>
 </ol>
+<p><code>2024/08/27</code>更新：此外，網友 <a target="_blank" rel="noopener" href="https://github.com/JasperSui">JasperSui</a> 在本文<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-reply/issues/31#issuecomment-2309259638">留言區</a>推薦做法：</p>
+<blockquote>
+<p>Exclude 專案內所有<strong>既有檔案</strong>。這樣可以讓新的檔案都被檢查到，又同時不會影響專案進行，<strong>可以極大地降低其他成員上手的成本</strong>。</p>
+</blockquote>
+<p>這確實很不錯——尤其是對於<strong>已經有一定規模</strong>的專案而言。</p>
 <p>綜上所述，你可以看出，要落實 type hints，<strong>其實沒有多少「捷徑」可走。</strong></p>
 <p>這也是為何我們需要<strong>了解其中的困難</strong>，才更可能<strong>適度地堅持</strong>，直到獲得 type hints 帶來的<strong>長期優勢</strong>。</p>
 
