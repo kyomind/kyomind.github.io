@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
             
 
-  <meta property="article:modified_time" content="2024-08-27T16:34:28+08:00" />
+  <meta property="article:modified_time" content="2024-08-28T01:20:57+08:00" />
 
 
 
@@ -334,18 +334,18 @@
 <p>如果能夠先有這類專案作為「甜頭」，那要在其餘專案落實可能會容易得多。因為要讓成員「相信」寫 type hints 有價值，確實不容易。</p>
 <p>經過一段時間，目前我與我的同事們，都對 type hints 抱持著正面態度，因為很多錯誤可以在<strong>非常早的階段（也就是開發的當下）</strong>就被發現。（比如 Django ORM 物件的屬性根本寫錯了！）</p>
 <p>省去了後續來回修正的時間浪費。</p>
-<h3 id="個人看法"><a href="#個人看法" class="headerlink" title="個人看法"></a>個人看法</h3><p>最後，我再整理一下「<strong>降低導入 type hints 阻力</strong>」的一些個人看法：</p>
+<h3 id="降低導入-type-hints-阻力的看法"><a href="#降低導入-type-hints-阻力的看法" class="headerlink" title="降低導入 type hints 阻力的看法"></a>降低導入 type hints 阻力的看法</h3><p>最後，我再整理一下「<strong>降低導入 type hints 阻力</strong>」的一些<strong>個人看法</strong>：</p>
 <ol>
 <li>建議從<strong>全新的專案</strong>開始，因為要將舊專案改為「type hints 版本」會困難得多。</li>
-<li>建議從 FastAPI、Django Ninja，或其它採用了 Pydantic 的專案開始，成員會<strong>更有動力</strong>。</li>
+<li>建議從 FastAPI、Django Ninja，或其它<strong>採用了 Pydantic 的專案</strong>開始，成員會<strong>更有動力</strong>。</li>
 <li>雖然 type hints 對大專案有更顯著的效益，但建議<strong>從小型專案開始著手</strong>，以降低成員們<strong>練習、適應與接納</strong>的阻力。</li>
 </ol>
-<p><code>2024/08/27</code>更新：此外，網友 <a target="_blank" rel="noopener" href="https://github.com/JasperSui">JasperSui</a> 在本文<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-reply/issues/31#issuecomment-2309259638">留言區</a>推薦做法：</p>
+<p><code>2024/08/27</code>更新：網友 <a target="_blank" rel="noopener" href="https://github.com/JasperSui">JasperSui</a> 在本文<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-reply/issues/31#issuecomment-2309259638">留言區</a>推薦了一個做法：</p>
 <blockquote>
 <p>Exclude 專案內所有<strong>既有檔案</strong>。這樣可以讓新的檔案都被檢查到，又同時不會影響專案進行，<strong>可以極大地降低其他成員上手的成本</strong>。</p>
 </blockquote>
 <p>這確實很不錯——尤其是對於<strong>已經有一定規模</strong>的專案而言。</p>
-<p>綜上所述，你可以看出，要落實 type hints，<strong>其實沒有多少「捷徑」可走。</strong></p>
+<h3 id="沒有捷徑可走"><a href="#沒有捷徑可走" class="headerlink" title="沒有捷徑可走"></a>沒有捷徑可走</h3><p>綜上所述，你可以看出，要落實 type hints，<strong>其實沒有多少「捷徑」可走。</strong></p>
 <p>這也是為何我們需要<strong>了解其中的困難</strong>，才更可能<strong>適度地堅持</strong>，直到獲得 type hints 帶來的<strong>長期優勢</strong>。</p>
 
       </div>
