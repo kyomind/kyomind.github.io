@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-37/</loc>
+    
+    <lastmod>2024-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
+    
+    <lastmod>2024-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
+    
+    <lastmod>2024-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/robust-python-01/</loc>
     
     <lastmod>2024-08-28</lastmod>
@@ -12,15 +48,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
-    
-    <lastmod>2024-08-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-08-27</lastmod>
     
@@ -372,24 +399,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
-    
-    <lastmod>2024-06-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
-    
-    <lastmod>2024-06-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
     
     <lastmod>2024-06-29</lastmod>
     
