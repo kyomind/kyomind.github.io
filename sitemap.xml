@@ -2,6 +2,60 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/not-by-ai/</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/less-is-more/</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    
+    <lastmod>2024-09-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -83,15 +137,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
-    
-    <lastmod>2024-09-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-37/</loc>
     
     <lastmod>2024-08-29</lastmod>
@@ -156,15 +201,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
-    
-    <lastmod>2024-08-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
     
     <lastmod>2024-08-14</lastmod>
     
@@ -443,15 +479,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
-    
-    <lastmod>2024-06-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/ruff/</loc>
     
     <lastmod>2024-06-25</lastmod>
@@ -491,15 +518,6 @@
     <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-06-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/less-is-more/</loc>
-    
-    <lastmod>2024-06-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -740,27 +758,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/not-by-ai/</loc>
-    
-    <lastmod>2024-05-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2024-05-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2024-05-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

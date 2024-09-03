@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
             
 
-  <meta property="article:modified_time" content="2024-05-08T05:01:37+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:18:23+08:00" />
 
 
 
@@ -206,7 +206,7 @@
 <h3 id="系列：Python-工匠"><a href="#系列：Python-工匠" class="headerlink" title="系列：Python 工匠"></a>系列：Python 工匠</h3><blockquote>
 <ol>
 <li><strong>《Python 工匠》筆記（一）如何寫好註解</strong></li>
-<li><a href="https://blog.kyomind.tw/python-craftsman-02/">《Python 工匠》筆記（二）對「單元測試」的看法與建議</a></li>
+<li><a href="/python-craftsman-02/">《Python 工匠》筆記（二）對「單元測試」的看法與建議</a></li>
 </ol>
 </blockquote>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
@@ -230,9 +230,9 @@
 <p>其實我一直也想整理一篇關於寫好註解的基本守則，但遲遲沒有行動。但現在有這本書，我只要整理書中的內容，並加上自己的看法即可。</p>
 <p>有關 Python 註解或 docstring 的討論，我在過去多篇文章中都有提到，可參考如下：</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/#%E4%B8%80%E3%80%81Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81">Docstring 真的很重要</a></li>
-<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
-<li><a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
+<li><a href="/beyond-the-basic-stuff-with-python-03/#%E4%B8%80%E3%80%81Docstring-%E7%9C%9F%E7%9A%84%E5%BE%88%E9%87%8D%E8%A6%81">Docstring 真的很重要</a></li>
+<li><a href="/beyond-the-basic-stuff-with-python-01/#%E8%A8%BB%E8%A7%A3%E6%98%AF%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%EF%BC%9F">註解是不需要的？</a></li>
+<li><a href="/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a></li>
 </ul>
 <p>開始正文。</p>
 <hr>
@@ -366,7 +366,7 @@
 <blockquote>
 <p>註解會讓人們<strong>覺得親切</strong>（尤其當註解是中文時），<strong>高品質的指引性註解確實會讓程式碼更易讀</strong>。有時抽象一個新函式，不見得就一定比一行註解加上幾行程式碼更好。</p>
 </blockquote>
-<p>第一段引用，其實就跟我在「<a href="https://blog.kyomind.tw/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a>」中的主張一致：</p>
+<p>第一段引用，其實就跟我在「<a href="/good-vscode-extensions/#Python-docstring-%E4%B9%8B%E6%88%91%E8%A6%8B">Python docstring 之我見</a>」中的主張一致：</p>
 <blockquote>
 <p>在我看來，無論程式寫得如何簡潔易讀，對一些比較複雜的函式或類別而言，docstring 終究是不可少的。<strong>因為文字的詮釋能力和程式碼相比，絕不在同一個層次</strong>，相信這也是為何 docstring 會有屬於自己的獨立 PEP 加以規範的理由。</p>
 </blockquote>

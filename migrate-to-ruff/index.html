@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-06-25T18:36:18+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:17:59+08:00" />
 
 
 
@@ -199,7 +199,7 @@
 <p>可能我比較龜毛吧！</p>
 <p>正因耗費的時間有點多，所以寫下這篇懶人包教學，作為讀者遷移時的參考。</p>
 <h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>這篇文章是寫給，目前正使用上述 Flake8、isort、Black Formatter 作為格式化工具，<strong>並打算遷移至 Ruff 的 Python 開發者。</strong></p>
-<p>受眾就是〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中描述的那樣。在專案中使用上述工具，也安裝了相關的 VS Code 套件，設定好 pre-commit hook，以及使用 pyproject.toml 作為這些工具的設定檔。</p>
+<p>受眾就是〈<a href="/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中描述的那樣。在專案中使用上述工具，也安裝了相關的 VS Code 套件，設定好 pre-commit hook，以及使用 pyproject.toml 作為這些工具的設定檔。</p>
 <p>而本文的目標，就是讓專案的 linter、formatter，最終都統一使用 Ruff。</p>
 <span id="more"></span>
 
@@ -207,13 +207,13 @@
 <li><a href="/series/#Python-Ruff-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li>
 </ul>
 <hr>
-<h2 id="為什麼要用-Ruff？"><a href="#為什麼要用-Ruff？" class="headerlink" title="為什麼要用 Ruff？"></a>為什麼要用 Ruff？</h2><p>在系列第一篇，即〈<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a>〉中，我闡述了<a href="https://blog.kyomind.tw/ruff/#Why-Ruff%EF%BC%9F">使用 Ruff 的兩大理由</a>。</p>
+<h2 id="為什麼要用-Ruff？"><a href="#為什麼要用-Ruff？" class="headerlink" title="為什麼要用 Ruff？"></a>為什麼要用 Ruff？</h2><p>在系列第一篇，即〈<a href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a>〉中，我闡述了<a href="/ruff/#Why-Ruff%EF%BC%9F">使用 Ruff 的兩大理由</a>。</p>
 <p>在工作上用了 Ruff 近 2 個月後，我覺得<strong>這兩個理由都很真實</strong>。而且，速度帶來的差異與感受，比我想像的更多！</p>
 <p>除此之外，還有一個我之前沒想到的優點——「<strong>避免衝突</strong>」。</p>
 <h3 id="工具間的行為衝突"><a href="#工具間的行為衝突" class="headerlink" title="工具間的行為衝突"></a>工具間的行為衝突</h3><p>我們知道，linter 與 formatter 如果進行客製化設定，那兩者對於格式的要求可能會發生<strong>不一致</strong>，這在設定上需要留意。</p>
 <p>比如最常見的「單行最大字元上限」。如果在 Flake8 從 79 字元改成 100，那 isort 和 Black 也要跟著設定才行！</p>
 <p>尤其 isort 和 Black 都是格式化器，兩者都有「格式化程式碼」的能力，如果設定不一致，會帶來一定的困擾。</p>
-<p>所以 isort 才會有以下這個<a href="https://blog.kyomind.tw/pyproject-toml/#isort">常見設定</a>：</p>
+<p>所以 isort 才會有以下這個<a href="/pyproject-toml/#isort">常見設定</a>：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[tool.isort]</span><br><span class="line">profile = &quot;black&quot;</span><br></pre></td></tr></table></figure>
 
 <p>為的就是和 Black「達成一致」。</p>
