@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="VS Code" />
             
 
-  <meta property="article:modified_time" content="2024-05-05T03:17:04+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:23:38+08:00" />
 
 
 
@@ -198,16 +198,16 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/tjIDNjn.jpg"></p>
 <blockquote>
-<p><strong>替代方案——Ruff</strong>：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+<p><strong>替代方案——Ruff</strong>：<a href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
 </blockquote>
 <hr>
 <p>Python linter、formatter 整合 VS Code 的文章，已經寫過好幾篇，但還是不厭其煩地繼續寫，原因很簡單——它們實在太基本也太重要，卻往往未受到足夠的重視。</p>
 <p>永遠不要小看這些<strong>排版上的細節</strong>對<strong>程式寫作習慣</strong>的影響。</p>
-<p>如同我在〈<a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a>〉文末所言：</p>
+<p>如同我在〈<a href="/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a>〉文末所言：</p>
 <blockquote>
 <p>對於重視程式寫作規範，意在貫徹 Clean Code 精神的開發者而言，它不是一種選擇，而是一種必然。</p>
 </blockquote>
-<p>以及〈<a href="https://blog.kyomind.tw/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中說的：</p>
+<p>以及〈<a href="/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中說的：</p>
 <blockquote>
 <p>Linter 和 formatter 雖然無法保證你寫出 Clean Code，但至少能協助你盡可能符合 PEP 8 風格，並省下處理排版細節上的心力，讓你更專注在程式的核心部分。</p>
 </blockquote>
@@ -225,7 +225,7 @@
 <li>Formatter：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">Black Formatter</a>。</li>
 <li>Import 排序：isort。</li>
 </ul>
-<p>isort 我們<a href="https://blog.kyomind.tw/isort/">上一篇</a>講過了，這次把剩下的兩項補完，功德圓滿。</p>
+<p>isort 我們<a href="/isort/">上一篇</a>講過了，這次把剩下的兩項補完，功德圓滿。</p>
 <hr>
 <h2 id="Flake8-設定"><a href="#Flake8-設定" class="headerlink" title="Flake8 設定"></a>Flake8 設定</h2><blockquote>
 <p><code>2023/07/05</code>補充：無論 Flake8 還是 Black Formatter，當你的虛擬環境<strong>沒有安裝</strong>該 package 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
@@ -248,7 +248,7 @@
 
 <p>這裡的一大重點，就是要把 Python 預設的格式化器，從 Python 擴充套件提供，改為直接使用 Black 擴充套件。</p>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></p>
+<p>相關文章：<a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></p>
 </blockquote>
 <hr>
 <h2 id="不同專案使用不同格式化器"><a href="#不同專案使用不同格式化器" class="headerlink" title="不同專案使用不同格式化器"></a>不同專案使用不同格式化器</h2><p>最後補充一個常見的情境，以我自己為例：個人開發我使用 Black，但工作上都是使用 yapf，怎麼辦？</p>

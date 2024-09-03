@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="書評 × 筆記" />
             
 
-  <meta property="article:modified_time" content="2024-09-03T01:10:09+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:20:41+08:00" />
 
 
 
@@ -218,7 +218,7 @@
 <li>設定 Mypy pre-commit hook。</li>
 </ol>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></p>
+<p>相關文章：<a href="/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></p>
 </blockquote>
 <p>上述二者（主要是第二點），讓新專案真正落實了 Python type hints——這下子你不寫 type hints 也不行了。</p>
 <p>這個過程並不困難，但還是需要一番摸索才能順利到位，這部分我會另外寫成一篇文章作為教學。</p>
@@ -226,7 +226,7 @@
 <h2 id="專案落實-type-hints-的真正難點"><a href="#專案落實-type-hints-的真正難點" class="headerlink" title="專案落實 type hints 的真正難點"></a>專案落實 type hints 的真正難點</h2><p>在為 Django 專案導入 Mypy 之前，我讀了本書——前後讀了兩次。</p>
 <p>之所以寫這篇筆記，主要是深刻感受到，在工作上要落實 type hints、把它們加入到 Python 專案中，整個環節<strong>最難的部分</strong>，並非關於 type hints 語法的學習。</p>
 <p>而是其它種種因素。</p>
-<p>事實上，我去年就打算<a href="https://blog.kyomind.tw/weekly-review-08/#%E5%B0%8F%E7%B5%90%EF%BC%9A2023-%E4%B8%8A%E5%8D%8A%E5%B9%B4%E7%9B%AE%E6%A8%99">為 Django 專案全面導入 type hints</a>，但是失敗了！直到本次的時機「更加成熟」，才下定決心推行。</p>
+<p>事實上，我去年就打算<a href="/weekly-review-08/#%E5%B0%8F%E7%B5%90%EF%BC%9A2023-%E4%B8%8A%E5%8D%8A%E5%B9%B4%E7%9B%AE%E6%A8%99">為 Django 專案全面導入 type hints</a>，但是失敗了！直到本次的時機「更加成熟」，才下定決心推行。</p>
 <p>本文藉由對書中內容的整理與我的經驗，好好介紹一下，為專案加入 type hints 時，<strong>你一定會遇到的困難</strong>，與對應的思考。</p>
 <hr>
 <h2 id="Python-type-hints-簡介"><a href="#Python-type-hints-簡介" class="headerlink" title="Python type hints 簡介"></a>Python type hints 簡介</h2><p>Python  3.5 首次導入了 type hints，可見〈<a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">PEP 484 – Type Hints</a>〉，該 PEP 提案的共同發起人除了 Python 之父 Guido van Rossum，還有 Mypy 作者。</p>

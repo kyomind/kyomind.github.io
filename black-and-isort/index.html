@@ -26,7 +26,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="VS Code" />
             
 
-  <meta property="article:modified_time" content="2024-01-16T14:01:15+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:23:23+08:00" />
 
 
 
@@ -200,16 +200,16 @@
 <blockquote>
 <p>相關文章：</p>
 <ol>
-<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
-<li><a href="https://blog.kyomind.tw/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
-<li><a href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
+<li><a href="/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+<li><a href="/isort/">VS Code：Python isort 擴充套件介紹與簡易設定教學</a></li>
+<li><a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
 </ol>
 </blockquote>
 <p>以下是我的測試心得。</p>
 <hr>
 <h2 id="Black-Formatter-擴充套件"><a href="#Black-Formatter-擴充套件" class="headerlink" title="Black Formatter 擴充套件"></a>Black Formatter 擴充套件</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">套件連結</a>。</p>
 <p>測試結果：繼續保留使用，供個人專案開發。</p>
-<p>於〈<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉中曾<a href="https://blog.kyomind.tw/python-poetry/#pip-%E6%89%8B%E5%8B%95%E7%A7%BB%E9%99%A4%E4%BE%9D%E8%B3%B4%E5%A5%97%E4%BB%B6%E7%9A%84%E6%BD%9B%E5%9C%A8%E9%A2%A8%E9%9A%AA%EF%BC%9A%E4%BB%A5-Flask-Black-%E7%82%BA%E4%BE%8B">提過</a>，雖然目前工作上是使用 <a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a>，但個人專案已一律改用 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>，所以自然很好奇：<strong>安裝使用 VS Code 套件版本的 Black 究竟有什麼好處？</strong></p>
+<p>於〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉中曾<a href="/python-poetry/#pip-%E6%89%8B%E5%8B%95%E7%A7%BB%E9%99%A4%E4%BE%9D%E8%B3%B4%E5%A5%97%E4%BB%B6%E7%9A%84%E6%BD%9B%E5%9C%A8%E9%A2%A8%E9%9A%AA%EF%BC%9A%E4%BB%A5-Flask-Black-%E7%82%BA%E4%BE%8B">提過</a>，雖然目前工作上是使用 <a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a>，但個人專案已一律改用 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a>，所以自然很好奇：<strong>安裝使用 VS Code 套件版本的 Black 究竟有什麼好處？</strong></p>
 <h3 id="重大好處：One-Is-All-All-Is-One"><a href="#重大好處：One-Is-All-All-Is-One" class="headerlink" title="重大好處：One Is All, All Is One"></a>重大好處：One Is All, All Is One</h3><p>好處很明顯，那就是你<strong>只需要安裝「一個」Black Formatter 擴充套件</strong>，就能讓所有使用 Black 排版程式碼的專案<strong>共用</strong>，而不必在各專案的虛擬環境中另外安裝 Black，可以統一使用 VS Code 提供的那一個！</p>
 <p>換句話說，本來我只要一開新的個人專案，初始化階段一定要先<code>poetry add black</code>，現在完全可以省略這個流程。</p>
 <p>十分期待 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/flake8">Flake8</a> 也能推出獨立的 VS Code 套件版本！</p>
@@ -230,7 +230,7 @@
 <p>總之，建議可以等正式版上線再來使用，但我目前還是保留。</p>
 <h2 id="isort-擴充套件"><a href="#isort-擴充套件" class="headerlink" title="isort 擴充套件"></a>isort 擴充套件</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.isort">套件連結</a>。</p>
 <p>測試結果：暫時先刪除，但有額外收獲！</p>
-<p>之前〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到「<a href="https://blog.kyomind.tw/flake8-and-isort/#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort">原來 isort 早就被 VS Code 內建</a>」說法，後來發現其實不盡正確。嚴格來講它是被「Python 擴充套件」所內建，而現在正式被拆分出來。</p>
+<p>之前〈<a href="/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到「<a href="/flake8-and-isort/#%E5%8E%9F%E4%BE%86%E6%97%A9%E5%B0%B1%E5%85%A7%E5%BB%BA%E7%9A%84-isort">原來 isort 早就被 VS Code 內建</a>」說法，後來發現其實不盡正確。嚴格來講它是被「Python 擴充套件」所內建，而現在正式被拆分出來。</p>
 <p>「為 import 排序」說起來恐怕稱不上是硬需求，我覺得它對團隊開發而言，主要意義還是在於<strong>規範「協作上的一致性」</strong>，至於對個人開發的意義，我想是<strong>美觀</strong>吧！不過話說回來，對我這種規範控而言，自然是硬需求。</p>
 <p>本來是衝著它帶有 linter 功能而去，也就是會提示你目前的 import 順序可能有誤。但我發現：<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-python/issues/14254#issuecomment-708151872">排序 import bug 的暫時解法</a>，在目前的新套件中沒有作用！導致<strong>排序依舊可能不正常</strong>，我也只能作罷！</p>
 <h3 id="設定存檔時自動排序-import"><a href="#設定存檔時自動排序-import" class="headerlink" title="設定存檔時自動排序 import"></a>設定存檔時自動排序 import</h3><p>然而並不是毫無收獲——在套件的介紹頁面中，我才知道透過<code>settings.json</code>設定，其實可以在<strong>存檔時就自動排序 import</strong>，如此一來連 linter 提示都免了！</p>

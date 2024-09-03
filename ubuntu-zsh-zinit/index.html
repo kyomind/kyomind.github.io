@@ -26,7 +26,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-01-02T02:45:59+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:23:31+08:00" />
 
 
 
@@ -196,7 +196,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gqhZSo.jpg" alt="by Aleksandar Pasaric from Pexels"><span class="cap">by Aleksandar Pasaric from Pexels</span></p>
 <blockquote>
-<p>合輯：<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
+<p>合輯：<a href="/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
 </blockquote>
 <p><code>2022/03/18</code>重要更新：</p>
 <blockquote>
@@ -206,7 +206,7 @@
 <p>不過原來的 repo 已經有<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">社群的 fork 版</a>並持續維護中，所以本文內容除了 zinit 與部分套件的安裝網址、路徑有修正外，其餘使用上並不受影響，我暫時也沒打算換到新的管理器，因為其實都大同小異。</p>
 </blockquote>
 <hr>
-<p>〈<a href="https://blog.kyomind.tw/from-zplug-to-zinit/">將 zsh 套件管理器從 zplug 改為 zinit</a>〉曾提過要嘗試在自己新開的 VM 上面使用之前沒用過的 zsh 套件管理器——<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a>，取代原來在 Mac 上的 zplug 方案。安裝後也進行了簡單的<a href="https://blog.kyomind.tw/learning-topic/#%E5%9B%9E%E9%A1%A7">回顧</a>。</p>
+<p>〈<a href="/from-zplug-to-zinit/">將 zsh 套件管理器從 zplug 改為 zinit</a>〉曾提過要嘗試在自己新開的 VM 上面使用之前沒用過的 zsh 套件管理器——<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a>，取代原來在 Mac 上的 zplug 方案。安裝後也進行了簡單的<a href="/learning-topic/#%E5%9B%9E%E9%A1%A7">回顧</a>。</p>
 <p>後來工作上又開了好幾個 VM，也是裝 Ubuntu，因為覺得設定有點麻煩所以一直使用預設的 bash shell，但操作起來的效率與體驗，和 zsh 完全不能比。</p>
 <p>只能說 zsh 真的<strong>用過就回不去了！</strong>想想還是下定決心，把整個流程寫下來，作為日後重置 VM 時的參考。</p>
 <p>至於為何不選用最常見的套件管理器——<a target="_blank" rel="noopener" href="https://ohmyz.sh/">Oh My Zsh</a>，前述文章已有提及，基本上就是安裝了太多不必要的功能，著實不夠簡潔。</p>
@@ -214,7 +214,7 @@
 
 
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p><strong>只用最簡單的設定，獲取最重要的幾項功能，就能讓生產力得到大幅提升。</strong></p>
-<p>和前一篇關於<a href="https://blog.kyomind.tw/ubuntu-pyenv/">安裝 pyenv 的文章</a>一樣，為確保內容的正確與可行，我繼續使用同一個 Google f1-micro VM 來同步進行。</p>
+<p>和前一篇關於<a href="/ubuntu-pyenv/">安裝 pyenv 的文章</a>一樣，為確保內容的正確與可行，我繼續使用同一個 Google f1-micro VM 來同步進行。</p>
 <p>值得一提的是，因為安裝 pyenv 時要修改<code>.zshrc</code>，如果同時要安裝 zsh 與 pyenv，那麼<strong>建議先從本篇的 zsh 設定做起</strong>，再安裝 pyenv，順序上較為合理、流暢。</p>
 <hr>
 <h2 id="Ubuntu-安裝與設定-zsh"><a href="#Ubuntu-安裝與設定-zsh" class="headerlink" title="Ubuntu 安裝與設定 zsh"></a>Ubuntu 安裝與設定 zsh</h2><p>這部分很簡單，幾個指令即可完成。</p>
@@ -242,7 +242,7 @@
 <h3 id="略過佈景主題，推薦-Powerlevel10k"><a href="#略過佈景主題，推薦-Powerlevel10k" class="headerlink" title="略過佈景主題，推薦 Powerlevel10k"></a>略過佈景主題，推薦 Powerlevel10k</h3><p>本篇會略過佈景主題部分，倒不是它不重要，只是每個人各有偏好。真的不知道要選哪個的話，相信 <a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> 還是目前最多人推薦的選項，我自己也是用它，而它在安裝上又有一些必要設定，且很可能需要額外安裝字型才能正常顯示。</p>
 <p>總之，這部分並非本篇重點，所以暫且不提。</p>
 <blockquote>
-<p><code>2022/08/14</code>已新增文章：<a href="https://blog.kyomind.tw/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></p>
+<p><code>2022/08/14</code>已新增文章：<a href="/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></p>
 </blockquote>
 <h3 id="簡潔的信仰"><a href="#簡潔的信仰" class="headerlink" title="簡潔的信仰"></a>簡潔的信仰</h3><p>關於所要安裝的外掛功能，之前都是複製貼上別人的<code>.zshrc</code>設定，為了寫這篇文章我又花了 2 小時把<strong>真正必要</strong>的部分弄清楚一點，以下就只進行這些必要設定，省略我也不確定是什麼功能的配置內容。</p>
 <p>不得不承認，這些看起來很複雜的設定，往往是令人卻步、不想使用 zinit 等小眾管理器的主因，我第一次看到也覺得麻煩！</p>

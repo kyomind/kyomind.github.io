@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="VS Code" />
             
 
-  <meta property="article:modified_time" content="2024-06-20T08:30:33+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T11:23:47+08:00" />
 
 
 
@@ -195,18 +195,18 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/Ucevf9I.jpg"></p>
 <blockquote>
-<p><strong>替代方案——Ruff</strong>：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+<p><strong>替代方案——Ruff</strong>：<a href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
 </blockquote>
 <blockquote>
 <p>相關文章：</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></li>
-<li><a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></li>
-<li><a href="https://blog.kyomind.tw/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
+<li><a href="/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></li>
+<li><a href="/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></li>
+<li><a href="/flake8-and-black/">VS Code：Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
 </ul>
 </blockquote>
 <hr>
-<p>在〈<a href="https://blog.kyomind.tw/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到了 Python 的 linter——pylint 與 Flake8，今天就來說明 linter 與 formatter 的具體設定方法。</p>
+<p>在〈<a href="/flake8-and-isort/">Flake8 與 isort in VS Code</a>〉中提到了 Python 的 linter——pylint 與 Flake8，今天就來說明 linter 與 formatter 的具體設定方法。</p>
 <p>不得不說，善用 linter 與 formatter，無疑是 Python 程式開發的<strong>起手式</strong>。尤其在多人協作的時候，想深入要求每個人的寫作習慣很難，但至少在<strong>排版風格</strong>上，能藉由工具能達到<strong>基本的統一</strong>。</p>
 <span id="more"></span>
 
@@ -216,7 +216,7 @@
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>主要介紹 linter 與 formatter 的定義與功能，並闡述如何在 VS Code 中設定好 Python 開發時，所需要的 linter 與 formatter。</p>
 <p>Linter 部分以最常見的 Flake8 為例，介紹其功能與使用方法。Formatter 部分則選用 Google 出品的 yapf，同時會比較和其餘兩個 formatter 在格式化結果上的差異。</p>
 <hr>
-<h2 id="什麼是-Linter？"><a href="#什麼是-Linter？" class="headerlink" title="什麼是 Linter？"></a>什麼是 Linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="https://blog.kyomind.tw/flake8-and-isort/">前文</a>的描述：</p>
+<h2 id="什麼是-Linter？"><a href="#什麼是-Linter？" class="headerlink" title="什麼是 Linter？"></a>什麼是 Linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="/flake8-and-isort/">前文</a>的描述：</p>
 <blockquote>
 <p>Linter，就是協助你檢查程式語法正確性的工具，大部分程式語言都有屬於自己的 linter，而 Python 最常見的 linter 不外乎<code>pylint</code>、<code>pep8</code>（現為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>。</p>
 </blockquote>
@@ -283,7 +283,7 @@
 </blockquote>
 <h3 id="三、Black"><a href="#三、Black" class="headerlink" title="三、Black"></a>三、Black</h3><p>而 Black 最嚴格，除了「單行最大字元」或「字串必須使用單雙引號（竟然連這個都要規範）」外，<strong>幾乎沒有可以客製、調整的部分</strong>，可以說絕對只有「一種」結果，嚴格程度明顯高於 PEP 8 要求，有時可能會讓人覺得太嚴格了。我將在接下來的 side project 中嘗試採用，畢竟我除了是分類控，同時也是規範控。</p>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/black-and-isort/">VS Code：試用從 Python extension 拆分的 Black、isort 套件</a></p>
+<p>相關文章：<a href="/black-and-isort/">VS Code：試用從 Python extension 拆分的 Black、isort 套件</a></p>
 </blockquote>
 <hr>
 <p>Args 的設定一樣要特別注意，這上述例子中就能看出，不同工具的 args 字串格式真的會有一定差異（這是當然的，畢竟不同 CLI 工具，參數 flag 的命名與風格本來就不會相同），千萬不要打錯，否則 formatter 也會無法作用。</p>
