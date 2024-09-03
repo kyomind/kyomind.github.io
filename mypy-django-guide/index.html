@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-09-03T02:57:49+08:00" />
+  <meta property="article:modified_time" content="2024-09-03T09:03:47+08:00" />
 
 
 
@@ -211,7 +211,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="有多少-Django-專案使用-Type-Hints？"><a href="#有多少-Django-專案使用-Type-Hints？" class="headerlink" title="有多少 Django 專案使用 Type Hints？"></a>有多少 Django 專案使用 Type Hints？</h2><p>你可能覺得 type hints 還很遙遠，甚至是比單元測試更加稀有的存在。畢竟在 Python 中，型別是完全「可選」的——就像測試一樣😆</p>
+<h2 id="有多少-Django-專案使用-Type-Hints？"><a href="#有多少-Django-專案使用-Type-Hints？" class="headerlink" title="有多少 Django 專案使用 Type Hints？"></a>有多少 Django 專案使用 Type Hints？</h2><p>你可能覺得 type hints 還很遙遠，甚至是<strong>比單元測試更加稀有的存在</strong>。畢竟在 Python 中，型別是完全「<strong>可選</strong>」的——就像測試一樣😆</p>
 <p>然而，隨著社群的成長和工具的進步，越來越多 Django 開發者開始採用 type hints。</p>
 <p>那具體是多少呢？</p>
 <p>依照 JetBrains 對 Django 開發者的<a target="_blank" rel="noopener" href="https://lp.jetbrains.com/django-developer-survey-2023/">這份調查</a>，竟然已有<a target="_blank" rel="noopener" href="https://lp.jetbrains.com/django-developer-survey-2023/#syntax-and-documentation">一半</a>了！（出乎我的意料）</p>
@@ -251,7 +251,7 @@
 <hr>
 <h2 id="二、安裝-django-stubs"><a href="#二、安裝-django-stubs" class="headerlink" title="二、安裝 django-stubs"></a>二、安裝 django-stubs</h2><p>Type hints 是在 Python 3.5 才引入的功能，而在此之前誕生的套件和框架，<strong>自然不會有 type hints。</strong></p>
 <p>少部分的套件可能會在後期加入 type hints，比如 Flask，在 2.0 版本加入了極大量的 type hints，但大多數套件仍需要額外的 stubs 檔來補充。</p>
-<h3 id="什麼是-Stubs？"><a href="#什麼是-Stubs？" class="headerlink" title="什麼是 Stubs？"></a>什麼是 Stubs？</h3><p>所謂的 stubs（不是測試的那種），是指用來補充那些沒有 type hints 的模組或框架的<strong>檔案</strong>。它們通常是 <code>.pyi</code> 格式，類似於<strong>介面定義檔案</strong>，提供了函數、類別、方法等的<strong>型別資訊</strong>——但不會包含實際邏輯。</p>
+<h3 id="什麼是-Stubs？"><a href="#什麼是-Stubs？" class="headerlink" title="什麼是 Stubs？"></a>什麼是 Stubs？</h3><p>所謂的 stubs（不是測試的那種），是指用來補充那些沒有 type hints 的模組或框架的<strong>檔案</strong>。它們通常是 <code>.pyi</code> 格式，類似於<strong>介面定義檔案</strong>，提供了函式、類別、方法等的<strong>型別資訊</strong>——但不會包含實際邏輯。</p>
 <p>舉例而言，這是 Django ORM QuerySet 方法中的<code>bulk_create</code>的 stubs：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bulk_create</span>(<span class="params"></span></span><br><span class="line"><span class="params">   self,</span></span><br><span class="line"><span class="params">   objs: Iterable[_T],</span></span><br><span class="line"><span class="params">   batch_size: <span class="built_in">int</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   ignore_conflicts: <span class="built_in">bool</span> = ...,</span></span><br><span class="line"><span class="params">   update_conflicts: <span class="built_in">bool</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   update_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   unique_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">list</span>[_T]: ...</span><br></pre></td></tr></table></figure>
 
