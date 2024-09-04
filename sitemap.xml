@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-36/</loc>
+    
+    <lastmod>2024-09-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/flake8-yapf-setting/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -255,15 +264,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-36/</loc>
     
     <lastmod>2024-09-03</lastmod>
     
@@ -1264,7 +1264,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-09-03</lastmod>
+    <lastmod>2024-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
