@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-09-05T00:39:37.405Z</updated>
+  <updated>2024-09-05T15:38:02.163Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI 讓寫作變輕鬆了？我可不這麼認為</title>
+    <link href="https://blog.kyomind.tw/myth-of-ai-writing-efficiency/"/>
+    <id>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</id>
+    <published>2024-09-05T14:49:20.000Z</published>
+    <updated>2024-09-05T15:38:02.163Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"><span class="cap">by Sam Chivers</span></p><blockquote><p>相關文章：<a href="/weekly-review-35/">35，開始備戰 2024 iThome 鐵人賽</a></p></blockquote><p>從九月初開始，我投入了更多心力在今年的鐵人賽創作上。</p><p>這一次寫文章，畢竟是要參加比賽，還要連續發文 30 天，寫作量巨大。相比以往三天曬網、兩天捕魚的獨立部落格寫作，完全不可同日而語。</p><p>更辛苦，而且<strong>更讓人想逃避XD</strong>——因為你的文字會被評審！</p><p>加上我又心心念念想要拿獎，以至於才開始沒多久，就有一種力不從心的感覺。<strong>我深刻感受到創作過程中帶來的壓力與精神消耗。</strong></p><p>這讓我不禁擔憂：「真的能在開賽日前囤完 20 篇文章嗎？」</p><p>不行，<strong>我需要助手！</strong></p><span id="more"></span><hr><h2 id="重啟-Notion-AI"><a href="#重啟-Notion-AI" class="headerlink" title="重啟 Notion AI"></a>重啟 Notion AI</h2><p>想到「寫作助手」會想到什麼？當然是 AI 囉！</p><p>於是我拿出了信用卡，刷了一個月份的 Notion AI。因為我的草稿都在 Notion 上，所以這個選擇是再合適不過。</p><p>一年多前我曾經寫過這篇〈<a href="https://blog.kyomind.tw/weekly-review-15/">15，付費一個月後，我還是退訂了 Notion AI</a>〉。事實上，中間我又付費過一次 Notion AI，但還是沒有續約。</p><p>所以這次算<strong>第三次</strong>使用了，希望它可以分擔一點工作。</p><p><strong>感覺如何？——確實比前兩次的使用體驗都來得好！</strong>這部分的提升，我認為主要來自於 prompt 的加強，而不是背後的 LLM 變得多聰明了。</p><p>總之，Notion AI 有比較好用了，讓我有點考慮在完賽之後，仍繼續付費使用它。甚至考慮再為它寫一篇文章☺️</p><hr><h2 id="AI-讓寫作變輕鬆了嗎？"><a href="#AI-讓寫作變輕鬆了嗎？" class="headerlink" title="AI 讓寫作變輕鬆了嗎？"></a>AI 讓寫作變輕鬆了嗎？</h2><blockquote><p>那麼，Notion AI 讓我的寫作過程變得更輕鬆了嗎？</p></blockquote><p><strong>這取決於你如何看待寫作。</strong></p><p>如果只是想把文章大致寫完、語意通順，那麼我認為 AI 確實讓寫作變得更輕鬆了——甚至可以說「輕鬆許多」。</p><p>你再也不需要再去看一些奇怪的書，教你怎麼在 15 分鐘內寫出 1000 字文章。畢竟有了 AI，15 分鐘都夠你寫一本書了！</p><p>但是，人生總有個「<strong>但是</strong>」。你我都心知肚明，<strong>這種文字往往缺乏足夠的吸引力——或說「個性」</strong>。畢竟人人都能透過 AI 大量產出這類內容。</p><p>可以說，對我而言，有了 AI 輔助，<strong>部分</strong>寫作環節確實變輕鬆了——<strong>但整體沒有，因為要做的事更多了。</strong></p><hr><h2 id="AI-輔助寫作，人類的角色轉換"><a href="#AI-輔助寫作，人類的角色轉換" class="headerlink" title="AI 輔助寫作，人類的角色轉換"></a>AI 輔助寫作，人類的角色轉換</h2><p>我覺得「整體」沒有變得更輕鬆，是因為下列的「<strong>角色轉換</strong>」緣故，讓我娓娓道來。</p><h3 id="沒有-AI-的時代"><a href="#沒有-AI-的時代" class="headerlink" title="沒有 AI 的時代"></a>沒有 AI 的時代</h3><p>在沒有 AI 的時代，作為文字創作者，我們主要的<strong>角色分配</strong>大概是 10 分作者、0 分編輯（這裡指的是比例）——寫就對了！</p><p>對自己的內容品質比較有要求的作者，則可能是 9 分作者、1 分編輯，或 8 分作者、2 分編輯。</p><p>我屬於吹毛求疵的人（真的不是很必要），大概可以來到 7 分作者、3 分編輯。</p><p>極限差不多就這樣了！ 沒有人喜歡當編輯，就像沒有人喜歡寫單元測試——因為真的有點無聊。誰不想要大刀闊斧地創作呢？</p><h3 id="有-AI-輔助的時代"><a href="#有-AI-輔助的時代" class="headerlink" title="有 AI 輔助的時代"></a>有 AI 輔助的時代</h3><p>有了 AI 以後（無論是 Notion AI 或 ChatGPT），情況大大不同。</p><p>為了善用 AI 的力量，我發現自己<strong>變成了 5 分作者、5 分編輯</strong>，而且這兩種身分<strong>常常在互換</strong>：一下子自己寫，一下子要 AI 寫。</p><p><strong>AI 在某些地方確實比我寫得好又快</strong>，比如請它介紹一下 <a href="https://django-ninja.dev/">Django Ninja</a> 的特色， 這類內容相對制式、創意的成分較少，全都自己寫，那該多辛苦？</p><h3 id="一人分飾兩角"><a href="#一人分飾兩角" class="headerlink" title="一人分飾兩角"></a>一人分飾兩角</h3><p>它寫完後，你又得化身編輯看看結果合不合意。不行就得再修。自己寫的東西不滿意，再請它當編輯，給出改善意見。<strong>如此反覆，直到大功告成。</strong></p><p>這種寫作體驗很難說好或不好。就像用 <a href="/github-copilot/">GitHub Copilot</a>（或時下流行的 <a href="/cursor/">Cursor</a>）寫程式，我們常常需要中途停下來過問、請教 AI，同時又要當它的監督者。</p><p>如果目標只是「寫完」，那大概花不了多少時間。<strong>但如果目標是「寫好」，則其中的戲可比以前要多得多。</strong></p><hr><h2 id="小結：當個人愈來愈難了"><a href="#小結：當個人愈來愈難了" class="headerlink" title="小結：當個人愈來愈難了"></a>小結：當個人愈來愈難了</h2><p>AI 的普及，讓我們不僅僅是創作者，也成了編輯，甚至是策劃者（叫 AI 幹活）。<strong>這種角色的轉換增加了工作量和難度，但也讓我們對內容的掌控更為精細。</strong></p><p>創作不再是單一的過程，而是成了<strong>一場「與 AI 的持續對談」</strong>。</p><p>高度自我追求的創作者，必須不斷反思、修正、和 AI 討論，這讓創作變得<strong>更具挑戰性</strong>——當然，也<strong>更有趣。</strong></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/YmlPRz1.jpg&quot; alt=&quot;by Sam Chivers&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相關文章：&lt;a href=&quot;/weekly-review-35/&quot;&gt;35，開始備戰 2024 iThome 鐵人賽&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;從九月初開始，我投入了更多心力在今年的鐵人賽創作上。&lt;/p&gt;
+&lt;p&gt;這一次寫文章，畢竟是要參加比賽，還要連續發文 30 天，寫作量巨大。相比以往三天曬網、兩天捕魚的獨立部落格寫作，完全不可同日而語。&lt;/p&gt;
+&lt;p&gt;更辛苦，而且&lt;strong&gt;更讓人想逃避XD&lt;/strong&gt;——因為你的文字會被評審！&lt;/p&gt;
+&lt;p&gt;加上我又心心念念想要拿獎，以至於才開始沒多久，就有一種力不從心的感覺。&lt;strong&gt;我深刻感受到創作過程中帶來的壓力與精神消耗。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;這讓我不禁擔憂：「真的能在開賽日前囤完 20 篇文章嗎？」&lt;/p&gt;
+&lt;p&gt;不行，&lt;strong&gt;我需要助手！&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/YmlPRz1.jpg" type="image"/>
+    
+    
+    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="AI 工具" scheme="https://blog.kyomind.tw/tags/AI-%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+    <category term="Notion AI" scheme="https://blog.kyomind.tw/tags/Notion-AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Django 專案加入 Mypy 指南</title>
@@ -358,54 +396,6 @@
     <category term="河濱" scheme="https://blog.kyomind.tw/tags/%E6%B2%B3%E6%BF%B1/"/>
     
     <category term="旅行" scheme="https://blog.kyomind.tw/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django REST framework 教學（三）View 函式</title>
-    <link href="https://blog.kyomind.tw/django-rest-framework-03/"/>
-    <id>https://blog.kyomind.tw/django-rest-framework-03/</id>
-    <published>2024-06-29T01:01:17.000Z</published>
-    <updated>2024-08-03T15:45:26.217Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p><p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 9 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 3 篇。</p><p>範例程式碼可參考我的 <a href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p><p>本文相關的程式碼改動，都集中在這個 <a href="https://github.com/kyomind/Django-Tutorial/pull/4">PR</a>。</p><hr><p><a href="https://docs.djangoproject.com/en/5.0/topics/http/views/">Views</a> 是 Django 中<strong>處理 HTTP 請求的核心邏輯</strong>。它的作用是接收請求、處理請求，最後返回 response：</p><blockquote><p>A <strong>view function</strong>, or view for short, is a Python function that takes a web request and returns a web response.</p></blockquote><p>在 Django 中，我們可以使用兩種方式來撰寫 views：</p><ol><li>Function-Based Views（FBV），其實就是一個 Python 函式，也是 Django 預設的 view 寫法，所以又稱 <strong>view 函式</strong>。</li><li><a href="https://docs.djangoproject.com/en/5.0/topics/class-based-views/">Class-Based Views</a>（CBV）。CBV 是 Django 1.3 版本引入的，它是基於類別的 view 寫法。</li></ol><h2 id="CBV-與-FBV"><a href="#CBV-與-FBV" class="headerlink" title="CBV 與 FBV"></a>CBV 與 FBV</h2><p>「<a href="https://ithelp.ithome.com.tw/articles/10205779">CBV vs. FBV</a>」是初學 Django 一個常見的議題。如系列的<a href="/django-rest-framework-01/#CBV-vs-FBV">第一篇</a>所言：</p><blockquote><p>CBV 有著<strong>重用程式碼</strong>優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p></blockquote><p>究竟要選哪個，取決於個人喜好與專案需求。</p><p>Django REST framework（以下簡稱 DRF）同時支援這兩種 views。</p><p>事實上，DRF 顯然<strong>更加鼓勵使用 CBV</strong>，不僅提供了許多現成的 <a href="https://www.django-rest-framework.org/api-guide/generic-views/">generic views</a>，它的很多元件也是基於 CBV 設計的。</p><p>不過，本文只打算介紹 DRF 中的 FBV，並實作一個 DRF view function。</p><span id="more"></span><hr><h2 id="Django-app-中的-views-py"><a href="#Django-app-中的-views-py" class="headerlink" title="Django app 中的 views.py"></a>Django app 中的 views.py</h2><p>回到我們的範例專案——<a href="https://github.com/kyomind/Django-Tutorial">Django Tutorial</a> 中的<code>post</code>app。</p><p>Django Tutorial 是一個簡單的部落格專案，與我的「<a href="/series/#Django-ORM-%E5%A4%96%E9%8D%B5%E6%95%99%E5%AD%B8">系列：Django ORM 外鍵教學</a>」<strong>共用世界觀。</strong></p><p>可以了解一下<a href="/django-models/#%E5%B0%88%E6%A1%88%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%B4%B9">專案模型介紹</a>以及<a href="/reverse-relationships/#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%A8%A1%E5%9E%8B%E8%AA%BF%E6%95%B4">範例程式碼模型調整</a>。</p><p>不過因為它們的<strong>設計非常簡單</strong>，直接看程式碼應該也無妨。</p><h3 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h3><p><code>views.py</code>是 Django app 中<strong>處理 HTTP 請求的地方</strong>，我們在這裡定義各種 views。</p><p>上一回我們已經在 <a href="https://github.com/kyomind/Django-Tutorial/blob/django-rest-framework-02/post/views.py">views.py</a> 中用 view 函式實作了一個簡單的 API：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;Hello, world!&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure><p>這次我們要再進一步，實作一個更複雜的 API，且更多使用 DRF 的功能。</p><hr><h2 id="DRF-View-Function"><a href="#DRF-View-Function" class="headerlink" title="DRF View Function"></a>DRF View Function</h2><p>首先，我們需要引入<code>api_view</code>裝飾器與<code>Response</code>類別：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> rest_framework.decorators <span class="keyword">import</span> api_view</span><br><span class="line"><span class="keyword">from</span> rest_framework.response <span class="keyword">import</span> Response</span><br><span class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> status</span><br></pre></td></tr></table></figure><p>還有最後的<code>status</code>模組，用於設定 HTTP 狀態碼。</p><p>接著，我們將這些 DRF 元件套用在我們的 view function 上：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@api_view(<span class="params">[<span class="string">&#x27;GET&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request</span>):</span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    serializer = PostSerializer(posts, many=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> Response(serializer.data, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure><p>這樣我們就實作了一個簡單的 DRF <code>GET</code> API，用於取得所有的文章。</p><p>這裡的<code>PostSerializer</code>是一個<a href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>，我們會在下一篇文章中介紹。</p><p>此刻，我們先專注於<code>api_view</code>裝飾器與<code>Response</code>類別上。</p><hr><p>如前所述，Django 的 view 本質上是一個 Python 函式，它接收一個 HTTP request，返回一個 HTTP response。</p><p><strong>那 DRF 的 view function 又有什麼不同呢？</strong>——其實就是<strong>整合了 DRF 提供的功能。</strong></p><p>我們來看看 DRF 究竟幫我們做了什麼，讓開發 API 變得更簡單。</p><h2 id="一、api-view-裝飾器"><a href="#一、api-view-裝飾器" class="headerlink" title="一、api_view 裝飾器"></a>一、<code>api_view</code> 裝飾器</h2><p><code>api_view</code>裝飾器，它的<strong>主要目的</strong>是將普通的 Django view <strong>轉換為</strong> DRF 的 <strong>API view</strong>。為此，它做了以下幾件事：</p><ol><li><strong>方法限制</strong>：<code>@api_view([&#39;GET&#39;])</code>指定了這個 view 允許的 HTTP 方法。當請求方法不在允許列表中時，DRF 會自動回應<code>405 Method Not Allowed</code>。</li><li><strong>request</strong>：DRF 將 Django 的<code>HttpRequest</code>物件轉換為<code>Request</code>物件。它更加方便操作，比如可以通過<code>request.data</code>取得 POST 請求的資料，而不需要自己去處理<code>request.POST</code>或<code>request.body</code>。</li><li><strong>例外處理</strong>：<code>api_view</code>重新封裝了 view，提供了內建的錯誤處理機制。</li></ol><p>其中<strong>第二點</strong>是最重要的，因為 DRF 的<code>Request</code>物件提供了更多的功能，包括實務中大量使用的<code>request.data</code>。</p><p>Django 原生的<code>HttpRequest</code>物件，只提供了<code>request.POST</code>和<code>request.body</code>，兩者在使用上都有<a href="/django-request/#%E4%B8%89%E3%80%81HttpRequest-POST">一定限制</a>。</p><blockquote><p>相關文章：<a href="/django-request/">Django HttpRequest 常用屬性介紹</a></p></blockquote><p>而 DRF 對其進行了<strong>簡化</strong>，讓我們可以更加專注在 API 的邏輯上，這確實是一大加分。</p><h2 id="二、Response-類別"><a href="#二、Response-類別" class="headerlink" title="二、Response 類別"></a>二、<code>Response</code> 類別</h2><p><code>Response</code>是 DRF 提供的<strong>自定義 response</strong>，它繼承自 Django 的<code>HttpResponse</code>，並提供了更多的功能。</p><p>不過在我看來，<code>Response</code>的重要性沒有<code>api_view</code>裝飾器那麼高，使用 Django 的<code>JsonResponse</code>也能達到類似的效果：</p><ol><li><strong>資料轉換</strong>：<code>Response</code> 能夠接受 Python 字典、list 或其他可序列化的資料結構，並自動將它們轉換為 JSON 回應。你不用手動調用 <code>json.dumps</code>。</li><li><strong>狀態碼</strong>：你可以通過 <code>Response(data, status=status.HTTP_200_OK)</code> 設置回應的 HTTP 狀態碼。</li></ol><p>通常，我們<strong>主要的需求</strong>就是返回一個 JSON response。</p><p>所以這裡就不多討論<code>Response</code>，很多時候我都是直接使用<code>JsonResponse</code>。</p><h2 id="三、status-模組"><a href="#三、status-模組" class="headerlink" title="三、status 模組"></a>三、<code>status</code> 模組</h2><p>DRF 的<code>status</code>模組提供了一系列的 HTTP 狀態碼，將它們封裝成了<strong>常數</strong>。比如：</p><ul><li><code>status.HTTP_200_OK</code>：200 OK</li><li><code>status.HTTP_201_CREATED</code>：201 Created</li><li><code>status.HTTP_400_BAD_REQUEST</code>：400 Bad Request</li><li><code>status.HTTP_404_NOT_FOUND</code>：404 Not Found</li><li><code>status.HTTP_405_METHOD_NOT_ALLOWED</code>：405 Method Not Allowed</li></ul><p>這對於提高程式碼的可讀性與一致性很有幫助，這樣我們就不用牢牢記住每個狀態碼的數字與背後的意義——尤其是那些比較少用到的狀態碼。</p><hr><p>目前為止，新的 API view function 的<strong>框架</strong>已經完成了，可惜它還<strong>無法運作</strong>——因為我們還沒有定義<code>PostSerializer</code>。</p><p>這部分我們下回再來處理。文章結束前，我們還要對「路由」進行一些調整。</p><h2 id="路由設定"><a href="#路由設定" class="headerlink" title="路由設定"></a>路由設定</h2><p>在<code>post/urls.py</code>新增一個路由，並調整<code>import</code>方式：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> post <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;hello/&#x27;</span>, views.hello_world),</span><br><span class="line">    path(<span class="string">&#x27;posts/&#x27;</span>, views.get_posts),  <span class="comment"># 新增這一行</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>如果要透過 API 取得所有文章，就要訪問<code>/post/posts/</code>這個 path。</p><p>path 的前半部是專案的一級路由，它們是由<code>DjangoTutorial/urls.py</code>設定的：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;post/&#x27;</span>, include(<span class="string">&#x27;post.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>後半部是 Django app 的路由。這樣的設計有助於管理與維護。</p><p>不過<code>/post/posts/</code>這 path 的設計看起來有點怪——<strong>語意上有所重複</strong>。這主要是<strong>目前的情境太過簡單</strong>造成的。所以我們<strong>先取消一級路由的前綴</strong>，改為：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, include(<span class="string">&#x27;post.urls&#x27;</span>)),  <span class="comment"># 將前綴去掉</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>讓取得所有文章的 path 變成<code>/posts/</code>，看起來更加自然。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/lyxUZv1.png&quot; alt=&quot;Let&amp;#39;s Django！&quot;&gt;&lt;/p&gt;
-&lt;p&gt;這是 &lt;a href=&quot;/tags/Django-Tutorial/&quot;&gt;Django Tutorial&lt;/a&gt; 的第 9 篇、&lt;a href=&quot;/series/#Django-REST-framework-%E6%95%99%E5%AD%B8&quot;&gt;DRF 系列&lt;/a&gt;的第 3 篇。&lt;/p&gt;
-&lt;p&gt;範例程式碼可參考我的 &lt;a href=&quot;https://github.com/kyomind/Django-Tutorial&quot;&gt;GitHub 專案&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;本文相關的程式碼改動，都集中在這個 &lt;a href=&quot;https://github.com/kyomind/Django-Tutorial/pull/4&quot;&gt;PR&lt;/a&gt;。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/5.0/topics/http/views/&quot;&gt;Views&lt;/a&gt; 是 Django 中&lt;strong&gt;處理 HTTP 請求的核心邏輯&lt;/strong&gt;。它的作用是接收請求、處理請求，最後返回 response：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;A &lt;strong&gt;view function&lt;/strong&gt;, or view for short, is a Python function that takes a web request and returns a web response.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;在 Django 中，我們可以使用兩種方式來撰寫 views：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Function-Based Views（FBV），其實就是一個 Python 函式，也是 Django 預設的 view 寫法，所以又稱 &lt;strong&gt;view 函式&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/5.0/topics/class-based-views/&quot;&gt;Class-Based Views&lt;/a&gt;（CBV）。CBV 是 Django 1.3 版本引入的，它是基於類別的 view 寫法。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;CBV-與-FBV&quot;&gt;&lt;a href=&quot;#CBV-與-FBV&quot; class=&quot;headerlink&quot; title=&quot;CBV 與 FBV&quot;&gt;&lt;/a&gt;CBV 與 FBV&lt;/h2&gt;&lt;p&gt;「&lt;a href=&quot;https://ithelp.ithome.com.tw/articles/10205779&quot;&gt;CBV vs. FBV&lt;/a&gt;」是初學 Django 一個常見的議題。如系列的&lt;a href=&quot;/django-rest-framework-01/#CBV-vs-FBV&quot;&gt;第一篇&lt;/a&gt;所言：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;CBV 有著&lt;strong&gt;重用程式碼&lt;/strong&gt;優勢，適合大型專案。而 FBV 則以&lt;strong&gt;簡單、直接&lt;/strong&gt;為賣點，方便快速開發中小型專案。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;究竟要選哪個，取決於個人喜好與專案需求。&lt;/p&gt;
-&lt;p&gt;Django REST framework（以下簡稱 DRF）同時支援這兩種 views。&lt;/p&gt;
-&lt;p&gt;事實上，DRF 顯然&lt;strong&gt;更加鼓勵使用 CBV&lt;/strong&gt;，不僅提供了許多現成的 &lt;a href=&quot;https://www.django-rest-framework.org/api-guide/generic-views/&quot;&gt;generic views&lt;/a&gt;，它的很多元件也是基於 CBV 設計的。&lt;/p&gt;
-&lt;p&gt;不過，本文只打算介紹 DRF 中的 FBV，並實作一個 DRF view function。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/lyxUZv1.png" type="image"/>
-    
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
-    
-    
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
-    
-    <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
-    
-    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
     
   </entry>
   
