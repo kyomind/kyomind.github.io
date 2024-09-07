@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2024-06-26T08:52:02+08:00" />
+  <meta property="article:modified_time" content="2024-09-06T08:56:49+08:00" />
 
 
 
@@ -373,7 +373,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
 
 <p>存檔後重啟 shell 即可使用。直接在命令列打上<code>poetry</code>指令測試。</p>
-<h3 id="在-Windows-上設定-PATH"><a href="#在-Windows-上設定-PATH" class="headerlink" title="在 Windows 上設定 PATH"></a>在 Windows 上設定 PATH</h3><p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html#cbc399de">Poetry 設定教學</a>。我覺得寫得比 Poetry 官方文件更好懂：</p>
+<h3 id="在-Windows-上設定-PATH"><a href="#在-Windows-上設定-PATH" class="headerlink" title="在 Windows 上設定 PATH"></a>在 Windows 上設定 PATH</h3><p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html">Poetry 設定教學</a>。我覺得寫得比 Poetry 官方文件更好懂：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$Env</span>:Path += <span class="string">&quot;;C:\Users\jetbrains\AppData\Roaming\Python\Scripts&quot;</span>; setx PATH <span class="string">&quot;<span class="variable">$Env</span>:Path&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>注意，上面的路徑要替換成你自己的使用者路徑</strong>——肯定不是<code>jetbrains</code>：</p>
