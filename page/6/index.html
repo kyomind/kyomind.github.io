@@ -133,6 +133,8 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
+            <a href="/categories/Django-Ninja/">Django Ninja (1)</a>
+          
         </div>
       </li>
     <li class="menu-item">
@@ -167,6 +169,29 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/python-craftsman-02/">《Python 工匠》筆記（二）對「單元測試」的看法與建議</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-03-17
+        </span><span class="post-category">
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/beoEztr.png" alt="Python 工匠"></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9786263245174">Python 工匠｜案例、技巧與開發實戰</a>》筆記的第 2 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>如第一篇所言，這是一本關於「Clean Code in Python」的書。</p>
+<p>這二篇，我將整理書中第 13 章「<strong>有關單元測試的建議</strong>」的內容（以及我的看法）。我覺得真的寫得太好了，值得你了解。</p>
+<p>話不多說，直接開始。</p>
+          <div class="read-more">
+            <a href="/python-craftsman-02/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/four-thousand-weeks-02/">《人生 4 千個禮拜》筆記（二）抗拒「重要性中等」的誘惑</a>
         </h1>
@@ -357,48 +382,6 @@
 <p>所以我會試著把這樣的努力與隨之而來的困境，盡可能展現出來，好比是種自嘲。就像〈<a href="https://blog.kyomind.tw/simple-notion/">使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a>〉中的我。</p>
           <div class="read-more">
             <a href="/four-thousand-weeks-01/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-12-18
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"></p>
-<blockquote>
-<p><code>2024/05/25</code>：新增系列第二篇〈<a href="/migrate-to-ruff/">Python 專案從 Flake8、Black 遷移至 Ruff 指南</a>〉；刪除「緣起」、「工作上我還未採用 Ruff 的理由」段落。</p>
-</blockquote>
-<blockquote>
-<p><code>2024/05/10</code>：重新編輯全文，新增、刪除部分內容，補充更多設定實例。調整大量段落表述方式，提升文章流暢度。可視為 v1.5 版。</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a> 從去年（2022）6 月正式開源起算，已過去一年半，知道此工具的開發者也愈來愈多。雖然在去年就聽過它，但我卻一直沒有任何行動。</p>
-<p>隨著前陣子 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff/releases/tag/v0.1.0">v0.1.0</a> 的發布（先別覺得這版本號怎麼乍看像早期測試版本🤣，前一版可是 v0.0.292），我感覺<strong>時機已到</strong>，所以進行了一番研究、嘗試，並寫下了本文。</p>
-<h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
-<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
-<li><a href="#Why-Ruff%EF%BC%9F">Why Ruff？</a></li>
-<li><a href="#%E6%9C%AC%E6%96%87%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC">本文範例程式碼</a></li>
-<li><a href="#Ruff-%E4%BB%8B%E7%B4%B9%E7%AF%87">Ruff 介紹篇</a></li>
-<li><a href="#Linter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Flake8-%E8%88%87-isort-%E7%AD%89%E7%AD%89">Linter 部分：取代 Flake8 與 isort 等等</a></li>
-<li><a href="#Formatter-%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%96%E4%BB%A3-Black">Formatter 部分：取代 Black</a></li>
-<li><a href="#%E5%96%AE%E3%80%81%E9%9B%99%E5%BC%95%E8%99%9F%E8%AD%B0%E9%A1%8C">單、雙引號議題</a></li>
-<li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87">Ruff 設定篇</a></li>
-<li><a href="#%E4%B8%80%E3%80%81pyproject-toml-%E8%A8%AD%E5%AE%9A">一、pyproject.toml 設定</a></li>
-<li><a href="#%E4%BA%8C%E3%80%81VS-Code-%E5%A5%97%E4%BB%B6%E8%A8%AD%E5%AE%9A">二、VS Code 套件設定</a></li>
-<li><a href="#%E4%B8%89%E3%80%81pre-commit-%E8%A8%AD%E5%AE%9A">三、pre-commit 設定</a></li>
-<li><a href="#Ruff-%E8%A8%AD%E5%AE%9A%E7%AF%87%E5%B0%8F%E7%B5%90">Ruff 設定篇小結</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9ATime-to-Ruff">結語：Time to Ruff</a></li>
-</ol>
-          <div class="read-more">
-            <a href="/ruff/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/5/">

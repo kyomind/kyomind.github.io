@@ -133,6 +133,8 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
+            <a href="/categories/Django-Ninja/">Django Ninja (1)</a>
+          
         </div>
       </li>
     <li class="menu-item">
@@ -167,6 +169,43 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-rest-framework-02/">Django REST framework 教學（二）基本設定與路由</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-01
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 6 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 2 篇。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p>
+<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/1">PR</a>。</p>
+<hr>
+<p>上一篇我們介紹了 Django 和 Django REST framework（以下簡稱 DRF）之間的區別，與它們各司其職的角色定位。</p>
+<p>兩者相輔相成，讓 Django 在這個「前後端分離」的時代，還能佔有一席之地。</p>
+<p>接下來，我們要開始動手實作 API。</p>
+<h3 id="系列：Django-REST-framework-教學"><a href="#系列：Django-REST-framework-教學" class="headerlink" title="系列：Django REST framework 教學"></a>系列：Django REST framework 教學</h3><ul>
+<li><a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">系列文章清單（連載中）</a></li>
+</ul>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的目標：<strong>建立一個 Django API，並確保它正常運行。</strong></p>
+<p>為了達到這個目標，我們需要完成以下三件事：</p>
+<ol>
+<li>安裝 Django REST framework 套件。</li>
+<li>設定 Django 的<code>settings.py</code>，加入 DRF 相關內容。</li>
+<li>實作第一個路由（router）與 API。</li>
+</ol>
+<p>就這麼簡單，讓我們直接開始吧！</p>
+          <div class="read-more">
+            <a href="/django-rest-framework-02/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-30/">30，如何持續寫作——Part 3</a>
         </h1>
@@ -331,37 +370,6 @@
 <p>這篇來就分享一下，我考慮編輯舊文的<strong>三個實際理由。</strong></p>
           <div class="read-more">
             <a href="/weekly-review-29/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-request/">Django HttpRequest 常用屬性介紹</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-04-28
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 4 篇。</p>
-<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p>
-<hr>
-<p>如〈<a href="https://blog.kyomind.tw/django-tutorial/">Django Tutorial：系列介紹與導讀</a>〉所言，這個系列主要是圍繞著「Django API」教學展開的。</p>
-<p>但無論是用 Django 建立全端網站，還是開發 API，Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/">HttpRequest</a>——也就是我們熟悉的<code>request</code>參數——都是必不可少的元素。</p>
-<p><code>HttpRequest</code>封裝了來自前端的 HTTP 請求，而 Django 會將<code>HttpRequest</code>物件自動帶入 view 函式的<strong>第一位置參數</strong>（通常就叫<code>request</code>），讓我們可以直接使用。</p>
-<h2 id="為何需要了解-HttpRequest-物件"><a href="#為何需要了解-HttpRequest-物件" class="headerlink" title="為何需要了解 HttpRequest 物件"></a>為何需要了解 <code>HttpRequest</code> 物件</h2><p>在我剛開始寫 Django 的時候，根本不太清楚<code>HttpRequest</code>具體有哪些屬性。</p>
-<p>通常是看教學或為了實作某個功能而 Google 的時候，看到範例程式碼使用某個屬性，然後才知道這個屬性的存在。比如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&quot;GET&quot;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&quot;POST&quot;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
-
-<p>看到這段，才知道<code>request</code>有一個<code>method</code>屬性。</p>
-<p>這樣學當然可以，但如果一開始就對常用的<code>HttpRequest</code>屬性有<strong>基本了解</strong>，會讓你在學習 Django 的路上<strong>更加踏實</strong>。</p>
-          <div class="read-more">
-            <a href="/django-request/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
