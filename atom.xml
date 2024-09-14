@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-09-13T03:38:16.811Z</updated>
+  <updated>2024-09-14T03:32:29.171Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django Ninja 教學 02：架構 × 章節導覽</title>
+    <link href="https://blog.kyomind.tw/django-ninja-02/"/>
+    <id>https://blog.kyomind.tw/django-ninja-02/</id>
+    <published>2024-09-13T18:28:23.000Z</published>
+    <updated>2024-09-14T03:32:29.171Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p><p>上一篇中，我們講述了系列的整體方向。現在，我將進一步深入，為你詳細介紹<strong>系列的架構與各個章節安排。</strong></p><p>可以說，本文就是整個系列的<strong>藍圖。</strong></p><p>一般而言，架構介紹通常會直接放在第一篇的後半段（如果有的話），但我決定<strong>獨立成一篇。</strong></p><p>原因無他，<strong>我在整個教學架構上花費了相當的心思，希望為讀者提供一個全面的概覽</strong>。這有助於你快速進入狀況，並了解自己目前正在學習主題哪一個部分。</p><p>話不說多，讓我們一一介紹。</p><span id="more"></span><hr><p>本系列共分為八章，<strong>只有第三章有細分小節</strong>——因為內容較多。</p><p>以下是各章節介紹。（各篇名稱與內容仍可能會有小幅調整，但整體架構不變）</p><h2 id="第一章：導讀與-Django-Ninja-介紹"><a href="#第一章：導讀與-Django-Ninja-介紹" class="headerlink" title="第一章：導讀與 Django Ninja 介紹"></a>第一章：導讀與 Django Ninja 介紹</h2><p>開篇介紹本系列的主旨、定位，適合的目標讀者，以及學習 Django Ninja 的理由。</p><p>架構篇中，說明系列的安排與組成、每篇文章的主要內容與學習順序。</p><p>最後為讀者介紹 Django Ninja 與 Django REST Framework 等基本概念，包括彼此的定位與異同。</p><ul><li><strong>卷 1：系列導讀 × 目標讀者</strong></li><li><strong>卷 2：架構 × 章節導覽</strong>（本篇）</li><li><strong>卷 3：Django Ninja 介紹——與 Django REST framework 主要區別</strong></li></ul><h2 id="第二章：範例專案與環境設定"><a href="#第二章：範例專案與環境設定" class="headerlink" title="第二章：範例專案與環境設定"></a>第二章：範例專案與環境設定</h2><p>介紹系列的範例專案——<a href="https://github.com/kyomind/Django-Ninja-Tutorial">Django-Ninja-Tutorial</a>，透過具體的程式碼改動，作為學習過程中的參考。</p><p>範例程式碼是學習新技術的良師益友，也是我的嘔心瀝血之作 😭</p><p>我們也會介紹專案所使用的 Python 開發工具，讓讀者能體驗真實的開發環境。</p><p>最後，我們會一步一步帶領，讓專案能夠在你的本機環境運行。</p><ul><li><strong>卷 4：範例專案介紹</strong></li><li><strong>卷 5：Python 現代開發工具介紹</strong></li><li><strong>卷 6：環境設定 × 如何使用本專案</strong></li></ul><hr><h2 id="第三章：Django-Ninja-基本功"><a href="#第三章：Django-Ninja-基本功" class="headerlink" title="第三章：Django Ninja 基本功"></a>第三章：Django Ninja 基本功</h2><p>Django Ninja 的核心部分，任何一個 API 開發者都需要熟悉的基本功。</p><p>本章總共分成三大部分：<strong>路由、請求與回應</strong>。</p><h3 id="第一節：路由（Routers）"><a href="#第一節：路由（Routers）" class="headerlink" title="第一節：路由（Routers）"></a>第一節：路由（Routers）</h3><p><strong>端點（endpoints）與路由是 API 的起點。</strong></p><p>Django Ninja 的路由設定方式，與傳統 Django 有很大不同。因此，我們將路由放在第一位，作為學習 API 開發的入口。</p><ul><li><strong>卷 7：路由（上）傳統 Django 路由做法（兼章節概論）</strong></li><li><strong>卷 8：路由（下）Django Ninja 路由</strong></li></ul><h3 id="第二節：請求（Request）"><a href="#第二節：請求（Request）" class="headerlink" title="第二節：請求（Request）"></a>第二節：請求（Request）</h3><p>路由之後是 HTTP 請求，講述 Django Ninja 處理請求的三大重點：路徑參數、查詢參數和請求主體（body）。</p><p>其中最重要的是 body，將使用 Django Ninja Schema（即 Pydantic BaseModel）來進行資料接收與驗證。</p><ul><li><strong>卷 9：請求（一）Django Ninja 處理請求概論</strong></li><li><strong>卷 10：請求（二）Path Parameters</strong></li><li><strong>卷 11：請求（三）Query Parameters</strong></li><li><strong>卷 12：請求（四）Request Body 與 Schema 介紹</strong></li></ul><h3 id="第三節：回應（Response）"><a href="#第三節：回應（Response）" class="headerlink" title="第三節：回應（Response）"></a>第三節：回應（Response）</h3><p>請求之後是回應，回應仍需要使用 Schema，<strong>但變化比請求更多。</strong></p><p>本節將介紹回應的基本架構、處理方式、巢狀 Schema，以及 Resolver 方法。</p><ul><li><strong>卷 13：回應（一）Django Ninja 處理回應概論</strong></li><li><strong>卷 14：回應（二）Nested Response</strong></li><li><strong>卷 15：回應（三）為什麼不使用 ModelSchema？—— Django Ninja 與 DRF 的設計理念比較</strong></li><li><strong>卷 16：回應（四）Resolver 方法（類似 DRF 的 SerializerMethodField）</strong></li></ul><hr><h2 id="第四章：API-文件"><a href="#第四章：API-文件" class="headerlink" title="第四章：API 文件"></a>第四章：API 文件</h2><p>掌握了 Django Ninja 如何處理請求與回應後，剩下的另一關鍵就是 API 文件。</p><p>API 文件的<strong>品質與可讀性</strong>對 API 使用者至關重要，本章將介紹 Django Ninja 在<strong>自動化產生 API 文件</strong>中的應用，並分享我認為的一些好的實踐。</p><ul><li><strong>卷 17：API 文件的實踐重點</strong></li><li><strong>卷 18：Pydantic 與 API 文件</strong></li></ul><h2 id="第五章：資料驗證與錯誤處理"><a href="#第五章：資料驗證與錯誤處理" class="headerlink" title="第五章：資料驗證與錯誤處理"></a>第五章：資料驗證與錯誤處理</h2><p>資料驗證和錯誤處理關係到 API 的穩定與可靠。本章探討如何在 Django Ninja 中有效地進行資料驗證和錯誤捕捉，確保 API 的健壯性。</p><ul><li><strong>卷 19：資料驗證</strong></li><li><strong>卷 20：錯誤處理</strong></li></ul><hr><h2 id="第六章：進階功能"><a href="#第六章：進階功能" class="headerlink" title="第六章：進階功能"></a>第六章：進階功能</h2><p>雖說是入門，但我們仍有必要介紹 API 的<strong>常見進階功能</strong>。這些技術將協助你應對大型專案中的典型挑戰。</p><p>本章目標不是逐步引導你完成每個功能的實作，而是聚焦展示它們的<strong>概念與應用場景</strong>。你可以依據這些提示，自行深入學習與應用。</p><ul><li><strong>卷 21：檔案上傳</strong></li><li><strong>卷 22：分頁（Pagination）</strong></li><li><strong>卷 23：過濾（Filtering）</strong></li><li><strong>卷 24：限流（Throttling）</strong></li><li><strong>卷 25：快取（Caching）</strong></li></ul><h2 id="第七章：其他重要事項"><a href="#第七章：其他重要事項" class="headerlink" title="第七章：其他重要事項"></a>第七章：其他重要事項</h2><p>本章將介紹幾個後端專案中不可或缺的主題，雖然它們與 Django Ninja 無直接關聯，但對於後端開發者來說，是必須掌握的技能。</p><ul><li><strong>卷 26：認證（Authentication）</strong></li><li><strong>卷 27：單元測試（一）Test Client 與 pytest Fixtures</strong></li><li><strong>卷 28：單元測試（二）測試函式與覆蓋率</strong></li><li><strong>卷 29：部署——Gunicorn 與容器化</strong></li></ul><h2 id="第八章：系列回顧"><a href="#第八章：系列回顧" class="headerlink" title="第八章：系列回顧"></a>第八章：系列回顧</h2><p>簡單回顧整個系列，分享我在本次鐵人賽的創作心得與感想。</p><ul><li><strong>卷 30：系列回顧與完賽心得</strong></li></ul><hr><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>通過這篇導覽，你已經對整個系列的架構有了清晰的認識。接下來的每一篇文章都會按照這個藍圖，循序漸進地帶領你學習 Django Ninja。</p><p>下一篇，我們將正式介紹 Django Ninja，並與老牌的 Django REST Framework 進行比較，了解兩者在 API 開發的主要功能差異與適用場景。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/5gGprsq.png&quot; alt=&quot;2024 iThome 鐵人賽&quot;&gt;&lt;/p&gt;
+&lt;p&gt;上一篇中，我們講述了系列的整體方向。現在，我將進一步深入，為你詳細介紹&lt;strong&gt;系列的架構與各個章節安排。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以說，本文就是整個系列的&lt;strong&gt;藍圖。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;一般而言，架構介紹通常會直接放在第一篇的後半段（如果有的話），但我決定&lt;strong&gt;獨立成一篇。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;原因無他，&lt;strong&gt;我在整個教學架構上花費了相當的心思，希望為讀者提供一個全面的概覽&lt;/strong&gt;。這有助於你快速進入狀況，並了解自己目前正在學習主題哪一個部分。&lt;/p&gt;
+&lt;p&gt;話不說多，讓我們一一介紹。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/5gGprsq.png" type="image"/>
+    
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
+    
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Django Ninja 教學 01：系列導讀 × 目標讀者</title>
@@ -360,37 +392,6 @@
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
     <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>34，宜蘭二日遊與近況回顧</title>
-    <link href="https://blog.kyomind.tw/weekly-review-34/"/>
-    <id>https://blog.kyomind.tw/weekly-review-34/</id>
-    <published>2024-07-22T03:37:27.000Z</published>
-    <updated>2024-08-03T15:19:49.353Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>七月上旬不慎感冒，不知為何，這回特別嚴重。足足過了近兩星期，才逐漸恢復正常。</p><p>而且，整個七月至今，<strong>狀態都不太好</strong>。不僅是身體，心情也低落，<strong>有一種找不到出口的感覺。</strong></p><p>這樣的心情間接影響了我的寫作士氣，讓我感到心有餘而力不足。</p><p>這星期四、五，和女友去了宜蘭，雖然是一次的短暫旅行，但至少能夠<strong>打破既有的生活節奏，讓自己放鬆一下。</strong></p><p>宜蘭我還算熟悉，畢竟曾在宜蘭工作了 5 年多，想起這段過往，覺得人生真的有很多變化。</p><p>本期結合旅記和近況回顧，篇幅會比以往略長。</p><span id="more"></span><hr><h2 id="第一天：頭城"><a href="#第一天：頭城" class="headerlink" title="第一天：頭城"></a>第一天：頭城</h2><p>頭城的海岸一直是它最迷人的地方，不過這次沒有造訪，原因也很簡單——太熱了。</p><p>七、八月的台灣平地，到處都是頂著 32 度以上的高溫，這種天氣在海邊走路，恐怕會讓自己加更疲憊。</p><p>所以去吃了當地美食，龍記牛肉麵。我可是對牛肉麵十分挑剔之人，這個……還行啦！但不會特地再去。</p><h3 id="巷弄裡的那家書店"><a href="#巷弄裡的那家書店" class="headerlink" title="巷弄裡的那家書店"></a>巷弄裡的那家書店</h3><p>頭城還有一個值得回憶的地方，車站外的頭城文創園區，其中一棟木造建築，是 10 年前的偶像劇《<a href="https://zh.wikipedia.org/zh-tw/%E5%B7%B7%E5%BC%84%E8%A3%A1%E7%9A%84%E9%82%A3%E5%AE%B6%E6%9B%B8%E5%BA%97">巷弄裡的那家書店</a>》中的主要場景。</p><p>男主角失憶後，跑到宜蘭開書店，就在這裡取景（部分場景已拆除）。當時我還在宜蘭工作，所以對這部戲印象深刻，把頭城拍得很美。</p><p>不過劇本身就有點虎頭蛇尾，差強人意。</p><h2 id="第一天：礁溪"><a href="#第一天：礁溪" class="headerlink" title="第一天：礁溪"></a>第一天：礁溪</h2><p>吃完午餐才 1 點，飯店還未開放入住，只能先搭火車到礁溪，找個地方坐坐。</p><p>礁溪，我們都是去「<a href="https://www.facebook.com/gigipsjh/?locale=zh_TW">工藝咖啡</a>」啦！</p><p>老闆是退休老師，上次跟他聊了一下，他說退休後還打算繼續工作，但不知道做什麼，去了職訓局學 C++ 寫遊戲，覺得自己不太適合，後來又做了不少嘗試，最後開了這家咖啡店。</p><p>我心想：「是啊！老闆，你學 C++，那一定會失敗的。如果當初是學 Python 的話——你會更早開這家咖啡店。」</p><h3 id="五峰旗、聖母朝聖地"><a href="#五峰旗、聖母朝聖地" class="headerlink" title="五峰旗、聖母朝聖地"></a>五峰旗、聖母朝聖地</h3><p>我的旅行，總是伴隨著大量的走路，所以，光吃吃喝喝是不夠的！</p><p>Check-in 後稍作休息，還是要<strong>痛苦地開走XD</strong>——真的是滿痛苦的，到達風景區之前，高溫又沒什麼遮蔽，我自己也走到有點懷疑人生。</p><p>上次來五峰旗應該是 5 年前或更久，風景區入口一帶，現在看來更加整潔、商業化，但也失去了一些原始的味道。</p><p>後續的步道可以走挺遠的，但時間和體力都不允許，我們決定走到<a href="https://jiaosi.e-land.gov.tw/cp.aspx?n=64B920AC3F264020&s=BCBC32670055B558">聖母朝聖地</a>就好。</p><hr><h2 id="第二天：蘇澳"><a href="#第二天：蘇澳" class="headerlink" title="第二天：蘇澳"></a>第二天：蘇澳</h2><p>第二天的中餐還是在礁溪解決，然後才搭火車到蘇澳。</p><p>依循第一天的模式，正午 34 度的高溫，還是得找一家咖啡店先待著，誰會這時想不開爬山呢？</p><p>選了「<a href="https://www.facebook.com/lightenCafe/?locale=zh_TW">光覺咖啡</a>」，待到下午 2 點左右。</p><p>其實，中午 12 點或下午 2 點，還不都一樣熱？但一直坐著也不是辦法，頂著酷熱還是決定先出發，前往這次宜蘭行，我最為期待的景點：七星嶺。</p><h3 id="七星嶺步道"><a href="#七星嶺步道" class="headerlink" title="七星嶺步道"></a>七星嶺步道</h3><p><strong>真的要這個時候走嗎？</strong>——我也猶豫了。但考慮到時間，無法等到傍晚。</p><p>所幸，從步道入口到六星觀海的這一段，幾乎都有樹蔭，天氣雖熱，走起來還算舒服。不過想到 1300 餘階的階梯，這個時候走，還是有點瘋狂。</p><p>七星嶺真的是一個非常推薦的地方，步道自帶遊戲中常見的「成就系統」，每走一段，就會有一個能眺望遠處美景的<strong>休息平台</strong>，它們分別是：</p><ol><li>一星觀泉。</li><li>二星觀澳。</li><li>三星觀山。</li><li>四星觀樹。</li><li>五星觀港。</li><li>六星觀海。</li></ol><p>而且，即使是往同一個方向看，不同的高度有不同的視野，這跟人生非常相似。</p><p>話說回來，能夠想到這些名堂，我深深佩服設計者的想像力。</p><p>我們最終目的地是整個步道的最高點——<strong>星嶺公園</strong>。</p><h3 id="星嶺公園"><a href="#星嶺公園" class="headerlink" title="星嶺公園"></a>星嶺公園</h3><p>星嶺公園距離六星觀海尚有約 1.1 公里，主要是碎石路，先下後上，走起來有點辛苦。我本來想放棄的XD，還好女友堅持，才有幸拍到這般美景。</p><p><img src="https://i.imgur.com/y7enzCU.jpeg" alt="從星嶺公園眺望蘭陽平原"><span class="cap">從星嶺公園眺望蘭陽平原</span></p><p>當天的視野相當不錯，我在網路上找到的其它照片，遠處的海平面，都沒有這麼清晰。</p><p>僅憑這一張照片，我覺得這次宜蘭行，值得了。</p><p>很想挑戰 <a href="/weekly-review-33/#%E4%BA%8C%E3%80%81%E6%88%91%E6%9C%80%E5%96%9C%E6%AD%A1%E7%9A%84-Tony-Huang-%E5%BD%B1%E7%89%87">Tony Huang 的 31 公里</a>的<strong>精簡版</strong>，不過需要等到天氣稍涼一點。</p><hr><h2 id="一些感想與近況回顧"><a href="#一些感想與近況回顧" class="headerlink" title="一些感想與近況回顧"></a>一些感想與近況回顧</h2><p>宜蘭行確實收獲不少，旅途中，我不斷在思考一些人生問題。</p><blockquote><p>如果一直待在宜蘭當公務員，或者乾脆就是一直當公務員，現在的我會如何？</p></blockquote><p>這實在難以想像。</p><p>可以說，轉職前後的我，<strong>在某些部分，幾乎是完全不同的兩個人。</strong></p><p>不同的職業有不同的挑戰、不同的煩惱。公職有體制保護，同時也有體制束縛，不一定適合每個人——至少不適合我。</p><h2 id="AI-時代的生存指南"><a href="#AI-時代的生存指南" class="headerlink" title="AI 時代的生存指南"></a>AI 時代的生存指南</h2><p>我曾寫過兩篇關於 AI 思考的文章：</p><ol><li><a href="/weekly-review-17/">17，AI 時代的生存指南（一）我對 AI 工具的投入與觀望</a></li><li><a href="/weekly-review-19/">19，AI 時代的生存指南（二）數位斷捨離</a></li></ol><p>現在看來，這兩篇的切入方向，還是相對合理的。</p><p>沒有繼續再寫第 3、4 篇，一個可能的原因是：AI 依舊對我帶來了<strong>比較強烈的焦慮感</strong>。</p><p>雖然我必須說，至少就我而言，<strong>很難回到沒有 AI 輔助的時代——我認為軟體工程師是最需要 AI 輔助、最應該<a href="/good-vscode-extensions/#AI-%E8%BC%94%E5%8A%A9%E5%AF%AB-Code">與 AI 共舞</a>的職業，沒有之一。</strong></p><hr><h2 id="未完成與小展望"><a href="#未完成與小展望" class="headerlink" title="未完成與小展望"></a>未完成與小展望</h2><p>我只能猜想，文章開頭提到的「找不到出口的感覺」，可能在於，我還沒有真正找到，能讓自己在這個不斷變化的 AI 時代，<strong>能自信立足的生存之道。</strong></p><p>接下來，我的目標是尋找這個出口，至少要看見從出口透出的微光。</p><p>這不僅僅是一個職業上的挑戰，更是對自我價值和人生方向的重新審視。</p><p>旅行是一種尋找的方法，寫作也是，還有更多的閱讀和學習。當然，這些都有一個共同元素——<strong>行動</strong>。</p><p>試著找到它！是我接下來的重要目標，甚至是唯一的目標。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;七月上旬不慎感冒，不知為何，這回特別嚴重。足足過了近兩星期，才逐漸恢復正常。&lt;/p&gt;
-&lt;p&gt;而且，整個七月至今，&lt;strong&gt;狀態都不太好&lt;/strong&gt;。不僅是身體，心情也低落，&lt;strong&gt;有一種找不到出口的感覺。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;這樣的心情間接影響了我的寫作士氣，讓我感到心有餘而力不足。&lt;/p&gt;
-&lt;p&gt;這星期四、五，和女友去了宜蘭，雖然是一次的短暫旅行，但至少能夠&lt;strong&gt;打破既有的生活節奏，讓自己放鬆一下。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;宜蘭我還算熟悉，畢竟曾在宜蘭工作了 5 年多，想起這段過往，覺得人生真的有很多變化。&lt;/p&gt;
-&lt;p&gt;本期結合旅記和近況回顧，篇幅會比以往略長。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
-    <category term="旅行" scheme="https://blog.kyomind.tw/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
