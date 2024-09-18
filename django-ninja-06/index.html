@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-18T04:55:04+08:00" />
+  <meta property="article:modified_time" content="2024-09-18T05:00:48+08:00" />
 
 
 
@@ -235,7 +235,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry --version</span><br><span class="line">Poetry (version 1.4.0)</span><br></pre></td></tr></table></figure>
 
 <h3 id="Windows-安裝與設定-Poetry"><a href="#Windows-安裝與設定-Poetry" class="headerlink" title="Windows 安裝與設定 Poetry"></a>Windows 安裝與設定 Poetry</h3><p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html">Poetry 設定教學</a>，我覺得寫得很清楚。</p>
-<h3 id="修改-Poetry-config，改用-venv虛擬環境"><a href="#修改-Poetry-config，改用-venv虛擬環境" class="headerlink" title="修改 Poetry config，改用.venv虛擬環境"></a><strong>修改 Poetry <code>config</code>，改用<code>.venv</code>虛擬環境</strong></h3><p>預設為<code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！</p>
+<h3 id="修改-Poetry-config，改用-venv虛擬環境"><a href="#修改-Poetry-config，改用-venv虛擬環境" class="headerlink" title="修改 Poetry config，改用.venv虛擬環境"></a>修改 Poetry <code>config</code>，改用<code>.venv</code>虛擬環境</h3><p>預設為<code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！</p>
 <p>改成<code>true</code>以後，<strong>則直接在專案根目錄下建立虛擬環境，且名稱固定為</strong><code>.venv</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.<span class="keyword">in</span>-project true</span><br></pre></td></tr></table></figure>
 
