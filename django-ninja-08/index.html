@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 08：路由（下）Django Ninja 路由">
+  <meta property="og:title" content="Django Ninja 教學 08：路由（下）Django Ninja 路由"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
+            
+
+  <meta property="article:modified_time" content="2024-09-19T16:58:22+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-20T02:04:07+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-08/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 08：路由（下）Django Ninja 路由 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja/">Django Ninja (8)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 08：路由（下）Django Ninja 路由
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-20
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E5%B0%88%E6%A1%88%E5%8B%95%E6%85%8B"><span class="toc-text">範例專案動態</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%B7%AF%E7%94%B1%E6%A6%82%E8%BF%B0"><span class="toc-text">Django Ninja 路由概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%9C%89%E7%B5%84%E7%B9%94%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-Router-%E7%89%A9%E4%BB%B6"><span class="toc-text">更有組織的做法：使用 Router 物件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B%E8%AE%8A%E5%8C%96"><span class="toc-text">專案架構變化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%B7%AF%E7%94%B1%E5%AF%A6%E4%BD%9C"><span class="toc-text">Django Ninja 路由實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E6%94%B6%E5%B0%BE%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">本節收尾與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>上一篇文章中，我們介紹了 Django 傳統的路由設定方式。</p>
+<p>如前所述，雖然有一個「路由清單」確實不錯。但隨著專案規模的擴大，<strong>不斷來回切換</strong><code>urls.py</code>和<code>views.py</code>將大幅增加開發者的認知負擔——不僅增加開發時間，還容易導致錯誤。</p>
+<p>Django Ninja 採用了一種<strong>更現代化</strong>的路由設計，結合了 Flask 和 FastAPI 的設計理念。不僅簡化了路由的定義，還提升了程式碼的可讀性，讓路由與 view 函式<strong>緊密結合</strong>。</p>
+<h2 id="範例專案動態"><a href="#範例專案動態" class="headerlink" title="範例專案動態"></a>範例專案動態</h2><p>本文關於路由設定的程式碼改動，可以參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/1">這個 PR</a>（<strong>Pull Request</strong>）。</p>
+<p>範例專案合併了本文的 PR 後，已經正式成為一個「<strong>API 專案</strong>」，不過它<strong>目前（指這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/commit/396e06338d615d3ec74e7c5bf871b85c9a06f0ec">commit</a> 狀態）尚無法正常運作</strong>，因為我們還沒有完善 view 函式的基本功能。</p>
+<p>你可以一步步地跟著每一篇的 PR，來學習當次的新內容。這也是我為文章建立 PR 的用意所在。</p>
+<span id="more"></span>
+
+<hr>
+<p>現在，我們開始介紹 Django Ninja 的路由設定。</p>
+<h2 id="Django-Ninja-路由概述"><a href="#Django-Ninja-路由概述" class="headerlink" title="Django Ninja 路由概述"></a>Django Ninja 路由概述</h2><p>Django Ninja 使用 Python 裝飾器（<a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-decorator-tutorial/">decorator</a>）來定義路由和 HTTP 方法。這種方式將路由與 view 函式緊密結合，大大提高了程式碼的可讀性。</p>
+<p>熟悉 Python 的都知道，其實這種「<strong>使用裝飾器定義路由</strong>」的方式，最早來自 <a target="_blank" rel="noopener" href="https://flask.palletsprojects.com/en/3.0.x/">Flask</a>。作為一個輕量級框架，Flask 率先引入了這種<strong>簡潔優雅的設計</strong>，堪稱<strong>典範級的創舉</strong>。</p>
+<p>這個設計後續被其他框架採用，比如 FastAPI 和本文的 Django Ninja，都繼承了這種靈活的路由定義模式。</p>
+<p>在 Flask 中，開發者可以這樣定義路由：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello, Flask!&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>Django Ninja 也採用了<strong>類似的概念</strong>，只是在語法上更融入 Django 生態，並結合了型別提示（type hint）和 Pydantic 的資料驗證功能，讓 API 開發變得更加現代化。</p>
+<p>以下是 Django Ninja 的一個簡單範例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.get(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, Django Ninja!&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Flask 與 Django Ninja 這兩種寫法，與其說非常相似，不如說一模一樣😎</p>
+<hr>
+<h2 id="更有組織的做法：使用-Router-物件"><a href="#更有組織的做法：使用-Router-物件" class="headerlink" title="更有組織的做法：使用 Router 物件"></a>更有組織的做法：使用 Router 物件</h2><p>雖然直接使用上述範例中的<code>NinjaAPI</code>來定義路由簡單而直觀。但實際工作中，我們更推薦使用<code>Router</code>物件（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/">官方文件</a>）來管理不同 Django app 的路由。</p>
+<p>這和 Django 傳統做法中「區分一級與二級路由」的基本精神相符。不僅讓專案的架構保持清晰，還能讓每個 app 的邏輯獨立。</p>
+<p>在 Django Ninja 中，<code>Router</code>物件提供了一種<strong>模組化的路由設定方式</strong>，讓每個 Django app 可以管理自己的路由，並在專案層級的<code>api.py</code><strong>統一整合起來</strong>——也就是取代傳統的<code>urls.py</code>功能。</p>
+<p>以下程式碼範例，我們都會以<code>Router</code>物件來實作。</p>
+<hr>
+<h2 id="專案架構變化"><a href="#專案架構變化" class="headerlink" title="專案架構變化"></a>專案架構變化</h2><p>先來看看採用 Django Ninja 以後，傳統 Django 專案的結構會有<strong>怎麼樣的變化</strong>。</p>
+<h3 id="Django-傳統路由結構"><a href="#Django-傳統路由結構" class="headerlink" title="Django 傳統路由結構"></a>Django 傳統路由結構</h3><p>以範例專案為例，這是傳統 Django 的典型結構：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">├── NinjaForum</span><br><span class="line">│   ├── urls.py  <span class="comment"># 專案一級路由</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── post</span><br><span class="line">│   ├── urls.py  <span class="comment"># app 二級路由</span></span><br><span class="line">│   ├── view.py  <span class="comment"># 放置 app 所屬 view 函式的地方</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── user</span><br><span class="line">│   ├── urls.py  <span class="comment"># app 二級路由</span></span><br><span class="line">│   ├── view.py  <span class="comment"># 放置 app 所屬 view 函式的地方</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── ...</span><br></pre></td></tr></table></figure>
+
+<p>Django app 層級的<code>urls.py</code>負責定義所有 app 內的路由，然後再由專案的<code>urls.py</code>進行統合。井然有序，權責分明。</p>
+<h3 id="Django-Ninja-路由結構"><a href="#Django-Ninja-路由結構" class="headerlink" title="Django Ninja 路由結構"></a>Django Ninja 路由結構</h3><p>在採用 Django Ninja 後，專案結構會有一些變化。以下是一個典型的 Django Ninja 專案結構：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">├── NinjaForum</span><br><span class="line">│   ├── urls.py  <span class="comment"># 專案「零級」路由</span></span><br><span class="line">│   ├── api.py   <span class="comment"># 專案一級路由</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── post</span><br><span class="line">│   ├── api.py   <span class="comment"># post app 的路由 + view 函式</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── user</span><br><span class="line">│   ├── api.py   <span class="comment"># user app 的路由 + view 函式</span></span><br><span class="line">│   ├── ...</span><br><span class="line">├── ...</span><br></pre></td></tr></table></figure>
+
+<p>在這個結構中，每個 Django app 都有一個<code>api.py</code>，用於<strong>定義該 app 的所有 API 路由和 view 函式</strong>，取代了傳統 Django 中的<code>urls.py</code>和<code>views.py</code>的功能。</p>
+<p>專案級別的<code>api.py</code>則負責整合所有 Django app 的 API。</p>
+<p>此外，專案的<code>urls.py</code><strong>仍然是必要的</strong>，它負責將 Django Ninja 的 API 路由<strong>再整合</strong>到 Django 的 URL 設定中。同時，還可以化身為「零級」路由，為所有 API 加上<strong>全專案統一的路由前綴</strong>，比如<code>/api/</code>。</p>
+<hr>
+<h2 id="Django-Ninja-路由實作"><a href="#Django-Ninja-路由實作" class="headerlink" title="Django Ninja 路由實作"></a>Django Ninja 路由實作</h2><p>了解了 Django Ninja 的路由結構，我們直接在範例專案的兩個 Django app 分別實作「取得所有使用者」和「取得文章列表」兩個 API。</p>
+<p>我們會在接下來的數篇文章中，循序漸進地完善這些 API。<strong>目前只是雛形</strong>，先把焦點放在路由設定上。</p>
+<h3 id="一、建立二級路由"><a href="#一、建立二級路由" class="headerlink" title="一、建立二級路由"></a>一、建立二級路由</h3><p>在 user app 中建立一個<code>api.py</code>， 內容為：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># user/api.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Router</span><br><span class="line"></span><br><span class="line">router = Router()</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_users</span>(<span class="params">request</span>):</span><br><span class="line">    users = User.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> users</span><br></pre></td></tr></table></figure>
+
+<p>同理，我們在<code>post/api.py</code>中建立類似的路由與 view 函式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/api.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Router</span><br><span class="line"></span><br><span class="line">router = Router()</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request</span>):</span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
+
+<p>這樣，我們就為 user 和 post 兩個 app 分別建立了 API。接下來，我們需要將這些路由整合到<strong>專案級別</strong>的 API 路由中。</p>
+<h3 id="二、建立一級路由"><a href="#二、建立一級路由" class="headerlink" title="二、建立一級路由"></a>二、建立一級路由</h3><p>在 Django 專案目錄（指 NinjaForum 目錄）底下，我們也需要建立一個<code>api.py</code>。它將作為我們的<strong>一級路由</strong>，整合所有 app 的 API。以下是這個<code>api.py</code>的內容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/api.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;/users/&#x27;</span>, router=<span class="string">&#x27;user.api.router&#x27;</span>)</span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;/posts/&#x27;</span>, router=<span class="string">&#x27;post.api.router&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>值得留意的是，這裡的路由整合有<strong>兩種寫法</strong>，上面我習慣使用的。</p>
+<p>另一種寫法是直接 import <code>router</code>物件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> user.api <span class="keyword">import</span> router <span class="keyword">as</span> user_router</span><br><span class="line"><span class="keyword">from</span> post.api <span class="keyword">import</span> router <span class="keyword">as</span> post_router</span><br><span class="line"></span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;/users/&#x27;</span>, router=user_router)</span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;/posts/&#x27;</span>, router=post_router)</span><br></pre></td></tr></table></figure>
+
+<p>這兩種方法在功能上是等效的，選擇哪種主要取決於個人偏好和專案的組織方式。</p>
+<h3 id="三、專案-urls-py"><a href="#三、專案-urls-py" class="headerlink" title="三、專案 urls.py"></a>三、專案 <code>urls.py</code></h3><p>在 Django Ninja 中，專案層級的<code>urls.py</code>化身為連接 Django 和 Django Ninja API 的<strong>橋梁</strong>。</p>
+<p>在專案<code>urls.py</code>中，我們還能再定義<strong>全專案共用的路由前綴</strong>。長這樣：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from django.urls import path</span><br><span class="line"></span><br><span class="line">from NinjaForum.api import api</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;api/&#x27;</span>, api.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>這裡定義了一個專案路由前綴——<code>/api/</code>。</p>
+<p>如此一來，「取得所有文章」的 API 端點將會是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/api/posts/</span><br></pre></td></tr></table></figure>
+
+<p>當然，如果你不需要額外的路由前綴，也可以直接省略：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, api.urls),  <span class="comment"># 省略前綴</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>至此，我們完成了 Django Ninja 的路由設定。</p>
+<p>這樣的結構不僅保持了 Django 原有的模組化設計，還為我們的 API 開發提供了更大的靈活性。</p>
+<hr>
+<h2 id="本節收尾與下一步"><a href="#本節收尾與下一步" class="headerlink" title="本節收尾與下一步"></a>本節收尾與下一步</h2><p>在第一節中，我們學習了如何使用 Django Ninja 定義路由，並了解 Django 傳統路由與 Django Ninja 路由的差異。</p>
+<p>Django Ninja 的路由做法不僅讓程式碼更具可讀性，還保持了專案的清晰結構，改善了 Django 傳統路由的一些缺點。</p>
+<p>下一篇，我們將進入 Django Ninja API 的核心部分——view 函式。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/django-ninja-07/">
+        <span class="next-text nav-default">Django Ninja 教學 07：路由（上）傳統 Django 路由做法（兼章節概論）</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 07：路由（上）傳統 Django 路由做法（兼章節概論）</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">8</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
