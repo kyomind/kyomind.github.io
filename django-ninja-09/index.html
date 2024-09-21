@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）">
+  <meta property="og:title" content="Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。">
+  <meta property="og:description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
+            
+
+  <meta property="article:modified_time" content="2024-09-21T03:19:59+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-21T02:42:13+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-09/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs） - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja/">Django Ninja (9)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-21
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E5%B0%8E%E8%A6%BD"><span class="toc-text">本節導覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6"><span class="toc-text">官方文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81FBV-%E7%9A%84%E5%84%AA%E9%BB%9E"><span class="toc-text">一、FBV 的優點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Django-Ninja-%E5%B0%8D-HTTP-%E8%AB%8B%E6%B1%82%E7%9A%84%E8%99%95%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-text">二、Django Ninja 對 HTTP 請求的處理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Django-Ninja-%E8%88%87-Type-Hints-%E7%9A%84%E7%B7%8A%E5%AF%86%E7%B5%90%E5%90%88"><span class="toc-text">三、Django Ninja 與 Type Hints 的緊密結合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>歡迎來到第三章第二節！</p>
+<p>作為 API 的核心邏輯實現，<strong>view 函式</strong>無疑是 Django Ninja API 的靈魂所在。</p>
+<p>Django Ninja 和 FastAPI、Flask 一樣，都是以 Function-Based Views（<strong>以下簡稱 FBVs</strong>）為主。所以它的學習重點，<strong>幾乎都繞圍在 view 函式的 input 和 output。</strong></p>
+<p>換句話說，整個 Django Ninja 框架的能力，<strong>構成了 view 函式的這些關鍵部分</strong>，包括但不限於：</p>
+<ol>
+<li>處理 HTTP 請求的參數與 body。</li>
+<li>處理 HTTP 回應內容的序列化與格式化。</li>
+<li>資料驗證與錯誤處理。</li>
+</ol>
+<p>它們共同構成了 Django Ninja 的主要功能。</p>
+<p>本節和下一節，將集中討論上述 3 點中的前兩點——請求與回應。至於第三點，將留到第五章再行介紹。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="本節導覽"><a href="#本節導覽" class="headerlink" title="本節導覽"></a>本節導覽</h2><p>繼上一節的「路由」後，本節將探討 Django Ninja <strong>如何處理 HTTP 請求</strong>——如何解析 path、URL 查詢參數和 body。</p>
+<p>本節一共有 4 篇：</p>
+<ul>
+<li>卷 9：請求（一）Django Ninja 處理請求概論（兼論 FBVs）</li>
+<li>卷 10：請求（二）Path Parameters</li>
+<li>卷 11：請求（三）Query Parameters</li>
+<li>卷 12：請求（四）Request Body 與 Schema 介紹</li>
+</ul>
+<p>此外，因為 view 函式處理請求功能，已涉及 Django Ninja 如何使用 type hints 來驗證請求資料。我們的範例程式碼會<strong>開始加上 Python 型別提示</strong>。</p>
+<p>Type hints 的語法以 Python 3.12 為準。</p>
+<h2 id="官方文件"><a href="#官方文件" class="headerlink" title="官方文件"></a>官方文件</h2><p>本系列的寫作不時會參考「<a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja 官方文件</a>」，尤其是架構的呈現。</p>
+<p>但文件畢竟是給<strong>全體</strong>開發者看的，<strong>並沒有充分考慮到學習的順序。</strong></p>
+<p>而本列系主要面向<strong>入門者</strong>，所以我們會更加注重實際操作與入門者的需求，並適時補充一些背景知識，<strong>確保學習曲線能相對平緩</strong>。</p>
+<p>此外，就框架本身，我們也會提供更多實例和解釋，讓新概念更好理解和掌握。</p>
+<p>但無論如何，官方文件仍是你在使用 Django Ninja 時，需要時時參考的內容——雖然它寫得比 Django 或 Django REST framework 的文件，相對「簡單」很多！</p>
+<hr>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文作為第二節的概論，目標是讓你對 Django Ninja 的 view 函式與它如何處理 HTTP 請求<strong>有基本的認識</strong>。</p>
+<p>我們將透過以下三個重點來讓你逐步熟悉：</p>
+<ol>
+<li>FBVs 的優點。</li>
+<li>Django Ninja 對 HTTP 請求的處理流程。</li>
+<li>Django Ninja 與 Type Hints 的緊密結合。</li>
+</ol>
+<p>話不說多，我們直接開始。</p>
+<hr>
+<p>Class-based views (CBVs) 和 FBVs 都是實現 <a target="_blank" rel="noopener" href="https://zoejoyuliao.medium.com/%E6%AF%94%E8%BC%83-mvc-%E8%88%87-django-%E7%9A%84-mtv-6c93ea9484fc">Django MTV 架構</a> 中的 <strong>Views</strong> 手段，各有其適用場景。</p>
+<p>CBVs 有<strong>重用程式碼</strong>優勢，適合大型專案。而 FBVs 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p>
+<p>兩者的比較，可參考這篇〈<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">Day27 : CBV vs. FBV</a>〉。</p>
+<p>因為 Django Ninja 採 FBVs，本文只探討 FBVs 的優點。</p>
+<h2 id="一、FBV-的優點"><a href="#一、FBV-的優點" class="headerlink" title="一、FBV 的優點"></a>一、FBV 的優點</h2><p>FBVs 是 Django Ninja 採用的 view 形式。與 CBVs 相比，FBVs 更加簡潔、靈活，能夠讓開發者輕鬆編寫出 API 邏輯而<strong>不需要了解太多背景知識</strong>，比如「如何正確覆寫某個 CBV 屬性」。</p>
+<h3 id="簡潔與靈活"><a href="#簡潔與靈活" class="headerlink" title="簡潔與靈活"></a>簡潔與靈活</h3><p>FBVs <strong>不需要繼承或覆寫</strong>類別方法，所有的邏輯都集中在一個函式中。</p>
+<p>這使得寫作和維護程式碼更加直觀。</p>
+<p>由於 FBVs 本質是個函式，它可以更靈活地應用各種邏輯和條件，開發者能<strong>在單一函式中完全控制整個請求的處理流程</strong>，而<strong>不需要考慮類別的結構或繼承關係</strong>。</p>
+<h3 id="容易-Debug"><a href="#容易-Debug" class="headerlink" title="容易 Debug"></a>容易 Debug</h3><p>FBVs 的程式碼相對直觀，對於初學者來說，閱讀、理解起來更加容易。發生錯誤時，你可以<strong>快速定位問題</strong>，這是 CBVs 不易達到的便利性。</p>
+<h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p>Django 是個功能全面的框架，但也常被批評為「笨重」。<strong>FBVs 在一定程度上緩解了這種笨重感</strong>。</p>
+<p>試想，一個剛接觸 Django 的新手，在理解完各種框架的環境設定後，還要深入 CBVs 的世界，是否太過沉重？</p>
+<p>總之，如果你問我，我絕對更偏好 FBVs——而且「<strong>輕量化</strong>」是現代開發的趨勢。</p>
+<hr>
+<h2 id="二、Django-Ninja-對-HTTP-請求的處理流程"><a href="#二、Django-Ninja-對-HTTP-請求的處理流程" class="headerlink" title="二、Django Ninja 對 HTTP 請求的處理流程"></a>二、Django Ninja 對 HTTP 請求的處理流程</h2><p>Django Ninja 對「請求」的處理可以分為幾個關鍵步驟：</p>
+<ol>
+<li><strong>路由配對</strong>：當請求進來時，框架首先會將來源 URL 與定義的路徑規則（端點）進行配對。若配對成功，則將 HTTP 請求與相關參數傳遞給 view 函式。</li>
+<li><strong>參數解析</strong>：從 URL 中提取<strong>路徑參數</strong>（<strong>path parameters</strong>）和<strong>查詢參數</strong>（<strong>query parameters</strong>），將它們轉換為 view 函式的「<strong>引數</strong>」（arguments）。根據函式的 type hints 自動進行型別轉換和驗證。</li>
+<li><strong>Request body 處理</strong>：對於 POST 或 PUT 等帶有 body 的請求，Django Ninja 讓開發者使用 Schema（Pydantic BaseModel）定義 body 資料模型，並自動將傳入的資料對應到這些模型。</li>
+</ol>
+<p>上述第 1 點已在本章第一節詳細解說。</p>
+<p>第 2 和第 3 點則是本節共 4 篇文章的主要內容。</p>
+<hr>
+<h2 id="三、Django-Ninja-與-Type-Hints-的緊密結合"><a href="#三、Django-Ninja-與-Type-Hints-的緊密結合" class="headerlink" title="三、Django Ninja 與 Type Hints 的緊密結合"></a>三、Django Ninja 與 Type Hints 的緊密結合</h2><p>Django Ninja 非常依賴 Python 的 type hints 來處理 HTTP 請求中的資料。</p>
+<p>並透過 Pydantic 實現了<strong>自動資料驗證</strong>和<strong>類別轉換</strong>，減少了開發者手動檢查和轉換資料的負擔。</p>
+<p>例如以下程式碼：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params"><span class="string">&quot;/posts/&#123;post_id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_post</span>(<span class="params">request, post_id: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;post_id&quot;</span>: post_id&#125;</span><br></pre></td></tr></table></figure>
+
+<p>當<code>post_id</code>參數被標記為<code>int</code>時，Django Ninja 會進行型別檢查。如果傳入的參數無法轉換為<code>int</code>，框架會直接返回狀態碼為 422 的 HTTP 回應。</p>
+<p>換言之，如果你將<code>post_id</code>標記為<code>str</code>，則 Django Ninja 會自動將<code>post_id</code>轉換為字串。</p>
+<p>還記得剛開始接觸 Django Ninja時，我非常驚嘆竟然可以充分運用 Python type hints 到這般程度，讓它<strong>不僅僅是為了型別安全而服務，而是融入到整個 API 開發流程中</strong>。</p>
+<hr>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>接下來，我們將深入探討 Django Ninja 處理請求的<strong>具體細節</strong>。</p>
+<p>下一篇將聚焦於<strong>路徑參數</strong>（<strong>path parameters</strong>），並探討如何與 Django 原生的 <strong>path converters</strong> 搭配使用。敬請期待！</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/django-ninja-08/">
+        <span class="next-text nav-default">Django Ninja 教學 08：路由（下）Django Ninja 路由</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 08：路由（下）Django Ninja 路由</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">9</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

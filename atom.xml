@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-09-20T00:56:05.784Z</updated>
+  <updated>2024-09-21T03:19:59.511Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）</title>
+    <link href="https://blog.kyomind.tw/django-ninja-09/"/>
+    <id>https://blog.kyomind.tw/django-ninja-09/</id>
+    <published>2024-09-21T02:42:13.000Z</published>
+    <updated>2024-09-21T03:19:59.511Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p><p>歡迎來到第三章第二節！</p><p>作為 API 的核心邏輯實現，<strong>view 函式</strong>無疑是 Django Ninja API 的靈魂所在。</p><p>Django Ninja 和 FastAPI、Flask 一樣，都是以 Function-Based Views（<strong>以下簡稱 FBVs</strong>）為主。所以它的學習重點，<strong>幾乎都繞圍在 view 函式的 input 和 output。</strong></p><p>換句話說，整個 Django Ninja 框架的能力，<strong>構成了 view 函式的這些關鍵部分</strong>，包括但不限於：</p><ol><li>處理 HTTP 請求的參數與 body。</li><li>處理 HTTP 回應內容的序列化與格式化。</li><li>資料驗證與錯誤處理。</li></ol><p>它們共同構成了 Django Ninja 的主要功能。</p><p>本節和下一節，將集中討論上述 3 點中的前兩點——請求與回應。至於第三點，將留到第五章再行介紹。</p><span id="more"></span><hr><h2 id="本節導覽"><a href="#本節導覽" class="headerlink" title="本節導覽"></a>本節導覽</h2><p>繼上一節的「路由」後，本節將探討 Django Ninja <strong>如何處理 HTTP 請求</strong>——如何解析 path、URL 查詢參數和 body。</p><p>本節一共有 4 篇：</p><ul><li>卷 9：請求（一）Django Ninja 處理請求概論（兼論 FBVs）</li><li>卷 10：請求（二）Path Parameters</li><li>卷 11：請求（三）Query Parameters</li><li>卷 12：請求（四）Request Body 與 Schema 介紹</li></ul><p>此外，因為 view 函式處理請求功能，已涉及 Django Ninja 如何使用 type hints 來驗證請求資料。我們的範例程式碼會<strong>開始加上 Python 型別提示</strong>。</p><p>Type hints 的語法以 Python 3.12 為準。</p><h2 id="官方文件"><a href="#官方文件" class="headerlink" title="官方文件"></a>官方文件</h2><p>本系列的寫作不時會參考「<a href="https://django-ninja.dev/">Django Ninja 官方文件</a>」，尤其是架構的呈現。</p><p>但文件畢竟是給<strong>全體</strong>開發者看的，<strong>並沒有充分考慮到學習的順序。</strong></p><p>而本列系主要面向<strong>入門者</strong>，所以我們會更加注重實際操作與入門者的需求，並適時補充一些背景知識，<strong>確保學習曲線能相對平緩</strong>。</p><p>此外，就框架本身，我們也會提供更多實例和解釋，讓新概念更好理解和掌握。</p><p>但無論如何，官方文件仍是你在使用 Django Ninja 時，需要時時參考的內容——雖然它寫得比 Django 或 Django REST framework 的文件，相對「簡單」很多！</p><hr><h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文作為第二節的概論，目標是讓你對 Django Ninja 的 view 函式與它如何處理 HTTP 請求<strong>有基本的認識</strong>。</p><p>我們將透過以下三個重點來讓你逐步熟悉：</p><ol><li>FBVs 的優點。</li><li>Django Ninja 對 HTTP 請求的處理流程。</li><li>Django Ninja 與 Type Hints 的緊密結合。</li></ol><p>話不說多，我們直接開始。</p><hr><p>Class-based views (CBVs) 和 FBVs 都是實現 <a href="https://zoejoyuliao.medium.com/%E6%AF%94%E8%BC%83-mvc-%E8%88%87-django-%E7%9A%84-mtv-6c93ea9484fc">Django MTV 架構</a> 中的 <strong>Views</strong> 手段，各有其適用場景。</p><p>CBVs 有<strong>重用程式碼</strong>優勢，適合大型專案。而 FBVs 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p><p>兩者的比較，可參考這篇〈<a href="https://ithelp.ithome.com.tw/articles/10205779">Day27 : CBV vs. FBV</a>〉。</p><p>因為 Django Ninja 採 FBVs，本文只探討 FBVs 的優點。</p><h2 id="一、FBV-的優點"><a href="#一、FBV-的優點" class="headerlink" title="一、FBV 的優點"></a>一、FBV 的優點</h2><p>FBVs 是 Django Ninja 採用的 view 形式。與 CBVs 相比，FBVs 更加簡潔、靈活，能夠讓開發者輕鬆編寫出 API 邏輯而<strong>不需要了解太多背景知識</strong>，比如「如何正確覆寫某個 CBV 屬性」。</p><h3 id="簡潔與靈活"><a href="#簡潔與靈活" class="headerlink" title="簡潔與靈活"></a>簡潔與靈活</h3><p>FBVs <strong>不需要繼承或覆寫</strong>類別方法，所有的邏輯都集中在一個函式中。</p><p>這使得寫作和維護程式碼更加直觀。</p><p>由於 FBVs 本質是個函式，它可以更靈活地應用各種邏輯和條件，開發者能<strong>在單一函式中完全控制整個請求的處理流程</strong>，而<strong>不需要考慮類別的結構或繼承關係</strong>。</p><h3 id="容易-Debug"><a href="#容易-Debug" class="headerlink" title="容易 Debug"></a>容易 Debug</h3><p>FBVs 的程式碼相對直觀，對於初學者來說，閱讀、理解起來更加容易。發生錯誤時，你可以<strong>快速定位問題</strong>，這是 CBVs 不易達到的便利性。</p><h3 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h3><p>Django 是個功能全面的框架，但也常被批評為「笨重」。<strong>FBVs 在一定程度上緩解了這種笨重感</strong>。</p><p>試想，一個剛接觸 Django 的新手，在理解完各種框架的環境設定後，還要深入 CBVs 的世界，是否太過沉重？</p><p>總之，如果你問我，我絕對更偏好 FBVs——而且「<strong>輕量化</strong>」是現代開發的趨勢。</p><hr><h2 id="二、Django-Ninja-對-HTTP-請求的處理流程"><a href="#二、Django-Ninja-對-HTTP-請求的處理流程" class="headerlink" title="二、Django Ninja 對 HTTP 請求的處理流程"></a>二、Django Ninja 對 HTTP 請求的處理流程</h2><p>Django Ninja 對「請求」的處理可以分為幾個關鍵步驟：</p><ol><li><strong>路由配對</strong>：當請求進來時，框架首先會將來源 URL 與定義的路徑規則（端點）進行配對。若配對成功，則將 HTTP 請求與相關參數傳遞給 view 函式。</li><li><strong>參數解析</strong>：從 URL 中提取<strong>路徑參數</strong>（<strong>path parameters</strong>）和<strong>查詢參數</strong>（<strong>query parameters</strong>），將它們轉換為 view 函式的「<strong>引數</strong>」（arguments）。根據函式的 type hints 自動進行型別轉換和驗證。</li><li><strong>Request body 處理</strong>：對於 POST 或 PUT 等帶有 body 的請求，Django Ninja 讓開發者使用 Schema（Pydantic BaseModel）定義 body 資料模型，並自動將傳入的資料對應到這些模型。</li></ol><p>上述第 1 點已在本章第一節詳細解說。</p><p>第 2 和第 3 點則是本節共 4 篇文章的主要內容。</p><hr><h2 id="三、Django-Ninja-與-Type-Hints-的緊密結合"><a href="#三、Django-Ninja-與-Type-Hints-的緊密結合" class="headerlink" title="三、Django Ninja 與 Type Hints 的緊密結合"></a>三、Django Ninja 與 Type Hints 的緊密結合</h2><p>Django Ninja 非常依賴 Python 的 type hints 來處理 HTTP 請求中的資料。</p><p>並透過 Pydantic 實現了<strong>自動資料驗證</strong>和<strong>類別轉換</strong>，減少了開發者手動檢查和轉換資料的負擔。</p><p>例如以下程式碼：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params"><span class="string">&quot;/posts/&#123;post_id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_post</span>(<span class="params">request, post_id: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;post_id&quot;</span>: post_id&#125;</span><br></pre></td></tr></table></figure><p>當<code>post_id</code>參數被標記為<code>int</code>時，Django Ninja 會進行型別檢查。如果傳入的參數無法轉換為<code>int</code>，框架會直接返回狀態碼為 422 的 HTTP 回應。</p><p>換言之，如果你將<code>post_id</code>標記為<code>str</code>，則 Django Ninja 會自動將<code>post_id</code>轉換為字串。</p><p>還記得剛開始接觸 Django Ninja時，我非常驚嘆竟然可以充分運用 Python type hints 到這般程度，讓它<strong>不僅僅是為了型別安全而服務，而是融入到整個 API 開發流程中</strong>。</p><hr><h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>接下來，我們將深入探討 Django Ninja 處理請求的<strong>具體細節</strong>。</p><p>下一篇將聚焦於<strong>路徑參數</strong>（<strong>path parameters</strong>），並探討如何與 Django 原生的 <strong>path converters</strong> 搭配使用。敬請期待！</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/5gGprsq.png&quot; alt=&quot;2024 iThome 鐵人賽&quot;&gt;&lt;/p&gt;
+&lt;p&gt;歡迎來到第三章第二節！&lt;/p&gt;
+&lt;p&gt;作為 API 的核心邏輯實現，&lt;strong&gt;view 函式&lt;/strong&gt;無疑是 Django Ninja API 的靈魂所在。&lt;/p&gt;
+&lt;p&gt;Django Ninja 和 FastAPI、Flask 一樣，都是以 Function-Based Views（&lt;strong&gt;以下簡稱 FBVs&lt;/strong&gt;）為主。所以它的學習重點，&lt;strong&gt;幾乎都繞圍在 view 函式的 input 和 output。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;換句話說，整個 Django Ninja 框架的能力，&lt;strong&gt;構成了 view 函式的這些關鍵部分&lt;/strong&gt;，包括但不限於：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;處理 HTTP 請求的參數與 body。&lt;/li&gt;
+&lt;li&gt;處理 HTTP 回應內容的序列化與格式化。&lt;/li&gt;
+&lt;li&gt;資料驗證與錯誤處理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;它們共同構成了 Django Ninja 的主要功能。&lt;/p&gt;
+&lt;p&gt;本節和下一節，將集中討論上述 3 點中的前兩點——請求與回應。至於第三點，將留到第五章再行介紹。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/5gGprsq.png" type="image"/>
+    
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
+    
+    
+    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
+    
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Django Ninja 教學 08：路由（下）Django Ninja 路由</title>
@@ -339,41 +377,6 @@
     <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
     <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>38，Kyo 待業中！細數我過去的待業時光（上）</title>
-    <link href="https://blog.kyomind.tw/weekly-review-38/"/>
-    <id>https://blog.kyomind.tw/weekly-review-38/</id>
-    <published>2024-09-09T14:23:16.000Z</published>
-    <updated>2024-09-10T10:43:00.056Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>如標題所言，我又又待業了！</p><p>上一份工作做到 8 月 31 日止，從本月開始，我的職涯再度進入「<strong>無業遊民</strong>」階段。</p><p>這也是為什麼 9 月起<strong>我有更多時間準備鐵人賽XD</strong>（可見上一篇〈<a href="/myth-of-ai-writing-efficiency/">AI 讓寫作變輕鬆了？我可不這麼認為</a>〉的開頭）</p><p>我在〈<a href="https://www.threads.net/@kyomind.tw/post/C9Kkuh1ykIc">Day 4：4 年 8 個月</a>〉中曾說到：</p><blockquote><p>4 年 8 個月，這是我在大學畢業、當兵退伍後，作為「無業遊民」的總時長！</p></blockquote><p>沒錯，而這些時間又可以分成兩個階段。</p><p>如今再度待業，或許是回顧過往的好時機。讓我們來聊聊這兩個階段：<strong>當時在做什麼，以及現在的我如何會看待那時的自己。</strong></p><p>不過篇幅有限， 今天先講第一階段：準備書記官考試。</p><span id="more"></span><hr><h2 id="第一次應試：不知人生為何物"><a href="#第一次應試：不知人生為何物" class="headerlink" title="第一次應試：不知人生為何物"></a>第一次應試：不知人生為何物</h2><p>第一階段是 2009 年 7 月至 2011 年 12 月，共 2 年 6 個月，主要準備書記官（司法特考）。</p><p>我大學很混，雖然很少被當，但整體的法律實力實在不怎麼樣。而法律是一個需要投入龐大學習時間的學科——無人可以例外。所以沒能在畢業之前就考上任何國家考試。</p><p>和很多人一樣，我也是等到畢業、退伍之後才開始真正的法律之路。</p><p>必須坦承，剛退伍時，<strong>我對法律的興趣其實非常有限</strong>。為何要考試？只不過是因為沒有別的選擇而已——我只會這個！</p><p>6 月底才退伍，來不及準備當年的考試（在每年 8 月）。直到隔年才第一次應試。</p><p>第一次考試就是抱持上述「<strong>不知道法律對我意義為何</strong>」的心情在準備，結果可想而知。我還記得名次是 1142 名。</p><h2 id="第二次應試：做該做的事"><a href="#第二次應試：做該做的事" class="headerlink" title="第二次應試：做該做的事"></a>第二次應試：做該做的事</h2><p>這是我最後的機會，若沒考上，只能乖乖去找工作。</p><p>法律系畢業卻沒通過國考，工作選擇不多：要麼去事務所當助理，要麼去公司當法務。否則，就只能去一般公司做著跟法律無關的上班族工作。</p><p>上述這些都是當下的我所難以想像的，也不想面對，內心的不安感實在太強了。</p><p>就像我在〈<a href="https://medium.com/code-and-me/datalog-%E5%91%8A%E5%88%A5%E6%B3%95%E5%BE%8B-ccec58db9acb">告別法律</a>〉中說的，<strong>現在放棄的話，相當於對過去自己的否定</strong>：</p><blockquote><p>哭是因為無助，無助不僅是對於考試本身，更在於考試一旦落榜，我幾乎難以想像自己還有什麼價值可言，要以何種身分立足？就只是一隻沒有身分的孤魂。</p></blockquote><p>相比之下，考試和考上的路徑則是<strong>相對確定</strong>的。因此，儘管我還不確定是否喜歡法律，還是決定靜下心來重新準備考試。</p><p>這是當時的我唯一能做的事，也是我該做的事。</p><p>所幸，第二次的結果就好多了，我總算暫時脫離了考試的枷鎖。</p><hr><h2 id="努力過才會喜歡"><a href="#努力過才會喜歡" class="headerlink" title="努力過才會喜歡"></a>努力過才會喜歡</h2><p>兩年多的準備時光，確實讓我的法律素養提高不少。</p><p>毫不誇張的說，我 90% 的法律實力，都是在大學畢業後自學養成的。</p><p>但其中更重要的是，你對一件事、一門學問的熱愛，<strong>可能需要經過一定的努力與嘗試，才會慢慢地顯現出來</strong>。（在後續的軟體轉職的路上，我也有類似的感受）</p><p>經過這一波努力學習，我對法律的好感度確實提高了不少。</p><p>我想，<strong>滿足感</strong>都藏在那些<strong>複雜的挑戰</strong>裡。經歷了疑惑、困頓，然後重新思考，這些好不容易才理解的事物，更能夠帶給人「<a href="https://www.youtube.com/watch?v=bFd3l8Mrhgw">知覺與快樂的螺旋</a>」。</p><p>而囫圇吞棗、蜻蜓點水式的了解，<strong>很難真的登堂入室</strong>——無緣進入知識的桃花源。</p><hr><h2 id="長期準備考試的挑戰"><a href="#長期準備考試的挑戰" class="headerlink" title="長期準備考試的挑戰"></a>長期準備考試的挑戰</h2><p>長期準備考試最困難的部分，還是在心理層面上保持鬥志，這真的不容易。</p><p><strong>所謂的「鬥志」，不是要你每天都慷慨激昂、充滿戰鬥的熱情。而是要能夠在長期壓力下，保持一種穩定的心態。</strong></p><p>準備考試，雖然多少能感覺到自己有在進步，但重複的生活，不免讓人厭煩。就像走在巨大的沙漠中，每時每刻的風景都非常類似，有時你甚至不知道自己是否真的在前進。</p><p>在這樣的環境下，我遇到過很多次低潮。</p><p>低潮是可怕的東西，一開始可能只是一天、兩天。一旦出現，就<strong>很容易蔓延開來</strong>，最終你可能會連續好幾週、甚至一整個月都不想讀書。</p><p>第二年考試，為了減少這種情況，<strong>我設計一套制度來督促自己。</strong></p><p><img src="https://i.imgur.com/06XOOPj.png" alt="這是準備律師時期的記錄，但制度是同一套"><span class="cap">這是準備律師時期的記錄，但制度是同一套</span></p><p>儘管如此，就在考前兩個月的關鍵時刻，我又陷入了一次低潮，<strong>足足打了三個星期的電動！</strong>直到七月初，才心不甘情不願地重新開始讀書。</p><p><strong>好險，現在想想真的好險。</strong></p><hr><p>總之，第一階段待業就這樣落幕了，我也展開我的第一階段職涯——公務員。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;如標題所言，我又又待業了！&lt;/p&gt;
-&lt;p&gt;上一份工作做到 8 月 31 日止，從本月開始，我的職涯再度進入「&lt;strong&gt;無業遊民&lt;/strong&gt;」階段。&lt;/p&gt;
-&lt;p&gt;這也是為什麼 9 月起&lt;strong&gt;我有更多時間準備鐵人賽XD&lt;/strong&gt;（可見上一篇〈&lt;a href=&quot;/myth-of-ai-writing-efficiency/&quot;&gt;AI 讓寫作變輕鬆了？我可不這麼認為&lt;/a&gt;〉的開頭）&lt;/p&gt;
-&lt;p&gt;我在〈&lt;a href=&quot;https://www.threads.net/@kyomind.tw/post/C9Kkuh1ykIc&quot;&gt;Day 4：4 年 8 個月&lt;/a&gt;〉中曾說到：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;4 年 8 個月，這是我在大學畢業、當兵退伍後，作為「無業遊民」的總時長！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;沒錯，而這些時間又可以分成兩個階段。&lt;/p&gt;
-&lt;p&gt;如今再度待業，或許是回顧過往的好時機。讓我們來聊聊這兩個階段：&lt;strong&gt;當時在做什麼，以及現在的我如何會看待那時的自己。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;不過篇幅有限， 今天先講第一階段：準備書記官考試。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
-    <category term="待業" scheme="https://blog.kyomind.tw/tags/%E5%BE%85%E6%A5%AD/"/>
     
   </entry>
   
