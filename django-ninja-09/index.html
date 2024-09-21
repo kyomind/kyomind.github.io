@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-21T14:34:42+08:00" />
+  <meta property="article:modified_time" content="2024-09-21T14:43:15+08:00" />
 
 
 
@@ -269,7 +269,7 @@
 <p>在 Django 中，view 函式的第一個參數必定為 request。這個參數名稱<strong>可以自行定義</strong>，但通常會命名為<code>request</code>。</p>
 <p>收到 HTTP 請求時，Django 會將整個請求打包成一個<code>HttpRequest</code>物件，並<strong>將它作為第一個參數傳給 view 函式</strong>，所以它<strong>必不可少</strong>。</p>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
+<p>相關文章：<a href="/django-request/">Django HttpRequest 常用屬性介紹</a></p>
 </blockquote>
 <p><code>request</code>參數在 Django 和 Django REST framework 中非常重要，因為它常用來取得<strong>請求的查詢參數、body</strong> 等內容。</p>
 <p>在 Django Ninja 中，這些資料會<strong>直接透過函式參數來取得</strong>，因此<code>request</code>雖然仍不可少，但<strong>使用頻率較低</strong>。</p>
