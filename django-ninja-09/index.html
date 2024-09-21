@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-21T03:19:59+08:00" />
+  <meta property="article:modified_time" content="2024-09-21T14:34:42+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E5%B0%8E%E8%A6%BD"><span class="toc-text">本節導覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6"><span class="toc-text">官方文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81FBV-%E7%9A%84%E5%84%AA%E9%BB%9E"><span class="toc-text">一、FBV 的優點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Django-Ninja-%E5%B0%8D-HTTP-%E8%AB%8B%E6%B1%82%E7%9A%84%E8%99%95%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-text">二、Django Ninja 對 HTTP 請求的處理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Django-Ninja-%E8%88%87-Type-Hints-%E7%9A%84%E7%B7%8A%E5%AF%86%E7%B5%90%E5%90%88"><span class="toc-text">三、Django Ninja 與 Type Hints 的緊密結合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E5%B0%8E%E8%A6%BD"><span class="toc-text">本節導覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6"><span class="toc-text">官方文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81FBV-%E7%9A%84%E5%84%AA%E9%BB%9E"><span class="toc-text">一、FBV 的優點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Django-Ninja-%E5%B0%8D-HTTP-%E8%AB%8B%E6%B1%82%E7%9A%84%E8%99%95%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-text">二、Django Ninja 對 HTTP 請求的處理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Django-Ninja-%E8%88%87-Type-Hints-%E7%9A%84%E7%B7%8A%E5%AF%86%E7%B5%90%E5%90%88"><span class="toc-text">三、Django Ninja 與 Type Hints 的緊密結合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#View-%E5%87%BD%E5%BC%8F%E4%B8%AD%E7%9A%84-request-%E5%8F%83%E6%95%B8"><span class="toc-text">View 函式中的 request 參數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>歡迎來到第三章第二節！</p>
@@ -265,6 +265,14 @@
 <p>當<code>post_id</code>參數被標記為<code>int</code>時，Django Ninja 會進行型別檢查。如果傳入的參數無法轉換為<code>int</code>，框架會直接返回狀態碼為 422 的 HTTP 回應。</p>
 <p>換言之，如果你將<code>post_id</code>標記為<code>str</code>，則 Django Ninja 會自動將<code>post_id</code>轉換為字串。</p>
 <p>還記得剛開始接觸 Django Ninja時，我非常驚嘆竟然可以充分運用 Python type hints 到這般程度，讓它<strong>不僅僅是為了型別安全而服務，而是融入到整個 API 開發流程中</strong>。</p>
+<h2 id="View-函式中的-request-參數"><a href="#View-函式中的-request-參數" class="headerlink" title="View 函式中的 request 參數"></a>View 函式中的 request 參數</h2><p>上面的例子中，有個值得注意的細節，就是 view 函式的<strong>第一參數</strong>——<code>request</code>。</p>
+<p>在 Django 中，view 函式的第一個參數必定為 request。這個參數名稱<strong>可以自行定義</strong>，但通常會命名為<code>request</code>。</p>
+<p>收到 HTTP 請求時，Django 會將整個請求打包成一個<code>HttpRequest</code>物件，並<strong>將它作為第一個參數傳給 view 函式</strong>，所以它<strong>必不可少</strong>。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
+</blockquote>
+<p><code>request</code>參數在 Django 和 Django REST framework 中非常重要，因為它常用來取得<strong>請求的查詢參數、body</strong> 等內容。</p>
+<p>在 Django Ninja 中，這些資料會<strong>直接透過函式參數來取得</strong>，因此<code>request</code>雖然仍不可少，但<strong>使用頻率較低</strong>。</p>
 <hr>
 <h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>接下來，我們將深入探討 Django Ninja 處理請求的<strong>具體細節</strong>。</p>
 <p>下一篇將聚焦於<strong>路徑參數</strong>（<strong>path parameters</strong>），並探討如何與 Django 原生的 <strong>path converters</strong> 搭配使用。敬請期待！</p>
