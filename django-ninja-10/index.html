@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-22T04:17:04+08:00" />
+  <meta property="article:modified_time" content="2024-09-22T04:28:51+08:00" />
 
 
 
@@ -200,8 +200,8 @@
 <p>本文對範例專案的程式碼改動，都集中在<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/2">這個 PR</a>。</p>
 <hr>
 <h2 id="一、什麼是-Path-Parameters？"><a href="#一、什麼是-Path-Parameters？" class="headerlink" title="一、什麼是 Path Parameters？"></a>一、什麼是 Path Parameters？</h2><p>Path parameters 是構成 URL 的一部分，它們位於網址路徑（path）中的<strong>特定</strong>位置，<strong>根據不同的值（參數）</strong>來決定傳入的內容，用來<strong>動態指定資源</strong>。</p>
-<p>我們不訪先回顧一下，<strong>path</strong> 在整個 URL 中的位置：</p>
-<p><img src="https://i.imgur.com/o2JxS9I.png" alt="en.wikipedia.org/wiki/URL，點圖可放大"><span class="cap">en.wikipedia.org/wiki/URL，點圖可放大</span></p>
+<p>我們不妨先了解一下，<strong>path</strong> 在整個 URL 中的位置：（圖片取自<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/URL">維基百科</a>）</p>
+<p><img src="https://i.imgur.com/o2JxS9I.png" alt="點圖可放大"><span class="cap">點圖可放大</span></p>
 <p>從圖中可以看出，路徑（path）是 URL 的一部分——而且是<strong>必要部分</strong>。</p>
 <p>不過請注意，path parameters 只是 Django、Django Ninja 這類框架所提供的一種「<strong>功能</strong>」。對 URL 本身而言，path 就是 path，也就是<strong>單純的字串</strong>而已。</p>
 <h3 id="路徑參數例子"><a href="#路徑參數例子" class="headerlink" title="路徑參數例子"></a>路徑參數例子</h3><p>舉一個簡單的例子，讓我們可以更好地理解 path parameters 的概念。</p>
