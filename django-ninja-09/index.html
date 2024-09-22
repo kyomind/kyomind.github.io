@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）">
-  <meta property="og:title" content="Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 09：請求（一）Django Ninja 處理請求概論（兼論 FBVs）">
+  <meta property="og:title" content="Django Ninja 教學 09：請求（一）Django Ninja 處理請求概論（兼論 FBVs）"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。">
   <meta property="og:description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹 Django Ninja 如何處理 HTTP 請求，並探討 Function-Based Views（FBVs）的優點。" />
@@ -28,12 +28,12 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-21T14:43:15+08:00" />
+  <meta property="article:modified_time" content="2024-09-22T03:16:31+08:00" />
 
 
 
 
-  <meta property="article:published_time" content="2024-09-21T02:42:13+08:00" />
+  <meta property="article:published_time" content="2024-09-20T14:42:13+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs） - Code and Me</title>
+    <title>Django Ninja 教學 09：請求（一）Django Ninja 處理請求概論（兼論 FBVs） - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -141,7 +141,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (9)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (10)</a>
           
         </div>
       </li>
@@ -178,12 +178,12 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）
+      <h1 class="post-title">Django Ninja 教學 09：請求（一）Django Ninja 處理請求概論（兼論 FBVs）
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2024-09-21
+          2024-09-20
         </span><span class="post-category">
             <a href="/categories/Django-Ninja/">Django Ninja</a>
             </span>
@@ -312,7 +312,12 @@
             <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             </div>
         
-        <nav class="post-nav"><a class="next" href="/django-ninja-08/">
+        <nav class="post-nav"><a class="prev" href="/django-ninja-10/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 10：請求（二）路徑參數（Path Parameters）</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 10：請求（二）路徑參數（Path Parameters）</span>
+      </a>
+    <a class="next" href="/django-ninja-08/">
         <span class="next-text nav-default">Django Ninja 教學 08：路由（下）Django Ninja 路由</span>
         <span class="prev-text nav-mobile">Django Ninja 教學 08：路由（下）Django Ninja 路由</span>
         <i class="iconfont icon-right"></i>
@@ -324,7 +329,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">9</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">10</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
     </div>
   </div>
 </div>

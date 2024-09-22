@@ -133,7 +133,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (9)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (10)</a>
           
         </div>
       </li>
@@ -170,12 +170,48 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-09/">Django Ninja 教學 09：Django Ninja 處理請求概論（兼論 FBVs）</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-10/">Django Ninja 教學 10：請求（二）路徑參數（Path Parameters）</a>
         </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2024-09-21
+          2024-09-22
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>上一篇文章中，我們介紹了 Django Ninja 如何處理 HTTP 請求，並強調了它與 Python type hints 之間的緊密結合。</p>
+<p>本篇將探討 Django Ninja 中，<strong>路徑參數（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/path-params/">path parameters</a>）</strong>的應用與細節，這在處理 HTTP 請求時<strong>極為常見</strong>，尤其是在 RESTful API 中。</p>
+<p>本文對範例專案的程式碼改動，都集中在<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/2">這個 PR</a>。</p>
+<hr>
+<h2 id="一、什麼是-Path-Parameters？"><a href="#一、什麼是-Path-Parameters？" class="headerlink" title="一、什麼是 Path Parameters？"></a>一、什麼是 Path Parameters？</h2><p>Path parameters 是構成 URL 的一部分，它們位於網址路徑（path）中的<strong>特定</strong>位置，<strong>根據不同的值（參數）</strong>來決定傳入的內容，用來<strong>動態指定資源</strong>。</p>
+<p>我們不訪先回顧一下，<strong>path</strong> 在整個 URL 中的位置：</p>
+<p><img src="https://i.imgur.com/o2JxS9I.png" alt="en.wikipedia.org/wiki/URL，點圖可放大"></p>
+<p>從圖中可以看出，路徑（path）是 URL 的一部分——而且是<strong>必要部分</strong>。</p>
+<p>不過請注意，path parameters 只是 Django、Django Ninja 這類框架所提供的一種「<strong>功能</strong>」。對 URL 本身而言，path 就是 path，也就是<strong>單純的字串</strong>而已。</p>
+<h3 id="路徑參數例子"><a href="#路徑參數例子" class="headerlink" title="路徑參數例子"></a>路徑參數例子</h3><p>舉一個簡單的例子，讓我們可以更好地理解 path parameters 的概念。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;post_id&#125;/&#x27;</span></span>)  </span><span class="comment"># &#123;post_id&#125; 就是路徑參數</span></span><br></pre></td></tr></table></figure>
+
+<p>實際請求時，<code>123</code>就是<strong>透過</strong>路徑參數，代表特定文章的 id：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /posts/123</span><br></pre></td></tr></table></figure>
+
+<p>可想而知，如果是<code>456</code>或<code>789</code>，你會得到不同的結果。</p>
+<p>這使得 API 具有<strong>彈性</strong>，可以針對不同的資源進行操作，而<strong>不必為每一個資源建立不同的路由</strong>——它們的端點與路由<strong>都是相同的</strong>，只是「<strong>參數</strong>」不同。</p>
+          <div class="read-more">
+            <a href="/django-ninja-10/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-09/">Django Ninja 教學 09：請求（一）Django Ninja 處理請求概論（兼論 FBVs）</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-20
         </span><span class="post-category">
             <a href="/categories/Django-Ninja/">Django Ninja</a>
             </span>
@@ -335,38 +371,6 @@
 <p>其餘有關 API 的程式碼，將在第三章陸續介紹與實作。</p>
           <div class="read-more">
             <a href="/django-ninja-04/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-03/">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-15
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja/">Django Ninja</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>選擇任何工具之前，我們通常會先了解<strong>它能解決的問題</strong>，以及<strong>是否符合與自己的需求</strong>。</p>
-<p>本文將介紹 Django Ninja 這個現代化的 API 框架，探討它的起源和主要特點，並重點比較它與 Django REST Framework 之間的差異，讓你能夠更好地選擇適合的工具。</p>
-<hr>
-<h2 id="Django-Ninja-起源"><a href="#Django-Ninja-起源" class="headerlink" title="Django Ninja 起源"></a>Django Ninja 起源</h2><p>Django Ninja 的起源<strong>與 FastAPI 有著密切的關係。</strong></p>
-<p>Django Ninja 可以被視為「<strong>Django 版的 FastAPI</strong>」，它比原生 FastAPI 能夠更好地與 Django 整合。</p>
-<p>Django Ninja 的<a target="_blank" rel="noopener" href="https://django-ninja.dev/motivation/">官方文件</a>中，作者 <a target="_blank" rel="noopener" href="https://github.com/vitalik">Vitaliy Kucheryaviy</a> 解釋了<strong>為什麼建立這個框架</strong>。這源於他在 Django 專案中使用 FastAPI 時遇到的一些挑戰，特別是在整合方面。</p>
-<p>因此，他決定自己建立一個更合適的工具，從而誕生了 Django Ninja。</p>
-<p>可想而知，Django Ninja 深受 FastAPI 的啟發。事實上，它同時也借鑑了不少 Django REST Framework 的優秀實踐——這是<strong>後發者的優勢</strong>！</p>
-<p>文件中引用了這麼一句話，這是個常見的疑問：</p>
-<blockquote>
-<p><strong>Django Ninja</strong> looks basically the same as <strong>FastAPI</strong>, so why not just use FastAPI?</p>
-</blockquote>
-<p>答案就是：兩者的整合不完美，而 Django Ninja 提供了一個更加適合 Django 開發者的版本。</p>
-          <div class="read-more">
-            <a href="/django-ninja-03/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
