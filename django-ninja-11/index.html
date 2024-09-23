@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-23T03:59:06+08:00" />
+  <meta property="article:modified_time" content="2024-09-23T04:09:31+08:00" />
 
 
 
@@ -210,7 +210,7 @@
 
 <h2 id="二、範例專案改動"><a href="#二、範例專案改動" class="headerlink" title="二、範例專案改動"></a>二、範例專案改動</h2><p>為了更真實地介紹<strong>查詢參數</strong>，我們需要修改原先的「取得所有文章」API，加入簡單的「<strong>過濾</strong>」功能。</p>
 <p>附帶一提，複雜的過濾功能，我們會在〈卷 23：過濾（Filtering）〉進行介紹。</p>
-<p>修改後，當前端輸入查詢參數時，API 就能透過這些參數來<strong>限制查詢結果</strong>。如下：</p>
+<p>修改後，當請求帶有查詢參數時，API 就能透過這些參數來<strong>限制查詢結果</strong>。如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(title__icontains=title)  <span class="comment"># 實現過濾邏輯</span></span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
 <p>這裡我們以「<strong>文章標題</strong>」來進行過濾。</p>
@@ -238,7 +238,7 @@
 <p>然而，當我們需要對查詢參數進行<strong>更複雜的驗證或限制</strong>時，就需要使用進階的技巧——<code>Query</code>。</p>
 <hr>
 <h2 id="四、使用-Query-物件"><a href="#四、使用-Query-物件" class="headerlink" title="四、使用 Query 物件"></a>四、使用 Query 物件</h2><p>當我們需要進行更詳細的控制，例如限制查詢參數的長度、範圍，或為 API 文件加上額外資訊時，可以使用<code>Query</code>來設定、處理查詢參數。</p>
-<p>必須承認，我之前開發其實也很少用到<code>Query</code>，但了解它 <strong>20% 最重要</strong>的特性，肯定會很有幫助。</p>
+<p>必須承認，我之前開發其實也很少用到<code>Query</code>，但了解它 <strong>20% 最重要的特性</strong>，肯定會很有幫助。</p>
 <h3 id="Query類別介紹"><a href="#Query類別介紹" class="headerlink" title="Query類別介紹"></a><code>Query</code>類別介紹</h3><p>透過<code>Query</code>物件，我們可以對查詢參數進行更精細的定義與驗證。</p>
 <p>事實上，如果你看過 Django Ninja 的<a target="_blank" rel="noopener" href="https://github.com/vitalik/django-ninja/blob/master/ninja/params/functions.py#L50">原始碼</a>，你會發現：它其實是一個<strong>函式</strong>。只不過會<strong>返回相同名稱的類別物件</strong>。為了解說方便，我們暫且當它是類別吧！</p>
 <p>參考這個修改後的範例：</p>
@@ -247,7 +247,7 @@
 <p>它和原來的寫法是「<strong>等價</strong>」的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br></pre></td></tr></table></figure>
 
-<p>你可能覺得奇怪，那我沒事幹嘛要換一個更複雜的寫法，卻沒有額外的好處？</p>
+<p>你可能會覺得奇怪，那我沒事幹嘛要換一個更複雜的寫法，卻沒有額外的好處？</p>
 <p>這當然是因為，更複雜的寫法，能做的事情也更多。</p>
 <h3 id="限制查詢字串的長度"><a href="#限制查詢字串的長度" class="headerlink" title="限制查詢字串的長度"></a>限制查詢字串的長度</h3><p>比如我們想要限制<code>title</code>這個查詢字串，不可以太長也不可以太短。</p>
 <p>假設要求長度在 2 到 10 個字元好了。</p>
