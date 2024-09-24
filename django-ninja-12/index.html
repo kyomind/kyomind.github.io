@@ -16,9 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹">
-  <meta property="og:title" content="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:title" content="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹"><meta name="twitter:description" content="本文將介紹 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。">
+  <meta property="og:description" content="本文將介紹 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
-<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+<meta name="description" content="本文將介紹 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -27,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-24T06:54:58+08:00" />
+  <meta property="article:modified_time" content="2024-09-24T07:15:19+08:00" />
 
 
 
@@ -255,41 +256,42 @@
 
 <p>然而，除了預設值為<code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：用 Pydantic Field 設定範例與預設值〉還會再次討論。</p>
 <hr>
-<h2 id="五、Django-Ninja-判斷參數的順序"><a href="#五、Django-Ninja-判斷參數的順序" class="headerlink" title="五、Django Ninja 判斷參數的順序"></a>五、Django Ninja 判斷參數的順序</h2><p>你是否想過，一個 view 函式參數這麼多，Django Ninja 怎麼知道<strong>誰要對應誰</strong>？</p>
-<p>事實上，Django Ninja 確實會根據 view 函式的參數簽名，自動判斷參數的來源（究竟是路徑參數、查詢參數或請求 body）。其<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/body/#request-body-path-query-parameters">判斷順序</a>如下：</p>
+<h2 id="五、Django-Ninja-判斷參數的順序"><a href="#五、Django-Ninja-判斷參數的順序" class="headerlink" title="五、Django Ninja 判斷參數的順序"></a>五、Django Ninja 判斷參數的順序</h2><p>你是否想過，一個 view 函式參數這麼多種，Django Ninja 怎麼知道<strong>誰要對應誰</strong>？</p>
+<p>事實上，Django Ninja 確實會根據 view 函式的<strong>參數簽名</strong>，自動判斷參數的來源（究竟是路徑參數、查詢參數或請求 body）。其<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/body/#request-body-path-query-parameters">判斷順序</a>如下：</p>
 <ol>
-<li><strong>路徑參數</strong>：任何定義在 URL 路徑中的變數（例如 <code>/items/&#123;id&#125;</code> 中的 <code>id</code>）會<strong>優先被識別為路徑參數</strong>。</li>
-<li><strong>查詢參數</strong>：函式中的其他<strong>單數類型參數</strong>（如<code>int</code>、<code>str</code>，而不是<code>list</code>、<code>dict</code>），若<strong>未標註為路徑參數</strong>，則會被識別為查詢參數，尤其是帶有預設值的參數。</li>
+<li><strong>路徑參數</strong>：任何定義在 URL path 中的變數（比如<code>/items/&#123;id&#125;</code>中的<code>id</code>）會<strong>優先被識別為路徑參數</strong>。</li>
+<li><strong>查詢參數</strong>：函式中的其他<strong>單數類型</strong>參數（比如<code>int</code>、<code>float</code>、<code>bool</code>、<code>str</code>，而不是<code>list</code>、<code>dict</code>），若<strong>未標註為路徑參數</strong>，則會被識別為查詢參數。</li>
 <li><strong>Request body</strong>：Schema 型別參數，才會被視為請求 body。</li>
 </ol>
-<p>而且原則上，view 函式<strong>只能有一個</strong> Schema 參數。畢竟一個請求就只有一個 body 而已。</p>
+<p>原則上，view 函式<strong>只能有一個</strong> Schema 參數。畢竟一個請求就只有一個 body 而已。</p>
 <hr>
 <h2 id="第二節尾聲"><a href="#第二節尾聲" class="headerlink" title="第二節尾聲"></a>第二節尾聲</h2><p>本節的內容已差不多結束。</p>
-<p>Schema 的用法與變化還很多，我們這裡只是「牛刀小試」而已。在第三節「HTTP 回應」中，你將看到更多關於 Schema 的設定。</p>
-<p>在進入下一節之前，我們先進行中場休息——和一些準備。</p>
+<p>在這一節中，我們學習了如何使用 Django Ninja 處理 HTTP 請求，並介紹了 Schema 的基本用法。</p>
+<p>Schema 的用法與變化還很多，這裡只是「牛刀小試」而已。在第三節「HTTP 回應」中，你將看到更多關於 Schema 的設定。</p>
+<p>進入下一節之前，我們先進行中場休息——和<strong>一些準備</strong>。</p>
 <hr>
-<h2 id="中場休息與準備"><a href="#中場休息與準備" class="headerlink" title="中場休息與準備"></a>中場休息與準備</h2><p>下一節，我們要讓專案的 API 真正運作起來，還記得前面提到為何目前無法使用嗎？</p>
+<h2 id="中場休息與準備"><a href="#中場休息與準備" class="headerlink" title="中場休息與準備"></a>中場休息與準備</h2><p>下一節，我們要讓專案的 API <strong>真正運作起來</strong>，還記得前面提到為何目前無法使用嗎？</p>
 <ol>
 <li>沒有 db 資料。</li>
 <li>沒有建立 Schema。</li>
 </ol>
-<p>我們已經學到怎麼使用 Schema 了——雖然還不全面。那「db 資料」問題也需要獲得解決。</p>
-<h3 id="Django-Fixtures"><a href="#Django-Fixtures" class="headerlink" title="Django Fixtures"></a>Django Fixtures</h3><p>我們固然可以透過呼叫 POST API 去手動新增資料，但太麻煩了！更別說，專案目前還沒有「新增使用者」這個 API。</p>
+<p>我們已經學到怎麼使用 Schema 了——雖然<strong>還不全面</strong>。那「db 資料」問題也需要獲得解決。</p>
+<h3 id="Django-Fixtures"><a href="#Django-Fixtures" class="headerlink" title="Django Fixtures"></a>Django Fixtures</h3><p>我們固然可以透過呼叫 POST API 去<strong>手動新增</strong>用戶與文章資料，但太麻煩了！更別說，專案目前<strong>還沒有</strong>「新增使用者」這個 API。</p>
 <p>所以，不用麻煩了。</p>
-<p>我們直接透過 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/fixtures/">Django fixtures</a> 來載入大量預先定義的假資料。</p>
-<p>關於 Django fixtures 的介紹，可參考我之前文章〈<a href="https://blog.kyomind.tw/django-fixtures/">用 Django Fixture 匯入與導出資料</a>〉。</p>
-<p>在下一篇<code>13-response</code>分支底下，你已經可以看到我<strong>導出</strong>的資料：</p>
+<p>我們直接透過 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/fixtures/">Django fixtures</a> 來匯入由我預先定義好的<strong>假資料</strong>。</p>
+<p>有關 Django fixtures 的介紹，可參考文章〈<a href="https://blog.kyomind.tw/django-fixtures/">用 Django Fixture 匯入與導出資料</a>〉。</p>
+<p>在下一篇<code>13-response</code>分支進度底下，你已經可以看到我<strong>導出</strong>的 fixtures 資料：</p>
 <ol>
 <li><code>users.json</code>。</li>
 <li><code>posts.json</code>。</li>
 </ol>
-<p>想要使用它，直接依序匯入即可：</p>
+<p>想要使用它們，直接<strong>依序匯入</strong>即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python manage.py loaddata users.json</span><br><span class="line">python manage.py loaddata posts.json</span><br></pre></td></tr></table></figure>
 
 <p>一定要<strong>先匯入</strong> users，否則文章沒有作者會<strong>關聯失敗</strong>。</p>
-<p>匯入完成後，你會獲得 2 個使用者——Alice 和 Bob，還有他們各發表了 30 篇文章。</p>
+<p>匯入完成後，你會獲得 2 個使用者——Alice 和 Bob，還有他們各發表的 30 篇文章。</p>
 <p><img src="https://i.imgur.com/dHCBf4T.png"></p>
-<p>呃，夾雜了第一篇我的測試文章，請多包涵🙏</p>
+<p>呃，夾雜了第一篇我的測試文章，請多包涵 😅</p>
 <p>成功匯入後，我們就可以繼續了。</p>
 
       </div>
