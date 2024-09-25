@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-25T08:27:30+08:00" />
+  <meta property="article:modified_time" content="2024-09-25T08:38:20+08:00" />
 
 
 
@@ -249,10 +249,10 @@
 <hr>
 <p>上述第一種回應很簡單，不過大部分 API 回應都<strong>沒這麼單純</strong>。</p>
 <p>我們來看第二種回應。</p>
-<h2 id="二、單一模型物件回應：取得單一文章"><a href="#二、單一模型物件回應：取得單一文章" class="headerlink" title="二、單一模型物件回應：取得單一文章"></a>二、單一模型物件回應：取得單一文章</h2><p>開發 Django API，回應中的資料，有很大部分是從 Django 模型物件<strong>序列化</strong>而來。</p>
+<h2 id="二、單一模型物件回應：取得單一文章"><a href="#二、單一模型物件回應：取得單一文章" class="headerlink" title="二、單一模型物件回應：取得單一文章"></a>二、單一模型物件回應：取得單一文章</h2><p>開發 Django API，回應中的資料，有很大部分是<strong>從 Django 模型物件序列化</strong>而來。</p>
 <p>但通常我們不會直接將資料庫中的所有資訊傳送給前端。相反，我們會進行<strong>欄位篩選、驗證或格式轉換</strong>。</p>
 <p>這樣不僅能夠精確控制 API 的輸出，還能確保資料的正確與安全性。</p>
-<p>Django Ninja 中，這個「篩選、驗證或格式轉換」需求，也是透過 Schema 實現。</p>
+<p>Django Ninja 中，這些「篩選、驗證、格式轉換」等需求，都是透過 Schema 實現。</p>
 <p>我們來為「單得取一文章」API 設計一個回應格式，<strong>使用 Schema</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/schemas.py</span></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
 
