@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-08-03T15:44:21+08:00" />
+  <meta property="article:modified_time" content="2024-09-25T04:23:26+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-REST-framework-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django REST framework 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-DRF"><span class="toc-text">為何需要 DRF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E8%88%87-DRF-%E6%AF%94%E8%BC%83"><span class="toc-text">Django 與 DRF 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CBV-vs-FBV"><span class="toc-text">CBV vs FBV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DRF-vs-Django-Ninja"><span class="toc-text">DRF vs Django Ninja</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%85%A5%E9%96%80%E8%80%85%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-text">小結：入門者的選擇</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-REST-framework-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Django REST framework 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-Django-REST-Framework"><span class="toc-text">為何需要 Django REST Framework</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E8%88%87-Django-REST-Framework-%E6%AF%94%E8%BC%83"><span class="toc-text">Django 與 Django REST Framework 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CBV-vs-FBV"><span class="toc-text">CBV vs FBV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-REST-Framework-vs-Django-Ninja"><span class="toc-text">Django REST Framework vs Django Ninja</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%85%A5%E9%96%80%E8%80%85%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-text">小結：入門者的選擇</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 5 篇。</p>
@@ -217,13 +217,13 @@
 <h2 id="Django-REST-framework-介紹"><a href="#Django-REST-framework-介紹" class="headerlink" title="Django REST framework 介紹"></a>Django REST framework 介紹</h2><p>當涉及到現代 Web 開發，尤其是與前端框架如 React、Vue 的配合，我們需要<strong>更專注於 API 的開發方式</strong>。畢竟「<strong>前後端分離</strong>」是當前 Web 開發主流。</p>
 <p>於是我們有了 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>。</p>
 <blockquote>
-<p>我仔細看，<strong>f 真的是小寫，而 REST 要全大寫</strong>，這是官方的寫法。為了表述方便，以下簡稱為 DRF。</p>
+<p>我仔細看，<strong>f 真的是小寫，而 REST 要全大寫</strong>，這是官方的寫法。為了表述方便，以下<strong>部分段落簡稱為 DRF</strong>。</p>
 </blockquote>
 <p>DRF 引入了專門針對 API 的功能，如強大的序列化器、權限管理、通用 API 視圖。</p>
 <p>這些功能使得 DRF 不僅能夠擴充 Django 的原有能力，而且提供了對 RESTful API 開發的專門支持。</p>
 <p>不得不承認，在「前後端分離」已成顯學的今日，有了 DRF 這樣的框架，能有效維持 Django 作為一個開源後端框架的<strong>整體競爭力</strong>。</p>
 <hr>
-<h2 id="為何需要-DRF"><a href="#為何需要-DRF" class="headerlink" title="為何需要 DRF"></a>為何需要 DRF</h2><p>但又話說回來，為何 Django 不自己強化 API 功能，而是交給 DRF 這類套件呢？</p>
+<h2 id="為何需要-Django-REST-Framework"><a href="#為何需要-Django-REST-Framework" class="headerlink" title="為何需要 Django REST Framework"></a>為何需要 Django REST Framework</h2><p>但又話說回來，為何 Django 不自己強化 API 功能，而是交給 DRF 這類套件呢？</p>
 <p>我們可以從以下兩個方向考慮：</p>
 <h3 id="一、專注與專業分工"><a href="#一、專注與專業分工" class="headerlink" title="一、專注與專業分工"></a>一、專注與專業分工</h3><ul>
 <li>Django 的核心團隊專注於框架的<strong>基礎功能</strong>——比如 ORM、Middleware，這些是所有使用 Django 的開發者都需要的核心功能。</li>
@@ -234,13 +234,13 @@
 <li>換句話說，Django 專注在核心功能而不是 API，可以讓它<strong>更全面、更靈活。</strong></li>
 <li>這意味著你可以<strong>只在需要時</strong>引入 DRF，進而保持專案的<strong>輕量</strong>。畢竟，Django 本身已經非常豐富。</li>
 </ul>
-<h2 id="Django-與-DRF-比較"><a href="#Django-與-DRF-比較" class="headerlink" title="Django 與 DRF 比較"></a>Django 與 DRF 比較</h2><p>綜上所述，我們直接用表格來比較兩者的功能與角色差異：</p>
+<h2 id="Django-與-Django-REST-Framework-比較"><a href="#Django-與-Django-REST-Framework-比較" class="headerlink" title="Django 與 Django REST Framework 比較"></a>Django 與 Django REST Framework 比較</h2><p>綜上所述，我們直接用表格來比較兩者的功能與角色差異：</p>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>Django</th>
-<th>DRF</th>
+<th>Django REST Framework</th>
 </tr>
 </thead>
 <tbody><tr>
@@ -269,12 +269,12 @@
 <h2 id="CBV-vs-FBV"><a href="#CBV-vs-FBV" class="headerlink" title="CBV vs FBV"></a>CBV vs FBV</h2><p>Class-based view 與 function-based view，兩者都是實現 Django 中 view 的手段，各有適合的場景。</p>
 <p>CBV 有著<strong>重用程式碼</strong>優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p>
 <p>老實說，我只寫過 FBV，而且我也更愛 FBV。</p>
-<h3 id="DRF-更擅長-CBV"><a href="#DRF-更擅長-CBV" class="headerlink" title="DRF 更擅長 CBV"></a>DRF 更擅長 CBV</h3><p>不過，DRF 本身對於 CBV 有著「<strong>更完整的支援</strong>」。</p>
+<h3 id="Django-REST-Framework-更擅長-CBV"><a href="#Django-REST-Framework-更擅長-CBV" class="headerlink" title="Django REST Framework 更擅長 CBV"></a>Django REST Framework 更擅長 CBV</h3><p>不過，DRF 本身對於 CBV 有著「<strong>更完整的支援</strong>」。</p>
 <p>所以如果你想要將 DRF 發揮到極致，那它提供的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview">GenericAPIView</a> 值得了解一下。並且和 DRF 其它元件有著<strong>高度整合。</strong></p>
 <h3 id="本系列只會使用-FBV"><a href="#本系列只會使用-FBV" class="headerlink" title="本系列只會使用 FBV"></a>本系列只會使用 FBV</h3><p>不過因為我沒真正大量使用過 CBV，而且 DRF 系列只是入門教學，所以我只會用 FBV 進行示範。</p>
 <p>另一方面，Django Ninja、FastAPI、Flask 都是以 FBV 為主，或許對大部分人而言，能善用 FBV 已然足夠。</p>
 <hr>
-<h2 id="DRF-vs-Django-Ninja"><a href="#DRF-vs-Django-Ninja" class="headerlink" title="DRF vs Django Ninja"></a>DRF vs Django Ninja</h2><p>長期以來，DRF 一直是開發 Django API 的主要甚至唯一選擇——直到 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 的出現。</p>
+<h2 id="Django-REST-Framework-vs-Django-Ninja"><a href="#Django-REST-Framework-vs-Django-Ninja" class="headerlink" title="Django REST Framework vs Django Ninja"></a>Django REST Framework vs Django Ninja</h2><p>長期以來，DRF 一直是開發 Django API 的主要甚至唯一選擇——直到 <a target="_blank" rel="noopener" href="https://django-ninja.dev/">Django Ninja</a> 的出現。</p>
 <p>Django Ninja 是烏克蘭開發者 <a target="_blank" rel="noopener" href="https://github.com/vitalik">Vitaliy Kucheryaviy</a> 的力作，可以想成是「<strong>Django 版 FastAPI</strong>」。</p>
 <p>它提供不同於傳統寫法的 FBV，高度整合了 Python type hints。並使用 Pydantic 進行資料的驗證與序列化，還有最重要的——自動產生 API 文件。</p>
 <p>關於 Django Ninja，以及它和 DRF 的比較，我會放到 Django Ninja 系列，再行介紹。</p>

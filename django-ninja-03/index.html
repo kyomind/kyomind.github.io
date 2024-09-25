@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-25T04:14:49+08:00" />
+  <meta property="article:modified_time" content="2024-09-25T04:19:13+08:00" />
 
 
 
@@ -223,7 +223,7 @@
 <hr>
 <h2 id="Django-Ninja-與-Django-REST-Framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-Framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST Framework 的主要區別"></a>Django Ninja 與 Django REST Framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>，可以參考我寫過的這篇〈<a href="https://blog.kyomind.tw/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>
 <p>文章中還說明了，<a href="https://blog.kyomind.tw/django-rest-framework-01/#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-DRF">為何 Django 需要像 Django Ninja、Django REST Framework 這樣的 API 框架。</a></p>
-<p>DRF 和 Django Ninja，都是 Django 生態系中，用於快速建立 API 的強大工具，而且前者的歷史悠久得多。</p>
+<p>Django REST Framework 和 Django Ninja，都是 Django 生態系中，用於快速建立 API 的強大工具，而且前者的歷史悠久得多。</p>
 <p>但它們在設計理念、功能實現上存在顯著差異。對我而言，它們甚至可以說是<strong>完全不同</strong>的工具😎</p>
 <p>下面三個部分，總結了我個人認為兩者的主要區別。</p>
 <h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ul>
@@ -233,16 +233,16 @@
 <h2 id="主要功能差異"><a href="#主要功能差異" class="headerlink" title="主要功能差異"></a>主要功能差異</h2><ul>
 <li><strong>序列化</strong>：<ul>
 <li><strong>Django REST Framework</strong>：使用自定義的<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>，支持更多複雜的序列化需求。</li>
-<li><strong>Django Ninja</strong>：使用 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a>，簡化了序列化過程，但可能不如 DRF 靈活。</li>
+<li><strong>Django Ninja</strong>：使用 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a>，簡化了序列化過程，但可能不如 Django REST Framework 靈活。</li>
 </ul>
 </li>
 <li><strong>API 文件生成</strong>：<ul>
-<li><strong>DRF</strong>：需要額外的套件才能透過程式碼自動產生 API 文件，但效果不如使用 Pydantic 的框架。</li>
+<li><strong>Django REST Framework</strong>：需要額外的套件才能透過程式碼自動產生 API 文件，但效果不如使用 Pydantic 的框架。</li>
 <li><strong>Django Ninja</strong>：自動生成符合 OpenAPI 標準的文件，過程更簡便且高效。</li>
 </ul>
 </li>
 <li><strong>性能：（同步 vs 非同步）</strong><ul>
-<li><strong>DRF</strong>：在功能豐富的情況下，性能可能受到一定影響。不支援非同步。</li>
+<li><strong>Django REST Framework</strong>：在功能豐富的情況下，性能可能受到一定影響。不支援非同步。</li>
 <li><strong>Django Ninja</strong>：在請求驗證和處理方面通常表現更快，而且支援非同步。</li>
 </ul>
 </li>
