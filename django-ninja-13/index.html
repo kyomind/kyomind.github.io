@@ -16,9 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論">
-  <meta property="og:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。">
+  <meta property="og:description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
-<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+<meta name="description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -27,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-25T06:52:52+08:00" />
+  <meta property="article:modified_time" content="2024-09-25T08:27:30+08:00" />
 
 
 
@@ -192,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%B0%A1%E5%96%AE%E5%9B%9E%E6%87%89%EF%BC%9A%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="toc-text">一、簡單回應：新增文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E5%9B%9E%E6%87%89%E5%8A%A0%E4%B8%8A-HTTP-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="toc-text">為回應加上 HTTP 狀態碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%96%AE%E4%B8%80%E6%A8%A1%E5%9E%8B%E7%89%A9%E4%BB%B6%E7%9A%84%E5%9B%9E%E6%87%89%EF%BC%9A%E5%8F%96%E5%BE%97%E5%96%AE%E4%B8%80%E6%96%87%E7%AB%A0"><span class="toc-text">二、單一模型物件的回應：取得單一文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E5%80%8B%E6%A8%A1%E5%9E%8B%E7%89%A9%E4%BB%B6%E7%9A%84%E5%9B%9E%E6%87%89%EF%BC%9A%E5%8F%96%E5%BE%97%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">三、多個模型物件的回應：取得文章列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%A8%AE%E7%8B%80%E6%85%8B%E7%A2%BC%E5%9B%9E%E6%87%89"><span class="toc-text">多種狀態碼回應</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%B0%A1%E5%96%AE%E5%9B%9E%E6%87%89%EF%BC%9A%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="toc-text">一、簡單回應：新增文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E5%9B%9E%E6%87%89%E5%8A%A0%E4%B8%8A-HTTP-%E7%8B%80%E6%85%8B%E7%A2%BC"><span class="toc-text">為回應加上 HTTP 狀態碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%96%AE%E4%B8%80%E6%A8%A1%E5%9E%8B%E7%89%A9%E4%BB%B6%E5%9B%9E%E6%87%89%EF%BC%9A%E5%8F%96%E5%BE%97%E5%96%AE%E4%B8%80%E6%96%87%E7%AB%A0"><span class="toc-text">二、單一模型物件回應：取得單一文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%A4%9A%E5%80%8B%E6%A8%A1%E5%9E%8B%E7%89%A9%E4%BB%B6%E5%9B%9E%E6%87%89%EF%BC%9A%E5%8F%96%E5%BE%97%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8"><span class="toc-text">三、多個模型物件回應：取得文章列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E7%8B%80%E6%85%8B%E7%A2%BC%E5%9B%9E%E6%87%89"><span class="toc-text">多重狀態碼回應</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>這一篇要正式進入「<strong>HTTP 回應</strong>」環節，也就是第三小節。</p>
@@ -241,23 +242,23 @@
 <p>值得注意的是，當你的 view 函式要 return「<strong>非 200</strong>」回應時，必須在<code>router</code>裝飾器聲明：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span>, response=&#123;<span class="number">201</span>: <span class="built_in">dict</span>&#125;</span>)  </span><span class="comment"># 這裡</span></span><br></pre></td></tr></table></figure>
 
-<p><code>response=&#123;201: dict&#125;</code>就是聲明的方式，採用 Python 字典來對應<strong>狀態碼</strong>與<strong>回傳內容格式</strong>。</p>
+<p><code>response=&#123;201: dict&#125;</code>就是聲明的方式，採用 Python 字典來一一對應<strong>狀態碼</strong>與<strong>回傳內容格式</strong>。</p>
 <blockquote>
-<p>創作當時，這部分的程式碼還未補上，所以 API 無法正常回應😅，特此提醒。</p>
+<p>創作當時，這部分的範例專案程式碼還未補上，所以這個 API 無法正常回應😅，特此提醒。</p>
 </blockquote>
 <hr>
-<p>第一種的回應很簡單，不過大部分 API 的回應都<strong>沒這麼單純</strong>，而且我們需要更詳細的驗證。</p>
-<p>我們來看第二種做法。</p>
-<h2 id="二、單一模型物件的回應：取得單一文章"><a href="#二、單一模型物件的回應：取得單一文章" class="headerlink" title="二、單一模型物件的回應：取得單一文章"></a>二、單一模型物件的回應：取得單一文章</h2><p>開發 Django API，回應中的資料，有很大部分是從 Django 模型物件<strong>序列化</strong>而來。</p>
-<p>但通常我們不會直接將資料庫中的所有資訊傳送給前端。相反，我們會進行欄位篩選、驗證或格式轉換。</p>
+<p>上述第一種回應很簡單，不過大部分 API 回應都<strong>沒這麼單純</strong>。</p>
+<p>我們來看第二種回應。</p>
+<h2 id="二、單一模型物件回應：取得單一文章"><a href="#二、單一模型物件回應：取得單一文章" class="headerlink" title="二、單一模型物件回應：取得單一文章"></a>二、單一模型物件回應：取得單一文章</h2><p>開發 Django API，回應中的資料，有很大部分是從 Django 模型物件<strong>序列化</strong>而來。</p>
+<p>但通常我們不會直接將資料庫中的所有資訊傳送給前端。相反，我們會進行<strong>欄位篩選、驗證或格式轉換</strong>。</p>
 <p>這樣不僅能夠精確控制 API 的輸出，還能確保資料的正確與安全性。</p>
-<p>Django Ninja 中，這個「欄位篩選、驗證或格式轉換」需求，也是透過 Schema 實現。</p>
-<p>我們為「單得取一文章」API 設計一個回應格式，使用 Schema。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/schemas.py</span></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
+<p>Django Ninja 中，這個「篩選、驗證或格式轉換」需求，也是透過 Schema 實現。</p>
+<p>我們來為「單得取一文章」API 設計一個回應格式，<strong>使用 Schema</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/schemas.py</span></span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
 
-<p>這個<code>PostResponse</code>Schema 包含了「所有」的<code>Post</code>欄位。</p>
+<p>這個<code>PostResponse</code> Schema 包含了<code>Post</code>幾乎所有的欄位。</p>
 <p>注意，<strong>Schema 定義將決定輸出的欄位</strong>。如果 Schema 中只有<code>id</code>一欄，那輸出結果就只會有該欄的資料。</p>
-<p>接著，我們在 API 中使用這個 Schema：</p>
+<p>接著，我們在 view 函式中使用這個 Schema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;int:post_id&#125;/&#x27;</span>, response=PostResponse</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_post</span>(<span class="params">request: HttpRequest, post_id: <span class="built_in">int</span></span>) -&gt; Post:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得單一文章</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    post = Post.objects.get(<span class="built_in">id</span>=post_id)</span><br><span class="line">    <span class="keyword">return</span> post</span><br></pre></td></tr></table></figure>
 
 <p>只有改一行！——在<code>router</code>裝飾器加上<code>response=PostSchema</code>。</p>
@@ -267,26 +268,26 @@
 
 <p>非常好！</p>
 <hr>
-<h2 id="三、多個模型物件的回應：取得文章列表"><a href="#三、多個模型物件的回應：取得文章列表" class="headerlink" title="三、多個模型物件的回應：取得文章列表"></a>三、多個模型物件的回應：取得文章列表</h2><p>「清單、列表」也是 API 的常見回應形態，包含多筆資料。</p>
-<p>我們繼續使用剛剛的<code>PostSchema</code>，不作任何更動，直接用在「取得文章列表」這個 API。</p>
-<p>一樣，只要更改一行就足夠了：</p>
+<h2 id="三、多個模型物件回應：取得文章列表"><a href="#三、多個模型物件回應：取得文章列表" class="headerlink" title="三、多個模型物件回應：取得文章列表"></a>三、多個模型物件回應：取得文章列表</h2><p>「<strong>清單、列表</strong>」也是 API 的常見回應形態，包含<strong>多筆資料</strong>。</p>
+<p>我們繼續使用剛剛的<code>PostSchema</code>，不作任何更動，直接套用在「取得文章列表」這個 API。</p>
+<p>一樣，只要更改一行即可，但與前面<strong>略有不同</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span>, response=<span class="built_in">list</span>[PostResponse]</span>)</span></span><br></pre></td></tr></table></figure>
 
-<p>這裡我們使用了 <code>response=list[PostSchema]</code>，表示回應會是一個<code>PostSchema</code>物件的 list。</p>
-<p>實際上，此時你不需要「真的」return 一個 Python list，可以直接回傳 QuerySet 就好，Django Ninja 會自動為你轉換。</p>
-<p>甚至，只要你 return 的是一個 <a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-iterable-iterator-generator/#iterable-%e6%98%af%e4%bb%80%e9%ba%bc">iterable</a>，且 iterable 中的每一個元素，<strong>都能夠通過</strong><code>PostSchema</code>驗證，就足夠了！</p>
-<p>來看看結果吧！因為列表太長了，我改用截圖呈現：</p>
-<p><img src="https://i.imgur.com/vwh3t3R.png" alt="取得文章列表"><span class="cap">取得文章列表</span></p>
+<p>我們使用了<code>list[PostSchema]</code>，表示回應會是一個<code>PostSchema</code>物件的 list。</p>
+<h3 id="Django-Ninja-自動處理-Iterable"><a href="#Django-Ninja-自動處理-Iterable" class="headerlink" title="Django Ninja 自動處理 Iterable"></a>Django Ninja 自動處理 Iterable</h3><p>然而實際上，此時你<strong>不需要</strong>「真的」return 一個 Python list，<strong>可以直接回傳 QuerySet</strong> 就好，Django Ninja 會自行處理物件的<strong>迭代與序列化</strong>。</p>
+<p>甚至，只要你 return 的是一個 <a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-iterable-iterator-generator/#iterable-%e6%98%af%e4%bb%80%e9%ba%bc">iterable</a>，而且 iterable 中的每一個元素，<strong>都能夠通過</strong><code>PostSchema</code>驗證（符合格式），那就足夠了！</p>
+<p>來看看結果，因為列表太長了，我改用截圖呈現：</p>
+<p><img src="https://i.imgur.com/vwh3t3R.png" alt="API 回應：取得文章列表"><span class="cap">API 回應：取得文章列表</span></p>
 <hr>
-<h2 id="多種狀態碼回應"><a href="#多種狀態碼回應" class="headerlink" title="多種狀態碼回應"></a>多種狀態碼回應</h2><p>上面提到的回應，不是 200 就是 201，但通常 API 往往還會有 400、401、403 甚至 500 等回應，如何處理它們之間的對應關係？</p>
-<p>很簡單，就是擴大<code>reposne=</code>中的字典！我們直接看<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#multiple-response-schemas">官方文件</a>中的例子：</p>
+<h2 id="多重狀態碼回應"><a href="#多重狀態碼回應" class="headerlink" title="多重狀態碼回應"></a>多重狀態碼回應</h2><p>上面提到的回應，不是 200 就是 201，但通常 API 往往還會有 400、401、403 甚至 500 等回應，如何處理它們之間的<strong>對應關係</strong>？</p>
+<p>沒錯，就是擴大<code>response=</code>中的字典！我們直接看<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#multiple-response-schemas">官方文件</a>的例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Token</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    token: <span class="built_in">str</span></span><br><span class="line">    expires: date</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Message</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    message: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@api.post(<span class="params"><span class="string">&#x27;/login&#x27;</span>, response=&#123;<span class="number">200</span>: Token, <span class="number">401</span>: Message, <span class="number">402</span>: Message&#125;</span>)</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>值得留意的是：字典的 key 不可重複，但值可以！——<code>Message</code>出現了兩次。</p>
-<p>但我覺得這個設定在實務上沒有很實用，為何？我們後續再談。</p>
+<p>值得留意的是，字典的 key 不可重複，但值可以！——<code>Message</code>出現了兩次。</p>
+<p>但我覺得這個「多重狀態碼回應」設定在實務上沒有很實用，為何？我們後續再談。</p>
 <hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>這篇文章中，我們從最簡單的回應開始，逐步介紹了如何在回應中返回單一和多筆資料，最後介紹了 Django Ninja 如何設定多種狀態碼回應。</p>
-<p>下一篇，我們會探討如何處理複雜的巢狀結構和資料庫關聯，讓我們的 API 愈來愈健全。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>本文中，我們從最簡單的回應開始，逐步介紹了如何在回應中返回單一和多筆資料，並提到了 Django Ninja 如何設定多重狀態碼回應。</p>
+<p>下一篇將探討，如何處理回應中複雜的<strong>巢狀結構</strong>，讓我們的 API 愈來愈健全。</p>
 
       </div>
 
