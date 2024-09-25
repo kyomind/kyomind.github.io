@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-16T15:26:44+08:00" />
+  <meta property="article:modified_time" content="2024-09-25T04:14:49+08:00" />
 
 
 
@@ -221,18 +221,18 @@
 <li><strong>支援非同步</strong>：Django Ninja 支援非同步處理，讓 API 在面對大量請求時，仍能維持高效的回應速度與處理效能。</li>
 </ul>
 <hr>
-<h2 id="Django-Ninja-與-Django-REST-Framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-Framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST Framework 的主要區別"></a>Django Ninja 與 Django REST Framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>（<strong>以下簡稱 DRF</strong>），可以參考我寫過的這篇〈<a href="https://blog.kyomind.tw/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>
-<p>文章中還說明了，<a href="https://blog.kyomind.tw/django-rest-framework-01/#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-DRF">為何 Django 需要像 Django Ninja、DRF 這樣的 API 框架。</a></p>
+<h2 id="Django-Ninja-與-Django-REST-Framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-Framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST Framework 的主要區別"></a>Django Ninja 與 Django REST Framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST Framework</a>，可以參考我寫過的這篇〈<a href="https://blog.kyomind.tw/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>
+<p>文章中還說明了，<a href="https://blog.kyomind.tw/django-rest-framework-01/#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-DRF">為何 Django 需要像 Django Ninja、Django REST Framework 這樣的 API 框架。</a></p>
 <p>DRF 和 Django Ninja，都是 Django 生態系中，用於快速建立 API 的強大工具，而且前者的歷史悠久得多。</p>
 <p>但它們在設計理念、功能實現上存在顯著差異。對我而言，它們甚至可以說是<strong>完全不同</strong>的工具😎</p>
 <p>下面三個部分，總結了我個人認為兩者的主要區別。</p>
 <h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ul>
-<li><strong>DRF</strong>：作為一個成熟且全面的框架，它提供了<strong>豐富的元件</strong>。適合需要高度定制和複雜功能的專案，並且擁有強大的社群支持。</li>
+<li><strong>Django REST Framework</strong>：作為一個成熟且全面的框架，它提供了<strong>豐富的元件</strong>。適合需要高度定制和複雜功能的專案，並且擁有強大的社群支持。</li>
 <li><strong>Django Ninja</strong>：專注於<strong>簡潔</strong>和開發速度，利用現代 Python 特性（如型別提示）來簡化 API 開發過程。適合追求快速開發和高效性能的專案。</li>
 </ul>
 <h2 id="主要功能差異"><a href="#主要功能差異" class="headerlink" title="主要功能差異"></a>主要功能差異</h2><ul>
 <li><strong>序列化</strong>：<ul>
-<li><strong>DRF</strong>：使用自定義的<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>，支持更多複雜的序列化需求。</li>
+<li><strong>Django REST Framework</strong>：使用自定義的<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>，支持更多複雜的序列化需求。</li>
 <li><strong>Django Ninja</strong>：使用 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a>，簡化了序列化過程，但可能不如 DRF 靈活。</li>
 </ul>
 </li>
@@ -248,14 +248,14 @@
 </li>
 </ul>
 <h2 id="社群支持與生態"><a href="#社群支持與生態" class="headerlink" title="社群支持與生態"></a>社群支持與生態</h2><ul>
-<li><strong>DRF</strong>：擁有成熟的社群和大量的外掛套件，由 <a target="_blank" rel="noopener" href="https://github.com/encode">encode</a> 團隊開發維護。</li>
+<li><strong>Django REST Framework</strong>：擁有成熟的社群和大量的外掛套件，由 <a target="_blank" rel="noopener" href="https://github.com/encode">encode</a> 團隊開發維護。</li>
 <li><strong>Django Ninja</strong>：較新的框架，社群規模較小，網路上的資料少很多，且主要依賴作者一人開發、維護。</li>
 </ul>
 <hr>
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Django Ninja 和 DRF 有著<strong>各自的優勢</strong>：</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Django Ninja 和 Django REST Framework 有著<strong>各自的優勢</strong>：</p>
 <ul>
 <li>如果你追求的是快速開發、高性能、以及更現代化的 Python 型別提示，<strong>Django Ninja</strong> 是理想選擇，尤其適合需要非同步的場景。</li>
-<li>如果你需要處理更複雜的認證、權限管理，並且需要高度自定義的 API 驗證和處理邏輯，那麼 <strong>DRF</strong> 是一個穩定且強大的選擇。</li>
+<li>如果你需要處理更複雜的認證、權限管理，並且需要高度自定義的 API 驗證和處理邏輯，那麼 <strong>Django REST Framework</strong> 是一個穩定且強大的選擇。</li>
 </ul>
 <p>透過本文的介紹，相信你對 Django Ninja 有了更加清晰的認識。</p>
 <p>接下來的教學中，我們將深入探討 Django Ninja 的各個部分，幫助你更好地掌握這個現代化的 API 開發工具。</p>
