@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-26T03:59:25+08:00" />
+  <meta property="article:modified_time" content="2024-09-26T05:20:11+08:00" />
 
 
 
@@ -213,10 +213,10 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="二、API-改進：重新定義-Schema"><a href="#二、API-改進：重新定義-Schema" class="headerlink" title="二、API 改進：重新定義 Schema"></a>二、API 改進：重新定義 Schema</h2><p>只需要做一件事，就可以讓回應的內容、結構有所不同——重新定義<code>PostResponse</code> Schema：</p>
+<h2 id="二、API-改進：重新定義-Schema"><a href="#二、API-改進：重新定義-Schema" class="headerlink" title="二、API 改進：重新定義 Schema"></a>二、API 改進：重新定義 Schema</h2><p>只需要做一件事，就可以讓回應的內容、結構有所不同——重新定義<code>PostResponse</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Schema</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">_AuthorInfo</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    email: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author: _AuthorInfo  <span class="comment"># 巢狀結構，包含作者資訊</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
 
-<p><code>_AuthorInfo</code>包含了作者的<code>id</code>、<code>name</code>和<code>email</code>，並將這個結構<strong>嵌入</strong><code>PostResponse</code>中的<code>author</code>欄位（從<code>author_id</code>改名而來，因為資訊內涵已有所不同）。</p>
+<p><code>_AuthorInfo</code>包含了作者的<code>id</code>、<code>name</code>和<code>email</code>，並將這個結構<strong>嵌入</strong><code>PostResponse</code>中的<code>author</code>欄位（從<code>author_id</code>易名而來，因為資訊內涵已有所不同）。</p>
 <p>如此一來，我們便可以<strong>同時獲得</strong>文章和作者的必要資訊。</p>
 <h3 id="命名小建議"><a href="#命名小建議" class="headerlink" title="命名小建議"></a>命名小建議</h3><p>你可能留意到我在<code>_AuthorInfo</code>使用了「底線開頭」這個命名原則。在 Python 中，這是一種<strong>慣例</strong>，用來表示這個<strong>屬性、函式、類別</strong>主要是作為<strong>內部使用</strong>。</p>
 <p>所謂的「<strong>內部</strong>」可以有<strong>很多種解讀</strong>，而這裡我的用意是：<strong>它只是某個或多個 Schema 的一部分，不直接供 view 函式調用。</strong></p>
@@ -228,11 +228,11 @@
 
 <p>看看新的<code>author</code>欄位內容，巢狀結構，非常完美！</p>
 <p>用戶可以直接到看文章作者的名字與 email，如果想看更多作者資訊，依舊能透過<code>id</code>欄位，再讓前端呼叫另一支 API。</p>
-<p>這是一個理想的折衷方案。</p>
+<p>這是一個理想的<strong>折衷方案</strong>。</p>
 <hr>
 <h2 id="三、「攤平」巢狀資訊"><a href="#三、「攤平」巢狀資訊" class="headerlink" title="三、「攤平」巢狀資訊"></a>三、「攤平」巢狀資訊</h2><p>前面的「折衷方案」確實挺理想。不過，有時我們的需求<strong>更簡單</strong>。</p>
 <p>比如在「取得文章列表」API 中，我們可能也需要顯示作者的資訊——但此時只要<strong>名字</strong>就足夠了。</p>
-<p>不需要作者 id，也不用 email，只要名字即可。</p>
+<p>不需要作者 id，更不用 email，只要名字即可。</p>
 <p>那麼，為何稱之為「<strong>攤平巢狀資訊</strong>」呢？因為作者的名字並非<code>Post</code>模型的直接屬性，它實際上來自於關聯模型——<code>User</code>。</p>
 <p>我們必須要把有關作者的巢狀資訊進行<strong>化簡</strong>。</p>
 <p>本來是這樣：</p>
@@ -271,9 +271,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">author_name = serializers.CharField(source=<span class="string">&quot;author.name&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>是不是簡潔很多？</p>
 <p>但這確實是 Django Ninja 作者<strong>早期</strong><a target="_blank" rel="noopener" href="https://github.com/vitalik/django-ninja/issues/291#issuecomment-981395267">推薦的方式</a>。</p>
-<p>別擔心，第 16 篇我們會介紹更現代化的做法。不過<code>@property</code>方法，在<strong>某些情況下</strong>，還是很有用的。</p>
+<p>別擔心，第 16 篇我們會介紹更好、更現代化的做法。不過<code>@property</code>在<strong>某些情況下</strong>，還是很有用的。</p>
 <hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>在這篇文章中，我們展示了如何在 Django Ninja 中使用 Schema 實現巢狀結構回應。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>這篇文章中，我們展示了如何在 Django Ninja 中使用 Schema 實現巢狀結構回應。</p>
 <p>接著介紹如何「攤平」這個巢狀結構，把原來的作者 id 替換成名字欄位。</p>
 <p>這些方法大大增加了 API 回應的靈活性。</p>
 <p>下一篇文章，我們將討論 Django Ninja 和 Django REST Framework 在序列化與回應結構處理上的不同設計理念，並比較兩者的優劣。</p>
