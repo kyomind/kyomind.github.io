@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論">
-  <meta property="og:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應概論">
+  <meta property="og:title" content="Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應概論"><meta name="twitter:description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。">
   <meta property="og:description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹 Django Ninja 如何處理 HTTP 回應，並透過 3 個 API 進行示範。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-25T08:38:20+08:00" />
+  <meta property="article:modified_time" content="2024-09-26T09:35:38+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論 - Code and Me</title>
+    <title>Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應概論 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -141,7 +141,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (14)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (15)</a>
           
         </div>
       </li>
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 13：回應（一）Django Ninja 處理回應概論
+      <h1 class="post-title">Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應概論
         </h1>
 
       <div class="post-meta">
@@ -199,7 +199,7 @@
 <p>這一篇要正式進入「<strong>HTTP 回應</strong>」環節，也就是第三小節。</p>
 <p>本節將透過 4 篇文章，介紹 Django Ninja <strong>如何處理 HTTP 回應</strong>：</p>
 <ul>
-<li>卷 13：回應（一）Django Ninja 處理回應概論</li>
+<li>卷 13：回應（一）Django Ninja 處理 HTTP 回應概論</li>
 <li>卷 14：回應（二）Nested Response</li>
 <li>卷 15：回應（三）為什麼不使用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</li>
 <li>卷 16：回應（四）Resolver 方法——欄位資料格式化</li>
@@ -341,7 +341,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">14</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">15</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
     </div>
   </div>
 </div>

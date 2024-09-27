@@ -133,7 +133,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (14)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (15)</a>
           
         </div>
       </li>
@@ -169,6 +169,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/cursor/">Cursor IDE 心得：三大亮點與三個阻礙</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-08-10
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><!-- ![](https://i.imgur.com/VhSp2Jb.png) -->
+<p><img src="https://i.imgur.com/8qdJkr4.png"></p>
+<p>主打 AI 輔助寫程式的編輯器——<a target="_blank" rel="noopener" href="https://cursor.com/">Cursor</a>，這陣子非常火紅。</p>
+<p>剛好我在上星期經朋友推薦，認真試用了一下，還接了 OpenAI GPT-4o mini API 作為編輯器的 AI 助手。</p>
+<p>本文會分享我試用 Cursor 的心得，以及我<strong>仍不打算</strong>從 VS Code 遷移至 Cursor 的<strong>三個理由</strong>。</p>
+<p>雖然是從個人角度出發，但我會考慮不同狀況、不同需求的讀者，給出不同的建議。</p>
+<hr>
+<h2 id="Cursor-Editor-簡介"><a href="#Cursor-Editor-簡介" class="headerlink" title="Cursor Editor 簡介"></a>Cursor Editor 簡介</h2><p>Cursor 是一款主打 AI 輔助寫程式的新型態 IDE，它並非單純在既有編輯器加上外掛，而是<strong>將 AI 深度整合進編輯器中</strong>。</p>
+<p>它直接使用了 VS Code 的開源程式碼來建構。</p>
+<p>這意味著，Cursor 在介面與操作邏輯上都與 VS Code 極為相似，對於那些想要從 VS Code 遷移過來的使用者來說，幾乎不需要花費額外的時間適應，就能快速上手。</p>
+<p>它的最大亮點，是<strong>內建了強大的 AI 功能（名為：Copilot++）</strong>，可以根據你的指令，自動生成程式碼、提供程式碼建議，甚至幫你 debug。</p>
+<p>不過這些其實 <a target="_blank" rel="noopener" href="https://github.com/features/copilot">GitHub Copilot</a> 也能做到。所以，我認為，真正讓 Cursor 脫穎而出的，是以下三點。</p>
+          <div class="read-more">
+            <a href="/cursor/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-35/">35，開始備戰 2024 iThome 鐵人賽</a>
         </h1>
@@ -347,48 +377,6 @@
 <p>不過，本文只打算介紹 DRF 中的 FBV，並實作一個 DRF view function。</p>
           <div class="read-more">
             <a href="/django-rest-framework-03/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/mypy/">Python type checker：Mypy 介紹</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-28
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><!-- ![picture 0](https://i.imgur.com/Eps34hb.jpeg) -->
-<!-- ![](https://i.imgur.com/VXSLiC6.png) -->
-<!-- ![by Koma Zhang](https://i.imgur.com/rnvlF18.jpg) -->
-<!-- ![](https://i.imgur.com/VhSp2Jb.png) -->
-
-<p><img src="https://i.imgur.com/8qdJkr4.png"></p>
-<p>在〈<a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a>〉一文中，我們闡述了為 Python 專案程式碼加上 type hints 的<strong>長期價值</strong>與<strong>需要付出的成本</strong>。</p>
-<p>文中多次提到了 <a target="_blank" rel="noopener" href="https://github.com/python/mypy">Mypy</a> 這個<strong>靜態類型檢查器</strong>。</p>
-<p>本文從<strong>歷史發展</strong>、工作原理與工具的<strong>整體輪廓</strong>上介紹 Mypy 的特色，</p>
-<p>雖然沒有詳細的 Mypy 使用教學，但<strong>更了解 Mypy，可能讓你對 Python 的型別檢查產生不同的看法。</strong></p>
-<p>老實說，我覺得 Mypy 不太需要學習，只要引入一些設定就好。這部分我們會在下一篇文章中介紹。</p>
-<p>最後，我會分享一些使用 Mypy 時的心得與經驗。</p>
-<p>如果看過開頭那篇文章，你可能會認同：<strong>我們終將要成為 Python type hints 的信徒</strong>。而 Mypy 就是最佳的布道者。</p>
-<h3 id="系列：Mypy-三部曲"><a href="#系列：Mypy-三部曲" class="headerlink" title="系列：Mypy 三部曲"></a>系列：Mypy 三部曲</h3><blockquote>
-<ol>
-<li><a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a></li>
-<li><strong>Python type checker：Mypy 介紹</strong></li>
-<li><a href="/mypy-django-guide/">Django 專案加入 Mypy 指南</a></li>
-</ol>
-</blockquote>
-<hr>
-<h2 id="為什麼需要-Mypy"><a href="#為什麼需要-Mypy" class="headerlink" title="為什麼需要 Mypy"></a>為什麼需要 Mypy</h2><p>Python 是一門廣受歡迎的「<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/voice/87841">動態定型</a>」程式語言，以其簡潔的語法和靈活性著稱。</p>
-<p>然而，這種<strong>靈活性</strong>有時也會成為<strong>問題</strong>，特別是在大型專案中，型別錯誤可能會導致難以追蹤的 bug，從而降低程式碼的可靠性和可維護性。</p>
-<p>在這樣的背景下，Mypy 應運而生。</p>
-          <div class="read-more">
-            <a href="/mypy/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
