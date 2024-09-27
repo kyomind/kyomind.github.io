@@ -183,7 +183,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的篩選與加工。</p>
+<p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的<strong>篩選與加工</strong>。</p>
 <p>比如「取得單一文章資訊」API，實際上就是從<code>Post</code>物件挑選欄位，再進行序列化。</p>
 <p>這個過程中，我們需要考慮如何將<strong>模型物件</strong>轉換為 API 的回應結構，同時保持程式碼的可維護性與靈活。</p>
 <p>對此，Django REST Framework（<strong>以下簡稱 DRF</strong>）提供了<strong>非常實用的「特製」序列化器</strong>——<code>ModelSerializer</code>，可說是 DRF 開發者必學的核心功能。</p>
