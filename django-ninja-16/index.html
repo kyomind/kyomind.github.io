@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-28T05:17:03+08:00" />
+  <meta property="article:modified_time" content="2024-09-28T18:41:54+08:00" />
 
 
 
@@ -234,7 +234,7 @@
 <h3 id="Django-Ninja-的-Resolver-方法"><a href="#Django-Ninja-的-Resolver-方法" class="headerlink" title="Django Ninja 的 Resolver 方法"></a>Django Ninja 的 Resolver 方法</h3><p>在 Django Ninja 中，我們用 <strong>Resolver 方法</strong>來實現同樣的功能：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">resolve_created_at</span>(<span class="params">obj: Post</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="keyword">return</span> obj.created_at.strftime(<span class="string">&#x27;%Y-%m-%dT%H:%M:%SZ&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">resolve_updated_at</span>(<span class="params">self, obj: Post</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="keyword">return</span> obj.updated_at.strftime(<span class="string">&#x27;%Y-%m-%dT%H:%M:%SZ&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p><strong>方法的命名</strong>，相較於 DRF 用的是<code>_get</code>前綴，Django Ninja 則是採<code>resolve_</code>前綴。</p>
+<p><strong>方法的命名</strong>，相較於 DRF 用的是<code>get_</code>前綴，Django Ninja 則是採<code>resolve_</code>前綴。</p>
 <p>此外，你沒有看錯，這裡使用了<strong>兩種寫法</strong>：</p>
 <ul>
 <li><code>resolve_created_at</code> 是一個「<strong>靜態方法</strong>（static method）」，需要使用<code>@staticmethod</code>裝飾器，且沒有<code>self</code>參數。</li>
