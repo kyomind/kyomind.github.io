@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-28T04:59:15+08:00" />
+  <meta property="article:modified_time" content="2024-09-28T05:17:03+08:00" />
 
 
 
@@ -205,14 +205,14 @@
 <li><strong>字串處理</strong>：截斷過長的文字、加上統一的前綴等。</li>
 </ol>
 <p>不論原因為何，絕大部分時候都是為了資料的「<strong>可讀性</strong>」，或符合特定業務規則。</p>
-<p>可見，像資料格式化這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
+<p>可想而知，像資料格式化這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/7">這個 PR</a>。</p>
 <hr>
 <h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>再次回到「取得單一文章資訊」API，這是目前的回傳格式：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://127.0.0.1:8000/posts/2/</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1 content&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;alice@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>經團隊討論，決定<strong>簡化</strong>回應的時間字串，改採「<code>&quot;2024-09-12T02:28:16Z&quot;</code>」格式。</p>
-<p>和舊版相比，只是少了「<code>.801</code>」這個小數部分而已，而且依舊符合 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/ISO_8601">ISO 8601</a> 標準。</p>
+<p>我們決定<strong>簡化</strong>回應的時間字串，改採「<code>&quot;2024-09-12T02:28:16Z&quot;</code>」格式。</p>
+<p>和舊版相比，只是少了「<code>.801</code>」這個小數部分而已，且依舊符合 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/ISO_8601">ISO 8601</a> 標準。</p>
 <p>總之，回應中<code>created_at</code>和<code>updated_at</code>兩個欄位的內容，需要進行<strong>格式上的轉換</strong>。即上述提到的「<strong>資料格式化</strong>」。</p>
 <span id="more"></span>
 
@@ -256,7 +256,7 @@
 <p>非常好！</p>
 <hr>
 <h2 id="使用-Alias-攤平欄位資訊"><a href="#使用-Alias-攤平欄位資訊" class="headerlink" title="使用 Alias 攤平欄位資訊"></a>使用 Alias 攤平欄位資訊</h2><p>另一個常見的格式化需求，是我們之前提過的「<strong>攤平</strong>」（flatten）複雜資料結構。</p>
-<p>這算是一種對資料的「<strong>重組</strong>」，這種<strong>結構重組</strong>同樣屬於本文所探討的<strong>資料格式化</strong>範疇。</p>
+<p>這是一種對資料的「<strong>重組</strong>」，而<strong>結構重組</strong>同樣屬於本文所探討的<strong>資料格式化</strong>範疇。</p>
 <p>還記得在第 14 篇，我們透過<code>@property</code>產生「取得文章列表」回應中<code>author_name</code>欄位內容嗎？——這是對<code>User</code>模型的攤平，直接獲取其<code>username</code>欄位資訊。</p>
 <p>這裡我們換一個<strong>更優雅</strong>的做法——<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#aliases">alias</a>。</p>
 <h3 id="使用-Alias"><a href="#使用-Alias" class="headerlink" title="使用 Alias"></a>使用 Alias</h3><p>Django Ninja（幾乎是從 Pydantic 照搬來的）提供了<code>Field</code>與<code>alias</code>參數來實現這一功能。</p>
@@ -267,15 +267,15 @@
 <p>注意，原先<code>Post</code>模型的<code>@property</code>方法要拿掉，或至少<strong>不能</strong>和<code>author_name</code><strong>撞名</strong>，否則會出錯唷！</p>
 <p>我選擇了移除<code>@property</code>方法，直接改用這個新做法。</p>
 <h3 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h3><p>透過<code>alias=author.username</code>取得<code>Post</code>的<strong>關聯模型</strong>——<code>User</code>的<code>username</code>屬性值。實現了<strong>巢狀資料的攤平</strong>。</p>
-<p>這種做法，顯然是向 DRF 的<strong>優秀借鑑</strong>，相當於 DRF 中的 <code>source=author.username</code>寫法。</p>
-<p>雖然有點抽象，卻非常優雅。</p>
+<p>這種設計，顯然是向 DRF 的<strong>優秀借鑑</strong>，相當於 DRF 中的 <code>source=author.username</code>寫法。</p>
+<p>雖然<strong>有點抽象</strong>，卻非常優雅。</p>
 <p><code>alias</code>的用途不限於資料攤平（這反而是比較進階的用法），其它細節，如欄位名稱替換等，可直接參考 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/alias/">Pydantic 文件</a>。</p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Django Ninja 的 Resolver 方法允許我們對 API 回應中的欄位資料進行<strong>動態處理</strong>，滿足各種格式轉換與自定義需求。</p>
 <p>在處理像<code>created_at</code>和<code>updated_at</code>這樣的時間欄位時，Resolver 方法不僅簡單易用，還能保證程式碼的結構清晰。</p>
 <p><code>Field</code>與<code>alias</code>參數則更優雅地實現了另一種常見的資料格式化——「攤平」。不僅簡化了 API 回應，且無需修改背後的 Django 模型。</p>
 <p>透過這些方式，我們能更靈活地控制 API 的輸出，以符合客戶端需求。</p>
-<h2 id="下一章預告"><a href="#下一章預告" class="headerlink" title="下一章預告"></a>下一章預告</h2><p>完成了「<strong>Django Ninja 處理 HTTP 回應</strong>」共 4 篇的學習，接下來，我們要將目光轉向 API 開發中的<strong>另一個重要主題——文件</strong>！</p>
+<h2 id="下一章預告"><a href="#下一章預告" class="headerlink" title="下一章預告"></a>下一章預告</h2><p>完成了對「<strong>Django Ninja 處理 HTTP 回應</strong>」共 4 篇的學習，第三章也正式告一段落。接下來，我們要將目光轉向 API 開發中的<strong>另一個重要主題——文件</strong>！</p>
 <p>隨著專案規模的增長，<strong>清晰的 API 文件</strong>對於任何需要使用 API 的人員都<strong>至關重要</strong>——包括後端開發者<strong>自己</strong>！</p>
 <p>一份好的 API 文件能夠<strong>大幅降低溝通成本，提高開發效率、減少錯誤</strong>。它不僅是一種技術文書，更是<strong>團隊協作的重要樞紐</strong>。</p>
 <p>第四章，我們會探討如何有效地透過 Django Ninja 程式碼，產生高品質的 API 文件，從而提升整體的開發體驗。</p>
