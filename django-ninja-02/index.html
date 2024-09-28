@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-27T07:06:34+08:00" />
+  <meta property="article:modified_time" content="2024-09-28T06:52:39+08:00" />
 
 
 
@@ -184,7 +184,10 @@
       <div class="post-meta">
         <span class="post-time">
           2024-09-14
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2024-09-28
+          </span>
+        <span class="post-category">
             <a href="/categories/Django-Ninja/">Django Ninja</a>
             </span>
         </div>
@@ -210,18 +213,18 @@
 <p>架構篇中，說明系列的安排與組成、每篇文章的主要內容與學習順序。</p>
 <p>最後為讀者介紹 Django Ninja 與 Django REST Framework 等基本概念，包括彼此的定位與異同。</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/django-ninja-01/">卷 1：系列導讀 × 目標讀者</a></li>
+<li><a href="/django-ninja-01/">卷 1：系列導讀 × 目標讀者</a></li>
 <li><strong>卷 2：架構 × 章節導覽</strong>（本篇）</li>
-<li><a href="https://blog.kyomind.tw/django-ninja-03/">卷 3：Django Ninja 介紹——與 Django REST framework 主要區別</a></li>
+<li><a href="/django-ninja-03/">卷 3：Django Ninja 介紹——與 Django REST framework 主要區別</a></li>
 </ul>
 <h2 id="第二章：範例專案與環境設定"><a href="#第二章：範例專案與環境設定" class="headerlink" title="第二章：範例專案與環境設定"></a>第二章：範例專案與環境設定</h2><p>介紹系列的範例專案——<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">Django-Ninja-Tutorial</a>，透過具體的程式碼改動，作為學習過程中的參考。（覺得專案有用心的話，<strong>千萬不要吝嗇你的 🌟 哦！</strong>🥰）</p>
 <p>範例程式碼是學習新技術的良師益友，也是我的嘔心瀝血之作 😭</p>
 <p>我們也會介紹專案所使用的 Python 開發工具，讓讀者能體驗真實的開發環境。</p>
 <p>最後，我們會一步一步帶著你，讓專案能夠在你的本機環境運行。</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/django-ninja-04/">卷 4：範例專案介紹</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-05/">卷 5：Python 現代開發工具介紹</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-06/">卷 6：環境設定 × 如何使用本專案</a></li>
+<li><a href="/django-ninja-04/">卷 4：範例專案介紹</a></li>
+<li><a href="/django-ninja-05/">卷 5：Python 現代開發工具介紹</a></li>
+<li><a href="/django-ninja-06/">卷 6：環境設定 × 如何使用本專案</a></li>
 </ul>
 <hr>
 <h2 id="第三章：Django-Ninja-基本功"><a href="#第三章：Django-Ninja-基本功" class="headerlink" title="第三章：Django Ninja 基本功"></a>第三章：Django Ninja 基本功</h2><p>Django Ninja 的核心部分，任何一個 API 開發者都需要熟悉的基本功。</p>
@@ -229,24 +232,24 @@
 <h3 id="第一節：路由（Routers）"><a href="#第一節：路由（Routers）" class="headerlink" title="第一節：路由（Routers）"></a>第一節：路由（Routers）</h3><p><strong>端點（endpoints）與路由是 API 的起點。</strong></p>
 <p>Django Ninja 的路由設定方式，與傳統 Django 有很大不同。因此，我們將路由放在第一位，作為學習 API 開發的入口。</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/django-ninja-07/">卷 7：路由（上）傳統 Django 路由做法（兼章節概論）</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-08/">卷 8：路由（下）Django Ninja 路由</a></li>
+<li><a href="/django-ninja-07/">卷 7：路由（上）傳統 Django 路由做法（兼章節概論）</a></li>
+<li><a href="/django-ninja-08/">卷 8：路由（下）Django Ninja 路由</a></li>
 </ul>
 <h3 id="第二節：請求（HTTP-Request）"><a href="#第二節：請求（HTTP-Request）" class="headerlink" title="第二節：請求（HTTP Request）"></a>第二節：請求（HTTP Request）</h3><p>路由之後是 HTTP 請求，講述 Django Ninja 處理請求的三大重點：路徑參數、查詢參數和請求主體（body）。</p>
 <p>其中最重要的是 body，將使用 Django Ninja Schema（即 Pydantic BaseModel）來進行資料接收與驗證。</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/django-ninja-09/">卷 9：請求（一）Django Ninja 處理 HTTP 請求概論（兼論 FBVs）</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-10/">卷 10：請求（二）路徑參數（Path Parameters）</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-11/">卷 11：請求（三）查詢參數（Query Parameters）</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-12/">卷 12：請求（四）Request Body 與 Schema 介紹</a></li>
+<li><a href="/django-ninja-09/">卷 9：請求（一）Django Ninja 處理 HTTP 請求概論（兼論 FBVs）</a></li>
+<li><a href="/django-ninja-10/">卷 10：請求（二）路徑參數（Path Parameters）</a></li>
+<li><a href="/django-ninja-11/">卷 11：請求（三）查詢參數（Query Parameters）</a></li>
+<li><a href="/django-ninja-12/">卷 12：請求（四）Request Body 與 Schema 介紹</a></li>
 </ul>
 <h3 id="第三節：回應（HTTP-Response）"><a href="#第三節：回應（HTTP-Response）" class="headerlink" title="第三節：回應（HTTP Response）"></a>第三節：回應（HTTP Response）</h3><p>請求之後是回應，回應仍需要使用 Schema，<strong>但變化比請求更多。</strong></p>
 <p>本節將介紹回應的基本架構、處理方式、巢狀 Schema，以及 Resolver 方法。</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/django-ninja-13/">卷 13：回應（一）Django Ninja 處理 HTTP 回應概論</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-14/">卷 14：回應（二）巢狀結構回應</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-15/">卷 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a></li>
-<li><strong>卷 16：回應（四）Resolver 方法——欄位資料格式化</strong></li>
+<li><a href="/django-ninja-13/">卷 13：回應（一）Django Ninja 處理 HTTP 回應概論</a></li>
+<li><a href="/django-ninja-14/">卷 14：回應（二）巢狀結構回應</a></li>
+<li><a href="/django-ninja-15/">卷 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a></li>
+<li><a href="/django-ninja-16/">卷 16：回應（四）Resolver 方法——欄位資料格式化</a></li>
 </ul>
 <hr>
 <h2 id="第四章：API-文件"><a href="#第四章：API-文件" class="headerlink" title="第四章：API 文件"></a>第四章：API 文件</h2><p>掌握了 Django Ninja 如何處理請求與回應後，剩下的另一關鍵就是 API 文件。</p>
