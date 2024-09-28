@@ -185,14 +185,14 @@
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
 <p>上一篇提到，API 回應常常是對 Django Model 物件內容的篩選與加工——然後 JSON 序列化。</p>
 <p>其中「<strong>加工</strong>」部分，用更專業的說法，大概是「<strong>資料格式化</strong>」——依照一定的規則，對輸出資料進行<strong>某種轉換或重新組織</strong>，以符合<strong>特定的輸出格式</strong>。</p>
-<p>資料需要格式化的原因很多，例如：</p>
+<p>資料格式化的種類很多，例如：</p>
 <ol>
-<li>時間格式轉換：將資料庫中的時間戳（timestamp），轉換為更易讀的格式。</li>
-<li>數值轉換：將數字轉換為貨幣格式，或將小數點位數進行四捨五入。</li>
-<li>字串處理：截斷過長的文字、加上統一的前綴等。</li>
+<li><strong>時間格式轉換</strong>：將資料庫中的時間戳（timestamp），轉換為更易讀的格式。</li>
+<li><strong>數值轉換</strong>：將數字轉換為貨幣格式，或將小數點位數進行四捨五入。</li>
+<li><strong>字串處理</strong>：截斷過長的文字、加上統一的前綴等。</li>
 </ol>
 <p>不論原因為何，絕大部分時候都是為了資料的「<strong>可讀性</strong>」，或符合特定業務規則。</p>
-<p>這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
+<p>可見，像資料格式化這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/7">這個 PR</a>。</p>
 <hr>
 <h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>再次回到「取得單一文章資訊」API，這是目前的回傳格式：</p>
