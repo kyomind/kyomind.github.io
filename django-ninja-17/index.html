@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T07:17:38+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T07:22:56+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Documentation-as-Code"><span class="toc-text">Documentation as Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88-API-%E6%96%87%E4%BB%B6%E7%8F%BE%E6%B3%81"><span class="toc-text">專案 API 文件現況</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-Tags-%E7%82%BA-API-%E5%88%86%E9%A1%9E"><span class="toc-text">一、使用 Tags 為 API 分類</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%B7%AF%E7%94%B1%E8%A3%9D%E9%A3%BE%E5%99%A8%E7%9A%84%E6%96%87%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">二、路由裝飾器的文件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81NinjaAPI-%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、NinjaAPI 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Documentation-as-Code"><span class="toc-text">Documentation as Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88-API-%E6%96%87%E4%BB%B6%E7%8F%BE%E6%B3%81"><span class="toc-text">專案 API 文件現況</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-Tags-%E7%82%BA-API-%E5%88%86%E7%B5%84"><span class="toc-text">一、使用 Tags 為 API 分組</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%B7%AF%E7%94%B1%E8%A3%9D%E9%A3%BE%E5%99%A8%E7%9A%84%E6%96%87%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">二、路由裝飾器的文件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81NinjaAPI-%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、NinjaAPI 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>「<strong>依程式碼自動產生 API 文件</strong>」是 Django Ninja 的一大賣點。</p>
@@ -242,23 +242,23 @@
 <hr>
 <p>上述問題正是我們需要改善 API 文件的重點。</p>
 <p>其中，請求 body 範例與 Schema 設定有關，是下一篇重心。</p>
-<p>本篇我們先聚焦於 <strong>Django Ninja 設定</strong>——讓我們一一介紹。</p>
-<h2 id="一、使用-Tags-為-API-分類"><a href="#一、使用-Tags-為-API-分類" class="headerlink" title="一、使用 Tags 為 API 分類"></a>一、使用 Tags 為 API 分類</h2><p>我們第一個要解決的是分組（分類）問題。</p>
-<p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分類。這不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
+<p>本文先聚焦於 <strong>Django Ninja 設定</strong>——讓我們一一介紹。</p>
+<h2 id="一、使用-Tags-為-API-分組"><a href="#一、使用-Tags-為-API-分組" class="headerlink" title="一、使用 Tags 為 API 分組"></a>一、使用 Tags 為 API 分組</h2><p>我們第一個要解決的是<strong>分組</strong>（分類）問題。</p>
+<p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分組。這不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
 <p>Tags 分組可以在兩個地方進行設定。</p>
 <h3 id="一級路由分組"><a href="#一級路由分組" class="headerlink" title="一級路由分組"></a>一級路由分組</h3><p>最常見的做法，是在<strong>一級路由</strong>進行設定：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;user.api.router&#x27;</span>, tags=[<span class="string">&#x27;User&#x27;</span>])</span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;post.api.router&#x27;</span>, tags=[<span class="string">&#x27;Post&#x27;</span>])</span><br></pre></td></tr></table></figure>
 
 <p>因為同一個 Django app 的 API，通常就是在同一組。</p>
-<h3 id="路由裝飾器分組"><a href="#路由裝飾器分組" class="headerlink" title="路由裝飾器分組"></a>路由裝飾器分組</h3><p>也可以在<strong>路由裝飾器</strong>設定，但我覺得這可能屬於相對「例外」情況，主要用於：</p>
+<h3 id="路由裝飾器分組"><a href="#路由裝飾器分組" class="headerlink" title="路由裝飾器分組"></a>路由裝飾器分組</h3><p>也可以在<strong>路由裝飾器</strong>設定分組，但我認為這屬於相對「<strong>例外</strong>」情況，主要用於：</p>
 <ol>
 <li>全專案只有一個 Django app。</li>
 <li>同一個 Django app 需要不同的分組。</li>
 </ol>
-<p>比如下面範例中，沒有區分 Django app，但仍有分組需要：</p>
+<p>比如下面範例中，沒有區分 Django app，但仍有分組需求：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.get(<span class="params"><span class="string">&quot;/users/&quot;</span>, tags=[<span class="string">&quot;User&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_users</span>(<span class="params">request</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.post(<span class="params"><span class="string">&quot;/posts/&quot;</span>, tags=[<span class="string">&quot;Post&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">request, title: <span class="built_in">str</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>大部分情況，我推薦在一級路由分組就好。</p>
+<p>大部分情況，我推薦在一級路由進行分組就好。</p>
 <p>不然像上面的例子那樣，一個一個標記，實施起來相對繁瑣。</p>
 <hr>
 <h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的路由裝飾器不僅可以設定基本的 API 路徑，還允許你加上 API 的描述性文字，這些內容會直接反映在生成的 API 文件中。</p>
