@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T06:42:43+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T07:17:38+08:00" />
 
 
 
@@ -221,15 +221,15 @@
 <p>是不是有點小期待呢？☺️</p>
 <hr>
 <h2 id="專案-API-文件現況"><a href="#專案-API-文件現況" class="headerlink" title="專案 API 文件現況"></a>專案 API 文件現況</h2><p>在開始大刀闊斧地加強文件品質之前，我們先來看看目前 API 文件有多麼「陽春」。</p>
-<p>啟動 Django 伺服器後，造訪下列網址就可以查看當前 API 的文件：</p>
+<p>啟動 Django 伺服器後，造訪下列網址可以查看當前 API 的文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8000/docs</span><br></pre></td></tr></table></figure>
 
-<p>目前的文件如下：</p>
+<p>目前的文件內容如下：</p>
 <p><img src="https://i.imgur.com/jMSkDMj.png"></p>
-<p>我們從「對開發人員是否實用、好讀」的角度進行簡要分析。</p>
-<h3 id="問題解析"><a href="#問題解析" class="headerlink" title="問題解析"></a>問題解析</h3><p>首先，它沒有分組！</p>
-<p>Django user app 和 post app 的 API 都混在一起了，當 API 愈來愈多，就會顯得十分混亂。這是最優先要解決的問題。</p>
-<p>其次，API 的說明如「Get Users」、「Create Post」顯然都只是從 view 函式名稱自動轉換而來。資訊有限，且不夠口語、不夠詳細，簡單來說就是不夠「讀者友善」。</p>
+<p>我們從「<strong>對開發人員是否有用、好讀</strong>」的角度進行簡要分析。</p>
+<h3 id="問題解析"><a href="#問題解析" class="headerlink" title="問題解析"></a>問題解析</h3><p>首先，它<strong>沒有分組</strong>！</p>
+<p>Django user app 和 post app 的 API 都<strong>混在一起</strong>了，當 API 愈來愈多，就會顯得十分雜亂。這是<strong>最優先要解決</strong>的問題。</p>
+<p>其次，API 的說明如「Get Users」、「Create Post」等，顯然都是從 view 函式名稱自動轉換而來。資訊有限，且不夠口語、不夠詳細，簡單講就是不夠「讀者友善」。</p>
 <p>我們點進唯一的 POST API 看一下內容：</p>
 <p><img src="https://i.imgur.com/NCitdKc.png"></p>
 <p>內頁的說明有「新增文章」，這其實是從 view 函式的 docstring 獲取的：</p>
@@ -238,11 +238,11 @@
 <p>再看一下其中 HTTP 請求 body 的範例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user_id&quot;</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>只能說<strong>不盡理想</strong>，像<code>&quot;string&quot;</code>這樣的例子，只有表現出「型別」，沒有模擬真實世界的文章標題或內容。</p>
+<p>只能說<strong>不盡理想</strong>，像<code>&quot;string&quot;</code>這樣的例子，只有表現出「型別」，沒有模擬<strong>真實世界</strong>的文章標題或內容。</p>
 <hr>
 <p>上述問題正是我們需要改善 API 文件的重點。</p>
-<p>其中，請求 body 範例與 Schema 有關，是下一篇重心。本篇我們先聚焦於 <strong>Django Ninja 設定</strong>。</p>
-<p>讓我們一一介紹。</p>
+<p>其中，請求 body 範例與 Schema 設定有關，是下一篇重心。</p>
+<p>本篇我們先聚焦於 <strong>Django Ninja 設定</strong>——讓我們一一介紹。</p>
 <h2 id="一、使用-Tags-為-API-分類"><a href="#一、使用-Tags-為-API-分類" class="headerlink" title="一、使用 Tags 為 API 分類"></a>一、使用 Tags 為 API 分類</h2><p>我們第一個要解決的是分組（分類）問題。</p>
 <p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分類。這不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
 <p>Tags 分組可以在兩個地方進行設定。</p>
