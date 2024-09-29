@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T07:30:39+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T07:42:46+08:00" />
 
 
 
@@ -197,11 +197,11 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>「<strong>依程式碼自動產生 API 文件</strong>」是 Django Ninja 的一大賣點。</p>
-<p>事實上，API 文件的自動化，正是我在工作上的專案從 Django REST framework 轉向 Django Ninja 的最大考量——也是我開始學習 Django Ninja 的契機。</p>
+<p>事實上，<strong>API 文件的自動化</strong>，正是我在工作上的專案從 Django REST framework 轉向 Django Ninja 的<strong>首要考量</strong>——也是我開始學習 Django Ninja 的契機。</p>
 <p>Django Ninja 省去了大量<strong>人工撰寫</strong>（我們用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a>）API 文件的時間，特別是在 API 規格變動時，<strong>不需要再同步修改文件</strong>，大大減少了維護文件的心力。</p>
 <p>可見這個特性有多麼重要。</p>
-<h3 id="教學順序考量"><a href="#教學順序考量" class="headerlink" title="教學順序考量"></a>教學順序考量</h3><p>那麼，為何我到了系列的第 17 篇文章——也就是本篇，才開始介紹 Django Ninja 的 API 文件功能呢？</p>
-<p>原因在於，要產生優秀的 API 文件，需要你對 Schema 的使用有基本的了解。所以我不得不放在第三章之後。</p>
+<h3 id="教學順序的考量"><a href="#教學順序的考量" class="headerlink" title="教學順序的考量"></a>教學順序的考量</h3><p>那麼，為何我到了系列的第 17 篇文章——也就是本篇，才開始介紹 Django Ninja 的 API 文件功能呢？</p>
+<p>原因在於，要產生優秀的 API 文件，<strong>需要你對 Schema 的使用有一定的了解</strong>。所以我不得不放在第三章之後。</p>
 <p>現在，我們要開始探討如何使用 Django Ninja 產出高品質的 API 文件。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/8">這個 PR</a>。</p>
 <span id="more"></span>
@@ -212,13 +212,13 @@
 <p>文件<strong>隨著程式碼的變更而自動更新</strong>，兩者<strong>無時無刻都保持著一致性</strong>。</p>
 <p>這不僅提升了開發效率，還減少了<strong>因文件過時而導致的溝通不順暢或誤解</strong>。</p>
 <p>Django Ninja 的自動化產生文件功能無疑是「Documentation as Code」精神的實踐。</p>
-<p>我們可以透過撰寫 API 路由、view 函式、Schema 等<strong>程式碼</strong>，自動生成符合 <a target="_blank" rel="noopener" href="https://www.openapis.org/">OpenAPI</a> 標準的文件，當程式碼變更時，這些文件會<strong>自動反映變更結果</strong>，無需手動維護。</p>
+<p>我們可以透過撰寫 API 路由、view 函式、Schema 等<strong>程式碼</strong>，自動產生符合 <a target="_blank" rel="noopener" href="https://www.openapis.org/">OpenAPI</a> 標準的文件，當程式碼變更時，這些文件<strong>也會自動反映變更結果</strong>，無需手動維護。</p>
 <h3 id="Django-Ninja-自動化-API-文件的兩大重點"><a href="#Django-Ninja-自動化-API-文件的兩大重點" class="headerlink" title="Django Ninja 自動化 API 文件的兩大重點"></a>Django Ninja 自動化 API 文件的兩大重點</h3><p>在 Django Ninja 中，要產生高品質的 API 文件，主要涉及<strong>兩個重點</strong>：</p>
 <ol>
 <li><strong>Django Ninja 設定</strong>：Django Ninja 內建了好一些控制 API 文件細節的設定，這是本文的重點。</li>
 <li><strong>Pydantic 設定</strong>：這是下一篇要探討的內容，講述如何有效定義 Schema，讓各種細節自動呈現在 API 文件中。</li>
 </ol>
-<p>是不是有點小期待呢？☺️</p>
+<p>看到這裡，是不是有點小期待呢？☺️</p>
 <hr>
 <h2 id="專案-API-文件現況"><a href="#專案-API-文件現況" class="headerlink" title="專案 API 文件現況"></a>專案 API 文件現況</h2><p>在開始大刀闊斧地加強文件品質之前，我們先來看看目前 API 文件有多麼「陽春」。</p>
 <p>啟動 Django 伺服器後，造訪下列網址可以查看當前 API 的文件：</p>
@@ -229,28 +229,28 @@
 <p>我們從「<strong>對開發人員是否有用、好讀</strong>」的角度進行簡要分析。</p>
 <h3 id="問題解析"><a href="#問題解析" class="headerlink" title="問題解析"></a>問題解析</h3><p>首先，它<strong>沒有分組</strong>！</p>
 <p>Django user app 和 post app 的 API 都<strong>混在一起</strong>了，當 API 愈來愈多，就會顯得十分雜亂。這是<strong>最優先要解決</strong>的問題。</p>
-<p>其次，API 的說明如「Get Users」、「Create Post」等，顯然都是從 view 函式名稱自動轉換而來。資訊有限，且不夠口語、不夠詳細，簡單講就是不夠「讀者友善」。</p>
+<p>其次，API 的說明如「Get Users」、「Create Post」等，顯然都是從 view 函式名稱自動轉換而來。資訊有限，且不夠口語、不夠詳細，簡單講就是不夠「<strong>讀者友善</strong>」。</p>
 <p>我們點進唯一的 POST API 看一下內容：</p>
 <p><img src="https://i.imgur.com/NCitdKc.png"></p>
-<p>內頁的說明有「新增文章」，這其實是從 view 函式的 docstring 獲取的：</p>
+<p>內頁的說明有「新增文章」，這其實是<strong>從 view 函式的 docstring 獲取</strong>的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">...</span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增文章</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>再看一下其中 HTTP 請求 body 的範例：</p>
+<p>再看一下 HTTP 請求 body 的範例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user_id&quot;</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>只能說<strong>不盡理想</strong>，像<code>&quot;string&quot;</code>這樣的例子，只有表現出「型別」，沒有模擬<strong>真實世界</strong>的文章標題或內容。</p>
 <hr>
 <p>上述問題正是我們需要改善 API 文件的重點。</p>
-<p>其中，請求 body 範例與 Schema 設定有關，是下一篇重心。</p>
+<p>其中，請求 body 範例與 Schema 設定有關，是下一篇的重心。</p>
 <p>本文先聚焦於 <strong>Django Ninja 設定</strong>——讓我們一一介紹。</p>
-<h2 id="一、使用-Tags-為-API-分組"><a href="#一、使用-Tags-為-API-分組" class="headerlink" title="一、使用 Tags 為 API 分組"></a>一、使用 Tags 為 API 分組</h2><p>我們第一個要解決的是<strong>分組</strong>（分類）問題。</p>
-<p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分組。這不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
-<p>Tags 分組可以在兩個地方進行設定。</p>
+<h2 id="一、使用-Tags-為-API-分組"><a href="#一、使用-Tags-為-API-分組" class="headerlink" title="一、使用 Tags 為 API 分組"></a>一、使用 Tags 為 API 分組</h2><p>我們第一個要解決的是 API 的<strong>分組</strong>（分類）問題。</p>
+<p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分組。不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
+<p>Tags 分組可以在<strong>兩個地方</strong>進行設定。</p>
 <h3 id="一級路由分組"><a href="#一級路由分組" class="headerlink" title="一級路由分組"></a>一級路由分組</h3><p>最常見的做法，是在<strong>一級路由</strong>進行設定：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;user.api.router&#x27;</span>, tags=[<span class="string">&#x27;User&#x27;</span>])</span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;post.api.router&#x27;</span>, tags=[<span class="string">&#x27;Post&#x27;</span>])</span><br></pre></td></tr></table></figure>
 
 <p>因為同一個 Django app 的 API，通常就是在同一組。</p>
-<h3 id="路由裝飾器分組"><a href="#路由裝飾器分組" class="headerlink" title="路由裝飾器分組"></a>路由裝飾器分組</h3><p>也可以在<strong>路由裝飾器</strong>設定分組，但我認為這屬於相對「<strong>例外</strong>」情況，主要用於：</p>
+<h3 id="路由裝飾器分組"><a href="#路由裝飾器分組" class="headerlink" title="路由裝飾器分組"></a>路由裝飾器分組</h3><p>也可以在<strong>路由裝飾器</strong>設定分組，但我認為這屬於相對「<strong>例外</strong>」的情況，主要用於：</p>
 <ol>
 <li>全專案只有一個 Django app。</li>
 <li>同一個 Django app 需要不同的分組。</li>
@@ -259,10 +259,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.get(<span class="params"><span class="string">&quot;/users/&quot;</span>, tags=[<span class="string">&quot;User&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_users</span>(<span class="params">request</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.post(<span class="params"><span class="string">&quot;/posts/&quot;</span>, tags=[<span class="string">&quot;Post&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">request, title: <span class="built_in">str</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>大部分情況，我推薦在一級路由進行分組就好。</p>
-<p>不然像上面的例子那樣，一個一個標記，實踐起來相對繁瑣。</p>
+<p>不然像上面的例子那樣，一個一個標記，實踐起來有點繁瑣。</p>
 <hr>
-<h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的<strong>路由裝飾器</strong>不僅可以設定基本的 API 路徑，還允許你加上 <strong>API 的描述性文字</strong>，這些內容會直接反映在生成的 API 文件中。</p>
-<p>透過這些設定，你可以為 API 的參數、回應、甚至意圖添加說明，讓文件更全面。</p>
+<h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的<strong>路由裝飾器</strong>不僅可以設定基本的 API 路徑，還允許你加上 <strong>API 的描述文字</strong>，這些內容會直接反映在生成的 API 文件中。</p>
+<p>透過這些設定，你可以為 API 的參數、回應、甚至意圖加上說明，讓文件更全面。</p>
 <p>透過<code>description</code>和<code>summary</code>參數，能為各 API 路由提供說明。不過<code>description</code>會取代上述「docstring 轉 API 說明」的效果，所以我平常都只寫<code>summary</code>。</p>
 <p><strong>畢竟我們寫 Python，docstring 可是必須的！</strong></p>
 <p>程式碼如下：</p>
