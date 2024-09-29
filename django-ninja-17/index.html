@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T07:26:53+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T07:30:39+08:00" />
 
 
 
@@ -275,14 +275,14 @@
 <h2 id="三、NinjaAPI-設定"><a href="#三、NinjaAPI-設定" class="headerlink" title="三、NinjaAPI 設定"></a>三、NinjaAPI 設定</h2><p>你可以通過<code>NinjaAPI</code>類別的<strong>初始化</strong>設定，來客製一些<strong>全域</strong>的 API 文件細節。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI(</span><br><span class="line">    title=<span class="string">&quot;忍者論壇 API&quot;</span>,</span><br><span class="line">    version=<span class="string">&quot;1.0&quot;</span>,</span><br><span class="line">    description=<span class="string">&quot;這是忍者論壇的 API 文件，供讀者參考&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p>實際效果：</p>
+<p>對應的實際效果：</p>
 <p><img src="https://i.imgur.com/oLgmQkM.png"></p>
-<p><code>NinjaAPI</code>的<strong>初始化</strong>設定非常多樣——有些可能是你需要的。</p>
+<p><code>NinjaAPI</code>的初始化設定<strong>非常多樣</strong>——有些可能是你需要的。</p>
 <p>這裡只是簡單例示，更多設定細節，可查看<a target="_blank" rel="noopener" href="https://django-ninja.dev/reference/api/">文件</a>。</p>
 <hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>本文探討了 Django Ninja 自動生成 API 文件的常見設定，讓「Documentation as Code」理念得以實現——程式碼與文件能輕鬆保持一致，減少了手動維護的麻煩。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>本文探討了 Django Ninja 自動生成 API 文件的常見設定，讓「Documentation as Code」精神得以實現——程式碼與文件能輕鬆保持一致，減少了手動維護的麻煩。</p>
 <p>然而，API 文件的品質，還取決於我們如何定義請求和回應的 Schema。</p>
-<p>接下來，我們將深入探討這個議題，說明如何透過<code>Field</code>設定，來提供高品質的範例，進一步提升 API 文件的可讀性和清晰度。</p>
+<p>接下來，我們將深入探討這個議題，說明如何透過 Pydantic 的<code>Field</code>參數設定，提供<strong>高品質的文件範例</strong>，進一步提升 API 文件的可讀性和清晰度。</p>
 
       </div>
 
