@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T07:22:56+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T07:26:53+08:00" />
 
 
 
@@ -259,18 +259,18 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.get(<span class="params"><span class="string">&quot;/users/&quot;</span>, tags=[<span class="string">&quot;User&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_users</span>(<span class="params">request</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.post(<span class="params"><span class="string">&quot;/posts/&quot;</span>, tags=[<span class="string">&quot;Post&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">request, title: <span class="built_in">str</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>大部分情況，我推薦在一級路由進行分組就好。</p>
-<p>不然像上面的例子那樣，一個一個標記，實施起來相對繁瑣。</p>
+<p>不然像上面的例子那樣，一個一個標記，實踐起來相對繁瑣。</p>
 <hr>
-<h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的路由裝飾器不僅可以設定基本的 API 路徑，還允許你加上 API 的描述性文字，這些內容會直接反映在生成的 API 文件中。</p>
-<p>透過這些設定，你可以為 API 的參數、回應、甚至意圖增加說明，讓文件更全面。</p>
-<p>透過<code>description</code>和<code>summary</code>參數，能為每個 API 路由提供說明。不過由於<code>description</code>會取代上述「docstring 轉成 API 說明」的效果，所以我平常都只寫<code>summary</code>。</p>
-<p>畢竟 docstring 可是必須的！</p>
+<h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的<strong>路由裝飾器</strong>不僅可以設定基本的 API 路徑，還允許你加上 <strong>API 的描述性文字</strong>，這些內容會直接反映在生成的 API 文件中。</p>
+<p>透過這些設定，你可以為 API 的參數、回應、甚至意圖添加說明，讓文件更全面。</p>
+<p>透過<code>description</code>和<code>summary</code>參數，能為各 API 路由提供說明。不過<code>description</code>會取代上述「docstring 轉 API 說明」的效果，所以我平常都只寫<code>summary</code>。</p>
+<p><strong>畢竟我們寫 Python，docstring 可是必須的！</strong></p>
 <p>程式碼如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">..., summary=<span class="string">&#x27;取得文章列表&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">...</span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>目前為止的實際改善效果：（分組、API 說明）</p>
+<p>到目前為止的實際改善效果：（分組、API 說明）</p>
 <p><img src="https://i.imgur.com/WRv4MGd.png"></p>
-<p>非常不錯！</p>
+<p>非常不錯唷！</p>
 <hr>
 <h2 id="三、NinjaAPI-設定"><a href="#三、NinjaAPI-設定" class="headerlink" title="三、NinjaAPI 設定"></a>三、NinjaAPI 設定</h2><p>你可以通過<code>NinjaAPI</code>類別的<strong>初始化</strong>設定，來客製一些<strong>全域</strong>的 API 文件細節。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI(</span><br><span class="line">    title=<span class="string">&quot;忍者論壇 API&quot;</span>,</span><br><span class="line">    version=<span class="string">&quot;1.0&quot;</span>,</span><br><span class="line">    description=<span class="string">&quot;這是忍者論壇的 API 文件，供讀者參考&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
