@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 17：API 文件的實踐重點">
+  <meta property="og:title" content="Django Ninja 教學 17：API 文件的實踐重點"><meta name="twitter:description" content="本文將介紹 Django Ninja 的 API 文件功能，並重點探討如何使用 Django Ninja 產出高品質的 API 文件。">
+  <meta property="og:description" content="本文將介紹 Django Ninja 的 API 文件功能，並重點探討如何使用 Django Ninja 產出高品質的 API 文件。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文將介紹 Django Ninja 的 API 文件功能，並重點探討如何使用 Django Ninja 產出高品質的 API 文件。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
+            
+
+  <meta property="article:modified_time" content="2024-09-29T06:42:43+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-29T06:19:38+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-17/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 17：API 文件的實踐重點 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja/">Django Ninja (17)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 17：API 文件的實踐重點
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-29
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Documentation-as-Code"><span class="toc-text">Documentation as Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88-API-%E6%96%87%E4%BB%B6%E7%8F%BE%E6%B3%81"><span class="toc-text">專案 API 文件現況</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8-Tags-%E7%82%BA-API-%E5%88%86%E9%A1%9E"><span class="toc-text">一、使用 Tags 為 API 分類</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%B7%AF%E7%94%B1%E8%A3%9D%E9%A3%BE%E5%99%A8%E7%9A%84%E6%96%87%E4%BB%B6%E8%A8%AD%E5%AE%9A"><span class="toc-text">二、路由裝飾器的文件設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81NinjaAPI-%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、NinjaAPI 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>「<strong>依程式碼自動產生 API 文件</strong>」是 Django Ninja 的一大賣點。</p>
+<p>事實上，API 文件的自動化，正是我在工作上的專案從 Django REST framework 轉向 Django Ninja 的最大考量——也是我開始學習 Django Ninja 的契機。</p>
+<p>Django Ninja 省去了大量<strong>人工撰寫</strong>（我們用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a>）API 文件的時間，特別是在 API 規格變動時，<strong>不需要再同步修改文件</strong>，大大減少了維護文件的心力。</p>
+<p>可見這個特性有多麼重要。</p>
+<h3 id="教學順序考量"><a href="#教學順序考量" class="headerlink" title="教學順序考量"></a>教學順序考量</h3><p>那麼，為何我到了系列的第 17 篇文章——也就是本篇，才開始介紹 Django Ninja 的 API 文件功能呢？</p>
+<p>原因在於，要產生優秀的 API 文件，需要你對 Schema 的使用有基本的了解。所以我不得不放在第三章之後。</p>
+<p>現在，我們要開始探討如何使用 Django Ninja 產出高品質的 API 文件。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/8">這個 PR</a>。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Documentation-as-Code"><a href="#Documentation-as-Code" class="headerlink" title="Documentation as Code"></a>Documentation as Code</h2><p>現代軟體開發中，「<a target="_blank" rel="noopener" href="https://swimm.io/learn/code-documentation/documentation-as-code-why-you-need-it-and-how-to-get-started">Documentation as Code</a>」（DoC） 是一個逐漸被認可的理念。</p>
+<p>DoC 是指<strong>將文件與程式碼緊密結合</strong>，開發人員<strong>使用「與軟體程式碼開發相同的流程和工具」來建立和維護文件</strong>。</p>
+<p>文件<strong>隨著程式碼的變更而自動更新</strong>，兩者<strong>無時無刻都保持著一致性</strong>。</p>
+<p>這不僅提升了開發效率，還減少了<strong>因文件過時而導致的溝通不順暢或誤解</strong>。</p>
+<p>Django Ninja 的自動化產生文件功能無疑是「Documentation as Code」精神的實踐。</p>
+<p>我們可以透過撰寫 API 路由、view 函式、Schema 等<strong>程式碼</strong>，自動生成符合 <a target="_blank" rel="noopener" href="https://www.openapis.org/">OpenAPI</a> 標準的文件，當程式碼變更時，這些文件會<strong>自動反映變更結果</strong>，無需手動維護。</p>
+<h3 id="Django-Ninja-自動化-API-文件的兩大重點"><a href="#Django-Ninja-自動化-API-文件的兩大重點" class="headerlink" title="Django Ninja 自動化 API 文件的兩大重點"></a>Django Ninja 自動化 API 文件的兩大重點</h3><p>在 Django Ninja 中，要產生高品質的 API 文件，主要涉及<strong>兩個重點</strong>：</p>
+<ol>
+<li><strong>Django Ninja 設定</strong>：Django Ninja 內建了好一些控制 API 文件細節的設定，這是本文的重點。</li>
+<li><strong>Pydantic 設定</strong>：這是下一篇要探討的內容，講述如何有效定義 Schema，讓各種細節自動呈現在 API 文件中。</li>
+</ol>
+<p>是不是有點小期待呢？☺️</p>
+<hr>
+<h2 id="專案-API-文件現況"><a href="#專案-API-文件現況" class="headerlink" title="專案 API 文件現況"></a>專案 API 文件現況</h2><p>在開始大刀闊斧地加強文件品質之前，我們先來看看目前 API 文件有多麼「陽春」。</p>
+<p>啟動 Django 伺服器後，造訪下列網址就可以查看當前 API 的文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8000/docs</span><br></pre></td></tr></table></figure>
+
+<p>目前的文件如下：</p>
+<p><img src="https://i.imgur.com/jMSkDMj.png"></p>
+<p>我們從「對開發人員是否實用、好讀」的角度進行簡要分析。</p>
+<h3 id="問題解析"><a href="#問題解析" class="headerlink" title="問題解析"></a>問題解析</h3><p>首先，它沒有分組！</p>
+<p>Django user app 和 post app 的 API 都混在一起了，當 API 愈來愈多，就會顯得十分混亂。這是最優先要解決的問題。</p>
+<p>其次，API 的說明如「Get Users」、「Create Post」顯然都只是從 view 函式名稱自動轉換而來。資訊有限，且不夠口語、不夠詳細，簡單來說就是不夠「讀者友善」。</p>
+<p>我們點進唯一的 POST API 看一下內容：</p>
+<p><img src="https://i.imgur.com/NCitdKc.png"></p>
+<p>內頁的說明有「新增文章」，這其實是從 view 函式的 docstring 獲取的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">...</span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增文章</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>再看一下其中 HTTP 請求 body 的範例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user_id&quot;</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只能說<strong>不盡理想</strong>，像<code>&quot;string&quot;</code>這樣的例子，只有表現出「型別」，沒有模擬真實世界的文章標題或內容。</p>
+<hr>
+<p>上述問題正是我們需要改善 API 文件的重點。</p>
+<p>其中，請求 body 範例與 Schema 有關，是下一篇重心。本篇我們先聚焦於 <strong>Django Ninja 設定</strong>。</p>
+<p>讓我們一一介紹。</p>
+<h2 id="一、使用-Tags-為-API-分類"><a href="#一、使用-Tags-為-API-分類" class="headerlink" title="一、使用 Tags 為 API 分類"></a>一、使用 Tags 為 API 分類</h2><p>我們第一個要解決的是分組（分類）問題。</p>
+<p>為了讓文件結構更清晰，Django Ninja 支援使用 <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/#router-tags">Tags</a> 來對 API 進行分類。這不僅有助於組織文件，還能讓開發者或使用者更快地找到所需的 API。</p>
+<p>Tags 分組可以在兩個地方進行設定。</p>
+<h3 id="一級路由分組"><a href="#一級路由分組" class="headerlink" title="一級路由分組"></a>一級路由分組</h3><p>最常見的做法，是在<strong>一級路由</strong>進行設定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;user.api.router&#x27;</span>, tags=[<span class="string">&#x27;User&#x27;</span>])</span><br><span class="line">api.add_router(prefix=<span class="string">&#x27;&#x27;</span>, router=<span class="string">&#x27;post.api.router&#x27;</span>, tags=[<span class="string">&#x27;Post&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>因為同一個 Django app 的 API，通常就是在同一組。</p>
+<h3 id="路由裝飾器分組"><a href="#路由裝飾器分組" class="headerlink" title="路由裝飾器分組"></a>路由裝飾器分組</h3><p>也可以在<strong>路由裝飾器</strong>設定，但我覺得這可能屬於相對「例外」情況，主要用於：</p>
+<ol>
+<li>全專案只有一個 Django app。</li>
+<li>同一個 Django app 需要不同的分組。</li>
+</ol>
+<p>比如下面範例中，沒有區分 Django app，但仍有分組需要：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.get(<span class="params"><span class="string">&quot;/users/&quot;</span>, tags=[<span class="string">&quot;User&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_users</span>(<span class="params">request</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@api.post(<span class="params"><span class="string">&quot;/posts/&quot;</span>, tags=[<span class="string">&quot;Post&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">request, title: <span class="built_in">str</span></span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>大部分情況，我推薦在一級路由分組就好。</p>
+<p>不然像上面的例子那樣，一個一個標記，實施起來相對繁瑣。</p>
+<hr>
+<h2 id="二、路由裝飾器的文件設定"><a href="#二、路由裝飾器的文件設定" class="headerlink" title="二、路由裝飾器的文件設定"></a>二、路由裝飾器的文件設定</h2><p>Django Ninja 的路由裝飾器不僅可以設定基本的 API 路徑，還允許你加上 API 的描述性文字，這些內容會直接反映在生成的 API 文件中。</p>
+<p>透過這些設定，你可以為 API 的參數、回應、甚至意圖增加說明，讓文件更全面。</p>
+<p>透過<code>description</code>和<code>summary</code>參數，能為每個 API 路由提供說明。不過由於<code>description</code>會取代上述「docstring 轉成 API 說明」的效果，所以我平常都只寫<code>summary</code>。</p>
+<p>畢竟 docstring 可是必須的！</p>
+<p>程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">..., summary=<span class="string">&#x27;取得文章列表&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">...</span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>目前為止的實際改善效果：（分組、API 說明）</p>
+<p><img src="https://i.imgur.com/WRv4MGd.png"></p>
+<p>非常不錯！</p>
+<hr>
+<h2 id="三、NinjaAPI-設定"><a href="#三、NinjaAPI-設定" class="headerlink" title="三、NinjaAPI 設定"></a>三、NinjaAPI 設定</h2><p>你可以通過<code>NinjaAPI</code>類別的<strong>初始化</strong>設定，來客製一些<strong>全域</strong>的 API 文件細節。比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/арі.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> NinjaAPI</span><br><span class="line"></span><br><span class="line">api = NinjaAPI(</span><br><span class="line">    title=<span class="string">&quot;忍者論壇 API&quot;</span>,</span><br><span class="line">    version=<span class="string">&quot;1.0&quot;</span>,</span><br><span class="line">    description=<span class="string">&quot;這是忍者論壇的 API 文件，供讀者參考&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>實際效果：</p>
+<p><img src="https://i.imgur.com/oLgmQkM.png"></p>
+<p><code>NinjaAPI</code>的<strong>初始化</strong>設定非常多樣——有些可能是你需要的。</p>
+<p>這裡只是簡單例示，更多設定細節，可查看<a target="_blank" rel="noopener" href="https://django-ninja.dev/reference/api/">文件</a>。</p>
+<hr>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>本文探討了 Django Ninja 自動生成 API 文件的常見設定，讓「Documentation as Code」理念得以實現——程式碼與文件能輕鬆保持一致，減少了手動維護的麻煩。</p>
+<p>然而，API 文件的品質，還取決於我們如何定義請求和回應的 Schema。</p>
+<p>接下來，我們將深入探討這個議題，說明如何透過<code>Field</code>設定，來提供高品質的範例，進一步提升 API 文件的可讀性和清晰度。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/django-ninja-16/">
+        <span class="next-text nav-default">Django Ninja 教學 16：回應（四）Resolver 方法——欄位資料格式化</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 16：回應（四）Resolver 方法——欄位資料格式化</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">17</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

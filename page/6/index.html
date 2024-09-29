@@ -133,7 +133,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (16)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (17)</a>
           
         </div>
       </li>
@@ -169,6 +169,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/effective-python-01/">《Effective Python》筆記（一）以拆分代替索引</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-03
+        </span><span class="post-category">
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/8lztFoJ.png" alt="Effective Python 中文版"></p>
+<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865026325">Effective Python 中文版｜寫出良好 Python 程式的 90 個具體做法</a>》筆記的第 1 篇，你可以當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<p>毫無疑問，這又是一本關於「Clean Code in Python」的書——而且很可能是<strong>評價最高</strong>的一本。</p>
+<p>本書由 <strong>90 個具體做法</strong>所組成，搭配大量實例，助你寫出更 Pythonic 的程式碼。</p>
+<p>內容有初階也有進階（比如 metaclass），我會挑選書中我認為「<strong>重要且實用</strong>」的部分作為分享準則。簡言之，<strong>不會太深</strong>——但很可能是<strong>常常被忽略或低估</strong>的部分。</p>
+<p>本文整理自書中的<strong>「做法 6：優先選用多重指定的拆分而非索引」。</strong></p>
+<p>附帶一提，作者已經把書中的程式碼範例都放在 <a target="_blank" rel="noopener" href="https://github.com/bslatkin/effectivepython">effectivepython</a> 這個 repo，這對於我這種要寫筆記、心得文章的人，真是再方便不過。</p>
+<hr>
+<h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p>本文的主旨只有一個：試圖說服你，<strong>不要</strong>在程式碼中使用<strong>索引取值</strong>——盡可能改用拆分（unpacking）來代替索引。</p>
+<p>這裡的索引取值，指的是像<code>items[2]</code>這樣，以序列（<a target="_blank" rel="noopener" href="https://realpython.com/python-sequences/">sequence</a>）的<strong>數字索引</strong>來取值的情況。</p>
+<p>如果程式碼只有你一個人撰寫與維護，且日後也是如此，或許未必要堅持這個原則。</p>
+<p>但如果涉及<strong>多人協作</strong>，未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，同時更容易維護。</p>
+          <div class="read-more">
+            <a href="/effective-python-01/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-31/">31，打造新版「熱門文章排名」</a>
         </h1>
@@ -348,36 +378,6 @@
 </ul>
           <div class="read-more">
             <a href="/django-rest-framework-01/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/no-result/">我絕不用 result 作為變數名稱</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-05-04
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"></p>
-<p>在〈<a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a>〉中，我們提到了「<a href="/beyond-the-basic-stuff-with-python-01/#%E5%8F%B2%E4%B8%8A%E6%9C%80%E7%B3%9F%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%E2%80%94%E2%80%94data">data</a>」這個不佳的變數名稱。</p>
-<p>以及應該要用<strong>什麼樣的名稱</strong>取代它，與<strong>例外可以使用</strong> data 的情況。</p>
-<p>看過那段後，你可以發現，data 雖爛，但還是<strong>偶有派上用場</strong>的時候。雖然絕大部分的情況，我依舊會避免使用。</p>
-<p>然而有一個變數名稱，<strong>我絕對不會用</strong>。</p>
-<h2 id="比-data-更糟的變數名稱——result"><a href="#比-data-更糟的變數名稱——result" class="headerlink" title="比 data 更糟的變數名稱——result"></a>比 data 更糟的變數名稱——result</h2><p>當我遵守了好習慣，盡可能避免在程式碼中使用 data 命名後，本以為能從此過上幸福快樂的生活，<strong>但我錯了！</strong></p>
-<p>因為沒多久後我就發現，還有一個比 data 更<strong>駭人聽聞</strong>的變數名稱——<code>result</code>。</p>
-<p>和 data 相比，其<strong>糟糕的程度</strong>，簡直<strong>有過之而無不及</strong>。畢竟<strong>萬事萬物都有「result」</strong>，因果循環、生生不息，而且這個命名<strong>更加抽象</strong>，令人不禁想問：</p>
-<blockquote>
-<p><strong>到底是什麼結果？</strong></p>
-</blockquote>
-<p>result 命名的濫用，在「儲存呼叫函式的<strong>結果</strong>」時最為常見，<strong>難怪到處都是 result。</strong></p>
-          <div class="read-more">
-            <a href="/no-result/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/5/">
