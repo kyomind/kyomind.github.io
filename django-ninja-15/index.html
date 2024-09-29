@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T02:03:58+08:00" />
+  <meta property="article:modified_time" content="2024-09-29T02:12:20+08:00" />
 
 
 
@@ -222,8 +222,8 @@
 <p>Model 中的<code>name</code>欄位，被<code>ModelSerializer</code>轉換為序列化器的<code>name</code>欄位時，自動被加上了<code>allow_blank=True</code>、<code>max_length=100</code>、<code>required=False</code>等屬性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = serializers.CharField(</span><br><span class="line">    allow_blank=<span class="literal">True</span>,</span><br><span class="line">    max_length=<span class="number">100</span>,</span><br><span class="line">    required=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
-<p>這些序列化器的<strong>屬性設定</strong>，都是<code>ModelSerializer</code>從 Account Model 中<strong>推斷</strong>而來。它背後有很多轉換邏輯處理，讓開發者在某些情況下需要去理解這些「<strong>隱藏規則</strong>」。</p>
-<p>因為這個推斷有時<strong>可能不符合你的需求</strong>，導致你需要<strong>手動覆寫</strong>。</p>
+<p>這些序列化器的<strong>屬性設定</strong>，都是<code>ModelSerializer</code>從 Account Model 中<strong>推斷</strong>而來的。</p>
+<p>它背後有很多轉換邏輯，讓開發者在某些情況下<strong>必須</strong>去理解這些「<strong>隱藏規則</strong>」——因為這個推斷有時<strong>可能不符合你的需求</strong>，導致你需要<strong>手動覆寫</strong>。</p>
 <p>總之，自動推斷與轉換固然省去了手動設定的麻煩，但當你需要調整某些細節，或理解具體的轉換邏輯時，這種隱式行為可能會<strong>讓你感到困惑</strong>。</p>
 <h3 id="魔法的代價"><a href="#魔法的代價" class="headerlink" title="魔法的代價"></a>魔法的代價</h3><p>在實際開發中，這種隱式轉換的「魔法」會讓開發者<strong>失去</strong>對轉換過程的<strong>理解與掌控</strong>。你很可能會發現，序列化的結果和你想的<strong>並不完全一致！</strong></p>
 <p>此時我們往往需要翻閱 DRF 的官方文件來理解內部如何處理這些欄位轉換，但也不是每個細節都寫得清楚明白。</p>
