@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值">
+  <meta property="og:title" content="Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值"><meta name="twitter:description" content="本文介紹如何運用 Pydantic 的 Field 設定，為 API 文件加上範例，全方位提升 API 文件的清晰與可讀性。">
+  <meta property="og:description" content="本文介紹如何運用 Pydantic 的 Field 設定，為 API 文件加上範例，全方位提升 API 文件的清晰與可讀性。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文介紹如何運用 Pydantic 的 Field 設定，為 API 文件加上範例，全方位提升 API 文件的清晰與可讀性。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
+            
+
+  <meta property="article:modified_time" content="2024-09-30T03:48:04+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-30T01:42:11+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-18/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja/">Django Ninja (18)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-30
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pydantic-%E5%9C%A8-Django-Ninja-%E4%B8%AD%E7%9A%84%E8%A7%92%E8%89%B2"><span class="toc-text">Pydantic 在 Django Ninja 中的角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pydantic-Field"><span class="toc-text">Pydantic Field</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E8%88%87%E6%96%87%E4%BB%B6%E7%9A%84%E5%B9%B3%E8%A1%A1%E9%BB%9E"><span class="toc-text">程式與文件的平衡點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E4%BB%B6%E8%88%87%E5%8E%9F%E5%A7%8B%E7%A2%BC"><span class="toc-text">官方文件與原始碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA-API-%E6%96%87%E4%BB%B6%E5%8A%A0%E5%85%A5%E3%80%8C%E7%AF%84%E4%BE%8B%E3%80%8D"><span class="toc-text">為 API 文件加入「範例」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default-%E5%8F%83%E6%95%B8%E7%9A%84%E6%AD%A3%E7%A2%BA%E4%BD%BF%E7%94%A8%E6%99%82%E6%A9%9F"><span class="toc-text">default 參數的正確使用時機</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>上一篇文章中，我們探討了 Django Ninja 影響 API 文件<strong>呈現</strong>的一些重要設定。它們是<strong>自動化 API 文件</strong>的基本功，不容忽視。</p>
+<p>但這樣<strong>還不夠</strong>！我們想要讓這份文件更加<strong>生動</strong>，讀起來清晰易懂。</p>
+<p>其中的關鍵在於 API 文件上的<strong>資料範例</strong>。好的範例讓人一讀就懂，能有效縮短理解和思考的時間。</p>
+<p>本文將介紹如何運用 Pydantic 的<code>Field</code>設定，全方位提升 API 文件的清晰與可讀性。我們會探討如何為自動生成的文件加上<strong>栩栩如生的範例</strong>，讓文件<strong>更貼近真實</strong>。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/9">這個 PR</a>。</p>
+<hr>
+<h2 id="Pydantic-在-Django-Ninja-中的角色"><a href="#Pydantic-在-Django-Ninja-中的角色" class="headerlink" title="Pydantic 在 Django Ninja 中的角色"></a>Pydantic 在 Django Ninja 中的角色</h2><p>Pydantic 是一個實現資料驗證、序列化的套件，廣泛應用於 FastAPI 和 Django Ninja 等框架。</p>
+<p>在 Django Ninja 中，Pydantic 被用來定義 Schema，這些 Schema 決定了 API 如何處理 HTTP 請求和回應中的資料，並自動轉換成符合 OpenAPI 標準的文件。</p>
+<p>Pydantic 的強大之處在於，它不僅能驗證資料，還可以通過<code>Field</code>設定，為文件欄位<strong>提供額外的說明、範例和預設值</strong>。</p>
+<p>這些細節設定會<strong>自動反映</strong>在轉換後的 API 文件中，幫助開發者更好地理解 API 的行為與內涵。</p>
+<span id="more"></span>
+
+<h2 id="Pydantic-Field"><a href="#Pydantic-Field" class="headerlink" title="Pydantic Field"></a>Pydantic Field</h2><p>Pydantic 的<code>Field</code>是一個強大的工具，可以用來為每個資料欄位提供更多細節資訊，如標題、描述、範例和預設值等。</p>
+<p>這些設定不僅有助於數據驗證，也大大提升了 API 文件的可讀性。以下是一些常見的<code>Field</code>參數：</p>
+<ul>
+<li><code>title</code>：為欄位設定標題，幫助開發者快速理解該欄位的作用。</li>
+<li><code>description</code>：提供欄位描述，讓人更清楚地了解這個欄位的用途與限制。</li>
+<li><code>examples</code>：設定<strong>範例值</strong>，幫助開發者直觀理解 API 的輸入、輸出格式。</li>
+<li><code>default</code>：<strong>第一位置參數</strong>，提供欄位的<strong>預設值</strong>。Input 未提供該欄位值時，將<strong>自動使用預設值</strong>。</li>
+</ul>
+<p>善用這些參數，可以產生高品質的 API 文件。</p>
+<h2 id="程式與文件的平衡點"><a href="#程式與文件的平衡點" class="headerlink" title="程式與文件的平衡點"></a>程式與文件的平衡點</h2><p>不過！我們還是要稍稍向「現實」靠攏，如果每一個 API 都要你寫這麼多內容，可能會讓開發者感到<strong>負擔過重</strong>。</p>
+<p>而且，使用大量參數，文件確實變好看了，但產生文件的程式碼不免會<strong>落落長</strong>！</p>
+<p>我們要找到一個<strong>平衡點</strong>，既能提供足夠資訊，又不會讓程式變得過於冗長。</p>
+<p>從這個角度考慮，我覺得其中<strong>最重要的兩個參數</strong>，是<code>default</code>和<code>examples</code>——尤其是<strong>後者</strong>！</p>
+<p>所以本文會<strong>專注介紹這兩者</strong>，這樣不僅學習上更聚焦，也符合我的開發日常。</p>
+<hr>
+<h2 id="官方文件與原始碼"><a href="#官方文件與原始碼" class="headerlink" title="官方文件與原始碼"></a>官方文件與原始碼</h2><p>如果你想多了解 Pydantic Field 的參數與用法，那就要看 Pydantic 的<a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/fields/">官方文件</a>——而不是 Django Ninja。</p>
+<p>Django Ninja 的文件中，並沒有專門的章節介紹<code>Field</code>的使用。這是因為<code>Field</code>實際上是 Pydantic 的功能，而不是 Django Ninja 特有的。</p>
+<p>不過如果你真的去看這份文件，可能會發現，它對<code>Field</code>全部參數的解說，也不算是非常詳盡。</p>
+<p>想要知道<strong>所有可用的參數</strong>，我覺得看<a target="_blank" rel="noopener" href="https://github.com/pydantic/pydantic/blob/main/pydantic/fields.py">原始碼</a>是最快的。然後從<strong>函式簽名</strong>（對，<code>Field</code>是一個函式）的 type hints 去揣摩它的用法，也不失為一個好的方式。</p>
+<hr>
+<p>以下，我們開始講述如何使用 Pydantic Field 的<code>examples</code>和<code>default</code>參數，讓 API 文件更加生動且嚴謹。</p>
+<h2 id="為-API-文件加入「範例」"><a href="#為-API-文件加入「範例」" class="headerlink" title="為 API 文件加入「範例」"></a>為 API 文件加入「範例」</h2><p>上一篇我們提到目前 API 文件的<strong>不足</strong>，其中「<strong>缺乏真實範例</strong>」這個問題還未解決：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-22T08:58:55.960Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-22T08:58:55.960Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>無論是<code>0</code>或<code>&quot;string&quot;</code>，都稱不上好的文件範例。</p>
+<p>現在，我們要為「取得單一文章資訊」的回應 Schema <strong>加上範例</strong>，程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">_AuthorInfo</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = Field(examples=[<span class="number">1</span>])</span><br><span class="line">    username: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;Alice&#x27;</span>])</span><br><span class="line">    email: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;alice@exapmple.com&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = Field(examples=[<span class="number">1</span>])</span><br><span class="line">    title: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;Ninja is awesome!&#x27;</span>])</span><br><span class="line">    content: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;This is my first post.&#x27;</span>])</span><br><span class="line">    author: _AuthorInfo</span><br><span class="line">    created_at: datetime = Field(examples=[<span class="string">&#x27;2021-01-01T00:00:00Z&#x27;</span>])</span><br><span class="line">    updated_at: datetime = Field(examples=[<span class="string">&#x27;2021-01-01T00:00:00Z&#x27;</span>])</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>這裡有<strong>兩個重點</strong>。</p>
+<h3 id="重點一：examples-參數"><a href="#重點一：examples-參數" class="headerlink" title="重點一：examples 參數"></a>重點一：examples 參數</h3><p>我只有使用<code>examples</code>參數，這樣最簡單，而且<strong>範例</strong>確實是文件中<strong>相當重要的一環</strong>。</p>
+<p>此外，這個<code>examples</code>其實<strong>大有文章</strong>，如果你寫成<code>example</code>，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = Field(example=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>實際上<strong>也能正常運作</strong>，但 Mypy 卻會提醒你：</p>
+<blockquote>
+<p>Unexpected keyword argument “example” for “Field”; did you mean “examples”?</p>
+</blockquote>
+<p>沒錯，因為現在的 Pydantic v2，<code>Field</code>只有<code>examples</code>這個參數。<code>example</code>應該是 Pydantic v1 的做法，而 Django Ninja 還<strong>保持了對二者的相容</strong>。</p>
+<p>考慮到未來，建議還是使用<code>examples</code>，不僅可以避免 Mypy 的警告，而且與最新版本的 Pydantic 保持一致。</p>
+<h3 id="重點二：巢狀-Schema-的範例"><a href="#重點二：巢狀-Schema-的範例" class="headerlink" title="重點二：巢狀 Schema 的範例"></a>重點二：巢狀 Schema 的範例</h3><p>巢狀 Schema 的範例，只要在<strong>底層</strong> Schema 加上<code>Field</code>即可。引用層不必聲明：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">_AuthorInfo</span>(<span class="title class_ inherited__">Schema</span>):  <span class="comment"># 這是巢狀底層，要寫 Field</span></span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = Field(examples=[<span class="number">1</span>])</span><br><span class="line">    username: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;Alice&#x27;</span>])</span><br><span class="line">    email: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;alice@exapmple.com&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    author: _AuthorInfo  <span class="comment"># 無須再寫 Field</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<h3 id="實際效果"><a href="#實際效果" class="headerlink" title="實際效果"></a>實際效果</h3><p>看一下實際的 API 文件回應，我直接截取頁面中的 JSON 值：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Ninja is awesome!&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;This is my first post.&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;alice@exapmple.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2021-01-01T00:00:00Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2021-01-01T00:00:00Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>是不是比之前更生動、好讀呢？</p>
+<hr>
+<h2 id="default-參數的正確使用時機"><a href="#default-參數的正確使用時機" class="headerlink" title="default 參數的正確使用時機"></a>default 參數的正確使用時機</h2><p>在我看來，大部分的時候，我們<strong>並不需要</strong>定義預設值。</p>
+<p>我建議你也<strong>不要</strong>這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = <span class="number">1</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>雖然文件上一樣也會顯示範例值為 1，但其實這個寫法與下面這個寫法<strong>等價</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span> = Field(default=<span class="number">1</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>這實際上是在定義預設值</strong>。如前所述，如果 Schema 用在 HTTP 請求，且客戶端未提供該欄位的值時，Django Ninja 將<strong>自動使用</strong>預設值。</p>
+<p>這很可能會造成<strong>出乎意料</strong>的結果。</p>
+<p>正確的流程是：前端沒有提供值的時候，Django Ninja 應該要給出 422 回應。</p>
+<p>所以你根本不需要（也不應該）定義預設值——<strong>除了下列情況</strong>。</p>
+<h3 id="在可選欄位使用預設值-None"><a href="#在可選欄位使用預設值-None" class="headerlink" title="在可選欄位使用預設值 None"></a>在可選欄位使用預設值 None</h3><p>我個人推薦，只在請求欄位為「<strong>可選（optional）</strong>」時，使用<code>default</code>參數。</p>
+<p>而且此時的預設值<strong>應為</strong><code>None</code>。</p>
+<p>為了示範，我們建立一個<strong>新 API</strong>——「<strong>新增使用者</strong>」（也就是<strong>用戶註冊</strong>）。這個 API 在後續教學中，還會被反覆提及與改進。</p>
+<p>還記得我們的<code>User</code>模型中，<code>bio</code>欄位是可選的嗎？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">AbstractUser</span>):</span><br><span class="line">    email = models.EmailField(unique=<span class="literal">True</span>)  <span class="comment"># 強制唯一的 email</span></span><br><span class="line">    bio = models.TextField(null=<span class="literal">True</span>)  <span class="comment"># 個人簡介欄位（可選）</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>所以，我們的 API 請求 Schema 如下——直接看<code>bio</code>欄位設定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    bio: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        default=<span class="literal">None</span>,</span><br><span class="line">        examples=[<span class="string">&#x27;Hello, I am Alice.&#x27;</span>]</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>Field 中的<code>default=None</code>設定讓你在客戶端沒有填入值時，API 也不會出錯。</p>
+<p>另外留意<code>bio: str | None</code>這個 type hint，千萬不要少了<code>None</code>，會影響文件的渲染結果：（這是有<code>None</code>的結果）</p>
+<p><img src="https://i.imgur.com/PMIJ05r.png"></p>
+<p>有<code>None</code>，API 文件才會顯示欄位值為<strong>可選（string | null）。</strong></p>
+<hr>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>經過第四章的學習與改進，我們的 API 文件已經達到 <strong>80 分的水準</strong>！在大多數開發專案中，這樣的文件品質可以說相當出色了。</p>
+<p>接下來我們要進入<strong>第五章</strong>——<strong>資料驗證</strong>與<strong>錯誤處理</strong>。</p>
+<p>這個章節將涵蓋如何在 Django Ninja 中實現有效的資料驗證，以及如何優雅地處理和回應各種可能的錯誤情況。</p>
+<p>通過這些技巧，我們將能夠建立更穩健、可靠的 API。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/django-ninja-17/">
+        <span class="next-text nav-default">Django Ninja 教學 17：API 文件（上）Django Ninja 文件實踐指南</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 17：API 文件（上）Django Ninja 文件實踐指南</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">18</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
