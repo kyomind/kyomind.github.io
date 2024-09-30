@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由">
-  <meta property="og:title" content="Django Ninja 教學 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由"><meta name="twitter:description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST Framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。">
-  <meta property="og:description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST Framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:title" content="Django Ninja 教學 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由"><meta name="twitter:description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。">
+  <meta property="og:description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
-<meta name="description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST Framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。" />
+<meta name="description" content="本文將探討 Django 模型物件的序列化，並比較 Django Ninja 與 Django REST framework 的序列化器設計，解釋為何相比於 DRF，我更喜歡寫 Django Ninja。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-29T08:58:28+08:00" />
+  <meta property="article:modified_time" content="2024-09-30T18:25:27+08:00" />
 
 
 
@@ -249,7 +249,7 @@
 <hr>
 <h2 id="理由一：低耦合-明確優於隱晦"><a href="#理由一：低耦合-明確優於隱晦" class="headerlink" title="理由一：低耦合 + 明確優於隱晦"></a>理由一：低耦合 + 明確優於隱晦</h2><p>Django Ninja 更強調開發者對 API 結構的掌握，而 DRF 則偏向於提供高度整合且便利的工具。</p>
 <p>這種差異反映在它們<strong>對待 Django 模型序列化的方式</strong>上，也影響了開發者在使用這兩個框架時的<strong>風格和思維方式</strong>。</p>
-<h3 id="Django-REST-Framework-和-Django-高度耦合"><a href="#Django-REST-Framework-和-Django-高度耦合" class="headerlink" title="Django REST Framework 和 Django 高度耦合"></a>Django REST Framework 和 Django 高度耦合</h3><p>我們可以發現， DRF 幾乎是一個「<strong>為 Django 高度定製</strong>」的 API 開發工具。</p>
+<h3 id="Django-REST-framework-和-Django-高度耦合"><a href="#Django-REST-framework-和-Django-高度耦合" class="headerlink" title="Django REST framework 和 Django 高度耦合"></a>Django REST framework 和 Django 高度耦合</h3><p>我們可以發現， DRF 幾乎是一個「<strong>為 Django 高度定製</strong>」的 API 開發工具。</p>
 <p>這種<strong>緊密的結合</strong>雖然帶來了便利性，但也意味著 DRF 在很大程度上依賴於 Django 的內部結構和功能。不管是 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/generic-views/#generic-views">Generic views</a>，還是本文的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/#modelserializer">ModelSerializer</a>，都是如此。</p>
 <p>高耦合的優點就是<strong>你可以少做很多事</strong>，而代價則是<strong>你要很了解自己在做什麼</strong>。</p>
 <h3 id="明確優於隱晦"><a href="#明確優於隱晦" class="headerlink" title="明確優於隱晦"></a>明確優於隱晦</h3><p>相較於 DRF，Django Ninja 與 Django 的耦合程度則要<strong>低得多</strong>。</p>
@@ -296,10 +296,11 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/Django-REST-framework/">Django REST framework</a>
             <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             </div>
         
