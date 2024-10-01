@@ -47,6 +47,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
+    
+    <lastmod>2024-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-ninja-09/</loc>
     
     <lastmod>2024-09-30</lastmod>
@@ -131,15 +140,6 @@
     <loc>https://blog.kyomind.tw/django-ninja-13/</loc>
     
     <lastmod>2024-09-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
-    
-    <lastmod>2024-09-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -794,7 +794,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/notion-database/</loc>
+    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
     
     <lastmod>2024-07-04</lastmod>
     
@@ -803,7 +803,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/stumbling-on-notion/</loc>
+    <loc>https://blog.kyomind.tw/notion-database/</loc>
     
     <lastmod>2024-07-04</lastmod>
     
@@ -1235,15 +1235,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -1263,6 +1254,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/zinit-deleted/</loc>
+    
+    <lastmod>2024-01-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2024-01-11</lastmod>
     

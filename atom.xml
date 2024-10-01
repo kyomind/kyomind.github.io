@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2024-10-01T04:09:56.339Z</updated>
+  <updated>2024-10-01T05:26:05.723Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.kyomind.tw/django-ninja-19/"/>
     <id>https://blog.kyomind.tw/django-ninja-19/</id>
     <published>2024-10-01T02:31:53.000Z</published>
-    <updated>2024-10-01T04:09:56.339Z</updated>
+    <updated>2024-10-01T05:26:05.723Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p><p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p><p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p><p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p><p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p><p>本文所有的程式碼變動，可參考<a href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p><hr><h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p><p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p><ul><li>卷 19：資料驗證（上）單一欄位的自定義驗證（本文）</li><li>卷 20：資料驗證（下）跨欄位驗證</li><li>卷 21：錯誤處理（上）自定義錯誤與 HTTP 回應</li><li>卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</li></ul><p>前兩篇，我們會學習如何實現靈活的資料驗證，以確保輸入資料符合預期，並在必要時拋出錯誤。</p><p>後兩篇，我們將討論如何處理 API 流程中可能出現的各種錯誤（不限於驗證錯誤），以提供更好的使用者體驗。</p><p>Django Ninja 的資料驗證與錯誤處理機制，相較 Django REST framework <strong>更加複雜</strong>，因此我們得用<strong>完整的篇幅</strong>來介紹，幫助你清楚地理解它們。</p><span id="more"></span><hr><h2 id="API-修正"><a href="#API-修正" class="headerlink" title="API 修正"></a>API 修正</h2><p>我們會以上一篇文章中新建立的 API——<strong>新增使用者</strong>——為例。</p><p>繼續改善它，加上自定義驗證，讓客戶端傳來的資料更可靠。</p><p>不過我要先做一些<strong>錯誤修正</strong>，修正後的程式碼如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&#x27;/users/&#x27;</span>, summary=<span class="string">&#x27;新增使用者&#x27;</span>, response=&#123;<span class="number">201</span>: <span class="built_in">dict</span>&#125;</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_user</span>(<span class="params">...</span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增使用者</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    user = User(</span><br><span class="line">        username=payload.username,</span><br><span class="line">        email=payload.email,</span><br><span class="line">        bio=payload.bio,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># 使用 set_password 方法加密密碼</span></span><br><span class="line">    user.set_password(raw_password=payload.password)</span><br><span class="line">    user.save()</span><br><span class="line">    <span class="keyword">return</span> <span class="number">201</span>, &#123;<span class="string">&#x27;id&#x27;</span>: user.<span class="built_in">id</span>, <span class="string">&#x27;username&#x27;</span>: user.username&#125;</span><br></pre></td></tr></table></figure><p>主要改正了這兩處：</p><ol><li>在<code>router</code>裝飾器<strong>新增</strong>了<code>response=&#123;201: dict&#125;</code>參數。本來沒有定義，實際使用這個 API 時會出現錯誤。因為<strong>預設只有 200 回應</strong>，想要 200 以外的回應，要透過<code>response</code>參數聲明才行。</li><li>使用<code>set_password</code>方法對用戶輸入的密碼進行<strong>加密</strong>。這是 Django 內建的功能，防止密碼直接儲存在 db 中。密碼不能明文存儲，無疑是現代開發的 ABC。</li></ol><hr><p>修正結束，我們正式進入主題。</p><h2 id="不同「層次」的驗證"><a href="#不同「層次」的驗證" class="headerlink" title="不同「層次」的驗證"></a>不同「層次」的驗證</h2><p>既然是驗證，主要當然是跟來自客戶端的<strong>請求</strong>有關——<strong>驗證請求內容。</strong></p><p>Django Ninja 中，每個 API 可以透過定義 Schema，來<strong>描述 API 所接收的資料結構</strong>。這些 Schema 基於 Pydantic，能自動對請求中的資料進行驗證。</p><p>Schema 中的 type hints 可以驗證資料<strong>型別</strong>，這是最基本的驗證。</p><p>前一篇提到的 Pydantic Field，則可以對資料的長度、範圍等特性進行驗證。這部分在後面會示範。</p><p>這些都是偏「形式上」的驗證，而本文將聚焦於更複雜的「<strong>自定義驗證</strong>」——基於一定的<strong>規則</strong>。</p><h3 id="範例-API-的-Schema-現狀"><a href="#範例-API-的-Schema-現狀" class="headerlink" title="範例 API 的 Schema 現狀"></a>範例 API 的 Schema 現狀</h3><p>以「新增使用者」為例，request body 接收<code>username</code>、<code>email</code>、<code>password</code>和<code>bio</code>等欄位。透過我們定義的 Schema，能完成最基本的<strong>資料型別驗證</strong>。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    email: <span class="built_in">str</span></span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line">    bio: <span class="built_in">str</span> | <span class="literal">None</span> = <span class="literal">None</span></span><br></pre></td></tr></table></figure><p>如上一篇所述，只有<code>bio</code>欄位是可選的，其餘則為必填——缺少就會得到 422 回應。所以 Schema 同時也驗證了資料的「<strong>存在性</strong>」。</p><p>目前看起來還不錯！但我們並不就此滿足。</p><hr><h2 id="新需求：密碼規則"><a href="#新需求：密碼規則" class="headerlink" title="新需求：密碼規則"></a>新需求：密碼規則</h2><p>我們要求使用者在設定密碼時，遵守以下兩個規則：</p><ol><li>密碼長度至少 8 個字元。</li><li>必須包含至少一個數字。</li></ol><p>這些規則有助於提高帳號的安全性，防止用戶設定過於簡單的密碼。</p><p>考慮到<strong>教學目的</strong>，我沒有讓規則過於複雜。這兩條規則都有其<strong>特定的教學意義</strong>：</p><ol><li>最小長度限制可以<strong>直接透過 Pydantic Field 實現</strong>，不必自行實作。</li><li>第二個規則是重頭戲，我們會使用 Pydantic 的<code>@field_validator</code>裝飾器，自行定義欄位的驗證規則。</li></ol><hr><h2 id="實作：密碼規則驗證"><a href="#實作：密碼規則驗證" class="headerlink" title="實作：密碼規則驗證"></a>實作：密碼規則驗證</h2><p>根據需求，我們可以先利用 Pydantic 的<code>Field</code>來設定<strong>最小長度限制</strong>：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password: <span class="built_in">str</span> = Field(min_length=<span class="number">8</span>, examples=[<span class="string">&#x27;password123&#x27;</span>])</span><br></pre></td></tr></table></figure><p>如上，我們只需要新增一個<code>min_length=8</code>參數即可。</p><p>至於「必須包含數字」的驗證，則要用<code>@field_validator</code>裝飾器來實作。</p><h3 id="field-validator-裝飾器"><a href="#field-validator-裝飾器" class="headerlink" title="field_validator 裝飾器"></a>field_validator 裝飾器</h3><p>在 Pydantic v1 中，這個裝飾器的名稱是<code>validator</code>，v2 才改為<code>field_validator</code>。</p><p>Pydantic 從 v1 到 v2，有<strong>許多</strong> <a href="https://en.wiktionary.org/wiki/breaking_change">breaking change</a>，比如之前提過的<code>example</code>參數變成<code>examples</code>，即是一例。這部分值得留意。</p><p>以下是修改後的 Schema，我們只關注<code>field_validator</code>部分：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @field_validator(<span class="params"><span class="string">&#x27;password&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate_password_contains_number</span>(<span class="params">cls, v: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        驗證密碼至少包含一個數字</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> re.search(<span class="string">r&#x27;\d&#x27;</span>, v):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;密碼必須包含至少一個數字&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> v</span><br></pre></td></tr></table></figure><h3 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h3><ol><li><code>field_validator</code>裝飾器<strong>必須使用參數</strong>，合法值是<strong>欄位名稱</strong>，如<code>password</code>。</li><li>雖然範例中沒有演示，但它可以套用在<strong>多個欄位</strong>。<ol><li>寫法為<code>@field_validator(&#39;欄位1&#39;, &#39;欄位2&#39;, ...)</code>，你甚至可以直接寫成<code>@field_validator(&#39;*&#39;)</code>——套用到<strong>全部</strong>欄位。</li><li>但請注意，這些欄位會執行<strong>同一個驗證邏輯</strong>，所以它們理論上是<strong>邏輯類似</strong>的欄位。</li></ol></li><li><strong>驗證方法的名稱</strong>可以自訂，你想怎麼命名都行，只要自己好懂即可。<ol><li>因為 Pydantic 主要是看裝飾器上的欄位名稱。</li><li>這和 Django REST framework 的驗證方法是採用<code>validate_&lt;欄位名&gt;</code>的命名模式，有<strong>很大的不同</strong>。</li></ol></li><li>Pydantic 驗證方法的參數名稱命名慣例是<code>v</code>，而 Django REST framework 則是<code>value</code>。</li><li>慣例二：驗證方法在<strong>成功時會原封不動 return 輸入值</strong>；失敗時則會拋出錯誤。</li><li>Pydantic 的驗證方法是一個「<strong>類別方法</strong>」，所以第一個參數是<code>cls</code>。特別的是，你<strong>可以省略</strong><code>@classmethod</code>裝飾器，因為 Pydantic 已經在內部處理了。<ol><li>不過<a href="https://docs.pydantic.dev/latest/concepts/validators/#field-validators">官方文件</a>仍建議你使用<code>@classmethod</code>，我們從善如流。</li><li>如果有聲明<code>@classmethod</code>裝飾器，它的位置必須<strong>最靠近</strong>驗證方法。</li></ol></li></ol><p>想不到吧？短短幾行，竟然有這麼多<strong>看點</strong>！</p><hr><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>這一篇，我們學習了如何透過 Pydantic，對單一欄位進行資料驗證，實作了密碼強度檢查規則。</p><p>下一篇，我們要繼續這個主題，實現更複雜的<strong>跨欄位驗證</strong>。</p>]]></content>
     
@@ -52,13 +52,13 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -91,13 +91,13 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -128,11 +128,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -173,11 +173,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -207,13 +207,13 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Django REST framework" scheme="https://blog.kyomind.tw/tags/Django-REST-framework/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -222,7 +222,7 @@
     <link href="https://blog.kyomind.tw/django-ninja-14/"/>
     <id>https://blog.kyomind.tw/django-ninja-14/</id>
     <published>2024-09-26T02:56:38.000Z</published>
-    <updated>2024-09-26T05:20:11.629Z</updated>
+    <updated>2024-09-30T18:18:51.685Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p><p>在 API 開發中，我們經常會遇到<strong>關聯模型</strong>之間的資料需要<strong>同時返回</strong>的情況。</p><p>特別是在處理「一對一」或「一對多」關聯時，<strong>多層結構</strong>往往是常態。</p><p>我們希望以<strong>巢狀結構</strong>（<a href="https://django-ninja.dev/guides/response/#nested-objects">Nested Objects</a>）的方式返回資料，這樣可以讓 API 的使用者<strong>一次取得必要資訊</strong>，而不需要進行多次請求。</p><p>本文將繼續使用並擴充「單一文章資訊」API 這個範例，講述如何在 Django Ninja 中實現<strong>巢狀結構回應</strong>，讓我們的 API 回應更加豐富、有體系。</p><p>本文所有的程式碼變動，可參考<a href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/6">這個 PR</a>。</p><hr><h2 id="一、問題背景"><a href="#一、問題背景" class="headerlink" title="一、問題背景"></a>一、問題背景</h2><p>在之前的 API 設計中，「取得單一文章資訊」的回應包括了文章資訊及<strong>作者的 id</strong>：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure><p>有經驗的開發者都知道，無論是<code>id</code>還是<code>author_id</code>，通常<strong>不是</strong>給服務的使用者看的——而是<strong>給前端人員靈活運用</strong>的。</p><p>比如在系統的畫面中，文章可能包括作者的<strong>個人資訊連結</strong>，點進去可以看到作者資訊。此時前端必須<strong>透過 id</strong>，再呼叫另一支 API「取得用戶資訊」來獲得額外的內容。</p><p>如果額外資訊很多，這樣的「<strong>解耦</strong>」設計是非常合理的。但如果我們希望<strong>一併呈現</strong>作者的「<strong>必要資訊</strong>」，那分次呼叫的設計就<strong>略嫌拖沓</strong>。</p><p>所以我們需要<strong>巢狀結構</strong>！</p><p>API 可以直接在回應中，嵌入作者的「必要資訊」，這樣用戶就不必再進行多次請求。這裡我們以一併顯示作者的「<strong>名字</strong>」和「<strong>email</strong>」為例。</p><span id="more"></span><hr><h2 id="二、API-改進：重新定義-Schema"><a href="#二、API-改進：重新定義-Schema" class="headerlink" title="二、API 改進：重新定義 Schema"></a>二、API 改進：重新定義 Schema</h2><p>只需要做一件事，就可以讓回應的內容、結構有所不同——重新定義<code>PostResponse</code>：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Schema</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">_AuthorInfo</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    email: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author: _AuthorInfo  <span class="comment"># 巢狀結構，包含作者資訊</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure><p><code>_AuthorInfo</code>包含了作者的<code>id</code>、<code>name</code>和<code>email</code>，並將這個結構<strong>嵌入</strong><code>PostResponse</code>中的<code>author</code>欄位（從<code>author_id</code>易名而來，因為資訊內涵已有所不同）。</p><p>如此一來，我們便可以<strong>同時獲得</strong>文章和作者的必要資訊。</p><h3 id="命名小建議"><a href="#命名小建議" class="headerlink" title="命名小建議"></a>命名小建議</h3><p>你可能留意到我在<code>_AuthorInfo</code>使用了「底線開頭」這個命名原則。在 Python 中，這是一種<strong>慣例</strong>，用來表示這個<strong>屬性、函式、類別</strong>主要是作為<strong>內部使用</strong>。</p><p>所謂的「<strong>內部</strong>」可以有<strong>很多種解讀</strong>，而這裡我的用意是：<strong>它只是某個或多個 Schema 的一部分，不直接供 view 函式調用。</strong></p><p>別小看這個命名細節。隨著你的 Schema 數量增加，在開發新 API 時，你總是需要先瀏覽現有的 Schema，以決定是重新定義還是延用既有的。</p><p>此時有這樣的命名區別就顯得很「<strong>貼心</strong>」了——你不必在大大小小的 Schema 中翻來覆去，看得眼睛要脫窗。</p><p>撰寫巢狀 Schema 的機會不少，所以我認為養成這樣的好習慣是值得的。</p><h3 id="Nested-Response"><a href="#Nested-Response" class="headerlink" title="Nested Response"></a>Nested Response</h3><p>我們來看 API 的回應：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://127.0.0.1:8000/posts/2/</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1 content&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;alice@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure><p>看看新的<code>author</code>欄位內容，巢狀結構，非常完美！</p><p>用戶可以直接到看文章作者的名字與 email，如果想看更多作者資訊，依舊能透過<code>id</code>欄位，再讓前端呼叫另一支 API。</p><p>這是一個理想的<strong>折衷方案</strong>。</p><hr><h2 id="三、「攤平」巢狀資訊"><a href="#三、「攤平」巢狀資訊" class="headerlink" title="三、「攤平」巢狀資訊"></a>三、「攤平」巢狀資訊</h2><p>前面的「折衷方案」確實挺理想。不過，有時我們的需求<strong>更簡單</strong>。</p><p>比如在「取得文章列表」API 中，我們可能也需要顯示作者的資訊——但此時只要<strong>名字</strong>就足夠了。</p><p>不需要作者 id，更不用 email，只要名字即可。</p><p>那麼，為何稱之為「<strong>攤平巢狀資訊</strong>」呢？因為作者的名字並非<code>Post</code>模型的直接屬性，它實際上來自於關聯模型——<code>User</code>。</p><p>我們必須要把有關作者的巢狀資訊進行<strong>化簡</strong>。</p><p>本來是這樣：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;author&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;username&quot;</span>: <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    <span class="string">&quot;email&quot;</span>: <span class="string">&quot;alice@example.com&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>現在變成這樣：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;author_name&quot;</span>: <span class="string">&quot;Alice&quot;</span>,</span><br></pre></td></tr></table></figure><p>從兩層變回一層（但不是作者 id 而是名字了），所以稱為「<strong>攤平</strong>」（flatten）。</p><h3 id="Schema-解耦"><a href="#Schema-解耦" class="headerlink" title="Schema 解耦"></a>Schema 解耦</h3><p>還記得「取得文章列表」API 的回應格式，其實是和「取得單一文章資訊」<strong>共用</strong>的：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span>, response=<span class="built_in">list</span>[PostResponse]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">...</span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure><p>兩者都使用了<code>PostResponse</code>。</p><p>本文上半部對「取得單一文章資訊」回應的修改，<strong>也會影響到</strong>「取得文章列表」——這通常不是我們想要的結果。</p><p>所以，我們要為「取得文章列表」API 建立一個<strong>屬於自己的回應 Schema</strong>，並依照前面提到的需求，簡化資訊！</p><p>我打算：</p><ol><li>省略文章的內容（<code>content</code>）還有更新時間（<code>updated_at</code>）這兩個欄位，因為在列表中並不需要。</li><li>作者的部分只留下「名字」即可。</li></ol><hr><h2 id="四、實作攤平巢狀資訊——使用-property"><a href="#四、實作攤平巢狀資訊——使用-property" class="headerlink" title="四、實作攤平巢狀資訊——使用@property"></a>四、實作攤平巢狀資訊——使用<code>@property</code></h2><p>我們先看看新 Schema 如何定義：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostListResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    author_name: <span class="built_in">str</span></span><br></pre></td></tr></table></figure><p>你可能覺得奇怪，哪來的<code>author_name</code>屬性？<code>Post</code>模型並沒有啊？</p><p>沒錯！因為那是我們<strong>自己定義</strong>的——使用<code>@property</code>：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/models.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">author_name</span>(<span class="params">self</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="keyword">return</span> self.author.username</span><br></pre></td></tr></table></figure><p>如此一來，你的 Post 模型物件，就會有<code>author_name</code>這個屬性了。</p><p>但要注意，呼叫這個屬性通常意味著<strong>觸發第二次查詢</strong>（因為它是<strong>關聯模型</strong>上的屬性），所以 view 函式中要搭配 Django QuerySet 方法<code>select_related</code>：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts.<span class="built_in">filter</span>(title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure><p>這是 Django ORM 中常見的「<a href="https://medium.com/ichef/django-performance-optimization-1-orm-n-1-problem-493ddbfbe07a">N+1</a>」議題，在此先不展開。</p><h3 id="更好的做法"><a href="#更好的做法" class="headerlink" title="更好的做法"></a>更好的做法</h3><p>你可能覺得這個方式好像<strong>不怎麼優雅</strong>（至少我第一次看到時就是這麼想！）——尤其是和 Django REST framework 的做法相比。</p><p>Django REST framework 會在序列化器中這樣寫：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">author_name = serializers.CharField(source=<span class="string">&quot;author.name&quot;</span>)</span><br></pre></td></tr></table></figure><p>是不是簡潔很多？</p><p>但這確實是 Django Ninja 作者<strong>早期</strong><a href="https://github.com/vitalik/django-ninja/issues/291#issuecomment-981395267">推薦的方式</a>。</p><p>別擔心，第 16 篇我們會介紹更好、更現代化的做法。不過<code>@property</code>在<strong>某些情況下</strong>，還是很有用的。</p><hr><h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>這篇文章中，我們展示了如何在 Django Ninja 中使用 Schema 實現巢狀結構回應。</p><p>接著介紹如何「攤平」這個巢狀結構，把原來的作者 id 替換成名字欄位。</p><p>這些方法大大增加了 API 回應的靈活性。</p><p>下一篇文章，我們將討論 Django Ninja 和 Django REST Framework 在序列化與回應結構處理上的不同設計理念，並比較兩者的優劣。</p>]]></content>
     
@@ -250,11 +250,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -287,11 +287,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -325,13 +325,13 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Pydantic" scheme="https://blog.kyomind.tw/tags/Pydantic/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -364,11 +364,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
@@ -408,11 +408,11 @@
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/categories/Django-Ninja/"/>
     
     
+    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
+    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
-    <category term="鐵人賽" scheme="https://blog.kyomind.tw/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/"/>
     
   </entry>
   
