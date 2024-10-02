@@ -127,7 +127,7 @@
           
             <a href="/categories/Django/">Django (12)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (19)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (20)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
           
@@ -169,6 +169,39 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/python-enum/">Python API 開發：善用 Enum 的三大關鍵特性</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-04-19
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5lvKO0a.jpeg" alt="from Pixabay"></p>
+<p>想必你知道 Python 中有一個內建的特殊類別叫 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html#enum.Enum">Enum</a>（來自 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html">enum</a> 模組），專門用來處理「列舉」態型的資料集合。</p>
+<p>如同 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html">collection</a> 模組中的各種容器（比如：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html#collections.deque"><code>deque</code></a>、<a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html#collections.Counter"><code>Counter</code></a>），Enum 已經定義好很多「<strong>內建特性（屬性、方法、行為）</strong>」供你使用。這些特性會讓你在<strong>處理特定情境</strong>時非常順手。</p>
+<p>但是，這些特性也使得 Enum 類別與一般類別<strong>有著很大的差異，增加了學習門檻</strong>。</p>
+<p>如你所見，Enum 的特性頗多，這讓人在學習、使用之前，難免有點<strong>望之卻步</strong>——至少我是這樣！</p>
+<h2 id="本文主旨與架構"><a href="#本文主旨與架構" class="headerlink" title="本文主旨與架構"></a>本文主旨與架構</h2><p>本文分享我最近才開始把 Enum 應用在 API 開發中的經驗——從它的三大特性入手，並輔以一個實際問題情境。</p>
+<p>Enum 的特性不少，但只要知曉這三件事，就可以在遇到「列舉」欄位時，善用 Enum 來提升開發效率，同時增進程式碼的簡潔與穩健。</p>
+<p>不過話說回來，即使不是開發 API，也不影響你對本文的理解。只是我的經驗是從後端開發而來。</p>
+<h3 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h3><p>為了讓你感受 Enum 的強大與美妙，<strong>本文的架構經過精心設計。</strong>共分為<strong>三個部分</strong>：</p>
+<ol>
+<li><strong>問題情境</strong>：我會先提出一個<strong>問題情境</strong>，突顯舊方法的不足。</li>
+<li>然後再介紹 Enum 的<strong>三大特性</strong>，帶你進入 Enum 的世界。</li>
+<li>最後看 Enum 特性在問題情境中<strong>如何有效發揮</strong>，讓程式碼變得更加優雅——也就是它<strong>解決的痛點</strong>。</li>
+</ol>
+<p>藉由這個流程，相信你對 Enum 會有更進一步的理解。</p>
+          <div class="read-more">
+            <a href="/python-enum/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-27/">27，正式入手《流暢的 Python》第二版</a>
         </h1>
@@ -318,30 +351,6 @@
 <p>如果你也認同「<strong>過度追求效率很可能適得其反</strong>」這個命題，那很慶幸，我們已經達成了<strong>最重要的共識</strong>。這也是我給這本書高評價的原因。</p>
           <div class="read-more">
             <a href="/four-thousand-weeks-02/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/python-craftsman-01/">《Python 工匠》筆記（一）如何寫好註解</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-02-28
-        </span><span class="post-category">
-            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/beoEztr.png" alt="Python 工匠"></p>
-<p>這是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9786263245174">Python 工匠｜案例、技巧與開發實戰</a>》筆記的第 1 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
-<p>從書名推敲，我們並不容易知道本書的主題為何。事實上，和《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣</a>》類似，這是一本關於「<strong>Clean Code in Python</strong>」的書。</p>
-<p>而且我認為它的<strong>難度適中</strong>（好吧，後半部難度比較高，而且本書<strong>「不適合」</strong>初學者），非常推薦看完《Python 功力提升的樂趣》後，想要更進一步寫出 Pythonic 程式碼的讀者與開發人員。</p>
-<p>我覺得，兩本恰恰都是屬於「從書名看很容易被忽略」的好書。因此，作為喜歡本書的讀者，我覺得自己有<strong>義務</strong>，向你們轉述書中一些值得傳誦的內容。</p>
-<p>這也是我寫「<strong>閱讀筆記</strong>」類文章的核心精神——分享書中那些我覺得<strong>特別精彩、贊同的部分，並加上自己的看法。</strong></p>
-          <div class="read-more">
-            <a href="/python-craftsman-01/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/7/">
