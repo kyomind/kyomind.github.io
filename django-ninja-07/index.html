@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-20T05:34:00+08:00" />
+  <meta property="article:modified_time" content="2024-10-03T09:42:22+08:00" />
 
 
 
@@ -214,7 +214,7 @@
 <p>為什麼要這樣安排呢？因為<strong>端點與路由是 API 請求的起點</strong>。</p>
 <p>沒有它們，你的 view 函式根本無法接收請求，更不用說回應了。因此，路由設定必須放在第一位，作為 API 開發的學習入口。</p>
 <p>所謂的「<strong>端點</strong>」（endpoints），你就簡單想成 <strong>API 所在的 URL</strong> 就可以了。</p>
-<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>其次，Django Ninja 的路由設定與傳統 Django 或 Django REST Framework（<strong>以下簡稱 DRF</strong>）的路由設定有<strong>很大的不同</strong>，反而更接近 FastAPI 或 Flask 風格。</p>
+<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>其次，Django Ninja 的路由設定與傳統 Django 或 Django REST framework（<strong>以下簡稱 DRF</strong>）的路由設定有<strong>很大的不同</strong>，反而更接近 FastAPI 或 Flask 風格。</p>
 <p>這是我在學習 Django Ninja 時遇到的<strong>第一個門檻</strong>（畢竟我寫了 2 年的 DRF😅），所以決定分成上下兩篇文章詳細解說，幫助你打好基礎、減少混淆。</p>
 <p>本文的重點是<strong>介紹 Django 傳統路由</strong>的設定方式。讓我們開始吧！</p>
 <span id="more"></span>
@@ -303,7 +303,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             <a href="/tags/Django/">Django</a>

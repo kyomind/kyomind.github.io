@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-09-28T18:41:54+08:00" />
+  <meta property="article:modified_time" content="2024-10-03T09:42:22+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-REST-Framework-%E5%81%9A%E6%B3%95"><span class="toc-text">Django REST Framework 做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E7%9A%84%E6%AC%84%E4%BD%8D%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">Django Ninja 的欄位資料格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Alias-%E6%94%A4%E5%B9%B3%E6%AC%84%E4%BD%8D%E8%B3%87%E8%A8%8A"><span class="toc-text">使用 Alias 攤平欄位資訊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E7%AB%A0%E9%A0%90%E5%91%8A"><span class="toc-text">下一章預告</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E8%88%87%E9%9C%80%E6%B1%82"><span class="toc-text">場景與需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-REST-framework-%E5%81%9A%E6%B3%95"><span class="toc-text">Django REST framework 做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E7%9A%84%E6%AC%84%E4%BD%8D%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-text">Django Ninja 的欄位資料格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Alias-%E6%94%A4%E5%B9%B3%E6%AC%84%E4%BD%8D%E8%B3%87%E8%A8%8A"><span class="toc-text">使用 Alias 攤平欄位資訊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E7%AB%A0%E9%A0%90%E5%91%8A"><span class="toc-text">下一章預告</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>上一篇提到，API 回應常常是對 Django Model 物件內容的篩選與加工——然後 JSON 序列化。</p>
@@ -217,7 +217,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="Django-REST-Framework-做法"><a href="#Django-REST-Framework-做法" class="headerlink" title="Django REST Framework 做法"></a>Django REST Framework 做法</h2><p>首先，我們還是不免俗地先介紹 Django REST Framework（<strong>以下簡稱 DRF</strong>）的做法，方便你<strong>對比兩者的差異</strong>——你會發現<strong>其實大同小異</strong>。</p>
+<h2 id="Django-REST-framework-做法"><a href="#Django-REST-framework-做法" class="headerlink" title="Django REST framework 做法"></a>Django REST framework 做法</h2><p>首先，我們還是不免俗地先介紹 Django REST framework（<strong>以下簡稱 DRF</strong>）的做法，方便你<strong>對比兩者的差異</strong>——你會發現<strong>其實大同小異</strong>。</p>
 <p>在 DRF 中，我們可以透過<code>SerializerMethodField</code>實現時間格式的轉換。以下是透過 DRF 實現的範例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostSerializer</span>(serializers.ModelSerializer):</span><br><span class="line">		...</span><br><span class="line">    created_at = serializers.SerializerMethodField()</span><br><span class="line">    updated_at = serializers.SerializerMethodField()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_created_at</span>(<span class="params">self, obj</span>):</span><br><span class="line">        <span class="keyword">return</span> obj.created_at.strftime(<span class="string">&#x27;%Y-%m-%dT%H:%M:%SZ&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_updated_at</span>(<span class="params">self, obj</span>):</span><br><span class="line">        <span class="keyword">return</span> obj.updated_at.strftime(<span class="string">&#x27;%Y-%m-%dT%H:%M:%SZ&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -308,7 +308,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST Framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             <a href="/tags/Django/">Django</a>
