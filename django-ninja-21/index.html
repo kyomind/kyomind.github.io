@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-03T03:27:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-03T05:47:27+08:00" />
 
 
 
@@ -206,7 +206,7 @@
 <p>所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/12">這個 PR</a>。</p>
 <hr>
 <h2 id="Django-Ninja-的自動錯誤處理"><a href="#Django-Ninja-的自動錯誤處理" class="headerlink" title="Django Ninja 的自動錯誤處理"></a>Django Ninja 的自動錯誤處理</h2><p>上一篇我們提到，如果你在 Schema 的驗證方法中，拋出<code>ValueError</code>錯誤，Django Ninja 將會<strong>自動捕捉並回應</strong>。</p>
-<p>事實上，不止是<code>ValueError</code>，Django Ninja 還會幫你處理以下這幾種錯誤：</p>
+<p>事實上，不止<code>ValueError</code>，Django Ninja 還會替你處理以下這幾種錯誤：</p>
 <ul>
 <li><code>pydantic.ValidationError</code>，來自 Pydantic 的驗證錯誤，這是<strong>為何</strong>當 Schema 欄位有問題時，我們會直接收到 422 回應。</li>
 <li>此外，Django Ninja 還內建了一個 <code>ninja.errors.ValidationError</code>，這些錯誤同樣會返回 422。</li>
@@ -222,7 +222,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">from</span> ninja.errors <span class="keyword">import</span> HttpError  <span class="comment"># 第一行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @model_validator(<span class="params">mode=<span class="string">&#x27;after&#x27;</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_passwords_match</span>(<span class="params">self</span>) -&gt; Self:</span><br><span class="line">        <span class="keyword">if</span> self.password != self.confirm_password:</span><br><span class="line">            <span class="keyword">raise</span> HttpError(<span class="number">400</span>, <span class="string">&#x27;密碼和確認密碼必須相同&#x27;</span>)  <span class="comment"># 第二行</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>
 
 <p>沒錯，就這麼簡單！</p>
-<p>只是把驗證方法拋出的錯誤，從<code>ValueError</code>替換為<code>HttpError</code>。</p>
+<p>只是把驗證方法拋出的錯誤，從<code>ValueError</code>替換為<code>HttpError</code>即可。</p>
 <p>值得留意的是，<code>HttpError</code>實例的<strong>初始化</strong>，需要<strong>兩個參數</strong>，第一個是 HTTP 狀態碼，第二個才是錯誤訊息。</p>
 <h3 id="回應內容"><a href="#回應內容" class="headerlink" title="回應內容"></a>回應內容</h3><p>看看同樣的驗證失敗，回應有何不同：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 400 Bad Request</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;密碼和確認密碼必須相同&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -230,21 +230,21 @@
 <p>變成我們熟悉的格式——只有錯誤訊息。</p>
 <hr>
 <h2 id="在驗證方法中使用-HttpError-的不妥之處"><a href="#在驗證方法中使用-HttpError-的不妥之處" class="headerlink" title="在驗證方法中使用 HttpError 的不妥之處"></a>在驗證方法中使用 HttpError 的不妥之處</h2><p>直接在 Schema 的驗證方法中拋出<code>HttpError</code>，是一種便捷的方式，因為它能夠<strong>簡化回應處理</strong>。</p>
-<p>我們無需額外捕捉錯誤或手動指定回應格式。驗證失敗時，回應會<strong>自動包含</strong>我們指定的狀態碼和錯誤訊息，既簡單又直接。</p>
+<p>我們無需額外捕捉錯誤或手動指定回應格式。驗證失敗時，回應會<strong>自動包含</strong>我們定義的狀態碼和錯誤訊息，既簡單又直接。</p>
 <p>然而，這麼做其實<strong>並不妥當</strong>，主要有幾個問題，比如降低可測試性、限制回應的靈活性等等。但其中<strong>最關鍵</strong>的，還是是我們上一篇提到的——「<strong>關注點分離</strong>」。</p>
 <h3 id="違反「關注點分離」"><a href="#違反「關注點分離」" class="headerlink" title="違反「關注點分離」"></a>違反「關注點分離」</h3><p><strong>這個做法違反了「關注點分離」原則。</strong></p>
-<p>驗證邏輯的職責是檢查資料的正確性，而<strong>回應</strong>的職責應該留給 view 函式。</p>
+<p>驗證邏輯的職責是檢查資料的正確性，而<strong>回應</strong>應該由 view 函式負責。</p>
 <p>將回應邏輯混入驗證過程中，會讓驗證和回應這兩個<strong>本應獨立</strong>的部分<strong>耦合在一起</strong>，導致<strong>職責混亂</strong>，不利於程式碼維護。</p>
-<p>因此，雖然在驗證方法內使用<code>HttpError</code>，看似能夠方便地實現需求，但從<strong>架構設計</strong>的角度考慮，將<strong>處理回應的錯誤</strong>放在 view 函式中，才是一個更合理的選擇。</p>
+<p>因此，雖然在驗證方法內使用<code>HttpError</code>，看似能夠方便地實現需求，但從<strong>架構設計</strong>的角度考慮，將<strong>回應處理</strong>放在 view 函式中，才是一個更合理的選擇。</p>
 <p>別擔心，下一篇我們會換個做法，但本文的主角還是<code>HttpError</code>。</p>
 <hr>
 <h2 id="HttpError-的典型情境：在-view-函式中使用"><a href="#HttpError-的典型情境：在-view-函式中使用" class="headerlink" title="HttpError 的典型情境：在 view 函式中使用"></a>HttpError 的典型情境：在 view 函式中使用</h2><p>相比於在 Schema 中使用<code>HttpError</code>，把它放在 view 函式裡執行，方為正道。</p>
 <p>以下就是一個經典場景。</p>
 <p>儘管資料驗證邏輯應盡可能放在 Schema 中，<strong>但也不是所有的驗證都適合丟給 Schema 做</strong>。</p>
-<p>比如說，使用者 email 欄位具有「<strong>唯一性</strong>」——不能重複。所以我們希望先確認使用者輸入的 email 是否和 db 中的資料<strong>重複</strong>，是的話，直接回應<code>409 Conflict</code>。</p>
+<p>比如，使用者的 email 欄位具有「<strong>唯一性</strong>」——不能重複。所以我們希望先確認使用者輸入的 email <strong>是否和 db 中的資料重複</strong>，是的話，直接回應<code>409 Conflict</code>。</p>
 <p>這無疑也是一種<strong>驗證</strong>，但它涉及了「<strong>資料庫查詢</strong>」。</p>
 <p>這種涉及資料庫查詢的驗證，更適合在 view 函式中進行，而不是在 Schema 裡。因為資料庫查詢屬於<strong>比較重的動態操作</strong>，與 Schema 的<strong>靜態資料檢查</strong>有著<strong>本質的不同</strong>。</p>
-<p>因此，我們可以在 view 函式中用<code>HttpError</code>來處理這種情況。</p>
+<p>因此，我們更常在 view 函式中使用<code>HttpError</code>處理這類需求。</p>
 <p>新增程式碼如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">...</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_user</span>(<span class="params">..., payload: CreateUserRequest</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增使用者</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> User.objects.<span class="built_in">filter</span>(email=payload.email).exists():</span><br><span class="line">        <span class="keyword">raise</span> HttpError(<span class="number">409</span>, <span class="string">&#x27;使用者 email 已存在&#x27;</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
@@ -268,11 +268,11 @@
 <p>這是一個<strong>好問題</strong>。</p>
 <h3 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h3><p>我們還是先來看一下，這段程式碼中有哪些重點：</p>
 <ul>
-<li><code>response=&#123;201: dict, 409: dict&#125;</code>：第 13 篇提過的「<strong>多重狀態碼回應</strong>」，這不就派上用場了嗎？</li>
+<li><code>response=&#123;201: dict, 409: dict&#125;</code>：第 13 篇提過的「<strong>多重狀態碼回應</strong>」，這不就派上用場了！</li>
 <li>用<code>return</code>取代<code>raise</code>。</li>
-<li>如果想驗證錯誤訊息格式，也可以定義一個 Schema。這個例子只是簡化版。</li>
+<li>如果想驗證錯誤訊息格式，可以定義一個 Schema。這個例子只是簡化版。</li>
 </ul>
-<p>這樣看起來確實不錯，也很符合直覺，其實我以前寫 Django REST framework，<strong>就是</strong>這樣寫的。</p>
+<p>看起來確實不錯，也很符合直覺，其實我以前寫 Django REST framework，<strong>都是</strong>這樣寫的。</p>
 <p><strong>可是</strong>，這個寫法在 Django Ninja 中，使用「分頁裝飾器」時，就會<strong>踢到鐵板</strong>了。</p>
 <p>目前時機未到，在後續的〈卷 25：分頁（下）自定義分頁類別〉中，我們再把這件事說清楚。</p>
 <p>總之，現階段我們只要知道，類似情況還是<code>raise HttpError</code>會比較妥當。</p>

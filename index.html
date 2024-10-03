@@ -193,7 +193,7 @@
 <p>所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/12">這個 PR</a>。</p>
 <hr>
 <h2 id="Django-Ninja-的自動錯誤處理"><a href="#Django-Ninja-的自動錯誤處理" class="headerlink" title="Django Ninja 的自動錯誤處理"></a>Django Ninja 的自動錯誤處理</h2><p>上一篇我們提到，如果你在 Schema 的驗證方法中，拋出<code>ValueError</code>錯誤，Django Ninja 將會<strong>自動捕捉並回應</strong>。</p>
-<p>事實上，不止是<code>ValueError</code>，Django Ninja 還會幫你處理以下這幾種錯誤：</p>
+<p>事實上，不止<code>ValueError</code>，Django Ninja 還會替你處理以下這幾種錯誤：</p>
 <ul>
 <li><code>pydantic.ValidationError</code>，來自 Pydantic 的驗證錯誤，這是<strong>為何</strong>當 Schema 欄位有問題時，我們會直接收到 422 回應。</li>
 <li>此外，Django Ninja 還內建了一個 <code>ninja.errors.ValidationError</code>，這些錯誤同樣會返回 422。</li>
