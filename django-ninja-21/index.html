@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-03T05:47:27+08:00" />
+  <meta property="article:modified_time" content="2024-10-03T05:49:00+08:00" />
 
 
 
@@ -230,7 +230,7 @@
 <p>變成我們熟悉的格式——只有錯誤訊息。</p>
 <hr>
 <h2 id="在驗證方法中使用-HttpError-的不妥之處"><a href="#在驗證方法中使用-HttpError-的不妥之處" class="headerlink" title="在驗證方法中使用 HttpError 的不妥之處"></a>在驗證方法中使用 HttpError 的不妥之處</h2><p>直接在 Schema 的驗證方法中拋出<code>HttpError</code>，是一種便捷的方式，因為它能夠<strong>簡化回應處理</strong>。</p>
-<p>我們無需額外捕捉錯誤或手動指定回應格式。驗證失敗時，回應會<strong>自動包含</strong>我們定義的狀態碼和錯誤訊息，既簡單又直接。</p>
+<p>我們<strong>無需</strong>額外捕捉錯誤或手動指定回應格式。驗證失敗時，API 會<strong>直接回應</strong>我們定義的狀態碼和錯誤訊息，既簡單又直接。</p>
 <p>然而，這麼做其實<strong>並不妥當</strong>，主要有幾個問題，比如降低可測試性、限制回應的靈活性等等。但其中<strong>最關鍵</strong>的，還是是我們上一篇提到的——「<strong>關注點分離</strong>」。</p>
 <h3 id="違反「關注點分離」"><a href="#違反「關注點分離」" class="headerlink" title="違反「關注點分離」"></a>違反「關注點分離」</h3><p><strong>這個做法違反了「關注點分離」原則。</strong></p>
 <p>驗證邏輯的職責是檢查資料的正確性，而<strong>回應</strong>應該由 view 函式負責。</p>
