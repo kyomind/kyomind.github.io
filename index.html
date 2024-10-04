@@ -170,7 +170,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-22/">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-22/">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers</a>
         </h1>
 
       <div class="post-meta">
@@ -198,7 +198,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-21/">Django Ninja 教學 21：錯誤處理（上）自定義錯誤與 HTTP 回應</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-21/">Django Ninja 教學 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a>
         </h1>
 
       <div class="post-meta">
@@ -234,7 +234,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-20/">Django Ninja 教學 20：資料驗證（下）跨欄位驗證</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-20/">Django Ninja 教學 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</a>
         </h1>
 
       <div class="post-meta">
@@ -263,7 +263,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-19/">Django Ninja 教學 19：資料驗證（上）單一欄位的自定義驗證</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-19/">Django Ninja 教學 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator</a>
         </h1>
 
       <div class="post-meta">
@@ -285,10 +285,10 @@
 <h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
 <p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>
 <ul>
-<li>卷 19：資料驗證（上）單一欄位的自定義驗證（本文）</li>
-<li>卷 20：資料驗證（下）跨欄位驗證</li>
-<li>卷 21：錯誤處理（上）自定義錯誤與 HTTP 回應</li>
-<li>卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</li>
+<li>卷 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator（本文）</li>
+<li>卷 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</li>
+<li>卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</li>
+<li>卷 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers</li>
 </ul>
 <p>前兩篇，我們會學習如何實現靈活的資料驗證，以確保輸入資料符合預期，並在必要時拋出錯誤。</p>
 <p>後兩篇，我們將討論如何處理 API 流程中可能出現的各種錯誤（不限於驗證錯誤），以提供更好的使用者體驗。</p>

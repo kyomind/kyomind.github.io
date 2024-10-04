@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers">
-  <meta property="og:title" content="Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers"><meta name="twitter:description" content="本文將介紹如何使用 Django Ninja 的 Exception Handlers 來全局處理 API 的錯誤，以確保回應格式的一致性。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers">
+  <meta property="og:title" content="Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers"><meta name="twitter:description" content="本文將介紹如何使用 Django Ninja 的 Exception Handlers 來全局處理 API 的錯誤，以確保回應格式的一致性。">
   <meta property="og:description" content="本文將介紹如何使用 Django Ninja 的 Exception Handlers 來全局處理 API 的錯誤，以確保回應格式的一致性。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文將介紹如何使用 Django Ninja 的 Exception Handlers 來全局處理 API 的錯誤，以確保回應格式的一致性。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-04T07:34:24+08:00" />
+  <meta property="article:modified_time" content="2024-10-04T09:36:16+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers - Code and Me</title>
+    <title>Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers
+      <h1 class="post-title">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers
         </h1>
 
       <div class="post-meta">
@@ -231,7 +231,7 @@
 <hr>
 <h2 id="Django-Ninja-不會自動處理這些錯誤"><a href="#Django-Ninja-不會自動處理這些錯誤" class="headerlink" title="Django Ninja 不會自動處理這些錯誤"></a>Django Ninja 不會自動處理這些錯誤</h2><p>將拋出的錯誤類型改為 Django 的<code>ValidationError</code> 後，你可能會注意到一個問題：Django Ninja <strong>並不會</strong>自動捕捉這些錯誤！</p>
 <p>也就是說，當我們拋出<code>ValidationError</code>時，Django Ninja 不會像處理<code>HttpError</code>一樣，自動格式化並返回 422 錯誤回應——而是<strong>直接 500</strong>。</p>
-<p>這部分我們在〈<a href="/django-ninja-20/">卷 20：資料驗證（下）跨欄位驗證</a>〉的結尾處提過。</p>
+<p>這部分我們在〈<a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</a>〉的結尾處提過。</p>
 <p>現在，則要介紹<strong>具體的解決之道</strong>——<code>exception_handler</code>。</p>
 <p>我們需要<strong>自行處理</strong>這些拋出的錯誤，這正是<code>exception_handler</code>發揮作用的地方。</p>
 <hr>
@@ -340,8 +340,8 @@
             </div>
         
         <nav class="post-nav"><a class="next" href="/django-ninja-21/">
-        <span class="next-text nav-default">Django Ninja 教學 21：錯誤處理（上）自定義錯誤與 HTTP 回應</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 21：錯誤處理（上）自定義錯誤與 HTTP 回應</span>
+        <span class="next-text nav-default">Django Ninja 教學 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>
