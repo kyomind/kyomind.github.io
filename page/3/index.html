@@ -127,7 +127,7 @@
           
             <a href="/categories/Django/">Django (12)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (21)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (22)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
           
@@ -169,6 +169,31 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-08/">Django Ninja 教學 08：路由（下）Django Ninja 路由設定</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-20
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>上一篇文章中，我們介紹了 Django 傳統的路由設定方式。</p>
+<p>如前所述，雖然有一個「路由清單」確實不錯。但隨著專案規模的擴大，<strong>不斷來回切換</strong><code>urls.py</code>和<code>views.py</code>將大幅增加開發者的<strong>認知負擔</strong>——拉長了開發時間，還更容易導致錯誤。</p>
+<p>Django Ninja 採用了一種<strong>更現代化</strong>的路由設計，結合了 Flask 和 FastAPI 的設計理念。不僅簡化了路由的定義，還提升了程式碼的可讀性，讓路由與 view 函式<strong>緊密結合</strong>。</p>
+<h2 id="範例專案動態"><a href="#範例專案動態" class="headerlink" title="範例專案動態"></a>範例專案動態</h2><p>本文關於路由設定的程式碼改動，可以參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/1">這個 PR</a>（<strong>Pull Request</strong>）。</p>
+<p>範例專案合併了本文的 PR 後，已經正式成為一個「<strong>API 專案</strong>」，不過它<strong>目前（指這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/commit/396e06338d615d3ec74e7c5bf871b85c9a06f0ec">commit</a> 狀態）尚無法正常運作</strong>，因為我們還沒有完善 view 函式的基本功能。</p>
+<p>你可以一步步地跟著每一篇的 PR，來學習當次的新內容。這也是我為文章建立 PR 的用意所在。</p>
+          <div class="read-more">
+            <a href="/django-ninja-08/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-07/">Django Ninja 教學 07：路由（上）傳統 Django 路由做法（兼章節概論）</a>
         </h1>
@@ -336,39 +361,6 @@
 <p>話不說多，讓我們一一介紹。</p>
           <div class="read-more">
             <a href="/django-ninja-02/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-01/">Django Ninja 教學 01：系列導讀 × 目標讀者</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-13
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja/">Django Ninja</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>在這個 30 天的系列文章中，我們將詳細探討 Django Ninja 的<strong>基礎實作</strong>，透過<strong>文字教學</strong>與<strong>範例專案</strong>的程式碼，帶你一步一步熟悉這個強大而靈活的 Django API 開發框架。</p>
-<p>作為 Django 生態系統中的新星（誕生於 2020 年），Django Ninja 融合了 Django 的穩定性和 FastAPI 的現代特性——<strong>Python 的型別提示（透過 Pydantic 實現）</strong>。這種<strong>強強結合</strong>，為開發者提供了一個健全、高效、直觀的 API 開發體驗。</p>
-<p>不論你是經驗豐富的 Django 開發者，還是剛進入 API 開發領域的新手，這個系列都會為你提供實用的 Django Ninja 實戰經驗與技巧。</p>
-<p>我們將從背景介紹、基礎概念開始，逐步深入探討 Django Ninja 的每個部分，幫助你快速掌握這個現代化 API 開發工具。</p>
-<hr>
-<h2 id="建議前置技能"><a href="#建議前置技能" class="headerlink" title="建議前置技能"></a>建議前置技能</h2><p>本系列的定位是「入門級」，但這裡所謂的入門，指的是 Django Ninja 框架的入門。</p>
-<p>所以，要充分利用好教學內容與範例專案程式碼，<strong>仍建議讀者具備以下技能：</strong></p>
-<ul>
-<li><strong>Python 基礎知識</strong>：熟悉 Python 語法，有 Python 開發經驗者佳。</li>
-<li><strong>Django 基礎</strong>：了解 Django 的基本組成，比如 ORM、Views、MTV 架構等。但無須了解 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/templates/">Templates</a> 部分——因為我們是開發 API。</li>
-<li><strong>HTTP 與 Web API 概念</strong>：知道什麼是 HTTP、Web API、前後端分離，並對 RESTful API 設計原則有基本理解。</li>
-<li><strong>版本控制</strong>：為了能夠善用並操作範例專案，需要熟悉 Git、GitHub 的基本操作。</li>
-</ul>
-<p>具備這些技能將幫助你更好地理解和應用本系列的內容。如果你對某些概念不太熟悉，也不用擔心，我們會在必要時進行一定的講解。</p>
-          <div class="read-more">
-            <a href="/django-ninja-01/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">

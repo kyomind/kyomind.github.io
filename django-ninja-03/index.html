@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-04T01:45:57+08:00" />
+  <meta property="article:modified_time" content="2024-10-04T03:31:49+08:00" />
 
 
 
@@ -135,7 +135,7 @@
           
             <a href="/categories/Django/">Django (12)</a>
           
-            <a href="/categories/Django-Ninja/">Django Ninja (21)</a>
+            <a href="/categories/Django-Ninja/">Django Ninja (22)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
           
@@ -225,9 +225,10 @@
 </ul>
 <h2 id="Django-Ninja-的非同步效能優勢"><a href="#Django-Ninja-的非同步效能優勢" class="headerlink" title="Django Ninja 的非同步效能優勢"></a>Django Ninja 的非同步效能優勢</h2><p>了解 Django Ninja 的特點後，不得不再次強調它對<strong>非同步</strong>的支援，這是 Django Ninja 相較於傳統同步框架如 Django REST framework 一大效能優勢。</p>
 <p><img src="https://i.imgur.com/3teW1L4.png" alt="django-ninja.dev"><span class="cap">django-ninja.dev</span></p>
-<p>從上圖中可知，在相對高<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E6%80%A7">並行</a>（concurrency&#x3D;50）網路請求的情境下，Django Ninja 的處理能力明顯優於 Flask + Marshmallow 和 Django REST framework。</p>
+<p>從上圖中可知，在<strong>相對高</strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E6%80%A7">並行</a>（concurrency&#x3D;50）的網路請求情境下，Django Ninja 的處理能力明顯優於 Flask + Marshmallow 和 Django REST framework。</p>
 <p>非同步的好處在<strong>只有 1 個 worker 時</strong>更加明顯，這對於<strong>節省資源</strong>和<strong>提高效能</strong>都有著重要意義。</p>
 <hr>
+<p>了解了 Django Ninja，我們來比較它和 Django REST Framework 的差異。</p>
 <h2 id="Django-Ninja-與-Django-REST-framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST framework 的主要區別"></a>Django Ninja 與 Django REST framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>，可以參考我寫過的這篇〈<a href="/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>
 <p>文中還說明了，<a href="/django-rest-framework-01/#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-Django-REST-Framework">為何 Django 需要像 Django REST framework 這樣的 API 框架</a>。</p>
 <p>Django REST framework 和 Django Ninja，都是 Django 生態系中，用於快速建立 API 的強大工具，而且前者的歷史悠久得多。</p>
@@ -322,7 +323,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">21</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">22</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
     </div>
   </div>
 </div>
