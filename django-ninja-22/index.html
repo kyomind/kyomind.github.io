@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-04T06:21:09+08:00" />
+  <meta property="article:modified_time" content="2024-10-04T07:34:24+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E7%94%A8-Django-ValidationError"><span class="toc-text">改用 Django ValidationError</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E4%B8%8D%E6%9C%83%E8%87%AA%E5%8B%95%E8%99%95%E7%90%86%E9%80%99%E4%BA%9B%E9%8C%AF%E8%AA%A4"><span class="toc-text">Django Ninja 不會自動處理這些錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%9F%9F%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E5%99%A8%E2%80%94%E2%80%94Exception-Handlers"><span class="toc-text">全域錯誤處理器——Exception Handlers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception-Handlers-%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">Exception Handlers 重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%9B%E5%88%80%E5%B0%8F%E8%A9%A6%EF%BC%9A%E4%BB%A5%E8%99%95%E7%90%86-404-%E5%9B%9E%E6%87%89%E7%82%BA%E4%BE%8B"><span class="toc-text">牛刀小試：以處理 404 回應為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E7%B8%BD%E7%B5%90"><span class="toc-text">本章總結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E7%94%A8-Django-ValidationError"><span class="toc-text">改用 Django ValidationError</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E4%B8%8D%E6%9C%83%E8%87%AA%E5%8B%95%E8%99%95%E7%90%86%E9%80%99%E4%BA%9B%E9%8C%AF%E8%AA%A4"><span class="toc-text">Django Ninja 不會自動處理這些錯誤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%9F%9F%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86%E5%99%A8%E2%80%94%E2%80%94Exception-Handlers"><span class="toc-text">全域錯誤處理器——Exception Handlers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exception-Handlers-%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">Exception Handlers 重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%9B%E5%88%80%E5%B0%8F%E8%A9%A6%EF%BC%9A%E4%BB%A5%E8%99%95%E7%90%86-404-%E5%9B%9E%E6%87%89%E7%82%BA%E4%BE%8B"><span class="toc-text">牛刀小試：以處理 404 回應為例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%B8%BD%E7%B5%90"><span class="toc-text">第五章總結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>上一篇文章，我們學習了如何操作<code>HttpError</code>，並建議你<strong>只在</strong> view 函式中使用它。</p>
@@ -251,8 +251,8 @@
 <li>如果你的錯誤處理函式不多，可以直接放在<strong>專案的</strong><code>api.py</code><strong>中</strong>——我們的例子就是這麼做的。這符合專案<code>api.py</code>的<strong>全域管理</strong>屬性。</li>
 <li>如果錯誤處理比較多，建議獨立出一個 Python 模組來管理。</li>
 </ol>
-<h3 id="二、函式與參數命名"><a href="#二、函式與參數命名" class="headerlink" title="二、函式與參數命名"></a>二、函式與參數命名</h3><p>又到了我愛講究的「<strong>命名</strong>」部分。</p>
-<p>Exception handler 是一個（被裝飾的）函式，理論上應該要遵循「<strong>動詞開頭</strong>」的函式<strong>命名慣例</strong>。</p>
+<h3 id="二、函式與參數命名"><a href="#二、函式與參數命名" class="headerlink" title="二、函式與參數命名"></a>二、函式與參數命名</h3><p>又到了我喜聞樂見的「<strong>命名</strong>」部分☺️</p>
+<p>Exception handler 是一個（被裝飾的）函式，理論上應該要遵循「<strong>動詞開頭</strong>」的<strong>函式命名慣例</strong>。</p>
 <p>但我卻使用了<code>django_validation_error_handler</code>這樣偏「<strong>名詞</strong>」的命名。</p>
 <p>因為它的本質更接近於一個<strong>處理裝置</strong>或<strong>機制</strong>，而非傳統意義上的函式。</p>
 <p>當然，這取決於你<strong>從什麼角度看</strong>！你也可以說它就是有「處理的行為」，所以還是得用動詞開頭來命名。我完全同意。</p>
@@ -275,7 +275,7 @@
 <p>raise self.model.DoesNotExist(<br>post.models.Post.DoesNotExist: <strong>Post matching query does not exist.</strong></p>
 </blockquote>
 <p>而且還曝露內部訊息——這實在太瞎了！🤣</p>
-<p>因為 Django ORM 中 QuerySet 的<code>get</code>方法，在<strong>查詢不到結果</strong>或<strong>查到複數結果</strong>時，<strong>會拋出錯誤</strong>。而我們並沒有捕捉或處理這些錯誤，所以伺服器直接 500 了。</p>
+<p>因為 Django ORM 中 QuerySet 的<code>get</code>方法，在<strong>查詢不到結果</strong>或<strong>查到複數結果</strong>時，都會<strong>拋出錯誤</strong>。而我們並沒有捕捉或處理這些錯誤，所以伺服器直接 500 了。</p>
 <p>兩種錯誤並不相同——錯訊訊息也要不同。這裡先處理<strong>第一種</strong>情況就好。</p>
 <h3 id="查無結果時，返回-404-回應"><a href="#查無結果時，返回-404-回應" class="headerlink" title="查無結果時，返回 404 回應"></a>查無結果時，返回 404 回應</h3><p>經過這兩篇的介紹，你有<strong>兩種方式</strong>來回應 404。</p>
 <p>第一，直接使用<code>HttpError</code>：</p>
@@ -289,14 +289,14 @@
 <ul>
 <li>優點：<strong>不必變更</strong> view 函式的內容（<strong>寫法更簡潔</strong>），而且可以捕捉<strong>所有 API</strong> 拋出的<code>ObjectDoesNotExist</code>錯誤。（它是<code>Post.DoesNotExist</code>的父類別）</li>
 <li>缺點：無法自定義「<strong>詳細</strong>」的錯誤訊息——因為我們不知道<code>ObjectDoesNotExist</code>是發生在查詢什麼模型物件。<ul>
-<li>當然，如果你願意為<strong>不同錯誤</strong>定義各自的 exception handler，就能夠實現！——如果只捕捉<code>Post.DoesNotExist</code>，錯誤訊息就可以寫「文章不存在」。</li>
+<li>當然，如果你願意為<strong>不同錯誤</strong>定義各自的 exception handler，就能夠實現！——比如只捕捉<code>Post.DoesNotExist</code>，錯誤訊息就可以寫「文章不存在」。</li>
 <li>但就要定義很多個 exception handlers，有點麻煩啦！</li>
 </ul>
 </li>
 </ul>
 <p>選擇第一種還是第二種做法，需要你<strong>視情況而定</strong>。</p>
 <hr>
-<h2 id="本章總結"><a href="#本章總結" class="headerlink" title="本章總結"></a>本章總結</h2><p>第五章說真的，資訊量頗大，這 4 篇文章我寫了很久，而且還「<strong>重構</strong>」過！——本來只有 2 篇而已。</p>
+<h2 id="第五章總結"><a href="#第五章總結" class="headerlink" title="第五章總結"></a>第五章總結</h2><p>第五章說真的，資訊量頗大，這 4 篇文章我寫了很久，而且還「<strong>重構</strong>」過！——本來只有 2 篇而已。</p>
 <p>我們先討論了如何自定義單一欄位驗證，以及跨欄位驗證。然後再循序漸進地學習如何處理 API 拋出的錯誤——<strong>愈來愈優雅、愈來愈全面</strong>。</p>
 <p>如果你是從第 1 篇看到這裡，真的，完全可以為自己感到驕傲。</p>
 <h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>接下來，比較輕鬆了嗎？——並沒有。</p>
