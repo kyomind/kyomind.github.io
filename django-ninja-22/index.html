@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-04T09:36:16+08:00" />
+  <meta property="article:modified_time" content="2024-10-05T04:20:20+08:00" />
 
 
 
@@ -256,8 +256,8 @@
 <p>但我卻使用了<code>django_validation_error_handler</code>這樣偏「<strong>名詞</strong>」的命名。</p>
 <p>因為它的本質更接近於一個<strong>處理裝置</strong>或<strong>機制</strong>，而非傳統意義上的函式。</p>
 <p>當然，這取決於你<strong>從什麼角度看</strong>！你也可以說它就是有「處理的行為」，所以還是得用動詞開頭來命名。我完全同意。</p>
-<p><code>exception</code>參數，Django Ninja <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/errors/">文件</a>都會命名為<code>exc</code>，我個人很不喜歡，因為我覺得<code>exc</code><strong>一點也不直觀</strong>，屬於<strong>完全沒必要的縮寫</strong>。</p>
-<p>我寧可使用單字母<code>e</code>——類似 Pydantic 驗證方法中的<code>v</code>。</p>
+<p>接著是<code>exception</code>參數，Django Ninja <a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/errors/">文件</a>都會命名為<code>exc</code>，我個人很不喜歡，因為我覺得<code>exc</code><strong>一點也不直觀</strong>，屬於<strong>完全沒必要的縮寫</strong>。</p>
+<p>退而求其次，我寧可使用單字母<code>e</code>——類似 Pydantic 驗證方法中的<code>v</code>。</p>
 <h3 id="三、函式邏輯解析"><a href="#三、函式邏輯解析" class="headerlink" title="三、函式邏輯解析"></a>三、函式邏輯解析</h3><p>Exception handler 的函式邏輯，可長可短、可簡單可複雜，但<strong>不外乎做這兩件事</strong>：</p>
 <ol>
 <li><strong>接收特定錯誤類型</strong>。</li>
