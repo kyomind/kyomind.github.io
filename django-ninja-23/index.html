@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 23：檔案上傳">
+  <meta property="og:title" content="Django Ninja 教學 23：檔案上傳"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。">
+  <meta property="og:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
+            
+
+  <meta property="article:modified_time" content="2024-10-05T13:25:43+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-10-05T08:33:59+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-23/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 23：檔案上傳 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja/">Django Ninja (23)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 23：檔案上傳
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-05
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja/">Django Ninja</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%E3%80%8CAPI-%E9%80%B2%E9%9A%8E%E5%8A%9F%E8%83%BD%E3%80%8D%E7%B0%A1%E4%BB%8B"><span class="toc-text">第六章「API 進階功能」簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E7%9A%84%E4%B8%BB%E8%A7%92%E2%80%94%E2%80%94UploadedFile"><span class="toc-text">檔案上傳的主角——UploadedFile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E5%B0%88%E6%A1%88%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django 專案相關設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%AF%A6%E4%BD%9C"><span class="toc-text">API 程式碼實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>在現代 Web 服務中，<strong>檔案上傳</strong>是一個常見的情境。</p>
+<p>無論是使用者上傳照片、夾帶附件，檔案上傳都是不可或缺的功能。</p>
+<p>本文介紹如何在 Django Ninja 中實現<strong>圖片上傳</strong>功能，以使用者「上傳大頭貼」（以下都稱為 avatar，因為大頭貼感覺太可愛🥹）API 為例，帶你一步步了解這個過程。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/14">這個 PR</a>。</p>
+<hr>
+<p>不過，在此之前，我們要先了解，本章有哪些主題。</p>
+<h2 id="第六章「API-進階功能」簡介"><a href="#第六章「API-進階功能」簡介" class="headerlink" title="第六章「API 進階功能」簡介"></a>第六章「API 進階功能」簡介</h2><p>對 API 專案而言，<strong>進階功能</strong>能幫助我們應對<strong>複雜場景</strong>與<strong>大型專案</strong>的挑戰。</p>
+<p>雖然這是一個入門指南，但我們仍會涵蓋一些常見的進階功能，這些功能不僅提升 API 的靈活性，還能增強了系統效能與使用者體驗。</p>
+<p>本章將介紹 3 個重要的進階功能：</p>
+<ul>
+<li>卷 23：檔案上傳</li>
+<li>卷 24：分頁（上）Django Ninja 的內建分頁器</li>
+<li>卷 25：分頁（下）自定義分頁類別</li>
+<li>卷 26：資料查詢與過濾（上）FilterSchema 介紹</li>
+<li>卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</li>
+</ul>
+<p>這些技術不僅對大型專案至關重要，也讓你能在 API 開發中，有效應對多變的需求。</p>
+<span id="more"></span>
+
+<hr>
+<p>了解了本章重點後，我們開始講述第一個功能——檔案上傳。</p>
+<h2 id="檔案上傳的主角——UploadedFile"><a href="#檔案上傳的主角——UploadedFile" class="headerlink" title="檔案上傳的主角——UploadedFile"></a>檔案上傳的主角——UploadedFile</h2><p>在 Django Ninja 中，我們可以使用<code>UploadedFile</code>來接收上傳的檔案，它是 Django <code>UploadedFile</code>的<strong>重新封裝</strong>，兩者基本上大同小異。</p>
+<h3 id="UploadedFile-概述"><a href="#UploadedFile-概述" class="headerlink" title="UploadedFile 概述"></a>UploadedFile 概述</h3><p><code>UploadedFile</code>是 Django 處理檔案上傳的核心物件。當使用者上傳檔案時，Django 會自動將檔案封裝成<code>UploadedFile</code>實例，方便我們進行<strong>後續的檔案處理和儲存</strong>。</p>
+<p><code>UploadedFile</code>物件有很多屬性，其中比較常用的有：</p>
+<ul>
+<li><code>name</code>：上傳檔案的名稱。這可以用來存取檔案的<strong>原始檔名</strong>。</li>
+<li><code>size</code>：檔案的大小（以<strong>位元組</strong>計算）。我們可以用來進行檔案大小的驗證。</li>
+<li><code>content_type</code>：檔案的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%A4%9A%E7%94%A8%E9%80%94%E4%BA%92%E8%81%AF%E7%B6%B2%E9%83%B5%E4%BB%B6%E6%93%B4%E5%B1%95">MIME</a> 類型。這對於驗證上傳檔案的<strong>格式</strong>非常有用，比如確保檔案是圖片格式。我們後面會用到！</li>
+<li><code>read()</code>：用來<strong>讀取檔案的內容</strong>。當需要進行自訂檔案處理時，我們可以使用這個方法來取得檔案的二進位資料。</li>
+<li><code>chunks()</code>：當檔案非常大時，使用這個方法可以<strong>分塊讀取檔案</strong>，避免過多的記憶體佔用。</li>
+</ul>
+<p>這些特性使得<code>UploadedFile</code>非常靈活，能夠應對各種上傳需求，從簡單的圖片上傳到大型檔案的處理。</p>
+<p>OK，關於檔案上傳，了解<code>UploadedFile</code>這個核心元件就足夠了。</p>
+<p>開始實作「上傳 avatar」API 的程式碼之前，我們要先進行一些「<strong>前置作業</strong>」。</p>
+<hr>
+<p>檔案上傳，有很多部分其實<strong>和 Django 比較有關</strong>，而非 Django Ninja 範疇，所以我會重點帶過。</p>
+<h2 id="Django-專案相關設定"><a href="#Django-專案相關設定" class="headerlink" title="Django 專案相關設定"></a>Django 專案相關設定</h2><p>在實作檔案上傳功能之前，我們需要先告訴 Django：<strong>如何處理上傳的檔案</strong>。這涉及到<code>MEDIA_URL</code>和<code>MEDIA_ROOT</code>的設定。</p>
+<h3 id="MEDIA-URL和MEDIA-ROOT設定"><a href="#MEDIA-URL和MEDIA-ROOT設定" class="headerlink" title="MEDIA_URL和MEDIA_ROOT設定"></a><code>MEDIA_URL</code>和<code>MEDIA_ROOT</code>設定</h3><ul>
+<li><code>MEDIA_URL</code>：這是檔案的 URL 前綴，所有上傳的檔案會透過這個 URL 來存取。</li>
+<li><code>MEDIA_ROOT</code>：這是 Django 伺服器內部，實際儲存上傳檔案的路徑。</li>
+</ul>
+<p>在專案的<code>settings.py</code>新增程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/settings.py</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">MEDIA_URL = <span class="string">&#x27;/media/&#x27;</span></span><br><span class="line">MEDIA_ROOT = BASE_DIR / <span class="string">&#x27;media&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，上傳的檔案會儲存在專案根目錄的<code>media</code>資料夾中，並通過<code>/media/</code>路徑來存取。</p>
+<h3 id="開發環境下的檔案存取"><a href="#開發環境下的檔案存取" class="headerlink" title="開發環境下的檔案存取"></a>開發環境下的檔案存取</h3><p>我們需要 Django 提供的<code>static</code>方法，來讓<strong>開發環境</strong>能夠直接存取這些檔案。</p>
+<p>在專案的<code>urls.py</code>加上這行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/urls.py</span></span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.conf.urls.static <span class="keyword">import</span> static</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;&#x27;</span>, api.urls),</span><br><span class="line">    <span class="comment"># 讓開發環境可以存取上傳的檔案，僅供開發環境使用</span></span><br><span class="line">] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)</span><br></pre></td></tr></table></figure>
+
+<p>這段程式碼允許 Django 在開發環境下提供靜態檔案的存取。</p>
+<h3 id="建立ImageField欄位"><a href="#建立ImageField欄位" class="headerlink" title="建立ImageField欄位"></a>建立<code>ImageField</code>欄位</h3><p><code>ImageField</code>是 Django 專門用來存放圖片的欄位，它實際上是存儲圖片的<strong>檔案路徑</strong>。類似的欄位還有<code>FileField</code>。</p>
+<p>程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># user/models.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">AbstractUser</span>):</span><br><span class="line">    ...</span><br><span class="line">    avatar = models.ImageField(upload_to=<span class="string">&#x27;avatars/&#x27;</span>, null=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>搭配之前的<code>settings.py</code>設定，<code>avatar</code>欄位會將上傳的圖片存在<code>media/avatars/</code>資料夾中——這個路徑由<code>MEDIA_ROOT</code>與欄位<code>upload_to</code>共同決定。</p>
+<p>移至本分支後，專案中已經有新的遷移檔，記得要<strong>資料庫遷移</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">make migrate</span><br></pre></td></tr></table></figure>
+
+<p>附帶一提，<code>ImageField</code>依賴第三方套件——<a target="_blank" rel="noopener" href="https://pypi.org/project/pillow/">Pillow</a>。這個套件為欄位提供了處理圖片功能，要先安裝欄位才能正常運作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install Pillow</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add pillow</span><br></pre></td></tr></table></figure>
+
+<p>使用 Poetry 的讀者，直接在合併後的分支<code>poetry install</code>即可。</p>
+<hr>
+<h2 id="API-程式碼實作"><a href="#API-程式碼實作" class="headerlink" title="API 程式碼實作"></a>API 程式碼實作</h2><p>前置作業結束，我們終於可以進入重頭戲——上傳檔案 API。</p>
+<p>以下是完整的「上傳 avatar」功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> File, Router, UploadedFile</span><br><span class="line"><span class="keyword">from</span> ninja.errors <span class="keyword">import</span> HttpError</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&#x27;/users/&#123;int:user_id&#125;/avatar/&#x27;</span>,summary=<span class="string">&#x27;上傳 avatar&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_avatar</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    user_id: <span class="built_in">int</span>,</span></span><br><span class="line"><span class="params">    avatar_file: UploadedFile = File(<span class="params"></span>)</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    上傳 avatar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 檢查檔案類型</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> avatar_file.content_type.startswith(<span class="string">&#x27;image/&#x27;</span>):</span><br><span class="line">        <span class="keyword">raise</span> HttpError(<span class="number">400</span>, <span class="string">&#x27;檔案必須是圖片格式&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    user = User.objects.get(<span class="built_in">id</span>=user_id)</span><br><span class="line">    user.avatar = avatar_file</span><br><span class="line">    user.save()</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;detail&#x27;</span>: <span class="string">&#x27;圖片上傳成功&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下是對這段程式碼的重點解析。</p>
+<h3 id="一、UploadedFile參數定義"><a href="#一、UploadedFile參數定義" class="headerlink" title="一、UploadedFile參數定義"></a>一、<code>UploadedFile</code>參數定義</h3><p>在 view 函式的簽名中，<code>UploadedFile</code>作為 type hint 使用，而<code>avatar_file</code>參數則代表上傳的檔案。</p>
+<p>你可以<strong>任意命名</strong><code>avatar_file</code>這個參數，比如<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/file-params/">文件範例</a>中是叫<code>file</code>。我特地取不同名字，就是要強調它的名字是<strong>完全可自訂</strong>的。</p>
+<p>但是！無論你取什麼名稱，在發請求時，<strong>body 中的 key</strong> 也要使用<strong>相同的名稱</strong>。</p>
+<p>此時的 body 可能長這樣：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /users/<span class="number">1</span>/avatar/</span><br><span class="line">Content-<span class="type">Type</span>: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;avatar_file&quot;</span>; filename=<span class="string">&quot;example.jpg&quot;</span></span><br><span class="line">Content-<span class="type">Type</span>: image/jpeg</span><br><span class="line"></span><br><span class="line">(binary image data here)</span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span><br></pre></td></tr></table></figure>
+
+<p>Header 中的<code>Content-Type</code>為<code>multipart/form-data</code>，而且每個 key-value 對都是以<code>Content-Disposition: form-data;</code>開頭。這種格式允許<strong>在一個請求中同時傳送多個不同類型的資料</strong>，包括文字和二進位檔案。</p>
+<p>其中的細節，可以參考這篇〈<a target="_blank" rel="noopener" href="https://blog.errorbaker.tw/posts/cwc329/multipart-form-data/">multipart&#x2F;form-data 初探</a>〉。</p>
+<h3 id="二、File函式"><a href="#二、File函式" class="headerlink" title="二、File函式"></a>二、<code>File</code>函式</h3><p>定義<code>=File()</code>的<strong>目的</strong>是在告訴 Django Ninja，這個參數<strong>應該從 HTTP 請求中的「上傳檔案」部分獲取</strong>。類似做法還有我們第 11 篇提到的<code>Query</code>。</p>
+<p>如果沒有這個標記，框架可能無法正確識別並處理上傳的內容。</p>
+<h3 id="三、檢查檔案類型"><a href="#三、檢查檔案類型" class="headerlink" title="三、檢查檔案類型"></a>三、檢查檔案類型</h3><p>我們使用了<code>UploadedFile</code>的<code>content_type</code>屬性，獲得這個 body 內容的檔案類型，確認它是圖片，然後才發行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 檢查檔案類型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> avatar_file.content_type.startswith(<span class="string">&#x27;image/&#x27;</span>):</span><br><span class="line">    <span class="keyword">raise</span> HttpError(<span class="number">400</span>, <span class="string">&#x27;檔案必須是圖片格式&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>這個方法雖然粗糙，但對於簡單的圖片上傳功能來說已經足夠。</p>
+<p>在生產環境中，你需要<strong>更嚴格的檢查</strong>，例如使用專門的圖片處理套件來驗證檔案內容。</p>
+<h3 id="四、儲存圖片"><a href="#四、儲存圖片" class="headerlink" title="四、儲存圖片"></a>四、儲存圖片</h3><p>最後，我們將圖片賦值給<code>User</code>的<code>avatar</code>欄位，並呼叫<code>save()</code>方法。</p>
+<p>Django 會自動處理檔案的儲存，如果<strong>名稱重複</strong>，它還會<strong>自動產生唯一的檔名</strong>，然後把檔案放到我們之前指定的位置。</p>
+<p>透過 API 上傳了兩次一模一樣的 avatar 後，我們在專案根目錄使用<code>tree</code>指令看一下結果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ tree media</span><br><span class="line">media</span><br><span class="line">└── avatars</span><br><span class="line">    ├── my-avatar.png</span><br><span class="line">    └── my-avatar_gVwgCiG.png  <span class="comment"># 相同檔名第二次上傳，自動更名</span></span><br><span class="line"></span><br><span class="line">2 directories, 2 files</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，第二次上傳的圖片被「<strong>自動更名</strong>」了。這<strong>保證</strong>了檔名的<strong>唯一性</strong>。</p>
+<p>在生產環境中，最好自行定義檔案的統一命名格式，以確保更好的管理和安全性。</p>
+<hr>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>本文介紹了如何在 Django Ninja 中實作檔案上傳功能，從前置設定到 API 實作，詳述了<code>UploadedFile</code>的使用方式。</p>
+<p>接下來，我們將介紹另一項進階功能——分頁（Pagination），它能幫助你在回應大量資料時，有效提升效能與使用者體驗。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-22/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja/">Django Ninja<span class="category-count">23</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
