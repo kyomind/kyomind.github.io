@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-05T17:05:27+08:00" />
+  <meta property="article:modified_time" content="2024-10-05T17:08:41+08:00" />
 
 
 
@@ -218,7 +218,7 @@
 <hr>
 <p>了解了本章重點後，我們開始講述第一個功能——檔案上傳。</p>
 <h2 id="檔案上傳的主角——UploadedFile"><a href="#檔案上傳的主角——UploadedFile" class="headerlink" title="檔案上傳的主角——UploadedFile"></a>檔案上傳的主角——UploadedFile</h2><p>在 Django Ninja 中，我們可以使用<code>UploadedFile</code>來接收上傳的檔案，它是 Django <code>UploadedFile</code>的<strong>重新封裝</strong>，兩者基本上大同小異。</p>
-<h3 id="UploadedFile-概述"><a href="#UploadedFile-概述" class="headerlink" title="UploadedFile 概述"></a>UploadedFile 概述</h3><p><code>UploadedFile</code>是 Django 處理檔案上傳的核心物件。當使用者上傳檔案時，Django 會自動將檔案封裝成<code>UploadedFile</code>實例，方便我們進行<strong>後續的檔案處理和儲存</strong>。</p>
+<h3 id="UploadedFile-概述"><a href="#UploadedFile-概述" class="headerlink" title="UploadedFile 概述"></a>UploadedFile 概述</h3><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/ref/files/uploads/">UploadedFile</a> 是 Django 處理檔案上傳的核心物件。當使用者上傳檔案時，Django 會自動將檔案封裝成<code>UploadedFile</code>實例，方便我們進行<strong>後續的檔案處理和儲存</strong>。</p>
 <p><code>UploadedFile</code>物件有很多屬性，其中比較常用的有：</p>
 <ul>
 <li><code>name</code>：上傳檔案的名稱。這可以用來存取檔案的<strong>原始檔名</strong>。</li>
