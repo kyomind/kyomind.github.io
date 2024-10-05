@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 23：檔案上傳">
-  <meta property="og:title" content="Django Ninja 教學 23：檔案上傳"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 23：檔案上傳——使用 UploadedFile">
+  <meta property="og:title" content="Django Ninja 教學 23：檔案上傳——使用 UploadedFile"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。">
   <meta property="og:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja" />
             
 
-  <meta property="article:modified_time" content="2024-10-05T13:29:28+08:00" />
+  <meta property="article:modified_time" content="2024-10-05T16:51:04+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 23：檔案上傳 - Code and Me</title>
+    <title>Django Ninja 教學 23：檔案上傳——使用 UploadedFile - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 23：檔案上傳
+      <h1 class="post-title">Django Ninja 教學 23：檔案上傳——使用 UploadedFile
         </h1>
 
       <div class="post-meta">
@@ -206,7 +206,7 @@
 <p>雖然這是一個入門指南，但我們仍會涵蓋一些常見的進階功能，這些功能不僅提升 API 的靈活性，還能增強了系統效能與使用者體驗。</p>
 <p>本章將介紹 3 個重要的進階功能：</p>
 <ul>
-<li>卷 23：檔案上傳</li>
+<li>卷 23：檔案上傳——使用 UploadedFile</li>
 <li>卷 24：分頁（上）Django Ninja 的內建分頁器</li>
 <li>卷 25：分頁（下）自定義分頁類別</li>
 <li>卷 26：資料查詢與過濾（上）FilterSchema 介紹</li>
