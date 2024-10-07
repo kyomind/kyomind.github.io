@@ -119,13 +119,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
-          
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
           
             <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
           
@@ -190,7 +190,7 @@
 <hr>
 <h2 id="一、什麼是查詢參數？"><a href="#一、什麼是查詢參數？" class="headerlink" title="一、什麼是查詢參數？"></a>一、什麼是查詢參數？</h2><p>查詢參數是 URL 中的可選參數，通常位於 path 的後方，以<code>?key=value</code>的形式出現，用來傳遞<strong>額外的資訊</strong>。</p>
 <p>例如，當我們需要過濾某位作者的文章時，URL 的 path 可能會這樣寫：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/posts/?author=john</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/posts/?author=john</span><br></pre></td></tr></table></figure>
 
 <p>URL 傳遞了一個查詢參數<code>author=john</code>，表示我們希望過濾出由 John 撰寫的文章。</p>
           <div class="read-more">
@@ -225,7 +225,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;post_id&#125;/&#x27;</span></span>)  </span><span class="comment"># &#123;post_id&#125; 就是路徑參數</span></span><br></pre></td></tr></table></figure>
 
 <p>實際請求時，<code>123</code>就是<strong>透過</strong>路徑參數，代表特定文章的 id：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /posts/123</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /posts/123</span><br></pre></td></tr></table></figure>
 
 <p>可想而知，如果是<code>456</code>或<code>789</code>，你會得到不同的結果。</p>
 <p>這使得 API 具有<strong>彈性</strong>，可以針對不同的資源進行操作，而<strong>不必為每一個資源建立不同的路由</strong>——它們的端點與路由<strong>都是相同的</strong>，只是「<strong>參數</strong>」不同。</p>
@@ -250,7 +250,7 @@
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
 <p>歡迎來到第三章第二節！</p>
 <p>作為 API 的核心邏輯實現，<strong>view 函式</strong>無疑是 Django Ninja API 的靈魂所在。</p>
-<p>Django Ninja 和 FastAPI、Flask 一樣，都是以 Function-Based Views（<strong>以下簡稱 FBVs</strong>）為主。所以它的學習重點，<strong>幾乎都繞圍在 view 函式的 input 和 output。</strong></p>
+<p>Django Ninja 和 FastAPI、Flask 一樣，主要是採用 function-based views（<strong>以下簡稱 FBVs</strong>）。所以它的學習重點，<strong>幾乎都繞圍在 view 函式的 input 和 output。</strong></p>
 <p>換句話說，整個 Django Ninja 框架的能力，<strong>構成了 view 函式的這些關鍵部分</strong>，包括但不限於：</p>
 <ol>
 <li>處理 HTTP 請求的參數與 body。</li>

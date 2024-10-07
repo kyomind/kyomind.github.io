@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T05:52:25+08:00" />
+  <meta property="article:modified_time" content="2024-10-07T15:44:48+08:00" />
 
 
 
@@ -127,13 +127,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
-          
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
           
             <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
           
@@ -222,7 +222,7 @@
 <hr>
 <h2 id="專案-API-文件現況"><a href="#專案-API-文件現況" class="headerlink" title="專案 API 文件現況"></a>專案 API 文件現況</h2><p>在開始大刀闊斧地加強文件品質之前，我們先來看看目前 API 文件有多麼「陽春」。</p>
 <p>啟動 Django 伺服器後，造訪下列網址可以查看當前 API 的文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8000/docs</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8000/docs</span><br></pre></td></tr></table></figure>
 
 <p>目前的文件內容如下：</p>
 <p><img src="https://i.imgur.com/jMSkDMj.png"></p>
@@ -236,7 +236,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">...</span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增文章</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>再看一下 HTTP 請求 body 的範例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user_id&quot;</span>: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;user_id&quot;</span><span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>只能說<strong>不盡理想</strong>，像<code>&quot;string&quot;</code>這樣的例子，只有表現出「型別」，沒有模擬<strong>真實世界</strong>的文章標題或內容。</p>
 <hr>
@@ -314,9 +314,9 @@
       相關文章
     </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-16/">
