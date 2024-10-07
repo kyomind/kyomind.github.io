@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T06:56:50+08:00" />
+  <meta property="article:modified_time" content="2024-10-07T07:00:00+08:00" />
 
 
 
@@ -294,7 +294,7 @@
 <p>如果專案中所有的 API <strong>都沒有分頁</strong>，使用「多重狀態碼回應」來處理「非 200」回應是<strong>完全可行</strong>的。</p>
 <p>但<strong>只要有一個</strong> API 需要分頁，這個有分頁的 API，為了避免上述衝突，就要改用一樣是第 21 篇提到的方式——<code>raise HttpError</code>。</p>
 <p>考慮到<strong>專案整體的一致性</strong>，其餘的 API，也應該採用<code>raise HttpError</code>這個方式。</p>
-<p>有鑑於分頁需求是<strong>如此的常見</strong>，所以「多重狀態碼回應」也就成為了<strong>雞肋</strong>。</p>
+<p>而分頁需求是<strong>如此的常見</strong>，所以「多重狀態碼回應」也就成為了<strong>雞肋</strong>。</p>
 
       </div>
 
