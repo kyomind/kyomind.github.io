@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢">
+  <meta property="og:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-09T07:00:54+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-10-09T06:04:46+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-27/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (27)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-09
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B0%87%E6%9F%A5%E8%A9%A2%E9%82%8F%E8%BC%AF%E9%81%B7%E7%A7%BB%E5%88%B0-FilterSchema"><span class="toc-text">一、將查詢邏輯遷移到 FilterSchema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E6%AC%84%E4%BD%8D%E6%9F%A5%E8%A9%A2%EF%BC%9A%E6%96%B0%E5%A2%9E%E6%97%A5%E6%9C%9F%E7%AF%A9%E9%81%B8%E5%8A%9F%E8%83%BD"><span class="toc-text">二、多欄位查詢：新增日期篩選功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FilterSchema-%E7%9A%84%E9%A0%90%E8%A8%AD%E6%9F%A5%E8%A9%A2%E6%A2%9D%E4%BB%B6%E9%97%9C%E4%BF%82"><span class="toc-text">FilterSchema 的預設查詢條件關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%97%A5%E6%9C%9F%E5%8D%80%E9%96%93%E9%A9%97%E8%AD%89"><span class="toc-text">三、日期區間驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>上篇中，我們學習了 Django ORM 的<code>Q</code>物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
+<p>討論比較多的是，view 函式中使用 FilterSchema 的<strong>參數定義方式</strong>——這確實很重要，但這只是 FilterSchema 的一部分。</p>
+<p>本篇要來補完剩下的內容：</p>
+<ol>
+<li>完善 FilterSchema：使用「<strong>更道地</strong>」的寫法，釋放 FilterSchema <strong>真正的力量</strong>。</li>
+<li>實作更進階的欄位查詢功能：<strong>多欄位查詢——篩選日期區間。</strong></li>
+<li>追加實作第 20 篇學到的「<strong>跨欄位驗證</strong>」：驗證查詢參數的<strong>日期區間是否合法</strong>。</li>
+</ol>
+<p>看來又是資訊滿滿的一篇，話不多說，直接開始吧！</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/18">這個 PR</a>。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="一、將查詢邏輯遷移到-FilterSchema"><a href="#一、將查詢邏輯遷移到-FilterSchema" class="headerlink" title="一、將查詢邏輯遷移到 FilterSchema"></a>一、將查詢邏輯遷移到 FilterSchema</h2><p>還記得我們上一篇的程式碼實作嗎？</p>
+<p>明明多定義了 FilterSchema，但 view 函式中的程式碼<strong>不僅沒有減少，反而還增加了</strong>！（雖然查詢邏輯也變多了，因為要同時查詢兩個欄位）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">...</span>)</span></span><br><span class="line"><span class="meta">@paginate(<span class="params">CustomPagination</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    filters: PostFilterSchema = Query(<span class="params"></span>),  <span class="comment"># 使用 FilterSchema</span></span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> filters.query:</span><br><span class="line">        q = Q(title__icontains=filters.query) | \</span><br><span class="line">            Q(content__icontains=filters.query)</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(q)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
+
+<p>這簡直莫名其妙🐸</p>
+<p>那是因為，FilterSchema 不是這麼用的！</p>
+<h3 id="FilterSchema-的「正確」用法"><a href="#FilterSchema-的「正確」用法" class="headerlink" title="FilterSchema 的「正確」用法"></a>FilterSchema 的「正確」用法</h3><p>我們應該盡可能將查詢邏輯<strong>封裝到 FilterSchema 中</strong>，這樣可以讓 view 函式更簡潔，並達到「<strong>關注點分離</strong>」的效果。</p>
+<p>來看看更合理的寫法——將查詢邏輯遷移到 FilterSchema：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        q=[<span class="string">&#x27;title__icontains&#x27;</span>, <span class="string">&#x27;author__username__icontains&#x27;</span>],</span><br><span class="line">        min_length=<span class="number">2</span>,</span><br><span class="line">        max_length=<span class="number">10</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>主要的變動是<code>query</code>欄位的 Field 部分，現在加上了<code>q=</code>參數內容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=[<span class="string">&quot;title__icontains&quot;</span>, <span class="string">&quot;author__name__icontains&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>很眼熟吧？沒錯，它們實際上就是<code>Q</code>物件的<strong>條件語句</strong>，Django Ninja 會在背後自動調用<code>Q</code>物件來執行這些查詢。</p>
+<h3 id="來自-Mypy-的提醒"><a href="#來自-Mypy-的提醒" class="headerlink" title="來自 Mypy 的提醒"></a>來自 Mypy 的提醒</h3><p>一旦使用<code>q=</code>參數，Mypy 又會提醒你：</p>
+<blockquote>
+<p>Unexpected keyword argument “q” for “Field”</p>
+</blockquote>
+<p>它說的並沒有錯，因為 Pydantic Field <strong>確實沒有</strong>這個參數——這是 Django Ninja 自行實作的。</p>
+<p>你可以無視它，或加上必要的註解。</p>
+<h3 id="View-函式簡化"><a href="#View-函式簡化" class="headerlink" title="View 函式簡化"></a>View 函式簡化</h3><p>如此一來，view 函式<strong>只需要</strong>這樣寫就好了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    filters: PostFilterSchema = Query(<span class="params"></span>),</span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.select_related(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    posts = filters.<span class="built_in">filter</span>(posts)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
+
+<p>是不是<strong>簡單很多</strong>？</p>
+<p>因為查詢邏輯從 view 函式「分離」出來了——關注點分離。這使得 view 函式的職責更單一、更利於維護。</p>
+<hr>
+<h2 id="二、多欄位查詢：新增日期篩選功能"><a href="#二、多欄位查詢：新增日期篩選功能" class="headerlink" title="二、多欄位查詢：新增日期篩選功能"></a>二、多欄位查詢：新增日期篩選功能</h2><p>新需求：除了可以查文章標題或作者名稱，現在還要加入對「<strong>發文日期</strong>」的過濾！</p>
+<p>我們將引入兩個<strong>新的 URL 查詢參數</strong>：</p>
+<ul>
+<li><code>start_date</code></li>
+<li><code>end_date</code></li>
+</ul>
+<p>兩者將用來查詢、過濾<code>Post</code>模型中的<code>created_at</code>欄位（即發文日期），以篩選特定時間範圍內的文章資料。</p>
+<p>還有一個<strong>額外要求</strong>：兩者必須「<strong>全有全無</strong>」——可以都沒有，但不可以只填其中一個。</p>
+<p>這是一個典型的「<strong>多欄位</strong>」查詢。</p>
+<h3 id="新增程式碼"><a href="#新增程式碼" class="headerlink" title="新增程式碼"></a>新增程式碼</h3><p>這是加入了上述邏輯後的 FilterSchema：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        <span class="literal">None</span>, q=[<span class="string">&quot;title__icontains&quot;</span>, <span class="string">&quot;author__username__icontains&quot;</span>])</span><br><span class="line">    start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__gte&quot;</span>)</span><br><span class="line">    end_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__lte&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>start_date</code>和<code>end_date</code>都是對模型欄位<code>created_at</code>的<strong>查詢條件</strong>。</p>
+<p>所以我們使用<code>created_at__gte</code>和<code>created_at__lte</code>來<strong>描述過濾邏輯</strong>（它們都對應了各自的<code>Q</code>物件），以<strong>篩選</strong>出符合條件的資料。</p>
+<p>那 view 函式呢？你猜得沒錯——<strong>完全不用動</strong>！</p>
+<p>這就是使用 FilterSchema 的好處。</p>
+<h3 id="API-文件渲染問題"><a href="#API-文件渲染問題" class="headerlink" title="API 文件渲染問題"></a>API 文件渲染問題</h3><p>有趣的是，當我試著為這些查詢參數加上<strong>文件範例</strong>時，如果這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">    <span class="literal">None</span>, q=<span class="string">&#x27;created_at__gte&#x27;</span>, examples=[<span class="string">&#x27;2021-01-01&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>查看 API 文件將會得到：</p>
+<blockquote>
+<p>😱 Could not render Parameters, see the console.</p>
+</blockquote>
+<p>但寫<code>example=&#39;2021-01-01&#39;</code>卻可以成功。</p>
+<p>這可能是 Django Ninja 與 Pydantic 在整合上的一個 bug，我們暫且就先略過吧！</p>
+<h3 id="客戶端查詢範例"><a href="#客戶端查詢範例" class="headerlink" title="客戶端查詢範例"></a>客戶端查詢範例</h3><p>當我們要查詢某段時間內的文章時，可以使用以下的 URL 查詢參數：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?start_date=2023-01-01&amp;end_date=2023-01-31</span><br></pre></td></tr></table></figure>
+
+<p>這樣就能輕鬆查詢出 2023 年 1 月份的所有文章。</p>
+<p>附帶一提，日期中的時間因為沒有指定，預設上都是 0 點 0 分 0 秒。所以如果填同一天，就查不到任何東西。</p>
+<p>這是一個需要<strong>改善</strong>或<strong>重新調整</strong>的細節，常見的做法是在程式內部把<code>end_date</code>加 1 天，而我直接選擇<strong>讓兩者不能相同</strong>XD。實際該怎麼做，取決於你的需求。</p>
+<p>除了單純的期間查詢，我們也可以查詢<strong>某作者在某段時間內</strong>的文章，以查詢作者 Alice 為例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?start_date=2023-01-01&amp;end_date=2023-01-31&amp;query=alice</span><br></pre></td></tr></table></figure>
+
+<p>結果顯示了 Alice 在 2023 年 1 月份的所有文章。</p>
+<hr>
+<h2 id="FilterSchema-的預設查詢條件關係"><a href="#FilterSchema-的預設查詢條件關係" class="headerlink" title="FilterSchema 的預設查詢條件關係"></a>FilterSchema 的預設查詢條件關係</h2><p>這部分一定要特別介紹，依<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/filtering/#combining-expressions">文件</a>所述，預設上：</p>
+<ul>
+<li>Field-level expressions are joined together using <code>OR</code> operator.</li>
+<li>The fields themselves are joined together using <code>AND</code> operator.</li>
+</ul>
+<p>意思就是說，單一欄位內的多個 Q 語句，彼此是 OR 關係，比如上面<code>query</code>的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=[<span class="string">&#x27;title__icontains&#x27;</span>, <span class="string">&#x27;author__username__icontains&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以查詢文章標題「<strong>或</strong>」作者名稱。</p>
+<p>而<strong>不同欄位</strong>中的條件（如果都有），則是 AND 關係——必須<strong>同時符合</strong>才行。所以作者名稱與日期區間，兩者的條件必須同時符合。</p>
+<p>這些預設邏輯可以自行變更，詳情請參考上述文件內容。</p>
+<hr>
+<h2 id="三、日期區間驗證"><a href="#三、日期區間驗證" class="headerlink" title="三、日期區間驗證"></a>三、日期區間驗證</h2><p>本例中，除了欄位查詢，我們還要確保，使用者輸入的開始日期<strong>必須早於</strong>結束日期。</p>
+<p>並且，兩個欄位的查詢值必須是「全有」或「全無」（<strong>全無則不必驗證</strong>）。</p>
+<p>這個需求非常眼熟——不就是第 20 篇提到的「<strong>跨欄位驗證</strong>」嗎？</p>
+<p>沒錯，我們要透過 Pydantic 的<code>model_validator</code>來實現，它允許我們在驗證過程中，對輸入資料進行<strong>自定義的邏輯檢查</strong>。</p>
+<h3 id="使用-Pydantic-model-validator-實作日期區間驗證"><a href="#使用-Pydantic-model-validator-實作日期區間驗證" class="headerlink" title="使用 Pydantic model_validator 實作日期區間驗證"></a>使用 Pydantic model_validator 實作日期區間驗證</h3><p>程式碼有點多，我們直接看重點：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    ...</span><br><span class="line">    start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&#x27;created_at__gte&#x27;</span>)</span><br><span class="line">    end_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&#x27;created_at__lte&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @model_validator(<span class="params">mode=<span class="string">&#x27;after&#x27;</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_date_range</span>(<span class="params">self</span>) -&gt; Self:</span><br><span class="line">        <span class="comment"># 如果開始日期和結束日期都是 None，則不進行任何檢查</span></span><br><span class="line">        <span class="keyword">if</span> self.start_date <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">and</span> self.end_date <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">all</span>([self.start_date, self.end_date]):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;開始日期和結束日期必須同時提供或同時不提供&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            start_date_dt = datetime.strptime(self.start_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">            end_date_dt = datetime.strptime(self.end_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;日期格式無效，應為 YYYY-MM-DD&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> start_date_dt &gt; end_date_dt:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;開始日期必須早於結束日期&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>
+<p>對於查詢條件，我們使用 Pydantic 的<code>model_validator</code>進行跨欄位驗證，確保使用者輸入的日期是<strong>有效且合理</strong>的。</p>
+<p>事實上，跨欄位驗證往往要<strong>考慮很多細節</strong>，否則可能掛一漏萬，間接產生新的 bug。</p>
+<p>這個例子就是一個典型案例。</p>
+<p>我們必須<strong>全盤考慮</strong>各種可能的輸入情況，包括日期格式是否正確、日期範圍是否合理，以及兩個日期欄位是否同時存在或同時為空。</p>
+<p><strong>細緻的驗證邏輯</strong>能提升 API 的<strong>可靠性</strong>，避免因為無效或不合理的輸入而導致系統出現<strong>意外行為</strong>。而粗糙的驗證則反之。</p>
+<hr>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了如何通過 Django Ninja 的<code>FilterSchema</code> 來進行多欄位查詢和日期篩選，並示範了如何使用 Pydantic 的<code>model_validator</code>來強化資料驗證，確保查詢邏輯的正確性。</p>
+<p>我們還補充了許多實際應用場景的示例，幫助讀者更好地理解每個步驟的用途和效果。</p>
+<p>下一章，我們將探討 Django Ninja 中的認證（Authentication）機制，並介紹如何使用 pytest 進行單元測試，這些都是後端開發中，不可或缺的要素。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-26/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">27</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

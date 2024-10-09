@@ -133,7 +133,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (26)</a>
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (27)</a>
           
         </div>
       </li>
@@ -169,6 +169,32 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/migrate-to-ruff/">Python 專案從 Flake8、Black 遷移至 Ruff 指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-05-25
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/klPlw0x.jpg" alt="from Pixabay"></p>
+<p>上個月，我將工作上幾個專案的 Python linter、formatter，從原本的 Flake8、isort、Black Formatter 遷移至 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/ruff">Ruff</a>。</p>
+<p>本來以為很簡單，應該半小時就可以搞定。不料<strong>細節比想像中的多</strong>，前前後後還是花了近 2 小時。</p>
+<p>可能我比較龜毛吧！</p>
+<p>正因耗費的時間有點多，所以寫下這篇懶人包教學，作為讀者遷移時的參考。</p>
+<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>這篇文章是寫給，目前正使用上述 Flake8、isort、Black Formatter 作為格式化工具，<strong>並打算遷移至 Ruff 的 Python 開發者。</strong></p>
+<p>受眾就是〈<a href="/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中描述的那樣。在專案中使用上述工具，也安裝了相關的 VS Code 套件，設定好 pre-commit hook，以及使用 pyproject.toml 作為這些工具的設定檔。</p>
+<p>而本文的目標，就是讓專案的 linter、formatter，最終都統一使用 Ruff。</p>
+          <div class="read-more">
+            <a href="/migrate-to-ruff/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/my-ai-dialogue-notes/">我寫「AI 對話筆記」的方法與思考</a>
         </h1>
@@ -339,39 +365,6 @@
 <p>讀個書猶如<strong>愚公移山</strong>，最後，我決定放棄苦苦掙扎，乖乖去圖書館！</p>
           <div class="read-more">
             <a href="/weekly-review-28/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/python-enum/">Python API 開發：善用 Enum 的三大關鍵特性</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-04-19
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5lvKO0a.jpeg" alt="from Pixabay"></p>
-<p>想必你知道 Python 中有一個內建的特殊類別叫 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html#enum.Enum">Enum</a>（來自 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3.12/library/enum.html">enum</a> 模組），專門用來處理「列舉」態型的資料集合。</p>
-<p>如同 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html">collection</a> 模組中的各種容器（比如：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html#collections.deque"><code>deque</code></a>、<a target="_blank" rel="noopener" href="https://docs.python.org/zh-tw/3/library/collections.html#collections.Counter"><code>Counter</code></a>），Enum 已經定義好很多「<strong>內建特性（屬性、方法、行為）</strong>」供你使用。這些特性會讓你在<strong>處理特定情境</strong>時非常順手。</p>
-<p>但是，這些特性也使得 Enum 類別與一般類別<strong>有著很大的差異，增加了學習門檻</strong>。</p>
-<p>如你所見，Enum 的特性頗多，這讓人在學習、使用之前，難免有點<strong>望之卻步</strong>——至少我是這樣！</p>
-<h2 id="本文主旨與架構"><a href="#本文主旨與架構" class="headerlink" title="本文主旨與架構"></a>本文主旨與架構</h2><p>本文分享我最近才開始把 Enum 應用在 API 開發中的經驗——從它的三大特性入手，並輔以一個實際問題情境。</p>
-<p>Enum 的特性不少，但只要知曉這三件事，就可以在遇到「列舉」欄位時，善用 Enum 來提升開發效率，同時增進程式碼的簡潔與穩健。</p>
-<p>不過話說回來，即使不是開發 API，也不影響你對本文的理解。只是我的經驗是從後端開發而來。</p>
-<h3 id="本文架構"><a href="#本文架構" class="headerlink" title="本文架構"></a>本文架構</h3><p>為了讓你感受 Enum 的強大與美妙，<strong>本文的架構經過精心設計。</strong>共分為<strong>三個部分</strong>：</p>
-<ol>
-<li><strong>問題情境</strong>：我會先提出一個<strong>問題情境</strong>，突顯舊方法的不足。</li>
-<li>然後再介紹 Enum 的<strong>三大特性</strong>，帶你進入 Enum 的世界。</li>
-<li>最後看 Enum 特性在問題情境中<strong>如何有效發揮</strong>，讓程式碼變得更加優雅——也就是它<strong>解決的痛點</strong>。</li>
-</ol>
-<p>藉由這個流程，相信你對 Enum 會有更進一步的理解。</p>
-          <div class="read-more">
-            <a href="/python-enum/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/7/">
