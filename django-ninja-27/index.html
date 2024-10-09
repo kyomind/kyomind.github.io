@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-09T07:06:02+08:00" />
+  <meta property="article:modified_time" content="2024-10-09T13:01:53+08:00" />
 
 
 
@@ -233,7 +233,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    filters: PostFilterSchema = Query(<span class="params"></span>),</span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.select_related(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    posts = filters.<span class="built_in">filter</span>(posts)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
 <p>是不是<strong>簡單很多</strong>？</p>
-<p>因為查詢邏輯從 view 函式「分離」出來了——關注點分離。這使得 view 函式的職責更單一、更利於維護。</p>
+<p>因為查詢邏輯從 view 函式「分離」出來了，這使得 view 函式的職責更單一、更利於維護。</p>
 <hr>
 <h2 id="二、多欄位查詢：新增日期篩選功能"><a href="#二、多欄位查詢：新增日期篩選功能" class="headerlink" title="二、多欄位查詢：新增日期篩選功能"></a>二、多欄位查詢：新增日期篩選功能</h2><p>新需求：除了可以查文章標題或作者名稱，現在還要加入對「<strong>發文日期</strong>」的過濾！</p>
 <p>我們將引入兩個<strong>新的 URL 查詢參數</strong>：</p>
