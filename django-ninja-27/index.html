@@ -16,9 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢">
-  <meta property="og:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢"><meta name="twitter:description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。">
+  <meta property="og:description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
-<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+<meta name="description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -27,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-09T07:00:54+08:00" />
+  <meta property="article:modified_time" content="2024-10-09T07:06:02+08:00" />
 
 
 
@@ -292,10 +293,10 @@
 <p>事實上，跨欄位驗證往往要<strong>考慮很多細節</strong>，否則可能掛一漏萬，間接產生新的 bug。</p>
 <p>這個例子就是一個典型案例。</p>
 <p>我們必須<strong>全盤考慮</strong>各種可能的輸入情況，包括日期格式是否正確、日期範圍是否合理，以及兩個日期欄位是否同時存在或同時為空。</p>
-<p><strong>細緻的驗證邏輯</strong>能提升 API 的<strong>可靠性</strong>，避免因為無效或不合理的輸入而導致系統出現<strong>意外行為</strong>。而粗糙的驗證則反之。</p>
+<p><strong>細緻的驗證邏輯</strong>能提升 API 的<strong>可靠性</strong>，避免因為無效或不合理的輸入而導致系統出現<strong>意外行為</strong>。而粗糙的邏輯則反之。</p>
 <hr>
-<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了如何通過 Django Ninja 的<code>FilterSchema</code> 來進行多欄位查詢和日期篩選，並示範了如何使用 Pydantic 的<code>model_validator</code>來強化資料驗證，確保查詢邏輯的正確性。</p>
-<p>我們還補充了許多實際應用場景的示例，幫助讀者更好地理解每個步驟的用途和效果。</p>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了 FilterSchema 的有效用法，完成了多欄位查詢和日期篩選，並示範如何使用<code>model_validator</code>來強化資料驗證，確保查詢邏輯的正確性。</p>
+<p>我們還看了這些應用場景的實例程式碼，幫助讀者更好地理解每個步驟的用途和效果。</p>
 <p>下一章，我們將探討 Django Ninja 中的認證（Authentication）機制，並介紹如何使用 pytest 進行單元測試，這些都是後端開發中，不可或缺的要素。</p>
 
       </div>
