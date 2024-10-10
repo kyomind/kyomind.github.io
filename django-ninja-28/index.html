@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 28：身分認證——Session 認證與全域設定">
+  <meta property="og:title" content="Django Ninja 教學 28：身分認證——Session 認證與全域設定"><meta name="twitter:description" content="本文介紹 Django Ninja 如何實現身分認證，使用 Django 內建的 session 認證，並設定全域認證，讓 API 更加安全。">
+  <meta property="og:description" content="本文介紹 Django Ninja 如何實現身分認證，使用 Django 內建的 session 認證，並設定全域認證，讓 API 更加安全。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文介紹 Django Ninja 如何實現身分認證，使用 Django 內建的 session 認證，並設定全域認證，讓 API 更加安全。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-10T02:46:38+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-10-10T01:42:57+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-28/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 28：身分認證——Session 認證與全域設定 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (28)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 28：身分認證——Session 認證與全域設定
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-10
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%8D%E8%AD%89%E7%9A%84%E5%85%A9%E5%80%8B%E5%B1%A4%E6%AC%A1"><span class="toc-text">認證的兩個層次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E3%80%8C%E4%BD%BF%E7%94%A8%E8%80%85%E7%99%BB%E5%85%A5%E3%80%8DAPI"><span class="toc-text">實作「使用者登入」API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA-API-%E5%8A%A0%E4%B8%8A%E3%80%8C%E8%AA%8D%E8%AD%89%E4%BF%9D%E8%AD%B7%E3%80%8D"><span class="toc-text">為 API 加上「認證保護」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E7%9A%84-request-auth"><span class="toc-text">Django Ninja 的 request.auth</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-auth-%E8%A7%A3%E6%9E%90"><span class="toc-text">request.auth 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E5%9F%9F%E8%AA%8D%E8%AD%89%E7%9A%84%E8%A8%AD%E5%AE%9A%E8%88%87%E4%BE%8B%E5%A4%96"><span class="toc-text">全域認證的設定與例外</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>歡迎來到第七章！本章總共有兩篇內容：</p>
+<ul>
+<li>卷 28：身分認證——Session 認證與全域設定</li>
+<li>卷 29：單元測試——使用 Test Client 與 pytest 測試 API</li>
+</ul>
+<p>這些主題的核心功能，<strong>並非由 Django Ninja 實作</strong>，但框架仍提供了<strong>一定程度的整合</strong>。並且，這些功能對於任何 Django 專案來說，都至關重要。</p>
+<p>本文介紹幾乎所有 API 專案都需要的——<strong>身分認證</strong>（Authentication）。</p>
+<p>我們將探討如何在 Django Ninja 中利用 Django 內建的 session-based 認證，實現完整的登入驗證功能，並進一步說明如何設定<strong>全域認證</strong>，以減少程式碼的重複。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/19">這個 PR</a>。</p>
+<hr>
+<h2 id="認證的兩個層次"><a href="#認證的兩個層次" class="headerlink" title="認證的兩個層次"></a>認證的兩個層次</h2><p>進入實作前，我們要先了解，所謂的<strong>身分認證</strong>，究竟代表什麼。</p>
+<p>以「帳號密碼 + session 認證」為例，身分認證的範圍主要涵蓋<strong>兩個階段</strong>。</p>
+<p>首先，當使用者透過帳號密碼進行登入時，系統會檢查這些內容、確認身分合法。登入成功後，系統會將使用者的資訊（比如用戶 id）儲存至 session，以<strong>維持登入狀態</strong>。</p>
+<p>這是<strong>登入時的認證</strong>，也是我們最常說的認證。（<strong>狹義的認證</strong>）</p>
+<p>接著，當使用者嘗試存取受「認證保護」的 API 時，系統會檢查 session 並確認身分，確保每個 API 請求都來自<strong>合法登入</strong>的使用者。</p>
+<p>簡言之：</p>
+<ul>
+<li>第一階段：初次登入時的身分確認。</li>
+<li>第二階段：後續請求時的身分確認。</li>
+</ul>
+<p>兩個層次相輔相成、一體兩面，確保服務能夠在使用者登入和後續操作中，提供適當的安全保障。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="實作「使用者登入」API"><a href="#實作「使用者登入」API" class="headerlink" title="實作「使用者登入」API"></a>實作「使用者登入」API</h2><p>了解了上述兩個層次後，我們要先來實作「<strong>狹義</strong>」的認證——也就是<strong>登入驗證</strong>本身。</p>
+<p>我們將建立一個「使用者登入」API，並直接透過 Django 的<code>authenticate</code>和<code>login</code>函式處理帳號密碼驗證和登入狀態——非常方便！</p>
+<p><code>authenticate</code>用來<strong>驗證</strong>使用者輸入的帳號（<code>username</code>）和密碼是否正確，<code>login</code>則將使用者的登入狀態<strong>儲存</strong>至 session。</p>
+<h3 id="程式碼實作"><a href="#程式碼實作" class="headerlink" title="程式碼實作"></a>程式碼實作</h3><p>先新增一個登入請求 Schema：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># user/schemas.py</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoginRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    username: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;Alice&#x27;</span>])</span><br><span class="line">    password: <span class="built_in">str</span> = Field(examples=[<span class="string">&#x27;password123&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>然後是 view 函式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> authenticate, login</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> user.schemas <span class="keyword">import</span> CreateUserRequest, LoginRequest</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&#x27;/users/login/&#x27;</span>, summary=<span class="string">&#x27;登入使用者&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login_user</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest, payload: LoginRequest</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    登入使用者</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    user = authenticate(</span><br><span class="line">        request,</span><br><span class="line">        username=payload.username,</span><br><span class="line">        password=payload.password</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        login(request, user)  <span class="comment"># 將使用者登入狀態儲存至 session</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;登入成功&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> HttpError(<span class="number">401</span>, <span class="string">&#x27;帳號或密碼錯誤&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>非常簡單！</p>
+<p>附帶一提，我不太喜歡程式中有「不必要」的<code>else</code>，此時的寫法仍不盡理想——因為<code>else</code><strong>完全可以省略</strong>。</p>
+<p>在最新的程式碼中，你可以看到我已改成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user = authenticate(...)</span><br><span class="line"><span class="keyword">if</span> user <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">raise</span> HttpError(<span class="number">401</span>, <span class="string">&#x27;帳號或密碼錯誤&#x27;</span>)</span><br><span class="line"></span><br><span class="line">login(request, user)  <span class="comment"># 將使用者登入狀態儲存至 session</span></span><br><span class="line"><span class="keyword">return</span> &#123;<span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;登入成功&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這樣的做法即所謂的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%AB%E8%AF%AD%E5%8F%A5">Guard Clause</a> 或 <a target="_blank" rel="noopener" href="https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-swift-ios-app-%E9%96%8B%E7%99%BC%E6%95%99%E5%AE%A4/early-return-coding-skill-9f3016d4b88d">Early Return</a>（雖然這裡是 raise）。</p>
+<h3 id="簡評與重要補充"><a href="#簡評與重要補充" class="headerlink" title="簡評與重要補充"></a>簡評與重要補充</h3><p><code>authenticate</code>和<code>login</code>的用法幾乎是固定的，很容易理解：</p>
+<ul>
+<li><code>authenticate</code>在驗證成功時會 return 對應的<code>User</code>物件，失敗時則返回<code>None</code>。</li>
+<li><code>login</code>不會 return，但<code>request</code>和<code>user</code>為必要的參數。</li>
+</ul>
+<p>成功登入後，你會得到 200 回應，並獲得兩組 cookie：</p>
+<p><img src="https://i.imgur.com/c6gMBDY.png"></p>
+<p>這對於 API client（比如 Postman）使用者很重要，畢竟瀏覽器會自動幫你存，但這些工具不會——好吧，我錯了，至少我用的 RapidAPI 會<strong>自動存儲、發送</strong>！</p>
+<p>（我測試 API 時還覺得奇怪，怎麼認證防護都失效了🤣）</p>
+<p>如果工具沒有幫你做，記得要自己在請求的 headers 加上：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/users/2/avatar/</span> <span class="meta">HTTP/1.1</span></span><br><span class="line">...</span><br><span class="line"><span class="attribute">Cookie</span><span class="punctuation">: </span>csrftoken=...; sessionid=...</span><br><span class="line"><span class="attribute">X-CSRFToken</span><span class="punctuation">: </span>...</span><br></pre></td></tr></table></figure>
+
+<p><code>authenticate</code>預設是以<code>AbstractUser</code>的<code>username</code>欄位和密碼作為認證基準，如果想用別的欄位，比如<code>email</code>，則要自己覆寫 Django 的認證後端。</p>
+<hr>
+<h2 id="為-API-加上「認證保護」"><a href="#為-API-加上「認證保護」" class="headerlink" title="為 API 加上「認證保護」"></a>為 API 加上「認證保護」</h2><p>登入功能完成後，接下來是把「需要認證才能存取」的 API，分別加上<strong>認證保護</strong>，使用 Django Ninja 提供的<code>django_auth</code>——這是專門給 Django 內建的 session 認證使用。</p>
+<p>我們以「上傳 avatar」API 為例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja.security <span class="keyword">import</span> django_auth</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="meta">    path=<span class="string">&#x27;/users/&#123;int:user_id&#125;/avatar/&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="meta">    summary=<span class="string">&#x27;上傳 avatar&#x27;</span>,</span></span></span><br><span class="line"><span class="params"><span class="meta">    auth=django_auth  <span class="comment"># 加上這組參數</span></span></span></span><br><span class="line"><span class="params"><span class="meta"></span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>這個例子中，<code>auth=django_auth</code>確保只有「已登入的使用者」才能存取此 API，否則將得到 401 或 403 回應。</p>
+<hr>
+<h2 id="Django-Ninja-的-request-auth"><a href="#Django-Ninja-的-request-auth" class="headerlink" title="Django Ninja 的 request.auth"></a>Django Ninja 的 request.auth</h2><p>但你可能會想到：</p>
+<blockquote>
+<p>光是驗證「已登入」還不夠吧？</p>
+</blockquote>
+<p>「上傳 avatar」應該只能幫「<strong>自己</strong>」上傳，總不能幫「<strong>別人</strong>」上傳大頭照吧！</p>
+<p>沒錯，所以我們在 <strong>view 函式內部</strong>，還要<strong>多一層驗證</strong>。</p>
+<h3 id="Django-的request-user"><a href="#Django-的request-user" class="headerlink" title="Django 的request.user"></a>Django 的<code>request.user</code></h3><p>傳統的 Django 專案，我們會透過函式的第一參數——<code>request</code>，用<code>request.user</code>來獲得<strong>當前使用者資訊</strong>，比如：（參考<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/auth/default/#authentication-in-web-requests">文件</a>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.user.is_authenticated:</span><br><span class="line">    <span class="comment"># Do something for authenticated users.</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># Do something for anonymous users.</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>具體來說：</p>
+<ul>
+<li>當使用者已登入，<code>request.user</code>會是一個<code>User</code>實例，代表<strong>當前登入的使用者</strong>。</li>
+<li>未登入時，<code>request.user</code>則是一個<code>AnonymousUser</code>實例，代表<strong>未登入使用者</strong>。</li>
+</ul>
+<p>當使用者已登入，我們可以檢查<code>request.user</code>的屬性，比如<code>request.user.id</code>，來確認<strong>是否為「本人」</strong>。</p>
+<h3 id="Django-Ninja-的request-auth"><a href="#Django-Ninja-的request-auth" class="headerlink" title="Django Ninja 的request.auth"></a>Django Ninja 的<code>request.auth</code></h3><p>但寫 Django Ninja 則需要使用它提供的<code>request.auth</code>，實作結果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upload_avatar</span>(<span class="params">...</span>) -&gt; <span class="built_in">dict</span>[<span class="built_in">str</span>, <span class="built_in">str</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    上傳 avatar</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 檢查登入的使用者是否為「本人」</span></span><br><span class="line">    <span class="keyword">if</span> request.auth.<span class="built_in">id</span> != user_id:</span><br><span class="line">        <span class="keyword">raise</span> HttpError(<span class="number">403</span>, <span class="string">&#x27;無權限上傳其他使用者的 avatar&#x27;</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>測試一下，登入後在 URL path 打別人的 id 來呼叫此 API：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;detail&quot;</span>: <span class="string">&quot;無權限上傳其他使用者的 avatar&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>非常好！</p>
+<hr>
+<h2 id="request-auth-解析"><a href="#request-auth-解析" class="headerlink" title="request.auth 解析"></a>request.auth 解析</h2><p>雖然這裡用<code>request.auth</code>來取代<code>request.user</code>，但其實兩者的內涵有<strong>很大的不同</strong>。</p>
+<p>在 Django Ninja 中，<code>request.auth</code>代表的是<strong>認證流程 return 的結果</strong>。此外，Django Ninja 允許你<strong>自定義認證方法</strong>，所以<code>request.auth</code>的內容是<strong>不固定的</strong>。</p>
+<p>讓我們深入了解一下。</p>
+<h3 id="認證結果"><a href="#認證結果" class="headerlink" title="認證結果"></a>認證結果</h3><p><code>request.auth</code>包含了<strong>當前認證方法</strong>返回的值。</p>
+<ul>
+<li>這個值可以是<strong>任何類型</strong>，取決於你<strong>如何實現認證邏輯</strong>。</li>
+<li>這給了開發者極大的靈活性，它可以是<code>User</code>物件、字串、Python 字典等等。</li>
+</ul>
+<h3 id="認證方法與常見用例"><a href="#認證方法與常見用例" class="headerlink" title="認證方法與常見用例"></a>認證方法與常見用例</h3><ul>
+<li>使用 Django 的 session 認證時，<code>request.auth</code>是 Django 的<code>User</code>物件。</li>
+<li>對於 API key 認證，<code>request.auth</code>可能是 API key 本身或與之相關的資訊。</li>
+<li>在 JWT 認證中，<code>request.auth</code>可能包含解碼後的 token 資訊。</li>
+</ul>
+<p>總之，只要記得，想在 view 函式內進一步取得<strong>認證資訊</strong>，要透過<code>request.auth</code>。</p>
+<hr>
+<p>這樣就已經實作完認證了，但我們可以讓事情更「簡單」一點。</p>
+<h2 id="全域認證的設定與例外"><a href="#全域認證的設定與例外" class="headerlink" title="全域認證的設定與例外"></a>全域認證的設定與例外</h2><p>一一對每個 API 設定認證保護的參數，感覺有點繁瑣——尤其在 API 多的時候。</p>
+<p>因此，Django Ninja 支援<strong>全域認證</strong>，讓所有 API <strong>預設都直接受到保護</strong>，開發者只需在特定路由中進行<strong>例外</strong>處理，<strong>排除</strong>不想套用的 API 即可。</p>
+<p>實作上非常簡單，Django Ninja 直接提供了<code>SessionAuth</code>認證類別，用來處理全域的 session-based 認證。</p>
+<h3 id="實作全域認證：使用SessionAuth"><a href="#實作全域認證：使用SessionAuth" class="headerlink" title="實作全域認證：使用SessionAuth"></a>實作全域認證：使用<code>SessionAuth</code></h3><p>在專案的<code>api.py</code>中加入下面內容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/api.py</span></span><br><span class="line"><span class="keyword">from</span> ninja.security <span class="keyword">import</span> SessionAuth</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">api = NinjaAPI(</span><br><span class="line">    auth=SessionAuth(),  <span class="comment"># 設定全域認證</span></span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如此一來，所有的 API 都<strong>預設有認證保護</strong>，你可以在特定 API 中排除，比如「登入使用者」：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/users/login/&#x27;</span>, summary=<span class="string">&#x27;登入使用者&#x27;</span>, auth=<span class="literal">None</span></span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>在路由裝飾器中，把<code>auth</code>定義為<code>None</code>，<strong>解除</strong>認證保護。</p>
+<hr>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>在這篇文章中，我們探討了 Django 的 session 認證與 Django Ninja 的整合，實作了「使用者登入」API，並為其他 API 加上認證保護。最後還示範了如何實現全域認證，讓整個流程更加簡單。</p>
+<p>系列的最後實踐，我們要來為專案<strong>寫測試</strong>！</p>
+<p>下一篇將探討，如何使用 test client 和 pytest 來為我們的 Django API 撰寫有效的單元測試。這不僅能幫助我們驗證現有功能，還能為未來的開發和重構提供多一層保障。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-03/" title="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別" rel="bookmark">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-27/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">28</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
