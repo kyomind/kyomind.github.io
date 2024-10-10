@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-10T13:57:06+08:00" />
+  <meta property="article:modified_time" content="2024-10-10T14:01:04+08:00" />
 
 
 
@@ -294,7 +294,7 @@
 <hr>
 <p>這樣就已經實作完認證了，但我們可以讓事情更「簡單」一點。</p>
 <h2 id="全域認證的設定與例外"><a href="#全域認證的設定與例外" class="headerlink" title="全域認證的設定與例外"></a>全域認證的設定與例外</h2><p>一一對每個 API 設定認證保護，感覺有點<strong>繁瑣</strong>——尤其在 API 多的時候。</p>
-<p>因此，Django Ninja 支援<strong>全域認證</strong>，讓所有 API <strong>預設都直接受到保護</strong>，開發者只需在特定路由中進行<strong>例外</strong>處理，<strong>排除</strong>不想套用的 API 即可。</p>
+<p>對此，Django Ninja 支援<strong>全域認證</strong>，讓所有 API <strong>預設都直接受到保護</strong>，開發者只需在特定路由中進行<strong>例外</strong>處理，<strong>排除</strong>不想套用的 API 即可。</p>
 <p>實作上非常簡單，Django Ninja 直接提供了<code>SessionAuth</code>認證類別，用來處理全域的 session-based 認證。</p>
 <h3 id="實作全域認證：使用SessionAuth"><a href="#實作全域認證：使用SessionAuth" class="headerlink" title="實作全域認證：使用SessionAuth"></a>實作全域認證：使用<code>SessionAuth</code></h3><p>在專案的<code>api.py</code>中加入下面內容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NinjaForum/api.py</span></span><br><span class="line"><span class="keyword">from</span> ninja.security <span class="keyword">import</span> SessionAuth</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">api = NinjaAPI(</span><br><span class="line">    auth=SessionAuth(),  <span class="comment"># 設定全域認證</span></span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
