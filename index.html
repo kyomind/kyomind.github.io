@@ -189,21 +189,21 @@
 <li>卷 29：單元測試——使用 Test Client 與 pytest 測試 API</li>
 </ul>
 <p>這些主題的核心功能，<strong>並非由 Django Ninja 實作</strong>，但框架仍提供了<strong>一定程度的整合</strong>。並且，這些功能對於任何 Django 專案來說，都至關重要。</p>
-<p>本文介紹幾乎所有 API 專案都需要的——<strong>身分認證</strong>（Authentication）。</p>
+<p>本文介紹幾乎所有 API 專案都需要的——<strong>身分認證</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/authentication/">Authentication</a>）。</p>
 <p>我們將探討如何在 Django Ninja 中利用 Django 內建的 session-based 認證，實現完整的登入驗證功能，並進一步說明如何設定<strong>全域認證</strong>，以減少程式碼的重複。</p>
 <p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/19">這個 PR</a>。</p>
 <hr>
 <h2 id="認證的兩個層次"><a href="#認證的兩個層次" class="headerlink" title="認證的兩個層次"></a>認證的兩個層次</h2><p>進入實作前，我們要先了解，所謂的<strong>身分認證</strong>，究竟代表什麼。</p>
 <p>以「帳號密碼 + session 認證」為例，身分認證的範圍主要涵蓋<strong>兩個階段</strong>。</p>
-<p>首先，當使用者透過帳號密碼進行登入時，系統會檢查這些內容、確認身分合法。登入成功後，系統會將使用者的資訊（比如用戶 id）儲存至 session，以<strong>維持登入狀態</strong>。</p>
+<p>首先，當使用者透過帳號密碼進行登入時，系統會檢查這些內容、確認身分<strong>合法</strong>。登入成功後，系統會將使用者資訊（比如用戶 id）儲存至 session，以<strong>維持登入狀態</strong>。</p>
 <p>這是<strong>登入時的認證</strong>，也是我們最常說的認證。（<strong>狹義的認證</strong>）</p>
-<p>接著，當使用者嘗試存取受「認證保護」的 API 時，系統會檢查 session 並確認身分，確保每個 API 請求都來自<strong>合法登入</strong>的使用者。</p>
+<p>接著，當使用者嘗試存取受「<strong>認證保護</strong>」的 API 時，系統會檢查 session 並確認身分，確保每個 API 請求都來自<strong>合法登入</strong>的使用者。</p>
 <p>簡言之：</p>
 <ul>
 <li>第一階段：初次登入時的身分確認。</li>
 <li>第二階段：後續請求時的身分確認。</li>
 </ul>
-<p>兩個層次相輔相成、一體兩面，確保服務能夠在使用者登入和後續操作中，提供適當的安全保障。</p>
+<p>兩個層次相輔相成、一體兩面，確保服務能夠在使用者<strong>登入</strong>和<strong>後續操作</strong>中，提供適當的安全保障。</p>
           <div class="read-more">
             <a href="/django-ninja-28/" class="read-more-link">閱讀更多</a>
           </div>
