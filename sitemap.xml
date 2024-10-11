@@ -2,7 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
+    
+    <lastmod>2024-10-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-13/</loc>
+    
+    <lastmod>2024-10-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-25/</loc>
+    
+    <lastmod>2024-10-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-ninja-09/</loc>
+    
+    <lastmod>2024-10-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-07/</loc>
     
     <lastmod>2024-10-11</lastmod>
     
@@ -21,15 +57,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-26/</loc>
-    
-    <lastmod>2024-10-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
     
     <lastmod>2024-10-11</lastmod>
     
@@ -102,15 +129,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
-    
-    <lastmod>2024-10-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-13/</loc>
     
     <lastmod>2024-10-10</lastmod>
     
@@ -200,15 +218,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-25/</loc>
-    
-    <lastmod>2024-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/django-ninja-01/</loc>
     
     <lastmod>2024-10-07</lastmod>
@@ -219,15 +228,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-04/</loc>
-    
-    <lastmod>2024-10-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-07/</loc>
     
     <lastmod>2024-10-07</lastmod>
     
