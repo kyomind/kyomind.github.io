@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T05:52:25+08:00" />
+  <meta property="article:modified_time" content="2024-10-11T18:21:07+08:00" />
 
 
 
@@ -254,7 +254,7 @@
 <p>除了將欄位設為可選，也可以直接<strong>給定預設值</strong>，比如這裡的空字串。在使用者未輸入時，就會直接填入預設值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreatePostRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    user_id: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
-<p>然而，除了預設值為<code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：用 Pydantic Field 設定範例與預設值〉還會再次討論。</p>
+<p>然而，除了預設值為<code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：Pydantic Field 設定範例與預設值〉還會再次討論。</p>
 <hr>
 <h2 id="五、Django-Ninja-判斷參數的順序"><a href="#五、Django-Ninja-判斷參數的順序" class="headerlink" title="五、Django Ninja 判斷參數的順序"></a>五、Django Ninja 判斷參數的順序</h2><p>你是否想過，一個 view 函式參數這麼多種，Django Ninja 怎麼知道<strong>誰要對應誰</strong>？</p>
 <p>事實上，Django Ninja 確實會根據 view 函式的<strong>參數簽名</strong>，自動判斷參數的來源（究竟是路徑參數、查詢參數或請求 body）。其<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/body/#request-body-path-query-parameters">判斷順序</a>如下：</p>
@@ -322,7 +322,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-18/" title="Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值" rel="bookmark">Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-19/" title="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證" rel="bookmark">Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-20/" title="Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證" rel="bookmark">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-18/" title="Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值" rel="bookmark">Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-19/" title="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證" rel="bookmark">Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-20/" title="Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證" rel="bookmark">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
