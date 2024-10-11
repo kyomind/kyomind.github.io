@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator">
-  <meta property="og:title" content="Django Ninja 教學 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證">
+  <meta property="og:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。">
   <meta property="og:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T05:52:25+08:00" />
+  <meta property="article:modified_time" content="2024-10-11T09:36:47+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator - Code and Me</title>
+    <title>Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator
+      <h1 class="post-title">Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證
         </h1>
 
       <div class="post-meta">
@@ -205,8 +205,8 @@
 <h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
 <p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>
 <ul>
-<li>卷 19：資料驗證（上）單一欄位驗證——使用 Pydantic field_validator（本文）</li>
-<li>卷 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</li>
+<li>卷 19：資料驗證（上）Pydantic 單一欄位驗證（本文）</li>
+<li>卷 20：資料驗證（下）Pydantic 跨欄位驗證</li>
 <li>卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</li>
 <li>卷 22：錯誤處理（下）全域錯誤處理——深入解析 Exception Handlers</li>
 </ul>
@@ -314,7 +314,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-12/" title="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹" rel="bookmark">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-18/" title="Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值" rel="bookmark">Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-20/" title="Django Ninja 教學 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證" rel="bookmark">Django Ninja 教學 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-12/" title="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹" rel="bookmark">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-18/" title="Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值" rel="bookmark">Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-20/" title="Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證" rel="bookmark">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
@@ -328,8 +328,8 @@
         <span class="prev-text nav-mobile">Django Ninja 教學 18：API 文件（下）用 Pydantic Field 設定範例與預設值</span>
       </a>
     <a class="next" href="/django-ninja-20/">
-        <span class="next-text nav-default">Django Ninja 教學 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</span>
+        <span class="next-text nav-default">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
+        <span class="next-text nav-mobile">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

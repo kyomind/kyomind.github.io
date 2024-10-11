@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T05:52:25+08:00" />
+  <meta property="article:modified_time" content="2024-10-11T09:36:47+08:00" />
 
 
 
@@ -231,7 +231,7 @@
 <hr>
 <h2 id="Django-Ninja-不會自動處理這些錯誤"><a href="#Django-Ninja-不會自動處理這些錯誤" class="headerlink" title="Django Ninja 不會自動處理這些錯誤"></a>Django Ninja 不會自動處理這些錯誤</h2><p>將拋出的錯誤類型改為 Django 的<code>ValidationError</code> 後，你可能會注意到一個問題：Django Ninja <strong>並不會</strong>自動捕捉這些錯誤！</p>
 <p>也就是說，當我們拋出<code>ValidationError</code>時，Django Ninja 不會像處理<code>HttpError</code>一樣，自動格式化並返回 422 錯誤回應——而是<strong>直接 500</strong>。</p>
-<p>這部分我們在〈<a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic model_validator 實現「跨欄位」驗證</a>〉的結尾處提過。</p>
+<p>這部分我們在〈<a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic 跨欄位驗證</a>〉的結尾處提過。</p>
 <p>現在，則要介紹<strong>具體的解決之道</strong>——<code>exception_handler</code>。</p>
 <p>我們需要<strong>自行處理</strong>這些拋出的錯誤，這正是<code>exception_handler</code>發揮作用的地方。</p>
 <hr>
