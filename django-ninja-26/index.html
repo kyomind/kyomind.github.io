@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-08T04:31:25+08:00" />
+  <meta property="article:modified_time" content="2024-10-11T10:12:33+08:00" />
 
 
 
@@ -206,7 +206,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="傳統查詢方法與問題"><a href="#傳統查詢方法與問題" class="headerlink" title="傳統查詢方法與問題"></a>傳統查詢方法與問題</h2><p>上一篇我們提到「取得文章列表」API，還記得我們在〈卷 11：請求（三）查詢參數（Query Parameters）〉為它加上的「<strong>依文章標題查詢</strong>」功能嗎？</p>
+<h2 id="傳統查詢方法與問題"><a href="#傳統查詢方法與問題" class="headerlink" title="傳統查詢方法與問題"></a>傳統查詢方法與問題</h2><p>上一篇我們提到「取得文章列表」API，還記得我們在〈卷 11：請求（三）查詢參數 - Query Parameters〉為它加上的「<strong>依文章標題查詢</strong>」功能嗎？</p>
 <p>這是目前程式碼的現況：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span>, min_length=<span class="number">2</span>, max_length=<span class="number">10</span></span>),</span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">            title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
