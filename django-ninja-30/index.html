@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-12T05:28:23+08:00" />
+  <meta property="article:modified_time" content="2024-10-12T06:59:11+08:00" />
 
 
 
@@ -203,8 +203,8 @@
 <li>回顧整個系列，檢視我們在各章中學到的概念與技術——盡可能只提重點。</li>
 <li>分享我在寫作過程中的最大挑戰、對 Django Ninja 的期待，最後則是我的鐵人賽完賽心得。</li>
 </ol>
-<p>受限於篇幅，更多的<strong>幕後花絮、創作細節與個人心得</strong>，我將在與正賽無關的第 31、32 篇中，再行分享。</p>
-<p>此外，我還會不定期更新「<strong>Django Ninja 番外篇</strong>」，補充正篇中未能詳述的內容。有興趣的讀者，<strong>歡迎訂閱本系列</strong>唷！</p>
+<p>受限於篇幅，更多的<strong>幕後花絮、創作細節及個人心得</strong>，我將在與正賽無關的第 31、32 篇中，再行分享。</p>
+<p>此外，我還會不定期更新「<strong>Django Ninja 番外篇</strong>」，補充正篇中未能詳述的內容。有興趣的讀者，<strong>歡迎訂閱本系列唷！</strong></p>
 <p>話不多說，我們直接開始。</p>
 <hr>
 <h2 id="一、系列目標與主要學習成果"><a href="#一、系列目標與主要學習成果" class="headerlink" title="一、系列目標與主要學習成果"></a>一、系列目標與主要學習成果</h2><p>回到第 1 篇的開頭，整個系列的目標是：</p>
@@ -225,19 +225,19 @@
 
 <hr>
 <p>其中的精妙與困難，這裡不再贅述。</p>
-<p>讓我們一起回顧，我認為學習 Django Ninja 的一些重點，以及它帶來的<strong>滿足感</strong>——這真的很重要！</p>
+<p>讓我們一起回顧，我認為學習 Django Ninja 的一些重點，以及它帶來的<strong>滿足感</strong>——這很重要！</p>
 <h2 id="二、各章節重點回顧"><a href="#二、各章節重點回顧" class="headerlink" title="二、各章節重點回顧"></a>二、各章節重點回顧</h2><p>我們只挑各章節中<strong>特別值得一提</strong>的部分。有我<strong>個人的觀點</strong>。</p>
 <h3 id="第二章：範例專案與環境設定"><a href="#第二章：範例專案與環境設定" class="headerlink" title="第二章：範例專案與環境設定"></a><strong>第二章：範例專案與環境設定</strong></h3><p>本章最重要的，莫過於對「Python 現代開發工具」的介紹。再次推薦「<a target="_blank" rel="noopener" href="https://blog.wei-lee.me/posts/tech/2020/02/python-table-manners-series/">Python Table Manners</a>」系列。</p>
 <p>從 Poetry 到 Mypy，我認為這些工具都是現代專案中的<strong>必備要素</strong>。它們各有替代品，你可以選擇自己偏好的工具，只要確保這些要素都已整合到開發流程中。</p>
 <p>我相信，無論 AI 如何發展，專案的「<strong>基礎建設</strong>」總是不可少的。</p>
-<h3 id="第三章第一節：路由"><a href="#第三章第一節：路由" class="headerlink" title="第三章第一節：路由"></a>第三章第一節：路由</h3><p>Django Ninja 的路由設定與傳統的 Django、Django REST framework 有<strong>很大不同</strong>。</p>
-<p>這部分，後起之秀基本上都向 Flask 的「路由裝飾器」看齊——優秀的設計，值得相互借鑑、學習🫡</p>
-<p>新寫法不僅更直覺、簡單，還減少了路由設定分散在不同檔案的<strong>窘境</strong>。</p>
-<p>不過，路由也因此成了一開始學習 Django Ninja 的<strong>小小門檻</strong>。所以我花了足足兩篇，讓你能更清楚兩者的差異。</p>
+<h3 id="第三章第一節：路由"><a href="#第三章第一節：路由" class="headerlink" title="第三章第一節：路由"></a>第三章第一節：路由</h3><p>Django Ninja 的路由設定與傳統的 Django、Django REST framework 有<strong>很大的不同</strong>。</p>
+<p>這部分，後起之秀基本上都向 Flask 首創的「<strong>路由裝飾器</strong>」看齊——優秀的設計，值得相互借鑑、學習🫡</p>
+<p>新寫法不僅更直覺、簡單，還減少了路由設定<strong>分散</strong>在不同檔案的<strong>窘境</strong>。</p>
+<p>不過，路由也因此成了一開始學習 Django Ninja 的<strong>小小門檻</strong>。所以我花了足足兩篇，比較兩者的差異，讓你能更清楚其中的思路與考慮。</p>
 <h3 id="第三章第三節：HTTP-回應"><a href="#第三章第三節：HTTP-回應" class="headerlink" title="第三章第三節：HTTP 回應"></a>第三章第三節：HTTP 回應</h3><p>表面上是講 HTTP 回應，其實重點在介紹 Django Ninja Schema——也就是 Pydantic BaseModel。</p>
 <p>說本節是「<strong>Pydantic 入門</strong>」，一點也不為過。</p>
 <p>而且，對 Pydantic 的了解，其重要性還延伸至 API 文件、資料驗證等後續章節。可說是一切的基礎。</p>
-<p>Django Ninja 用 Schema 來<strong>組織與序列化</strong> HTTP 回應，這與 Django REST framework 使用的序列化器，<strong>本質上並無區別</strong>。</p>
+<p>Django Ninja 用 Schema 來<strong>組織與序列化</strong> HTTP 回應，這與 Django REST framework 使用的<strong>序列化器</strong>，<strong>本質上並無區別</strong>。</p>
 <p>但兩者在<strong>使用思維上的差異</strong>，卻帶給我<strong>截然不同</strong>的體驗。主要見解我已寫在〈卷 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由〉，值得你再三回顧。</p>
 <h3 id="第四章：API-文件"><a href="#第四章：API-文件" class="headerlink" title="第四章：API 文件"></a>第四章：API 文件</h3><p>這還有什麼好說的呢？太關鍵了！</p>
 <p>如果沒有「依程式碼、type hints 自動產生 API 文件」這個<strong>殺手級功能</strong>，習慣 Django REST framework 的開發者如我，怎麼會有動力再學習一個<strong>定位類似</strong>的新框架？</p>
