@@ -133,7 +133,7 @@
           
             <a href="/categories/Docker/">Docker (2)</a>
           
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (29)</a>
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
           
         </div>
       </li>
@@ -169,6 +169,46 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-rest-framework-03/">Django REST framework 教學（三）View 函式</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-06-29
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 9 篇、<a href="/series/#Django-REST-framework-%E6%95%99%E5%AD%B8">DRF 系列</a>的第 3 篇。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p>
+<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/4">PR</a>。</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/http/views/">Views</a> 是 Django 中<strong>處理 HTTP 請求的核心邏輯</strong>。它的作用是接收請求、處理請求，最後返回 response：</p>
+<blockquote>
+<p>A <strong>view function</strong>, or view for short, is a Python function that takes a web request and returns a web response.</p>
+</blockquote>
+<p>在 Django 中，我們可以使用兩種方式來撰寫 views：</p>
+<ol>
+<li>Function-Based Views（FBV），其實就是一個 Python 函式，也是 Django 預設的 view 寫法，所以又稱 <strong>view 函式</strong>。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/topics/class-based-views/">Class-Based Views</a>（CBV）。CBV 是 Django 1.3 版本引入的，它是基於類別的 view 寫法。</li>
+</ol>
+<h2 id="CBV-與-FBV"><a href="#CBV-與-FBV" class="headerlink" title="CBV 與 FBV"></a>CBV 與 FBV</h2><p>「<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">CBV vs. FBV</a>」是初學 Django 一個常見的議題。如系列的<a href="/django-rest-framework-01/#CBV-vs-FBV">第一篇</a>所言：</p>
+<blockquote>
+<p>CBV 有著<strong>重用程式碼</strong>優勢，適合大型專案。而 FBV 則以<strong>簡單、直接</strong>為賣點，方便快速開發中小型專案。</p>
+</blockquote>
+<p>究竟要選哪個，取決於個人喜好與專案需求。</p>
+<p>Django REST framework（以下簡稱 DRF）同時支援這兩種 views。</p>
+<p>事實上，DRF 顯然<strong>更加鼓勵使用 CBV</strong>，不僅提供了許多現成的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/generic-views/">generic views</a>，它的很多元件也是基於 CBV 設計的。</p>
+<p>不過，本文只打算介紹 DRF 中的 FBV，並實作一個 DRF view function。</p>
+          <div class="read-more">
+            <a href="/django-rest-framework-03/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/mypy/">Python type checker：Mypy 介紹</a>
         </h1>
@@ -364,35 +404,6 @@
 <p>但如果涉及<strong>多人協作</strong>，未來還有<strong>交接與維護需求</strong>，那麼<strong>避免索引取值</strong>，肯定能提升程式的可讀性，同時更容易維護。</p>
           <div class="read-more">
             <a href="/effective-python-01/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/weekly-review-31/">31，打造新版「熱門文章排名」</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-02
-        </span><span class="post-category">
-            <a href="/categories/Weekly-Review/">Weekly Review</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
-<p>建立這個 blog 後不知多久，我在網站選單新增了「<a href="/ranking/">熱門文章排名</a>」頁面。你目前看到的是新版。</p>
-<p>收錄「一段時間內」瀏覽量排名前 10 名的文章，供讀者參考。順便增加全站頁面的總觸及率。</p>
-<p>畢竟作為一個 blogger，誰不希望讀者在我們的 blog 看完一篇又一篇呢？</p>
-<hr>
-<h2 id="如何讓新讀者看更多？"><a href="#如何讓新讀者看更多？" class="headerlink" title="如何讓新讀者看更多？"></a>如何讓新讀者看更多？</h2><p>如何讓讀者願意「多看」，無疑是重要議題。</p>
-<p>大部分部落格的大部分文章，都是靠特定 SEO 關鍵字，吸引到新讀者的第一次瀏覽。</p>
-<p>在讀者還不認識你之前，眼下的這篇文章，就是他 &#x2F; 她決定是否再瞧瞧其它文章的主要依據。</p>
-<p>如果內容寫的有趣、論述風格對了胃口、相關的議題剛好是讀者現在關心的，就有機會獲得第二篇、第三篇瀏覽——這是作者們所期待的。</p>
-<p>不過這些都是讀者的<strong>主觀</strong>因素！除了文章內容外，我們幾乎無法控制。</p>
-<p><strong>那我們可以做什麼？</strong></p>
-          <div class="read-more">
-            <a href="/weekly-review-31/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/6/">
