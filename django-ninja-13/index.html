@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T15:26:21+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T06:09:12+08:00" />
 
 
 
@@ -217,18 +217,20 @@
 <li>取得文章列表：示範<strong>多個物件回應</strong>。</li>
 </ol>
 <p>開始吧！</p>
-<h2 id="一、簡單回應：新增文章"><a href="#一、簡單回應：新增文章" class="headerlink" title="一、簡單回應：新增文章"></a>一、簡單回應：新增文章</h2><p>先來看最簡單的回應格式，這個例子會展示如何<strong>回應一個 Python 字典</strong>，並手動設定 HTTP 回應狀態碼。</p>
+<h2 id="一、簡單回應：新增文章"><a href="#一、簡單回應：新增文章" class="headerlink" title="一、簡單回應：新增文章"></a>一、簡單回應：新增文章</h2><p>先來看<strong>最簡單</strong>的回應格式，這個例子會展示如何<strong>回應一個 Python 字典</strong>，並手動設定 HTTP 回應狀態碼。</p>
 <p>以「新增文章」API 為例：（省略部分程式碼）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">...</span>) -&gt; <span class="built_in">dict</span>:</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;id&#x27;</span>: post.<span class="built_in">id</span>, <span class="string">&#x27;title&#x27;</span>: post.title&#125;</span><br></pre></td></tr></table></figure>
 
-<p>這裡回應的是一個 Python 字典，事實上，你<strong>可以</strong> return「<strong>任何能夠 JSON 序列化</strong>」的 Python 資料。（所以 Django 模型物件不行，因為它無法直接序列化）</p>
+<p>這裡回應的是一個 <strong>Python 字典</strong>，事實上，你<strong>可以</strong> return「<strong>任何能夠 JSON 序列化</strong>」的 Python 資料。（所以 Django 模型物件<strong>不行</strong>，因為它無法直接序列化）</p>
 <p>因此，以下這些都可以 return：</p>
 <ul>
 <li>單純的字串：<code>&quot;Hello World !&quot;</code></li>
 <li>Python list：<code>[1 , 2 , 3]</code></li>
 <li>巢狀的資料結構：<code>&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30, &quot;hobbies&quot;: [&quot;reading&quot;, &quot;swimming&quot;]&#125;</code></li>
 </ul>
-<p>這些都會被 Django Ninja 自動<strong>序列化為 JSON 格式</strong>，並作為 API 的回應。</p>
+<p>這些都會被 Django Ninja 自動<strong>序列化為 JSON 格式</strong>，並作為 API 的回應：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">666</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;How to Be a Ninja&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <hr>
 <h2 id="為回應加上-HTTP-狀態碼"><a href="#為回應加上-HTTP-狀態碼" class="headerlink" title="為回應加上 HTTP 狀態碼"></a>為回應加上 HTTP 狀態碼</h2><p>View 函式處理回應，往往要<strong>加入 HTTP 狀態碼</strong>。尤其在有<strong>多種回應狀態</strong>的時候，需要透過狀態碼來<strong>區分</strong>。</p>
 <p>做法很簡單，就是在回應的內容前面直接加上：</p>

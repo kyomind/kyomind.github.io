@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T18:21:07+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T06:03:49+08:00" />
 
 
 
@@ -251,7 +251,7 @@
 <blockquote>
 <p>django.db.utils.IntegrityError: NOT NULL constraint failed: post_post.content</p>
 </blockquote>
-<p>除了將欄位設為可選，也可以直接<strong>給定預設值</strong>，比如這裡的空字串。在使用者未輸入時，就會直接填入預設值：</p>
+<p>除了將欄位設為可選，也可以直接<strong>給定預設值</strong>，比如這裡的空字串。在使用者未輸入時，就會<strong>直接填入預設值</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreatePostRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    user_id: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
 <p>然而，除了預設值為<code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：Pydantic Field 設定範例與預設值〉還會再次討論。</p>

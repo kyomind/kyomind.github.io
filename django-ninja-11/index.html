@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T10:12:33+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T05:58:34+08:00" />
 
 
 
@@ -244,7 +244,7 @@
 <p>參考這個修改後的範例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Query, Router</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span></span>)</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>它和原來的寫法是「<strong>等價</strong>」的：</p>
+<p>它和原來的這個寫法<strong>幾乎是等價</strong>的：（仍有細微不同，但可以先忽略）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br></pre></td></tr></table></figure>
 
 <p>你可能會覺得奇怪，那我沒事幹嘛要換一個更複雜的寫法，卻沒有額外的好處？</p>
@@ -256,7 +256,9 @@
 
 <p>這個範例中，我們使用了<code>Query</code>來定義<code>title</code>查詢參數，並額外給予了<code>min_length</code>和<code>max_length</code>這兩個初始化<code>Query</code>的參數設定。</p>
 <p>這樣做可以確保<code>title</code>查詢參數的長度在 2 到 10 個字元之間。</p>
-<p>如果用戶輸入的<code>title</code>不符合這個長度要求，如之前所述，Django Ninja 會自動返回一個<strong>狀態碼為 422 的回應</strong>，無需我們手動處理這些驗證邏輯與相關回應。</p>
+<p>如果用戶輸入的<code>title</code>不符合這個長度要求，如上一篇所述，Django Ninja 會自動返回一個<strong>狀態碼為 422 的回應</strong>，無需我們手動處理這些驗證邏輯與相關回應。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 422 Unprocessable Entity</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string_too_short&quot;</span><span class="punctuation">,</span>  <span class="comment">// 查詢參數過短</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;title&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;title&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;String should have at least 2 characters&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;min_length&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="Query的其他常用參數"><a href="#Query的其他常用參數" class="headerlink" title="Query的其他常用參數"></a><code>Query</code>的其他常用參數</h3><p>除了<code>min_length</code>和<code>max_length</code>，<code>Query</code>還提供了許多實用的參數，供你限制查詢條件、為 API 文件補充額外資訊，常見的有：</p>
 <ul>
 <li><code>gt</code>、<code>ge</code>：查詢參數的值必須大於或大於等於某個數字。</li>
