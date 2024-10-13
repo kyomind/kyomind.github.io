@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T15:54:09+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T02:54:10+08:00" />
 
 
 
@@ -240,7 +240,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>把虛擬環境放在專案中，這是我個人更偏好的做法。</p>
-<h2 id="不使用-Poetry-的方案"><a href="#不使用-Poetry-的方案" class="headerlink" title="不使用 Poetry 的方案"></a>不使用 Poetry 的方案</h2><p>專案中準備了一份<code>requirements.txt</code>，給習慣用 pip 的讀者。省去安裝與設定 Poetry 的麻煩。</p>
+<h2 id="不使用-Poetry-的方案"><a href="#不使用-Poetry-的方案" class="headerlink" title="不使用 Poetry 的方案"></a>不使用 Poetry 的方案</h2><p>專案中準備了一份 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/blob/main/requirements.txt">requirements.txt</a> 給習慣用 pip 的讀者。省去安裝與設定 Poetry 的麻煩。</p>
 <hr>
 <h2 id="三、從-GitHub-下載專案、建立虛擬環境"><a href="#三、從-GitHub-下載專案、建立虛擬環境" class="headerlink" title="三、從 GitHub 下載專案、建立虛擬環境"></a>三、從 GitHub 下載專案、建立虛擬環境</h2><p>接下來是專案本身的設定。</p>
 <h3 id="一、Clone-專案"><a href="#一、Clone-專案" class="headerlink" title="一、Clone 專案"></a>一、Clone 專案</h3><p>這是<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">專案連結</a>。使用<code>git clone</code>指令：</p>
@@ -274,7 +274,7 @@
 <p>兩者在安裝後，原則上都無須設定，因為專案內<strong>已經有了相關的設定檔</strong>：</p>
 <ol>
 <li>Ruff：<code>pyproject.toml</code></li>
-<li>Mypy：<code>mypy.ini</code></li>
+<li>Mypy：<code>mypy.ini</code>（在專案最新進度中已併入<code>pyproject.toml</code>）</li>
 </ol>
 <p>此外，它們都是 CLI 工具，所以你也可以<strong>手動執行</strong>它們，比如執行 Ruff 檢查：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ruff check</span><br><span class="line">ruff format</span><br></pre></td></tr></table></figure>
@@ -304,7 +304,8 @@
 <p>這樣可以<strong>保持學習脈絡清晰有條理</strong>，避免因不同功能的程式碼混在一起而影響理解。</p>
 <p>需要注意的是，<strong>不是</strong>每一篇文章都有自己的分支與 PR，因為有些篇章只涉及概念說明而沒有程式碼改動。</p>
 <h2 id="CodeGPT-推薦"><a href="#CodeGPT-推薦" class="headerlink" title="CodeGPT 推薦"></a>CodeGPT 推薦</h2><p>此外，本專案<strong>幾乎所有的 commit 訊息</strong>，都是透過吳大開發的 <a target="_blank" rel="noopener" href="https://github.com/appleboy/CodeGPT">CodeGPT</a> 加上 GPT-4o mini API <strong>自動生成</strong>。</p>
-<p>畢竟，即使只是範例專案，要思考每一個 commit 訊息的內容也是不輕鬆。有了這樣的自動化工具，真的方便很多！而且風格一致性高，很適合偏執狂如我☺️</p>
+<p><img src="https://i.imgur.com/4lqAL3Y.png" alt="Commit message by CodeGPT"><span class="cap">Commit message by CodeGPT</span></p>
+<p>畢竟，即使只是範例專案，要思考每一個 commit 訊息的內容也是不輕鬆。有了這樣的自動化工具，真的方便很多！而且<strong>風格一致性高</strong>，很適合偏執狂如我☺️</p>
 <p>關於 CodeGPT，除了 GitHub 頁面介紹，還可以參考吳大的這篇〈<a target="_blank" rel="noopener" href="https://blog.wu-boy.com/2023/11/codegpt-in-modernweb/">生成式 AI CodeGPT 開發經驗談 - 台北 ModernWeb</a>〉，內有投影片分享。</p>
 <p>使用教學則可參考保哥的〈<a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2023/12/05/Useful-tool-CodeGPT">介紹好用工具：CodeGPT (使用 GPT 自動化產生 Git 的 Commit Log 訊息)</a>〉。</p>
 <hr>

@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T10:12:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T04:40:30+08:00" />
 
 
 
@@ -250,15 +250,17 @@
 <p>常見的 converters 類型包括<code>str</code>、<code>int</code>和<code>slug</code>，它們能夠限制 URL 中參數的格式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;posts/&lt;int:post_id&gt;/&#x27;</span>, views.get_post),</span><br></pre></td></tr></table></figure>
 
-<p><code>&lt;int:post_id&gt;</code>就是一個 path converter，它要求<code>post_id</code>必須是一個整數。</p>
+<p><code>&lt;int:post_id&gt;</code>就是一個 path converter，它要求<code>post_id</code><strong>必須是一個整數</strong>。</p>
 <p>值得強調的是，path converters 的主要目的<strong>不是</strong>為了型別轉換——這只是附帶的。而是為了端點路徑的「<strong>模式比對</strong>」（pattern matching）。</p>
 <p>在模式不符合的情況下，<strong>根本不會配對成功</strong>，當然也不會進行轉型。</p>
 <h3 id="Django-Ninja-中的-Path-Converters"><a href="#Django-Ninja-中的-Path-Converters" class="headerlink" title="Django Ninja 中的 Path Converters"></a>Django Ninja 中的 Path Converters</h3><p>在 Django Ninja 中，這些原生的 path converters <strong>仍然可以使用</strong>，而且<strong>進一步簡化</strong>了。</p>
 <p>直接寫在<code>router</code>裝飾器的路徑字串中即可：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;int:post_id&#125;/&#x27;</span></span>)</span></span><br></pre></td></tr></table></figure>
 
-<p>如前所述，有了 path converter 後，如果<code>post_id</code>不是有效的<code>int</code> ，<strong>則 URL 模式配對將直接失敗</strong>——請求<strong>不會進入 view 函式</strong>，更不會有型別轉換。</p>
+<p>如前所述，有了 path converter 後，如果<code>post_id</code><strong>不是</strong>有效的<code>int</code> ，<strong>則 URL 模式配對將直接失敗</strong>——請求<strong>不會進入 view 函式</strong>，更不會有型別轉換。</p>
 <p>如果沒有其他路徑被成功配對，<strong>Django 將直接返回「404 Not Found」。</strong></p>
+<!-- ![Django path 配對失敗](https://i.imgur.com/IXnCRHk.png) -->
+<p><img src="https://i.imgur.com/EwCXB9r.png"></p>
 <p>個人認為，在 Django Ninja 中，path converters 的功能已部分被 type hints 所取代。如果要同時使用 path converters，須留意兩者的<strong>判斷順序</strong>（path converters 先判斷）與兩者設定的型別一定要相同。</p>
 <hr>
 <h2 id="五、請求的基本錯誤處理"><a href="#五、請求的基本錯誤處理" class="headerlink" title="五、請求的基本錯誤處理"></a>五、請求的基本錯誤處理</h2><p>當請求中的路徑參數不符合 type hints 定義的型別時，Django Ninja 會自動返回一個<strong>帶有錯誤訊息與提示內容</strong>的 HTTP 回應，狀態碼為 422。</p>

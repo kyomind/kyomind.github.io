@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T12:49:46+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T03:49:26+08:00" />
 
 
 
@@ -254,6 +254,7 @@
 <li><strong>參數解析</strong>：從 URL 中提取<strong>路徑參數</strong>（<strong>path parameters</strong>）和<strong>查詢參數</strong>（<strong>query parameters</strong>），將它們轉換為 view 函式的「<strong>引數</strong>」（arguments）。根據函式的 type hints 自動進行型別轉換和驗證。</li>
 <li><strong>Request body 處理</strong>：對於 POST 或 PUT 等帶有 body 的請求，Django Ninja 讓開發者使用 Schema（Pydantic BaseModel）定義 body 資料模型，並自動將傳入的資料對應到這些模型。</li>
 </ol>
+<p><img src="https://i.imgur.com/rgy2S32.png" alt="Django Ninja 處理 HTTP 請求流程"><span class="cap">Django Ninja 處理 HTTP 請求流程</span></p>
 <p>上述第 1 點已在本章第一節詳細解說。</p>
 <p>第 2 和第 3 點則是本節共 4 篇文章的主要內容。</p>
 <hr>

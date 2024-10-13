@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T12:49:28+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T03:15:16+08:00" />
 
 
 
@@ -264,6 +264,7 @@
 <p><code>urls.py</code>就像<strong>路由目錄</strong>一樣，一目了然。</p>
 <h3 id="缺點：對照端點與-view-函式需要來回跳轉"><a href="#缺點：對照端點與-view-函式需要來回跳轉" class="headerlink" title="缺點：對照端點與 view 函式需要來回跳轉"></a>缺點：對照端點與 view 函式需要來回跳轉</h3><p>如前所述，路由負責<strong>連接</strong>端點與 view 函式。</p>
 <p>由於<strong>每個端點都需要對應一個 view 函式</strong>，而對應的 view 函式通常放在<code>views.py</code>。</p>
+<p><img src="https://i.imgur.com/O6FZx7o.png" alt="對應示意圖（僅供參考）"><span class="cap">對應示意圖（僅供參考）</span></p>
 <p>這帶來了一個問題：開發者需要在<code>urls.py</code>和<code>views.py</code>之間<strong>來回切換</strong>，<strong>才能完整理解一個端點與背後的實現邏輯。</strong></p>
 <p>這樣的「不直觀」不僅增加了開發時的<strong>認知負擔</strong>，也容易在修改 API 時發生錯誤。</p>
 <p>此外，隨著專案規模不斷擴大，<code>urls.py</code>中的端點清單會<strong>越來越長</strong>——要找到對應的 view 函式<strong>變得耗時且繁瑣</strong>，進一步增加了出錯的可能。</p>

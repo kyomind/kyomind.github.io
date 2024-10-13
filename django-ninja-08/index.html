@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T15:53:12+08:00" />
+  <meta property="article:modified_time" content="2024-10-13T03:29:26+08:00" />
 
 
 
@@ -219,6 +219,8 @@
 <p>Flask 與 Django Ninja 這兩種寫法，與其說非常相似，不如說一模一樣😎</p>
 <hr>
 <h2 id="更有組織的做法：使用-Router-物件"><a href="#更有組織的做法：使用-Router-物件" class="headerlink" title="更有組織的做法：使用 Router 物件"></a>更有組織的做法：使用 Router 物件</h2><p>雖然直接使用上述範例中的<code>NinjaAPI</code>來定義路由簡單而直觀。但實際工作中，我們更推薦使用<code>Router</code>物件（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/routers/">官方文件</a>）來管理不同 Django app 的路由。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Router</span><br><span class="line"></span><br><span class="line">router = Router()  <span class="comment"># 建立 Router 物件</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, Django Ninja!&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
 <p>這和 Django 傳統做法中「區分一級與二級路由」的基本精神相符。不僅讓專案的架構保持清晰，還能讓每個 app 的邏輯獨立。</p>
 <p>在 Django Ninja 中，<code>Router</code>物件提供了一種<strong>模組化的路由設定方式</strong>，讓每個 Django app 可以管理自己的路由，並在專案層級的<code>api.py</code><strong>統一整合起來</strong>——也就是取代傳統的<code>urls.py</code>功能。</p>
 <p>以下程式碼範例，我們都會以<code>Router</code>物件來實作。</p>
