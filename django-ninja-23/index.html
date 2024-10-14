@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-07T15:24:44+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T14:24:09+08:00" />
 
 
 
@@ -204,13 +204,13 @@
 <p>不過，在此之前，我們要先了解，本章有哪些主題。</p>
 <h2 id="第六章「API-進階功能」簡介"><a href="#第六章「API-進階功能」簡介" class="headerlink" title="第六章「API 進階功能」簡介"></a>第六章「API 進階功能」簡介</h2><p>對 API 專案而言，<strong>進階功能</strong>能幫助我們應對<strong>複雜場景</strong>與<strong>大型專案</strong>的挑戰。</p>
 <p>雖然這是一個入門指南，但我們仍會涵蓋一些常見的進階功能，這些功能不僅提升 API 的靈活性，還能增強了系統效能與使用者體驗。</p>
-<p>本章將介紹 3 個重要的進階功能：</p>
+<p>本章共有 5 篇，介紹 3 個常見的進階功能：</p>
 <ul>
-<li>卷 23：檔案上傳——Django UploadedFile 介紹</li>
-<li>卷 24：分頁（上）Django Ninja 的內建分頁器</li>
-<li>卷 25：分頁（下）自定義分頁類別</li>
-<li>卷 26：資料查詢與過濾（上）FilterSchema 介紹</li>
-<li>卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</li>
+<li><strong>卷 23：檔案上傳——Django UploadedFile 介紹</strong>（本文）</li>
+<li><a href="/django-ninja-24/">卷 24：分頁（上）Django Ninja 的內建分頁器</a></li>
+<li><a href="/django-ninja-25/">卷 25：分頁（下）自定義分頁類別</a></li>
+<li><a href="/django-ninja-26/">卷 26：資料查詢與過濾（上）FilterSchema 介紹</a></li>
+<li><a href="/django-ninja-27/">卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</a></li>
 </ul>
 <p>這些技術不僅對大型專案至關重要，也讓你能在 API 開發中，有效應對多變的需求。</p>
 <span id="more"></span>
@@ -267,8 +267,8 @@
 <h3 id="一、UploadedFile參數定義"><a href="#一、UploadedFile參數定義" class="headerlink" title="一、UploadedFile參數定義"></a>一、<code>UploadedFile</code>參數定義</h3><p>在 view 函式的簽名中，<code>UploadedFile</code>作為 type hint 使用，而<code>avatar_file</code>參數則代表上傳的檔案。</p>
 <p>你可以<strong>任意命名</strong><code>avatar_file</code>這個參數，比如<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/file-params/">文件範例</a>中是叫<code>file</code>。我特地取不同名字，就是要強調它的名字是<strong>完全可自訂</strong>的。</p>
 <p>但是！無論你取什麼名稱，在發請求時，<strong>body 中的 key</strong> 也要使用<strong>相同的名稱</strong>。</p>
-<p>此時的 body 可能長這樣：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /users/1/avatar/</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;avatar_file&quot;; filename=&quot;example.jpg&quot;</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>image/jpeg</span><br><span class="line"></span><br><span class="line">(binary image data here)</span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span><br></pre></td></tr></table></figure>
+<p>此時的 <strong>HTTP 請求</strong>應該是<strong>長這樣</strong>的：（留意 body 中的<code>avatar_file</code>）</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST /users/1/avatar/</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line"></span><br><span class="line"># 以下是 body 內容</span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><br><span class="line"><span class="attribute">Content-Disposition</span><span class="punctuation">: </span>form-data; name=&quot;avatar_file&quot;; filename=&quot;example.jpg&quot;</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>image/jpeg</span><br><span class="line"></span><br><span class="line">(binary image data here)</span><br><span class="line">------WebKitFormBoundary7MA4YWxkTrZu0gW--</span><br></pre></td></tr></table></figure>
 
 <p>Header 中的<code>Content-Type</code>為<code>multipart/form-data</code>，而且每個 key-value 對都是以<code>Content-Disposition: form-data;</code>開頭。這種格式允許<strong>在一個請求中同時傳送多個不同類型的資料</strong>，包括文字和二進位檔案。</p>
 <p>其中的細節，可以參考這篇〈<a target="_blank" rel="noopener" href="https://blog.errorbaker.tw/posts/cwc329/multipart-form-data/">multipart&#x2F;form-data 初探</a>〉。</p>
@@ -278,6 +278,9 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 檢查檔案類型</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> avatar_file.content_type.startswith(<span class="string">&#x27;image/&#x27;</span>):</span><br><span class="line">    <span class="keyword">raise</span> HttpError(<span class="number">400</span>, <span class="string">&#x27;檔案必須是圖片格式&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這個方法雖然粗糙，但對於簡單的圖片上傳功能來說已經足夠。</p>
+<p>測試上傳純文字文件的結果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 400 Bad Request</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;檔案必須是圖片格式&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <p>在生產環境中，你需要<strong>更嚴格的檢查</strong>，例如使用專門的圖片處理套件來驗證檔案內容。</p>
 <h3 id="四、儲存圖片"><a href="#四、儲存圖片" class="headerlink" title="四、儲存圖片"></a>四、儲存圖片</h3><p>最後，我們將圖片賦值給<code>User</code>的<code>avatar</code>欄位，並呼叫<code>save()</code>方法。</p>
 <p>Django 會自動處理檔案的儲存，如果<strong>名稱重複</strong>，它還會<strong>自動產生唯一的檔名</strong>，然後把檔案放到我們之前指定的位置。</p>

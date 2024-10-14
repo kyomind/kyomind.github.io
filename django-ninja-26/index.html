@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T10:12:33+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T15:04:16+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C"><span class="toc-text">查詢結果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
@@ -206,11 +206,11 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="傳統查詢方法與問題"><a href="#傳統查詢方法與問題" class="headerlink" title="傳統查詢方法與問題"></a>傳統查詢方法與問題</h2><p>上一篇我們提到「取得文章列表」API，還記得我們在〈卷 11：請求（三）查詢參數 - Query Parameters〉為它加上的「<strong>依文章標題查詢</strong>」功能嗎？</p>
-<p>這是目前程式碼的現況：</p>
+<h2 id="傳統查詢方法與問題"><a href="#傳統查詢方法與問題" class="headerlink" title="傳統查詢方法與問題"></a>傳統查詢方法與問題</h2><p>上一篇我們提到「取得文章列表」API，還記得我們在〈<a href="/django-ninja-11/">卷 11：請求（三）查詢參數 - Query Parameters</a>〉為它加上的「<strong>依文章標題查詢</strong>」功能嗎？</p>
+<p>這是目前程式碼的現況：（請留意<strong>查詢參數</strong>名稱<code>title</code>）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span>, min_length=<span class="number">2</span>, max_length=<span class="number">10</span></span>),</span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">            title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
-<p>那時我們就是用了<code>filter</code>方法！</p>
+<p>那時我們就是用了 Django ORM 的<code>filter</code>方法！</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts.<span class="built_in">filter</span>(title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>最後的<code>select_related(&#39;author&#39;)</code>是為了避免「N+1」問題，和查詢邏輯<strong>無關</strong>，可以先不管。</p>
@@ -266,6 +266,7 @@
 </blockquote>
 <p>沒錯，因為這只是 FilterSchema 的「<strong>半成品</strong>」，所以看起來比不用還冗長。</p>
 <p>儘管如此，其中還是有一些看點，值得我們了解。</p>
+<hr>
 <h2 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">q = Q(title__icontains=filters.query) | \</span><br><span class="line">    Q(content__icontains=filters.query)</span><br><span class="line">posts = posts.<span class="built_in">filter</span>(q)</span><br></pre></td></tr></table></figure>
 
 <p>從這段能看出，<code>Q</code>物件可以<strong>單獨進行各種合併操作</strong>，最後再丟給 Django <code>filter</code>方法作為參數。</p>
@@ -286,6 +287,9 @@
 <li>驗證失敗：回傳 422。</li>
 <li>驗證成功：將 Schema 物件傳入 view 函式作為<strong>函式的參數</strong>（<strong>區域變數</strong>）。</li>
 </ol>
+<h2 id="查詢結果"><a href="#查詢結果" class="headerlink" title="查詢結果"></a>查詢結果</h2><p>這是用「Alice」作為關鍵字的查詢結果：</p>
+<p><img src="https://i.imgur.com/Omr7Pag.png"></p>
+<p>查到了 30 篇文章，全都來自於作者名稱包含「Alice」的用戶。</p>
 <hr>
 <h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>本篇先講到這裡，我們已經接觸了兩個新概念——Q 物件和 FilterSchema。</p>
 <p>我們還分析了 Django Ninja 中常見的 view 函式參數「句型」，這對於理解框架的使用方式、習慣非常重要。</p>

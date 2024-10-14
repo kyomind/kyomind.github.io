@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T13:02:46+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T14:09:15+08:00" />
 
 
 
@@ -295,6 +295,13 @@
 </li>
 </ul>
 <p>選擇第一種還是第二種做法，需要你<strong>視情況而定</strong>。</p>
+<h3 id="404-回應的效果"><a href="#404-回應的效果" class="headerlink" title="404 回應的效果"></a>404 回應的效果</h3><p>一、使用<code>HttpError</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 404 Not Found</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;文章不存在&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、使用 exception handler：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 404 Not Found</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;查無資料&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h2 id="第五章總結"><a href="#第五章總結" class="headerlink" title="第五章總結"></a>第五章總結</h2><p>第五章說真的，資訊量頗大，這 4 篇文章我寫了很久，而且還「<strong>重構</strong>」過！——本來只有 2 篇而已。</p>
 <p>我們先討論了如何自定義單一欄位驗證，以及跨欄位驗證。然後再循序漸進地學習如何處理 API 拋出的錯誤——<strong>愈來愈優雅、愈來愈全面</strong>。</p>

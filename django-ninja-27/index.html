@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-09T13:01:53+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T15:24:33+08:00" />
 
 
 
@@ -269,7 +269,7 @@
 <p>除了單純的期間查詢，我們也可以查詢<strong>某作者在某段時間內</strong>的文章，以查詢作者 Alice 為例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?start_date=2023-01-01&amp;end_date=2023-01-31&amp;query=alice</span><br></pre></td></tr></table></figure>
 
-<p>結果顯示了 Alice 在 2023 年 1 月份的所有文章。</p>
+<p>結果將顯示 Alice 在 2023 年 1 月份的所有文章。</p>
 <hr>
 <h2 id="FilterSchema-的預設查詢條件關係"><a href="#FilterSchema-的預設查詢條件關係" class="headerlink" title="FilterSchema 的預設查詢條件關係"></a>FilterSchema 的預設查詢條件關係</h2><p>這部分一定要特別介紹，依<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/filtering/#combining-expressions">文件</a>所述，預設上：</p>
 <ul>
@@ -294,6 +294,17 @@
 <p>這個例子就是一個典型案例。</p>
 <p>我們必須<strong>全盤考慮</strong>各種可能的輸入情況，包括日期格式是否正確、日期範圍是否合理，以及兩個日期欄位是否同時存在或同時為空。</p>
 <p><strong>細緻的驗證邏輯</strong>能提升 API 的<strong>可靠性</strong>，避免因為無效或不合理的輸入而導致系統出現<strong>意外行為</strong>。而粗糙的邏輯則反之。</p>
+<h3 id="測試錯誤回應"><a href="#測試錯誤回應" class="headerlink" title="測試錯誤回應"></a>測試錯誤回應</h3><p>PS：這裡的拋出錯誤，範例程式碼中仍使用了<code>ValueError</code>，我並沒有變更為 Django 的<code>ValidationError</code>。（最新版已修正）</p>
+<p>但以下回應則是<strong>模擬</strong> Django 的<code>ValidationError</code>，以減少不必要的重複。</p>
+<p>一、<strong>只輸入開始日期</strong>：（這發生機率不高，因為前端通常會限制）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;開始日期和結束日期必須同時提供或同時不提供&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、輸入<strong>不合法的日期</strong>，比如<code>2023-02-30</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;日期格式無效，應為 YYYY-MM-DD&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>三、輸入<strong>不合法的日期區間</strong>，比如<code>start_date=2023-01-31&amp;end_date=2023-01-01</code>：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;開始日期必須早於結束日期&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <hr>
 <h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了 FilterSchema 的有效用法，完成了多欄位查詢和日期篩選，並示範如何使用<code>model_validator</code>來強化資料驗證，確保查詢邏輯的正確性。</p>
 <p>我們還看了這些應用場景的實例程式碼，幫助讀者更好地理解每個步驟的用途和效果。</p>

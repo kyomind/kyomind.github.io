@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-14T03:06:27+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T14:01:01+08:00" />
 
 
 
@@ -217,7 +217,7 @@
 
 <hr>
 <h2 id="新需求：驗證失敗時，改用-400-回應"><a href="#新需求：驗證失敗時，改用-400-回應" class="headerlink" title="新需求：驗證失敗時，改用 400 回應"></a>新需求：驗證失敗時，改用 400 回應</h2><p>同樣以「<strong>新增使用者</strong>」API 為例，我們要實現一個<strong>新需求</strong>：確認密碼不一致時，要回應「<strong>400 Bad Request</strong>」而不是 422。</p>
-<p>那要怎麼做<strong>最簡單</strong>？</p>
+<p>怎麼做<strong>最簡單</strong>？</p>
 <p>答：使用 Django Ninja 的<code>HttpError</code>。</p>
 <p>以下是 Schema 的程式碼改動，只改了兩行！</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">from</span> ninja.errors <span class="keyword">import</span> HttpError  <span class="comment"># 第一行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @model_validator(<span class="params">mode=<span class="string">&#x27;after&#x27;</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_passwords_match</span>(<span class="params">self</span>) -&gt; Self:</span><br><span class="line">        <span class="keyword">if</span> self.password != self.confirm_password:</span><br><span class="line">            <span class="keyword">raise</span> HttpError(<span class="number">400</span>, <span class="string">&#x27;密碼和確認密碼必須相同&#x27;</span>)  <span class="comment"># 第二行</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>

@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-11T12:49:59+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T14:44:02+08:00" />
 
 
 
@@ -287,7 +287,7 @@
 <p>這個例子清楚地顯示了「多重狀態碼回應」與分頁器之間的<strong>衝突</strong>：</p>
 <ul>
 <li>當查詢結果<strong>正常</strong>時，view 函式 return 一個 <strong>QuerySet</strong>（即<code>posts</code>），丟給分頁器進行分頁，一切運作良好。</li>
-<li>當<strong>沒有找到文章</strong>時，view 函式試圖回傳一個<code>tuple</code>（因為 Django Ninja 非 200 回應必須有狀態碼，所以是<code>tuple</code>），而<strong>不是</strong> QuerySet。</li>
+<li>當<strong>沒有找到文章</strong>時，view 函式則會試圖回傳一個<code>tuple</code>——因為 Django Ninja 的「<strong>非 200 回應</strong>」必須有<strong>狀態碼</strong>，所以是<code>tuple</code>，而<strong>不是</strong> QuerySet。</li>
 </ul>
 <p>這將導致<code>paginate_queryset</code>方法出錯，因為它預期接收一個 QuerySet，後續的內部操作也是以此為前提。</p>
 <hr>
