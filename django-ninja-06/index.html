@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-13T02:54:10+08:00" />
+  <meta property="article:modified_time" content="2024-10-14T17:41:23+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%9D-Python-3-12"><span class="toc-text">一、安裝 Python 3.12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">二、安裝與設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8-Poetry-%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">不使用 Poetry 的方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BE%9E-GitHub-%E4%B8%8B%E8%BC%89%E5%B0%88%E6%A1%88%E3%80%81%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">三、從 GitHub 下載專案、建立虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96-pre-commit"><span class="toc-text">四、初始化 pre-commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-VS-Code-%E5%A5%97%E4%BB%B6"><span class="toc-text">五、安裝 VS Code 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%95%9F%E5%8B%95-Django-%E5%B0%88%E6%A1%88"><span class="toc-text">六、啟動 Django 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C%E7%9A%84%E6%9C%80%E5%BE%8C"><span class="toc-text">最後的最後</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CodeGPT-%E6%8E%A8%E8%96%A6"><span class="toc-text">CodeGPT 推薦</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%9D-Python-3-12"><span class="toc-text">一、安裝 Python 3.12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">二、安裝與設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8-Poetry-%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">不使用 Poetry 的方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BE%9E-GitHub-%E4%B8%8B%E8%BC%89%E5%B0%88%E6%A1%88%E3%80%81%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">三、從 GitHub 下載專案、建立虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96-pre-commit"><span class="toc-text">四、初始化 pre-commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-VS-Code-%E5%A5%97%E4%BB%B6"><span class="toc-text">五、安裝 VS Code 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%95%9F%E5%8B%95-Django-%E5%B0%88%E6%A1%88"><span class="toc-text">六、啟動 Django 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E5%88%86%E6%94%AF%E8%88%87-PR"><span class="toc-text">專案分支與 PR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CodeGPT-%E6%8E%A8%E8%96%A6"><span class="toc-text">CodeGPT 推薦</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>前一篇我們了解了整個專案所使用的 Python 開發工具。</p>
@@ -214,10 +214,11 @@
 </ol>
 <h3 id="macOS-使用者"><a href="#macOS-使用者" class="headerlink" title="macOS 使用者"></a>macOS 使用者</h3><p>對於 macOS 使用者，我們有幾種安裝 Python 3.12 的方法：</p>
 <ol>
+<li>使用 pyenv：這是我個人推薦的方式。</li>
 <li>一樣使用官方安裝程式：前往 Python 官方網站下載 macOS 版本的安裝程式，並按照指示完成安裝。</li>
 <li>使用 Homebrew：如果你已經安裝了 Homebrew，可以在終端中執行 <code>brew install python@3.12</code> 來安裝 Python 3.12。</li>
-<li>安裝完成後，在終端中輸入 <code>python3 --version</code> 來確認安裝是否成功。</li>
 </ol>
+<p>安裝完成後，在命令列中輸入 <code>python3 --version</code> 來確認安裝是否成功。</p>
 <p>不管用哪一種方式安裝，請務必透過上述指令確認 Python 版本正確。<strong>只要是 3.12.x 即可</strong>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ python3 --version</span><br><span class="line">Python 3.12.5</span><br></pre></td></tr></table></figure>
 
@@ -298,11 +299,12 @@
 <p>接著，打開瀏覽器並訪問 <code>http://127.0.0.1:8000/</code>，你應該可以看到 Django 預設的歡迎頁面，表示專案成功啟動！</p>
 <p><img src="https://i.imgur.com/Qb9ZeIu.png" alt="Django 預設歡迎頁面"><span class="cap">Django 預設歡迎頁面</span></p>
 <hr>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>通過上述步驟，你已經成功完成了專案的開發環境設定，並啟動了範例 Django 專案。</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>通過上述步驟，你已經成功完成了專案的開發環境設定，並啟動了範例 Django 專案。</p>
 <p>如果在設定過程中遇到問題，可查閱工具的官方文件或參考我的部落格教學，這些資源能幫助你解決常見問題，或進一步理解它們的功能。</p>
-<h2 id="最後的最後"><a href="#最後的最後" class="headerlink" title="最後的最後"></a>最後的最後</h2><p>在專案的開發過程中，我們會使用 Git 分支和 <strong>GitHub 的 PR（<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pulls">Pull requests</a>）</strong>來管理<strong>不同章節的範例程式碼改動</strong>。</p>
+<h2 id="專案分支與-PR"><a href="#專案分支與-PR" class="headerlink" title="專案分支與 PR"></a>專案分支與 PR</h2><p>在專案的開發過程中，我們會使用 Git 分支和 <strong>GitHub 的 PR（<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pulls?q=is:pr+is:closed">Pull requests</a>）</strong>來管理<strong>不同章節的範例程式碼改動</strong>。</p>
 <p>這樣可以<strong>保持學習脈絡清晰有條理</strong>，避免因不同功能的程式碼混在一起而影響理解。</p>
 <p>需要注意的是，<strong>不是</strong>每一篇文章都有自己的分支與 PR，因為有些篇章只涉及概念說明而沒有程式碼改動。</p>
+<hr>
 <h2 id="CodeGPT-推薦"><a href="#CodeGPT-推薦" class="headerlink" title="CodeGPT 推薦"></a>CodeGPT 推薦</h2><p>此外，本專案<strong>幾乎所有的 commit 訊息</strong>，都是透過吳大開發的 <a target="_blank" rel="noopener" href="https://github.com/appleboy/CodeGPT">CodeGPT</a> 加上 GPT-4o mini API <strong>自動生成</strong>。</p>
 <p><img src="https://i.imgur.com/4lqAL3Y.png" alt="Commit message by CodeGPT"><span class="cap">Commit message by CodeGPT</span></p>
 <p>畢竟，即使只是範例專案，要思考每一個 commit 訊息的內容也是不輕鬆。有了這樣的自動化工具，真的方便很多！而且<strong>風格一致性高</strong>，很適合偏執狂如我☺️</p>
