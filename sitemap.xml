@@ -2,7 +2,88 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-30/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-29/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-37/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-10-16</lastmod>
     
@@ -12,6 +93,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-05/</loc>
+    
+    <lastmod>2024-10-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-30/</loc>
     
     <lastmod>2024-10-16</lastmod>
     
@@ -578,15 +668,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -650,15 +731,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-32/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -669,15 +741,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-30/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-29/</loc>
     
     <lastmod>2024-09-03</lastmod>
     
@@ -749,24 +812,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-37/</loc>
-    
-    <lastmod>2024-08-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/hard-to-say/</loc>
-    
-    <lastmod>2024-08-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
     
     <lastmod>2024-08-27</lastmod>
@@ -821,15 +866,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
-    
-    <lastmod>2024-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/django-rest-framework-03/</loc>
     
     <lastmod>2024-08-03</lastmod>
@@ -849,15 +885,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-request/</loc>
-    
-    <lastmod>2024-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-08-03</lastmod>
     
@@ -993,15 +1020,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/ruff/</loc>
-    
-    <lastmod>2024-06-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2024-06-25</lastmod>
     
@@ -1211,15 +1229,6 @@
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2024-05-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
-    
-    <lastmod>2024-04-29</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1524,15 +1533,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/powerlevel10k/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
