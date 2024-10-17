@@ -2,6 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-21/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
+    
+    <lastmod>2024-10-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-ninja-28/</loc>
     
     <lastmod>2024-10-16</lastmod>
@@ -92,15 +164,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
-    
-    <lastmod>2024-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/black-and-isort/</loc>
     
     <lastmod>2024-10-16</lastmod>
@@ -120,15 +183,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/adding-sitemap-issue/</loc>
-    
-    <lastmod>2024-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-21/</loc>
     
     <lastmod>2024-10-16</lastmod>
     
@@ -381,15 +435,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/hard-to-say/</loc>
-    
-    <lastmod>2024-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
     <lastmod>2024-10-16</lastmod>
     
@@ -866,15 +911,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/on-writing/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -1004,15 +1040,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
     
     <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
-    
-    <lastmod>2024-08-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1352,15 +1379,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
-    
-    <lastmod>2024-01-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
     
     <lastmod>2024-01-17</lastmod>
@@ -1433,15 +1451,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/update-my-droplet/</loc>
-    
-    <lastmod>2024-01-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/tenlong-bookstore/</loc>
     
     <lastmod>2024-01-11</lastmod>
@@ -1454,15 +1463,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
     
     <lastmod>2024-01-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
-    
-    <lastmod>2024-01-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1561,7 +1561,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-10-16</lastmod>
+    <lastmod>2024-10-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
