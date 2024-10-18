@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="我絕不用 result 作為變數名稱">
+  <meta property="og:title" content="我絕不用 result 作為變數名稱"><meta name="twitter:description" content="result 是一個糟糕的變數名稱，它太過籠統、難以理解。這篇文章將告訴你，為什麼我絕不用 result 作為變數名稱。">
+  <meta property="og:description" content="result 是一個糟糕的變數名稱，它太過籠統、難以理解。這篇文章將告訴你，為什麼我絕不用 result 作為變數名稱。"><meta name="twitter:image" content="https://i.imgur.com/YmlPRz1.jpg">
+  <meta property="og:image" content="https://i.imgur.com/YmlPRz1.jpg">
+<meta name="description" content="result 是一個糟糕的變數名稱，它太過籠統、難以理解。這篇文章將告訴你，為什麼我絕不用 result 作為變數名稱。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2024-06-09T03:29:00+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-05-04T07:28:56+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/no-result/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>我絕不用 result 作為變數名稱 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">我絕不用 result 作為變數名稱
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-05-04
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94-data-%E6%9B%B4%E7%B3%9F%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%E2%80%94%E2%80%94result"><span class="toc-text">比 data 更糟的變數名稱——result</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%80%8B%E4%BB%A3%E8%A1%A8%E6%80%A7%E6%A1%88%E4%BE%8B"><span class="toc-text">3 個代表性案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BE%9E%E8%B3%87%E6%96%99%E5%BA%AB%E6%9F%A5%E8%A9%A2%E8%A8%82%E5%96%AE"><span class="toc-text">一、從資料庫查詢訂單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%AA%A2%E6%9F%A5%E7%94%A8%E6%88%B6%E6%98%AF%E5%90%A6%E6%9C%89%E7%AE%A1%E7%90%86%E5%93%A1%E6%AC%8A%E9%99%90"><span class="toc-text">二、檢查用戶是否有管理員權限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8-requests-%E7%99%BC%E5%87%BA-HTTP-%E8%AB%8B%E6%B1%82"><span class="toc-text">三、使用 requests 發出 HTTP 請求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9ANo-result"><span class="toc-text">小結：No result</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"><span class="cap">by Sam Chivers</span></p>
+<p>在〈<a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a>〉中，我們提到了「<a href="/beyond-the-basic-stuff-with-python-01/#%E5%8F%B2%E4%B8%8A%E6%9C%80%E7%B3%9F%E7%9A%84%E8%AE%8A%E6%95%B8%E5%90%8D%E7%A8%B1%E2%80%94%E2%80%94data">data</a>」這個不佳的變數名稱。</p>
+<p>以及應該要用<strong>什麼樣的名稱</strong>取代它，與<strong>例外可以使用</strong> data 的情況。</p>
+<p>看過那段後，你可以發現，data 雖爛，但還是<strong>偶有派上用場</strong>的時候。雖然絕大部分的情況，我依舊會避免使用。</p>
+<p>然而有一個變數名稱，<strong>我絕對不會用</strong>。</p>
+<h2 id="比-data-更糟的變數名稱——result"><a href="#比-data-更糟的變數名稱——result" class="headerlink" title="比 data 更糟的變數名稱——result"></a>比 data 更糟的變數名稱——result</h2><p>當我遵守了好習慣，盡可能避免在程式碼中使用 data 命名後，本以為能從此過上幸福快樂的生活，<strong>但我錯了！</strong></p>
+<p>因為沒多久後我就發現，還有一個比 data 更<strong>駭人聽聞</strong>的變數名稱——<code>result</code>。</p>
+<p>和 data 相比，其<strong>糟糕的程度</strong>，簡直<strong>有過之而無不及</strong>。畢竟<strong>萬事萬物都有「result」</strong>，因果循環、生生不息，而且這個命名<strong>更加抽象</strong>，令人不禁想問：</p>
+<blockquote>
+<p><strong>到底是什麼結果？</strong></p>
+</blockquote>
+<p>result 命名的濫用，在「儲存呼叫函式的<strong>結果</strong>」時最為常見，<strong>難怪到處都是 result。</strong></p>
+<span id="more"></span>
+
+<hr>
+<h2 id="3-個代表性案例"><a href="#3-個代表性案例" class="headerlink" title="3 個代表性案例"></a>3 個代表性案例</h2><p>不誇張地說，code review 時我看到 result 這個變數名稱，<strong>幾乎都會建議改掉</strong>。因為它<strong>太過籠統</strong>，讓人無法立刻了解這個變數的內容與用途。</p>
+<p><strong>甚至有一種噁心感。</strong>（內心 OS：就這麼懶得想名字？）</p>
+<p>不過，若細看後發現，眼前的情況<strong>真的不容易命名</strong>，我可能會選擇睜一隻眼閉一隻眼，暫時就先算了吧！😷</p>
+<p>但平心而論，這<strong>真的是少數</strong>。我遇到大部分使用 result 的情況，都是<strong>懶得想名字XD</strong>。無論如何，我自己寫程式時，不會考慮使用 result，<strong>而且我認為這並不難。</strong></p>
+<p>下面我們就舉 3 個代表性案例，來看看 result 到底有多糟糕。以及應該要用什麼名稱來取代它——基本上就是<strong>更直接、具體、精確</strong>的名稱。</p>
+<h2 id="一、從資料庫查詢訂單"><a href="#一、從資料庫查詢訂單" class="headerlink" title="一、從資料庫查詢訂單"></a>一、從資料庫查詢訂單</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">orders = query_orders_from_database(customer_id)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>第一種典型的情況是，<strong>明明有更具體的名稱可以使用</strong>，卻偏偏用了籠統的 result。</p>
+<p>這樣的寫法，讓人看了一頭霧水，不確定 result 到底是指什麼。</p>
+<p>類似的例子還有求平均值、性別、數量等等，太多了，都有一個 result，但明顯都可以用更具體的名稱來取代。</p>
+<p>事實上，如前所述，會把變數命名為 result，<strong>往往不是真的遇到什麼難以命名的情境</strong>，而是因為懶XD。可是這份懶惰，<strong>會讓你的程式碼變得難讀</strong>。</p>
+<p>其中的代價，不可謂不大。</p>
+<hr>
+<h2 id="二、檢查用戶是否有管理員權限"><a href="#二、檢查用戶是否有管理員權限" class="headerlink" title="二、檢查用戶是否有管理員權限"></a>二、檢查用戶是否有管理員權限</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> result:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">is_admin = check_user_is_admin(user_id)</span><br><span class="line"><span class="keyword">if</span> is_admin:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>這是我認為<strong>最重要</strong>的一條守則，簡言之：<strong>你不應該使用 result 來表示「狀態」</strong>。</p>
+<p>尤其當這個狀態是一個<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B8%83%E6%9E%97_(%E8%B3%87%E6%96%99%E9%A1%9E%E5%9E%8B)">布林值</a>時，代表「操作成功與否」或「特定條件是否符合」等等情況，你更應該使用<strong>具體的名稱</strong>。</p>
+<p>這個時候，我們可以考慮使用充滿了「<strong>布林味</strong>」的變數名稱，比如<code>has_permission</code>、<code>is_valid</code>、<code>is_success</code>等等——而不是<code>result</code>。</p>
+<h3 id="為什麼布林值最不適合用-result？"><a href="#為什麼布林值最不適合用-result？" class="headerlink" title="為什麼布林值最不適合用 result？"></a>為什麼布林值最不適合用 result？</h3><p>回傳內容如果由<strong>很多部分組成，此時確實不容易概括成一個名稱</strong>。</p>
+<p>要命名好這類的回傳結果，<strong>需要花一定時間思考、評估其合適性，並不輕鬆</strong>。所以有些開發者乾脆用 result 來表示，姑且算是一種 <strong>workaround</strong> 吧！情有可原。</p>
+<p>但如果回傳只是一個布林值，那就沒有「<strong>內涵太複雜以至於不易命名</strong>」問題。因為布林就只有兩種可能性：<strong>True 或 False</strong>。</p>
+<p>此時再偷懶用 result，恐怕就說不太過去了。</p>
+<hr>
+<h2 id="三、使用-requests-發出-HTTP-請求"><a href="#三、使用-requests-發出-HTTP-請求" class="headerlink" title="三、使用 requests 發出 HTTP 請求"></a>三、使用 requests 發出 HTTP 請求</h2><p>終於來你最常見到的情境了，使用<code>requests</code>（或<code>httpx</code>）發出 HTTP 請求，並將回傳的結果存入 result。</p>
+<p>雖然大部分人都會將這個變數命名為 response，但<strong>還是有人會用 result</strong>——而且覺得兩者「<strong>其實也沒什麼不同</strong>」啊！</p>
+<p>（這種「我覺得都差不多啊！」的思維才是真正嚇人的，你懂的。）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不好的寫法</span></span><br><span class="line">result = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> result.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(result.json())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更好的寫法</span></span><br><span class="line">response = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(response.json())</span><br></pre></td></tr></table></figure>
+<p>在這個例子中，使用 response 作為變數名稱會比使用 result <strong>更加清晰和具描述性。</strong></p>
+<p>當其他開發者看到這段程式碼時，會立即明白這個變數存儲的是一個 HTTP response（通常就是<code>requests</code>的<code>response</code>物件），而不是某個抽象的「結果」。</p>
+<p>如果隨意地命名為 result，後續使用該變數時，result <strong>預期</strong>會有什麼屬性？什麼方法？<strong>一切都不明朗</strong>，因為它有<strong>無限可能</strong>。</p>
+<p>往往要回去看變數的<strong>定義</strong>部分，才能知曉 result 究竟代表什麼。</p>
+<p><strong>當這變數的生命週期愈長、呼叫的次數愈多，使用 result 名稱造成的「可讀性問題」就愈嚴重。</strong></p>
+<p>這個例子還有一個常見的「<strong>變形</strong>」——<code>res</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">&quot;https://api.example.com/data&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> res.status_code == <span class="number">200</span>:</span><br><span class="line">    process_data(res.json())</span><br></pre></td></tr></table></figure>
+<p>這麼巧！response 和 result 兩者恰好都是以 res 為前綴，只要命名為<code>res</code>就天下太平了——才怪。</p>
+<p>有什麼比 result 更讓人想握緊拳頭的變數名稱嗎？<strong>恐怕就是 res 了。</strong></p>
+<hr>
+<h2 id="小結：No-result"><a href="#小結：No-result" class="headerlink" title="小結：No result"></a>小結：No result</h2><p>總的來說，data 至少還有適用的例外情況，但 result，<strong>我真的想不到。</strong></p>
+<p>我非常確信，打從我轉職後工作的第二年起（第一年還懵懂無知），再就也沒有使用過 result 這個變數名稱。</p>
+<p><strong>一次也沒有。</strong></p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/stop-trial-and-error/" title="別依賴「試誤法」寫程式" rel="bookmark">別依賴「試誤法」寫程式</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python/" title="《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南" rel="bookmark">《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/effective-python-01/" title="《Effective Python》筆記（一）以拆分代替索引" rel="bookmark">《Effective Python》筆記（一）以拆分代替索引</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            <a href="/tags/%E5%A3%9E%E5%91%B3%E9%81%93/">壞味道</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weekly-review-29/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">29，我編輯舊文的三個理由</span>
+        <span class="prev-text nav-mobile">29，我編輯舊文的三個理由</span>
+      </a>
+    <a class="next" href="/django-rest-framework-01/">
+        <span class="next-text nav-default">Django REST framework 教學（一）前言篇</span>
+        <span class="next-text nav-mobile">Django REST framework 教學（一）前言篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學">
+  <meta property="og:title" content="Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學"><meta name="twitter:description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。">
+  <meta property="og:description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。"><meta name="twitter:image" content="https://i.imgur.com/TBQKYrC.png">
+  <meta property="og:image" content="https://i.imgur.com/TBQKYrC.png">
+<meta name="description" content="本文介紹 Django 專案整合 MongoEngine 時，在設定上的一些重點，讓你能更快上手使用 Django 與 MongoDB 的組合。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2022-05-27T20:26:38+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-mongoengine/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-05-28
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9AODM-vs-ORM"><span class="toc-text">前言：ODM vs ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoEngine-%E7%B0%A1%E4%BB%8B"><span class="toc-text">MongoEngine 簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E5%B0%88%E6%A1%88%E8%A8%AD%E5%AE%9A-MongoEngine"><span class="toc-text">Django 專案設定 MongoEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-MongoEngine-%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">Django-MongoEngine 主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Django-MongoEngine"><span class="toc-text">安裝 Django-MongoEngine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-settings-py-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django settings.py 設定</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+<p>專案開發難免要使用到 NoSQL，其中最具代表性也最常用的，無疑就是儲存資料結構和 JSON 十分貼近的 MongoDB。</p>
+<p>目前工作專案中，存在著需要大量儲存 IoT gateway config 設定的需求，這些 config 記載著所有連接 gateway 的 sensor 設定狀態，是典型的多層結構，且不同 sensor 的 config，其層級、數量並不完全一致，而不同 gateway 之間的差異更大。</p>
+<p>本來使用 MySQL 儲存，table 間的關係十分凌亂且複雜，ERD 都畫得很辛苦。</p>
+<p>而這種資料特性，正是 MongoDB 擅長的舞台。</p>
+<span id="more"></span>
+<h3 id="用-MongoEngine-整合-Django-與-MongoDB"><a href="#用-MongoEngine-整合-Django-與-MongoDB" class="headerlink" title="用 MongoEngine 整合 Django 與 MongoDB"></a>用 MongoEngine 整合 Django 與 MongoDB</h3><p>由於專案以 Django 建構，所以 MongoDB 導入勢必要考慮到與 Django 的相容，而且必須是 ODM（文件型 NoSQL 的 ORM）框架，方便以物件形態操作資料，最好能和<code>settings.py</code>有一定的整合。</p>
+<p>經過團隊一番研究與討論，還是決定採用 Python 最主流的 MongoDB ODM 框架——<a target="_blank" rel="noopener" href="https://github.com/MongoEngine/mongoengine">MongoEngine</a>。</p>
+<p>本篇主要整理，Django 專案整合 MongoEngine 時，在<strong>設定</strong>上的一些重點。</p>
+<hr>
+<h2 id="前言：ODM-vs-ORM"><a href="#前言：ODM-vs-ORM" class="headerlink" title="前言：ODM vs ORM"></a>前言：ODM vs ORM</h2><p>ORM（<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">Object–relational mapping</a>）相信大家都已經相當熟悉，無須贅述。</p>
+<p>而 ODM（Object-document mapping）則是「<strong>文件型（Document）</strong>」NoSQL 版的 ORM，由於 NoSQL 資料庫種類眾多，資料類型也各有不同。</p>
+<p>所以 ODM 一詞，理論上只適用於<strong>文件型</strong>的 NoSQL 資料庫，在此即為 MongoDB。</p>
+<p>不過，我覺得<strong>兩者的區分並不是特別重要</strong>，ORM 是通俗、常見的詞，而 ODM 主要是強調了「文件型 NoSQL」這個特性。</p>
+<p>在我看來，把它們都粗略地統稱為 ORM，也未嘗不可。</p>
+<h2 id="MongoEngine-簡介"><a href="#MongoEngine-簡介" class="headerlink" title="MongoEngine 簡介"></a>MongoEngine 簡介</h2><blockquote>
+<p>MongoEngine is a Python <strong>Object-Document Mapper</strong> for working with <strong>MongoDB</strong>.</p>
+</blockquote>
+<p>Python ODM 中的 MongoEngine，就像 ORM 中的 SQLAlchemy，兩者在各自領域的代表性相近，且都不和任何 Web 框架綁定，可以單獨使用。</p>
+<p>尤其使用像 Django、Flask 等 Web 框架時，特別需要！</p>
+<h3 id="ORM-之必要"><a href="#ORM-之必要" class="headerlink" title="ORM 之必要"></a>ORM 之必要</h3><p>若不將資料庫中儲存的資料先轉換為物件，把底層資料的細節先隱藏起來，對開發者在<strong>資料的操作與調度上較不友善</strong>，因為不必要的資訊太多。</p>
+<p>且專案程式碼中，若存在著底層資料庫的直接查詢內容（比如 raw SQL 指令），整體也會相對難讀，也難維護。</p>
+<p>所以 ORM 才會是 Django 或 Flask 等後端 Web 框架，在使用上的核心元素。而操作 MongoDB 時也需要類似的工具，而非直接透過	 PyMongo 進行 pipeline 操作。</p>
+<p>MongoEngine 是 Python 中最具代表性的 MongoDB ODM 框架，地位類似於 Node.js 中的 <a target="_blank" rel="noopener" href="https://mongoosejs.com/">Mongoose</a>。</p>
+<h2 id="Django-專案設定-MongoEngine"><a href="#Django-專案設定-MongoEngine" class="headerlink" title="Django 專案設定 MongoEngine"></a>Django 專案設定 MongoEngine</h2><p>前面提過，MongoEngine 並不和任何 Web 框架綁定，所以它自然不是為 Django 而生的產物。</p>
+<p>如果用過 Flask 這種小型框架，通常立刻能聯想到：這種情況肯定會有<strong>整合型的外掛</strong>可供選擇，而且名字通常就是把兩個套件的名字結合在一起。</p>
+<p>沒錯，這裡也是，即同樣由 MongoEngine 團隊開發的——<code>django-mongoengine</code>。</p>
+<h2 id="Django-MongoEngine-主要功能"><a href="#Django-MongoEngine-主要功能" class="headerlink" title="Django-MongoEngine 主要功能"></a>Django-MongoEngine 主要功能</h2><p>從 <a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#django-mongoengine">GitHub 頁面</a>可知，<code>django-mongoengine</code>只是提供了一些簡單的 Django 整合，所以它並不是必要。</p>
+<p>它甚至連獨立的文件網頁都沒有，實在有點無足輕重。</p>
+<p>看起來大致有三個作用：</p>
+<ol>
+<li><code>MONGODB_DATABASES</code>設定：下文會提及，這可能就是它最大的作用了。</li>
+<li>重新封裝，增加了 Django 特色的 <a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#documents">ODM 類別、欄位</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#sessions">Session 整合設定</a>。</li>
+</ol>
+<p>如果上述三者都不是必要需求，或許就不一定要安裝了。</p>
+<hr>
+<h2 id="安裝-Django-MongoEngine"><a href="#安裝-Django-MongoEngine" class="headerlink" title="安裝 Django-MongoEngine"></a>安裝 Django-MongoEngine</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-mongoengine</span><br></pre></td></tr></table></figure>
+
+<p>作為進一步封裝 MongoEngine 的整合性套件，安裝<code>django-mongoengine</code>自然也會同時安裝<code>mongoengine</code>。</p>
+<p>還是要再次提醒，不安裝它，一樣可以在 Django 中輕鬆使用 MongoEngine 的主要功能，只是裝了會更加方便而已。</p>
+<p>此外，它的 GitHub 頁面也說，這不是一個功能完全健全的套件：</p>
+<blockquote>
+<p>THIS IS UNSTABLE PROJECT, IF YOU WANT TO USE IT - FIX WHAT YOU NEED</p>
+</blockquote>
+<p>講白了就是它有點陽春！</p>
+<p>如果不打算安裝<code>django-mongoengine</code>，那就直接安裝<code>mongoengine</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mongoengine</span><br></pre></td></tr></table></figure>
+
+<h2 id="Django-settings-py-設定"><a href="#Django-settings-py-設定" class="headerlink" title="Django settings.py 設定"></a>Django settings.py 設定</h2><p>幾乎所有對 Django 整合的附加功能，都需要新增相關設定到專案的<code>settings.py</code>。MongoEngine 也不例外。</p>
+<h3 id="一、已安裝-Django-MongoEngine"><a href="#一、已安裝-Django-MongoEngine" class="headerlink" title="一、已安裝 Django-MongoEngine"></a>一、已安裝 Django-MongoEngine</h3><p>上述第一個關於安裝 Django-MongoEngine 的好處，同時也是最大的好處，就是對於專案<code>settings.py</code>的直接整合，其設定大致如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MONGODB_DATABASES = &#123;</span><br><span class="line">    <span class="string">&quot;default&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: database_name,</span><br><span class="line">        <span class="string">&quot;host&quot;</span>: database_host,</span><br><span class="line">        <span class="string">&quot;password&quot;</span>: database_password,</span><br><span class="line">        <span class="string">&quot;username&quot;</span>: database_user,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>支援類似 Django 的<code>DATABASES</code>設定，名為<code>MONGODB_DATABASES</code>，要讓此設定生效，必須把<code>django_mongoengine</code>加入<code>INSTALLED_APPS</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;django_mongoengine&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、未安裝-Django-MongoEngine"><a href="#二、未安裝-Django-MongoEngine" class="headerlink" title="二、未安裝 Django-MongoEngine"></a>二、未安裝 Django-MongoEngine</h3><p>如果沒有安裝 Django-MongoEngine，則需要在<code>settings.py</code>新增下列設定：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> connect</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">connect(host=<span class="string">&quot;mongodb://127.0.0.1:27017/my_db&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>只要這個<code>connect</code>函式可以在<code>settings.py</code>成功執行，Django app 就能成功取得對 MongoDB 的連線，進而存取資料庫。</p>
+<p>這個寫法比較大的問題就是和<code>settings.py</code>其餘設定的模式格格不入，從<strong>程式碼風格一致性</strong>的角度來看，我並不推薦。不過使用上應該不會構成太大影響。</p>
+<p>附帶一提：這個<code>connect</code>連線設定的參數有許多變化型態，可參考<a target="_blank" rel="noopener" href="https://docs.mongoengine.org/guide/connecting.html">文件</a>。</p>
+<hr>
+<p>本文只著眼於 MongoEngine 與 Django 的<strong>專案整合相關設定</strong>。至於實際使用與 ORM 查詢，比如<code>Document</code>、<code>Field</code>、<code>.objects</code>等等，則會在接下來的文章中介紹。</p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.mongoengine.org/guide/index.html">https://docs.mongoengine.org/guide/index.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine">https://github.com/MongoEngine/django-mongoengine</a></li>
+</ul>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/snyk-advisor/" title="使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」" rel="bookmark">使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定" rel="bookmark">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-08/" title="08，年末特輯下：2022 工作與程式學習總結" rel="bookmark">08，年末特輯下：2022 工作與程式學習總結</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/MongoEngine/">MongoEngine</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/snyk-advisor/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」</span>
+        <span class="prev-text nav-mobile">使用 Snyk Open Source Advisor 查詢 Python 套件「健康度」</span>
+      </a>
+    <a class="next" href="/github-copilot/">
+        <span class="next-text nav-default">GitHub Copilot 心得——寫文章的利器？</span>
+        <span class="next-text nav-mobile">GitHub Copilot 心得——寫文章的利器？</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

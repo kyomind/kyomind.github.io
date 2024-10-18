@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Tutorial：系列介紹與導讀">
+  <meta property="og:title" content="Django Tutorial：系列介紹與導讀"><meta name="twitter:description" content="本站 Django Tutorial 教學系列的第 0 篇。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。">
+  <meta property="og:description" content="本站 Django Tutorial 教學系列的第 0 篇。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
+<meta name="description" content="本站 Django Tutorial 教學系列的第 0 篇。主要說明整個系列的寫作動機、文章規劃，並介紹 GitHub 倉庫的使用方式。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
+            
+
+  <meta property="article:modified_time" content="2024-08-03T15:45:47+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2023-09-30T08:48:35+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-tutorial/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Tutorial：系列介紹與導讀 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Tutorial：系列介紹與導讀
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-09-30
+        </span><span class="post-update">
+            →  2024-06-26
+          </span>
+        <span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%AB%E4%BD%9C%E5%8B%95%E6%A9%9F"><span class="toc-text">系列寫作動機</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83"><span class="toc-text">文章規劃</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Django-ORM-%E4%B8%89%E9%83%A8%E6%9B%B2"><span class="toc-text">一、Django ORM 三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81pytest-%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6"><span class="toc-text">二、pytest 單元測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Django-API"><span class="toc-text">三、Django API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Django-%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="toc-text">四、Django 通用功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC-GitHub-%E5%B0%88%E6%A1%88%E4%BB%8B%E7%B4%B9"><span class="toc-text">範例程式碼 GitHub 專案介紹</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
+<blockquote>
+<p><code>2024/03/22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
+</blockquote>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 2 篇——<strong>序言</strong>。主要說明整個系列的<strong>寫作動機、文章規劃</strong>，並介紹 GitHub 範例程式碼 repo 的使用方式。</p>
+<hr>
+<h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。</p>
+<p>作為一個 Django 開發者兼作者，讓我不免覺得，自己有「<strong>義務</strong>」做些什麼。經過一番思考，我決定把工作中常見的 Django 實作寫成文章。</p>
+<p>尤其繁體中文世界對於 Django 的介紹，大多停留在<strong>製作整個網站</strong>（主要介紹模板、Form、View），而不是開發 API——<strong>用 Django 開發 API 的相關教材太少了。</strong></p>
+<p>這個現象不難理解，因為在台灣使用 Django 作為產品主要後端的公司相對有限，所以文章分享自然就不是那麼多。</p>
+<p>而工作中你幾乎不太可能用 Django 來開發整個網站，畢竟這是個<strong>前後端分離</strong>的時代。</p>
+<p>想到這裡，寫作 Django 系列教學的動力又提升了！這或許就是我的<strong>使命</strong>。</p>
+<span id="more"></span>
+
+<h2 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h2><p>因此，這系列文章主要針對那些已有 Python 基礎，但想要進一步了解 Django 網頁開發，尤其是「<strong>用 Django 開發 Web API</strong>」的讀者。</p>
+<p>畢竟開發 API 才是我的 Django 日常。</p>
+<p>所以我不得不遺憾地表示，這個系列將不會有任何關於「Django 模板、表單」元件等介紹，也不會討論上述元件與 Django View 的整合議題。</p>
+<p>而是完全以「API」為核心。</p>
+<hr>
+<h2 id="文章規劃"><a href="#文章規劃" class="headerlink" title="文章規劃"></a>文章規劃</h2><p>目前計畫分成多個部分，每個部分有多篇文章。</p>
+<h2 id="一、Django-ORM-三部曲"><a href="#一、Django-ORM-三部曲" class="headerlink" title="一、Django ORM 三部曲"></a>一、Django ORM 三部曲</h2><p>無論全端還是前後端分離，<strong>Django ORM 的重要性與地位都不會有任何影響</strong>，所以 ORM 三部曲自然還是要一一介紹。</p>
+<p>目前規劃的文章為：</p>
+<ol>
+<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
+<li><a href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a></li>
+<li><a href="/django-orm-query-relations/">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></li>
+</ol>
+<p>而且，整個 Django 框架中，我最愛的部分就是 Django ORM——它<strong>強大而優雅</strong>。</p>
+<h2 id="二、pytest-單元測試"><a href="#二、pytest-單元測試" class="headerlink" title="二、pytest 單元測試"></a>二、pytest 單元測試</h2><p>我相信，沒有單元測試的開發，是「<strong>不健全</strong>」的開發。</p>
+<p><strong>自己的程式自己測，優秀的開發者不會把「低級錯誤」留給 QA，讓 QA 當保姆。</strong></p>
+<p>哪怕只是最基本的，為每一個 API 加上 200 回傳值的單元測試，都遠比沒有來得強。有了測試以後，再來就是覆蓋率報告。</p>
+<p>文章預計如下：</p>
+<ol>
+<li>Django 測試指南：用 pytest 撰寫 API 單元測試——環境設定篇</li>
+<li>Django 測試指南：用 pytest 撰寫 API 單元測試——Fixtures 篇</li>
+<li>Django 測試指南：使用 pytest + pytest-cov 計算 Test Coverage</li>
+</ol>
+<h2 id="三、Django-API"><a href="#三、Django-API" class="headerlink" title="三、Django API"></a>三、Django API</h2><blockquote>
+<p><code>2024-03-22</code>更新：因為工作上的新專案皆已轉向 Django Ninja，所以我會以 Django Ninja 為主，但也會有一些 DRF 的文章。</p>
+</blockquote>
+<p>講到 Django API，就不得不提 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>（下稱 DRF），尤其是它提供的 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/views/">API view</a>（無論 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10205779">CBV 或 FBV</a>）與<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>。</p>
+<p>當然，時代在變，如今開發 Django API 並非只能選擇 DRF，受到 FastAPI 啟發而誕生的後起之秀——<a target="_blank" rel="noopener" href="https://django-ninja.rest-framework.com/">Django Ninja</a>，也值得你一試。</p>
+<!-- ![Django Ninja 近半年下載量成長趨勢。資料來源：PyPI Stats](https://i.imgur.com/ApnQ0zy.png) -->
+
+<p>尤其它支援 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/">Pydantic</a>，可以<strong>依程式碼自動生成 API 文件</strong>。你可以簡單想成，它就像是「Django 版的 FastAPI」。</p>
+<p>預計主題有下，目前文章標題皆未定：</p>
+<ul>
+<li>Django Ninja 教學：路由設定</li>
+<li>Django Ninja 教學：自動生成 API 文件</li>
+<li>Django Ninja 教學：API 與序列化</li>
+<li>用 DRF 開發 Django API</li>
+<li>DRF 序列化器</li>
+<li>檔案上傳</li>
+<li>DRF 分頁（Pagination）</li>
+</ul>
+<p>如你所見，<strong>這並不是一個「大而全」的 Django 教學</strong>，而是<strong>以我自己的實務經驗為主</strong>，介紹我認為最重要且相對熟悉的部分。</p>
+<p>主要的目標是讓讀者可以<strong>快速上手</strong>，並了解 Django API 開發的基本概念。</p>
+<h2 id="四、Django-通用功能"><a href="#四、Django-通用功能" class="headerlink" title="四、Django 通用功能"></a>四、Django 通用功能</h2><p>無論是後端 API 開發還是全端開發，都會有的通用主題，比如：</p>
+<ul>
+<li>國際化（i18n）</li>
+<li>logging</li>
+<li>Django 專案使用 Mypy</li>
+<li>Django 專案容器化</li>
+<li><a href="https://blog.kyomind.tw/django-request-headers/">Django：以 request.headers 而非 META 獲取 HTTP header 資訊</a></li>
+<li><a href="https://blog.kyomind.tw/django-mongoengine/">Django 專案 ORM 存取 MongoDB：MongoEngine 設定教學</a></li>
+</ul>
+<hr>
+<h2 id="範例程式碼-GitHub-專案介紹"><a href="#範例程式碼-GitHub-專案介紹" class="headerlink" title="範例程式碼 GitHub 專案介紹"></a>範例程式碼 GitHub 專案介紹</h2><p>最後，介紹與整個系列教學直接相關的 GitHub repository——<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。</p>
+<p>這個專案的定位是「<strong>讓有讀者實際程式碼可以參考</strong>」，所以基本上是拿來「看」的。但我會讓它也能夠真正運行，以方便想要自己動手嘗試的讀者。</p>
+<p>我相信這對學習大有幫助。</p>
+<h3 id="分支功能"><a href="#分支功能" class="headerlink" title="分支功能"></a>分支功能</h3><blockquote>
+<p><code>2024/06/26</code>：<strong>變更分支命名方式</strong>，直接採用文章 slug，捨棄流水號。</p>
+</blockquote>
+<p>專案中會有許多分支，採<code>&lt;流水號-文章slug&gt;</code>的模式命名，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01-django-models</span><br></pre></td></tr></table></figure>
+
+<p>分支主要是作為<strong>歷史記錄</strong>之用，以及快速查看該分支所對應的<strong>程式碼修改</strong>。</p>
+<h3 id="包括本站其它教學範例"><a href="#包括本站其它教學範例" class="headerlink" title="包括本站其它教學範例"></a>包括本站其它教學範例</h3><p>附帶一提，<strong>分支記錄「並非只限」Django Tutorial 系列文章</strong>，本站別的文章也會有！</p>
+<p>比如我某篇文章要講解「專案容器化」，用現有的專案來進行示範無疑再好不過，所以也會變動專案程式碼並留下分支記錄：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">02-dockerize</span><br></pre></td></tr></table></figure>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM：一對一、一對多外鍵教學（下）關聯查詢" rel="bookmark">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-request/" title="Django HttpRequest 常用屬性介紹" rel="bookmark">Django HttpRequest 常用屬性介紹</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            <a href="/tags/Django-REST-framework/">Django REST framework</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/return-to-twitter/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">重啟了 Twitter 與我的理由</span>
+        <span class="prev-text nav-mobile">重啟了 Twitter 與我的理由</span>
+      </a>
+    <a class="next" href="/stop-trial-and-error/">
+        <span class="next-text nav-default">別依賴「試誤法」寫程式</span>
+        <span class="next-text nav-mobile">別依賴「試誤法」寫程式</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

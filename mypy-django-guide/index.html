@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django 專案加入 Mypy 指南">
+  <meta property="og:title" content="Django 專案加入 Mypy 指南"><meta name="twitter:description" content="本文介紹如何在 Django 專案中整合 Mypy，並提供一些實際例子來幫助你快速上手。透過這些步驟，你將能夠更好地利用型別檢查來提高程式碼的穩定性和可維護性。">
+  <meta property="og:description" content="本文介紹如何在 Django 專案中整合 Mypy，並提供一些實際例子來幫助你快速上手。透過這些步驟，你將能夠更好地利用型別檢查來提高程式碼的穩定性和可維護性。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
+<meta name="description" content="本文介紹如何在 Django 專案中整合 Mypy，並提供一些實際例子來幫助你快速上手。透過這些步驟，你將能夠更好地利用型別檢查來提高程式碼的穩定性和可維護性。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
+            
+
+  <meta property="article:modified_time" content="2024-09-09T15:18:26+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-03T00:52:58+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/mypy-django-guide/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django 專案加入 Mypy 指南 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django 專案加入 Mypy 指南
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-03
+        </span><span class="post-update">
+            →  2024-09-09
+          </span>
+        <span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%A4%9A%E5%B0%91-Django-%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8-Type-Hints%EF%BC%9F"><span class="toc-text">有多少 Django 專案使用 Type Hints？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BB%BA%E7%AB%8B-Mypy-%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-text">一、建立 Mypy 設定檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%9D-django-stubs"><span class="toc-text">二、安裝 django-stubs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81VS-Code-Mypy-%E5%A5%97%E4%BB%B6%E6%95%B4%E5%90%88"><span class="toc-text">三、VS Code Mypy 套件整合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81pre-commit%EF%BC%88%E8%88%87%E7%9B%B8%E9%97%9C%E5%95%8F%E9%A1%8C%EF%BC%89"><span class="toc-text">四、pre-commit（與相關問題）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AType-Hints-%E8%88%87%E6%9C%AA%E4%BE%86"><span class="toc-text">結語：Type Hints 與未來</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
+<p>這是 <a href="/tags/Django-Tutorial/"><strong>Django Tutorial</strong></a> 的第 10 篇。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial"><strong>GitHub 專案</strong></a>。</p>
+<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/5"><strong>PR</strong></a>。</p>
+<hr>
+<p>在〈<a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a>〉一文中，我們探討了 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">type hints</a>（type annotation）對 Python 專案開發的重要性，並在〈<a href="/mypy/">Python type checker：Mypy 介紹</a>〉中介紹了<strong>目前最常用的 Python 型別檢查器——Mypy。</strong></p>
+<p>我想，<strong>是時候為你的 Python 專案加入型別檢查了。</strong></p>
+<p>本文介紹如何在 Django 專案中整合 Mypy，並提供一些實際例子來幫助你快速上手。透過這些步驟，你將能夠更好地利用型別檢查來提高程式碼的穩定性和可維護性。</p>
+<h3 id="系列：Mypy-三部曲"><a href="#系列：Mypy-三部曲" class="headerlink" title="系列：Mypy 三部曲"></a>系列：Mypy 三部曲</h3><blockquote>
+<ol>
+<li><a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a></li>
+<li><a href="/mypy/">Python type checker：Mypy 介紹</a></li>
+<li><strong>Django 專案加入 Mypy 指南</strong></li>
+</ol>
+</blockquote>
+<span id="more"></span>
+
+<hr>
+<h2 id="有多少-Django-專案使用-Type-Hints？"><a href="#有多少-Django-專案使用-Type-Hints？" class="headerlink" title="有多少 Django 專案使用 Type Hints？"></a>有多少 Django 專案使用 Type Hints？</h2><p>你可能覺得 type hints 還很遙遠，甚至是<strong>比單元測試更加稀有的存在</strong>。畢竟在 Python 中，型別是完全「<strong>可選</strong>」的——就像測試一樣😆</p>
+<p>然而，隨著社群的成長和工具的進步，越來越多 Django 開發者開始採用 type hints。</p>
+<p>那具體是多少呢？</p>
+<p>依照 JetBrains 對 Django 開發者的<a target="_blank" rel="noopener" href="https://lp.jetbrains.com/django-developer-survey-2023/">這份調查</a>，竟然已有<a target="_blank" rel="noopener" href="https://lp.jetbrains.com/django-developer-survey-2023/#syntax-and-documentation">一半</a>了！（出乎我的意料）</p>
+<p><img src="https://i.imgur.com/QLQ5R8E.png" alt="Django Developers Survey 2023"><span class="cap">Django Developers Survey 2023</span></p>
+<p>所以，為 Django 專案加入 type hints，已然是大勢所趨，今天就一起來實踐吧！</p>
+<p>要為 Python 程式碼加上 type hints，<strong>關鍵在於 static type checker，也就是靜態型別檢查器</strong>。而 Mypy 正是其中最受歡迎的選擇。</p>
+<p>Django 專案整合 Mypy，大概有以下幾步：</p>
+<ol>
+<li>建立並修改 Mypy 設定檔。</li>
+<li>安裝 django-stubs。</li>
+<li>安裝 VS Code Mypy 套件。</li>
+<li>pre-commit 整合（與其中的問題）。</li>
+</ol>
+<p>讓我們一一解說。</p>
+<hr>
+<h2 id="一、建立-Mypy-設定檔"><a href="#一、建立-Mypy-設定檔" class="headerlink" title="一、建立 Mypy 設定檔"></a>一、建立 Mypy 設定檔</h2><p>Mypy 支援<a target="_blank" rel="noopener" href="https://mypy.readthedocs.io/en/stable/config_file.html">好幾種</a>常見的設定檔。</p>
+<p>最常見的是<code>mypy.ini</code>，它同時也支援<code>pyproject.toml</code>，而且很多大型開源專案都會採用後者，比如 <a target="_blank" rel="noopener" href="https://github.com/fastapi/fastapi/blob/master/pyproject.toml#L123">FastAPI</a>。</p>
+<p>上述兩種最推薦，這裡我們先採用<code>mypy.ini</code>。</p>
+<p>不建立設定檔，也能使用 Mypy。設定檔主要是讓你的型別檢查更加<strong>客製化。</strong>尤其用來排除那些你不需要的規則。</p>
+<h3 id="Django-特殊設定"><a href="#Django-特殊設定" class="headerlink" title="Django 特殊設定"></a>Django 特殊設定</h3><p>但對於 Django 專案來說，設定檔則是「必要」，因為有幾處必須定義——否則 Mypy 會跳出一大堆錯誤XD。</p>
+<p>這是因為 Django 有很多<strong>動態屬性（執行時才會確定內容）</strong>，少了這些設定，Mypy 很可能無法正確檢查。</p>
+<p>我們看一下設定內容：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mypy]</span></span><br><span class="line"><span class="comment"># 排除所有 migrations 資料夾和 manage.py</span></span><br><span class="line"><span class="attr">exclude</span> = ^(migrations|.*manage\.py)$</span><br><span class="line"></span><br><span class="line"><span class="attr">warn_return_any</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_untyped_calls</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">allow_redefinition</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">check_untyped_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">ignore_missing_imports</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">incremental</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">strict_optional</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">show_traceback</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unused_ignores</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_redundant_casts</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unused_configs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unreachable</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_untyped_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_incomplete_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disable_error_code</span> = empty-body</span><br><span class="line"><span class="attr">force_uppercase_builtins</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">force_union_syntax</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">plugins</span> =</span><br><span class="line">    mypy_django_plugin.main</span><br><span class="line"></span><br><span class="line"><span class="section">[mypy.plugins.django-stubs]</span></span><br><span class="line"><span class="attr">django_settings_module</span> = DjangoTutorial.settings</span><br></pre></td></tr></table></figure>
+
+<p>對 Django 專案來說，其中重點有三：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclude = ^(migrations|.*manage\.py)$</span><br><span class="line">...</span><br><span class="line">plugins =</span><br><span class="line">    mypy_django_plugin.main</span><br><span class="line"></span><br><span class="line">[mypy.plugins.django-stubs]</span><br><span class="line">django_settings_module = &lt;你的 Django 專案名稱&gt;.settings</span><br></pre></td></tr></table></figure>
+
+<p><code>exclude</code>中把 db 遷移檔資料夾和 Django 自帶的<code>manage.py</code>排除檢查，這是很常見的設定，強烈建議加上。</p>
+<p><code>plugins</code>一定要有<code>mypy_django_plugin.main</code>（它的值可以是多個）。</p>
+<p><code>django_settings_module</code>設定也是必要的，<strong>要使用你自己的 Django 專案名稱。</strong></p>
+<p>其實，上述設定大多是我從 django-stubs 的 <a target="_blank" rel="noopener" href="https://github.com/typeddjango/django-stubs/blob/master/mypy.ini">mypy.ini</a> 照搬過來的。</p>
+<p>而且它在註解有聲明，其餘專案也可以適用：</p>
+<blockquote>
+<p>Regular configuration file (<strong>can be used as base in other projects</strong>, runs in CI)</p>
+</blockquote>
+<p>大部分設定我都直接套用了，以免 Mypy 的檢查太過寬鬆。如果想進行調整，則需要了解 Mypy 的設定細節，這部分請參考<a target="_blank" rel="noopener" href="https://mypy.readthedocs.io/en/stable/config_file.html">官方文件</a>。</p>
+<hr>
+<h2 id="二、安裝-django-stubs"><a href="#二、安裝-django-stubs" class="headerlink" title="二、安裝 django-stubs"></a>二、安裝 django-stubs</h2><p>Type hints 是在 Python 3.5 才引入的功能，而在此之前誕生的套件和框架，<strong>自然不會有 type hints。</strong></p>
+<p>少部分的套件可能會在後期加入 type hints，比如 Flask，在 2.0 版本加入了極大量的 type hints，但大多數套件仍需要額外的 stubs 檔來補充。</p>
+<h3 id="什麼是-Stubs？"><a href="#什麼是-Stubs？" class="headerlink" title="什麼是 Stubs？"></a>什麼是 Stubs？</h3><p>所謂的 stubs（不是測試的那種），是指用來補充那些沒有 type hints 的模組或框架的<strong>檔案</strong>。它們通常是 <code>.pyi</code> 格式，類似於<strong>介面定義檔案</strong>，提供了函式、類別、方法等的<strong>型別資訊</strong>——但不會包含實際邏輯。</p>
+<p>舉例而言，這是 Django ORM QuerySet 方法中的<code>bulk_create</code>的 stubs：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bulk_create</span>(<span class="params"></span></span><br><span class="line"><span class="params">   self,</span></span><br><span class="line"><span class="params">   objs: Iterable[_T],</span></span><br><span class="line"><span class="params">   batch_size: <span class="built_in">int</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   ignore_conflicts: <span class="built_in">bool</span> = ...,</span></span><br><span class="line"><span class="params">   update_conflicts: <span class="built_in">bool</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   update_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   unique_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">list</span>[_T]: ...</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/typeddjango/django-stubs/tree/master">django-stubs</a> 就是為 Django 提供的 type hints 補充包，使用 <code>django-stubs</code> 可以讓 Django 在不修改原始程式碼的情況下，享受到 type hints 的優勢。</p>
+<hr>
+<h2 id="三、VS-Code-Mypy-套件整合"><a href="#三、VS-Code-Mypy-套件整合" class="headerlink" title="三、VS Code Mypy 套件整合"></a>三、VS Code Mypy 套件整合</h2><p>如果你使用 VS Code IDE，那 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker">Mypy 套件</a>肯定是必須的，它能讓你在開發的當下就得知 Mypy 的型別錯誤提示。</p>
+<p>該套件也會自動讀取專案根目錄下的 Mypy 設定檔，如果有設定檔，建議就<strong>不要</strong>在 VS Code 的 <code>settings.json</code>再額外<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-mypy?tab=readme-ov-file#settings">設定 Mypy 套件</a>的行為，以免衝突。</p>
+<p>和其它<strong>開發類套件</strong>（如 linter、formatter）相同，該套件已自帶了一個 Mypy 版本，但如果你的虛擬環境中有安裝 Mypy，則會優先使用虛擬環境中的版本。</p>
+<p>VS Code 的 Mypy 套件整合很簡單，卻非常實用。強烈建議你安裝。</p>
+<hr>
+<h2 id="四、pre-commit（與相關問題）"><a href="#四、pre-commit（與相關問題）" class="headerlink" title="四、pre-commit（與相關問題）"></a>四、pre-commit（與相關問題）</h2><p>Mypy 有 pre-commit 的 <a target="_blank" rel="noopener" href="https://github.com/pre-commit/mirrors-mypy">hook</a>，但存在一些整合問題。</p>
+<p>我遇到的問題是，Mypy hook 雖然可以正常執行，但<strong>無法正確讀取專案的 Mypy 設定檔</strong>。也就是說，<strong>它只會照「預設模式」來執行檢查</strong>，這就不太實用了。</p>
+<p>即使在 pre-commit 的 hook 設定檔中加入下列參數也沒用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hooks:</span><br><span class="line">  - <span class="built_in">id</span>: mypy</span><br><span class="line">    args: [--config-file=mypy.ini]</span><br></pre></td></tr></table></figure>
+
+<p>我後來還是找不到原因。我們知道，pre-commit 每一個 hook 都擁有自己獨立的執行虛擬環境——顯然這個環境還不健全！</p>
+<blockquote>
+<p><code>2024/09/09</code>更新：Mypy 的 pre-commit 設定確實相對複雜，網友 <a target="_blank" rel="noopener" href="https://github.com/geminixiang">geminixiang</a> 提供了一個不錯的做法，不需要使用 local hook，而我也依此修改了一個自己的版本。詳情請見下方留言區。</p>
+</blockquote>
+<h3 id="本地-Hook"><a href="#本地-Hook" class="headerlink" title="本地 Hook"></a>本地 Hook</h3><p>一個釜底抽薪之計，就是建立 Mypy 的 本地 pre-commit hook。</p>
+<p>不過做法上較為複雜，而且可能在不同開發者之間產生環境差異，我感覺也不是特別好的辦法。</p>
+<p>有興趣的人可以參考這篇〈<a target="_blank" rel="noopener" href="https://jaredkhan.com/blog/mypy-pre-commit">Running Mypy in Pre-commit</a>〉，裡面有詳細的步驟。</p>
+<p>基於上述理由，本次範例專案的程式碼改動，<strong>沒有</strong>加入 Mypy pre-commit 設定。</p>
+<p>我想最好的辦法，還是在 CI 階段執行 Mypy。這個我們另篇文章再談吧！</p>
+<hr>
+<h2 id="結語：Type-Hints-與未來"><a href="#結語：Type-Hints-與未來" class="headerlink" title="結語：Type Hints 與未來"></a>結語：Type Hints 與未來</h2><p>Mypy 與 Django 的整合，雖然需要花一些心思，但一旦完成，對於程式碼的穩定性與可維護性都會帶來顯著提升。</p>
+<p>希望透過這篇文章，你已經掌握了如何為 Django 專案加入 Mypy 的基本步驟，並了解了在整合過程中可能遇到的挑戰。</p>
+<p>期許未來所有 Python 專案使用 type hints 的比例，會愈來愈高，這樣我們就能更好地利用 Python 的動態特性，同時又享受到靜態型別語言的優勢。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/mypy/" title="Python type checker：Mypy 介紹" rel="bookmark">Python type checker：Mypy 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/robust-python-01/" title="《強健的 Python》筆記（一）Type Hints 的成本與挑戰" rel="bookmark">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定" rel="bookmark">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
+            <a href="/tags/Mypy/">Mypy</a>
+            <a href="/tags/Type-Hints/">Type Hints</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weekly-review-37/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">37，加入健身房，專注 Zone 2</span>
+        <span class="prev-text nav-mobile">37，加入健身房，專注 Zone 2</span>
+      </a>
+    <a class="next" href="/myth-of-ai-writing-efficiency/">
+        <span class="next-text nav-default">AI 讓寫作變輕鬆了？我可不這麼認為</span>
+        <span class="next-text nav-mobile">AI 讓寫作變輕鬆了？我可不這麼認為</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

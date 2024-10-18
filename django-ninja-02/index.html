@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 02：架構 × 章節導覽">
+  <meta property="og:title" content="Django Ninja 教學 02：架構 × 章節導覽"><meta name="twitter:description" content="本文是 Django Ninja 教學系列的第二篇，將介紹系列的架構與各個章節安排。">
+  <meta property="og:description" content="本文是 Django Ninja 教學系列的第二篇，將介紹系列的架構與各個章節安排。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文是 Django Ninja 教學系列的第二篇，將介紹系列的架構與各個章節安排。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-13T18:28:23+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-02/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 02：架構 × 章節導覽 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 02：架構 × 章節導覽
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-14
+        </span><span class="post-update">
+            →  2024-10-13
+          </span>
+        <span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E5%B0%8E%E8%AE%80%E8%88%87-Django-Ninja-%E4%BB%8B%E7%B4%B9"><span class="toc-text">第一章：導讀與 Django Ninja 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9A%E7%AF%84%E4%BE%8B%E5%B0%88%E6%A1%88%E8%88%87%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A"><span class="toc-text">第二章：範例專案與環境設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9ADjango-Ninja-%E5%9F%BA%E6%9C%AC%E5%8A%9F"><span class="toc-text">第三章：Django Ninja 基本功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%EF%BC%9AAPI-%E6%96%87%E4%BB%B6"><span class="toc-text">第四章：API 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9A%E8%B3%87%E6%96%99%E9%A9%97%E8%AD%89%E8%88%87%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86"><span class="toc-text">第五章：資料驗證與錯誤處理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9AAPI-%E9%80%B2%E9%9A%8E%E5%8A%9F%E8%83%BD"><span class="toc-text">第六章：API 進階功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0%EF%BC%9A%E8%BA%AB%E5%88%86%E8%AA%8D%E8%AD%89%E8%88%87%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6"><span class="toc-text">第七章：身分認證與單元測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0%EF%BC%9A%E7%B3%BB%E5%88%97%E5%9B%9E%E9%A1%A7%E8%88%87%E5%AE%8C%E8%B3%BD%E5%BF%83%E5%BE%97"><span class="toc-text">第八章：系列回顧與完賽心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>上一篇中，我們講述了系列的整體方向。現在，我將進一步深入，為你詳細介紹<strong>系列的架構與各個章節安排。</strong></p>
+<p>可以說，本文就是整個系列的<strong>藍圖。</strong></p>
+<p>一般而言，架構介紹通常會直接放在第一篇的後半段（如果有的話），但我決定<strong>獨立成一篇。</strong></p>
+<p>原因無他，<strong>我在整個教學架構上花費了相當的心思，希望為讀者提供一個全面的概覽</strong>。這有助於你快速進入狀況，並了解自己目前正在學習主題哪一個部分。</p>
+<p>話不說多，讓我們一一介紹。</p>
+<span id="more"></span>
+
+<hr>
+<p>本系列共分為八章，<strong>只有第三章有細分小節</strong>——因為內容較多。</p>
+<p>以下是各章節介紹。（各篇名稱與內容仍可能會有小幅調整，但整體架構不變）</p>
+<h2 id="第一章：導讀與-Django-Ninja-介紹"><a href="#第一章：導讀與-Django-Ninja-介紹" class="headerlink" title="第一章：導讀與 Django Ninja 介紹"></a>第一章：導讀與 Django Ninja 介紹</h2><p>開篇介紹本系列的主旨、定位，適合的目標讀者，以及學習 Django Ninja 的理由。</p>
+<p>架構篇中，說明系列的安排與組成、每篇文章的主要內容與學習順序。</p>
+<p>最後為讀者介紹 Django Ninja 與 Django REST framework 等基本概念，包括彼此的定位與異同。</p>
+<ul>
+<li><a href="/django-ninja-01/">卷 1：系列導讀 × 目標讀者</a></li>
+<li><strong>卷 2：架構 × 章節導覽</strong>（本篇）</li>
+<li><a href="/django-ninja-03/">卷 3：Django Ninja 介紹——與 Django REST framework 主要區別</a></li>
+</ul>
+<h2 id="第二章：範例專案與環境設定"><a href="#第二章：範例專案與環境設定" class="headerlink" title="第二章：範例專案與環境設定"></a>第二章：範例專案與環境設定</h2><p>介紹系列的範例專案——<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">Django-Ninja-Tutorial</a>，透過具體的程式碼改動，作為學習過程中的參考。（覺得專案有用心的話，<strong>千萬不要吝嗇你的 🌟 哦！</strong>🥰）</p>
+<p><img src="https://i.imgur.com/ssR7aLo.png" alt="範例專案：Django-Ninja-Tutorial"><span class="cap">範例專案：Django-Ninja-Tutorial</span></p>
+<p>範例程式碼是學習新技術的良師益友，也是我的嘔心瀝血之作 😭</p>
+<p>我們也會介紹專案所使用的 Python 開發工具，讓讀者能體驗真實的開發環境。</p>
+<p>最後，我們會一步一步帶著你，讓專案能夠在你的本機環境運行。</p>
+<ul>
+<li><a href="/django-ninja-04/">卷 4：範例專案介紹</a></li>
+<li><a href="/django-ninja-05/">卷 5：Python 現代開發工具介紹</a></li>
+<li><a href="/django-ninja-06/">卷 6：環境設定 × 如何使用本專案</a></li>
+</ul>
+<hr>
+<h2 id="第三章：Django-Ninja-基本功"><a href="#第三章：Django-Ninja-基本功" class="headerlink" title="第三章：Django Ninja 基本功"></a>第三章：Django Ninja 基本功</h2><p>Django Ninja 的核心部分，任何一個 API 開發者都需要熟悉的基本功。</p>
+<p>本章總共分成三大部分：<strong>路由、請求與回應</strong>。</p>
+<h3 id="第一節：路由（Routers）"><a href="#第一節：路由（Routers）" class="headerlink" title="第一節：路由（Routers）"></a>第一節：路由（Routers）</h3><p><strong>端點（endpoints）與路由是 API 的起點。</strong></p>
+<p>Django Ninja 的路由設定方式，與傳統 Django 有很大不同。因此，我們將路由放在第一位，作為學習 API 開發的入口。</p>
+<ul>
+<li><a href="/django-ninja-07/">卷 7：路由（上）傳統 Django 路由做法</a></li>
+<li><a href="/django-ninja-08/">卷 8：路由（下）Django Ninja 路由設定</a></li>
+</ul>
+<h3 id="第二節：請求（HTTP-Request）"><a href="#第二節：請求（HTTP-Request）" class="headerlink" title="第二節：請求（HTTP Request）"></a>第二節：請求（HTTP Request）</h3><p>路由之後是 HTTP 請求，講述 Django Ninja 處理請求的三大重點：路徑參數、查詢參數和請求主體（body）。</p>
+<p>其中最重要的是 body，將使用 Django Ninja Schema（即 Pydantic BaseModel）來進行資料接收與驗證。</p>
+<ul>
+<li><a href="/django-ninja-09/">卷 9：請求（一）Django Ninja 處理 HTTP 請求</a></li>
+<li><a href="/django-ninja-10/">卷 10：請求（二）路徑參數 - Path Parameters</a></li>
+<li><a href="/django-ninja-11/">卷 11：請求（三）查詢參數 - Query Parameters</a></li>
+<li><a href="/django-ninja-12/">卷 12：請求（四）Request Body 與 Schema 介紹</a></li>
+</ul>
+<h3 id="第三節：回應（HTTP-Response）"><a href="#第三節：回應（HTTP-Response）" class="headerlink" title="第三節：回應（HTTP Response）"></a>第三節：回應（HTTP Response）</h3><p>請求之後是回應，回應仍需要使用 Schema，<strong>但變化比請求更多。</strong></p>
+<p>本節將介紹回應的基本架構、處理方式、巢狀 Schema，以及 Resolver 方法。</p>
+<ul>
+<li><a href="/django-ninja-13/">卷 13：回應（一）Django Ninja 處理 HTTP 回應</a></li>
+<li><a href="/django-ninja-14/">卷 14：回應（二）用 Schema 建立巢狀結構回應</a></li>
+<li><a href="/django-ninja-15/">卷 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a></li>
+<li><a href="/django-ninja-16/">卷 16：回應（四）Resolver 方法——欄位資料格式化</a></li>
+</ul>
+<hr>
+<h2 id="第四章：API-文件"><a href="#第四章：API-文件" class="headerlink" title="第四章：API 文件"></a>第四章：API 文件</h2><p>掌握了 Django Ninja 如何處理請求與回應後，剩下的另一關鍵就是 API 文件。</p>
+<p>API 文件的<strong>品質與可讀性</strong>對 API 使用者至關重要，本章將介紹 Django Ninja 在<strong>自動化產生 API 文件</strong>中的應用，並分享我認為的一些好的實踐。</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-ninja-17/">卷 17：API 文件（上）Django Ninja 文件實踐指南</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-18/">卷 18：API 文件（下）Pydantic Field 設定範例與預設值</a></li>
+</ul>
+<h2 id="第五章：資料驗證與錯誤處理"><a href="#第五章：資料驗證與錯誤處理" class="headerlink" title="第五章：資料驗證與錯誤處理"></a>第五章：資料驗證與錯誤處理</h2><p>資料驗證和錯誤處理關係到 API 的穩定與可靠。本章探討如何在 Django Ninja 中有效進行資料驗證和錯誤捕捉，並給出合理、正確的回應。</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-ninja-19/">卷 19：資料驗證（上）Pydantic 單一欄位驗證</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-20/">卷 20：資料驗證（下）Pydantic 跨欄位驗證</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-21/">卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-22/">卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a></li>
+</ul>
+<hr>
+<h2 id="第六章：API-進階功能"><a href="#第六章：API-進階功能" class="headerlink" title="第六章：API 進階功能"></a>第六章：API 進階功能</h2><p>雖說是入門，但我們仍有必要介紹 API 的<strong>常見進階功能</strong>。這些技術將協助你應對大型專案中的典型挑戰。</p>
+<p>我們會引導你完成每個功能的實作，同時聚焦展示它們的<strong>概念與應用場景</strong>。你可以根據這些內容，進一步自行深入學習與應用。</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-ninja-23/">卷 23：檔案上傳——Django UploadedFile 介紹</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-24/">卷 24：分頁（上）Django Ninja 的內建分頁器</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-25/">卷 25：分頁（下）自定義分頁類別</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-26/">卷 26：資料查詢與過濾（上）FilterSchema 介紹</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-27/">卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</a></li>
+</ul>
+<h2 id="第七章：身分認證與單元測試"><a href="#第七章：身分認證與單元測試" class="headerlink" title="第七章：身分認證與單元測試"></a>第七章：身分認證與單元測試</h2><p>本章將介紹後端專案中不可或缺的主題，雖然核心部分不是由 Django Ninja 實作，但對於後端開發者來說，是必須掌握的技能。</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-ninja-28/">卷 28：身分認證——Session 認證與全域設定</a></li>
+<li><a href="https://blog.kyomind.tw/django-ninja-29/">卷 29：單元測試——使用 Test Client 與 pytest 測試 API</a></li>
+</ul>
+<h2 id="第八章：系列回顧與完賽心得"><a href="#第八章：系列回顧與完賽心得" class="headerlink" title="第八章：系列回顧與完賽心得"></a>第八章：系列回顧與完賽心得</h2><p>簡單回顧整個系列，並分享我在本次鐵人賽的創作心得與感想。</p>
+<ul>
+<li><a href="https://blog.kyomind.tw/django-ninja-30/">卷 30：系列回顧與完賽心得</a></li>
+</ul>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>通過這篇導覽，你已經對整個系列的架構有了清晰的認識。接下來的每一篇文章都會按照這個藍圖，循序漸進地帶領你學習 Django Ninja。</p>
+<p>下一篇，我們將正式介紹 Django Ninja，並與老牌的 Django REST framework 進行比較，了解兩者在 API 開發的主要功能差異與適用場景。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-29/" title="Django Ninja 教學 29：單元測試——使用 Test Client 與 pytest 測試 API" rel="bookmark">Django Ninja 教學 29：單元測試——使用 Test Client 與 pytest 測試 API</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-07/" title="Django Ninja 教學 07：路由（上）傳統 Django 路由做法" rel="bookmark">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6/">單元測試</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-01/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 01：系列導讀 × 目標讀者</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 01：系列導讀 × 目標讀者</span>
+      </a>
+    <a class="next" href="/django-ninja-03/">
+        <span class="next-text nav-default">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</span>
+        <span class="next-text nav-mobile">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django：以 request.headers 而非 META 獲取 HTTP header 資訊">
+  <meta property="og:title" content="Django：以 request.headers 而非 META 獲取 HTTP header 資訊">
+<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
+            
+
+  <meta property="article:modified_time" content="2024-06-18T01:45:46+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2022-06-05T07:49:39+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-request-headers/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django：以 request.headers 而非 META 獲取 HTTP header 資訊 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django：以 request.headers 而非 META 獲取 HTTP header 資訊
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-06-05
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%B4%E6%99%AF%E9%9C%80%E6%B1%82%EF%BC%9A%E6%AC%B2%E5%8F%96%E5%BE%97%E7%89%B9%E5%AE%9A-request-header-%E5%85%A7%E5%AE%B9"><span class="toc-text">場景需求：欲取得特定 request header 內容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%BE%80%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-request-META"><span class="toc-text">以往做法：使用 request.META</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#request-META-%E7%BC%BA%E9%BB%9E"><span class="toc-text">request.META 缺點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-request-headers"><span class="toc-text">更好的做法：使用 request.headers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-request-headers-%E5%BE%8C%E7%9A%84%E6%94%B9%E5%96%84"><span class="toc-text">使用 request.headers 後的改善</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E5%8F%AF%E8%AE%80%E6%80%A7%E7%82%BA%E7%8E%8B"><span class="toc-text">小結：可讀性為王</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/TBQKYrC.png"></p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
+</blockquote>
+<p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
+<p>而這個<code>HttpRequest</code>物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
+<p>我們經常使用<code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
+
+
+<span id="more"></span>
+
+<hr>
+<h2 id="場景需求：欲取得特定-request-header-內容"><a href="#場景需求：欲取得特定-request-header-內容" class="headerlink" title="場景需求：欲取得特定 request header 內容"></a>場景需求：欲取得特定 request header 內容</h2><p>在開發內部 API 相關功能時，一個很常見的需求，就是取得本次請求所帶的「驗證 token」 內容，加以重新封裝成一個新的請求，並轉發給內部 API。</p>
+<p>通常 token 會附在請求的 header 中，以下列鍵值對形式存在：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">accept-encoding</span><span class="punctuation">: </span>gzip, deflate, br</span><br><span class="line"><span class="attribute">accept-language</span><span class="punctuation">: </span>zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6</span><br><span class="line"><span class="attribute">cache-control</span><span class="punctuation">: </span>max-age=0</span><br><span class="line">...</span><br><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>Bearer &lt;token_string&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>Authorization</code>，就是我們要的，有關驗證 token 的 header 欄位。</p>
+<p>所以我們的需求是：原封不動地取得它的值——「<code>&#39;Bearer &lt;token_string&gt;&#39;</code>」，並複製到我們重新封裝的 HTTP 請求的 header 中，以維持認證的有效性。</p>
+<h2 id="以往做法：使用-request-META"><a href="#以往做法：使用-request-META" class="headerlink" title="以往做法：使用 request.META"></a>以往做法：使用 request.META</h2><p>過去撰寫內部 API 的相關請求，驗證 token 部分通常是透過上述「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.META">request.META</a>」取得 request header 裡的 token 值。</p>
+<p>申言之，<code>HttpRequest</code>有一個物件屬性叫<code>META</code>，其值為一個 Python 字典，並以字典中的每一個鍵值對代表 HTTP header 相關資訊。</p>
+<p>典型的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">HTTP header 欄位名稱</a>看起來像這樣：</p>
+<ul>
+<li><code>Accept-Language</code> – List of acceptable human languages for response.</li>
+<li><code>Authorization</code> – Authentication credentials for HTTP authentication.</li>
+</ul>
+<p>但實際上，<code>META</code>字典中的鍵名，<strong>並非上述格式</strong>，因為 request.META 在封裝 HTTP 請求的 header 時，會對「<strong>欄位名稱</strong>」進行<strong>格式轉換（mapping）</strong>，規則如下：</p>
+<ol>
+<li>加上<code>HTTP_</code><strong>前綴</strong>。</li>
+<li>轉為<strong>全大寫</strong>。</li>
+<li>將<code>-</code><strong>替換</strong>為<code>_</code>（底線）。</li>
+</ol>
+<blockquote>
+<p>So, for example, a header called <strong><code>X-Bender</code></strong> would be mapped to the <strong><code>META</code></strong> key <strong><code>HTTP_X_BENDER</code></strong>.</p>
+</blockquote>
+<p>因此，程式中取值的寫法差不多都是這樣，以獲得驗證 token 為例（注意名稱）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: request.META.get(<span class="string">&#x27;HTTP_AUTHORIZATION&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="request-META-缺點"><a href="#request-META-缺點" class="headerlink" title="request.META 缺點"></a>request.META 缺點</h2><p>我覺得大致有下：</p>
+<ol>
+<li>Header 欄位名稱被<strong>強制轉換</strong>，與原生的 HTTP header 並不相同。<ol>
+<li>比如<code>Accept-Language</code>→<code>HTTP_ACCEPT_LANGUAGE</code>。</li>
+<li>這樣的轉換雖然遵循一定規律，但畢竟和原來不同，所以<strong>並不直觀</strong>。</li>
+</ol>
+</li>
+<li><code>META</code>這個詞，太籠統太抽象：<code>request.META</code>究竟代表什麼？說真的第一時間你不太能和 HTTP header 聯想，多少會影響程式的<strong>可讀性</strong>。</li>
+</ol>
+<p>所以我一直不太喜歡「request.META」這個寫法——不易理解且存在較多出錯可能。</p>
+<h2 id="更好的做法：使用-request-headers"><a href="#更好的做法：使用-request-headers" class="headerlink" title="更好的做法：使用 request.headers"></a>更好的做法：使用 request.headers</h2><p>其實仔細想想就會覺得：使用<code>META</code>來取 header 資訊的做法實在<strong>很不直覺、不自然</strong>，對於一個成熟的框架，理論上應該要再給出「<strong>語法糖</strong>」加以簡化。</p>
+<h3 id="Django-2-2-更新"><a href="#Django-2-2-更新" class="headerlink" title="Django 2.2 更新"></a>Django 2.2 更新</h3><p>這個需求終於在 Django 2.2 獲得實現：加入了 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.headers">request.headers</a>。Django 文件也建議你，如果只是想單純取得 header 資訊，可以使用更簡潔的<code>headers</code>：</p>
+<blockquote>
+<p><strong><code>HttpRequest.headers</code></strong> is <strong>a simpler way</strong> to access all HTTP-prefixed headers</p>
+</blockquote>
+<h3 id="HttpRequest-headers特色"><a href="#HttpRequest-headers特色" class="headerlink" title="HttpRequest.headers特色"></a><code>HttpRequest.headers</code>特色</h3><ol>
+<li>依舊為 Python 字典格式。</li>
+<li>Header 鍵名維持原來的名稱，不再進行轉換。</li>
+<li>使用鍵名取值時，<strong>無須區分大小寫</strong>。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; request.headers</span><br><span class="line">&#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6&#x27;</span>,..&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;User-Agent&#x27;</span> <span class="keyword">in</span> request.headers</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; <span class="string">&#x27;user-agent&#x27;</span> <span class="keyword">in</span> request.headers</span><br><span class="line">True</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; request.headers[<span class="string">&#x27;User-Agent&#x27;</span>]</span><br><span class="line">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span><br><span class="line">&gt;&gt;&gt; request.headers[<span class="string">&#x27;user-agent&#x27;</span>]</span><br><span class="line">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)</span><br></pre></td></tr></table></figure>
+
+<p>這個「不區分大小寫」的設計，主要是考量 header 欄位名稱<strong>十分多樣</strong>，尤其是自訂的 header 名稱，根本沒有一定的標準。</p>
+<h2 id="使用-request-headers-後的改善"><a href="#使用-request-headers-後的改善" class="headerlink" title="使用 request.headers 後的改善"></a>使用 request.headers 後的改善</h2><p>可以看看原來程式碼的寫法變化：</p>
+<p><strong>Before</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: request.META.get(<span class="string">&#x27;HTTP_AUTHORIZATION&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>After</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: request.headers.get(<span class="string">&#x27;Authorization&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改變雖小，卻<strong>直觀了很多！</strong></p>
+<p>換句話說，其實就是改善<code>META</code>既有的缺點：</p>
+<ol>
+<li>HTTP header 鍵名不必強制前綴<code>HTTP_</code>和<strong>全大寫</strong>了！只要使用原來的名稱即可，這才是符合人類直覺得設計！至於不區分大小寫我覺得還好，畢竟最好還是使用一致的命名，如上述程式碼，比較不易混淆。</li>
+<li><code>headers</code>這個屬性名稱比<code>META</code>更加直觀、可讀，容易聯想到 HTTP headers。</li>
+</ol>
+<hr>
+<h2 id="小結：可讀性為王"><a href="#小結：可讀性為王" class="headerlink" title="小結：可讀性為王"></a>小結：可讀性為王</h2><p><strong>簡潔、直觀、易讀</strong>，都是 Clean Code 的重要元素。</p>
+<p>因此，哪怕只是很小的改動，我仍然強烈建議你：在不影響原有需求的前提下，盡可能使用<code>request.headers</code>取代<code>request.META</code>。</p>
+<p>無時無刻遵守好習慣，你的隊友——包括未來的自己——會感謝現在的你。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-07/" title="Django Ninja 教學 07：路由（上）傳統 Django 路由做法" rel="bookmark">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-10/" title="Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters" rel="bookmark">Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-13/" title="Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應" rel="bookmark">Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/HTTP/">HTTP</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/github-copilot/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">GitHub Copilot 心得——寫文章的利器？</span>
+        <span class="prev-text nav-mobile">GitHub Copilot 心得——寫文章的利器？</span>
+      </a>
+    <a class="next" href="/pyproject-toml/">
+        <span class="next-text nav-default">Python 開發：pyproject.toml 介紹 + 使用教學</span>
+        <span class="next-text nav-mobile">Python 開發：pyproject.toml 介紹 + 使用教學</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

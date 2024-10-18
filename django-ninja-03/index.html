@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別">
+  <meta property="og:title" content="Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別"><meta name="twitter:description" content="本文將介紹 Django Ninja 的起源、特點，並重點比較它與 Django REST framework 之間的核心差異。">
+  <meta property="og:description" content="本文將介紹 Django Ninja 的起源、特點，並重點比較它與 Django REST framework 之間的核心差異。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文將介紹 Django Ninja 的起源、特點，並重點比較它與 Django REST framework 之間的核心差異。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:29+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-15T03:23:43+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-03/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-15
+        </span><span class="post-update">
+            →  2024-10-04
+          </span>
+        <span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%B5%B7%E6%BA%90"><span class="toc-text">Django Ninja 起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E7%89%B9%E9%BB%9E"><span class="toc-text">Django Ninja 特點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E7%9A%84%E9%9D%9E%E5%90%8C%E6%AD%A5%E6%95%88%E8%83%BD%E5%84%AA%E5%8B%A2"><span class="toc-text">Django Ninja 的非同步效能優勢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%88%87-Django-REST-framework-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8D%80%E5%88%A5"><span class="toc-text">Django Ninja 與 Django REST framework 的主要區別</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E8%A8%88%E7%90%86%E5%BF%B5"><span class="toc-text">設計理念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E5%B7%AE%E7%95%B0"><span class="toc-text">主要功能差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E7%BE%A4%E6%94%AF%E6%8C%81%E8%88%87%E7%94%9F%E6%85%8B"><span class="toc-text">社群支持與生態</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E7%B5%90"><span class="toc-text">總結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>選擇任何工具之前，我們通常會先了解<strong>它能解決的問題</strong>，以及<strong>是否符合與自己的需求</strong>。</p>
+<p>本文將介紹 Django Ninja 這個現代化的 API 框架，探討它的起源和主要特點，並重點比較它與 Django REST framework 之間的差異，讓你能夠更好地選擇適合的工具。</p>
+<hr>
+<h2 id="Django-Ninja-起源"><a href="#Django-Ninja-起源" class="headerlink" title="Django Ninja 起源"></a>Django Ninja 起源</h2><p>Django Ninja 的起源<strong>與 FastAPI 有著密切的關係。</strong></p>
+<p>Django Ninja 可以被視為「<strong>Django 版的 FastAPI</strong>」，它比原生 FastAPI 能夠更好地與 Django 整合。</p>
+<p>Django Ninja 的<a target="_blank" rel="noopener" href="https://django-ninja.dev/motivation/">官方文件</a>中，作者 <a target="_blank" rel="noopener" href="https://github.com/vitalik">Vitaliy Kucheryaviy</a> 解釋了<strong>為什麼建立這個框架</strong>。這源於他在 Django 專案中使用 FastAPI 時遇到的一些挑戰，特別是在整合方面。</p>
+<p>因此，他決定自己建立一個更合適的工具，從而誕生了 Django Ninja。</p>
+<p>可想而知，Django Ninja 深受 FastAPI 的啟發。事實上，它同時也借鑑了不少 Django REST framework 的優秀實踐——這是<strong>後發者的優勢</strong>！</p>
+<p>文件中引用了這麼一句話，這是個常見的疑問：</p>
+<blockquote>
+<p><strong>Django Ninja</strong> looks basically the same as <strong>FastAPI</strong>, so why not just use FastAPI?</p>
+</blockquote>
+<p>答案就是：兩者的整合不完美，而 Django Ninja 提供了一個更加適合 Django 開發者的版本。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Django-Ninja-特點"><a href="#Django-Ninja-特點" class="headerlink" title="Django Ninja 特點"></a>Django Ninja 特點</h2><p>Django Ninja 的一些<strong>關鍵特性</strong>，使其成為 Django API 開發者的優秀選擇：</p>
+<ul>
+<li><strong>自動產生 API 文件：</strong> 利用 Python 型別提示和 Pydantic，自動生成符合 OpenAPI 標準的 API 文件，大大減少了文件維護的工作量——這也是我當初選擇 Django Ninja 最大理由。</li>
+<li><strong>請求驗證與資料序列化：</strong> 基於 Pydantic BaseModel，驗證請求資料和處理資料的序列化、反序列化，確保 API 的穩定和數據正確。</li>
+<li><strong>簡潔且高效的 API 定義：</strong> Django Ninja 提供了一種簡單明瞭的方式來定義 API 路由和處理邏輯（view 函式），使開發者能夠快速上手。</li>
+<li><strong>與 Django 無縫整合：</strong> 框架設計之初就考慮到了與 Django 的兼容性，它可以輕鬆整合到現有的 Django 專案中，充分使用 Django 的既有功能，比如 ORM。</li>
+<li><strong>支援非同步</strong>：Django Ninja 支援非同步處理，讓 API 在面對大量請求時，仍能維持高效的回應速度與處理效能。</li>
+</ul>
+<h2 id="Django-Ninja-的非同步效能優勢"><a href="#Django-Ninja-的非同步效能優勢" class="headerlink" title="Django Ninja 的非同步效能優勢"></a>Django Ninja 的非同步效能優勢</h2><p>了解 Django Ninja 的特點後，不得不再次強調它對<strong>非同步</strong>的支援，這是 Django Ninja 相較於傳統同步框架如 Django REST framework 一大效能優勢。</p>
+<p><img src="https://i.imgur.com/3teW1L4.png" alt="django-ninja.dev"><span class="cap">django-ninja.dev</span></p>
+<p>從上圖中可知，在<strong>相對高</strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E6%80%A7">並行</a>（concurrency&#x3D;50）的網路請求情境下，Django Ninja 的處理能力明顯優於 Flask + Marshmallow 和 Django REST framework。</p>
+<p>非同步的好處在<strong>只有 1 個 worker 時</strong>更加明顯，這對於<strong>節省資源</strong>和<strong>提高效能</strong>都有著重要意義。</p>
+<hr>
+<p>了解了 Django Ninja，我們來比較它和 Django REST Framework 的差異。</p>
+<h2 id="Django-Ninja-與-Django-REST-framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST framework 的主要區別"></a>Django Ninja 與 Django REST framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>，可以參考我寫過的這篇〈<a href="/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>
+<p>文中還說明了，<a href="/django-rest-framework-01/#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-Django-REST-Framework">為何 Django 需要像 Django REST framework 這樣的 API 框架</a>。</p>
+<p>Django REST framework 和 Django Ninja，都是 Django 生態系中，用於快速建立 API 的強大工具，而且前者的歷史悠久得多。</p>
+<p>但它們在設計理念、功能實現上存在顯著差異。對我而言，它們甚至可以說是<strong>完全不同</strong>的工具😎</p>
+<p>下面三個部分，總結了我個人認為兩者的主要區別。</p>
+<h2 id="設計理念"><a href="#設計理念" class="headerlink" title="設計理念"></a>設計理念</h2><ul>
+<li><strong>Django REST framework</strong>：作為一個成熟且全面的框架，它提供了<strong>豐富的元件</strong>。適合需要高度定制和複雜功能的專案，並且擁有強大的社群支持。</li>
+<li><strong>Django Ninja</strong>：專注於<strong>簡潔</strong>和開發速度，利用現代 Python 特性（如型別提示）來簡化 API 開發過程。適合追求快速開發和高效性能的專案。</li>
+</ul>
+<h2 id="主要功能差異"><a href="#主要功能差異" class="headerlink" title="主要功能差異"></a>主要功能差異</h2><ul>
+<li><strong>序列化</strong>：<ul>
+<li><strong>Django REST framework</strong>：使用自定義的<a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/api-guide/serializers/">序列化器</a>，支持更多複雜的序列化需求。</li>
+<li><strong>Django Ninja</strong>：使用 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a>，簡化了序列化過程，但可能不如 Django REST framework 靈活。</li>
+</ul>
+</li>
+<li><strong>API 文件生成</strong>：<ul>
+<li><strong>Django REST framework</strong>：需要額外的套件才能透過程式碼自動產生 API 文件，但效果不如使用 Pydantic 的框架。</li>
+<li><strong>Django Ninja</strong>：自動生成符合 OpenAPI 標準的文件，過程更簡便且高效。</li>
+</ul>
+</li>
+<li><strong>性能：（同步 vs 非同步）</strong><ul>
+<li><strong>Django REST framework</strong>：在功能豐富的情況下，性能可能受到一定影響。不支援非同步。</li>
+<li><strong>Django Ninja</strong>：在請求驗證和處理方面通常表現更快，而且支援非同步。</li>
+</ul>
+</li>
+</ul>
+<h2 id="社群支持與生態"><a href="#社群支持與生態" class="headerlink" title="社群支持與生態"></a>社群支持與生態</h2><ul>
+<li><strong>Django REST framework</strong>：擁有成熟的社群和大量的外掛套件，由 <a target="_blank" rel="noopener" href="https://github.com/encode">encode</a> 團隊開發維護。</li>
+<li><strong>Django Ninja</strong>：較新的框架，社群規模較小，網路上的資料少很多，且主要依賴作者一人開發、維護。</li>
+</ul>
+<hr>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Django Ninja 和 Django REST framework 有著<strong>各自的優勢</strong>：</p>
+<ul>
+<li>如果你追求的是快速開發、高性能、以及更現代化的 Python 型別提示，<strong>Django Ninja</strong> 是理想選擇，尤其適合需要非同步的場景。</li>
+<li>如果你需要處理更複雜的認證、權限管理，並且需要高度自定義的 API 驗證和處理邏輯，那麼 <strong>Django REST framework</strong> 是一個穩定且強大的選擇。</li>
+</ul>
+<p>透過本文的介紹，相信你對 Django Ninja 有了更加清晰的認識。</p>
+<p>接下來的教學中，我們將深入探討 Django Ninja 的各個部分，幫助你更好地掌握這個現代化的 API 開發工具。</p>
+<p>不過在此之前，我們還有一個重要的前置主題：<strong>範例專案與環境設定</strong>。這會是我們學習 Django Ninja 的第一步。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-rest-framework-01/" title="Django REST framework 教學（一）前言篇" rel="bookmark">Django REST framework 教學（一）前言篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-rest-framework-02/" title="Django REST framework 教學（二）基本設定與路由" rel="bookmark">Django REST framework 教學（二）基本設定與路由</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-rest-framework-03/" title="Django REST framework 教學（三）View 函式" rel="bookmark">Django REST framework 教學（三）View 函式</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/API-%E9%96%8B%E7%99%BC/">API 開發</a>
+            <a href="/tags/Django-REST-framework/">Django REST framework</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-02/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 02：架構 × 章節導覽</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 02：架構 × 章節導覽</span>
+      </a>
+    <a class="next" href="/django-ninja-04/">
+        <span class="next-text nav-default">Django Ninja 教學 04：範例專案介紹</span>
+        <span class="next-text nav-mobile">Django Ninja 教學 04：範例專案介紹</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

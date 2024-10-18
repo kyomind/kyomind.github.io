@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證">
+  <meta property="og:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。">
+  <meta property="og:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-10-01T02:31:53+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-19/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-01
+        </span><span class="post-update">
+            →  2024-10-14
+          </span>
+        <span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%B8%BD%E8%AB%96"><span class="toc-text">第五章總論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-%E4%BF%AE%E6%AD%A3"><span class="toc-text">API 修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E3%80%8C%E5%B1%A4%E6%AC%A1%E3%80%8D%E7%9A%84%E9%A9%97%E8%AD%89"><span class="toc-text">不同「層次」的驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%EF%BC%9A%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87"><span class="toc-text">新需求：密碼規則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87%E9%A9%97%E8%AD%89%EF%BC%9A%E4%BD%BF%E7%94%A8-field-validator"><span class="toc-text">實作密碼規則驗證：使用 field_validator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6"><span class="toc-text">實際測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p>
+<p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p>
+<p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
+<p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p>
+<hr>
+<h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
+<p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>
+<ul>
+<li><strong>卷 19：資料驗證（上）Pydantic 單一欄位驗證</strong>（本文）</li>
+<li><a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic 跨欄位驗證</a></li>
+<li><a href="/django-ninja-21/">卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a></li>
+<li><a href="/django-ninja-22/">卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a></li>
+</ul>
+<p>前兩篇，我們會學習如何實現靈活的資料驗證，以確保輸入資料符合預期，並在必要時拋出錯誤。</p>
+<p>後兩篇，我們將討論如何處理 API 流程中可能出現的各種錯誤（不限於驗證錯誤），以提供更好的使用者體驗。</p>
+<p>Django Ninja 的資料驗證與錯誤處理機制，相較 Django REST framework <strong>更加複雜</strong>，因此我們得用<strong>完整的篇幅</strong>來介紹，幫助你清楚地理解它們。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="API-修正"><a href="#API-修正" class="headerlink" title="API 修正"></a>API 修正</h2><p>我們會以上一篇文章中新建立的 API——<strong>新增使用者</strong>——為例。</p>
+<p>繼續改善它，加上自定義驗證，讓客戶端傳來的資料更可靠。</p>
+<p>不過我要先做一些<strong>錯誤修正</strong>，修正後的程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&#x27;/users/&#x27;</span>, summary=<span class="string">&#x27;新增使用者&#x27;</span>, response=&#123;<span class="number">201</span>: <span class="built_in">dict</span>&#125;</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_user</span>(<span class="params">...</span>) -&gt; <span class="built_in">tuple</span>[<span class="built_in">int</span>, <span class="built_in">dict</span>]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    新增使用者</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    user = User(</span><br><span class="line">        username=payload.username,</span><br><span class="line">        email=payload.email,</span><br><span class="line">        bio=payload.bio,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># 使用 set_password 方法加密密碼</span></span><br><span class="line">    user.set_password(raw_password=payload.password)</span><br><span class="line">    user.save()</span><br><span class="line">    <span class="keyword">return</span> <span class="number">201</span>, &#123;<span class="string">&#x27;id&#x27;</span>: user.<span class="built_in">id</span>, <span class="string">&#x27;username&#x27;</span>: user.username&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要改正了這兩處：</p>
+<ol>
+<li>在<code>router</code>裝飾器<strong>新增</strong>了<code>response=&#123;201: dict&#125;</code>參數。本來沒有定義，實際使用這個 API 時會出現錯誤。因為<strong>預設只有 200 回應</strong>，想要 200 以外的回應，要透過<code>response</code>參數聲明才行。</li>
+<li>使用<code>set_password</code>方法對用戶輸入的密碼進行<strong>加密</strong>。這是 Django 內建的功能，防止密碼直接儲存在 db 中。密碼不能明文存儲，無疑是現代開發的 ABC。</li>
+</ol>
+<hr>
+<p>修正結束，我們正式進入主題。</p>
+<h2 id="不同「層次」的驗證"><a href="#不同「層次」的驗證" class="headerlink" title="不同「層次」的驗證"></a>不同「層次」的驗證</h2><p>既然是驗證，主要當然是跟來自客戶端的<strong>請求</strong>有關——<strong>驗證請求內容。</strong></p>
+<p>Django Ninja 中，每個 API 可以透過定義 Schema，來<strong>描述 API 所接收的資料結構</strong>。這些 Schema 基於 Pydantic，能自動對請求中的資料進行驗證。</p>
+<p>Schema 中的 type hints 可以驗證資料<strong>型別</strong>，這是最基本的驗證。</p>
+<p>前一篇提到的 Pydantic Field，則可以對資料的長度、範圍等特性進行驗證。這部分在後面會示範。</p>
+<p>這些都是偏「形式上」的驗證，而本文將聚焦於更複雜的「<strong>自定義驗證</strong>」——基於一定的<strong>規則</strong>。</p>
+<h3 id="範例-API-的-Schema-現狀"><a href="#範例-API-的-Schema-現狀" class="headerlink" title="範例 API 的 Schema 現狀"></a>範例 API 的 Schema 現狀</h3><p>以「新增使用者」為例，request body 接收<code>username</code>、<code>email</code>、<code>password</code>和<code>bio</code>等欄位。透過我們定義的 Schema，能完成最基本的<strong>資料型別驗證</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    email: <span class="built_in">str</span></span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line">    bio: <span class="built_in">str</span> | <span class="literal">None</span> = <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p>如上一篇所述，只有<code>bio</code>欄位是可選的，其餘則為必填——缺少就會得到 422 回應。所以 Schema 同時也驗證了資料的「<strong>存在性</strong>」。</p>
+<p>目前看起來還不錯！但我們並不就此滿足。</p>
+<hr>
+<h2 id="新需求：密碼規則"><a href="#新需求：密碼規則" class="headerlink" title="新需求：密碼規則"></a>新需求：密碼規則</h2><p>我們要求使用者在設定密碼時，遵守以下兩個規則：</p>
+<ol>
+<li>密碼長度至少 8 個字元。</li>
+<li>必須包含至少一個數字。</li>
+</ol>
+<p>這些規則有助於提高帳號的安全性，防止用戶設定過於簡單的密碼。</p>
+<p>考慮到<strong>教學目的</strong>，我沒有讓規則過於複雜。這兩條規則都有其<strong>特定的教學意義</strong>：</p>
+<ol>
+<li>最小長度限制可以<strong>直接透過 Pydantic Field 實現</strong>，不必自行實作。</li>
+<li>第二個規則是重頭戲，我們會使用 Pydantic 的<code>@field_validator</code>裝飾器，自行定義欄位的驗證規則。</li>
+</ol>
+<hr>
+<h2 id="實作密碼規則驗證：使用-field-validator"><a href="#實作密碼規則驗證：使用-field-validator" class="headerlink" title="實作密碼規則驗證：使用 field_validator"></a>實作密碼規則驗證：使用 field_validator</h2><p>根據需求，我們可以先利用 Pydantic 的<code>Field</code>來設定<strong>最小長度限制</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password: <span class="built_in">str</span> = Field(min_length=<span class="number">8</span>, examples=[<span class="string">&#x27;password123&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>如上，我們只需要新增一個<code>min_length=8</code>參數即可。</p>
+<p>至於「必須包含數字」的驗證，則要用<code>@field_validator</code>裝飾器來實作。</p>
+<h3 id="field-validator-裝飾器"><a href="#field-validator-裝飾器" class="headerlink" title="field_validator 裝飾器"></a>field_validator 裝飾器</h3><p>在 Pydantic v1 中，這個裝飾器的名稱是<code>validator</code>，v2 才改為<code>field_validator</code>。</p>
+<p>Pydantic 從 v1 到 v2，有<strong>許多</strong> <a target="_blank" rel="noopener" href="https://en.wiktionary.org/wiki/breaking_change">breaking change</a>，比如之前提過的<code>example</code>參數變成<code>examples</code>，即是一例。這部分值得留意。</p>
+<p>以下是修改後的 Schema，我們只關注<code>field_validator</code>部分：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @field_validator(<span class="params"><span class="string">&#x27;password&#x27;</span></span>)</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">validate_password_contains_number</span>(<span class="params">cls, v: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        驗證密碼至少包含一個數字</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> re.search(<span class="string">r&#x27;\d&#x27;</span>, v):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;密碼必須包含至少一個數字&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> v</span><br></pre></td></tr></table></figure>
+
+<h3 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h3><ol>
+<li><code>field_validator</code>裝飾器<strong>必須使用參數</strong>，合法值是<strong>欄位名稱</strong>，如<code>password</code>。</li>
+<li>雖然範例中沒有演示，但它可以套用在<strong>多個欄位</strong>。<ol>
+<li>寫法為<code>@field_validator(&#39;欄位1&#39;, &#39;欄位2&#39;, ...)</code>，你甚至可以直接寫成<code>@field_validator(&#39;*&#39;)</code>——套用到<strong>全部</strong>欄位。</li>
+<li>但請注意，這些欄位會執行<strong>同一個驗證邏輯</strong>，所以它們理論上是<strong>邏輯類似</strong>的欄位。</li>
+</ol>
+</li>
+<li><strong>驗證方法的名稱</strong>可以自訂，你想怎麼命名都行，只要自己好懂即可。<ol>
+<li>因為 Pydantic 主要是看裝飾器上的欄位名稱。</li>
+<li>這和 Django REST framework 的驗證方法是採用<code>validate_&lt;欄位名&gt;</code>的命名模式，有<strong>很大的不同</strong>。</li>
+</ol>
+</li>
+<li>Pydantic 驗證方法的參數名稱命名慣例是<code>v</code>，而 Django REST framework 則是<code>value</code>。</li>
+<li>慣例二：驗證方法在<strong>成功時會原封不動 return 輸入值</strong>；失敗時則會拋出錯誤。</li>
+<li>Pydantic 的驗證方法是一個「<strong>類別方法</strong>」，所以第一個參數是<code>cls</code>。特別的是，你<strong>可以省略</strong><code>@classmethod</code>裝飾器，因為 Pydantic 已經在內部處理了。<ol>
+<li>不過<a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/concepts/validators/#field-validators">官方文件</a>仍建議你使用<code>@classmethod</code>，我們從善如流。</li>
+<li>如果有聲明<code>@classmethod</code>裝飾器，它的位置必須<strong>最靠近</strong>驗證方法。</li>
+</ol>
+</li>
+</ol>
+<p>想不到吧？短短幾行，竟然有這麼多<strong>看點</strong>！</p>
+<hr>
+<h2 id="實際測試"><a href="#實際測試" class="headerlink" title="實際測試"></a>實際測試</h2><p>測試<strong>密碼長度不足</strong>的情況，結果為：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string_too_short&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;password&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;String should have at least 8 characters&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;min_length&quot;</span><span class="punctuation">:</span> <span class="number">8</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string_too_short&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;confirm_password&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;String should have at least 8 characters&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;min_length&quot;</span><span class="punctuation">:</span> <span class="number">8</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>這是 Field 檢查時自行拋出的錯誤，回應狀態碼為 422。</p>
+<p>接下來，測試密碼<strong>未包含數字</strong>的情況：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;value_error&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;password&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Value error, 密碼必須包含至少一個數字&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;密碼必須包含至少一個數字&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>這算是由我們「<strong>半自定義</strong>」的錯誤類回應，因為結構仍是 Django Ninja 決定，但<strong>錯誤訊息</strong>部分則是我們自己定義的。</p>
+<p>對於錯誤回應的自定義還可以更靈活，不過這是下下篇「錯誤處理（上）HttpError 與自定義 HTTP 回應」的主題，到時再來詳細討論。</p>
+<hr>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>這一篇，我們學習了如何透過 Pydantic，對單一欄位進行資料驗證，實作了密碼強度檢查規則。</p>
+<p>下一篇，我們要繼續這個主題，實現更複雜的<strong>跨欄位驗證</strong>。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-07/" title="Django Ninja 教學 07：路由（上）傳統 Django 路由做法" rel="bookmark">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            <a href="/tags/Pydantic/">Pydantic</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-18/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值</span>
+      </a>
+    <a class="next" href="/django-ninja-20/">
+        <span class="next-text nav-default">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
+        <span class="next-text nav-mobile">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

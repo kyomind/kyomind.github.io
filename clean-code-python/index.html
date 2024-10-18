@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="在天瓏買了兩本 Python 新書與一生的追求">
+  <meta property="og:title" content="在天瓏買了兩本 Python 新書與一生的追求">
+<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
+            
+
+  <meta property="article:modified_time" content="2024-01-11T13:33:19+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2022-03-26T05:45:40+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/clean-code-python/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>在天瓏買了兩本 Python 新書與一生的追求 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">在天瓏買了兩本 Python 新書與一生的追求
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-03-26
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B2%B7%E6%9B%B8%E7%9A%84%E8%80%83%E9%87%8F"><span class="toc-text">買書的考量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A9%E6%9C%AC-Python-%E6%96%B0%E6%9B%B8%E4%BB%8B%E7%B4%B9"><span class="toc-text">兩本 Python 新書介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%87%BA%E7%A5%9E%E5%85%A5%E5%8C%96"><span class="toc-text">Python 出神入化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B7%E5%81%A5%E7%9A%84-Python"><span class="toc-text">強健的 Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E4%B8%80%E7%94%9F%E7%9A%84%E8%BF%BD%E6%B1%82"><span class="toc-text">小結：一生的追求</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>藝 FUN 券使用期限到今年 4 月 30 日，身為有中籤的小小幸運兒，我也得把握時間緊趕把它消費掉了。</p>
+<p>對於軟體工程師而言，走一趟天瓏書局無疑是個絕佳的選擇，畢竟書是買不完的。</p>
+<h2 id="買書的考量"><a href="#買書的考量" class="headerlink" title="買書的考量"></a>買書的考量</h2><p>書確實是買不完的，但如果買了也沒怎麼看，大量堆積在房間裡妨礙走路，那可就適得其反了——望向已經累積了 5、6 本的 JavaScript 書籍。</p>
+<p>簡單來說，還是買一些「<strong>近期用得上</strong>」的書吧！</p>
+<span id="more"></span>
+
+<p>所謂的「近期」如果真要講個具體，大概指 <strong>3 個月</strong>左右，3 個月以上才可能派上用場的書，還是先別買了，而我的 JavaScript …</p>
+<p>而這裡的「用得上」也不限於工作，就像我在〈<a href="https://blog.kyomind.tw/docker-learning/">Docker 新手入門：書與線上課程推薦</a>〉說的：</p>
+<blockquote>
+<p>入門 Docker 最好具備的前提就是有一個<strong>實際的 Docker 相關需求</strong>，可能是工作上的，也可能是自己的 side project（專案容器化），甚至是為了寫文章！空手學習並不太推薦。</p>
+</blockquote>
+<p>其實學什麼都差不多——應用場景很重要。</p>
+<h2 id="兩本-Python-新書介紹"><a href="#兩本-Python-新書介紹" class="headerlink" title="兩本 Python 新書介紹"></a>兩本 Python 新書介紹</h2><p>大概逛了半小時後，還是決定下手兩本 Python 書籍，且不約而同都和「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Clean_Code">Clean Code</a>」有關。說真的，「<strong>Clean Code in Python</strong>」這類主題，如果市面上有 100 本，我就能買好買滿 100 本！這主題對我存在著中毒般的魔力。</p>
+<p>有機會再來聊聊我對「<strong>程式可讀性</strong>」為何如此痴迷，不止是說說而已。講到這裡不禁想到，被我 code review 的同事們是曾在某些時刻於腦海中掠過一絲殺意？——畢竟我對程式碼品質的要求著實不低。</p>
+<p>扯遠了，還是回到書本身，在此簡單介紹一下這兩本書。</p>
+<hr>
+<h2 id="Python-出神入化"><a href="#Python-出神入化" class="headerlink" title="Python 出神入化"></a><a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789864349562">Python 出神入化</a></h2><blockquote>
+<p>副標題：Clean Coder 才懂的 Pythonic 技法，為你的程式碼畫龍點睛！</p>
+</blockquote>
+<p>如果沒有副標題，還真不知道這本書到底是講述 Python 的哪個面向，簡直是外國電影譯名法！其實原文名就是《<a target="_blank" rel="noopener" href="https://www.packtpub.com/product/clean-code-in-python-second-edition/9781800560215">Clean Code in Python: Refactor your legacy codebase</a>》，有放在書的封面作為補充，大概編輯也自知只放主標題會讓人不知所謂。</p>
+<p>作為 Clean Code 類的 Python 書籍，這樣的翻譯書名無疑是個<strong>經典的反面教材：模糊的變數命名（書名）</strong>，以至於封面上又不得不加上一堆文字來補充說明。</p>
+<p>這是不是像極了程式碼中，因為變數或函式的命名不佳，而作繭自縛般地為它寫了一行又一行的程式註解來亡羊補牢呢？</p>
+<p>反觀，本書第一版譯名就叫《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789864769926">簡潔的Python：重構你的舊程式</a>》，完全的直譯！貼切的書名一望即知，比較不會讓人誤會。新版換了出版社，命名風格也跟著魔幻了起來。話雖如此，這封面我是還挺喜歡的，尷尬的命名就權當作是編輯的巧思吧。</p>
+<p>書我還沒翻，但第一版我有買，也大致看完一輪。不得不說有一定的難度——intermediate 以上，差不多是《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863479116">流暢的 Python</a>》那個等級，所以並不適合入門者。</p>
+<h2 id="強健的-Python"><a href="#強健的-Python" class="headerlink" title="強健的 Python"></a><a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9786263241015">強健的 Python</a></h2><blockquote>
+<p>副標題：撰寫潔淨且可維護的程式碼</p>
+</blockquote>
+<p>本書去年 8 月英文版才剛上市，現在就有繁中，出社版可謂誠意十足！</p>
+<p>入手前仔細看了一下目錄，從目錄可知，這本和上一本雖然都有著「Clean Code」字眼，但<strong>切入的角度截然不同</strong>，比較是從 code infrastructure 層級（你可以想成 linter 層級）加以規範，來建構良好的 Python 程式碼。</p>
+<p>內容有大量篇幅都在講述如何正確使用 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0484/">type hints</a>，包括介紹專用的 linter——<a target="_blank" rel="noopener" href="https://github.com/python/mypy">mypy</a>，以及最近因為 FastAPI 也跟著火紅的 <a target="_blank" rel="noopener" href="https://github.com/samuelcolvin/pydantic/">pydantic</a>。</p>
+<p>光想想是不是就有點小興奮了呢？</p>
+<hr>
+<h2 id="小結：一生的追求"><a href="#小結：一生的追求" class="headerlink" title="小結：一生的追求"></a>小結：一生的追求</h2><p>光兩本書就有兩種截然不同的角度可以增進程式碼品質，足見「Clean Code」一詞遠遠不像它字面上那般「simple」，需要認真著墨與不斷思考、練習面向很多。</p>
+<p>就像《<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%A3%8B%E9%AD%82">棋魂</a>》中，已成為職業棋士的配角本田敏則，在練習局中慘敗於社清春的「第一手天元」後，他的老師嚴肅提醒並勉勵他說：「職業的道路很長，不但長，而且沒有終點，一生都在學習。」</p>
+<p>對於每一個有志於寫出 Clean Code 的你我而言，又何嘗不是一生的追求？而最最基本的當然還是先善用好 linter 與 formatter，行有餘力，再來好好鑽研這些迷人的「寫作技藝」，進而體會<a target="_blank" rel="noopener" href="https://youtu.be/Y2gs11cZznE">知覺與快樂的螺旋</a>。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python/" title="《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南" rel="bookmark">《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/effective-python-01/" title="《Effective Python》筆記（一）以拆分代替索引" rel="bookmark">《Effective Python》筆記（一）以拆分代替索引</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-01/" title="《Python 工匠》筆記（一）如何寫好註解" rel="bookmark">《Python 工匠》筆記（一）如何寫好註解</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/%E6%9B%B8/">書</a>
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            <a href="/tags/%E5%A4%A9%E7%93%8F%E6%9B%B8%E5%B1%80/">天瓏書局</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/zinit-deleted/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">zinit 作者刪庫事件與我對 zsh 套件管理器的看法</span>
+        <span class="prev-text nav-mobile">zinit 作者刪庫事件與我對 zsh 套件管理器的看法</span>
+      </a>
+    <a class="next" href="/python-poetry/">
+        <span class="next-text nav-default">Python 套件管理器——Poetry 完全入門指南</span>
+        <span class="next-text nav-mobile">Python 套件管理器——Poetry 完全入門指南</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

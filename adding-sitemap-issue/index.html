@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面">
+  <meta property="og:title" content="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面">
+<meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:29+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2021-06-25T08:09:05+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/adding-sitemap-issue/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-06-25
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B"><span class="toc-text">設定流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E9%BB%9E"><span class="toc-text">遇到的坑點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E7%B7%9A%E7%B4%A2"><span class="toc-text">有用的線索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B1%BA"><span class="toc-text">解決</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/ZGvuXVK.png" alt="by Kazia Kalitan-Mlodkowska on Behance"><span class="cap">by Kazia Kalitan-Mlodkowska on Behance</span></p>
+<p>為你的網站製作一份 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E7%AB%99%E5%9C%B0%E5%9C%96">sitemap</a> 並提交至 Google Search Console，是常見提升網站 SEO 的手段之一。本文記錄「為 Hexo blog 新增 sitemap」的小坑，但主要的坑點其實是在 Github Pages 身上。</p>
+<span id="more"></span>
+
+<h2 id="設定流程"><a href="#設定流程" class="headerlink" title="設定流程"></a>設定流程</h2><p>詳細設定流程只要輸入關鍵字「hexo sitemap」就可以找到很多教學了。流程很簡單，只有下列幾步：</p>
+<ol>
+<li>安裝套件<code>hexo-generator-sitemap</code>，讓你在使用<code>hexo generate</code>指令時同時幫你產生當前網站的 sitemap.xml。</li>
+<li>在 blog 目錄的<code>_config.yml</code>設定 sitemap 的路徑。</li>
+<li>使用<code>hexo generate</code>指令產生頁面，此時應該就能看到套件幫你產生的 sitemap.xml 檔了，使用<code>hexo deploy</code>部署到 Github 即大功告成！此時你的 Github 的 repo 根目錄應該也要能夠看到這份 sitemap.xml。</li>
+<li>部署後要確認是否成功，可以打「<code>https://&lt;yoursite_domain&gt;/sitemap.xml</code>」查看，正常情況下瀏覽器會顯示你的 sitempa.xml 文件內容。記得<code>yoursite_domain</code>是你自己的網址，比如我的就是<code>blog.kyomind.tw</code>。</li>
+</ol>
+<p><img src="https://i.imgur.com/VI3EeGs.png" alt="成功的話看起來像這樣"><span class="cap">成功的話看起來像這樣</span></p>
+<p>以上內容 Google 都有，就不細講，再來說說坑點。</p>
+<h2 id="遇到的坑點"><a href="#遇到的坑點" class="headerlink" title="遇到的坑點"></a>遇到的坑點</h2><p>一般而言這樣設定完應該就大功告成了，所以絕大部分的教學也只有講這些，但偏偏我卻沒有成功。</p>
+<p>我的情況是，設定後查看本地網址「<code>http://localhost:4000/sitemap.xml</code>」確實可以看到正確結果，但是 Github Page 上「<code>https://blog.kyomind.tw/sitemap.xml</code>」卻無法，只會顯示<code>404</code>！而且 repo 目錄下確實已經有 sitemap.xml 檔了，也可以在 reop 頁面打開查看，內容沒有問題，但就是無法透過網站網址找到它。</p>
+<p><img src="https://i.imgur.com/cXxJsFs.png" alt="找不到我的 sitemap"><span class="cap">找不到我的 sitemap</span></p>
+<p>此時的思路如下：</p>
+<ol>
+<li>本地可以但遠端不行，那問題很可能出在 GitHub 上。</li>
+<li>使用「github pages sitemap 404」之類的關鍵字去搜尋，看看有沒有人遇到類似問題。</li>
+</ol>
+<h2 id="有用的線索"><a href="#有用的線索" class="headerlink" title="有用的線索"></a>有用的線索</h2><p>果然找到這篇<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/67692962/sitemap-xml-partially-works-on-github-pages-and-cannot-be-fetched-by-google-se">非常有用的文章</a>，發問者的問題是這樣的：</p>
+<blockquote>
+<p>have a site with a custom domain hosted on GitHub Pages. I’ve added a sitemap file to my repository with the name <code>sitemap.xml</code>. I am able to access it by going to <a target="_blank" rel="noopener" href="https://example.com/sitemap">https://example.com/sitemap</a>; however, <a target="_blank" rel="noopener" href="https://example.com/sitemap.xml">https://example.com/sitemap.xml</a> returns a 404 error.</p>
+</blockquote>
+<p>此時的思路如下：</p>
+<ol>
+<li>藉由他的發問內容，我也發現我用<code>https://blog.kyomind.tw/sitemap</code>（沒有 .xml 後綴）這個網址是<strong>找得到</strong> sitemap 的，從這裡可以知道<strong>他遇到的問題情境和我高度類似</strong>，所以解法很可能可以套用。</li>
+<li>其次，他提到「I am <strong>not using Jekyll or any other framework</strong>.」，可以推知顯然這不是 Hexo 的問題，而是一個更加普遍的問題——講白了就是 Github Pages 的問題！同時印證了我前述的推測，讓我們離答案更近一步了。</li>
+</ol>
+<p>而文章中的解法就是在 repo 根目錄底下新增一個<code>.nojekyll</code>檔案。</p>
+<hr>
+<p>在照做之前，我還是不免懷疑這樣真的有用嗎？所以先用關鍵字「.nojekyll」搜尋一下，搜尋結果的第一個就是這篇〈<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac9b54176dbe">.nojekyll 文件是什麼</a>〉，裡面有更進一步的解釋：</p>
+<blockquote>
+<p>Github Pages 默認是基於 Jekyll 構建…（略）</p>
+</blockquote>
+<blockquote>
+<p>.nojekyll 就是<strong>告訴 Github Pages 當前網站不是基於 Jekyll 構建的</strong>，不要忽略掉下劃線開頭的文件和文件夾</p>
+</blockquote>
+<blockquote>
+<p>反之，如果你的網站<strong>不是 Jekyll 構建的</strong>，要部署到 Github Pages ，並且包含下劃線開頭的文件或文件夾，那麼<strong>你就需要在根目錄添加一個 .nojekyll 空文件</strong></p>
+</blockquote>
+<p>雖然 sitemap.xml 並不是文中所謂<code>_</code>開頭的檔案，但從這篇可以更加確信第一篇的解法應該是有效的。</p>
+<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>動手吧！請直接在 Github repo 新增<code>.nojekyll</code>檔案（內容為空）並 commit，且確認已經在 repo 的根目錄底下。</p>
+<p>我這麼做之後確實就可以了。正常情況下，無論是<code>&lt;yoursite_domain&gt;/sitemap</code>或<code>&lt;yoursite_domain&gt;/sitemap.xml</code>這兩個網址應該都要能夠看到 sitemap 的內容。</p>
+<p>附帶一提，在重新<code>hexo deploy</code>後，<code>.nojekyll</code>檔案會被覆寫而<strong>從根目錄底下消失</strong>，但不影響正常運作。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="我自架部落格的理由與選擇（下）選擇篇" rel="bookmark">我自架部落格的理由與選擇（下）選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格心得：一週年總結與持續寫作策略" rel="bookmark">Hexo 部落格心得：一週年總結與持續寫作策略</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Hexo/">Hexo</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/my-own-blog-part-one/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">我自架部落格的理由與選擇（上）理由篇</span>
+        <span class="prev-text nav-mobile">我自架部落格的理由與選擇（上）理由篇</span>
+      </a>
+    <a class="next" href="/update-my-droplet/">
+        <span class="next-text nav-default">計畫更新我的 DigitalOcean VM</span>
+        <span class="next-text nav-mobile">計畫更新我的 DigitalOcean VM</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 11：請求（三）查詢參數 - Query Parameters">
+  <meta property="og:title" content="Django Ninja 教學 11：請求（三）查詢參數 - Query Parameters"><meta name="twitter:description" content="本文將介紹 Django Ninja 中如何處理查詢參數（Query Parameters），這是 RESTful API 中用來傳遞過濾條件等額外資訊的重要部分。">
+  <meta property="og:description" content="本文將介紹 Django Ninja 中如何處理查詢參數（Query Parameters），這是 RESTful API 中用來傳遞過濾條件等額外資訊的重要部分。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
+  <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
+<meta name="description" content="本文將介紹 Django Ninja 中如何處理查詢參數（Query Parameters），這是 RESTful API 中用來傳遞過濾條件等額外資訊的重要部分。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-09-23T03:03:49+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/django-ninja-11/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Django Ninja 教學 11：請求（三）查詢參數 - Query Parameters - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django Ninja 教學 11：請求（三）查詢參數 - Query Parameters
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-23
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E9%BA%BC%E6%98%AF%E6%9F%A5%E8%A9%A2%E5%8F%83%E6%95%B8%EF%BC%9F"><span class="toc-text">一、什麼是查詢參數？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%AF%84%E4%BE%8B%E5%B0%88%E6%A1%88%E6%94%B9%E5%8B%95"><span class="toc-text">二、範例專案改動</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%9C%A8-Django-Ninja-%E4%B8%AD%E4%BD%BF%E7%94%A8-Query-Parameters"><span class="toc-text">三、在 Django Ninja 中使用 Query Parameters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BD%BF%E7%94%A8-Query-%E7%89%A9%E4%BB%B6"><span class="toc-text">四、使用 Query 物件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>上一篇我們討論了，請求 URL 中關於<strong>路徑參數</strong>的處理方式。</p>
+<p>本文將介紹<strong>查詢參數（query parameters）</strong>，這是 RESTful API 中用來傳遞<strong>過濾條件</strong>等<strong>額外資訊</strong>的重要部分。</p>
+<p>處理查詢參數在 Django Ninja 中非常簡單直觀，我們可以透過多種方式來達成。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/3">這個 PR</a>。</p>
+<hr>
+<h2 id="一、什麼是查詢參數？"><a href="#一、什麼是查詢參數？" class="headerlink" title="一、什麼是查詢參數？"></a>一、什麼是查詢參數？</h2><p>查詢參數是 URL 中的可選參數，通常位於 path 的後方，以<code>?key=value</code>的形式出現，用來傳遞<strong>額外的資訊</strong>。</p>
+<p>例如，當我們需要過濾某位作者的文章時，URL 的 path 可能會這樣寫：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/posts/?author=john</span><br></pre></td></tr></table></figure>
+
+<p>URL 傳遞了一個查詢參數<code>author=john</code>，表示我們希望過濾出由 John 撰寫的文章。</p>
+<span id="more"></span>
+
+<h2 id="二、範例專案改動"><a href="#二、範例專案改動" class="headerlink" title="二、範例專案改動"></a>二、範例專案改動</h2><p>為了更真實地介紹<strong>查詢參數</strong>，我們需要修改原先的「取得所有文章」API，加入簡單的「<strong>過濾</strong>」功能。</p>
+<p>附帶一提，複雜的過濾功能，我們會在〈卷 23：過濾（Filtering）〉進行介紹。</p>
+<p>修改後，當請求帶有查詢參數時，API 就能透過這些參數來<strong>限制查詢結果</strong>。如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(title__icontains=title)  <span class="comment"># 實現過濾邏輯</span></span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
+
+<p>這裡我們以「<strong>文章標題</strong>」來進行過濾。</p>
+<blockquote>
+<p>小提醒：專案 API <strong>目前還無法使用</strong>，一來 db 沒有資料，二來我們還沒有撰寫相關的 Schema。現階段僅作為閱讀理解上的參考。不過別擔心，我們很快會讓它 work ☺️</p>
+</blockquote>
+<p>好，改完程式碼，接下來進行講解。</p>
+<hr>
+<h2 id="三、在-Django-Ninja-中使用-Query-Parameters"><a href="#三、在-Django-Ninja-中使用-Query-Parameters" class="headerlink" title="三、在 Django Ninja 中使用 Query Parameters"></a>三、在 Django Ninja 中使用 Query Parameters</h2><p>在 Django Ninja 中，處理<strong>查詢參數</strong>的最簡單方式，是直接將它們作為 view 函式的<strong>可選參數——透過參數預設值</strong><code>None</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，<code>title</code>參數被定義為一個<strong>可選的字串</strong>（<code>None | str = None</code>）。</p>
+<ul>
+<li>如果 URL 中<strong>包含</strong><code>title</code>查詢參數，Django Ninja 會自動將其值作為引數，並傳遞給<code>get_posts</code>函式。</li>
+<li>如果 URL 中<strong>沒有</strong>這個查詢參數，則函式<strong>不會收到引數</strong>，此時<code>title</code>在函式中的值將會是<code>None</code>——因為它有<strong>預設值</strong>。</li>
+</ul>
+<p>關於這個例子，我們<strong>還需要留意</strong>以下這些地方：</p>
+<ol>
+<li>查詢參數<strong>不需要</strong>寫在<code>router</code>裝飾器的<code>path</code>參數路徑中。</li>
+<li>查詢參數<strong>通常有預設值</strong>，無論是具體的值還是上述的<code>None</code>。如果<strong>缺少預設值</strong>，當查詢參數不存在時，Django Ninja 會返回 422 回應。</li>
+<li>當預設值為<code>None</code>時，需留意 type hints 的寫法：<code>None | str = None</code>。（相當於<code>Optional[str] = None</code>）</li>
+<li>查詢參數和路徑參數一樣，都會依照函式的 type hints 進行型別轉換。如果沒有標記型別，那兩者的<strong>預設型別皆為</strong><code>str</code>——因為 URL 本質都是<strong>字串</strong>。</li>
+</ol>
+<p>以上寫法簡單直接，適用於大多數情況。</p>
+<p>然而，當我們需要對查詢參數進行<strong>更複雜的驗證或限制</strong>時，就需要使用進階的技巧——<code>Query</code>。</p>
+<hr>
+<h2 id="四、使用-Query-物件"><a href="#四、使用-Query-物件" class="headerlink" title="四、使用 Query 物件"></a>四、使用 Query 物件</h2><p>當我們需要進行更詳細的控制，例如限制查詢參數的長度、範圍，或為 API 文件加上額外資訊時，可以使用<code>Query</code>來設定、處理查詢參數。</p>
+<p>必須承認，我之前開發其實也很少用到<code>Query</code>，但了解它 <strong>20% 最重要的特性</strong>，肯定會很有幫助。</p>
+<h3 id="Query類別介紹"><a href="#Query類別介紹" class="headerlink" title="Query類別介紹"></a><code>Query</code>類別介紹</h3><p>透過<code>Query</code>物件，我們可以對查詢參數進行更精細的定義與驗證。</p>
+<p>事實上，如果你看過 Django Ninja 的<a target="_blank" rel="noopener" href="https://github.com/vitalik/django-ninja/blob/master/ninja/params/functions.py#L50">原始碼</a>，你會發現：它其實是一個<strong>函式</strong>。只不過會<strong>返回相同名稱的類別物件</strong>。為了解說方便，我們暫且當它是類別吧！</p>
+<p>參考這個修改後的範例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Query, Router</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span></span>)</span>):</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>它和原來的這個寫法<strong>幾乎是等價</strong>的：（仍有細微不同，但可以先忽略）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br></pre></td></tr></table></figure>
+
+<p>你可能會覺得奇怪，那我沒事幹嘛要換一個更複雜的寫法，卻沒有額外的好處？</p>
+<p>這當然是因為，更複雜的寫法，能做的事情也更多。</p>
+<h3 id="限制查詢字串的長度"><a href="#限制查詢字串的長度" class="headerlink" title="限制查詢字串的長度"></a>限制查詢字串的長度</h3><p>比如我們想要限制<code>title</code>這個查詢字串，不可以太長也不可以太短。</p>
+<p>假設要求長度在 2 到 10 個字元好了。</p>
+<p>此時你就可以這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span>, min_length=<span class="number">2</span>, max_length=<span class="number">10</span></span>),</span></span><br><span class="line"><span class="params"></span>):</span><br></pre></td></tr></table></figure>
+
+<p>這個範例中，我們使用了<code>Query</code>來定義<code>title</code>查詢參數，並額外給予了<code>min_length</code>和<code>max_length</code>這兩個初始化<code>Query</code>的參數設定。</p>
+<p>這樣做可以確保<code>title</code>查詢參數的長度在 2 到 10 個字元之間。</p>
+<p>如果用戶輸入的<code>title</code>不符合這個長度要求，如上一篇所述，Django Ninja 會自動返回一個<strong>狀態碼為 422 的回應</strong>，無需我們手動處理這些驗證邏輯與相關回應。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 422 Unprocessable Entity</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;string_too_short&quot;</span><span class="punctuation">,</span>  <span class="comment">// 查詢參數過短</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;title&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;title&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;String should have at least 2 characters&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;min_length&quot;</span><span class="punctuation">:</span> <span class="number">2</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Query的其他常用參數"><a href="#Query的其他常用參數" class="headerlink" title="Query的其他常用參數"></a><code>Query</code>的其他常用參數</h3><p>除了<code>min_length</code>和<code>max_length</code>，<code>Query</code>還提供了許多實用的參數，供你限制查詢條件、為 API 文件補充額外資訊，常見的有：</p>
+<ul>
+<li><code>gt</code>、<code>ge</code>：查詢參數的值必須大於或大於等於某個數字。</li>
+<li><code>lt</code>、<code>le</code>：查詢參數的值必須小於或小於等於某個數字。</li>
+<li><code>example</code>、<code>examples</code>：為 API 文件提供查詢<strong>參數的範例值</strong>，讓用戶更容易理解參數用法。</li>
+</ul>
+<p>這部分我們就不示範了。</p>
+<hr>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>查詢參數是 RESTful API 常見且重要的組成部分。Django Ninja 中，我們可以透過簡單的方式來處理查詢參數，也可以使用<code>Query</code>進行更高級的驗證和控制。</p>
+<p>了解了 Django Ninja 如何處理 URL 的相關參數後，接下來則是<strong>重頭戲</strong>。</p>
+<p>下一步，我們將探討如何在 Django Ninja 中處理 HTTP <strong>request body</strong>，介紹如何使用 Schema 來進行<strong>資料驗證與反序列化</strong>，讓我們能夠靈活地處理複雜的請求資訊。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-09/" title="Django Ninja 教學 09：請求（一）Django Ninja 處理 HTTP 請求" rel="bookmark">Django Ninja 教學 09：請求（一）Django Ninja 處理 HTTP 請求</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-12/" title="Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹" rel="bookmark">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-21/" title="Django Ninja 教學 21：錯誤處理（上）HttpError 與自定義 HTTP 回應" rel="bookmark">Django Ninja 教學 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django-Ninja/">Django Ninja</a>
+            <a href="/tags/HTTP/">HTTP</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/django-ninja-10/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters</span>
+        <span class="prev-text nav-mobile">Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters</span>
+      </a>
+    <a class="next" href="/django-ninja-12/">
+        <span class="next-text nav-default">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</span>
+        <span class="next-text nav-mobile">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

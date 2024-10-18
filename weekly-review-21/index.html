@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="21，在 VM 上部署 Umami 替代 GA4">
+  <meta property="og:title" content="21，在 VM 上部署 Umami 替代 GA4"><meta name="twitter:description" content="Umami 是一款類似 Google Analytics 的網站訪客數據收集、統計與分析工具，只是它是開源的，而且強調對隱私的保護，不會收集你的個人資訊。">
+  <meta property="og:description" content="Umami 是一款類似 Google Analytics 的網站訪客數據收集、統計與分析工具，只是它是開源的，而且強調對隱私的保護，不會收集你的個人資訊。"><meta name="twitter:image" content="https://i.imgur.com/fBvzAN2.png">
+  <meta property="og:image" content="https://i.imgur.com/fBvzAN2.png">
+<meta name="description" content="Umami 是一款類似 Google Analytics 的網站訪客數據收集、統計與分析工具，只是它是開源的，而且強調對隱私的保護，不會收集你的個人資訊。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Weekly Review" />
+            
+
+  <meta property="article:modified_time" content="2024-10-18T13:43:00+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2023-09-10T17:03:55+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/weekly-review-21/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>21，在 VM 上部署 Umami 替代 GA4 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">21，在 VM 上部署 Umami 替代 GA4
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-09-11
+        </span><span class="post-update">
+            →  2023-10-28
+          </span>
+        <span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%B9%9F%E4%B8%8D%E5%96%9C%E6%AD%A1-GA4"><span class="toc-text">我也不喜歡 GA4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GA-%E6%9B%BF%E4%BB%A3%E5%93%81"><span class="toc-text">GA 替代品</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E9%81%B8%E6%93%87-Umami-%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">我選擇 Umami 的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-Umami-%E7%9A%84%E5%B9%BE%E7%A8%AE%E6%96%B9%E5%BC%8F"><span class="toc-text">部署 Umami 的幾種方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B2%BB%E9%83%A8%E7%BD%B2%E7%9A%84%E5%B8%B8%E8%A6%8B%E9%9A%B1%E6%86%82"><span class="toc-text">免費部署的常見隱憂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B8%E6%93%87-VM-%E9%83%A8%E7%BD%B2%E7%9A%84%E7%90%86%E7%94%B1"><span class="toc-text">選擇 VM 部署的理由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-VM-%E9%83%A8%E7%BD%B2-Umami"><span class="toc-text">使用 VM 部署 Umami</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/fBvzAN2.png" alt="Umami dashboard"><span class="cap">Umami dashboard</span></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/umami-software/umami">Umami</a> 是一款類似 Google Analytics 的<strong>網站訪客數據收集、統計與分析</strong>工具，只是它是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%BC%80%E6%BA%90%E5%AE%9A%E4%B9%89">開源</a>的，而且強調對隱私的保護，不會收集你的個人資訊。</p>
+<p>當初會知道它，主要基於這兩篇文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://willliu.blot.im/umami/">免費的網站流量統計系統 Umami</a></li>
+<li><a target="_blank" rel="noopener" href="https://pinchlime.com/snapshots/why/why-do-i-want-to-try-umami/">為什麼我想嘗試 umami ？</a></li>
+</ul>
+<p>可以看出，兩位作者採用 Umami 的動機大致相同：主要考慮用戶的<strong>隱私權保護</strong>，其次則著眼工具本身對網站效能的影響。</p>
+<p>我呢？既然知道了這個服務，顯然我也有我的需求。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="我也不喜歡-GA4"><a href="#我也不喜歡-GA4" class="headerlink" title="我也不喜歡 GA4"></a>我也不喜歡 GA4</h2><p>我雖然不太喜歡 Google Analytics，但倒是沒有那般厭惡。然而！隨著舊版 GA 的停用與 <a target="_blank" rel="noopener" href="https://support.google.com/analytics/answer/10089681?hl=zh-Hant">GA4</a> 的到來，必須說：「我真的很不喜歡 GA4！」</p>
+<p>對於商業用戶，它可能是利多，畢竟對網站訪客的蒐集行為更細緻了——這也是它招人恨的理由。這意味著商家對「潛在客戶」的了解又增加了幾分。</p>
+<p>但對於我這種不營利的普通部落客而言，則新增的功能主要偏向商業不說，舊的、有意義的指標也拿掉了不少。</p>
+<p>後台網站的操作界面與和 Looker Studio（Google 自家的 dashboard 服務）的串接體驗都更糟了。</p>
+<p>對我來說，GA4 就是個災難。</p>
+<h2 id="GA-替代品"><a href="#GA-替代品" class="headerlink" title="GA 替代品"></a>GA 替代品</h2><p>如果你也是一個不靠網站盈利的站長，那就未必要選擇 GA 作為數據分析工具。</p>
+<p>雖然我們不得不承認，GA 確實強大——而且免費。</p>
+<p>免費這可是很大的誘因，而它之所以能夠免費，顯然是因為服務提供者——Google——能夠在別的地方賺到錢！</p>
+<p>如果不想用 GA，可選擇的替代品也很多，但大部分需要你付費或有一定成本。這也是為何 GA 依舊是最常見的分析工具，哪怕你不靠網站賺錢。</p>
+<p>因為它使用上簡單且免費。</p>
+<h2 id="我選擇-Umami-的理由"><a href="#我選擇-Umami-的理由" class="headerlink" title="我選擇 Umami 的理由"></a>我選擇 Umami 的理由</h2><p>GA4 的界面讓我很不想用，至少不想常用。雖然我並沒有把它拔除，但我想找一個供平時使用，更簡單、好讀的網站流量儀表版服務。</p>
+<p>Google 一下關鍵字「ga alternative」你可以找到一大堆，而我強力推薦 Umami——畢竟我自己也用了！類似的選項還有 <a target="_blank" rel="noopener" href="https://usefathom.com/">Fathom</a>、<a target="_blank" rel="noopener" href="https://matomo.org/">Matomo</a>、<a target="_blank" rel="noopener" href="https://plausible.io/">Plausible</a> 等等。</p>
+<p>我選擇 Umami 的主要理由只有一個：因為它簡潔且美觀。</p>
+<p>Dashboard 這種東西，顏值肯定是第一指標。至於 Umami 的其它賣點，例如對隱私的保護，雖然我也認同，但不是考量上的重點。</p>
+<p>總之，如果你不想用 GA，又不知道該選哪個作為替代，就先選 Umami 吧！</p>
+<hr>
+<h2 id="部署-Umami-的幾種方式"><a href="#部署-Umami-的幾種方式" class="headerlink" title="部署 Umami 的幾種方式"></a>部署 Umami 的幾種方式</h2><p>Umami 雖然是開源的，但和很多開源軟體的一樣，採用類似 WordPress 的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%85%8D%E8%B2%BB%E5%A2%9E%E5%80%BC">Freemium</a> 模式。</p>
+<p>意思是，你可以自行部署在自己的硬體上，比如本機電腦或租來的 <a target="_blank" rel="noopener" href="https://www.gigabyte.com/tw/Glossary/virtual-machine">VM</a>。也可以直接申請一個付費帳戶，由 Umami 公司幫你託管，即 <a target="_blank" rel="noopener" href="https://cloud.umami.is/">Umami Cloud</a> 服務。</p>
+<p>說真的，如果你稍為研究過，這些付費服務可不算便宜，像 Umami Cloud 一個月就要 9 美元起跳。一個月花 9 美元只為了看看網站數據，你願意？</p>
+<p>反正我不願意。</p>
+<p>所幸，除了直接付錢，自行部署才是開源的常態。此時你依舊有兩種選擇：</p>
+<ol>
+<li>直接弄個自己的 VM 部署——當然租 VM 是要錢的。</li>
+<li>使用 <a target="_blank" rel="noopener" href="https://railway.app/">Railway</a> 這種有一定免費額度的托管平台來進行部署。</li>
+</ol>
+<p>從本文標題的可知，我選擇了第一種部署方式：我把 Umami 部署在 DigitalOcean 的 VM 上，並設定好了子域名與 SSL。</p>
+<h2 id="免費部署的常見隱憂"><a href="#免費部署的常見隱憂" class="headerlink" title="免費部署的常見隱憂"></a>免費部署的常見隱憂</h2><p>我認為，如果你只是打算「試用」一下 Umami，那麼選擇什麼方式都可以，甚至直接付費 Umami Cloud 一個月。</p>
+<p>但是，如果用了覺得喜歡，想要長期部署，那我強烈建議不要選擇上述第二種方式。理由有下：</p>
+<ol>
+<li>帶有免費額度的平台通常伴隨著<strong>各種限制</strong>，而且容易受到<strong>政策變更</strong>的影響，最有名的例子莫過於 <a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/152729">Heroku</a>。</li>
+<li>被平台與服務綁定，不利於未來<strong>資料的遷移</strong>。當然平台理論上也會有備份方案，但就是沒有直接 own 一台 Linux VM 那麼簡單、通用。</li>
+</ol>
+<p>簡言之，部署這類服務，<strong>長期可持續性</strong>是最重要的。而免費額度平台可能會讓你在未來遇到各種麻煩。</p>
+<p>當然，如果只是小試水溫，則沒有這麼多顧慮。</p>
+<h2 id="選擇-VM-部署的理由"><a href="#選擇-VM-部署的理由" class="headerlink" title="選擇 VM 部署的理由"></a>選擇 VM 部署的理由</h2><p>為何選擇 VM？除了前述原因，我再補充一下我的理由。</p>
+<p>第一，VM 的環境都是一樣的，足夠通用。不用因為 A 平台要收費了，我又要學習 B 平台怎麼用。資料的備份和遷移也是如此。</p>
+<p>其次，對有技術基礎的人而言，用 VM 部署往往更簡單，尤其 Umami 的專案中直接給你一個<code>docker-compose.yml</code>。Docker 用戶都知道，這意味著部署起來會很方便且無腦，比設定什麼免費 db 都要簡單得多。</p>
+<p>不過話說回來，如果只是為了部署這單一個服務，特地租一台 VM 還是太過浪費了，錢也沒有省多少——還不如直接付費 Umami Cloud。</p>
+<p>換句話說，能讓 VM 有多種用途，會比較划算。</p>
+<p>此外，如果選擇用這個方式<strong>長期部署</strong>，那「<strong>自己的域名</strong>」和「<strong>SSL 憑證</strong>」都是必要的。如此才能確保<strong>安全性</strong>。</p>
+<p>好吧我承認這真的有點麻煩😅，但我認為這是值得的。</p>
+<hr>
+<h2 id="使用-VM-部署-Umami"><a href="#使用-VM-部署-Umami" class="headerlink" title="使用 VM 部署 Umami"></a>使用 VM 部署 Umami</h2><p>關於部署 Umami，網路上可以找到比較多上述第二種部署方式，包括教你怎麼註冊、使用那些平台等等。我想不必再贅述。</p>
+<p>而如果你想用 VM 部署，那麼一定要參考 DigitalOcean 上的這篇手把手教學：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-install-umami-web-analytics-software-on-ubuntu-20-04">How To Install Umami Web Analytics Software on Ubuntu 20.04</a></li>
+</ul>
+<p>整個流程大概分成三部分：</p>
+<ol>
+<li><strong>透過 Docker Compose 在 VM 的 localhost 部署 Umami 服務</strong></li>
+<li><strong>設定 Nginx 反向代理，將 3000 port 對應到 80（HTTP）</strong></li>
+<li><strong>透過 Certbot 申請 SSL 憑證（需要有自己的域名）</strong></li>
+</ol>
+<p>我基本上就是照著它完成的，順利的話應該不出 1 小時——如果你已經有一台 VM。</p>
+<p>雖然我實際花費的時間比 1 小時要多得多，但主要是為了了解整個流程用到的相關知識——主要是 Nginx 和 Docker，所以和 ChatGPT 進行了大量交流、做了很多筆記。</p>
+<p>這過程讓我學到不少，包括現學現賣的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA">virtual hosting</a>（用單一台主機部署多個域名與服務），和複習 Docker 概念。</p>
+<p>這無疑是很具體且<strong>目標導向</strong>的學習。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/docker-learning/" title="Docker 新手入門：書與線上課程推薦" rel="bookmark">Docker 新手入門：書與線上課程推薦</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/tenlong-bookstore/" title="天瓏書局三訪，兼論我挑程式書的小原則" rel="bookmark">天瓏書局三訪，兼論我挑程式書的小原則</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-docker-sdk/" title="Python Docker SDK 快速上手" rel="bookmark">Python Docker SDK 快速上手</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Docker/">Docker</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/notion-database/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Notion 資料庫「反複雜」使用指南</span>
+        <span class="prev-text nav-mobile">Notion 資料庫「反複雜」使用指南</span>
+      </a>
+    <a class="next" href="/think-riverside/">
+        <span class="next-text nav-default">Cal Newport 與我的河濱思考</span>
+        <span class="next-text nav-mobile">Cal Newport 與我的河濱思考</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

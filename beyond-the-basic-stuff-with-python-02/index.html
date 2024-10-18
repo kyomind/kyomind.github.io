@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱">
+  <meta property="og:title" content="《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱"><meta name="twitter:description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答。不過，充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫，顯然是大家都認同的部分。">
+  <meta property="og:description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答。不過，充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫，顯然是大家都認同的部分。"><meta name="twitter:image" content="https://i.imgur.com/tS78Ke0.png">
+  <meta property="og:image" content="https://i.imgur.com/tS78Ke0.png">
+<meta name="description" content="我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答。不過，充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫，顯然是大家都認同的部分。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評 × 筆記" />
+            
+
+  <meta property="article:modified_time" content="2024-06-30T07:20:55+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2023-08-19T05:14:26+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-08-19
+        </span><span class="post-update">
+            →  2024-06-30
+          </span>
+        <span class="post-category">
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E5%AF%AB%E5%87%BA-Pythonic-%E9%A2%A8%E6%A0%BC%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="toc-text">第 6 章：寫出 Pythonic 風格的程式碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-enumerate-%E8%80%8C%E4%B8%8D%E8%A6%81%E7%94%A8-range"><span class="toc-text">使用 enumerate() 而不要用 range()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-with-%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%80%8C%E4%B8%8D%E8%A6%81%E6%89%8B%E5%8B%95-close"><span class="toc-text">使用 with 陳述式而不要手動 close()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5-Pythonic-%E9%A2%A8%E6%A0%BC%E9%81%8B%E7%94%A8%E5%AD%97%E5%85%B8"><span class="toc-text">以 Pythonic 風格運用字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E7%9A%84%E8%A1%8C%E8%A9%B1"><span class="toc-text">第 7 章：程式設計的行話</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%B8%B8%E8%A6%8B%E7%9A%84-Python-%E8%AA%A4%E8%A7%A3%E5%92%8C%E9%99%B7%E9%98%B1"><span class="toc-text">第 8 章：常見的 Python 誤解和陷阱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E3%80%8C%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E3%80%8D%E4%BD%9C%E7%82%BA%E3%80%8C%E5%8F%83%E6%95%B8%E9%A0%90%E8%A8%AD%E5%80%BC%E3%80%8D"><span class="toc-text">不要使用「可變物件」作為「參數預設值」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple-%E4%B8%AD%E5%8D%B3%E4%BD%BF%E5%8F%AA%E6%9C%89%E4%B8%80%E5%80%8B%E5%85%83%E7%B4%A0%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%BF%98%E8%A8%98%E5%8A%A0%E9%80%97%E8%99%9F"><span class="toc-text">tuple 中即使只有一個元素，也不要忘記加逗號</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"><span class="cap">Python 功力提升的樂趣</span></p>
+<blockquote>
+<p><code>2024/06/30</code>：新增「<a href="/beyond-the-basic-stuff-with-python/">心得與總結</a>」篇章，本書全系列正式完結。</p>
+</blockquote>
+<blockquote>
+<p><code>2024/05/05</code>：重新編輯全文並刪除部分內容，使文章更緊湊。</p>
+</blockquote>
+<p>我們繼續《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣：寫出乾淨程式碼的最佳實務</a>》閱讀筆記，這是第 2 篇，你可以把它當作是一則重點整理，加上我個人的開發經驗與心得。</p>
+<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
+<ol>
+<li><a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
+<li><strong>《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</strong></li>
+<li><a href="/beyond-the-basic-stuff-with-python-03/">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a></li>
+<li><a href="/beyond-the-basic-stuff-with-python/">《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</a></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="第-6-章：寫出-Pythonic-風格的程式碼"><a href="#第-6-章：寫出-Pythonic-風格的程式碼" class="headerlink" title="第 6 章：寫出 Pythonic 風格的程式碼"></a>第 6 章：寫出 Pythonic 風格的程式碼</h2><p>我們常常聽到 Pythonic，但如果問起它究竟意味著什麼，一時之間可能也不容易回答，畢竟它沒有一個公認的標準或定義。</p>
+<p>不過，<strong>充利分用 Python 獨有的特性、寫作風格、語法，尤其是善用標準函式庫</strong>，不重複造輪子——因為你自己造的輪子往往<strong>不會</strong>更好。或許是大家都認同的部分。</p>
+<p>至於遵守上篇提到的 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0008/">PEP 8</a>，自然不在話下。如果你的變數命名使用了小駝峰式命名法（lower camel case），那麼在「形式上」就已經不太 Pythonic 了。</p>
+<p>話說回來，本書雖然是一本優秀的 Clean Code in Python 入門書，但不知為何，書中的函式命名皆是採用小駝峰，讓我不甚理解。</p>
+<p>但我們要知道：好孩子不要學。至於為什麼，不用問，問就是 PEP 8。</p>
+<span id="more"></span>
+
+<h2 id="使用-enumerate-而不要用-range"><a href="#使用-enumerate-而不要用-range" class="headerlink" title="使用 enumerate() 而不要用 range()"></a>使用 <code>enumerate()</code> 而不要用 <code>range()</code></h2><p>當我 review 到下面這類 code 時，我會<strong>強烈要求</strong>必須改用<code>enumerate</code><strong>重構</strong>。</p>
+<p>設想你有一個 Python list 如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animals = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;moose&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>你想同時知道每一個元素是 list 中的<strong>第幾個</strong>與<strong>內容為何</strong>，直觀上可能會這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>animals = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;moose&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(animals)):</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i + <span class="number">1</span>, animals[i])</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> cat</span><br><span class="line"><span class="number">2</span> dog</span><br><span class="line"><span class="number">3</span> moose</span><br></pre></td></tr></table></figure>
+
+<p>這類「<strong>手刻式邏輯</strong>」的寫作風格——要什麼就寫什麼，寫完也不重構——你是否已屢見不鮮？我們來評論一下，這段程式碼有兩個很醜（難讀）的地方。</p>
+<ol>
+<li><code>i + 1</code>。這寫法顯然是為了讓<strong>計數</strong>從 1 開始——而不是預設的 0。</li>
+<li><code>range(len(animals))</code>寫法非常不直觀，多層的<strong>嵌套式呼叫</strong>讓人看了昏昏欲睡。</li>
+</ol>
+<p>這兩個地方充滿了「<strong>手刻</strong>」的<strong>僵化感</strong>，只是為了<strong>最快速達到開發者「當下目的」而強行採用的一種粗糙手段</strong>——但顯然不是最好的那個。</p>
+<p>雖然兩者都不難理解與推測，但除了寫這段程式的人，<strong>誰也無法 100% 確信作者的「意圖」</strong>——這是<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20107637/ironman/1927">糙 code</a> 的特色，它存在著<strong>大量且不必要的誤解空間</strong>。</p>
+<p>這些<strong>不明確的誤解空間</strong>會造成別人閱讀本段程式碼時的「<strong>思考停頓</strong>」，更別說後續滋生 bug 的可能。所幸，它們是有可能被消除的。比如使用以下的<code>enumerate</code>。</p>
+<h3 id="用-enumerate-重構"><a href="#用-enumerate-重構" class="headerlink" title="用 enumerate() 重構"></a>用 <code>enumerate()</code> 重構</h3><p>一言以蔽之，你只要<strong>在<code>for</code>迴圈內</strong>，看到以下這樣的寫作模式，那就是典型的 Python <a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/refactoring-notes-2-bad-smell/">壞味道</a>：</p>
+<blockquote>
+<p><code>iterable[index]</code></p>
+</blockquote>
+<p>迭代任何<code>iterable</code>同時，又需要知道每一個元素的索引值，這是很常見的需求。</p>
+<p>因為太常見，<strong>所以 Python 早就幫你準備好了</strong>——<code>enumerate</code>。</p>
+<p>同樣的需求，我們應該要這樣寫：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>animals = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;dog&#x27;</span>, <span class="string">&#x27;moose&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i, animal <span class="keyword">in</span> <span class="built_in">enumerate</span>(animals, start=<span class="number">1</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(i, animal)</span><br><span class="line">...</span><br><span class="line"><span class="number">1</span> cat</span><br><span class="line"><span class="number">2</span> dog</span><br><span class="line"><span class="number">3</span> moose</span><br></pre></td></tr></table></figure>
+
+<p><code>start=1</code>讓你不用再<code>i+1</code>，也不再需要<code>range</code>和<code>len</code>的疊床架屋。</p>
+<p>兩種寫法的結果是一樣的，但後者更加善用 Python 的內建特性，<strong>且優雅</strong>。</p>
+<p><strong>善用 Python 的自身的特性寫出優雅而簡潔的程式碼——這就是 Pythonic。</strong></p>
+<hr>
+<h2 id="使用-with-陳述式而不要手動-close"><a href="#使用-with-陳述式而不要手動-close" class="headerlink" title="使用 with 陳述式而不要手動 close()"></a>使用 <code>with</code> 陳述式而不要手動 <code>close()</code></h2><p>因為你很可能會忘記 close！</p>
+<p><code>with</code>（<strong>context manager，上下文管理器</strong>）在資源管理上很有用，比如文件讀寫或資料庫連接等，可以確保即使有錯誤發生，也能正確地關閉、釋放資源。</p>
+<p>但對於不熟悉或不常見的物件，<strong>則要注意物件是否實作了所謂的「上下文管理協定」</strong>。</p>
+<p>這個協定要求物件必須實作以下兩個方法：<code>__enter__</code> 和 <code>__exit__</code>。這樣物件搭配<code>with</code>使用時，才能正常運作。</p>
+<h2 id="以-Pythonic-風格運用字典"><a href="#以-Pythonic-風格運用字典" class="headerlink" title="以 Pythonic 風格運用字典"></a>以 Pythonic 風格運用字典</h2><ol>
+<li>使用<code>get()</code>來處理沒有 key 值而出現<code>KeyError</code>的情況。（不過有時候缺少 key 是一個警訊，此時不宜透過 get 讓這個警訊被忽略）</li>
+<li>使用<code>setdefault()</code>來處理沒有 key 值就要<strong>新增該 key 並給定一個預設值</strong>的情況。</li>
+<li>使用<code>collections.defaultdict</code>來更細緻地處理預設值。</li>
+</ol>
+<p>前兩者你可能已經熟悉，而第 3 種在特定情境真的很好用！以前當資料工程師，進行資料清洗時，我就很喜歡用<code>defaultdict</code>。</p>
+<p>關於<code>defaultdict</code>的用法與介紹，可直接參考這篇〈<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193094">collections雜談之一 ——— dict的key值存不存在乾我屁事</a>〉。</p>
+<hr>
+<p>上面舉的種種例子，都是常見的 <strong>Python 寫作慣例</strong>，這些慣例是 Python 在設計功能時就已經詳細考慮到的常見情況。換句話說，它們也往往是<strong>最佳實踐</strong>。</p>
+<p>這樣寫，熟悉 Python 的人會知道，你就是一個「<strong>內行人</strong>」。</p>
+<p>還是那句〈<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Python%E4%B9%8B%E7%A6%85">Zen of Python</a>〉中的名言：</p>
+<blockquote>
+<p>任何問題應有一種，且<strong>最好只有一種</strong>顯而易見的解決方法。（There should be one– and preferably only one –obvious way to do it.）</p>
+</blockquote>
+<p>說到內行人，下一章我們就來看看，內行人還需要知道哪些事情。</p>
+<h2 id="第-7-章：程式設計的行話"><a href="#第-7-章：程式設計的行話" class="headerlink" title="第 7 章：程式設計的行話"></a>第 7 章：程式設計的行話</h2><p>行話，在本章的情境中，指的是程式設計中的「術語」——包括不限於 Python。</p>
+<h3 id="物件、值、型別、識別碼"><a href="#物件、值、型別、識別碼" class="headerlink" title="物件、值、型別、識別碼"></a>物件、值、型別、識別<strong>碼</strong></h3><p>物件（object）是<strong>資料的表示形式</strong>，例如數字、字串，或更複雜的資料結構，比如 list 或 set。</p>
+<blockquote>
+<p>所有的物件都具有<strong>值</strong>、<strong>識別碼</strong>（id）和<strong>資料型別</strong>。</p>
+</blockquote>
+<p>這句話很重要。因為我們很常把物件的「值」（比如數字 12、字串<code>&quot;hello&quot;</code>）視為物件「本身」，但實際上那只能說是物件的一個<strong>重要屬性</strong>。</p>
+<p>而物件的其它兩個重要屬性，就是 id（代表物件在<strong>當前的程式執行期間</strong>在<strong>記憶體中的地址</strong>）和型別。</p>
+<p>id 屬性的內容可以透過內建的<code>id</code>函式取得：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(<span class="number">12345</span>)</span><br><span class="line"><span class="number">4603344144</span></span><br></pre></td></tr></table></figure>
+
+<p>而型別則是透過<code>type()</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(<span class="number">12345</span>)</span><br><span class="line"><span class="built_in">int</span></span><br></pre></td></tr></table></figure>
+
+<p>了解這些細節的重要理由是，每次執行程式時，物件的 id 與型別不會改變，但物件的值是可以變動的！這是可變與不可變物件的基石。</p>
+<p>此外，如果兩個物件的 id 相同，那麼它們就是<strong>同一個物件</strong>。這將有助於你理解關於「物件的參照」與「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%B8%80%E3%80%81Python-%E4%B8%AD%E7%9A%84%E8%AE%8A%E6%95%B8%EF%BC%9A%E6%98%AF%E6%B0%B4%E6%A1%B6%E9%82%84%E6%98%AF%E6%A8%99%E7%B1%A4%EF%BC%9F">一、Python 中的變數：是水桶還是標籤？</a>」等議題。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/the-quick-python-book/">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></p>
+</blockquote>
+<h3 id="可變與不可變"><a href="#可變與不可變" class="headerlink" title="可變與不可變"></a>可變與不可變</h3><p>剛剛提到，物件中只有「值」是可以（有可能）改變的。所以依照物件的<strong>值是否可以改變</strong>，物件也分為兩大類：</p>
+<ol>
+<li>可變物件。</li>
+<li>不可變物件。</li>
+</ol>
+<p>這無疑是一大經典議題，但這裡就不展開了。只要知道物件的可變與不可變，對於變數的「參照」有著巨大的影響。有興趣可以再看看「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83">二、使用可變物件作為引數時要小心</a>」部分。</p>
+<p>本章還有很多術語的定義介紹，比如陳述式（statement）與表達式（expression）、iterable 與 iterator、參數與引數等等，就請讀者自行閱讀。</p>
+<hr>
+<h2 id="第-8-章：常見的-Python-誤解和陷阱"><a href="#第-8-章：常見的-Python-誤解和陷阱" class="headerlink" title="第 8 章：常見的 Python 誤解和陷阱"></a>第 8 章：常見的 Python 誤解和陷阱</h2><p>本章介紹基於 Python 特性的一些常見錯誤——我們一定都踩過。在此只提「為什麼這樣不好」以及如何避免這些不佳實作的<strong>核心想法</strong>。</p>
+<h3 id="不要在迴圈中新增或刪除「被迭代物件（比如-list）」中的元素"><a href="#不要在迴圈中新增或刪除「被迭代物件（比如-list）」中的元素" class="headerlink" title="不要在迴圈中新增或刪除「被迭代物件（比如 list）」中的元素"></a>不要在迴圈中新增或刪除「被迭代物件（比如 list）」中的元素</h3><p>新增可能會造成無限迴圈（因為迭代不完），而且刪除則很可能會造成<strong>索引值與你預期內容產生錯亂的問題</strong>。</p>
+<p>大原則就是「不要在迴圈中<strong>編輯</strong>（修改）當前被迭代的<strong>可變物件</strong>」，如果必須這麼麼做，就為它們建立一個「副本」吧！</p>
+<h3 id="一定要用copy-copy-和copy-deepcopy-來複製「可變值」"><a href="#一定要用copy-copy-和copy-deepcopy-來複製「可變值」" class="headerlink" title="一定要用copy.copy()和copy.deepcopy()來複製「可變值」"></a>一定要用<code>copy.copy()</code>和<code>copy.deepcopy()</code>來複製「可變值」</h3><p>承上，既然要建立複本，就要採用穩妥的方式，而穩妥方式就是使用內建方法。</p>
+<p>這又又又是一個「物件參照」的相關議題。下一個也是。</p>
+<hr>
+<h2 id="不要使用「可變物件」作為「參數預設值」"><a href="#不要使用「可變物件」作為「參數預設值」" class="headerlink" title="不要使用「可變物件」作為「參數預設值」"></a>不要使用「可變物件」作為「參數預設值」</h2><p>這點你可能已經很熟悉了，因為幾乎每一本書都會強調。</p>
+<p>我們用下列兩段話（by ChatGPT）來回顧，<strong>為什麼不能這麼做</strong>：</p>
+<blockquote>
+<p>在Python 中，不應該用可變物件做預設參數（引數），因為這個可變物件在函式第一次<strong>被定義的時候</strong>就已經「<strong>固定</strong>」了。（<strong>只會建立一次</strong>）</p>
+</blockquote>
+<blockquote>
+<p>以後每次呼叫這個函式但<strong>沒有提供這個引數</strong>的話，都會<strong>共用同一個物件</strong>。如果你在函式裡改變了這個物件，那麼下次呼叫時，<strong>這個改變就被保留下來了</strong>。這會讓程式的行為變得很難預測和控制。</p>
+</blockquote>
+<h3 id="一個簡單的例子"><a href="#一個簡單的例子" class="headerlink" title="一個簡單的例子"></a>一個簡單的例子</h3><p>參考程式碼，這個函式正常使用時，希望你帶入一個<code>fruit_list</code>作為引數——當然，從上面的「<a href="https://blog.kyomind.tw/the-quick-python-book/#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6%E4%BD%9C%E7%82%BA%E5%BC%95%E6%95%B8%E6%99%82%E8%A6%81%E5%B0%8F%E5%BF%83">二、使用可變物件作為引數時要小心</a>」我們知道，這也是一個不太健康的做法！</p>
+<p>關於<strong>使用可變物件為引數，我們先不論</strong>。下面的呼叫我們都不給第二個引數，讓它<strong>只使用參數預設值</strong>。</p>
+<p>我們預期的行為是：每次給定不同的水果，且不給<code>fruit_list</code>引數，則產出應該都要是「以該水果為單一元素的」的 list——<strong>但事實完全不是如此</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_fruit_to_list</span>(<span class="params">fruit, fruit_list=[]</span>):</span><br><span class="line">    fruit_list.append(fruit)</span><br><span class="line">    <span class="keyword">return</span> fruit_list</span><br><span class="line"></span><br><span class="line">apple_list = add_fruit_to_list(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;]</span></span><br><span class="line"></span><br><span class="line">banana_list = add_fruit_to_list(<span class="string">&#x27;banana&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(banana_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;, &#x27;banana&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;, &#x27;banana&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>當「第二次」呼叫函式時，情況就<strong>不是我們要的</strong>了：</p>
+<ol>
+<li>banana_list 竟然包含了 apple！</li>
+<li>apple_list 竟然也被改變了！</li>
+</ol>
+<h3 id="替代方案"><a href="#替代方案" class="headerlink" title="替代方案"></a>替代方案</h3><p>而替代方案想必你也知曉，<strong>就是把預設值改設為</strong><code>None</code>，然後在函式中加上一個判斷，比如下面的<code>if fruit_list is None:</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_fruit_to_list</span>(<span class="params">fruit, fruit_list=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="keyword">if</span> fruit_list <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        fruit_list = []</span><br><span class="line">    fruit_list.append(fruit)</span><br><span class="line">    <span class="keyword">return</span> fruit_list</span><br><span class="line"></span><br><span class="line">apple_list = add_fruit_to_list(<span class="string">&#x27;apple&#x27;</span>)</span><br><span class="line">banana_list = add_fruit_to_list(<span class="string">&#x27;banana&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(apple_list)  <span class="comment"># 輸出: [&#x27;apple&#x27;]</span></span><br><span class="line"><span class="built_in">print</span>(banana_list)  <span class="comment"># 輸出: [&#x27;banana&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>當沒有提供<code>fruit_list</code>參數（引數）時，<code>if fruit_list is None:</code>判斷式會成立，判斷式內通常會<strong>建立一個全新的可變物件</strong>，讓每一次呼叫都會有不同的<code>fruit_list</code>可變物件，避免前述的「<strong>狀態殘留</strong>」與意料之外的錯誤。</p>
+<hr>
+<h2 id="tuple-中即使只有一個元素，也不要忘記加逗號"><a href="#tuple-中即使只有一個元素，也不要忘記加逗號" class="headerlink" title="tuple 中即使只有一個元素，也不要忘記加逗號"></a>tuple 中即使只有一個元素，也不要忘記加逗號</h2><p>這個例子非常經典！因為不少人可能寫了超過一年的 Python，都未必知道這個特性，而在某些「意料之外」的事發生後，才赫然發現這個事實。</p>
+<p>好，我承認第一次知道時我也很吃驚，還好我是看書知道的。</p>
+<p>照標題的意思，單元素 tuple 應該要長這樣：<code>(&quot;cat&quot;,)</code>，而不是這樣<code>(&quot;cat&quot;)</code>。</p>
+<p>就像《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789863479116">流暢的 Python</a>》中說的，逗點才是 tuple 的本體XD。</p>
+<p>這也是為什麼我們在函式中 return 複數值時，不需要為它們加上小括號，只要使用逗點分隔，return 自然就是一個 tuple。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multiple_values</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>, <span class="number">42</span></span><br><span class="line"></span><br><span class="line">result = multiple_values()</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 輸出: (&#x27;apple&#x27;, &#x27;banana&#x27;, 42)</span></span><br></pre></td></tr></table></figure>
+
+<p>足見，逗點確實是定義 tuple 的關鍵。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/beyond-the-basic-stuff-with-python/" title="《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南" rel="bookmark">《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/effective-python-01/" title="《Effective Python》筆記（一）以拆分代替索引" rel="bookmark">《Effective Python》筆記（一）以拆分代替索引</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-craftsman-01/" title="《Python 工匠》筆記（一）如何寫好註解" rel="bookmark">《Python 工匠》筆記（一）如何寫好註解</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/%E6%9B%B8/">書</a>
+            <a href="/tags/Clean-Code/">Clean Code</a>
+            <a href="/tags/%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97/">讀書心得</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/apple-studio-display/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Apple Studio Display 適合你嗎？——我的心得與選購指南</span>
+        <span class="prev-text nav-mobile">Apple Studio Display 適合你嗎？——我的心得與選購指南</span>
+      </a>
+    <a class="next" href="/notion-database/">
+        <span class="next-text nav-default">Notion 資料庫「反複雜」使用指南</span>
+        <span class="next-text nav-mobile">Notion 資料庫「反複雜」使用指南</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

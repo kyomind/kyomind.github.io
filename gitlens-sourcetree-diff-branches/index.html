@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="VS Code 用 GitLens 比較不同分支差異">
+  <meta property="og:title" content="VS Code 用 GitLens 比較不同分支差異"><meta name="twitter:description" content="GitLens 是 Git 相關的 VS Code 擴充套件。利用 GitLens 進行分支和 commit 之間的比較，操作流程直觀簡潔，且支援圖形化的 diff 畫面。">
+  <meta property="og:description" content="GitLens 是 Git 相關的 VS Code 擴充套件。利用 GitLens 進行分支和 commit 之間的比較，操作流程直觀簡潔，且支援圖形化的 diff 畫面。"><meta name="twitter:image" content="https://i.imgur.com/3WVW2Qb.jpg">
+  <meta property="og:image" content="https://i.imgur.com/3WVW2Qb.jpg">
+<meta name="description" content="GitLens 是 Git 相關的 VS Code 擴充套件。利用 GitLens 進行分支和 commit 之間的比較，操作流程直觀簡潔，且支援圖形化的 diff 畫面。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="VS Code" />
+            
+
+  <meta property="article:modified_time" content="2024-06-09T03:23:22+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2022-02-26T09:27:36+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>VS Code 用 GitLens 比較不同分支差異 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (24)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Docker/">Docker (2)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">VS Code 用 GitLens 比較不同分支差異
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-02-26
+        </span><span class="post-update">
+            →  2023-09-04
+          </span>
+        <span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%A0%B4%E6%99%AF%E8%AA%AA%E6%98%8E"><span class="toc-text">前言：場景說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-diff-%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-text">git diff 的不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E5%B7%AE%E7%95%B0%E5%8D%B3-commit-%E5%B7%AE%E7%95%B0"><span class="toc-text">分支差異即 commit 差異</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS-Code-GitLens"><span class="toc-text">VS Code + GitLens</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SourceTree"><span class="toc-text">SourceTree</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/3WVW2Qb.jpg"></p>
+<h2 id="前言：場景說明"><a href="#前言：場景說明" class="headerlink" title="前言：場景說明"></a>前言：場景說明</h2><p>最近，由於需要審查同事的程式碼，「<strong>比較分支差異</strong>」成為一個必要的需求。</p>
+<p>在工作中，通常將一個功能指派給一個開發者，在一個獨立的分支上進行開發。當分支的開告一段落時，審核人需要明確知道從 fork 時的 commit 到目前功能分支的所有變更，才能進行 code review。</p>
+<p>功能分支範圍內通常會包括多個 commit 與多個檔案的變動，我們需要<strong>能夠一次就看到分支累積的所有變動</strong>。</p>
+<p>以往我都是一個一個 commit 慢慢看，土法煉鋼——這真的太蠢了！還好很快就受不了，找到更好的辦法。</p>
+<span id="more"></span>
+<h3 id="本篇重點"><a href="#本篇重點" class="headerlink" title="本篇重點"></a>本篇重點</h3><p>本文分為兩部分：</p>
+<ol>
+<li>流程教學：使VS Code 用 GitLens 比較不同分支差異的步驟與圖解。</li>
+<li>補充：SourceTree 快速比較分支做法。</li>
+</ol>
+<hr>
+<h2 id="git-diff-的不足"><a href="#git-diff-的不足" class="headerlink" title="git diff 的不足"></a>git diff 的不足</h2><p>提到比較分支，第一個想到的八成是<code>git diff</code>指令吧！但我相信用的人應該不多，其輸出效果如下：</p>
+<p><img src="https://i.imgur.com/JKU9Bei.png" alt="git diff on CLI"><span class="cap">git diff on CLI</span></p>
+<p>畢竟是命令列工具，輸出格式就不太人類友好，主要的不便在於：多個檔案的變動只能用捲軸或換頁慢慢看，且很難在不同檔案之間來回比對。只能說，如果是想簡單看幾眼了解大概差異的話那還可以（但下面依舊有更好的做法），要進行 code review 用這個就太不方便了！</p>
+<p>所以下面要介紹兩種更有效率的做法。</p>
+<h2 id="分支差異即-commit-差異"><a href="#分支差異即-commit-差異" class="headerlink" title="分支差異即 commit 差異"></a>分支差異即 commit 差異</h2><p>不過介紹前還是要再次提醒，就像《<a target="_blank" rel="noopener" href="https://gitbook.tw/">為你自己學 Git</a>》一書中說的，分支只是附著在 commit 上的一張「<strong>貼紙</strong>」而已，所以比較分支差異<strong>本質上就是比較 commit 差異</strong>。</p>
+<hr>
+<h2 id="VS-Code-GitLens"><a href="#VS-Code-GitLens" class="headerlink" title="VS Code + GitLens"></a>VS Code + GitLens</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a> 是 VS Code 上一個和 Git 相關的擴充套件（extension），功能強大，最常用的可能是每一個程式行後的 git blame 訊息：</p>
+<p><img src="https://i.imgur.com/A4VZkri.png" alt="inline git blame"><span class="cap">inline git blame</span></p>
+<p>此外還有許多特性，比如以關鍵字搜尋 commit 標題、前後 commit 變動比較等等，這裡就不一一介紹了。讓我們直接進入主題：<strong>比較分支差異</strong>。</p>
+<blockquote>
+<p><code>2023/09/04</code>：GitLens 目前已經更新到 14 版，介面有些許變動——從內建的 Git 區塊獨立了。但功能大致相同，不影響本文內容。</p>
+</blockquote>
+<p>使用 GitLens 比較分支、commit，步驟很簡單，可對照下圖操作：</p>
+<p><img src="https://i.imgur.com/vJp8M4i.png" alt="Compare References"><span class="cap">Compare References</span></p>
+<ol>
+<li>選擇左邊 VS Code 工具列的 Git。</li>
+<li>打開「Search &amp; Compare」功能分頁。</li>
+<li>按下「Compare Reference」，這裡的 reference 基本上指的就是 commit，不過會讓你優先選擇分支或標籤，也可以使用<code>#</code>號並輸入 commit 的 SHA。</li>
+<li><strong>第一次選擇分支</strong>：選擇被比較的開發分支！可以認為是本次比較的主角，比如選擇「1231-create-iot-device」分支。</li>
+<li><strong>第二次選擇分支</strong>：選擇用以比較的<strong>基準分支</strong>，也就是 develop 分支。<ol>
+<li>注意，最好先選擇 commit 時間靠後的分支，也就是開發分支，再選擇時間靠前的分支，這樣呈現出來的變動差異通常才是我們想要的。</li>
+<li>如果順序相反，則<code>+</code>會變成<code>-</code>，這裡被比較分支和基準分支的擺放順序和<code>git diff</code>正好相反，也就是想要有同樣的輸出結果，git 指令是<code>git diff develop 1231-create-iot-device</code>，<code>develop</code>變成第一個參數。</li>
+</ol>
+</li>
+</ol>
+<p>選完後，就會出現所有變動的檔案清單，本例中總共有 6 個檔案所有變動，一目瞭然，而且會以圖示來表示該檔是僅有增加程式碼或減少，或兩者皆有。</p>
+<p>點進任一檔名，就是我們熟悉的 VS Code diff 畫面，視覺上還是比命令列友善許多。</p>
+<p><img src="https://i.imgur.com/tv4jw7y.png"></p>
+<p>這就是我最常用的分支比較方式，非常方便且直觀，強力推薦！</p>
+<hr>
+<h2 id="SourceTree"><a href="#SourceTree" class="headerlink" title="SourceTree"></a>SourceTree</h2><p>本來有第一種方法我已經滿足，但後來也好奇，我使用的 Git GUI 即 <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a>，要如何做到類似的事呢？</p>
+<p>結果一查才發現，哇，驚人的簡單！只需要在 commit 清單中按住<code>cmd</code>（也就是 Windows 的<code>ctrl</code>）後，再任意選取兩個 commit 即可！</p>
+<p>SourceTree 會顯示這兩個 commit <strong>之間，所有變動的「檔案清單」與「修改內容」</strong>：</p>
+<p><img src="https://i.imgur.com/8kY7tWN.png" alt="SourceTree 會以「時間較早」的 commit 為比較的「基準」"><span class="cap">SourceTree 會以「時間較早」的 commit 為比較的「基準」</span></p>
+<p>實際上你可以選擇「超過兩個」commit，但並<strong>沒有什麼差別</strong>，SourceTree <strong>只會</strong>去比較這些選擇的 commit 中，時間<strong>最早</strong>和<strong>最晚</strong>兩個 commit 的差異，這點要稍稍注意。</p>
+<p>在只想<strong>大概了解</strong>分支變動的情況下，使用 SourceTree 來比較分支，無疑比<code>git diff</code>指令更加快速且人性化許多，只需要短短 1 秒鐘即可看到結果，十分舒爽！</p>
+<h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://matthung0807.blogspot.com/2019/11/git-diff-files-in-two-branches.html">Git 比較不同分支間的檔案差異 diff files in two branches</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30177189/is-there-a-way-to-get-a-visual-diff-on-two-branches-in-sourcetree">Is there a way to get a visual diff on two branches in SourceTree?</a></li>
+</ul>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/cursor/" title="Cursor IDE 心得：三大亮點與三個阻礙" rel="bookmark">Cursor IDE 心得：三大亮點與三個阻礙</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-06/" title="Django Ninja 教學 06：環境設定 × 如何使用本專案" rel="bookmark">Django Ninja 教學 06：環境設定 × 如何使用本專案</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/keyboard-shortcuts/" title="現代軟體的「鍵盤快捷鍵」記憶爭奪戰" rel="bookmark">現代軟體的「鍵盤快捷鍵」記憶爭奪戰</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/Git/">Git</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/add-top10-page/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">新增自製熱門文章頁面</span>
+        <span class="prev-text nav-mobile">新增自製熱門文章頁面</span>
+      </a>
+    <a class="next" href="/python-docker-sdk/">
+        <span class="next-text nav-default">Python Docker SDK 快速上手</span>
+        <span class="next-text nav-mobile">Python Docker SDK 快速上手</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/Docker/">Docker<span class="category-count">2</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">38</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">24</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
