@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-22T10:25:41+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:38:23+08:00" />
 
 
 
@@ -196,7 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C"><span class="toc-text">查詢結果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
-<p>這是 Django Ninja 系列教學的第 26 篇。</p>
+<p>這是 Django Ninja 系列教學第 26 篇。</p>
 <p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
 <p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
 <p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>

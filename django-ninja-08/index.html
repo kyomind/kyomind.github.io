@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-22T10:16:57+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:38:23+08:00" />
 
 
 
@@ -196,7 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E5%B0%88%E6%A1%88%E5%8B%95%E6%85%8B"><span class="toc-text">範例專案動態</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%B7%AF%E7%94%B1%E6%A6%82%E8%BF%B0"><span class="toc-text">Django Ninja 路由概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%9C%89%E7%B5%84%E7%B9%94%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A%E4%BD%BF%E7%94%A8-Router-%E7%89%A9%E4%BB%B6"><span class="toc-text">更有組織的做法：使用 Router 物件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B%E8%AE%8A%E5%8C%96"><span class="toc-text">專案架構變化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Ninja-%E8%B7%AF%E7%94%B1%E5%AF%A6%E4%BD%9C"><span class="toc-text">Django Ninja 路由實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%80%E6%94%B6%E5%B0%BE%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">本節收尾與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
-<p>這是 Django Ninja 系列教學的第 8 篇。</p>
+<p>這是 Django Ninja 系列教學第 8 篇。</p>
 <p>上一篇文章中，我們介紹了 Django 傳統的路由設定方式。</p>
 <p>如前所述，雖然有一個「路由清單」確實不錯。但隨著專案規模的擴大，<strong>不斷來回切換</strong><code>urls.py</code>和<code>views.py</code>將大幅增加開發者的<strong>認知負擔</strong>——拉長了開發時間，還更容易導致錯誤。</p>
 <p>Django Ninja 採用了一種<strong>更現代化</strong>的路由設計，結合了 Flask 和 FastAPI 的設計理念。不僅簡化了路由的定義，還提升了程式碼的可讀性，讓路由與 view 函式<strong>緊密結合</strong>。</p>
