@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 04：範例專案介紹">
-  <meta property="og:title" content="Django Ninja 教學 04：範例專案介紹"><meta name="twitter:description" content="本文介紹 Django Ninja 範例專案——「忍者論壇」，並貫徹了三個設計原則，以確保教學的簡潔與有效性。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="API 範例專案介紹：忍者論壇">
+  <meta property="og:title" content="API 範例專案介紹：忍者論壇"><meta name="twitter:description" content="本文介紹 Django Ninja 範例專案——「忍者論壇」，並貫徹了三個設計原則，以確保教學的簡潔與有效性。">
   <meta property="og:description" content="本文介紹 Django Ninja 範例專案——「忍者論壇」，並貫徹了三個設計原則，以確保教學的簡潔與有效性。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹 Django Ninja 範例專案——「忍者論壇」，並貫徹了三個設計原則，以確保教學的簡潔與有效性。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:16:30+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 04：範例專案介紹 - Code and Me</title>
+    <title>API 範例專案介紹：忍者論壇 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 04：範例專案介紹
+      <h1 class="post-title">API 範例專案介紹：忍者論壇
         </h1>
 
       <div class="post-meta">
@@ -196,6 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E9%87%8D%E9%BB%9E"><span class="toc-text">本章重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%8D%E8%80%85%E8%AB%96%E5%A3%87"><span class="toc-text">忍者論壇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E8%A8%88%E7%90%86%E5%BF%B5"><span class="toc-text">設計理念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%80%8B%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87"><span class="toc-text">三個設計原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%80%E5%B0%8F%E5%8C%96%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87"><span class="toc-text">一、最小化設計原則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%B0%A1%E5%96%AE%E6%98%93%E6%87%82%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%B5%90%E6%A7%8B"><span class="toc-text">二、簡單易懂的程式碼結構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%B0%A1%E5%96%AE%E6%98%93%E7%94%A8%E7%9A%84%E7%92%B0%E5%A2%83"><span class="toc-text">三、簡單易用的環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 4 篇。</p>
 <p>在第一章中，我們對 Django Ninja 做了全方位的介紹，並且分析了它與 Django REST framework 的主要區別。</p>
 <p>相信你對 Django Ninja 已有了一定的了解。</p>
 <p>接下來，我們將進入第二章：<strong>專案介紹與設定</strong>。</p>
@@ -275,7 +276,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="Django Ninja 教學 01：系列導讀 × 目標讀者" rel="bookmark">Django Ninja 教學 01：系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-30/" title="Django Ninja 教學 30：系列回顧與完賽心得" rel="bookmark">Django Ninja 教學 30：系列回顧與完賽心得</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2024-ironman-event/" title="2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略" rel="bookmark">2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-01/" title="系列導讀 × 目標讀者" rel="bookmark">系列導讀 × 目標讀者</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-30/" title="系列回顧與完賽心得" rel="bookmark">系列回顧與完賽心得</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2024-ironman-event/" title="2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略" rel="bookmark">2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/">鐵人賽</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
@@ -283,12 +284,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-03/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 03：Django Ninja 介紹——與 Django REST framework 主要區別</span>
+        <span class="prev-text nav-default">Django Ninja 介紹——與 Django REST framework 主要區別</span>
+        <span class="prev-text nav-mobile">Django Ninja 介紹——與 Django REST framework 主要區別</span>
       </a>
     <a class="next" href="/django-ninja-05/">
-        <span class="next-text nav-default">Django Ninja 教學 05：Python 現代開發工具介紹</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 05：Python 現代開發工具介紹</span>
+        <span class="next-text nav-default">Python 現代開發工具介紹</span>
+        <span class="next-text nav-mobile">Python 現代開發工具介紹</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

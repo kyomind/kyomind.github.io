@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 06：環境設定 × 如何使用本專案">
-  <meta property="og:title" content="Django Ninja 教學 06：環境設定 × 如何使用本專案"><meta name="twitter:description" content="本文將帶領你一步步完成，有關範例專案的環境設定，從安裝 Python、Poetry、clone 專案至本地、建立 Python 虛擬環境，到成功啟動 Django。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="環境設定 × 如何使用本專案">
+  <meta property="og:title" content="環境設定 × 如何使用本專案"><meta name="twitter:description" content="本文將帶領你一步步完成，有關範例專案的環境設定，從安裝 Python、Poetry、clone 專案至本地、建立 Python 虛擬環境，到成功啟動 Django。">
   <meta property="og:description" content="本文將帶領你一步步完成，有關範例專案的環境設定，從安裝 Python、Poetry、clone 專案至本地、建立 Python 虛擬環境，到成功啟動 Django。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文將帶領你一步步完成，有關範例專案的環境設定，從安裝 Python、Poetry、clone 專案至本地、建立 Python 虛擬環境，到成功啟動 Django。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:48:11+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:14:31+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 06：環境設定 × 如何使用本專案 - Code and Me</title>
+    <title>環境設定 × 如何使用本專案 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 06：環境設定 × 如何使用本專案
+      <h1 class="post-title">環境設定 × 如何使用本專案
         </h1>
 
       <div class="post-meta">
@@ -199,6 +199,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%9D-Python-3-12"><span class="toc-text">一、安裝 Python 3.12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A-Poetry"><span class="toc-text">二、安裝與設定 Poetry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8-Poetry-%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-text">不使用 Poetry 的方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BE%9E-GitHub-%E4%B8%8B%E8%BC%89%E5%B0%88%E6%A1%88%E3%80%81%E5%BB%BA%E7%AB%8B%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83"><span class="toc-text">三、從 GitHub 下載專案、建立虛擬環境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96-pre-commit"><span class="toc-text">四、初始化 pre-commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%9D-VS-Code-%E5%A5%97%E4%BB%B6"><span class="toc-text">五、安裝 VS Code 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%95%9F%E5%8B%95-Django-%E5%B0%88%E6%A1%88"><span class="toc-text">六、啟動 Django 專案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%88%E6%A1%88%E5%88%86%E6%94%AF%E8%88%87-PR"><span class="toc-text">專案分支與 PR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CodeGPT-%E6%8E%A8%E8%96%A6"><span class="toc-text">CodeGPT 推薦</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 6 篇。</p>
 <p>前一篇我們了解了整個專案所使用的 Python 開發工具。</p>
 <p>本文將帶領你一步步完成，有關範例專案的環境設定：<strong>從安裝 Python、Poetry、clone 專案至本地、建立 Python 虛擬環境，到成功啟動 Django</strong>。</p>
 <p>即使你從未接觸過這些工具，按著本文的指南，應該也能順利完成環境設定並運行。</p>
@@ -344,7 +345,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="Python 開發：pyproject.toml 介紹 + 使用教學" rel="bookmark">Python 開發：pyproject.toml 介紹 + 使用教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort-local-module-sorting/" title="確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定" rel="bookmark">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-05/" title="Django Ninja 教學 05：Python 現代開發工具介紹" rel="bookmark">Django Ninja 教學 05：Python 現代開發工具介紹</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="Python 開發：pyproject.toml 介紹 + 使用教學" rel="bookmark">Python 開發：pyproject.toml 介紹 + 使用教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/isort-local-module-sorting/" title="確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定" rel="bookmark">確保 isort 正確排序本地模組：pyproject.toml 與 pre-commit 設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-05/" title="Python 現代開發工具介紹" rel="bookmark">Python 現代開發工具介紹</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/VS-Code/">VS Code</a>
             <a href="/tags/pyenv/">pyenv</a>
@@ -354,12 +355,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-05/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 05：Python 現代開發工具介紹</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 05：Python 現代開發工具介紹</span>
+        <span class="prev-text nav-default">Python 現代開發工具介紹</span>
+        <span class="prev-text nav-mobile">Python 現代開發工具介紹</span>
       </a>
     <a class="next" href="/django-ninja-07/">
-        <span class="next-text nav-default">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</span>
+        <span class="next-text nav-default">路由（上）傳統 Django 路由做法</span>
+        <span class="next-text nav-mobile">路由（上）傳統 Django 路由做法</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

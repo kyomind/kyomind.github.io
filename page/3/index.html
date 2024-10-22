@@ -170,7 +170,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-16/">Django Ninja 教學 16：回應（四）Resolver 方法——欄位資料格式化</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-16/">回應（四）Resolver 方法——欄位資料格式化</a>
         </h1>
 
       <div class="post-meta">
@@ -183,6 +183,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 16 篇。</p>
 <p>上一篇提到，API 回應常常是對 Django Model 物件內容的篩選與加工——然後 JSON 序列化。</p>
 <p>其中「<strong>加工</strong>」部分，用更專業的說法，大概是「<strong>資料格式化</strong>」——依照一定的規則，對輸出資料進行<strong>某種轉換或重新組織</strong>，以符合<strong>特定的輸出格式</strong>。</p>
 <p>資料格式化的種類很多，例如：</p>
@@ -207,7 +208,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-15/">Django Ninja 教學 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-15/">回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a>
         </h1>
 
       <div class="post-meta">
@@ -220,6 +221,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 15 篇。</p>
 <p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的<strong>篩選與加工</strong>。</p>
 <p>比如「取得單一文章資訊」API，實際上就是從<code>Post</code>物件挑選欄位，再進行序列化。</p>
 <p>這個過程中，我們需要考慮如何將<strong>模型物件</strong>轉換為 API 的回應結構，同時保持程式碼的可維護性與靈活。</p>
@@ -233,7 +235,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-14/">Django Ninja 教學 14：回應（二）用 Schema 建立巢狀結構回應</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-14/">回應（二）用 Schema 建立巢狀結構回應</a>
         </h1>
 
       <div class="post-meta">
@@ -246,6 +248,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 14 篇。</p>
 <p>在 API 開發中，我們經常會遇到<strong>關聯模型</strong>之間的資料需要<strong>同時返回</strong>的情況。</p>
 <p>特別是在處理「一對一」或「一對多」關聯時，<strong>多層結構</strong>往往是常態。</p>
 <p>我們希望以<strong>巢狀結構</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#nested-objects">Nested Objects</a>）的方式返回資料，這樣可以讓 API 的使用者<strong>一次取得必要資訊</strong>，而不需要進行多次請求。</p>
@@ -266,7 +269,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-13/">Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-13/">回應（一）Django Ninja 處理 HTTP 回應</a>
         </h1>
 
       <div class="post-meta">
@@ -279,6 +282,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 13 篇。</p>
 <p>這一篇要正式進入「<strong>HTTP 回應</strong>」環節，也就是第三小節。</p>
 <p>本節將透過 4 篇文章，介紹 Django Ninja <strong>如何處理 HTTP 回應</strong>：</p>
 <ul>
@@ -295,7 +299,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-12/">Django Ninja 教學 12：請求（四）Request Body 與 Schema 介紹</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-12/">請求（四）Request Body 與 Schema 介紹</a>
         </h1>
 
       <div class="post-meta">
@@ -308,6 +312,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 12 篇。</p>
 <p>經過前幾篇的介紹，我們已經學習了如何處理路徑與查詢參數。但在現實世界中，我們往往還需要處理<strong>更複雜的請求資料</strong>。</p>
 <p>比如用戶提交的表單、上傳的檔案等等。對於 API 而言，最常見的就是 JSON 格式的 <strong>request body</strong>。</p>
 <p>這一篇將探討 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。</p>
@@ -325,7 +330,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-11/">Django Ninja 教學 11：請求（三）查詢參數 - Query Parameters</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-11/">請求（三）查詢參數 - Query Parameters</a>
         </h1>
 
       <div class="post-meta">
@@ -338,6 +343,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 11 篇。</p>
 <p>上一篇我們討論了，請求 URL 中關於<strong>路徑參數</strong>的處理方式。</p>
 <p>本文將介紹<strong>查詢參數（query parameters）</strong>，這是 RESTful API 中用來傳遞<strong>過濾條件</strong>等<strong>額外資訊</strong>的重要部分。</p>
 <p>處理查詢參數在 Django Ninja 中非常簡單直觀，我們可以透過多種方式來達成。</p>
@@ -354,7 +360,7 @@
         </div></article>
       <article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-10/">Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters</a>
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-10/">請求（二）路徑參數 - Path Parameters</a>
         </h1>
 
       <div class="post-meta">
@@ -367,6 +373,7 @@
     </header>
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 10 篇。</p>
 <p>上一篇文章中，我們介紹了 Django Ninja 如何處理 HTTP 請求，並強調了它與 Python type hints 之間的緊密結合。</p>
 <p>本篇將探討 Django Ninja 中，<strong>路徑參數（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/path-params/">path parameters</a>）</strong>的應用與細節，這在處理 HTTP 請求時<strong>極為常見</strong>，尤其是在 RESTful API 中。</p>
 <p>本文對範例專案的程式碼改動，都集中在<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/2">這個 PR</a>。</p>

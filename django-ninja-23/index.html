@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹">
-  <meta property="og:title" content="Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="檔案上傳——Django UploadedFile 介紹">
+  <meta property="og:title" content="檔案上傳——Django UploadedFile 介紹"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。">
   <meta property="og:description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹如何在 Django Ninja 中實現簡單的圖片上傳功能，以使用者「上傳大頭貼」功能為例，帶你一步步了解這個過程。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:24:32+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹 - Code and Me</title>
+    <title>檔案上傳——Django UploadedFile 介紹 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹
+      <h1 class="post-title">檔案上傳——Django UploadedFile 介紹
         </h1>
 
       <div class="post-meta">
@@ -196,6 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%E3%80%8CAPI-%E9%80%B2%E9%9A%8E%E5%8A%9F%E8%83%BD%E3%80%8D%E7%B0%A1%E4%BB%8B"><span class="toc-text">第六章「API 進階功能」簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AA%94%E6%A1%88%E4%B8%8A%E5%82%B3%E7%9A%84%E4%B8%BB%E8%A7%92%E2%80%94%E2%80%94UploadedFile"><span class="toc-text">檔案上傳的主角——UploadedFile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E5%B0%88%E6%A1%88%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django 專案相關設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%EF%BC%9A%E4%B8%8A%E5%82%B3-avatar"><span class="toc-text">實作：上傳 avatar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 23 篇。要開始介紹<strong>進階功能</strong>了！</p>
 <p>現代 Web 服務中，<strong>檔案上傳</strong>是一個常見的情境。</p>
 <p>無論是使用者上傳照片、夾帶附件，檔案上傳都是不可或缺的功能。</p>
 <p>本文介紹如何在 Django Ninja 中實現<strong>圖片上傳</strong>功能，以使用者「上傳大頭貼」（以下都稱為 avatar，因為大頭貼感覺太可愛🥹）API 為例，帶你一步步了解這個過程。</p>
@@ -321,7 +322,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-26/" title="Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹" rel="bookmark">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="Django Ninja 教學 08：路由（下）Django Ninja 路由設定" rel="bookmark">Django Ninja 教學 08：路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-13/" title="Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應" rel="bookmark">Django Ninja 教學 13：回應（一）Django Ninja 處理 HTTP 回應</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-26/" title="資料查詢與過濾（上）FilterSchema 介紹" rel="bookmark">資料查詢與過濾（上）FilterSchema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="路由（下）Django Ninja 路由設定" rel="bookmark">路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-13/" title="回應（一）Django Ninja 處理 HTTP 回應" rel="bookmark">回應（一）Django Ninja 處理 HTTP 回應</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
@@ -330,12 +331,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-22/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</span>
+        <span class="prev-text nav-default">錯誤處理（下）全域錯誤處理——使用 Exception Handlers</span>
+        <span class="prev-text nav-mobile">錯誤處理（下）全域錯誤處理——使用 Exception Handlers</span>
       </a>
     <a class="next" href="/django-ninja-24/">
-        <span class="next-text nav-default">Django Ninja 教學 24：分頁（上）Django Ninja 的內建分頁器</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 24：分頁（上）Django Ninja 的內建分頁器</span>
+        <span class="next-text nav-default">分頁（上）Django Ninja 的內建分頁器</span>
+        <span class="next-text nav-mobile">分頁（上）Django Ninja 的內建分頁器</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

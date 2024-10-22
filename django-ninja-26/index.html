@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹">
-  <meta property="og:title" content="Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹"><meta name="twitter:description" content="本文介紹 Django Ninja 中的 FilterSchema，讓你了解如何使用 FilterSchema 實現更加靈活、模組化的查詢功能。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="資料查詢與過濾（上）FilterSchema 介紹">
+  <meta property="og:title" content="資料查詢與過濾（上）FilterSchema 介紹"><meta name="twitter:description" content="本文介紹 Django Ninja 中的 FilterSchema，讓你了解如何使用 FilterSchema 實現更加靈活、模組化的查詢功能。">
   <meta property="og:description" content="本文介紹 Django Ninja 中的 FilterSchema，讓你了解如何使用 FilterSchema 實現更加靈活、模組化的查詢功能。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹 Django Ninja 中的 FilterSchema，讓你了解如何使用 FilterSchema 實現更加靈活、模組化的查詢功能。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:25:41+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹 - Code and Me</title>
+    <title>資料查詢與過濾（上）FilterSchema 介紹 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹
+      <h1 class="post-title">資料查詢與過濾（上）FilterSchema 介紹
         </h1>
 
       <div class="post-meta">
@@ -196,6 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C"><span class="toc-text">查詢結果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 26 篇。</p>
 <p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
 <p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
 <p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>
@@ -326,7 +327,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-23/" title="Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹" rel="bookmark">Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="Django Ninja 教學 08：路由（下）Django Ninja 路由設定" rel="bookmark">Django Ninja 教學 08：路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-10/" title="Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters" rel="bookmark">Django Ninja 教學 10：請求（二）路徑參數 - Path Parameters</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-23/" title="檔案上傳——Django UploadedFile 介紹" rel="bookmark">檔案上傳——Django UploadedFile 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="路由（下）Django Ninja 路由設定" rel="bookmark">路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-10/" title="請求（二）路徑參數 - Path Parameters" rel="bookmark">請求（二）路徑參數 - Path Parameters</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
@@ -336,12 +337,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-25/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 25：分頁（下）自定義分頁類別</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 25：分頁（下）自定義分頁類別</span>
+        <span class="prev-text nav-default">分頁（下）自定義分頁類別</span>
+        <span class="prev-text nav-mobile">分頁（下）自定義分頁類別</span>
       </a>
     <a class="next" href="/django-ninja-27/">
-        <span class="next-text nav-default">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
+        <span class="next-text nav-default">資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
+        <span class="next-text nav-mobile">資料查詢與過濾（下）FilterSchema 多欄位查詢</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

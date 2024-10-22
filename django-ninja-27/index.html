@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢">
-  <meta property="og:title" content="Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢"><meta name="twitter:description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="資料查詢與過濾（下）FilterSchema 多欄位查詢">
+  <meta property="og:title" content="資料查詢與過濾（下）FilterSchema 多欄位查詢"><meta name="twitter:description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。">
   <meta property="og:description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹 Django Ninja 如何實現 FilterSchema 的多欄位查詢功能，以篩選日期區間為例，讓你的 API 更加靈活、強大。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:25:54+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢 - Code and Me</title>
+    <title>資料查詢與過濾（下）FilterSchema 多欄位查詢 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 27：資料查詢與過濾（下）FilterSchema 多欄位查詢
+      <h1 class="post-title">資料查詢與過濾（下）FilterSchema 多欄位查詢
         </h1>
 
       <div class="post-meta">
@@ -199,6 +199,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%B0%87%E6%9F%A5%E8%A9%A2%E9%82%8F%E8%BC%AF%E9%81%B7%E7%A7%BB%E5%88%B0-FilterSchema"><span class="toc-text">一、將查詢邏輯遷移到 FilterSchema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E6%AC%84%E4%BD%8D%E6%9F%A5%E8%A9%A2%EF%BC%9A%E6%96%B0%E5%A2%9E%E6%97%A5%E6%9C%9F%E7%AF%A9%E9%81%B8%E5%8A%9F%E8%83%BD"><span class="toc-text">二、多欄位查詢：新增日期篩選功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FilterSchema-%E7%9A%84%E9%A0%90%E8%A8%AD%E6%9F%A5%E8%A9%A2%E6%A2%9D%E4%BB%B6%E9%97%9C%E4%BF%82"><span class="toc-text">FilterSchema 的預設查詢條件關係</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%97%A5%E6%9C%9F%E5%8D%80%E9%96%93%E9%A9%97%E8%AD%89"><span class="toc-text">三、日期區間驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 27 篇。</p>
 <p>上篇中，我們學習了 Django ORM 的<code>Q</code>物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
 <p>討論比較多的是，view 函式中使用 FilterSchema 的<strong>參數定義方式</strong>——這確實很重要，但這只是 FilterSchema 的一部分。</p>
 <p>本篇要來補完剩下的內容：</p>
@@ -341,7 +342,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="Django Ninja 教學 08：路由（下）Django Ninja 路由設定" rel="bookmark">Django Ninja 教學 08：路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-23/" title="Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹" rel="bookmark">Django Ninja 教學 23：檔案上傳——Django UploadedFile 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-26/" title="Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹" rel="bookmark">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-08/" title="路由（下）Django Ninja 路由設定" rel="bookmark">路由（下）Django Ninja 路由設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-23/" title="檔案上傳——Django UploadedFile 介紹" rel="bookmark">檔案上傳——Django UploadedFile 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-26/" title="資料查詢與過濾（上）FilterSchema 介紹" rel="bookmark">資料查詢與過濾（上）FilterSchema 介紹</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Ninja/">Django Ninja</a>
@@ -349,12 +350,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-26/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 26：資料查詢與過濾（上）FilterSchema 介紹</span>
+        <span class="prev-text nav-default">資料查詢與過濾（上）FilterSchema 介紹</span>
+        <span class="prev-text nav-mobile">資料查詢與過濾（上）FilterSchema 介紹</span>
       </a>
     <a class="next" href="/django-ninja-28/">
-        <span class="next-text nav-default">Django Ninja 教學 28：身分認證——Session 認證與全域設定</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 28：身分認證——Session 認證與全域設定</span>
+        <span class="next-text nav-default">身分認證——Session 認證與全域設定</span>
+        <span class="next-text nav-mobile">身分認證——Session 認證與全域設定</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>

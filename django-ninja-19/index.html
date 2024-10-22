@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證">
-  <meta property="og:title" content="Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="資料驗證（上）Pydantic 單一欄位驗證">
+  <meta property="og:title" content="資料驗證（上）Pydantic 單一欄位驗證"><meta name="twitter:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。">
   <meta property="og:description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。"><meta name="twitter:image" content="https://i.imgur.com/5gGprsq.png">
   <meta property="og:image" content="https://i.imgur.com/5gGprsq.png">
 <meta name="description" content="本文介紹如何在 Django Ninja 中使用 Pydantic field_validator，進行欄位的自定義驗證，以確保用戶輸入的密碼符合預期規則。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-10-22T10:21:19+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證 - Code and Me</title>
+    <title>資料驗證（上）Pydantic 單一欄位驗證 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django Ninja 教學 19：資料驗證（上）Pydantic 單一欄位驗證
+      <h1 class="post-title">資料驗證（上）Pydantic 單一欄位驗證
         </h1>
 
       <div class="post-meta">
@@ -199,6 +199,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%B8%BD%E8%AB%96"><span class="toc-text">第五章總論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-%E4%BF%AE%E6%AD%A3"><span class="toc-text">API 修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E3%80%8C%E5%B1%A4%E6%AC%A1%E3%80%8D%E7%9A%84%E9%A9%97%E8%AD%89"><span class="toc-text">不同「層次」的驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%EF%BC%9A%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87"><span class="toc-text">新需求：密碼規則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87%E9%A9%97%E8%AD%89%EF%BC%9A%E4%BD%BF%E7%94%A8-field-validator"><span class="toc-text">實作密碼規則驗證：使用 field_validator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6"><span class="toc-text">實際測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
+<p>這是 Django Ninja 系列教學的第 19 篇。進入第五章：<strong>資料驗證與錯誤處理</strong>。</p>
 <p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p>
 <p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p>
 <p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
@@ -325,7 +326,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="Django Ninja 教學 02：架構 × 章節導覽" rel="bookmark">Django Ninja 教學 02：架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-07/" title="Django Ninja 教學 07：路由（上）傳統 Django 路由做法" rel="bookmark">Django Ninja 教學 07：路由（上）傳統 Django 路由做法</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-02/" title="教學架構 × 章節導覽" rel="bookmark">教學架構 × 章節導覽</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-07/" title="路由（上）傳統 Django 路由做法" rel="bookmark">路由（上）傳統 Django 路由做法</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Pydantic/">Pydantic</a>
@@ -333,12 +334,12 @@
         
         <nav class="post-nav"><a class="prev" href="/django-ninja-18/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值</span>
-        <span class="prev-text nav-mobile">Django Ninja 教學 18：API 文件（下）Pydantic Field 設定範例與預設值</span>
+        <span class="prev-text nav-default">API 文件（下）Pydantic Field 設定範例與預設值</span>
+        <span class="prev-text nav-mobile">API 文件（下）Pydantic Field 設定範例與預設值</span>
       </a>
     <a class="next" href="/django-ninja-20/">
-        <span class="next-text nav-default">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
-        <span class="next-text nav-mobile">Django Ninja 教學 20：資料驗證（下）Pydantic 跨欄位驗證</span>
+        <span class="next-text nav-default">資料驗證（下）Pydantic 跨欄位驗證</span>
+        <span class="next-text nav-mobile">資料驗證（下）Pydantic 跨欄位驗證</span>
         <i class="iconfont icon-right"></i>
       </a>
     </nav></footer>
