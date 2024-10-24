@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (38)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (39)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -169,6 +169,40 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/reverse-relationships/">Django ORM：一對一、一對多外鍵教學（中）反向關聯</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-01-07
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<blockquote>
+<p><code>2024/04/18</code>：重新編輯全文，提高可讀性。</p>
+</blockquote>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 系列連載的第 3 篇。</p>
+<p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。</p>
+<h3 id="系列：Django-ORM-外鍵教學"><a href="#系列：Django-ORM-外鍵教學" class="headerlink" title="系列：Django ORM 外鍵教學"></a>系列：Django ORM 外鍵教學</h3><blockquote>
+<ol>
+<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
+<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯</strong></li>
+<li><a href="/django-orm-query-relations/">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇我們介紹完 Django ORM 的關聯設定，接下來本應該要進入查詢部分。不過，由於「反向關聯」在 ORM 查詢中<strong>扮演著十分重要的角色</strong>。</p>
+<p>所以我決定專門寫這個（中）篇，好好介紹 Django ORM 中的「<strong>反向關聯</strong>」。</p>
+          <div class="read-more">
+            <a href="/reverse-relationships/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/four-thousand-weeks-01/">《人生 4 千個禮拜》筆記（一）病態的生產力</a>
         </h1>
@@ -355,36 +389,6 @@
 <p>無數次 trial and error，看起來勤勤懇懇，實際上是<strong>最低效的開發手段</strong>。我覺得，試個兩、三次行不通，就應該<strong>重新思考問題的本質——而非繼續嘗試。</strong></p>
           <div class="read-more">
             <a href="/stop-trial-and-error/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-tutorial/">Django Tutorial：系列介紹與導讀</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-09-30
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
-<blockquote>
-<p><code>2024/03/22</code> ：更新<a href="#%E6%96%87%E7%AB%A0%E8%A6%8F%E5%8A%83">文章規劃</a>，增加「<strong>Django Ninja</strong>」相關文章。同時<strong>重新編輯全文，刪除</strong>部分內容，使文章更緊湊、好讀。</p>
-</blockquote>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 2 篇——<strong>序言</strong>。主要說明整個系列的<strong>寫作動機、文章規劃</strong>，並介紹 GitHub 範例程式碼 repo 的使用方式。</p>
-<hr>
-<h2 id="系列寫作動機"><a href="#系列寫作動機" class="headerlink" title="系列寫作動機"></a>系列寫作動機</h2><p>雖然在工作上寫了 2 年 Django，對 Django 的文章介紹卻非常少。</p>
-<p>作為一個 Django 開發者兼作者，讓我不免覺得，自己有「<strong>義務</strong>」做些什麼。經過一番思考，我決定把工作中常見的 Django 實作寫成文章。</p>
-<p>尤其繁體中文世界對於 Django 的介紹，大多停留在<strong>製作整個網站</strong>（主要介紹模板、Form、View），而不是開發 API——<strong>用 Django 開發 API 的相關教材太少了。</strong></p>
-<p>這個現象不難理解，因為在台灣使用 Django 作為產品主要後端的公司相對有限，所以文章分享自然就不是那麼多。</p>
-<p>而工作中你幾乎不太可能用 Django 來開發整個網站，畢竟這是個<strong>前後端分離</strong>的時代。</p>
-<p>想到這裡，寫作 Django 系列教學的動力又提升了！這或許就是我的<strong>使命</strong>。</p>
-          <div class="read-more">
-            <a href="/django-tutorial/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/10/">
