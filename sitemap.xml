@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
+    
+    <lastmod>2024-10-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/yadm/</loc>
+    
+    <lastmod>2024-10-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/grind-leetcode-with-ai-preparation/</loc>
     
     <lastmod>2024-10-24</lastmod>
@@ -20,16 +38,16 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-30/</loc>
     
-    <lastmod>2024-10-22</lastmod>
+    <lastmod>2024-10-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-30/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
     
     <lastmod>2024-10-22</lastmod>
     
@@ -317,24 +335,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/linux-dev-setup/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/yadm/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -470,15 +470,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -489,6 +480,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/ruff/</loc>
+    
+    <lastmod>2024-10-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/poetry-pyenv-practical-tips/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
