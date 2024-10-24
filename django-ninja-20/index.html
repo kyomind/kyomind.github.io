@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-22T10:38:23+08:00" />
+  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
 
 
 
@@ -199,7 +199,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E6%AC%84%E4%BD%8D%E9%A9%97%E8%AD%89%E8%88%87%E9%97%9C%E6%B3%A8%E9%BB%9E%E5%88%86%E9%9B%A2"><span class="toc-text">跨欄位驗證與關注點分離</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%EF%BC%9A%E7%A2%BA%E8%AA%8D%E5%AF%86%E7%A2%BC"><span class="toc-text">新需求：確認密碼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E8%B7%A8%E6%AC%84%E4%BD%8D%E9%A9%97%E8%AD%89%EF%BC%9A%E4%BD%BF%E7%94%A8-model-validator"><span class="toc-text">實作跨欄位驗證：使用 model_validator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A9%97%E8%AD%89%E5%A4%B1%E6%95%97%E6%99%82%E7%9A%84-HTTP-%E5%9B%9E%E6%87%89"><span class="toc-text">驗證失敗時的 HTTP 回應</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
-<p>這是 Django Ninja 系列教學第 20 篇。</p>
+<p>這是 Django Ninja 系列教學的第 20 篇。</p>
 <p>上一篇我們講完了單一欄位的自定義驗證，這篇則要來討論<strong>跨欄位</strong>之間的驗證。</p>
 <p>跨欄位驗證同樣是 API 開發中十分常見的需求，例如註冊帳號時，要保證「密碼」與「確認密碼」兩個欄位內容相同；選擇<strong>日期期間</strong>時，開始日期不能晚於結束日期等。</p>
 <p>這些驗證場景<strong>無法</strong>透過單一欄位驗證實現，因為它們需要同時檢查<strong>多個欄位之間的邏輯關聯</strong>，來確保整體資料的<strong>一致性和正確性</strong>。</p>

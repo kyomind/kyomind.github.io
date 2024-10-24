@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-22T10:38:23+08:00" />
+  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
 
 
 
@@ -196,7 +196,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ModelSerializer-%E7%9A%84%E4%BA%AE%E9%BB%9E"><span class="toc-text">ModelSerializer 的亮點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModelSerializer-%E7%9A%84%E9%9A%B1%E6%86%82"><span class="toc-text">ModelSerializer 的隱憂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModelSchema"><span class="toc-text">ModelSchema</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%80%EF%BC%9A%E4%BD%8E%E8%80%A6%E5%90%88-%E6%98%8E%E7%A2%BA%E5%84%AA%E6%96%BC%E9%9A%B1%E6%99%A6"><span class="toc-text">理由一：低耦合 + 明確優於隱晦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E7%94%B1%E4%BA%8C%EF%BC%9A%E6%9B%B4%E5%A5%BD%E3%80%81%E6%9B%B4%E5%8F%AF%E8%AE%80%E7%9A%84-API-%E6%96%87%E4%BB%B6"><span class="toc-text">理由二：更好、更可讀的 API 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
-<p>這是 Django Ninja 系列教學第 15 篇。</p>
+<p>這是 Django Ninja 系列教學的第 15 篇。</p>
 <p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的<strong>篩選與加工</strong>。</p>
 <p>比如「取得單一文章資訊」API，實際上就是從<code>Post</code>物件挑選欄位，再進行序列化。</p>
 <p>這個過程中，我們需要考慮如何將<strong>模型物件</strong>轉換為 API 的回應結構，同時保持程式碼的可維護性與靈活。</p>

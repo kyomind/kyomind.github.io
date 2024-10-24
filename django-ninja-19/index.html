@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-22T10:38:23+08:00" />
+  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
 
 
 
@@ -199,7 +199,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%B8%BD%E8%AB%96"><span class="toc-text">第五章總論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API-%E4%BF%AE%E6%AD%A3"><span class="toc-text">API 修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E3%80%8C%E5%B1%A4%E6%AC%A1%E3%80%8D%E7%9A%84%E9%A9%97%E8%AD%89"><span class="toc-text">不同「層次」的驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%EF%BC%9A%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87"><span class="toc-text">新需求：密碼規則</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E4%BD%9C%E5%AF%86%E7%A2%BC%E8%A6%8F%E5%89%87%E9%A9%97%E8%AD%89%EF%BC%9A%E4%BD%BF%E7%94%A8-field-validator"><span class="toc-text">實作密碼規則驗證：使用 field_validator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6"><span class="toc-text">實際測試</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90"><span class="toc-text">小結</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
-<p>這是 Django Ninja 系列教學第 19 篇。進入第五章：<strong>資料驗證與錯誤處理</strong>。</p>
+<p>這是 Django Ninja 系列教學的第 19 篇。進入第五章：<strong>資料驗證與錯誤處理</strong>。</p>
 <p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p>
 <p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p>
 <p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
