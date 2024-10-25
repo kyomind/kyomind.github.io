@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-25T08:40:05+08:00" />
+  <meta property="article:modified_time" content="2024-10-25T08:46:23+08:00" />
 
 
 
@@ -233,7 +233,7 @@
 <p><img src="https://i.imgur.com/nCU56Bk.png"></p>
 <p>不過我們只能查 2 種，而它可以同時查 3 種：題目、簡介、參賽者暱稱。</p>
 <p>但本質上是一樣的。</p>
-<h3 id="用傳統方法實作"><a href="#用傳統方法實作" class="headerlink" title="用傳統方法實作"></a>用傳統方法實作</h3><p>這時如果用傳統方法實作，查詢會長這樣：</p>
+<h3 id="用傳統方法-Q-物件實作"><a href="#用傳統方法-Q-物件實作" class="headerlink" title="用傳統方法 + Q 物件實作"></a>用傳統方法 + Q 物件實作</h3><p>如果用傳統方法 + Django 的 Q 物件實作，則查詢會長這樣：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    Q(title__icontains=title) | Q(author__name__icontains=title)</span><br><span class="line">).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>此時查詢參數不適合再叫<code>title</code>，因為它要查詢<strong>兩個欄位</strong>。沒關係，我們之後會改成<code>query</code>。</p>
