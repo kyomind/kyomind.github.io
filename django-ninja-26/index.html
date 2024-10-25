@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2024-10-25T05:01:23+08:00" />
 
 
 
@@ -193,7 +193,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C"><span class="toc-text">查詢結果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%B3%E7%B5%B1%E6%9F%A5%E8%A9%A2%E6%96%B9%E6%B3%95%E8%88%87%E5%95%8F%E9%A1%8C"><span class="toc-text">傳統查詢方法與問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E9%9C%80%E6%B1%82%EF%BC%9A%E5%90%8C%E6%99%82%E6%9F%A5%E8%A9%A2%E4%BD%9C%E8%80%85%E5%90%8D%E5%AD%97"><span class="toc-text">新需求：同時查詢作者名字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-Q-%E7%89%A9%E4%BB%B6%E7%B0%A1%E4%BB%8B"><span class="toc-text">Django Q 物件簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-FilterSchema-%E6%94%B9%E9%80%B2%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 FilterSchema 改進查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88%E3%80%8C%E6%94%B9%E9%80%B2%E3%80%8D"><span class="toc-text">第一版「改進」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E9%BB%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">重點解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C"><span class="toc-text">查詢結果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>這是 Django Ninja 系列教學的第 26 篇。</p>
@@ -215,7 +215,17 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts.<span class="built_in">filter</span>(title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>最後的<code>select_related(&#39;author&#39;)</code>是為了避免「N+1」問題，和查詢邏輯<strong>無關</strong>，可以先不管。</p>
-<h3 id="新需求：同時查詢作者名字"><a href="#新需求：同時查詢作者名字" class="headerlink" title="新需求：同時查詢作者名字"></a>新需求：同時查詢作者名字</h3><p>新的需求是，用<strong>同一個關鍵字</strong>， 同時查詢<strong>文章的標題或作者的名字</strong>， 只要任一符合就顯示在結果中。（二者滿足其一即可，也可以<strong>都符合</strong>）</p>
+<h3 id="潛在問題"><a href="#潛在問題" class="headerlink" title="潛在問題"></a>潛在問題</h3><p>這樣的寫法很直觀，對於<strong>簡單的查詢需求</strong>很有效。</p>
+<p>但隨著專案的規模擴大、查詢需求變得<strong>複雜</strong>時，就會產生以下<strong>困境</strong>：</p>
+<ul>
+<li><strong>程式碼重複</strong>：當你有多個地方需要進行<strong>相似的過濾</strong>時，你可能會發現自己在重複相同的過濾邏輯。</li>
+<li><strong>維護困難</strong>：隨著過濾條件的增加，<strong>你的 view 函式可能變得難以維護</strong>。每增加一個新的過濾條件，都可能需要修改多個地方的程式碼。</li>
+<li><strong>資料驗證與轉換</strong>：你需要手動處理資料驗證和轉換的問題，這不僅增加了錯誤的可能性，也增加了開發的複雜度。</li>
+<li><strong>擴充性</strong>：當你需要支援更複雜的過濾條件，比如範圍查詢、多條件組合查詢時，<strong>手動組裝 ORM 查詢</strong>的方法可能會顯得<strong>非常笨重</strong>且難以管理。</li>
+</ul>
+<p>這是為什麼我們並不推薦在<strong>複雜查詢</strong>的情況下，直接使用 ORM 的<code>filter</code>方法來組裝查詢條件。</p>
+<hr>
+<h2 id="新需求：同時查詢作者名字"><a href="#新需求：同時查詢作者名字" class="headerlink" title="新需求：同時查詢作者名字"></a>新需求：同時查詢作者名字</h2><p>新的需求是，用<strong>同一個關鍵字</strong>， 同時查詢<strong>文章的標題或作者的名字</strong>， 只要任一符合就顯示在結果中。（二者滿足其一即可，也可以<strong>都符合</strong>）</p>
 <p>這需求類似於 iThome 鐵人賽官網的<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/2024ironman/signup/list">這個查詢功能</a>：</p>
 <p><img src="https://i.imgur.com/nCU56Bk.png"></p>
 <p>不過我們只能查 2 種，而它可以同時查 3 種：題目、簡介、參賽者暱稱。</p>
