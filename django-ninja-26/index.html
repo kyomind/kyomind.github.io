@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-25T08:46:23+08:00" />
+  <meta property="article:modified_time" content="2024-10-25T08:49:26+08:00" />
 
 
 
@@ -237,7 +237,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    Q(title__icontains=title) | Q(author__name__icontains=title)</span><br><span class="line">).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>此時查詢參數不適合再叫<code>title</code>，因為它要查詢<strong>兩個欄位</strong>。沒關係，我們之後會改成<code>query</code>。</p>
-<p>這段程式碼還有兩個重點：</p>
+<p>這段程式碼有兩個重點：</p>
 <ol>
 <li>查詢果然<strong>變長</strong>了！之後如果還有新的查詢條件，那豈不是……</li>
 <li>這個<code>Q</code>是什麼東西？</li>
