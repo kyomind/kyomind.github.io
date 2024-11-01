@@ -129,7 +129,7 @@
           
             <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (39)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -169,6 +169,28 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-39/">39，10 月回顧——鐵人賽、演算法與 AI</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-11-01
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/3auatX0.png"></p>
+<p>好段日子沒寫 Weekly Review 了！</p>
+<p>十月剛過，正是一個不錯的時間點。</p>
+<p>本篇就來整理一下「<strong>待業的第 2 個月</strong>」我都做了什麼。</p>
+          <div class="read-more">
+            <a href="/weekly-review-39/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/grind-leetcode-with-ai-preparation/">與 AI 共舞：我的 LeetCode 刷題之道（上）準備篇</a>
         </h1>
@@ -390,44 +412,6 @@
 <p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/17">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-26/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-25/">分頁（下）自定義分頁類別</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-07
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 25 篇。</p>
-<p>上一篇我們介紹了 Django Ninja 的內建分頁器，並用它實作了簡單的分頁功能。</p>
-<p>雖然內建的<code>PageNumberPagination</code>確實方便，但在很多時候，我們仍需要一些<strong>客製化</strong>功能。</p>
-<p>為了實現這個目的，你需要<strong>自定義一個分頁類別</strong>。</p>
-<p>不過別擔心，這種自定義，<strong>並非從零開始</strong>。而是繼承 Django Ninja 所提供的基礎分頁類別，再進行自己的「<strong>加工</strong>」。</p>
-<p>這篇文章就要來教你怎麼做。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/16">這個 PR</a>。</p>
-<hr>
-<h2 id="客製化需求"><a href="#客製化需求" class="headerlink" title="客製化需求"></a>客製化需求</h2><p>除了基本的分頁，我們還希望能夠：</p>
-<ul>
-<li><strong>允許客戶端選擇</strong>每頁顯示的資料數量，<strong>可選範圍</strong>限定在 1 至 100 之間。</li>
-<li>在回應中<strong>新增兩個欄位</strong>，顯示當前的<strong>分頁資訊</strong>：<ul>
-<li>當前頁數（<code>page</code>）。</li>
-<li>每頁顯示數量（<code>per_page</code>）。</li>
-</ul>
-</li>
-</ul>
-<p>這無疑是很常見的需求。我們將透過自定義分頁類別，來實現這些功能。</p>
-<p>話不多說，直接開始！</p>
-          <div class="read-more">
-            <a href="/django-ninja-25/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

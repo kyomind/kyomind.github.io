@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-39/</loc>
+    
+    <lastmod>2024-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-38/</loc>
+    
+    <lastmod>2024-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-11-01</lastmod>
@@ -245,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-18/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-19/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -254,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-19/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-18/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -408,15 +426,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/python-enum/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-38/</loc>
     
     <lastmod>2024-10-18</lastmod>
     

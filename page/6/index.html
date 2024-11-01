@@ -129,7 +129,7 @@
           
             <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (38)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (39)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -169,6 +169,39 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/mypy-django-guide/">Django 專案加入 Mypy 指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-03
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"></p>
+<p>這是 <a href="/tags/Django-Tutorial/"><strong>Django Tutorial</strong></a> 的第 10 篇。</p>
+<p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial"><strong>GitHub 專案</strong></a>。</p>
+<p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/5"><strong>PR</strong></a>。</p>
+<hr>
+<p>在〈<a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a>〉一文中，我們探討了 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">type hints</a>（type annotation）對 Python 專案開發的重要性，並在〈<a href="/mypy/">Python type checker：Mypy 介紹</a>〉中介紹了<strong>目前最常用的 Python 型別檢查器——Mypy。</strong></p>
+<p>我想，<strong>是時候為你的 Python 專案加入型別檢查了。</strong></p>
+<p>本文介紹如何在 Django 專案中整合 Mypy，並提供一些實際例子來幫助你快速上手。透過這些步驟，你將能夠更好地利用型別檢查來提高程式碼的穩定性和可維護性。</p>
+<h3 id="系列：Mypy-三部曲"><a href="#系列：Mypy-三部曲" class="headerlink" title="系列：Mypy 三部曲"></a>系列：Mypy 三部曲</h3><blockquote>
+<ol>
+<li><a href="/robust-python-01/">《強健的 Python》筆記（一）Type Hints 的成本與挑戰</a></li>
+<li><a href="/mypy/">Python type checker：Mypy 介紹</a></li>
+<li><strong>Django 專案加入 Mypy 指南</strong></li>
+</ol>
+</blockquote>
+          <div class="read-more">
+            <a href="/mypy-django-guide/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-37/">37，加入健身房，專注 Zone 2</a>
         </h1>
@@ -346,47 +379,6 @@
 </blockquote>
           <div class="read-more">
             <a href="/python-craftsman-03/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/beyond-the-basic-stuff-with-python/">《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-06-30
-        </span><span class="post-category">
-            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/tS78Ke0.png" alt="Python 功力提升的樂趣"></p>
-<p>這是「<a href="/series/#Python-%E5%85%A5%E9%96%80%E4%B8%89%E9%83%A8%E6%9B%B2">Python 入門三部曲</a>」的最後一篇！歷時 2 年，終於要為這個系列劃下句點。</p>
-<p>在此之前，我已寫下 3 篇關於《<a target="_blank" rel="noopener" href="https://www.tenlong.com.tw/products/9789865027711">Python 功力提升的樂趣</a>》的筆記與心得。本文建立在它們之上，但會從<strong>更高的俯視角度</strong>來介紹與推薦這本書。</p>
-<p>從全書的<strong>輪廓與定位</strong>切入，讓初學者更容易掌握觀念，不至於迷失在細節中。對於已有經驗的 Python 開發者，則可以藉由一篇篇的筆記，直接找到自己感興趣的章節。</p>
-<p>所以，<strong>本文不會在內容上重複前文，或在細節上多加著墨</strong>，而是<strong>更多的回顧與比較</strong>。</p>
-<p>這是為什麼我要<strong>先寫筆記</strong>，最後再完成這篇<strong>閱讀心得</strong>的原因。</p>
-<p>當然，<strong>不是每一本書都值得你如此對待</strong>。畢竟其中要投入時間精力甚多，這是我第一次——可能也是最後一次，這麼詳細地介紹一本書。</p>
-<p>但這本書，我認為值得。</p>
-<h3 id="系列：Python-入門三部曲"><a href="#系列：Python-入門三部曲" class="headerlink" title="系列：Python 入門三部曲"></a>系列：Python 入門三部曲</h3><blockquote>
-<ol>
-<li><a href="/introducing-python/">《精通 Python 第二版》心得：給入門者的 Python 學習藍圖</a></li>
-<li><a href="/the-quick-python-book/">最佳 Python 入門書——《Python 技術者們 - 練功！》心得與導讀</a></li>
-<li><strong>《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</strong></li>
-</ol>
-</blockquote>
-<h3 id="系列：Python-功力提升的樂趣"><a href="#系列：Python-功力提升的樂趣" class="headerlink" title="系列：Python 功力提升的樂趣"></a>系列：Python 功力提升的樂趣</h3><blockquote>
-<ol>
-<li><a href="/beyond-the-basic-stuff-with-python-01/">《Python 功力提升的樂趣》筆記（一）Black、命名、壞味道</a></li>
-<li><a href="/beyond-the-basic-stuff-with-python-02/">《Python 功力提升的樂趣》筆記（二）Pythonic、行話、陷阱</a></li>
-<li><a href="/beyond-the-basic-stuff-with-python-03/">《Python 功力提升的樂趣》筆記（三）函式、註解、docstring</a></li>
-<li><strong>《Python 功力提升的樂趣》心得與總結：給 Python 開發者的 Clean Code 入門指南</strong></li>
-</ol>
-</blockquote>
-          <div class="read-more">
-            <a href="/beyond-the-basic-stuff-with-python/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/5/">
