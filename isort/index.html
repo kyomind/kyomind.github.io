@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="VS Code：Python isort 擴充套件介紹與簡易設定教學">
-  <meta property="og:title" content="VS Code：Python isort 擴充套件介紹與簡易設定教學">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Python isort 擴充套件介紹與簡易設定教學">
+  <meta property="og:title" content="Python isort 擴充套件介紹與簡易設定教學">
 <meta name="description" content="前法律人，現 Pythonista；平時寫程式，假日寫文章，在每個踏實的日子裡，緩緩前行" />
 
 
@@ -26,7 +26,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="VS Code" />
             
 
-  <meta property="article:modified_time" content="2024-11-06T15:23:21+08:00" />
+  <meta property="article:modified_time" content="2024-11-06T15:42:28+08:00" />
 
 
 
@@ -70,7 +70,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>VS Code：Python isort 擴充套件介紹與簡易設定教學 - Code and Me</title>
+    <title>Python isort 擴充套件介紹與簡易設定教學 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -176,7 +176,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">VS Code：Python isort 擴充套件介紹與簡易設定教學
+      <h1 class="post-title">Python isort 擴充套件介紹與簡易設定教學
         </h1>
 
       <div class="post-meta">
@@ -211,7 +211,7 @@
 <blockquote>
 <p>This setting <strong>will be removed soon</strong>. Use <code>isort.args</code> instead.</p>
 </blockquote>
-<p>果然該來的還是要來，在〈<a href="https://blog.kyomind.tw/black-and-isort/">VS Code：試用從 Python extension 拆分的 Black、isort 套件</a>〉中提過，微軟一直在積極拆分 Python 擴充套件功能，試圖為其「<strong>減肥</strong>」與<strong>解耦</strong>。</p>
+<p>果然該來的還是要來，在〈<a href="https://blog.kyomind.tw/black-and-isort/">試用從 Python extension 拆分的 Black、isort 套件</a>〉中提過，微軟一直在積極拆分 Python 擴充套件功能，試圖為其「<strong>減肥</strong>」與<strong>解耦</strong>。</p>
 <p>而 linter 和 formatter 正是拆分的一大重心所在，前者目前已有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.pylint">Pylint</a> 和 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.flake8">Flake8</a>，後者則有 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter">Black</a>，都是微軟官方出品。（yapf 表示：因為我來自 Google 就差別待遇？）</p>
 <p>再參考 iThome 這篇〈<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/154035">VS Code Python擴充套件現在會預設安裝匯入項目排序擴充套件isort</a>〉，顯然 VS Code 官方認為，isort 的正式獨立時機已到。</p>
 <span id="more"></span>
@@ -279,7 +279,7 @@
 <p><img src="https://i.imgur.com/Zzwt2JS.png" alt="這提醒目前只會出現在第一行"><span class="cap">這提醒目前只會出現在第一行</span></p>
 <p>isort 作為一個格式化工具，無論是否提醒，它最終都會將這些不合規之處加以格式化——只要你沒忘記——所以預設為<code>false</code>。我個人則偏好把它打開。</p>
 <h3 id="三、存檔時自動格式化"><a href="#三、存檔時自動格式化" class="headerlink" title="三、存檔時自動格式化"></a>三、存檔時自動格式化</h3><p>呼叫 isort 執行格式化，除了使用右鍵選單，另一種方式就是設定快捷鍵。但這兩種方法都<strong>不盡理想——很容易忘記</strong>。</p>
-<p>最好的做法還是設定「<strong>存檔時自動格式化</strong>」，這部分在〈<a href="https://blog.kyomind.tw/black-and-isort/">VS Code：試用從 Python extension 拆分的 Black、isort 套件</a>〉已<a href="https://blog.kyomind.tw/black-and-isort/#%E8%A8%AD%E5%AE%9A%E5%AD%98%E6%AA%94%E6%99%82%E8%87%AA%E5%8B%95%E6%8E%92%E5%BA%8F-import">介紹過</a>，設定如下：</p>
+<p>最好的做法還是設定「<strong>存檔時自動格式化</strong>」，這部分在〈<a href="https://blog.kyomind.tw/black-and-isort/">試用從 Python extension 拆分的 Black、isort 套件</a>〉已<a href="https://blog.kyomind.tw/black-and-isort/#%E8%A8%AD%E5%AE%9A%E5%AD%98%E6%AA%94%E6%99%82%E8%87%AA%E5%8B%95%E6%8E%92%E5%BA%8F-import">介紹過</a>，設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;[python]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.codeActionsOnSave&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>把適合機器做的事，慎重地交付給機器完成，無疑是個良好的習慣。</p>

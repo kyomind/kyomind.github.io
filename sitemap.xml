@@ -2,25 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ruff/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
+    <loc>https://blog.kyomind.tw/flake8-and-isort/</loc>
     
     <lastmod>2024-11-06</lastmod>
     
@@ -30,15 +12,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/black-and-isort/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
     
     <lastmod>2024-11-06</lastmod>
     
@@ -75,6 +48,42 @@
   
   <url>
     <loc>https://blog.kyomind.tw/pre-commit/</loc>
+    
+    <lastmod>2024-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
+    
+    <lastmod>2024-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
+    
+    <lastmod>2024-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ruff/</loc>
     
     <lastmod>2024-11-06</lastmod>
     
@@ -1047,15 +1056,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/just-a-note-cover/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/flake8-and-isort/</loc>
     
     <lastmod>2024-09-03</lastmod>
     
