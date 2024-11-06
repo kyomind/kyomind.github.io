@@ -271,9 +271,9 @@
     <category term="Django Ninja 系列" scheme="https://blog.kyomind.tw/categories/Django-Ninja-%E7%B3%BB%E5%88%97/"/>
     
     
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
   </entry>
   
@@ -304,11 +304,11 @@
     <category term="Django Ninja 系列" scheme="https://blog.kyomind.tw/categories/Django-Ninja-%E7%B3%BB%E5%88%97/"/>
     
     
+    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
     <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
-    
-    <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
     
     <category term="Django ORM" scheme="https://blog.kyomind.tw/tags/Django-ORM/"/>
     
@@ -392,9 +392,9 @@
     <category term="Django Ninja 系列" scheme="https://blog.kyomind.tw/categories/Django-Ninja-%E7%B3%BB%E5%88%97/"/>
     
     
-    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
-    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="API 開發" scheme="https://blog.kyomind.tw/tags/API-%E9%96%8B%E7%99%BC/"/>
     
   </entry>
   
@@ -435,9 +435,9 @@
     <category term="Django Ninja 系列" scheme="https://blog.kyomind.tw/categories/Django-Ninja-%E7%B3%BB%E5%88%97/"/>
     
     
-    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
-    
     <category term="Django" scheme="https://blog.kyomind.tw/tags/Django/"/>
+    
+    <category term="Django Ninja" scheme="https://blog.kyomind.tw/tags/Django-Ninja/"/>
     
     <category term="Django ORM" scheme="https://blog.kyomind.tw/tags/Django-ORM/"/>
     
