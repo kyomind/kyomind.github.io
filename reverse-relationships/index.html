@@ -15,8 +15,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="Django ORM：一對一、一對多外鍵教學（中）反向關聯">
-  <meta property="og:title" content="Django ORM：一對一、一對多外鍵教學（中）反向關聯"><meta name="twitter:description" content="由於「反向關聯」在 ORM 查詢中扮演著十分重要的角色，所以我決定專門寫這個（中）篇來介紹它。善用反向關聯，你將成為更加道地、成熟的 Django 開發者。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Django ORM：反向關聯（Reverse relationship）介紹">
+  <meta property="og:title" content="Django ORM：反向關聯（Reverse relationship）介紹"><meta name="twitter:description" content="由於「反向關聯」在 ORM 查詢中扮演著十分重要的角色，所以我決定專門寫這個（中）篇來介紹它。善用反向關聯，你將成為更加道地、成熟的 Django 開發者。">
   <meta property="og:description" content="由於「反向關聯」在 ORM 查詢中扮演著十分重要的角色，所以我決定專門寫這個（中）篇來介紹它。善用反向關聯，你將成為更加道地、成熟的 Django 開發者。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
   <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
 <meta name="description" content="由於「反向關聯」在 ORM 查詢中扮演著十分重要的角色，所以我決定專門寫這個（中）篇來介紹它。善用反向關聯，你將成為更加道地、成熟的 Django 開發者。" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2024-10-18T13:42:13+08:00" />
+  <meta property="article:modified_time" content="2024-11-07T01:00:23+08:00" />
 
 
 
@@ -72,7 +72,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>Django ORM：一對一、一對多外鍵教學（中）反向關聯 - Code and Me</title>
+    <title>Django ORM：反向關聯（Reverse relationship）介紹 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -178,7 +178,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">Django ORM：一對一、一對多外鍵教學（中）反向關聯
+      <h1 class="post-title">Django ORM：反向關聯（Reverse relationship）介紹
         </h1>
 
       <div class="post-meta">
@@ -206,9 +206,9 @@
 <p>搭配學習的範例程式碼，可參考 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a>。</p>
 <h3 id="系列：Django-ORM-外鍵教學"><a href="#系列：Django-ORM-外鍵教學" class="headerlink" title="系列：Django ORM 外鍵教學"></a>系列：Django ORM 外鍵教學</h3><blockquote>
 <ol>
-<li><a href="/django-models/">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></li>
-<li><strong>Django ORM：一對一、一對多外鍵教學（中）反向關聯</strong></li>
-<li><a href="/django-orm-query-relations/">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></li>
+<li><a href="/django-models/">Django ORM 外鍵教學：設定一對一、一對多關聯</a></li>
+<li><strong>Django ORM：反向關聯（Reverse relationship）介紹</strong></li>
+<li><a href="/django-orm-query-relations/">Django ORM 外鍵查詢指南</a></li>
 </ol>
 </blockquote>
 <hr>
@@ -380,7 +380,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM：一對一、一對多外鍵教學（下）關聯查詢" rel="bookmark">Django ORM：一對一、一對多外鍵教學（下）關聯查詢</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定" rel="bookmark">Django ORM：一對一、一對多外鍵教學（上）前言與關聯設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM 外鍵查詢指南" rel="bookmark">Django ORM 外鍵查詢指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM 外鍵教學：設定一對一、一對多關聯" rel="bookmark">Django ORM 外鍵教學：設定一對一、一對多關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-fixtures/" title="用 Django Fixture 匯入與導出資料" rel="bookmark">用 Django Fixture 匯入與導出資料</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Tutorial/">Django Tutorial</a>
