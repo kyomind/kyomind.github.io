@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-29/</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2024-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-models/</loc>
     
     <lastmod>2024-11-07</lastmod>
@@ -30,15 +75,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
-    
-    <lastmod>2024-11-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -416,15 +452,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-29/</loc>
-    
-    <lastmod>2024-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/django-ninja-27/</loc>
     
     <lastmod>2024-10-24</lastmod>
@@ -641,15 +668,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/cursor/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -833,24 +851,6 @@
     <loc>https://blog.kyomind.tw/learn-from-shosho/</loc>
     
     <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
-    
-    <lastmod>2024-10-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
-    
-    <lastmod>2024-10-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
