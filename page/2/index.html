@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (39)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (40)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -169,6 +169,33 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-26/">資料查詢與過濾（上）FilterSchema 介紹</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-08
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 26 篇。</p>
+<p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
+<p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
+<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>
+<p>這種方法簡單直接，適合基本的查詢需求。然而，它也有其<strong>局限性</strong>——隨著欄位與需求的增加，查詢條件可能變得<strong>越來越複雜</strong>，導致程式碼<strong>冗長</strong>且難以維護。</p>
+<p>為了解決這一問題，Django Ninja 提供了 FilterSchema，讓我們可以用更「<strong>結構化</strong>」的方式，定義並管理查詢條件。</p>
+<p>本文將介紹 FilterSchema，一步步實作與講解，讓你了解如何在 Django Ninja 中使用 FilterSchema，實現<strong>更加靈活、模組化</strong>的 API 查詢功能。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/17">這個 PR</a>。</p>
+          <div class="read-more">
+            <a href="/django-ninja-26/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-25/">分頁（下）自定義分頁類別</a>
         </h1>
@@ -373,43 +400,6 @@
 <p>透過 Pydantic 進行資料驗證，則能夠帶來一個明顯的好處：<strong>關注點分離</strong>。</p>
           <div class="read-more">
             <a href="/django-ninja-20/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-19/">資料驗證（上）Pydantic 單一欄位驗證</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-01
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 19 篇。進入第五章：<strong>資料驗證與錯誤處理</strong>。</p>
-<p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p>
-<p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p>
-<p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
-<p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p>
-<hr>
-<h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
-<p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>
-<ul>
-<li><strong>卷 19：資料驗證（上）Pydantic 單一欄位驗證</strong>（本文）</li>
-<li><a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic 跨欄位驗證</a></li>
-<li><a href="/django-ninja-21/">卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a></li>
-<li><a href="/django-ninja-22/">卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a></li>
-</ul>
-<p>前兩篇，我們會學習如何實現靈活的資料驗證，以確保輸入資料符合預期，並在必要時拋出錯誤。</p>
-<p>後兩篇，我們將討論如何處理 API 流程中可能出現的各種錯誤（不限於驗證錯誤），以提供更好的使用者體驗。</p>
-<p>Django Ninja 的資料驗證與錯誤處理機制，相較 Django REST framework <strong>更加複雜</strong>，因此我們得用<strong>完整的篇幅</strong>來介紹，幫助你清楚地理解它們。</p>
-          <div class="read-more">
-            <a href="/django-ninja-19/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
