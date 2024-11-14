@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    <loc>https://blog.kyomind.tw/cardio-evolution-2-months/</loc>
     
     <lastmod>2024-11-14</lastmod>
     
@@ -13,7 +13,16 @@
   <url>
     <loc>https://blog.kyomind.tw/ithome-ironman-tips/</loc>
     
-    <lastmod>2024-11-13</lastmod>
+    <lastmod>2024-11-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-11-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
