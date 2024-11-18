@@ -173,15 +173,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2024-11-08</lastmod>
@@ -200,7 +191,34 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    
+    <lastmod>2024-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2024-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2024-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -228,24 +246,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -596,7 +596,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-19/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-18/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -605,7 +605,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-18/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-19/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -1451,7 +1451,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
+    <loc>https://blog.kyomind.tw/clean-code-python/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -1460,7 +1460,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/clean-code-python/</loc>
+    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
