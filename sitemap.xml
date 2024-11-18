@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -191,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -227,15 +227,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
     
     <lastmod>2024-11-08</lastmod>
@@ -246,6 +237,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
+    
+    <lastmod>2024-11-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -425,7 +425,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-15/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -434,7 +434,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-15/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -704,7 +704,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
+    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
@@ -713,7 +713,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
+    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
@@ -1451,7 +1451,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/clean-code-python/</loc>
+    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
@@ -1460,7 +1460,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/add-top10-page/</loc>
+    <loc>https://blog.kyomind.tw/clean-code-python/</loc>
     
     <lastmod>2024-01-11</lastmod>
     
