@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
-    <lastmod>2024-11-19</lastmod>
+    <lastmod>2024-11-20</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-11-19</lastmod>
     
@@ -1597,7 +1597,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-11-19</lastmod>
+    <lastmod>2024-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
