@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-11-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
     
     <lastmod>2024-11-22</lastmod>
@@ -48,15 +57,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-11-22</lastmod>
     
@@ -1597,7 +1597,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-11-22</lastmod>
+    <lastmod>2024-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
