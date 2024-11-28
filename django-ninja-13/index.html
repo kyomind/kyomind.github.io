@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2024-11-28T11:30:09+08:00" />
 
 
 
@@ -265,21 +265,21 @@
 <p>接著，我們在 view 函式中使用這個 Schema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;int:post_id&#125;/&#x27;</span>, response=PostResponse</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_post</span>(<span class="params">request: HttpRequest, post_id: <span class="built_in">int</span></span>) -&gt; Post:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得單一文章</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    post = Post.objects.get(<span class="built_in">id</span>=post_id)</span><br><span class="line">    <span class="keyword">return</span> post</span><br></pre></td></tr></table></figure>
 
-<p>只有改一行！——在<code>router</code>裝飾器加上<code>response=PostSchema</code>。</p>
-<p>有了<code>response=PostSchema</code>設定，Django Ninja 會將函式回傳的<code>Post</code>模型物件，丟給<code>PostSchema</code>進行驗證，成功之後直接轉為 JSON 格式並送回前端。</p>
+<p>只有改一行！——在<code>router</code>裝飾器加上<code>response=PostResponse</code>。</p>
+<p>有了<code>response=PostResponse</code>設定，Django Ninja 會將函式回傳的<code>Post</code>模型物件，丟給<code>PostResponse</code>進行驗證，成功之後直接轉為 JSON 格式並送回前端。</p>
 <p>看看回應結果：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://127.0.0.1:8000/posts/2/</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1 content&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author_id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>非常好！</p>
 <hr>
 <h2 id="三、多個模型物件回應：取得文章列表"><a href="#三、多個模型物件回應：取得文章列表" class="headerlink" title="三、多個模型物件回應：取得文章列表"></a>三、多個模型物件回應：取得文章列表</h2><p>「<strong>清單、列表</strong>」也是 API 的常見回應形態，包含<strong>多筆資料</strong>。</p>
-<p>我們繼續使用剛剛的<code>PostSchema</code>，不作任何更動，直接套用在「取得文章列表」這個 API。</p>
+<p>我們繼續使用剛剛的<code>PostResponse</code>，不作任何更動，直接套用在「取得文章列表」這個 API。</p>
 <p>一樣，只要更改一行即可，但與前面<strong>略有不同</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span>, response=<span class="built_in">list</span>[PostResponse]</span>)</span></span><br></pre></td></tr></table></figure>
 
-<p>我們使用了<code>list[PostSchema]</code>，表示回應會是一個<code>PostSchema</code>物件的 list。</p>
+<p>我們使用了<code>list[PostResponse]</code>，表示回應會是一個<code>PostResponse</code>物件的 list。</p>
 <h3 id="Django-Ninja-自動處理-Iterable"><a href="#Django-Ninja-自動處理-Iterable" class="headerlink" title="Django Ninja 自動處理 Iterable"></a>Django Ninja 自動處理 Iterable</h3><p>然而實際上，此時你<strong>不需要</strong>「真的」return 一個 Python list，<strong>可以直接回傳 QuerySet</strong> 就好，Django Ninja 會自行處理物件的<strong>迭代與序列化</strong>。</p>
-<p>甚至，只要你 return 的是一個 <a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-iterable-iterator-generator/#iterable-%e6%98%af%e4%bb%80%e9%ba%bc">iterable</a>，而且 iterable 中的每一個元素，<strong>都能夠通過</strong><code>PostSchema</code>驗證（符合格式），那就足夠了！</p>
+<p>甚至，只要你 return 的是一個 <a target="_blank" rel="noopener" href="https://myapollo.com.tw/blog/python-iterable-iterator-generator/#iterable-%e6%98%af%e4%bb%80%e9%ba%bc">iterable</a>，而且 iterable 中的每一個元素，<strong>都能夠通過</strong><code>PostResponse</code>驗證（符合格式），那就足夠了！</p>
 <p>來看看結果，因為列表太長了，我改用截圖呈現：</p>
 <p><img src="https://i.imgur.com/vwh3t3R.png" alt="API 回應：取得文章列表"><span class="cap">API 回應：取得文章列表</span></p>
 <hr>
