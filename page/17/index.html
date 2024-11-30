@@ -121,7 +121,7 @@
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (42)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (43)</a>
           
             <a href="/categories/Django/">Django (12)</a>
           
@@ -167,6 +167,37 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/vscode-pythonpath/">VS Code 正確設定 PYTHONPATH 教學</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-02-11
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/VHCKtxW.jpg"></p>
+<p>前幾天，同事為專案的局部元件寫了一個偵錯小程式，我們姑且稱為<code>debugger.py</code>。該程式中會使用到整個專案的共同設定——<code>DeployStatus</code>，這些設定則放在專案下的<code>configs</code>模組（資料夾）裡，需要另外 import。</p>
+<p>因此，<code>debugger.py</code>的開頭程式碼如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">...</span><br><span class="line"><span class="keyword">from</span> configs.config <span class="keyword">import</span> DeployStatus</span><br></pre></td></tr></table></figure>
+
+<p>而專案的結構則是（這裡只凸顯兩者的「<strong>相對層級關係</strong>」，其餘細節省略）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 元件</span><br><span class="line">│   ├── debugger.py</span><br><span class="line">│</span><br><span class="line">├── configs</span><br><span class="line">│   ├── config.py</span><br><span class="line">│</span><br></pre></td></tr></table></figure>
+
+<p>有經驗的你可能不用執行這個小程式就能預料——它找不到<code>configs</code>！</p>
+<p>不出所料，直接執行之後，會出現錯誤訊息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named <span class="string">&#x27;configs&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>為什麼？這牽涉到 Python 直譯器在 import 時，究竟「<strong>如何尋找 import 路徑</strong>」議題。</p>
+          <div class="read-more">
+            <a href="/vscode-pythonpath/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-09/">09，我的 Macbook 之旅 + 新的野心</a>
         </h1>
@@ -319,31 +350,6 @@
 <p>關於「AI 取代人力」的個人看法，我打算下一期再來聊聊，還是先把目光轉回到自己，與身邊的人上。</p>
           <div class="read-more">
             <a href="/weekly-review-05/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/weekly-review-04/">04，我訂閱了 PM 朱騏的文字付費內容</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-11-27
-        </span><span class="post-category">
-            <a href="/categories/Weekly-Review/">Weekly Review</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/mmEzb21.png"></p>
-<p>為了能讓 Weekly Review 系列的寫作盡可能持續——不要像以前的我，幾乎兩三下就半途而廢——我一邊寫也一邊在持續調整<strong>寫作的模式</strong>，也就是下文說的「<strong>畫框</strong>」。而畫自然是指文字本身。</p>
-<p>在〈<a href="https://blog.kyomind.tw/a-mind-for-blogs/">Hexo 部落格心得：一週年總結與持續寫作策略</a>〉中，我提到了「<a href="https://blog.kyomind.tw/a-mind-for-blogs/#%E8%90%AC%E5%B9%B4%E8%8B%A6%E6%83%B1%EF%BC%9A%E7%99%BC%E6%96%87%E7%9A%84%E9%A0%BB%E7%8E%87%E8%88%87%E9%95%B7%E5%BA%A6">發文的頻率與長度</a>」這個萬年苦惱，並提出「短文發在臉書」這個暫時解決方案。</p>
-<p>這方案確實讓我寫作的頻率明顯提高，今年 7、8 月之間，臉書發了 8 篇短文，且其中的幾篇（比如<a target="_blank" rel="noopener" href="https://www.facebook.com/kyomind/posts/pfbid0WFxs1HXBqdNStGqDR4CRuMYak4L3gWfGQ38PqNtxasaQnz3yLLmEThbtQhWGwRecl">這篇</a>），我自己也非常喜歡。</p>
-<p>但它同時也有一個明顯的「<strong>副作用</strong>」——強化了我對臉書的關注與依賴，這是我不想要的部分。</p>
-<p>所以，一段時間後，我不禁再次思考：要怎麼做才能在「保持」提升發文頻率的同時，又不那麼依賴臉書？</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:4000/categories/Weekly-Review/">Weekly Review</a> 系列就是我思考後的答案，而它也帶來了一些意料之外的正向效果，比如接下來要講的。</p>
-          <div class="read-more">
-            <a href="/weekly-review-04/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/16/">

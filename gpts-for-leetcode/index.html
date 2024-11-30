@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="GPTs 介紹：AI 刷題助手與使用方式">
+  <meta property="og:title" content="GPTs 介紹：AI 刷題助手與使用方式"><meta name="twitter:description" content="本文介紹我在 LeetCode 刷題時搭配的 AI 工具——自定義的 GPTs，並分享我如何使用它刷題。">
+  <meta property="og:description" content="本文介紹我在 LeetCode 刷題時搭配的 AI 工具——自定義的 GPTs，並分享我如何使用它刷題。"><meta name="twitter:image" content="https://i.imgur.com/g9WO9S7.jpeg">
+  <meta property="og:image" content="https://i.imgur.com/g9WO9S7.jpeg">
+<meta name="description" content="本文介紹我在 LeetCode 刷題時搭配的 AI 工具——自定義的 GPTs，並分享我如何使用它刷題。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
+            
+
+  <meta property="article:modified_time" content="2024-11-30T16:10:20+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2024-11-30T15:06:21+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/gpts-for-leetcode/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>GPTs 介紹：AI 刷題助手與使用方式 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (43)</a>
+          
+            <a href="/categories/Django/">Django (12)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (25)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (39)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/">
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/">
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/">
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">GPTs 介紹：AI 刷題助手與使用方式
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-11-30
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E3%80%8C%E5%93%A9%E5%93%A9%E6%89%A3%E6%89%A3%E3%80%8DGPTs-%E4%BB%8B%E7%B4%B9"><span class="toc-text">一、「哩哩扣扣」GPTs 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AD%B8%E7%BF%92%E5%8F%96%E5%90%91%E7%9A%84%E5%9B%9E%E7%AD%94%E6%A8%A1%E5%BC%8F"><span class="toc-text">二、學習取向的回答模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%88%91%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E8%88%87%E5%88%B7%E9%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-text">三、我的使用方式與刷題流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="toc-text">四、注意事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%B8%BD%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">五、總結與下一步</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/g9WO9S7.jpeg"></p>
+<blockquote>
+<p>本來只打算寫兩篇，現在變成 4 篇了，大綱可參考「<a href="/grind-leetcode-with-ai-preparation/#%E7%B3%BB%E5%88%97%E6%A6%82%E8%BF%B0%E8%88%87%E5%B0%8E%E8%AE%80">系列概述與導讀</a>」。</p>
+</blockquote>
+<p>上一篇，我們介紹了 LeetCode 刷題的準備與基本原則，本篇則要介紹我刷題時搭配的 AI 工具——自定義的 <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-gpts/">GPTs</a>。</p>
+<p>不過有一點需要提醒：你得先訂閱 <a target="_blank" rel="noopener" href="https://openai.com/index/chatgpt-plus/">ChatGPT Plus</a>，才能直接使用他人建立的 GPTs。</p>
+<p>話不多說，直接開始正文。</p>
+<h3 id="系列：我的-LeetCode-刷題之道"><a href="#系列：我的-LeetCode-刷題之道" class="headerlink" title="系列：我的 LeetCode 刷題之道"></a>系列：我的 LeetCode 刷題之道</h3><ul>
+<li><a href="/series/#%E6%88%91%E7%9A%84-LeetCode-%E5%88%B7%E9%A1%8C%E4%B9%8B%E9%81%93">連載中文章清單</a></li>
+</ul>
+<span id="more"></span>
+
+<hr>
+<h2 id="一、「哩哩扣扣」GPTs-介紹"><a href="#一、「哩哩扣扣」GPTs-介紹" class="headerlink" title="一、「哩哩扣扣」GPTs 介紹"></a>一、「哩哩扣扣」GPTs 介紹</h2><p>隆眾介紹你的 AI 刷題助手——<a target="_blank" rel="noopener" href="https://chatgpt.com/g/g-6731960a3a2081909fe1975e05c034c4-li-li-kou-kou">哩哩扣扣</a>。</p>
+<p><img src="https://i.imgur.com/I1EGApi.png" alt="哩哩扣扣"><span class="cap">哩哩扣扣</span></p>
+<p>我們都知道，任何一個 AI 都能夠回答你關於 LeetCode 的題目與解析，因為這類資料對於大語言模型來說，<strong>可說是再熟悉不過了。</strong></p>
+<p>這個 GPTs 是專為<strong>深入了解 LeetCode 題目</strong>打造的，回答模式偏向<strong>學習取向</strong>，而非單純提供答案。</p>
+<p>輸入題目時，推薦使用完整截圖方式，這樣 AI 能更準確理解<strong>條件限制</strong>等細節。</p>
+<p>我個人都是用<strong>長截圖</strong>一氣呵成，但分段多次截圖也無妨。</p>
+<p>當然，如果你只想了解題目大概或掌握重點解法，那麼提供題號和標題就足夠了。</p>
+<hr>
+<h2 id="二、學習取向的回答模式"><a href="#二、學習取向的回答模式" class="headerlink" title="二、學習取向的回答模式"></a>二、學習取向的回答模式</h2><p>這個 GPTs 的最大特色，就是它的「第一次回答」。</p>
+<p>共分成五大部分：</p>
+<ol>
+<li>題目解析</li>
+<li>核心演算法與資料結構</li>
+<li>解題思路與方法比較</li>
+<li>相關題目與延伸概念</li>
+<li>常見錯誤與陷阱</li>
+</ol>
+<p>這樣的回答，可以說是把該題的重點，<strong>完整地為你梳理一遍</strong>，讓你在首次接觸時，就能有一個相對完整的輪廓。</p>
+<h3 id="題目解析"><a href="#題目解析" class="headerlink" title="題目解析"></a>題目解析</h3><p>以第一部分「題目解析」為例，以下是回答的截圖（<a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum/description/">1. Two Sum</a>）：</p>
+<p><img src="https://i.imgur.com/fVdelfK.png"></p>
+<p>第一部分又分成三個小節。首先是<strong>規則講解</strong>，將題目要求用中文說明，幫助非英語母語者快速抓住重點，非常實用。</p>
+<p>接著是<strong>核心概念</strong>，指出這題與哪些演算法重點相關。</p>
+<p>最後，GPTs 還會對題目進行<strong>重要性評估</strong>，幫助你快速判斷該題對面試和學習的價值。</p>
+<hr>
+<p>大致了解 GPTs 的特色後，再來講述一下我實際上是怎麼用它刷題的。</p>
+<h2 id="三、我的使用方式與刷題流程"><a href="#三、我的使用方式與刷題流程" class="headerlink" title="三、我的使用方式與刷題流程"></a><strong>三、我的使用方式與刷題流程</strong></h2><p>我練習<strong>新題目</strong>的流程大致如下：</p>
+<ol>
+<li>看刷題清單，做到哪裡了，選定今天要刷的題目。</li>
+<li>看 LeetCode 網站上的題目內容，了解題目規則，思考 5-10 分鐘。</li>
+<li>如果有想法，可以先試著在 VS Code 作答。如果沒有，直接截圖看「哩哩扣扣」對本題的介紹。</li>
+<li>基於 AI 的回答，看看是否知道怎麼解了，如果還是不明白，請 AI 給出「詳細的解法流程」。</li>
+<li>從 AI 第一次回答開始，只要有疑問，就直接繼續提問，不一定要急著作答。</li>
+</ol>
+<p>以上就是我使用 AI 工具輔助刷題的流程。</p>
+<p>光這樣講可能還有點籠統，以下是其中兩個環節的詳細說明。</p>
+<h3 id="理解題目後，要思考多久？"><a href="#理解題目後，要思考多久？" class="headerlink" title="理解題目後，要思考多久？"></a>理解題目後，要思考多久？</h3><p>一開始我對此也有一些困惑，但做了大概十幾二十題後，我有一個心得，那就是——真的不用思考太久。</p>
+<p>Easy 類的題目，還在入門階段，可以思考稍微久一點，10 分鐘到 15 分鐘是可以的。</p>
+<p>Medium 以上的題目，<strong>套路成分會更重</strong>，第一次接觸時，你要靠自己想出解法的難度很高，所以這個時候我覺得思考 5 到 10 分鐘就足夠了。</p>
+<p>總之，我們的重點是要掌握這些題目的<strong>上手方式和正確的寫法</strong>，至於第一次做題能不能靠自己想出來，其實不是很重要。</p>
+<h3 id="第一次學習的重點"><a href="#第一次學習的重點" class="headerlink" title="第一次學習的重點"></a>第一次學習的重點</h3><p>第一次學習時，我會花比較多的時間跟 AI 討論，了解一些<strong>重要的基本元素</strong>，比如說<strong>雙指針</strong>、<strong>二分搜尋的開閉問題</strong>（雙閉區間還是左閉右開）等等主題。</p>
+<p>這些都不是題目裡面會直接告訴你的，但它們卻是<strong>題目的重要組成部分</strong>。</p>
+<p>當你不太懂時，可以直接跟 AI 討論。</p>
+<p>AI 可以回答關於刷題的任何問題，所以這個時候多花一點時間是值得的，因為這正是<strong>理解與鞏固基礎</strong>的時機。</p>
+<hr>
+<h2 id="四、注意事項"><a href="#四、注意事項" class="headerlink" title="四、注意事項"></a><strong>四、注意事項</strong></h2><p>使用 AI 輔助刷題，其實為了幫助我們更輕鬆地「思考」——而不是獲得答案。</p>
+<p>因此，程式碼答案本身其實是<strong>最不值錢</strong>的部分。理解為什麼要這樣寫，以及掌握其中的關鍵細節，才是這個強大工具能夠給你的最大幫助。</p>
+<p>我們可以想像，以前的人要深入理解題目需要花費大量時間：要先閱讀相關書籍來學習解題模式，解完題後還要到 LeetCode 討論區研究其他人的解法和技巧。</p>
+<p>這些都是很費工夫的過程，但現在 AI 可以完成其中絕大部分的工作，<strong>而你只需要向它提問即可。</strong></p>
+<p>為了用好 AI，以下是我認為值得注意的部分：</p>
+<ul>
+<li><strong>避免過度依賴</strong>：直接複製 AI 給出的程式碼不是太大的問題，只要你詳細和它討論過，而且<strong>理解每一步的邏輯</strong>。（我會在複習階段才自己全手工寫）</li>
+<li><strong>不宜讓對話過長</strong>：由於這些對話都是我日後複習的素材之一，所以我會有意識地<strong>避免問一些無關緊要的問題</strong>，以免對話因過長而失焦。</li>
+<li><strong>保持獨立思考</strong>：AI 的回答有一定的<strong>隨機性</strong>，雖然刷題這件事，它做得非常好，但仍可能因為你<strong>提問方式的不同</strong>而給出不同的回答方向，這點還是得留意。</li>
+</ul>
+<hr>
+<h2 id="五、總結與下一步"><a href="#五、總結與下一步" class="headerlink" title="五、總結與下一步"></a><strong>五、總結與下一步</strong></h2><p>AI 是刷題的強大助手，但要真正發揮其價值，需要你以合適的方式使用它。</p>
+<p>這篇文章與第一篇相隔超過一個月，遠比預期的晚，原因有二：</p>
+<ol>
+<li>我在使用中<strong>不斷改善 AI 的回答架構</strong>，讓它對學習更有幫助。</li>
+<li>其次，我也需要時間，<strong>慢慢摸索與它互動的最佳方式</strong>。</li>
+</ol>
+<p>它的用法還不止我說的這些，需要讀者自行想像、發揮。</p>
+<p>下一篇會介紹，在刷題過程中，我如何<strong>做筆記</strong>，讓學習效果更好、記憶更深刻。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div>
+  <a href="https://portaly.cc/kyomind/support" target="_blank" class="cta">
+    <span>支持我的創作</span>
+    <svg viewBox="0 0 13 10" height="10px" width="15px">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+  </a>
+</div>
+<br>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/grind-leetcode-with-ai-preparation/" title="與 AI 共舞——我的 LeetCode 刷題之道（準備篇）" rel="bookmark">與 AI 共舞——我的 LeetCode 刷題之道（準備篇）</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/cursor/" title="Cursor IDE 心得：三大亮點與三個阻礙" rel="bookmark">Cursor IDE 心得：三大亮點與三個阻礙</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-ai-dialogue-notes/" title="我寫「AI 對話筆記」的方法與思考" rel="bookmark">我寫「AI 對話筆記」的方法與思考</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/LeetCode/">LeetCode</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/cardio-evolution-2-months/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">去了兩個月健身房之後——我的「有氧運動」進化史</span>
+        <span class="prev-text nav-mobile">去了兩個月健身房之後——我的「有氧運動」進化史</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">12</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">39</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">43</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記<span class="category-count">13</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">25</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2024<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
