@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
+    
+    <lastmod>2024-12-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-27/</loc>
+    
+    <lastmod>2024-12-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-12-11</lastmod>
@@ -50,15 +68,6 @@
     <loc>https://blog.kyomind.tw/2024-ironman-event/</loc>
     
     <lastmod>2024-12-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
-    
-    <lastmod>2024-11-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -723,15 +732,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-16/</loc>
-    
-    <lastmod>2024-10-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-27/</loc>
     
     <lastmod>2024-10-24</lastmod>
     
@@ -1606,7 +1606,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-12-11</lastmod>
+    <lastmod>2024-12-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

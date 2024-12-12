@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2024-12-11T07:22:58+08:00" />
 
 
 
@@ -244,8 +244,8 @@
 <li><code>end_date</code></li>
 </ul>
 <p>兩者將用來查詢、過濾<code>Post</code>模型中的<code>created_at</code>欄位（即發文日期），以篩選特定時間範圍內的文章資料。</p>
-<p>還有一個<strong>額外要求</strong>：兩者必須「<strong>全有全無</strong>」——可以都沒有，但不可以只填其中一個。</p>
-<p>這是一個典型的「<strong>多欄位</strong>」查詢。</p>
+<p>還有一個<strong>額外要求</strong>：兩者必須「<strong>全有全無</strong>」——可以都沒有，但不可以只填其中一個。因為這是<strong>日期區間</strong>查詢，必須有<strong>開始</strong>和<strong>結束</strong>。</p>
+<p>這同時也是一個典型的「<strong>多欄位</strong>」查詢。</p>
 <h3 id="新增程式碼"><a href="#新增程式碼" class="headerlink" title="新增程式碼"></a>新增程式碼</h3><p>這是加入了上述邏輯後的 FilterSchema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        <span class="literal">None</span>, q=[<span class="string">&quot;title__icontains&quot;</span>, <span class="string">&quot;author__username__icontains&quot;</span>])</span><br><span class="line">    start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__gte&quot;</span>)</span><br><span class="line">    end_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__lte&quot;</span>)</span><br></pre></td></tr></table></figure>
 
