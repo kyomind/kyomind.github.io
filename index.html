@@ -168,6 +168,51 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/567.%20Permutation%20in%20String/"></a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-12-13
+        </span></div>
+    </header>
+
+    <div class="post-content"><h1 id="2024-12-13"><a href="#2024-12-13" class="headerlink" title="2024-12-13"></a>2024-12-13</h1><h2 id="我反對使用-range-來滑動視窗"><a href="#我反對使用-range-來滑動視窗" class="headerlink" title="我反對使用 range() 來滑動視窗"></a>我反對使用 range() 來滑動視窗</h2><p>在LeetCode官方的題目tag中，給的是「Hash Table Two Pointers String Sliding Window」<br>如果用range，其實就沒有突顯Two Pointers的實作，要用while才有<br>我覺得range方法雖然「簡潔」，但理解負擔也很大——更加抽象，而且更加「不通用」(無法離開Python)</p>
+<h2 id="ChatGPT"><a href="#ChatGPT" class="headerlink" title="ChatGPT"></a>ChatGPT</h2><p>你說得非常有道理！在 <strong>LeetCode 官方標籤</strong> 中，明確提到 <strong>Two Pointers</strong>，但如果我們使用 <code>range</code> 搭配索引來寫，雖然程式碼簡潔，但這種寫法：</p>
+<ol>
+<li><strong>沒有突顯 Two Pointers</strong> 的概念：雙指標本質上是維護兩個獨立的索引來滑動視窗，而非透過單個索引來完成。</li>
+<li><strong>抽象度較高</strong>：對於初學者來說，<code>range(len(s1), len(s2))</code> 的邏輯並不直觀，理解它為什麼能模擬視窗移動較為困難。</li>
+<li><strong>不通用</strong>：這種寫法過於依賴 Python 語言特性，無法直接轉換到其他語言（如 C++、Java）。</li>
+</ol>
+<h3 id="這樣寫的優點-程式碼看原始碼"><a href="#這樣寫的優點-程式碼看原始碼" class="headerlink" title="這樣寫的優點(程式碼看原始碼)"></a>這樣寫的優點(程式碼看原始碼)</h3><ol>
+<li><p><strong>清楚呈現 Two Pointers 的邏輯</strong>：</p>
+<ul>
+<li><code>left</code> 和 <code>right</code> 是滑動視窗的「雙指標」。</li>
+<li>視窗的維護是透過調整兩個指標來完成，符合 Two Pointers 的核心思想。</li>
+</ul>
+</li>
+<li><p><strong>視窗大小清晰</strong>：</p>
+<ul>
+<li>當 <code>right - left == len(s1)</code> 時，視窗大小固定，這是進行檢查的最佳時機。</li>
+</ul>
+</li>
+<li><p><strong>直觀且通用</strong>：</p>
+<ul>
+<li>不再依賴 Python 的 <code>range</code> 特性，更接近 C++ 和 Java 的實現方式。</li>
+<li>易於理解、易於轉換到其他語言。</li>
+</ul>
+</li>
+<li><p><strong>維護邊界清楚</strong>：</p>
+<ul>
+<li><code>right</code> 新增字元，<code>left</code> 移除字元，雙指標確保視窗滑動的邏輯簡單且清晰。</li>
+</ul>
+</li>
+</ol>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>使用 <strong><code>while</code> 雙指標寫法</strong> 不僅強調了 <strong>Two Pointers</strong> 的邏輯，還讓程式碼更易於理解和轉換到其他語言。這種寫法更加通用且符合面試場景的需求，建議優先使用！</p>
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/gpts-for-leetcode/">GPTs 介紹：AI 刷題助手與使用方式</a>
         </h1>
 
@@ -349,52 +394,6 @@
 <p>還有最後的身分認證與單元測試。可說是一段<strong>相當完整的旅程</strong>。</p>
           <div class="read-more">
             <a href="/django-ninja-30/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-29/">單元測試——使用 Test Client 與 pytest 測試 API</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-11
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 29 篇。</p>
-<p>「請問你們的專案有單元測試嗎？」</p>
-<p>面試中如果你提出這個問題，可能會讓面試官面有難色。</p>
-<p>測試的重要性，大部分開發者都心知肚明。只是願意認真對待的人未必很多。</p>
-<p>但如果真心想提高程式碼品質、減少 bug，讓專案更容易維護，那單元測試依舊是<strong>不可或缺</strong>的工具。</p>
-<p>良好的測試不僅能幫助我們<strong>及早發現問題</strong>，還能在專案<strong>重構或新增功能</strong>時，確保現有的功能不會被破壞。</p>
-<p>雖然寫測試會增加初期的開發時間，而且維護上也需要花費心力——這本來就不是一件輕鬆的事。但長期而言，它能為專案帶來持續的健全與穩定性。</p>
-<p>所以，我們還是好好寫測試吧！</p>
-<hr>
-<h2 id="本文大綱"><a href="#本文大綱" class="headerlink" title="本文大綱"></a>本文大綱</h2><p>這是整個系列中唯一一篇有全文大綱的教學。</p>
-<p>原因是，本文<strong>要提及的事項較多</strong>，畢竟單元測試這麼大的主題，怎麼可能靠一篇 2500 字的文章說完。限於篇幅，無法一一詳談——但也不能直接省略。</p>
-<p>所以需要有一個供讀者鳥瞰的全文輪廓，讓你更容易了解、吸收。大綱如下：</p>
-<ol>
-<li>單元測試的理想與現實。</li>
-<li>Django API 測試重要概念說明。<ul>
-<li>Test Client 的意義與用途。</li>
-<li>pytest 和 pytest-django 簡介。</li>
-<li>pytest fixtures 與測試函式。</li>
-</ul>
-</li>
-<li>測試程式碼的實作與解說。</li>
-<li>結語。</li>
-</ol>
-<p>簡單來說，本文不會講解所有的程式碼改動，而是在<strong>必要時提及</strong>。其餘部分，由我直接實作並收錄在範例專案中，讓讀者自行參考。</p>
-<p>在有限的篇幅中，帶你了解<strong>整體概念</strong>比關注細節更重要。當你掌握了基本概念，再去看程式碼會更加得心應手。</p>
-<p>有關單元測試的<strong>更多討論</strong>，歡迎參考這篇心得〈<a href="https://blog.kyomind.tw/python-craftsman-02/">為什麼你應該寫單元測試——《Python 工匠》筆記</a>〉。這是一本立論紮實的好書，相信你會有所收獲。</p>
-<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/20">這個 PR</a>。</p>
-          <div class="read-more">
-            <a href="/django-ninja-29/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

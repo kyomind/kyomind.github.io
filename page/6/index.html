@@ -168,6 +168,40 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-01/">Django Ninja 01：系列導讀 × 目標讀者</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-13
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 1 篇。</p>
+<p>在這個 30 天的系列文章中，我們將詳細探討 Django Ninja 的<strong>基礎實作</strong>，透過<strong>文字教學</strong>與<strong>範例專案</strong>的程式碼，帶你一步一步熟悉這個強大而靈活的 Django API 開發框架。</p>
+<p>作為 Django 生態系統中的新星（誕生於 2020 年），Django Ninja 融合了 Django 的穩定性和 FastAPI 的現代特性——<strong>Python 的型別提示（透過 Pydantic 實現）</strong>。這種<strong>強強結合</strong>，為開發者提供了一個健全、高效、直觀的 API 開發體驗。</p>
+<p>不論你是經驗豐富的 Django 開發者，還是剛進入 API 開發領域的新手，這個系列都會為你提供實用的 Django Ninja 實戰經驗與技巧。</p>
+<p>我們將從背景介紹、基礎概念開始，逐步深入探討 Django Ninja 的每個部分，幫助你快速掌握這個現代化 API 開發工具。</p>
+<hr>
+<h2 id="建議前置技能"><a href="#建議前置技能" class="headerlink" title="建議前置技能"></a>建議前置技能</h2><p>本系列的定位是「入門級」，但這裡所謂的入門，指的是 Django Ninja 框架的入門。</p>
+<p>所以，要充分利用好教學內容與範例專案程式碼，<strong>仍建議讀者具備以下技能：</strong></p>
+<ul>
+<li><strong>Python 基礎知識</strong>：熟悉 Python 語法，有 Python 開發經驗者佳。</li>
+<li><strong>Django 基礎</strong>：了解 Django 的基本組成，比如 ORM、Views、MTV 架構等。但無須了解 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/templates/">Templates</a> 部分——因為我們是開發 API。</li>
+<li><strong>HTTP 與 Web API 概念</strong>：知道什麼是 HTTP、Web API、前後端分離，並對 RESTful API 設計原則有基本理解。</li>
+<li><strong>版本控制</strong>：為了能夠善用並操作範例專案，需要熟悉 Git、GitHub 的基本操作。</li>
+</ul>
+<p>具備這些技能將幫助你更好地理解和應用本系列的內容。如果你對某些概念不太熟悉，也不用擔心，我們會在必要時進行一定的講解。</p>
+          <div class="read-more">
+            <a href="/django-ninja-01/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2024-ironman-event/">2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略</a>
         </h1>
 
@@ -355,36 +389,6 @@
 <p>這些我多少明白，但依舊沒有這麼做。</p>
           <div class="read-more">
             <a href="/weekly-review-36/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/cursor/">Cursor IDE 心得：三大亮點與三個阻礙</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-08-10
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><!-- ![](https://i.imgur.com/VhSp2Jb.png) -->
-<p><img src="https://i.imgur.com/8qdJkr4.png"></p>
-<p>主打 AI 輔助寫程式的編輯器——<a target="_blank" rel="noopener" href="https://cursor.com/">Cursor</a>，這陣子非常火紅。</p>
-<p>剛好我在上星期經朋友推薦，認真試用了一下，還接了 OpenAI GPT-4o mini API 作為編輯器的 AI 助手。</p>
-<p>本文會分享我試用 Cursor 的心得，以及我<strong>仍不打算</strong>從 VS Code 遷移至 Cursor 的<strong>三個理由</strong>。</p>
-<p>雖然是從個人角度出發，但我會考慮不同狀況、不同需求的讀者，給出不同的建議。</p>
-<hr>
-<h2 id="Cursor-Editor-簡介"><a href="#Cursor-Editor-簡介" class="headerlink" title="Cursor Editor 簡介"></a>Cursor Editor 簡介</h2><p>Cursor 是一款主打 AI 輔助寫程式的新型態 IDE，它並非單純在既有編輯器加上外掛，而是<strong>將 AI 深度整合進編輯器中</strong>。</p>
-<p>它直接使用了 VS Code 的開源程式碼來建構。</p>
-<p>這意味著，Cursor 在介面與操作邏輯上都與 VS Code 極為相似，對於那些想要從 VS Code 遷移過來的使用者來說，幾乎不需要花費額外的時間適應，就能快速上手。</p>
-<p>它的最大亮點，是<strong>內建了強大的 AI 功能（名為：Copilot++）</strong>，可以根據你的指令，自動生成程式碼、提供程式碼建議，甚至幫你 debug。</p>
-<p>不過這些其實 <a target="_blank" rel="noopener" href="https://github.com/features/copilot">GitHub Copilot</a> 也能做到。所以，我認為，真正讓 Cursor 脫穎而出的，是以下三點。</p>
-          <div class="read-more">
-            <a href="/cursor/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/5/">
