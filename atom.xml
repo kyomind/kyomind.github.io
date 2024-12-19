@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Code and Me</title>
   <icon>https://blog.kyomind.tw/favicon-32x32.png</icon>
-  <subtitle>我的程式與學習心得</subtitle>
+  <subtitle>Kyo 的程式與學習心得</subtitle>
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
