@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
     
     <lastmod>2024-12-18</lastmod>
     
@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
-    <lastmod>2024-12-12</lastmod>
+    <lastmod>2024-12-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -434,7 +434,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -452,7 +452,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -1541,7 +1541,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-13/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-14/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -1550,7 +1550,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-14/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-13/</loc>
     
     <lastmod>2024-01-02</lastmod>
     
@@ -1606,7 +1606,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2024-12-18</lastmod>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
