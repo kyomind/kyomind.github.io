@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (43)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (44)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -167,6 +167,33 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-15/">回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-27
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 15 篇。</p>
+<p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的<strong>篩選與加工</strong>。</p>
+<p>比如「取得單一文章資訊」API，實際上就是從<code>Post</code>物件挑選欄位，再進行序列化。</p>
+<p>這個過程中，我們需要考慮如何將<strong>模型物件</strong>轉換為 API 的回應結構，同時保持程式碼的可維護性與靈活。</p>
+<p>對此，Django REST framework（<strong>以下簡稱 DRF</strong>）提供了<strong>非常實用的「特製」序列化器</strong>——<code>ModelSerializer</code>，可說是 DRF 開發者必學的核心功能。</p>
+<p>Django Ninja 雖然也有類似的實踐——<code>ModelSchema</code>，對我而言卻是雞肋般的存在，<strong>我幾乎不曾使用</strong>。</p>
+<p>這樣的差異，無疑是兩者的核心設計理念不同所導致。</p>
+<p>我們曾在第 3 篇中討論過，兩者在功能上的主要區別。本文將透過「<strong>Django 模型物件的序列化</strong>」這個頗具代表性的議題，說明「<strong>為何相比於 DRF，我更喜歡寫 Django Ninja</strong>」。</p>
+          <div class="read-more">
+            <a href="/django-ninja-15/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-14/">回應（二）用 Schema 建立巢狀結構回應</a>
         </h1>
@@ -357,32 +384,6 @@
 <p>本節和下一節，將集中討論上述 3 點中的前兩點——請求與回應。至於第三點，將留到第五章再行介紹。</p>
           <div class="read-more">
             <a href="/django-ninja-09/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-08/">路由（下）Django Ninja 路由設定</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-20
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 8 篇。</p>
-<p>上一篇文章中，我們介紹了 Django 傳統的路由設定方式。</p>
-<p>如前所述，雖然有一個「路由清單」確實不錯。但隨著專案規模的擴大，<strong>不斷來回切換</strong><code>urls.py</code>和<code>views.py</code>將大幅增加開發者的<strong>認知負擔</strong>——拉長了開發時間，還更容易導致錯誤。</p>
-<p>Django Ninja 採用了一種<strong>更現代化</strong>的路由設計，結合了 Flask 和 FastAPI 的設計理念。不僅簡化了路由的定義，還提升了程式碼的可讀性，讓路由與 view 函式<strong>緊密結合</strong>。</p>
-<h2 id="範例專案動態"><a href="#範例專案動態" class="headerlink" title="範例專案動態"></a>範例專案動態</h2><p>本文關於路由設定的程式碼改動，可以參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/1">這個 PR</a>（<strong>Pull Request</strong>）。</p>
-<p>範例專案合併了本文的 PR 後，已經正式成為一個「<strong>API 專案</strong>」，不過它<strong>目前（指這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/commit/396e06338d615d3ec74e7c5bf871b85c9a06f0ec">commit</a> 狀態）尚無法正常運作</strong>，因為我們還沒有完善 view 函式的基本功能。</p>
-<p>你可以一步步地跟著每一篇的 PR，來學習當次的新內容。這也是我為文章建立 PR 的用意所在。</p>
-          <div class="read-more">
-            <a href="/django-ninja-08/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
