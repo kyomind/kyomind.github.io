@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2024-12-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/network-101-course/</loc>
     
     <lastmod>2024-12-21</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/docker-learning/</loc>
-    
-    <lastmod>2024-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2024-12-20</lastmod>
     
