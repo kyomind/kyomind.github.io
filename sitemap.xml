@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2024-12-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
     
     <lastmod>2024-12-24</lastmod>
@@ -13,7 +22,7 @@
   <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
-    <lastmod>2024-12-23</lastmod>
+    <lastmod>2024-12-24</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -113,15 +122,6 @@
     <loc>https://blog.kyomind.tw/2024-ironman-event/</loc>
     
     <lastmod>2024-12-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
-    
-    <lastmod>2024-11-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
