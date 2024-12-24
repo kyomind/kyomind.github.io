@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (44)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (45)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -167,6 +167,43 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-23/">檔案上傳——Django UploadedFile 介紹</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-05
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 23 篇。要開始介紹<strong>進階功能</strong>了！</p>
+<p>現代 Web 服務中，<strong>檔案上傳</strong>是一個常見的情境。</p>
+<p>無論是使用者上傳照片、夾帶附件，檔案上傳都是不可或缺的功能。</p>
+<p>本文介紹如何在 Django Ninja 中實現<strong>圖片上傳</strong>功能，以使用者「上傳大頭貼」（以下都稱為 avatar，因為大頭貼感覺太可愛🥹）API 為例，帶你一步步了解這個過程。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/14">這個 PR</a>。</p>
+<hr>
+<p>不過，在此之前，我們要先了解，本章有哪些主題。</p>
+<h2 id="第六章「API-進階功能」簡介"><a href="#第六章「API-進階功能」簡介" class="headerlink" title="第六章「API 進階功能」簡介"></a>第六章「API 進階功能」簡介</h2><p>對 API 專案而言，<strong>進階功能</strong>能幫助我們應對<strong>複雜場景</strong>與<strong>大型專案</strong>的挑戰。</p>
+<p>雖然這是一個入門指南，但我們仍會涵蓋一些常見的進階功能，這些功能不僅提升 API 的靈活性，還能增強了系統效能與使用者體驗。</p>
+<p>本章共有 5 篇，介紹 3 個常見的進階功能：</p>
+<ul>
+<li><strong>卷 23：檔案上傳——Django UploadedFile 介紹</strong>（本文）</li>
+<li><a href="/django-ninja-24/">卷 24：分頁（上）Django Ninja 的內建分頁器</a></li>
+<li><a href="/django-ninja-25/">卷 25：分頁（下）自定義分頁類別</a></li>
+<li><a href="/django-ninja-26/">卷 26：資料查詢與過濾（上）FilterSchema 介紹</a></li>
+<li><a href="/django-ninja-27/">卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</a></li>
+</ul>
+<p>這些技術不僅對大型專案至關重要，也讓你能在 API 開發中，有效應對多變的需求。</p>
+          <div class="read-more">
+            <a href="/django-ninja-23/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-22/">錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a>
         </h1>
@@ -355,44 +392,6 @@
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/8">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-17/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-16/">回應（四）Resolver 方法——欄位資料格式化</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-28
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 16 篇。</p>
-<p>上一篇提到，API 回應常常是對 Django Model 物件內容的篩選與加工——然後 JSON 序列化。</p>
-<p>其中「<strong>加工</strong>」部分，用更專業的說法，大概是「<strong>資料格式化</strong>」——依照一定的規則，對輸出資料進行<strong>某種轉換或重新組織</strong>，以符合<strong>特定的輸出格式</strong>。</p>
-<p>資料格式化的種類很多，例如：</p>
-<ol>
-<li><strong>時間格式轉換</strong>：將資料庫中的時間戳（timestamp），轉換為更易讀的格式。</li>
-<li><strong>數值轉換</strong>：將數字轉換為貨幣格式，或將小數點位數進行四捨五入。</li>
-<li><strong>字串處理</strong>：截斷過長的文字、加上統一的前綴等。</li>
-</ol>
-<p>不論原因為何，絕大部分時候都是為了資料的「<strong>可讀性</strong>」，或符合特定業務規則。</p>
-<p>可想而知，像資料格式化這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/7">這個 PR</a>。</p>
-<hr>
-<h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>再次回到「<strong>取得單一文章資訊</strong>」API，這是目前的回傳格式：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://127.0.0.1:8000/posts/2/</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1 content&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;alice@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>我們決定<strong>簡化</strong>回應的時間字串，改採「<code>&quot;2024-09-12T02:28:16Z&quot;</code>」格式。</p>
-<p>和舊版相比，只是少了「<code>.801</code>」這個小數部分而已，且依舊符合 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/ISO_8601">ISO 8601</a> 標準。</p>
-<p>總之，回應中<code>created_at</code>和<code>updated_at</code>兩個欄位的內容，需要進行<strong>格式上的轉換</strong>。即上述提到的「<strong>資料格式化</strong>」。</p>
-          <div class="read-more">
-            <a href="/django-ninja-16/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">
