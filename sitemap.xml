@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    
+    <lastmod>2025-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
+    
+    <lastmod>2025-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
+    
+    <lastmod>2025-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
+    
+    <lastmod>2025-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
+    
+    <lastmod>2025-01-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-01-04</lastmod>
@@ -866,15 +911,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/essential-subscriptions-2023/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/from-zplug-to-zinit/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -920,15 +956,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/cursor/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -957,15 +984,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
@@ -1200,24 +1218,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/on-writing/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
     
     <lastmod>2024-09-03</lastmod>
     
