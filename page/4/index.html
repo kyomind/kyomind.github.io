@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (45)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (46)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -167,6 +167,34 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-17/">API 文件（上）Django Ninja 文件實踐指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-29
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 17 篇。我們開始<strong>第四章</strong>——<strong>API 文件</strong>。</p>
+<p>「<strong>依程式碼自動產生 API 文件</strong>」是 Django Ninja 的一大賣點。</p>
+<p>事實上，<strong>API 文件的自動化</strong>，正是我在工作上的專案從 Django REST framework 轉向 Django Ninja 的<strong>首要考量</strong>——也是我開始學習 Django Ninja 的契機。</p>
+<p>Django Ninja 省去了大量<strong>人工撰寫</strong>（我們用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a>）API 文件的時間，特別是在 API 規格變動時，<strong>不需要再同步修改文件</strong>，大大減少了維護文件的心力。</p>
+<p>可見這個特性有多麼重要。</p>
+<h3 id="教學順序的考量"><a href="#教學順序的考量" class="headerlink" title="教學順序的考量"></a>教學順序的考量</h3><p>那麼，為何我到了系列的第 17 篇文章——也就是本篇，才開始介紹 Django Ninja 的 API 文件功能呢？</p>
+<p>原因在於，要產生優秀的 API 文件，<strong>需要你對 Schema 的使用有一定的了解</strong>。所以我不得不放在第三章之後。</p>
+<p>現在，我們要開始探討如何使用 Django Ninja 產出高品質的 API 文件。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/8">這個 PR</a>。</p>
+          <div class="read-more">
+            <a href="/django-ninja-17/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-16/">回應（四）Resolver 方法——欄位資料格式化</a>
         </h1>
@@ -354,43 +382,6 @@
 <p>URL 傳遞了一個查詢參數<code>author=john</code>，表示我們希望過濾出由 John 撰寫的文章。</p>
           <div class="read-more">
             <a href="/django-ninja-11/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-10/">請求（二）路徑參數 - Path Parameters</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-22
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 10 篇。</p>
-<p>上一篇文章中，我們介紹了 Django Ninja 如何處理 HTTP 請求，並強調了它與 Python type hints 之間的緊密結合。</p>
-<p>本篇將探討 Django Ninja 中，<strong>路徑參數（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/path-params/">path parameters</a>）</strong>的應用與細節，這在處理 HTTP 請求時<strong>極為常見</strong>，尤其是在 RESTful API 中。</p>
-<p>本文對範例專案的程式碼改動，都集中在<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/2">這個 PR</a>。</p>
-<hr>
-<h2 id="一、什麼是-Path-Parameters？"><a href="#一、什麼是-Path-Parameters？" class="headerlink" title="一、什麼是 Path Parameters？"></a>一、什麼是 Path Parameters？</h2><p>Path parameters 是構成 URL 的一部分，它們位於網址路徑（path）中的<strong>特定</strong>位置，<strong>根據不同的值（參數）</strong>來決定傳入的內容，用來<strong>動態指定資源</strong>。</p>
-<p>我們不妨先了解一下，<strong>path</strong> 在整個 URL 中的位置：（圖片取自<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/URL">維基百科</a>）</p>
-<p><img src="https://i.imgur.com/o2JxS9I.png" alt="點圖可放大"></p>
-<p>從圖中可以看出，路徑（path）是 URL 的一部分——而且是<strong>必要部分</strong>。</p>
-<p>不過請注意，path parameters 只是 Django、Django Ninja 這類框架所提供的一種「<strong>功能</strong>」。對 URL 本身而言，path 就是 path，也就是<strong>單純的字串</strong>而已。</p>
-<h3 id="路徑參數例子"><a href="#路徑參數例子" class="headerlink" title="路徑參數例子"></a>路徑參數例子</h3><p>舉一個簡單的例子，讓我們可以更好地理解 path parameters 的概念。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#123;post_id&#125;/&#x27;</span></span>)  </span><span class="comment"># &#123;post_id&#125; 就是路徑參數</span></span><br></pre></td></tr></table></figure>
-
-<p>實際請求時，<code>123</code>就是<strong>透過</strong>路徑參數，代表特定文章的 id：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /posts/123</span><br></pre></td></tr></table></figure>
-
-<p>可想而知，如果是<code>456</code>或<code>789</code>，你會得到不同的結果。</p>
-<p>這使得 API 具有<strong>彈性</strong>，可以針對不同的資源進行操作，而<strong>不必為每一個資源建立不同的路由</strong>——它們的端點與路由<strong>都是相同的</strong>，只是「<strong>參數</strong>」不同。</p>
-          <div class="read-more">
-            <a href="/django-ninja-10/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">

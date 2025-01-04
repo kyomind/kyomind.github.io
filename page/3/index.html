@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (45)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (46)</a>
           
             <a href="/categories/%E6%9B%B8%E8%A9%95-%C3%97-%E7%AD%86%E8%A8%98/">書評 × 筆記 (13)</a>
           
@@ -167,6 +167,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-24/">分頁（上）Django Ninja 的內建分頁器</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-06
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 24 篇。</p>
+<p>分頁（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/pagination/">pagination</a>）功能，就算在資料量較少的小型專案，也具有相當的重要性。</p>
+<p>沒分頁，API 照樣能運作——只是效能會受到影響，特別是在資料量大的情況下。</p>
+<p>當 API 一次回傳大量資料時，不僅會增加伺服器負擔，還可能導致客戶端處理緩慢，甚至出現<strong>超時</strong>或<strong>記憶體不足</strong>等問題。</p>
+<p>透過分頁，我們可以避免一次性傳輸大量資料，提高 API 的效能，同時提升使用者的體驗。</p>
+<p>這個主題將分為<strong>上、下兩篇</strong>，介紹如何在 Django Ninja 中實作分頁功能——從<strong>內建的分頁器</strong>到<strong>自定義分頁類別</strong>，以滿足不同需求。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/15">這個 PR</a>。</p>
+<hr>
+<h2 id="分頁的重要性"><a href="#分頁的重要性" class="headerlink" title="分頁的重要性"></a>分頁的重要性</h2><p>分頁的<strong>核心作用</strong>是<strong>將大量資料拆分成小部分傳輸，每次只給一些</strong>，從而避免效能問題。</p>
+<p>具體而言，分頁能夠幫助我們：</p>
+<ol>
+<li><strong>減少伺服器壓力</strong>：不必一次回傳全部資料，只需處理<strong>單個頁面</strong>的資料。</li>
+<li><strong>提升網路傳輸速度</strong>：傳輸太大量的資料會增加網路延遲和資料丟失的風險，通過分頁，能<strong>有效降低傳輸需求</strong>。</li>
+<li><strong>提升使用者體驗</strong>：客戶端可以快速獲取並顯示初步資料，無需等待所有資料傳輸完成。同時，分頁還能<strong>減少客戶端處理大量資料的壓力</strong>。</li>
+</ol>
+<p>因此，無論專案規模大小，實作<strong>高效的分頁策略</strong>，對 API 的擴充性與使用者體驗，都有<strong>明顯幫助</strong>。</p>
+<p>了解了分頁的重要性後，我們來開始實作吧！</p>
+          <div class="read-more">
+            <a href="/django-ninja-24/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-23/">檔案上傳——Django UploadedFile 介紹</a>
         </h1>
@@ -364,34 +400,6 @@
 <p>這些細節設定會<strong>自動反映</strong>在轉換後的 API 文件中，幫助開發者更好地理解 API 的行為與內涵。</p>
           <div class="read-more">
             <a href="/django-ninja-18/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-17/">API 文件（上）Django Ninja 文件實踐指南</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-29
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 17 篇。我們開始<strong>第四章</strong>——<strong>API 文件</strong>。</p>
-<p>「<strong>依程式碼自動產生 API 文件</strong>」是 Django Ninja 的一大賣點。</p>
-<p>事實上，<strong>API 文件的自動化</strong>，正是我在工作上的專案從 Django REST framework 轉向 Django Ninja 的<strong>首要考量</strong>——也是我開始學習 Django Ninja 的契機。</p>
-<p>Django Ninja 省去了大量<strong>人工撰寫</strong>（我們用 <a target="_blank" rel="noopener" href="https://apiblueprint.org/">API Blueprint</a>）API 文件的時間，特別是在 API 規格變動時，<strong>不需要再同步修改文件</strong>，大大減少了維護文件的心力。</p>
-<p>可見這個特性有多麼重要。</p>
-<h3 id="教學順序的考量"><a href="#教學順序的考量" class="headerlink" title="教學順序的考量"></a>教學順序的考量</h3><p>那麼，為何我到了系列的第 17 篇文章——也就是本篇，才開始介紹 Django Ninja 的 API 文件功能呢？</p>
-<p>原因在於，要產生優秀的 API 文件，<strong>需要你對 Schema 的使用有一定的了解</strong>。所以我不得不放在第三章之後。</p>
-<p>現在，我們要開始探討如何使用 Django Ninja 產出高品質的 API 文件。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/8">這個 PR</a>。</p>
-          <div class="read-more">
-            <a href="/django-ninja-17/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/2/">
