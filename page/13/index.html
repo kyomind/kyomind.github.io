@@ -127,7 +127,7 @@
           
             <a href="/categories/Django/">Django (12)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (39)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (40)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -167,6 +167,41 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/stop-trial-and-error/">別依賴「試誤法」寫程式</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-10-05
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/cr4Ay4E.jpg" alt="from Pixabay"></p>
+<blockquote>
+<p>相關文章：<a href="/weekly-review-18/">18，論軟體工程師常見的「路徑依賴」問題（上）</a></p>
+</blockquote>
+<p>你身邊的人都是怎麼開發的呢？</p>
+<p>有個情況很普遍，我不得不為此發聲：「<strong>請停止用『試誤法』寫程式</strong>！」</p>
+<p>這尤其適用於<strong>準備知識不夠紮實</strong>（指<strong>為開發所做的功課太少</strong>）的開發者。但如下所述，其實它本質上是一個「<strong>開發習慣</strong>」議題。</p>
+<p>我們先看看維基百科對於「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B0%9D%E8%AF%95%E9%94%99%E8%AF%AF%E6%B3%95">試誤法</a>」的闡述：</p>
+<blockquote>
+<p><strong>嘗試錯誤法</strong>，又稱<strong>試誤法</strong>（英語：trial and error），簡稱<strong>試錯</strong>，是用來解決問題、獲取知識。此種方法可以視為簡易解決問題的方法中的一種，與使用洞察力／直覺或理論推理的方法正好相反。</p>
+</blockquote>
+<p>就像這句「此種方法可以視為簡易解決問題的方法中的一種」說的，在我看來，試誤法常常會得到 workaround 等級（指雖不能根本解決，但能<strong>暫時繞過問題</strong>的方案）的答案——這肯定不是好事。</p>
+<p>不過，我承認，「試誤」在軟體開發中，是一個<strong>常見且實用</strong>的手段。</p>
+<p>我自己寫一些邏輯時，也常常在 jupyter notebook 先執行嘗試執行一下程式碼片段，看看結果，以確保我的想法沒錯。<strong>但，這只是一種輔助。</strong></p>
+<p>本文想強調的是：<strong>不要以「試誤」作為開發的基調，或解決問題的主要方式</strong>。換言之，<strong>不要濫用試誤</strong>。</p>
+<p>否則那將是一場災難。</p>
+<p>無數次 trial and error，看起來勤勤懇懇，實際上是<strong>最低效的開發手段</strong>。我覺得，試個兩、三次行不通，就應該<strong>重新思考問題的本質——而非繼續嘗試。</strong></p>
+          <div class="read-more">
+            <a href="/stop-trial-and-error/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-tutorial/">Django Tutorial：系列介紹與導讀</a>
         </h1>
@@ -325,60 +360,6 @@
 <p>我呢？既然知道了這個服務，顯然我也有我的需求。</p>
           <div class="read-more">
             <a href="/weekly-review-21/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/notion-database/">Notion 資料庫「反複雜」使用指南</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-08-29
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/TJQDGmr.jpg" alt="by Daria Kolesnikova"></p>
-<blockquote>
-<p><code>2024/02/01</code>：新增「<a href="#%E6%9C%AC%E6%96%87%E7%9B%AE%E9%8C%84">本文目錄</a>」與「<a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E9%81%A9%E5%8F%AF%E8%80%8C%E6%AD%A2%E7%9A%84%E8%A4%87%E9%9B%9C">結語：適可而止的複雜</a>」兩個部分。<br><code>2024/01/28</code>：重新修訂全文，增加若干內容，使整體論述更清晰、完整。</p>
-</blockquote>
-<p>讓我們進入「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，<strong>最能夠代表 Notion 的關鍵元素：資料庫（<a target="_blank" rel="noopener" href="https://www.notion.so/help/intro-to-databases">database</a>）</strong>。</p>
-<p>一提到 Notion 你會想到什麼？沒錯，就是資料庫。資料庫就是 <strong>Notion 的代名詞</strong>。</p>
-<p>Notion 在 2016 年就誕生了（你也可以說是 2013年，請參考維基百科關於 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Notion">Notion 的「歷史與發展」</a>），但直到 2018 年才大紅，為什麼？——<strong>因為加入了 database。</strong></p>
-<p>儘管在 UI 加入類似<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>功能，並非 Notion 獨創。畢竟，在此之前，<a target="_blank" rel="noopener" href="https://www.airtable.com/">Airtable</a> 已經是這方面的佼佼者。</p>
-<p>但我們不得不承認，<strong>Notion 確實把資料庫玩出了新的高度</strong>。</p>
-<h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
-<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
-<li><a href="#%E6%9C%AC%E6%96%87%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E8%BB%B8">本文架構與主軸</a></li>
-<li><a href="#Notion-%E7%9A%84%E5%BF%83%E8%87%9F%EF%BC%9A%E8%B3%87%E6%96%99%E5%BA%AB">Notion 的心臟：資料庫</a></li>
-<li><a href="#Craft%E2%80%94%E2%80%94%E6%B2%92%E6%9C%89-database-%E7%9A%84-Notion%EF%BC%9F">Craft——沒有 database 的 Notion？</a></li>
-<li><a href="#%E5%AD%B8%E7%BF%92-Notion-database-%E7%9A%84%E4%B8%89%E5%A4%A7%E5%B8%B8%E8%A6%8B%E5%9B%B0%E5%A2%83">學習 Notion database 的三大常見困境</a></li>
-<li><a href="#%E5%9B%B0%E5%A2%83%E4%B8%80%EF%BC%9A%E5%AD%B8%E7%BF%92%E9%96%80%E6%AA%BB">困境一：學習門檻</a></li>
-<li><a href="#%E5%9B%B0%E5%A2%83%E4%BA%8C%EF%BC%9A%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E8%A4%87%E9%9B%9C">困境二：不必要的複雜</a></li>
-<li><a href="#%E5%9B%B0%E5%A2%83%E4%B8%89%EF%BC%9A%E9%81%8E%E5%BA%A6%E4%BD%BF%E7%94%A8">困境三：過度使用</a></li>
-<li><a href="#%E8%B3%87%E6%96%99%E5%BA%AB%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81">資料庫太多了！</a></li>
-<li><a href="#%E7%84%A1%E8%A7%A3%E7%9A%84%E3%80%8C%E5%88%86%E9%A1%9E%E3%80%8D%E9%9B%A3%E9%A1%8C">無解的「分類」難題</a></li>
-<li><a href="#%E6%88%91%E7%9A%84-Notion-database-%E7%B0%A1%E6%BD%94%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">我的 Notion database 簡潔使用指南</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E9%81%A9%E5%8F%AF%E8%80%8C%E6%AD%A2%E7%9A%84%E8%A4%87%E9%9B%9C">結語：適可而止的複雜</a></li>
-<li><a href="#%E9%A1%8C%E5%A4%96%E8%A9%B1%EF%BC%9ANotion-%E4%B8%A6%E4%B8%8D%E9%81%A9%E5%90%88%E5%81%9A%E5%8D%A1%E7%89%87%E7%AD%86%E8%A8%98">題外話：Notion 並不適合做卡片筆記</a></li>
-</ol>
-<h3 id="系列：Simple-Notion"><a href="#系列：Simple-Notion" class="headerlink" title="系列：Simple Notion"></a><strong>系列：Simple Notion</strong></h3><blockquote>
-<ol>
-<li><a href="https://blog.kyomind.tw/simple-notion/">使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a></li>
-<li><a href="https://blog.kyomind.tw/stumbling-on-notion/">少則得，多則惑：使用 Notion 時的兩個常見陷阱</a></li>
-<li><strong>Notion 資料庫「反複雜」使用指南</strong></li>
-</ol>
-</blockquote>
-<hr>
-<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>資料庫（database）無疑是 Notion 最強大的功能，但也是最複雜的。「<strong>過度使用</strong>」的結果，<strong>可能比不用還糟糕</strong>。</p>
-<p>既然是「Simple Notion」系列文章，主軸仍會聚焦在「<strong>簡潔</strong>」二字。而講到簡潔使用 Notion，資料庫絕對是<strong>一個無法繞過的主要議題</strong>。</p>
-<p>我希望不落俗套地，討論 Notion 資料庫的<strong>美麗與哀愁</strong>。並提供<strong>簡單有效</strong>的<a href="#%E6%88%91%E7%9A%84-Notion-database-%E7%B0%A1%E6%BD%94%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">使用指南</a>，讓你能夠<strong>避免「陷阱」</strong>，<strong>適度使用</strong>，從而<strong>真正發揮它的價值</strong>。</p>
-<p>更重要的是：<strong>減少不必要的學習焦慮感。</strong></p>
-          <div class="read-more">
-            <a href="/notion-database/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/12/">

@@ -127,7 +127,7 @@
           
             <a href="/categories/Django/">Django (12)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (39)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (40)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -167,6 +167,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-18/">API 文件（下）Pydantic Field 設定範例與預設值</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-30
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 18 篇。</p>
+<p>上一篇文章中，我們探討了 Django Ninja 影響 API 文件<strong>呈現</strong>的一些重要設定。它們是<strong>自動化 API 文件</strong>的基本功，不容忽視。</p>
+<p>但這樣<strong>還不夠</strong>！我們想要讓這份文件更加<strong>生動</strong>，讀起來清晰易懂。</p>
+<p>其中的關鍵在於 API 文件上的<strong>資料範例</strong>。好的範例讓人一讀就懂，能有效縮短理解和思考的時間。</p>
+<p>本文將介紹如何運用 Pydantic 的<code>Field</code>設定，全方位提升 API 文件的清晰與可讀性。我們會探討如何為自動生成的文件加上<strong>栩栩如生的範例</strong>，讓文件<strong>更貼近真實</strong>。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/9">這個 PR</a>。</p>
+<hr>
+<h2 id="Pydantic-在-Django-Ninja-中的角色"><a href="#Pydantic-在-Django-Ninja-中的角色" class="headerlink" title="Pydantic 在 Django Ninja 中的角色"></a>Pydantic 在 Django Ninja 中的角色</h2><p>Pydantic 是一個實現<strong>資料驗證、序列化</strong>的套件，廣泛應用於 FastAPI 和 Django Ninja 等框架。</p>
+<p>在 Django Ninja 中，Pydantic 被用來定義 Schema，這些 Schema 決定了 API 如何處理 HTTP 請求和回應中的資料，並自動轉換成<strong>符合 OpenAPI 標準的文件</strong>。</p>
+<p>Pydantic 的強大之處在於，它不僅能驗證資料，還可以通過<code>Field</code>設定，為文件欄位<strong>提供額外的說明、範例和預設值</strong>。</p>
+<p>這些細節設定會<strong>自動反映</strong>在轉換後的 API 文件中，幫助開發者更好地理解 API 的行為與內涵。</p>
+          <div class="read-more">
+            <a href="/django-ninja-18/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-17/">API 文件（上）Django Ninja 文件實踐指南</a>
         </h1>
@@ -352,36 +382,6 @@
 <p>這個 request body 包含了<code>title</code>和<code>content</code>兩個欄位，Django Ninja 將協助我們處理這些資料並進行驗證。</p>
           <div class="read-more">
             <a href="/django-ninja-12/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-11/">請求（三）查詢參數 - Query Parameters</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-23
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 11 篇。</p>
-<p>上一篇我們討論了，請求 URL 中關於<strong>路徑參數</strong>的處理方式。</p>
-<p>本文將介紹<strong>查詢參數（query parameters）</strong>，這是 RESTful API 中用來傳遞<strong>過濾條件</strong>等<strong>額外資訊</strong>的重要部分。</p>
-<p>處理查詢參數在 Django Ninja 中非常簡單直觀，我們可以透過多種方式來達成。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/3">這個 PR</a>。</p>
-<hr>
-<h2 id="一、什麼是查詢參數？"><a href="#一、什麼是查詢參數？" class="headerlink" title="一、什麼是查詢參數？"></a>一、什麼是查詢參數？</h2><p>查詢參數是 URL 中的可選參數，通常位於 path 的後方，以<code>?key=value</code>的形式出現，用來傳遞<strong>額外的資訊</strong>。</p>
-<p>例如，當我們需要過濾某位作者的文章時，URL 的 path 可能會這樣寫：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/posts/?author=john</span><br></pre></td></tr></table></figure>
-
-<p>URL 傳遞了一個查詢參數<code>author=john</code>，表示我們希望過濾出由 John 撰寫的文章。</p>
-          <div class="read-more">
-            <a href="/django-ninja-11/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
