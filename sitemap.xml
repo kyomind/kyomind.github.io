@@ -2,7 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/robust-python-01/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/effective-python-01/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
+    
+    <lastmod>2025-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
     
     <lastmod>2025-01-13</lastmod>
     
@@ -263,54 +371,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
-    
-    <lastmod>2024-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-11-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
-    
-    <lastmod>2024-11-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
-    
-    <lastmod>2024-11-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -534,51 +597,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/apple-silicon/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
-    
-    <lastmod>2024-11-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
     
     <lastmod>2024-11-08</lastmod>
     
@@ -1289,15 +1307,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/robust-python-01/</loc>
-    
-    <lastmod>2024-09-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-12/</loc>
     
     <lastmod>2024-09-03</lastmod>
@@ -1391,15 +1400,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-01/</loc>
     
     <lastmod>2024-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/effective-python-01/</loc>
-    
-    <lastmod>2024-06-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
