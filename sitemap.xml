@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    
+    <lastmod>2025-01-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/grind-leetcode-with-ai-preparation/</loc>
     
     <lastmod>2025-01-16</lastmod>
@@ -32,15 +41,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-40/</loc>
     
     <lastmod>2025-01-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
-    
-    <lastmod>2025-01-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
