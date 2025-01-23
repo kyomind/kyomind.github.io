@@ -317,6 +317,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2025-01-23</lastmod>
@@ -335,7 +344,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
     
     <lastmod>2025-01-23</lastmod>
     
@@ -344,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
     
     <lastmod>2025-01-23</lastmod>
     
@@ -363,15 +372,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
-    
-    <lastmod>2025-01-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
     
     <lastmod>2025-01-23</lastmod>
     
