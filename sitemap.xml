@@ -2,6 +2,105 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/black-and-isort/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/ruff/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/no-result/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-01-22</lastmod>
@@ -29,15 +128,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
-    
-    <lastmod>2025-01-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-40/</loc>
     
     <lastmod>2025-01-16</lastmod>
@@ -56,15 +146,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
-    
-    <lastmod>2025-01-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
     
     <lastmod>2025-01-13</lastmod>
@@ -74,25 +155,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
-    
-    <lastmod>2025-01-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2025-01-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2025-01-13</lastmod>
     
@@ -111,15 +174,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/effective-python-01/</loc>
-    
-    <lastmod>2025-01-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
     
     <lastmod>2025-01-13</lastmod>
     
@@ -147,15 +201,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
-    
-    <lastmod>2025-01-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
     
     <lastmod>2025-01-13</lastmod>
     
@@ -479,15 +524,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
-    
-    <lastmod>2024-11-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/python-enum/</loc>
     
     <lastmod>2024-11-16</lastmod>
@@ -641,15 +677,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/black-and-isort/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2024-11-06</lastmod>
@@ -669,33 +696,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/pre-commit/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ruff/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyproject-toml/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/no-result/</loc>
     
     <lastmod>2024-11-06</lastmod>
     
@@ -1642,7 +1642,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2025-01-22</lastmod>
+    <lastmod>2025-01-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
