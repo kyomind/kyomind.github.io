@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/docker-learning/</loc>
+    
+    <lastmod>2025-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ithome-ironman-tips/</loc>
     
     <lastmod>2025-01-23</lastmod>
@@ -579,15 +588,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-22/</loc>
-    
-    <lastmod>2024-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/docker-learning/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
