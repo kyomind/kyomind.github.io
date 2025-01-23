@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-23T08:40:11+08:00" />
 
 
 
@@ -198,6 +198,7 @@
 <p>其中的關鍵在於 API 文件上的<strong>資料範例</strong>。好的範例讓人一讀就懂，能有效縮短理解和思考的時間。</p>
 <p>本文將介紹如何運用 Pydantic 的<code>Field</code>設定，全方位提升 API 文件的清晰與可讀性。我們會探討如何為自動生成的文件加上<strong>栩栩如生的範例</strong>，讓文件<strong>更貼近真實</strong>。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/9">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="Pydantic-在-Django-Ninja-中的角色"><a href="#Pydantic-在-Django-Ninja-中的角色" class="headerlink" title="Pydantic 在 Django Ninja 中的角色"></a>Pydantic 在 Django Ninja 中的角色</h2><p>Pydantic 是一個實現<strong>資料驗證、序列化</strong>的套件，廣泛應用於 FastAPI 和 Django Ninja 等框架。</p>
 <p>在 Django Ninja 中，Pydantic 被用來定義 Schema，這些 Schema 決定了 API 如何處理 HTTP 請求和回應中的資料，並自動轉換成<strong>符合 OpenAPI 標準的文件</strong>。</p>

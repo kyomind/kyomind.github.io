@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-23T08:40:52+08:00" />
 
 
 
@@ -203,7 +203,7 @@
 <p>這些問題都指向了一個<strong>更大的需求</strong>：我們需要一個<strong>全面的錯誤處理機制</strong>。</p>
 <p>這篇文章，就要來回答這些問題。所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/13">這個 PR</a>。</p>
 <span id="more"></span>
-
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="改用-Django-ValidationError"><a href="#改用-Django-ValidationError" class="headerlink" title="改用 Django ValidationError"></a>改用 Django ValidationError</h2><p>還記得驗證方法中，最原始的版本是拋出<code>ValueError</code>嗎？</p>
 <p><code>ValueError</code>會被 Django Ninja 自動捕捉並給出 422 回應，這是好事，但不符合我們的<strong>自定義需求</strong>。</p>

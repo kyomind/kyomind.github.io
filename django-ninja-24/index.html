@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-23T08:41:07+08:00" />
 
 
 
@@ -199,6 +199,7 @@
 <p>透過分頁，我們可以避免一次性傳輸大量資料，提高 API 的效能，同時提升使用者的體驗。</p>
 <p>這個主題將分為<strong>上、下兩篇</strong>，介紹如何在 Django Ninja 中實作分頁功能——從<strong>內建的分頁器</strong>到<strong>自定義分頁類別</strong>，以滿足不同需求。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/15">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="分頁的重要性"><a href="#分頁的重要性" class="headerlink" title="分頁的重要性"></a>分頁的重要性</h2><p>分頁的<strong>核心作用</strong>是<strong>將大量資料拆分成小部分傳輸，每次只給一些</strong>，從而避免效能問題。</p>
 <p>具體而言，分頁能夠幫助我們：</p>

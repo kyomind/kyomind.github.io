@@ -186,6 +186,7 @@
 <p>不過別擔心，這種自定義，<strong>並非從零開始</strong>。而是繼承 Django Ninja 所提供的基礎分頁類別，再進行自己的「<strong>加工</strong>」。</p>
 <p>這篇文章就要來教你怎麼做。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/16">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="客製化需求"><a href="#客製化需求" class="headerlink" title="客製化需求"></a>客製化需求</h2><p>除了基本的分頁，我們還希望能夠：</p>
 <ul>
@@ -224,6 +225,7 @@
 <p>透過分頁，我們可以避免一次性傳輸大量資料，提高 API 的效能，同時提升使用者的體驗。</p>
 <p>這個主題將分為<strong>上、下兩篇</strong>，介紹如何在 Django Ninja 中實作分頁功能——從<strong>內建的分頁器</strong>到<strong>自定義分頁類別</strong>，以滿足不同需求。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/15">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="分頁的重要性"><a href="#分頁的重要性" class="headerlink" title="分頁的重要性"></a>分頁的重要性</h2><p>分頁的<strong>核心作用</strong>是<strong>將大量資料拆分成小部分傳輸，每次只給一些</strong>，從而避免效能問題。</p>
 <p>具體而言，分頁能夠幫助我們：</p>
@@ -258,6 +260,7 @@
 <p>無論是使用者上傳照片、夾帶附件，檔案上傳都是不可或缺的功能。</p>
 <p>本文介紹如何在 Django Ninja 中實現<strong>圖片上傳</strong>功能，以使用者「上傳大頭貼」（以下都稱為 avatar，因為大頭貼感覺太可愛🥹）API 為例，帶你一步步了解這個過程。</p>
 <p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/14">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <p>不過，在此之前，我們要先了解，本章有哪些主題。</p>
 <h2 id="第六章「API-進階功能」簡介"><a href="#第六章「API-進階功能」簡介" class="headerlink" title="第六章「API 進階功能」簡介"></a>第六章「API 進階功能」簡介</h2><p>對 API 專案而言，<strong>進階功能</strong>能幫助我們應對<strong>複雜場景</strong>與<strong>大型專案</strong>的挑戰。</p>
@@ -328,6 +331,7 @@
 <p>總之，無論出於何種原因，我們想<strong>自訂錯誤訊息、格式，以及回應的狀態碼</strong>，而<strong>不使用</strong> Django Ninja 預設的 422 回應——不得不說，這個制式回應的資訊有點多、結構有點複雜，因為它要兼容各種情況。</p>
 <p>本文將介紹如何<strong>自定義錯誤處理與回應</strong>——使用 Django Ninja 內建的<code>HttpError</code>。</p>
 <p>所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/12">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="Django-Ninja-的自動錯誤處理"><a href="#Django-Ninja-的自動錯誤處理" class="headerlink" title="Django Ninja 的自動錯誤處理"></a>Django Ninja 的自動錯誤處理</h2><p>上一篇我們提到，如果你在 Schema 的驗證方法中，拋出<code>ValueError</code>錯誤，Django Ninja 將會<strong>自動捕捉並回應</strong>。</p>
 <p>事實上，不止<code>ValueError</code>，Django Ninja 還會替你處理以下這幾種錯誤：</p>
@@ -362,6 +366,7 @@
 <p>這些驗證場景<strong>無法</strong>透過單一欄位驗證實現，因為它們需要同時檢查<strong>多個欄位之間的邏輯關聯</strong>，來確保整體資料的<strong>一致性和正確性</strong>。</p>
 <p>本文將介紹如何透過 Pydantic 來實現跨欄位驗證需求——以「確認密碼」為例，展示這個功能的實際應用。</p>
 <p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/11">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="跨欄位驗證與關注點分離"><a href="#跨欄位驗證與關注點分離" class="headerlink" title="跨欄位驗證與關注點分離"></a>跨欄位驗證與關注點分離</h2><p>其實，無論是單一欄位還是跨欄位的自定義驗證，都<strong>不一定</strong>要藉由 Pydantic 來完成。</p>
 <p>理論上，資料驗證可以<strong>直接</strong>在 view 函式中進行，例如取出輸入的欄位值，手動驗證它的合法性。跨欄位驗證也是如此。</p>
@@ -392,6 +397,7 @@
 <p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
 <p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
 <p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>

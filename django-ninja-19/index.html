@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-23T08:40:32+08:00" />
 
 
 
@@ -201,6 +201,7 @@
 <p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
 <p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
 <p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>

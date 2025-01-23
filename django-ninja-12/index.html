@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django Ninja 系列" />
             
 
-  <meta property="article:modified_time" content="2024-10-24T10:02:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-23T08:38:34+08:00" />
 
 
 
@@ -197,6 +197,7 @@
 <p>比如用戶提交的表單、上傳的檔案等等。對於 API 而言，最常見的就是 JSON 格式的 <strong>request body</strong>。</p>
 <p>這一篇將探討 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。</p>
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/4">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="一、什麼是-Request-Body？"><a href="#一、什麼是-Request-Body？" class="headerlink" title="一、什麼是 Request Body？"></a>一、什麼是 Request Body？</h2><p><strong>Request body</strong> 指的是隨著 HTTP 請求一同傳送的資料，通常用於<code>POST</code>、<code>PUT</code>等<strong>需要建立或更新「資源」的請求。</strong></p>
 <p>這些資料不會出現在 URL 中，而是以 JSON 或其他格式（如 XML、form-data）作為請求的主體。</p>
