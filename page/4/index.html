@@ -123,7 +123,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
           
-            <a href="/categories/Django/">Django (12)</a>
+            <a href="/categories/Django/">Django (13)</a>
           
             <a href="/categories/Weekly-Review/">Weekly Review (40)</a>
           
@@ -165,6 +165,44 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-19/">資料驗證（上）Pydantic 單一欄位驗證</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-01
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 19 篇。進入第五章：<strong>資料驗證與錯誤處理</strong>。</p>
+<p><strong>資料驗證</strong>是 API 開發中的關鍵需求之一，它負責確保從客戶端提交的資料是<strong>符合預期</strong>的，從而避免潛在的錯誤和安全問題。</p>
+<p>有效的資料驗證可以在 API 接收到錯誤資料時，給出<strong>即時且友善</strong>的回應，提升系統的穩定性和<strong>使用者體驗</strong>。</p>
+<p>Django Ninja 中，資料驗證的核心工具是 <strong>Pydantic</strong>。它提供了強大的驗證功能，不僅能對資料型別進行檢查，還能輕鬆實現<strong>自定義驗證</strong>。</p>
+<p>本文將介紹如何在 Django Ninja 中使用 Pydantic 實作<strong>單一欄位的自定義驗證</strong>；下一篇則講述<strong>跨欄位的自定義驗證</strong>。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/10">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="第五章總論"><a href="#第五章總論" class="headerlink" title="第五章總論"></a>第五章總論</h2><p>資料驗證很重要，而驗證失敗時，程式往往會拋出<strong>驗證錯誤</strong>。如何有效處理這些錯誤，則是「<strong>錯誤處理</strong>」要討論的範疇。</p>
+<p>本章將探討這兩個<strong>密切相關</strong>的主題，共計 4 篇文章：</p>
+<ul>
+<li><strong>卷 19：資料驗證（上）Pydantic 單一欄位驗證</strong>（本文）</li>
+<li><a href="/django-ninja-20/">卷 20：資料驗證（下）Pydantic 跨欄位驗證</a></li>
+<li><a href="/django-ninja-21/">卷 21：錯誤處理（上）HttpError 與自定義 HTTP 回應</a></li>
+<li><a href="/django-ninja-22/">卷 22：錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a></li>
+</ul>
+<p>前兩篇，我們會學習如何實現靈活的資料驗證，以確保輸入資料符合預期，並在必要時拋出錯誤。</p>
+<p>後兩篇，我們將討論如何處理 API 流程中可能出現的各種錯誤（不限於驗證錯誤），以提供更好的使用者體驗。</p>
+<p>Django Ninja 的資料驗證與錯誤處理機制，相較 Django REST framework <strong>更加複雜</strong>，因此我們得用<strong>完整的篇幅</strong>來介紹，幫助你清楚地理解它們。</p>
+          <div class="read-more">
+            <a href="/django-ninja-19/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-18/">API 文件（下）Pydantic Field 設定範例與預設值</a>
         </h1>
@@ -352,38 +390,6 @@
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/5">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-13/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-12/">請求（四）Request Body 與 Schema 介紹</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-24
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 12 篇。</p>
-<p>經過前幾篇的介紹，我們已經學習了如何處理路徑與查詢參數。但在現實世界中，我們往往還需要處理<strong>更複雜的請求資料</strong>。</p>
-<p>比如用戶提交的表單、上傳的檔案等等。對於 API 而言，最常見的就是 JSON 格式的 <strong>request body</strong>。</p>
-<p>這一篇將探討 Django Ninja 如何處理 request body，並介紹如何透過 Schema 來定義與驗證資料。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/4">這個 PR</a>。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="一、什麼是-Request-Body？"><a href="#一、什麼是-Request-Body？" class="headerlink" title="一、什麼是 Request Body？"></a>一、什麼是 Request Body？</h2><p><strong>Request body</strong> 指的是隨著 HTTP 請求一同傳送的資料，通常用於<code>POST</code>、<code>PUT</code>等<strong>需要建立或更新「資源」的請求。</strong></p>
-<p>這些資料不會出現在 URL 中，而是以 JSON 或其他格式（如 XML、form-data）作為請求的主體。</p>
-<p>例如，當用戶要發表一篇新文章時，可能會傳送以下 JSON 格式的 request body：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;我的第一篇文章&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;這是我在忍者論壇的第一篇文章，希望大家喜歡！&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>這個 request body 包含了<code>title</code>和<code>content</code>兩個欄位，Django Ninja 將協助我們處理這些資料並進行驗證。</p>
-          <div class="read-more">
-            <a href="/django-ninja-12/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
