@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-01-24T15:23:01+08:00" />
+  <meta property="article:modified_time" content="2025-01-24T18:09:27+08:00" />
 
 
 
@@ -271,7 +271,7 @@
 <h2 id="運行-Docker-容器"><a href="#運行-Docker-容器" class="headerlink" title="運行 Docker 容器"></a>運行 Docker 容器</h2><p>使用下面 Docker 指令運行容器，並將容器內部的 8000 port 對應到主機：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v $(<span class="built_in">pwd</span>)/db.sqlite3:/app/db.sqlite3 -p 8000:8000 my-django-app</span><br></pre></td></tr></table></figure>
 
-<p>除了 port mapping，我們還使用了<code>-v</code>參數進行「bind mount」，確保本機的 SQLite 資料庫檔案可以直接 mount 到容器中。</p>
+<p>除了 port mapping，我們還使用了<code>-v</code>參數進行「<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/storage/bind-mounts/">bind mounts</a>」，確保本機的 SQLite 資料庫檔案可以直接 mount 到容器中。</p>
 <p>執行成功後，在瀏覽器中輸入 <code>http://localhost:8000/hello/</code>，就可以看到專案已經正常執行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ docker run -v $(<span class="built_in">pwd</span>)/db.sqlite3:/app/db.sqlite3 -p 8000:8000 my-django-app</span><br><span class="line">Watching <span class="keyword">for</span> file changes with StatReloader</span><br><span class="line">[24/Jan/2025 08:52:47] <span class="string">&quot;GET /hello/ HTTP/1.1&quot;</span> 200 28</span><br><span class="line">[24/Jan/2025 08:52:52] <span class="string">&quot;GET /hello/ HTTP/1.1&quot;</span> 200 28</span><br><span class="line">[24/Jan/2025 08:52:54] <span class="string">&quot;GET /hello/ HTTP/1.1&quot;</span> 200 28</span><br></pre></td></tr></table></figure>
 
