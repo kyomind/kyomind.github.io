@@ -16,10 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="用 Docker 容器化你的 Django 專案">
-  <meta property="og:title" content="用 Docker 容器化你的 Django 專案"><meta name="twitter:description" content="透過 Docker 容器化你的 Django 專案，讓開發環境更一致。">
-  <meta property="og:description" content="透過 Docker 容器化你的 Django 專案，讓開發環境更一致。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
+  <meta property="og:title" content="用 Docker 容器化你的 Django 專案"><meta name="twitter:description" content="本文介紹如何透過 Docker 容器化你的 Django 專案，讓開發環境更一致且便於分享。">
+  <meta property="og:description" content="本文介紹如何透過 Docker 容器化你的 Django 專案，讓開發環境更一致且便於分享。"><meta name="twitter:image" content="https://i.imgur.com/lyxUZv1.png">
   <meta property="og:image" content="https://i.imgur.com/lyxUZv1.png">
-<meta name="description" content="透過 Docker 容器化你的 Django 專案，讓開發環境更一致。" />
+<meta name="description" content="本文介紹如何透過 Docker 容器化你的 Django 專案，讓開發環境更一致且便於分享。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-01-24T15:12:55+08:00" />
+  <meta property="article:modified_time" content="2025-01-24T15:17:42+08:00" />
 
 
 
@@ -258,7 +258,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>小提醒：我們會在第三篇將 Poetry 一併容器化。至此之後，專案中就<strong>不再需要</strong><code>requirements.txt</code>了。</p>
+<p>貼心提醒：我們會在第三篇將 Poetry 一併容器化。至此之後，專案中就<strong>不再需要</strong><code>requirements.txt</code>了。</p>
 </blockquote>
 <h3 id="建立-Image-並確認"><a href="#建立-Image-並確認" class="headerlink" title="建立 Image 並確認"></a>建立 Image 並確認</h3><p>新增<code>requirements.txt</code>後重新執行指令，得到下列成功結果：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">=&gt; [internal] load build context                                                     0.4s</span><br><span class="line">=&gt; =&gt; transferring context: 1.20MB                                                   0.4s</span><br><span class="line">=&gt; [2/5] WORKDIR /app                                                                0.2s</span><br><span class="line">=&gt; [3/5] COPY requirements.txt .                                                     0.0s</span><br><span class="line">=&gt; [4/5] RUN pip install -r requirements.txt                                         5.7s</span><br><span class="line">=&gt; [5/5] COPY . .                                                                    0.8s</span><br><span class="line">=&gt; exporting to image                                                                0.5s</span><br><span class="line">=&gt; =&gt; exporting layers                                                               0.5s</span><br><span class="line">=&gt; =&gt; writing image sha256:5dfec18599155b31991534edc194511e43400db93ca7831284277f41  0.0s</span><br><span class="line">=&gt; =&gt; naming to docker.io/library/my-django-app                                      0.0s</span><br></pre></td></tr></table></figure>
