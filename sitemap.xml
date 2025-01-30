@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/less-is-more/</loc>
+    
+    <lastmod>2025-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/noteless/</loc>
+    
+    <lastmod>2025-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-01-30</lastmod>
@@ -12,15 +30,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/network-101-course/</loc>
-    
-    <lastmod>2025-01-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/noteless/</loc>
     
     <lastmod>2025-01-25</lastmod>
     
@@ -671,15 +680,6 @@
     <loc>https://blog.kyomind.tw/simple-notion/</loc>
     
     <lastmod>2024-11-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/less-is-more/</loc>
-    
-    <lastmod>2024-11-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
