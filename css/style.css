@@ -118,6 +118,33 @@ li {
   font-size: 22px;
 }
 
+.article-cta {
+  margin: 0 0 1.5rem 0;
+  padding: 1.5rem;
+  background-color: #eaeaea;
+  border-radius: 8px;
+  border-left: 4px solid #6b7280;
+  font-size: 1.05rem;
+}
+
+.article-cta p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.article-cta a {
+  color: #3b82f6;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.article-cta a:hover {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.

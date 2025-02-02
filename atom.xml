@@ -84,9 +84,9 @@
     <category term="Django" scheme="https://blog.kyomind.tw/categories/Django/"/>
     
     
-    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
-    
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
+    
+    <category term="Django Tutorial" scheme="https://blog.kyomind.tw/tags/Django-Tutorial/"/>
     
   </entry>
   
