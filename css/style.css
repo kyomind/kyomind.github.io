@@ -145,6 +145,14 @@ li {
   border-bottom-color: #2563eb;
 }
 
+.subscribe-link {
+  color: #3b82f6;
+}
+
+.subscribe-link:hover {
+  color: #2563eb;
+}
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
