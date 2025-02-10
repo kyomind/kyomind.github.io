@@ -20,6 +20,24 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-39/</loc>
+    
+    <lastmod>2025-02-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-38/</loc>
+    
+    <lastmod>2025-02-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2025-02-02</lastmod>
@@ -416,7 +434,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2025-01-23</lastmod>
     
@@ -425,7 +443,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
     
     <lastmod>2025-01-23</lastmod>
     
@@ -489,15 +507,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/grind-leetcode-with-ai-preparation/</loc>
-    
-    <lastmod>2025-01-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-39/</loc>
     
     <lastmod>2025-01-16</lastmod>
     
@@ -932,15 +941,6 @@
     <loc>https://blog.kyomind.tw/pre-commit/</loc>
     
     <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-38/</loc>
-    
-    <lastmod>2024-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
