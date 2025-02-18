@@ -2,9 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/bbc-6-minute-english/</loc>
+    <loc>https://blog.kyomind.tw/noteless/</loc>
     
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bear/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-11/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/my-ai-dialogue-notes/</loc>
+    
+    <lastmod>2025-02-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +49,16 @@
   <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
-    <lastmod>2025-02-16</lastmod>
+    <lastmod>2025-02-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/bbc-6-minute-english/</loc>
+    
+    <lastmod>2025-02-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -50,15 +95,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-38/</loc>
     
     <lastmod>2025-02-08</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/noteless/</loc>
-    
-    <lastmod>2025-02-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -713,15 +749,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-11/</loc>
-    
-    <lastmod>2024-11-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2024-11-18</lastmod>
@@ -1037,15 +1064,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
     
     <lastmod>2024-10-18</lastmod>
@@ -1182,15 +1200,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</loc>
-    
-    <lastmod>2024-09-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/my-ai-dialogue-notes/</loc>
     
     <lastmod>2024-09-23</lastmod>
     
@@ -1496,15 +1505,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/bear/</loc>
-    
-    <lastmod>2024-05-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
     
     <lastmod>2024-05-26</lastmod>
@@ -1669,7 +1669,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2025-02-17</lastmod>
+    <lastmod>2025-02-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
