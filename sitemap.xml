@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/bbc-6-minute-english/</loc>
+    
+    <lastmod>2025-02-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/django-ninja-03/</loc>
     
     <lastmod>2025-02-18</lastmod>
@@ -77,15 +86,6 @@
     <loc>https://blog.kyomind.tw/my-ai-dialogue-notes/</loc>
     
     <lastmod>2025-02-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/bbc-6-minute-english/</loc>
-    
-    <lastmod>2025-02-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
