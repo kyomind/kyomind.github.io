@@ -125,7 +125,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (40)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (41)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,48 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-07/">路由（上）傳統 Django 路由做法</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-19
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 7 篇。我們來到系列的<strong>第三章</strong>。</p>
+<p>第三章是全系列的重頭戲，因為我們要介紹 Django Ninja 的<strong>核心部分——API</strong>。</p>
+<p>我把本章分成了三個小節：</p>
+<ol>
+<li><strong>第一節：路由（Router）</strong></li>
+<li><strong>第二節：請求（Request）</strong></li>
+<li><strong>第三節：回應（Response）</strong></li>
+</ol>
+<p>第三章也是<strong>唯一</strong>有區分小節的篇章。</p>
+<p>現在我們進入第一節——<strong>路由</strong>。讓我們先了解一下本節的學習重點。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="本節重點"><a href="#本節重點" class="headerlink" title="本節重點"></a>本節重點</h2><p>本節一共有兩篇，分別是：</p>
+<ul>
+<li>卷 7：路由（上）傳統 Django 路由做法</li>
+<li>卷 8：路由（下）Django Ninja 路由設定</li>
+</ul>
+<p>為什麼要這樣安排呢？因為<strong>端點與路由是 API 請求的起點</strong>。</p>
+<p>沒有它們，你的 view 函式根本無法接收請求，更不用說回應了。因此，路由設定必須放在第一位，作為 API 開發的學習入口。</p>
+<p>所謂的「<strong>端點</strong>」（endpoints），你就簡單想成 <strong>API 所在的 URL</strong> 就可以了。</p>
+<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>其次，Django Ninja 的路由設定與傳統 Django 或 Django REST framework（<strong>以下簡稱 DRF</strong>）的路由設定有<strong>很大的不同</strong>，反而更接近 FastAPI 或 Flask 風格。</p>
+<p>這是我在學習 Django Ninja 時遇到的<strong>第一個門檻</strong>（畢竟我寫了 2 年的 DRF😅），所以決定分成上下兩篇文章詳細解說，幫助你打好基礎、減少混淆。</p>
+<p>本文的重點是<strong>介紹 Django 傳統路由</strong>的設定方式。讓我們開始吧！</p>
+          <div class="read-more">
+            <a href="/django-ninja-07/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-06/">Django Ninja 06：環境設定 × 如何使用本專案</a>
         </h1>
@@ -333,41 +375,6 @@
 <p>具備這些技能將幫助你更好地理解和應用本系列的內容。如果你對某些概念不太熟悉，也不用擔心，我們會在必要時進行一定的講解。</p>
           <div class="read-more">
             <a href="/django-ninja-01/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2024-ironman-event/">2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-12
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/YmlPRz1.jpg" alt="by Sam Chivers"></p>
-<blockquote>
-<p>相關文章：</p>
-<ul>
-<li><a href="/weekly-review-35/">35，開始備戰 2024 iThome 鐵人賽</a></li>
-<li><a href="/ithome-ironman-tips/">iThome 鐵人賽寫作攻略——新手必看指南</a></li>
-</ul>
-</blockquote>
-<p>明天——13 號星期五——就是我參加今年 iThome 鐵人賽的正式開賽日。</p>
-<p>開賽前夕，我想用本文介紹一下我的參賽主題與相關花絮。</p>
-<p>不會提及太多技術，主要以一些個人思考及感受為主。</p>
-<hr>
-<p>不過在開始前，歡迎在鐵人賽網站上<strong>訂閱</strong>我的「<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20167825/ironman/7451">Django 忍法帖——Django Ninja 入門指南</a>」系列🥰。文章也會<strong>在部落格同步發表。</strong></p>
-<p>我為此投入了大量時間心力，甚至還辭去了工作（誤），相信不會讓你失望。</p>
-<p>行有餘力，也可以多多支持我們「<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/2024ironman/signup/team/339">AI 寶寶上學去！</a>」小隊成員們的作品。</p>
-<p>大家都是第一次參賽，非常需要您的鼓勵。</p>
-<p>好，讓我們進入「正題」。</p>
-          <div class="read-more">
-            <a href="/2024-ironman-event/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/5/">

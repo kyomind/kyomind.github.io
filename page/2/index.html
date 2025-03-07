@@ -125,7 +125,7 @@
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (40)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (41)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,34 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/gpts-for-leetcode/">GPTs 介紹：AI 刷題助手與使用方式</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-11-30
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/g9WO9S7.jpeg"></p>
+<blockquote>
+<p>本來只打算寫兩篇，現在變成 4 篇了，大綱可參考「<a href="/grind-leetcode-with-ai-preparation/#%E7%B3%BB%E5%88%97%E6%A6%82%E8%BF%B0%E8%88%87%E5%B0%8E%E8%AE%80">系列概述與導讀</a>」。</p>
+</blockquote>
+<p>上一篇，我們介紹了 LeetCode 刷題的準備與基本原則，本篇則要介紹我刷題時搭配的 AI 工具——自定義的 <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-gpts/">GPTs</a>。</p>
+<p>不過有一點需要提醒：你得先訂閱 <a target="_blank" rel="noopener" href="https://openai.com/index/chatgpt-plus/">ChatGPT Plus</a>，才能直接使用他人建立的 GPTs。</p>
+<p>話不多說，直接開始正文。</p>
+<h3 id="系列：我的-LeetCode-刷題之道"><a href="#系列：我的-LeetCode-刷題之道" class="headerlink" title="系列：我的 LeetCode 刷題之道"></a>系列：我的 LeetCode 刷題之道</h3><ul>
+<li><a href="/series/#%E6%88%91%E7%9A%84-LeetCode-%E5%88%B7%E9%A1%8C%E4%B9%8B%E9%81%93">文章清單（連載中）</a></li>
+</ul>
+          <div class="read-more">
+            <a href="/gpts-for-leetcode/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/cardio-evolution-2-months/">去了兩個月健身房之後——我的「有氧運動」進化史</a>
         </h1>
@@ -367,48 +395,6 @@
 <p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/20">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-29/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-28/">身分認證——Session 認證與全域設定</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-10
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 28 篇。</p>
-<p>歡迎來到第七章！本章總共有兩篇內容：</p>
-<ul>
-<li>卷 28：身分認證——Session 認證與全域設定</li>
-<li>卷 29：單元測試——使用 Test Client 與 pytest 測試 API</li>
-</ul>
-<p>這些主題的核心功能，<strong>並非由 Django Ninja 實作</strong>，但框架仍提供了<strong>一定程度的整合</strong>。並且，這些功能對於任何 Django 專案來說，都至關重要。</p>
-<p>本文介紹幾乎所有 API 專案都需要的——<strong>身分認證</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/authentication/">Authentication</a>）。</p>
-<p>我們將探討如何在 Django Ninja 中利用 Django 內建的 session-based 認證，實現完整的登入驗證功能，並進一步說明如何設定<strong>全域認證</strong>，以減少程式碼的重複。</p>
-<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/19">這個 PR</a>。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="認證的兩個層次"><a href="#認證的兩個層次" class="headerlink" title="認證的兩個層次"></a>認證的兩個層次</h2><p>進入實作前，我們要先了解，所謂的<strong>身分認證</strong>，究竟代表什麼。</p>
-<p>以「帳號密碼 + session 認證」為例，身分認證的範圍主要涵蓋<strong>兩個階段</strong>。</p>
-<p>首先，當使用者透過帳號密碼進行登入時，系統會檢查這些內容、確認身分<strong>合法</strong>。登入成功後，系統會將使用者資訊（比如用戶 id）儲存至 session，以<strong>維持登入狀態</strong>。</p>
-<p>這是<strong>登入時的認證</strong>，也是我們最常說的認證。（<strong>狹義的認證</strong>）</p>
-<p>接著，當使用者嘗試存取受「<strong>認證保護</strong>」的 API 時，系統會檢查 session 並確認身分，確保每個 API 請求都來自<strong>合法登入</strong>的使用者。</p>
-<p>簡言之：</p>
-<ul>
-<li>第一階段：初次登入時的身分確認。</li>
-<li>第二階段：後續請求時的身分確認。</li>
-</ul>
-<p>兩個層次相輔相成、一體兩面，確保服務能夠在使用者<strong>登入</strong>和<strong>後續操作</strong>中，提供適當的安全保障。</p>
-          <div class="read-more">
-            <a href="/django-ninja-28/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
