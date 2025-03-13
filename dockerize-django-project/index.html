@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-01-24T18:10:31+08:00" />
+  <meta property="article:modified_time" content="2025-03-13T01:42:11+08:00" />
 
 
 
@@ -209,7 +209,7 @@
 <h2 id="容器化開發"><a href="#容器化開發" class="headerlink" title="容器化開發"></a>容器化開發</h2><p>由此可見，「容器化」是現代開發的 ABC。</p>
 <p>我更想強調是：<strong>哪怕只是在本機上運行，維持專案的容器化也是一個好習慣</strong>，方便日後遷移、分享，甚至協作。</p>
 <p>本文是「Django 專案容器化」三部曲系列的第一篇，將帶你從零開始，將一個 Django 專案進行容器化。</p>
-<p>下一篇則介紹如何將 Django 專案容器與的 db 容器整合，並使用 Docker Compose 建立多容器架構。</p>
+<p>下一篇介紹如何將 Django 專案容器與的 db 容器整合，並使用 Docker Compose 建立多容器架構。</p>
 <p>最後則是（拖稿許久的）Python 套件管理器——Poetry——的容器化設定，讓你正式告別<code>requirements.txt</code>。</p>
 <p>這些都是<strong>現代開發日常</strong>，值得我們一一了解並實踐。</p>
 <hr>
@@ -227,7 +227,7 @@
 <li><strong>Dockerfile</strong>：定義如何建立 image 的檔案。（<strong>本文重點</strong>）</li>
 <li><strong>Volume</strong>：容器的持久化儲存空間，可將資料獨立存放在主機上（而不是直接置於容器中），避免容器刪除時資料遺失。使用<code>-v</code>參數來設定。</li>
 </ul>
-<p>這些概念環環相扣，形成了一個完整的容器生態系統。</p>
+<p>這些概念環環相扣，形成了一個完整的 <strong>Docker 容器生態系統</strong>。</p>
 <p>接下來，讓我們實際動手，將這些概念應用在我們的 Django 專案中。</p>
 <hr>
 <h2 id="為-Django-專案建立-Dockerfile"><a href="#為-Django-專案建立-Dockerfile" class="headerlink" title="為 Django 專案建立 Dockerfile"></a>為 Django 專案建立 Dockerfile</h2><p>想要將現有的 Django 專案容化器，就要從建立自己的 Docker Image 開始。</p>
