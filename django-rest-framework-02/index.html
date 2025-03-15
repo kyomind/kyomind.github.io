@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-03-15T14:34:55+08:00" />
+  <meta property="article:modified_time" content="2025-03-15T14:36:07+08:00" />
 
 
 
@@ -272,9 +272,9 @@
 <p>通常我們會對它加上一個 <strong>path 前綴</strong>，比如<code>&#39;post/&#39;</code>。</p>
 <p>有了<code>&#39;post/&#39;</code>這個前綴，在 post app 的所有路由設定中，都不必再一一加上，這做法有助於路由的管理與維護。</p>
 <p>經過這些設定，我們第一個路由就完成了。</p>
-<p>但是，我們還沒有寫 API 的內部邏輯呢！</p>
 <p>更多 Django 路由的介紹，可參考〈<a href="/django-ninja-07/">路由（上）傳統 Django 路由做法</a>〉。</p>
 <hr>
+<p>但是，我們還沒有寫 API 的內部邏輯呢！</p>
 <h2 id="完成第一個-API"><a href="#完成第一個-API" class="headerlink" title="完成第一個 API"></a>完成第一個 API</h2><p>有了端點和路由，剩下的就是 view 函式。</p>
 <p>在<code>post/views.py</code>中建立一個新的 view 函式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, world!&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
