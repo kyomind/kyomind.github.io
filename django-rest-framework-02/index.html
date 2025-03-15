@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-03-12T23:59:34+08:00" />
+  <meta property="article:modified_time" content="2025-03-15T14:34:55+08:00" />
 
 
 
@@ -206,7 +206,7 @@
 <p>為了達到這個目標，我們需要完成以下三件事：</p>
 <ol>
 <li>安裝 Django REST framework 套件。</li>
-<li>設定 Django 的<code>settings.py</code>，加入 DRF 相關內容。</li>
+<li>設定 Django 的<code>settings.py</code>，並加入 Django REST framework 相關內容。</li>
 <li>實作第一個路由（router）與 API。</li>
 </ol>
 <p>就這麼簡單，讓我們直接開始吧！</p>
@@ -273,6 +273,7 @@
 <p>有了<code>&#39;post/&#39;</code>這個前綴，在 post app 的所有路由設定中，都不必再一一加上，這做法有助於路由的管理與維護。</p>
 <p>經過這些設定，我們第一個路由就完成了。</p>
 <p>但是，我們還沒有寫 API 的內部邏輯呢！</p>
+<p>更多 Django 路由的介紹，可參考〈<a href="/django-ninja-07/">路由（上）傳統 Django 路由做法</a>〉。</p>
 <hr>
 <h2 id="完成第一個-API"><a href="#完成第一個-API" class="headerlink" title="完成第一個 API"></a>完成第一個 API</h2><p>有了端點和路由，剩下的就是 view 函式。</p>
 <p>在<code>post/views.py</code>中建立一個新的 view 函式：</p>
