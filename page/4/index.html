@@ -121,7 +121,7 @@
           
             <a href="/categories/Django/">Django (13)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (48)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (49)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
           
@@ -165,6 +165,35 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-22/">錯誤處理（下）全域錯誤處理——使用 Exception Handlers</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-04
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 22 篇。</p>
+<p>上一篇文章，我們學習了如何操作<code>HttpError</code>，並建議你<strong>只在</strong> view 函式中使用它。</p>
+<p>但光是這樣，專案 API 的錯誤處理，還遠遠<strong>不夠完善</strong>，至少有 3 個常見問題待解：</p>
+<ol>
+<li>Schema 中的驗證方法 ，如果不要<code>raise HttpError</code>，那要怎麼做才好？</li>
+<li>我們應該如何處理<strong>其他類型的錯誤</strong>，例如資料庫操作錯誤？</li>
+<li>如何確保不同 API 錯誤的<strong>回應格式一致</strong>？</li>
+</ol>
+<p>這些問題都指向了一個<strong>更大的需求</strong>：我們需要一個<strong>全面的錯誤處理機制</strong>。</p>
+<p>這篇文章，就要來回答這些問題。所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/13">這個 PR</a>。</p>
+          <div class="read-more">
+            <a href="/django-ninja-22/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-21/">錯誤處理（上）HttpError 與自定義 HTTP 回應</a>
         </h1>
@@ -367,33 +396,6 @@
 <p>總之，回應中<code>created_at</code>和<code>updated_at</code>兩個欄位的內容，需要進行<strong>格式上的轉換</strong>。即上述提到的「<strong>資料格式化</strong>」。</p>
           <div class="read-more">
             <a href="/django-ninja-16/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-15/">回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-27
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 15 篇。</p>
-<p>Django API 回應，常常是對 Model 物件（即 db 資料）內容進行一定的<strong>篩選與加工</strong>。</p>
-<p>比如「取得單一文章資訊」API，實際上就是從<code>Post</code>物件挑選欄位，再進行序列化。</p>
-<p>這個過程中，我們需要考慮如何將<strong>模型物件</strong>轉換為 API 的回應結構，同時保持程式碼的可維護性與靈活。</p>
-<p>對此，Django REST framework（<strong>以下簡稱 DRF</strong>）提供了<strong>非常實用的「特製」序列化器</strong>——<code>ModelSerializer</code>，可說是 DRF 開發者必學的核心功能。</p>
-<p>Django Ninja 雖然也有類似的實踐——<code>ModelSchema</code>，對我而言卻是雞肋般的存在，<strong>我幾乎不曾使用</strong>。</p>
-<p>這樣的差異，無疑是兩者的核心設計理念不同所導致。</p>
-<p>我們曾在第 3 篇中討論過，兩者在功能上的主要區別。本文將透過「<strong>Django 模型物件的序列化</strong>」這個頗具代表性的議題，說明「<strong>為何相比於 DRF，我更喜歡寫 Django Ninja</strong>」。</p>
-          <div class="read-more">
-            <a href="/django-ninja-15/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
