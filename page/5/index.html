@@ -121,7 +121,7 @@
           
             <a href="/categories/Django/">Django (13)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (49)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (50)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
           
@@ -165,6 +165,45 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-16/">回應（四）Resolver 方法——欄位資料格式化</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-28
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 16 篇。</p>
+<p>上一篇提到，API 回應常常是對 Django Model 物件內容的篩選與加工——然後 JSON 序列化。</p>
+<p>其中「<strong>加工</strong>」部分，用更專業的說法，大概是「<strong>資料格式化</strong>」——依照一定的規則，對輸出資料進行<strong>某種轉換或重新組織</strong>，以符合<strong>特定的輸出格式</strong>。</p>
+<p>資料格式化的種類很多，例如：</p>
+<ol>
+<li><strong>時間格式轉換</strong>：將資料庫中的時間戳（timestamp），轉換為更易讀的格式。</li>
+<li><strong>數值轉換</strong>：將數字轉換為貨幣格式，或將小數點位數進行四捨五入。</li>
+<li><strong>字串處理</strong>：截斷過長的文字、加上統一的前綴等。</li>
+</ol>
+<p>不論原因為何，絕大部分時候都是為了資料的「<strong>可讀性</strong>」，或符合特定業務規則。</p>
+<p>可想而知，像資料格式化這樣的需求，不僅實務上重要，在 API 開發中也十分常見，值得我們用一整篇文章，細細探討。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/7">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>再次回到「<strong>取得單一文章資訊</strong>」API，這是目前的回傳格式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// http://127.0.0.1:8000/posts/2/</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&#x27;s Django Ninja Post 1 content&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;author&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Alice&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;alice@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;created_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updated_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-09-12T02:28:16.801Z&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我們決定<strong>簡化</strong>回應的時間字串，改採「<code>&quot;2024-09-12T02:28:16Z&quot;</code>」格式。</p>
+<p>和舊版相比，只是少了「<code>.801</code>」這個小數部分而已，且依舊符合 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/ISO_8601">ISO 8601</a> 標準。</p>
+<p>總之，回應中<code>created_at</code>和<code>updated_at</code>兩個欄位的內容，需要進行<strong>格式上的轉換</strong>。即上述提到的「<strong>資料格式化</strong>」。</p>
+          <div class="read-more">
+            <a href="/django-ninja-16/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-15/">回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a>
         </h1>
@@ -355,37 +394,6 @@
 <p>這使得 API 具有<strong>彈性</strong>，可以針對不同的資源進行操作，而<strong>不必為每一個資源建立不同的路由</strong>——它們的端點與路由<strong>都是相同的</strong>，只是「<strong>參數</strong>」不同。</p>
           <div class="read-more">
             <a href="/django-ninja-10/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-09/">請求（一）Django Ninja 處理 HTTP 請求</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-21
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 9 篇。</p>
-<p>歡迎來到第三章第二節！</p>
-<p>作為 API 的核心邏輯實現，<strong>view 函式</strong>無疑是 Django Ninja API 的靈魂所在。</p>
-<p>Django Ninja 和 FastAPI、Flask 一樣，主要是採用 function-based views（<strong>以下簡稱 FBVs</strong>）。所以它的學習重點，<strong>幾乎都繞圍在 view 函式的 input 和 output。</strong></p>
-<p>換句話說，整個 Django Ninja 框架的能力，<strong>構成了 view 函式的這些關鍵部分</strong>，包括但不限於：</p>
-<ol>
-<li>處理 HTTP 請求的參數與 body。</li>
-<li>處理 HTTP 回應內容的序列化與格式化。</li>
-<li>資料驗證與錯誤處理。</li>
-</ol>
-<p>它們共同構成了 Django Ninja 的主要功能。</p>
-<p>本節和下一節，將集中討論上述 3 點中的前兩點——請求與回應。至於第三點，將留到第五章再行介紹。</p>
-          <div class="read-more">
-            <a href="/django-ninja-09/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/4/">
