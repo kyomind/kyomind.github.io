@@ -308,15 +308,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</loc>
-    
-    <lastmod>2025-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-03-18</lastmod>
@@ -327,6 +318,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
+    
+    <lastmod>2025-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</loc>
     
     <lastmod>2025-03-18</lastmod>
     
@@ -452,7 +452,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/mypy/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-05/</loc>
     
     <lastmod>2025-03-13</lastmod>
     
@@ -461,7 +461,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-05/</loc>
+    <loc>https://blog.kyomind.tw/mypy/</loc>
     
     <lastmod>2025-03-13</lastmod>
     
@@ -1208,7 +1208,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
@@ -1217,7 +1217,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-orm-query-relations/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2024-11-07</lastmod>
     
