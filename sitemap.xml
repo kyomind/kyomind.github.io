@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/feel-good-productivity/</loc>
+    
+    <lastmod>2025-04-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-04-06</lastmod>
@@ -138,15 +147,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/the-quick-python-book/</loc>
-    
-    <lastmod>2025-04-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/feel-good-productivity/</loc>
     
     <lastmod>2025-04-06</lastmod>
     
