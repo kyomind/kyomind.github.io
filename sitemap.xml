@@ -13,7 +13,7 @@
   <url>
     <loc>https://blog.kyomind.tw/upnote/</loc>
     
-    <lastmod>2025-04-06</lastmod>
+    <lastmod>2025-04-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -461,7 +461,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
+    <loc>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</loc>
     
     <lastmod>2025-03-18</lastmod>
     
@@ -470,7 +470,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/myth-of-ai-writing-efficiency/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-15/</loc>
     
     <lastmod>2025-03-18</lastmod>
     
@@ -1289,7 +1289,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
+    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
@@ -1298,7 +1298,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ubuntu-zsh-zinit/</loc>
+    <loc>https://blog.kyomind.tw/ubuntu-pyenv/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
