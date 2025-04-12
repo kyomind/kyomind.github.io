@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-22/</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/notion-database/</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/simple-notion/</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/not-by-ai/</loc>
     
     <lastmod>2025-04-12</lastmod>
@@ -462,15 +507,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-06/</loc>
-    
-    <lastmod>2025-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2025-03-18</lastmod>
     
@@ -1064,15 +1100,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-22/</loc>
-    
-    <lastmod>2024-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
     
     <lastmod>2024-12-18</lastmod>
@@ -1103,15 +1130,6 @@
     <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
     
     <lastmod>2024-11-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/simple-notion/</loc>
-    
-    <lastmod>2024-11-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1335,15 +1353,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/return-to-twitter/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/notion-database/</loc>
     
     <lastmod>2024-10-18</lastmod>
     
@@ -1625,15 +1634,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-31/</loc>
     
     <lastmod>2024-06-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
-    
-    <lastmod>2024-01-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
