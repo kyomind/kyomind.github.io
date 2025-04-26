@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商">
+  <meta property="og:title" content="從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商"><meta name="twitter:description" content="本文將介紹我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。">
+  <meta property="og:description" content="本文將介紹我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。"><meta name="twitter:image" content="https://i.imgur.com/GhElIMy.jpeg">
+  <meta property="og:image" content="https://i.imgur.com/GhElIMy.jpeg">
+<meta name="description" content="本文將介紹我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
+            
+
+  <meta property="article:modified_time" content="2025-04-26T11:05:12+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-04-26T10:21:02+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/hetzner/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="f5846006-9a41-438b-9f83-5f1b947eccf2"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (53)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-04-26
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%B6%E7%84%B6%E9%81%87%E8%A6%8B-Hetzner"><span class="toc-text">偶然遇見 Hetzner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VPS-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-VPS%EF%BC%9F"><span class="toc-text">VPS 是什麼？為什麼需要 VPS？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-%E5%85%AC%E5%8F%B8%E7%B0%A1%E4%BB%8B"><span class="toc-text">Hetzner 公司簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-vs-DigitalOcean%EF%BC%9A%E5%83%B9%E5%B7%AE%E8%88%87%E8%A6%8F%E6%A0%BC%E5%B0%8D%E6%AF%94"><span class="toc-text">Hetzner vs DigitalOcean：價差與規格對比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6%EF%BC%9ALatency-%E6%AF%94%E8%BC%83"><span class="toc-text">實際測試：Latency 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-%E7%9A%84%E5%AE%A2%E6%88%B6%E8%AA%8D%E8%AD%89%E8%88%87%E8%A8%BB%E5%86%8A%E6%B5%81%E7%A8%8B"><span class="toc-text">Hetzner 的客戶認證與註冊流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%83%B9%E6%A0%BC%E8%88%87%E9%9C%80%E6%B1%82%E7%9A%84%E5%B9%B3%E8%A1%A1"><span class="toc-text">結語：價格與需求的平衡</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p>
+<p>很長一段時間，當我需要使用<strong>遠端虛擬機器</strong>（Virtual Machine）來進行自己的個人部署時，來自美國的 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/">DigitalOcean</a> 一直是我的首選。</p>
+<p>可能是因為這個「海洋」的意象讓人覺得很舒服吧！價格也還過得去。</p>
+<p>我曾在這篇〈<a href="https://blog.kyomind.tw/update-my-droplet/">計畫更新我的 DigitalOcean VM</a> 〉提到過它。</p>
+<p>然而，最近決定在 VM 上部署 Memos 時，我的選擇就不再是 DigitalOcean 了。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/memos/">開源工具 Memos：寫日記的好選擇</a></p>
+</blockquote>
+<p>原因無他，我們有了<strong>更便宜、更強大</strong>的選擇——也就是本文要介紹的 Hetzner。</p>
+<p>在這篇文章中，我將分享我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。</p>
+<p>我們開始吧！</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="偶然遇見-Hetzner"><a href="#偶然遇見-Hetzner" class="headerlink" title="偶然遇見 Hetzner"></a>偶然遇見 Hetzner</h2><p>如前所述，我使用 DigitalOcean 的 VM 很長一段時間。</p>
+<p>基本款從最初的每月 5 美元，到後來漲到了 6、7 美元，儘管覺得有些小貴，但因為 DigitalOcean 在新加坡有機房，從台灣連過去延遲較低，大約 100 多毫秒，而且已經習慣，所以也沒想過另尋「新歡」。</p>
+<p>直到有一天，我在 Twitter 上偶然看到有人提到 Hetzner——這才意識到，原來世界上還有這麼這麼「便宜」的 VPS 選擇 ！</p>
+<p>不過在此之前，我們還是先來介紹一下，本文前面說到的 VM 或者是 VPS 究竟是什麼東西呢？ </p>
+<h2 id="VPS-是什麼？為什麼需要-VPS？"><a href="#VPS-是什麼？為什麼需要-VPS？" class="headerlink" title="VPS 是什麼？為什麼需要 VPS？"></a>VPS 是什麼？為什麼需要 VPS？</h2><p>VPS，全名 Virtual Private Server，是<strong>從一台實體伺服器上虛擬出來的獨立空間</strong>。它讓你用租用價格，享受類似獨立主機的自由。</p>
+<p>對於愛搞 side project 的開發者來說，有一台自己的 VPS，意味著能自由部署應用、測試新技術、建立個人服務。不必擔心免費平台的流量限制，也不用和別人搶資源。</p>
+<p>其實我覺得最重要的就是——<strong>你獲得了一個固定 IP</strong>，讓別人可以 24 小時連線。</p>
+<p>VPS 和 VM（Virtual Machine）其實本質很接近。</p>
+<p>簡單來說，VM 是指「虛擬機器」這個技術本身，或指特定的虛擬機器，而 VPS 則是把這種技術<strong>商品化</strong>、打包成一個<strong>可以租用的服務</strong>。</p>
+<p>你可以把 VPS 想成「雲端的 VM，加上管理和網路資源」，對一般開發者來說，兩者在使用體驗上幾乎沒什麼區別。</p>
+<h3 id="VPS-供應商"><a href="#VPS-供應商" class="headerlink" title="VPS 供應商"></a>VPS 供應商</h3><p>說到 VPS，市場上的選擇非常多。從大型的雲端服務商（像是 AWS、Azure、Google Cloud），到專門提供 VPS 的公司（像是 Linode、DigitalOcean、Hetzner）都有各自的定位。</p>
+<p>不同的服務商，價格、規格、連線速度也各有差異。</p>
+<p>雲端服務商提供的服務品質通常很高，因為他們有自己的資料中心，但價格也往往最貴，彈性最大。</p>
+<p>除非很有錢，不然我不會直接去這些地方開 VM 來用。</p>
+<p>而本文的主角，則是來自德國的這家公司——Hetzner。</p>
+<hr>
+<h2 id="Hetzner-公司簡介"><a href="#Hetzner-公司簡介" class="headerlink" title="Hetzner 公司簡介"></a>Hetzner 公司簡介</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Hetzner">Hetzner</a> 成立於 1997 年，總部位於德國巴伐利亞州的 Gunzenhausen。旗下的服務非常多元，包括但不限於：</p>
+<ul>
+<li>Cloud Hosting（雲端虛擬伺服器）</li>
+<li>Dedicated Hosting（專用伺服器租賃）</li>
+<li>Storage Boxes（線上儲存空間）</li>
+</ul>
+<p>Hetzner 擁有多個資料中心，分別位於德國、芬蘭、美國和新加坡，涵蓋歐洲、美洲與亞洲地區。</p>
+<p>本文用到的服務，就是 Cloud Hosting，也就是 VPS 服務。</p>
+<p>說真的，如果不是看推特，我大概很難知道這家公司的存在。</p>
+<p>畢竟，歐洲公司對我們來說都是相對陌生的。</p>
+<hr>
+<h2 id="Hetzner-vs-DigitalOcean：價差與規格對比"><a href="#Hetzner-vs-DigitalOcean：價差與規格對比" class="headerlink" title="Hetzner vs DigitalOcean：價差與規格對比"></a>Hetzner vs DigitalOcean：價差與規格對比</h2><p>為什麼要換供應商呢？其實很簡單，當然是因為<strong>錢和爽度</strong>囉！</p>
+<p>Hetzner 用你難以想像的價格，提供了遠超預期的硬體資源——德國人就是猛XD</p>
+<h3 id="價格與規格比較"><a href="#價格與規格比較" class="headerlink" title="價格與規格比較"></a>價格與規格比較</h3><p>以下是 DigitalOcean 和 Hetzner 在類似價格區間（7 美元）的方案規格對比：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>DigitalOcean</th>
+<th>Hetzner</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>1 核心</td>
+<td>4 核心（ARM）</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>1 GB</td>
+<td>8 GB</td>
+</tr>
+<tr>
+<td>硬碟空間</td>
+<td>25 GB SSD</td>
+<td>80 GB SSD</td>
+</tr>
+<tr>
+<td>月費價格</td>
+<td>7 美元</td>
+<td>6.49 歐元（約 7 美元）</td>
+</tr>
+<tr>
+<td>可用頻寬</td>
+<td>1 TB 流量</td>
+<td>20 TB 流量</td>
+</tr>
+</tbody></table>
+<p>以幾乎相同的價格，Hetzner 提供了 <strong>4 倍的 CPU</strong>、<strong>8 倍的記憶體</strong>，以及更大的硬碟空間和流量。</p>
+<p>我感覺十分阿妹竟（Amazing）！</p>
+<p>其它不論，RAM 的大小其實<strong>很影響使用體驗</strong>，沒有 2 GB 真的會比較辛苦。</p>
+<p>我請 AI 查了一下，如果 DigitalOcean 要達到右邊 Hetzner 的規格，大概需要一個月 28 美元。</p>
+<p>這個差距，讓人想要不變心都難🥹 </p>
+<hr>
+<p>等等，你先別急著掏出信用卡！</p>
+<p>重點是接下來的部分——<strong>連線速度</strong>與<strong>註冊審核</strong>。</p>
+<p>一言以蔽之：Hetzner 對台灣的延遲不太友好。</p>
+<h2 id="實際測試：Latency-比較"><a href="#實際測試：Latency-比較" class="headerlink" title="實際測試：Latency 比較"></a>實際測試：Latency 比較</h2><p>為了有更直觀的數據，我使用了 <a target="_blank" rel="noopener" href="https://www.cloudpingtest.com/">cloudpingtest.com</a> 測試了它所屬 VM 的延遲表現。</p>
+<p>測試環境：中華電信 4G 手機網路。</p>
+<p>以下是測試結果，可以看出，Hetzner 無論你選哪個資料中心，延遲的表現<strong>都不是很好</strong>——尤其是歐洲：</p>
+<p><img src="https://i.imgur.com/G7ETZ7p.png" alt="測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考"><span class="cap">測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考</span>  </p>
+<p>這是我在晚上高峰時段測試的，白天會稍微好一些，但基本上，歐洲機房的延遲不會低於 600 ms。</p>
+<p>600 毫秒延遲是什麼概念？可以理解成：<strong>你發出一個請求，伺服器在 0.6 秒後才會收到並開始處理——好久XD</strong></p>
+<p>美國和新加坡的機房會好一點——就一點，但<strong>價格也更貴（尤其是新加坡）</strong>，這需要你自行拿捏。</p>
+<p>我是覺得，如果選到新加坡機房，可能還不如直接選 DigitalOcean。</p>
+<p>DigitalOcean 的新加坡機房延遲基本上只有 100 多毫秒，可以說表現極佳。</p>
+<hr>
+<h2 id="Hetzner-的客戶認證與註冊流程"><a href="#Hetzner-的客戶認證與註冊流程" class="headerlink" title="Hetzner 的客戶認證與註冊流程"></a>Hetzner 的客戶認證與註冊流程</h2><p>除了延遲偏高，Hetzner 另一個讓人討厭的點，就是身分認證流程。</p>
+<p>Hetzner 的註冊流程<strong>相當嚴謹</strong>，堪比虛擬貨幣交易所XD，遠比一般雲端服務供應商麻煩得多。官方說，這主要是為了防範濫用與確保整體服務品質。</p>
+<p>通常在註冊時，你可能需要：</p>
+<ul>
+<li>上傳有效身分證明（例如護照或身分證）</li>
+<li>綁定信用卡或其他付款方式</li>
+<li>等待人工審核通過</li>
+</ul>
+<p>這個過程從幾小時到一兩天都有可能。雖然初期略嫌麻煩，但換來的是更穩定的使用體驗。所以我覺得還可以接受。</p>
+<hr>
+<p>綜上所述，你主要需要考慮的，就是<strong>這個延遲你是否能夠接受</strong>。像我主要就是做我自己的東西而已，不是要提供給別人用的，所以還行。</p>
+<p>但如果是要給別人用的，600 毫秒的延遲，絕對是<strong>有感的慢</strong>😂 </p>
+<hr>
+<h2 id="結語：價格與需求的平衡"><a href="#結語：價格與需求的平衡" class="headerlink" title="結語：價格與需求的平衡"></a>結語：價格與需求的平衡</h2><p>這次轉戰 Hetzner，最大的收穫就是重新認識了「原來 VM 可以這麼便宜！」</p>
+<p>不是每個人都適合 Hetzner。如果你的專案對延遲極度敏感，那麼 DigitalOcean 這類更接近台灣、連線快的服務仍然更合適。（或者選直接在台灣有機房的 GCP）</p>
+<p>但如果你重視的是「<strong>用最低的成本拿到最好的資源</strong>」，那麼 Hetzner 絕對值得列入你的選項清單。</p>
+<p>而且我很認同它對客戶的嚴格審查，哈哈哈！</p>
+<p>總之，有些改變，不是因為原本不好，而是因為找到了更適合自己的地方。</p>
+<p>下一篇將介紹，如何在 Hetzner 上開一台新主機，以及相關的注意事項。敬請期待。</p>
+<h3 id="推廣資訊：使用我的推薦連結，享受免費額度（未實現）"><a href="#推廣資訊：使用我的推薦連結，享受免費額度（未實現）" class="headerlink" title="推廣資訊：使用我的推薦連結，享受免費額度（未實現）"></a>推廣資訊：使用我的推薦連結，享受免費額度（未實現）</h3><p>如果你也想試試 Hetzner，可以使用我的推薦連結註冊，新用戶可以直接獲得 <strong>20 歐元的使用額度</strong>，等於可以免費用一台小型 VPS 一段時間。</p>
+<p>小提醒：如果你透過我的推薦連結註冊並付費，未來我也有機會拿到 10 歐元的回饋。不過目前還在努力達標XD</p>
+<blockquote>
+<p><strong>我剛開始用不久，目前還不符合推薦資格，所以連結還不存在XD，你可以先去找別人的連結來用——20 歐不拿白不拿，或等我三個月後符合資格。</strong></p>
+</blockquote>
+<p>當初我已經身分認證完了，才知道有上述 20 歐元額度可以拿，不禁有點扼腕！</p>
+<p>👉 推薦連結（日後補上）</p>
+<p>希望這篇分享能幫助你，在選擇 VPS 的路上，多一個可靠的選擇。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/essential-subscriptions-2023/" title="2023 那些我已不可或缺的「付費訂閱」推薦" rel="bookmark">2023 那些我已不可或缺的「付費訂閱」推薦</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/bbc-6-minute-english/" title="BBC 6 Minute English：提升英文聽力的好夥伴" rel="bookmark">BBC 6 Minute English：提升英文聽力的好夥伴</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-40/" title="壓力太大怎麼辦？——接受殘缺與遺憾" rel="bookmark">壓力太大怎麼辦？——接受殘缺與遺憾</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/">付費訂閱</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/memos/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">開源工具 Memos：寫日記的好選擇</span>
+        <span class="prev-text nav-mobile">開源工具 Memos：寫日記的好選擇</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">53</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">37</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2025-04-14T14:00:43.801Z</updated>
+  <updated>2025-04-26T11:05:12.996Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商</title>
+    <link href="https://blog.kyomind.tw/hetzner/"/>
+    <id>https://blog.kyomind.tw/hetzner/</id>
+    <published>2025-04-26T10:21:02.000Z</published>
+    <updated>2025-04-26T11:05:12.996Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p><p>很長一段時間，當我需要使用<strong>遠端虛擬機器</strong>（Virtual Machine）來進行自己的個人部署時，來自美國的 <a href="https://www.digitalocean.com/">DigitalOcean</a> 一直是我的首選。</p><p>可能是因為這個「海洋」的意象讓人覺得很舒服吧！價格也還過得去。</p><p>我曾在這篇〈<a href="https://blog.kyomind.tw/update-my-droplet/">計畫更新我的 DigitalOcean VM</a> 〉提到過它。</p><p>然而，最近決定在 VM 上部署 Memos 時，我的選擇就不再是 DigitalOcean 了。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/memos/">開源工具 Memos：寫日記的好選擇</a></p></blockquote><p>原因無他，我們有了<strong>更便宜、更強大</strong>的選擇——也就是本文要介紹的 Hetzner。</p><p>在這篇文章中，我將分享我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。</p><p>我們開始吧！</p><span id="more"></span><hr><h2 id="偶然遇見-Hetzner"><a href="#偶然遇見-Hetzner" class="headerlink" title="偶然遇見 Hetzner"></a>偶然遇見 Hetzner</h2><p>如前所述，我使用 DigitalOcean 的 VM 很長一段時間。</p><p>基本款從最初的每月 5 美元，到後來漲到了 6、7 美元，儘管覺得有些小貴，但因為 DigitalOcean 在新加坡有機房，從台灣連過去延遲較低，大約 100 多毫秒，而且已經習慣，所以也沒想過另尋「新歡」。</p><p>直到有一天，我在 Twitter 上偶然看到有人提到 Hetzner——這才意識到，原來世界上還有這麼這麼「便宜」的 VPS 選擇 ！</p><p>不過在此之前，我們還是先來介紹一下，本文前面說到的 VM 或者是 VPS 究竟是什麼東西呢？ </p><h2 id="VPS-是什麼？為什麼需要-VPS？"><a href="#VPS-是什麼？為什麼需要-VPS？" class="headerlink" title="VPS 是什麼？為什麼需要 VPS？"></a>VPS 是什麼？為什麼需要 VPS？</h2><p>VPS，全名 Virtual Private Server，是<strong>從一台實體伺服器上虛擬出來的獨立空間</strong>。它讓你用租用價格，享受類似獨立主機的自由。</p><p>對於愛搞 side project 的開發者來說，有一台自己的 VPS，意味著能自由部署應用、測試新技術、建立個人服務。不必擔心免費平台的流量限制，也不用和別人搶資源。</p><p>其實我覺得最重要的就是——<strong>你獲得了一個固定 IP</strong>，讓別人可以 24 小時連線。</p><p>VPS 和 VM（Virtual Machine）其實本質很接近。</p><p>簡單來說，VM 是指「虛擬機器」這個技術本身，或指特定的虛擬機器，而 VPS 則是把這種技術<strong>商品化</strong>、打包成一個<strong>可以租用的服務</strong>。</p><p>你可以把 VPS 想成「雲端的 VM，加上管理和網路資源」，對一般開發者來說，兩者在使用體驗上幾乎沒什麼區別。</p><h3 id="VPS-供應商"><a href="#VPS-供應商" class="headerlink" title="VPS 供應商"></a>VPS 供應商</h3><p>說到 VPS，市場上的選擇非常多。從大型的雲端服務商（像是 AWS、Azure、Google Cloud），到專門提供 VPS 的公司（像是 Linode、DigitalOcean、Hetzner）都有各自的定位。</p><p>不同的服務商，價格、規格、連線速度也各有差異。</p><p>雲端服務商提供的服務品質通常很高，因為他們有自己的資料中心，但價格也往往最貴，彈性最大。</p><p>除非很有錢，不然我不會直接去這些地方開 VM 來用。</p><p>而本文的主角，則是來自德國的這家公司——Hetzner。</p><hr><h2 id="Hetzner-公司簡介"><a href="#Hetzner-公司簡介" class="headerlink" title="Hetzner 公司簡介"></a>Hetzner 公司簡介</h2><p><a href="https://zh.wikipedia.org/zh-tw/Hetzner">Hetzner</a> 成立於 1997 年，總部位於德國巴伐利亞州的 Gunzenhausen。旗下的服務非常多元，包括但不限於：</p><ul><li>Cloud Hosting（雲端虛擬伺服器）</li><li>Dedicated Hosting（專用伺服器租賃）</li><li>Storage Boxes（線上儲存空間）</li></ul><p>Hetzner 擁有多個資料中心，分別位於德國、芬蘭、美國和新加坡，涵蓋歐洲、美洲與亞洲地區。</p><p>本文用到的服務，就是 Cloud Hosting，也就是 VPS 服務。</p><p>說真的，如果不是看推特，我大概很難知道這家公司的存在。</p><p>畢竟，歐洲公司對我們來說都是相對陌生的。</p><hr><h2 id="Hetzner-vs-DigitalOcean：價差與規格對比"><a href="#Hetzner-vs-DigitalOcean：價差與規格對比" class="headerlink" title="Hetzner vs DigitalOcean：價差與規格對比"></a>Hetzner vs DigitalOcean：價差與規格對比</h2><p>為什麼要換供應商呢？其實很簡單，當然是因為<strong>錢和爽度</strong>囉！</p><p>Hetzner 用你難以想像的價格，提供了遠超預期的硬體資源——德國人就是猛XD</p><h3 id="價格與規格比較"><a href="#價格與規格比較" class="headerlink" title="價格與規格比較"></a>價格與規格比較</h3><p>以下是 DigitalOcean 和 Hetzner 在類似價格區間（7 美元）的方案規格對比：</p><table><thead><tr><th>項目</th><th>DigitalOcean</th><th>Hetzner</th></tr></thead><tbody><tr><td>CPU</td><td>1 核心</td><td>4 核心（ARM）</td></tr><tr><td>RAM</td><td>1 GB</td><td>8 GB</td></tr><tr><td>硬碟空間</td><td>25 GB SSD</td><td>80 GB SSD</td></tr><tr><td>月費價格</td><td>7 美元</td><td>6.49 歐元（約 7 美元）</td></tr><tr><td>可用頻寬</td><td>1 TB 流量</td><td>20 TB 流量</td></tr></tbody></table><p>以幾乎相同的價格，Hetzner 提供了 <strong>4 倍的 CPU</strong>、<strong>8 倍的記憶體</strong>，以及更大的硬碟空間和流量。</p><p>我感覺十分阿妹竟（Amazing）！</p><p>其它不論，RAM 的大小其實<strong>很影響使用體驗</strong>，沒有 2 GB 真的會比較辛苦。</p><p>我請 AI 查了一下，如果 DigitalOcean 要達到右邊 Hetzner 的規格，大概需要一個月 28 美元。</p><p>這個差距，讓人想要不變心都難🥹 </p><hr><p>等等，你先別急著掏出信用卡！</p><p>重點是接下來的部分——<strong>連線速度</strong>與<strong>註冊審核</strong>。</p><p>一言以蔽之：Hetzner 對台灣的延遲不太友好。</p><h2 id="實際測試：Latency-比較"><a href="#實際測試：Latency-比較" class="headerlink" title="實際測試：Latency 比較"></a>實際測試：Latency 比較</h2><p>為了有更直觀的數據，我使用了 <a href="https://www.cloudpingtest.com/">cloudpingtest.com</a> 測試了它所屬 VM 的延遲表現。</p><p>測試環境：中華電信 4G 手機網路。</p><p>以下是測試結果，可以看出，Hetzner 無論你選哪個資料中心，延遲的表現<strong>都不是很好</strong>——尤其是歐洲：</p><p><img src="https://i.imgur.com/G7ETZ7p.png" alt="測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考"><span class="cap">測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考</span>  </p><p>這是我在晚上高峰時段測試的，白天會稍微好一些，但基本上，歐洲機房的延遲不會低於 600 ms。</p><p>600 毫秒延遲是什麼概念？可以理解成：<strong>你發出一個請求，伺服器在 0.6 秒後才會收到並開始處理——好久XD</strong></p><p>美國和新加坡的機房會好一點——就一點，但<strong>價格也更貴（尤其是新加坡）</strong>，這需要你自行拿捏。</p><p>我是覺得，如果選到新加坡機房，可能還不如直接選 DigitalOcean。</p><p>DigitalOcean 的新加坡機房延遲基本上只有 100 多毫秒，可以說表現極佳。</p><hr><h2 id="Hetzner-的客戶認證與註冊流程"><a href="#Hetzner-的客戶認證與註冊流程" class="headerlink" title="Hetzner 的客戶認證與註冊流程"></a>Hetzner 的客戶認證與註冊流程</h2><p>除了延遲偏高，Hetzner 另一個讓人討厭的點，就是身分認證流程。</p><p>Hetzner 的註冊流程<strong>相當嚴謹</strong>，堪比虛擬貨幣交易所XD，遠比一般雲端服務供應商麻煩得多。官方說，這主要是為了防範濫用與確保整體服務品質。</p><p>通常在註冊時，你可能需要：</p><ul><li>上傳有效身分證明（例如護照或身分證）</li><li>綁定信用卡或其他付款方式</li><li>等待人工審核通過</li></ul><p>這個過程從幾小時到一兩天都有可能。雖然初期略嫌麻煩，但換來的是更穩定的使用體驗。所以我覺得還可以接受。</p><hr><p>綜上所述，你主要需要考慮的，就是<strong>這個延遲你是否能夠接受</strong>。像我主要就是做我自己的東西而已，不是要提供給別人用的，所以還行。</p><p>但如果是要給別人用的，600 毫秒的延遲，絕對是<strong>有感的慢</strong>😂 </p><hr><h2 id="結語：價格與需求的平衡"><a href="#結語：價格與需求的平衡" class="headerlink" title="結語：價格與需求的平衡"></a>結語：價格與需求的平衡</h2><p>這次轉戰 Hetzner，最大的收穫就是重新認識了「原來 VM 可以這麼便宜！」</p><p>不是每個人都適合 Hetzner。如果你的專案對延遲極度敏感，那麼 DigitalOcean 這類更接近台灣、連線快的服務仍然更合適。（或者選直接在台灣有機房的 GCP）</p><p>但如果你重視的是「<strong>用最低的成本拿到最好的資源</strong>」，那麼 Hetzner 絕對值得列入你的選項清單。</p><p>而且我很認同它對客戶的嚴格審查，哈哈哈！</p><p>總之，有些改變，不是因為原本不好，而是因為找到了更適合自己的地方。</p><p>下一篇將介紹，如何在 Hetzner 上開一台新主機，以及相關的注意事項。敬請期待。</p><h3 id="推廣資訊：使用我的推薦連結，享受免費額度（未實現）"><a href="#推廣資訊：使用我的推薦連結，享受免費額度（未實現）" class="headerlink" title="推廣資訊：使用我的推薦連結，享受免費額度（未實現）"></a>推廣資訊：使用我的推薦連結，享受免費額度（未實現）</h3><p>如果你也想試試 Hetzner，可以使用我的推薦連結註冊，新用戶可以直接獲得 <strong>20 歐元的使用額度</strong>，等於可以免費用一台小型 VPS 一段時間。</p><p>小提醒：如果你透過我的推薦連結註冊並付費，未來我也有機會拿到 10 歐元的回饋。不過目前還在努力達標XD</p><blockquote><p><strong>我剛開始用不久，目前還不符合推薦資格，所以連結還不存在XD，你可以先去找別人的連結來用——20 歐不拿白不拿，或等我三個月後符合資格。</strong></p></blockquote><p>當初我已經身分認證完了，才知道有上述 20 歐元額度可以拿，不禁有點扼腕！</p><p>👉 推薦連結（日後補上）</p><p>希望這篇分享能幫助你，在選擇 VPS 的路上，多一個可靠的選擇。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/GhElIMy.jpeg&quot; alt=&quot;from Pixabay&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;很長一段時間，當我需要使用&lt;strong&gt;遠端虛擬機器&lt;/strong&gt;（Virtual Machine）來進行自己的個人部署時，來自美國的 &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt; 一直是我的首選。&lt;/p&gt;
+&lt;p&gt;可能是因為這個「海洋」的意象讓人覺得很舒服吧！價格也還過得去。&lt;/p&gt;
+&lt;p&gt;我曾在這篇〈&lt;a href=&quot;https://blog.kyomind.tw/update-my-droplet/&quot;&gt;計畫更新我的 DigitalOcean VM&lt;/a&gt; 〉提到過它。&lt;/p&gt;
+&lt;p&gt;然而，最近決定在 VM 上部署 Memos 時，我的選擇就不再是 DigitalOcean 了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相關文章：&lt;a href=&quot;https://blog.kyomind.tw/memos/&quot;&gt;開源工具 Memos：寫日記的好選擇&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原因無他，我們有了&lt;strong&gt;更便宜、更強大&lt;/strong&gt;的選擇——也就是本文要介紹的 Hetzner。&lt;/p&gt;
+&lt;p&gt;在這篇文章中，我將分享我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。&lt;/p&gt;
+&lt;p&gt;我們開始吧！&lt;/p&gt;</summary>
+    
+    
+    <content src="https://i.imgur.com/GhElIMy.jpeg" type="image"/>
+    
+    
+    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>開源工具 Memos：寫日記的好選擇</title>
@@ -345,42 +380,6 @@
     <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
     
     <category term="生活" scheme="https://blog.kyomind.tw/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BBC 6 Minute English：提升英文聽力的好夥伴</title>
-    <link href="https://blog.kyomind.tw/bbc-6-minute-english/"/>
-    <id>https://blog.kyomind.tw/bbc-6-minute-english/</id>
-    <published>2025-01-04T09:07:18.000Z</published>
-    <updated>2025-02-27T02:59:48.548Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/aL3kCBo.jpeg" alt="6 Minute English by BBC Learning English"><span class="cap">6 Minute English by BBC Learning English</span></p><p>眾所周知，<strong>學英文</strong>不僅是軟體工程師的常見需求，更是許多台灣人的長期課題。</p><p>我自然也不例外。</p><p>為了彌補自己在英文<strong>聽力</strong>和<strong>閱讀</strong>之間的落差，我最近開始重新<strong>練習英文聽力</strong>。而我使用的素材，如標題所言，正是 <a href="https://www.youtube.com/playlist?list=PLcetZ6gSk96-FECmH9l7Vlx5VDigvgZpt">BBC 6 Minute English</a> 節目——外加 AI 🤖</p><hr><h2 id="為什麼開始練習聽力？"><a href="#為什麼開始練習聽力？" class="headerlink" title="為什麼開始練習聽力？"></a>為什麼開始練習聽力？</h2><p>多年前第一次轉職求職之際，曾考過一次多益（當公務員時完全不需要這東西XD），我的總分為 785 分，閱讀拿到 440 分，聽力則只有 345 分。</p><p>兩者相差了 95 分。</p><p>這樣的差距與<strong>不均</strong>，難免讓人不快，也反映了許多台灣人的常見問題：我們能讀懂英文文章，卻<strong>無法聽懂簡單的日常對話</strong>。</p><p>提升英文聽力的動機很多，比如希望<strong>進入外商工作</strong>，或是在國外旅遊時能<strong>與當地人交流</strong>等等。我應該屬於前者。</p><p>在台灣，生活中缺乏自然的英文環境，我們必須自行尋找適合自己的練習方式。</p><p>在嘗試多種方法後，我發現目前的方式相對簡單且可持續，<strong>不會太過負擔</strong>。</p><p>至於有沒有效，等我實踐一段時間後，再向大夥報告🫡</p><span id="more"></span><h2 id="為何選擇-BBC-6-Minute-English？"><a href="#為何選擇-BBC-6-Minute-English？" class="headerlink" title="為何選擇 BBC 6 Minute English？"></a>為何選擇 BBC 6 Minute English？</h2><p><a href="https://www.bbc.co.uk/learningenglish/english/features/6-minute-english">BBC 6 Minute English</a> 是一個圍繞熱門話題和實用知識進行探討的節目，內容涵蓋新聞事件、科普、文化背景等不同主題。</p><p>兩位主持人透過<strong>輕鬆的對談形式</strong>，引導聽眾學習<strong>關鍵詞彙</strong>並理解背景資訊，很適合用來提升聽力並增加英文詞彙量。</p><p>你可以在 <strong>BBC Learning English</strong> 的 <a href="https://www.youtube.com/@bbclearningenglish">YouTube 頻道</a>上看到所有集數。</p><p>主持人<strong>語速適中</strong>，雖然是英國腔，但由於是<strong>針對英語學習者設計的內容</strong>，因此發音清晰標準，不會構成太多理解障礙，是理想的聽力學習素材。</p><p>相比動輒 40 分鐘或一小時的影集，這樣的短節目更容易融入日常生活、減少負擔。</p><p>但有一點需要留意：6 Minute English 的<strong>難度定位</strong>約為 <strong>Intermediate level（中級）</strong>，大概是 <a href="https://zh.wikipedia.org/zh-tw/%E6%AD%90%E6%B4%B2%E5%85%B1%E5%90%8C%E8%AA%9E%E8%A8%80%E5%8F%83%E8%80%83%E6%A8%99%E6%BA%96">CEFR</a> 的 B1-B2 左右。初學者可以考慮 <a href="https://learningenglish.voanews.com/">VOA</a>（Voice of America）等更簡單的節目。</p><hr><h2 id="其他方法的嘗試與反省"><a href="#其他方法的嘗試與反省" class="headerlink" title="其他方法的嘗試與反省"></a>其他方法的嘗試與反省</h2><p>在找到 BBC 6 Minute English 之前，我嘗試過其他方法，但效果有限——應該說<strong>難以持續</strong>。</p><h3 id="1-影集學習法"><a href="#1-影集學習法" class="headerlink" title="1. 影集學習法"></a>1. 影集學習法</h3><p>看美劇學英文！你可能不陌生，但我覺得很難XD</p><p>首先，我平常看劇就是為了放鬆，這和「學習」這個目標<strong>恰好相反</strong>，難免有些心理上的排斥。</p><p>而且實際操作時，我很難專心聽完整集（其實半集也無法），劇情進展速度常超過對話理解能力。與其說在「練習聽力」，更像是被劇情牽著走，效果不彰。</p><p>當然，這很可能是我聽力太弱了。但我想強調的是：我個人並不喜歡這個方式。</p><h3 id="2-VoiceTube"><a href="#2-VoiceTube" class="headerlink" title="2. VoiceTube"></a>2. VoiceTube</h3><p>我也使用過 VoiceTube 這個學習平台，影片長度約 5 分鐘，這大幅和緩了<strong>專注力不足</strong>的問題。</p><p>甚至還訂了一年份的「<a href="https://www.google.com/search?q=VoiceTube%20Hero">VoiceTube Hero</a>」，因為看到網路上一片好評，加上 YouTube 網紅的折扣，所以忍不住刷卡了！</p><p>說真的，當下也是充滿信心，覺得口說、聽力應該有救了XD</p><p>然而事與願違，用了一個月後，前幾天我提交了退費申請，因為我覺得<strong>課程設計不符合我的需求</strong>。具體細節有機會再另篇說明，畢竟這不是本文重點。</p><p>這裡不是說它無效，願意聽肯定有效，只是我無法持續下去。</p><p>話說回來，單就那些影片，我認為還是很不錯的聽力素材。</p><hr><h2 id="BBC-6-Minute-English-AI"><a href="#BBC-6-Minute-English-AI" class="headerlink" title="BBC 6 Minute English + AI"></a>BBC 6 Minute English + AI</h2><p>接觸 BBC 6 Minute English 後，我確定了<strong>結合 AI 工具來輔助並提升聽力</strong>的練習流程。終於不用再尋尋覓覓，因為這就是我要的。</p><p>所謂的 AI，具體而言就像「<a href="https://blog.kyomind.tw/gpts-for-leetcode/#%E4%B8%80%E3%80%81%E3%80%8C%E5%93%A9%E5%93%A9%E6%89%A3%E6%89%A3%E3%80%8DGPTs-%E4%BB%8B%E7%B4%B9">哩哩扣扣</a>」，它也是一個 GPTs，負責幫我「出選擇題」來進行聽力測驗。</p><p>這要感謝 BBC 6 Minute English <strong>每一集都有字幕（逐字稿）</strong>，只要把字幕提供給 AI，它就能知道這一集的內容，然後出題。</p><p>這個 GPTs 叫「<a href="https://chatgpt.com/g/g-6760497918c8819187ea4b7209ba30b6-earwise">EarWise</a>」，只有我自己在用，但因為寫了這篇文章我就直接公開了，有興趣可以自行試試，起手式就是<strong>把字幕上傳餵給它，然後送出</strong>。</p><p>它的第一次回應大概如下（每次不盡相同）：</p><p><img src="https://i.imgur.com/kvdZbte.png" alt="EarWise"><span class="cap">EarWise</span></p><p>剩下的部分，如圖，你應該知道怎麼做了。有機會我們再另篇介紹。</p><p>不止 BBC，其實它<strong>可以用在任何英文節目</strong>！有沒有覺得活在 AI 時代真的很幸福😇</p><hr><h2 id="具體流程與實踐"><a href="#具體流程與實踐" class="headerlink" title="具體流程與實踐"></a>具體流程與實踐</h2><p>以下是我練習聽力的整體流程！大概需要 30 分鐘。</p><h3 id="1-初次聆聽節目"><a href="#1-初次聆聽節目" class="headerlink" title="1. 初次聆聽節目"></a>1. 初次聆聽節目</h3><p>完整聆聽 6 分鐘的內容，不使用任何字幕輔助，專注於理解主持人的對話脈絡。</p><p>俗稱「<strong>裸聽</strong>」。</p><h3 id="2-利用-AI-生成練習題（選擇題）"><a href="#2-利用-AI-生成練習題（選擇題）" class="headerlink" title="2. 利用 AI 生成練習題（選擇題）"></a>2. <strong>利用 AI 生成練習題（選擇題）</strong></h3><p>將該集字幕丟給 AI，生成選擇題，看看每一題內容，嘗試作答。</p><p>有些題目你可能會了，有些則還沒有聽清楚，沒關係，請先「<strong>記得這些題目</strong>」。</p><p><img src="https://i.imgur.com/6mMZo8i.png" alt="EarWise"><span class="cap">EarWise</span></p><h3 id="3-第二次，帶著問題重新聆聽"><a href="#3-第二次，帶著問題重新聆聽" class="headerlink" title="3. 第二次，帶著問題重新聆聽"></a>3. 第二次，帶著問題重新聆聽</h3><p><strong>帶著問題學習</strong>有助於記憶和理解，聽力也不例外。</p><p>看完聽力練習題後，再次聆聽內容，這次我們就可以<strong>集中在與選擇題有關的部分</strong>。</p><p>這就跟你<strong>看完目錄才開始讀書</strong>是類似的，你會<strong>更有「問題意識」</strong>。</p><p>這會增進你的聽力與理解——因為<strong>認知的範圍縮小了</strong>。</p><h3 id="4-作答選擇題、產出筆記"><a href="#4-作答選擇題、產出筆記" class="headerlink" title="4. 作答選擇題、產出筆記"></a>4. 作答選擇題、產出筆記</h3><p>依序使用下列三個指令對內容進行解析，這個很好懂，就不多解釋：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-a (--answers)：提供選擇題答案與解析</span><br><span class="line">-n (--notes)：產生內容與語言學習重點筆記</span><br><span class="line">-t (--take-offs)：從筆記中萃取關鍵學習重點</span><br></pre></td></tr></table></figure><p>我通常會把<code>-t</code>的內容整理到 Notion，但會不會複習我就不敢說了😅</p><h3 id="5-聽第三次，開字幕！"><a href="#5-聽第三次，開字幕！" class="headerlink" title="5. 聽第三次，開字幕！"></a>5. 聽第三次，開字幕！</h3><p>沒錯，還沒完，而且這一步非常重要，可謂——last but not the least。</p><p>最後一次聆聽，<strong>開啟字幕來確認自己的理解是否正確</strong>。</p><p>這個步驟不僅能夠幫助我確認之前<strong>可能聽錯的部分</strong>，還能加深對單字和片語的印象。在這個階段，我會特別注意那些之前<strong>聽不清楚</strong>的段落。</p><p>我認為，如果少了這最後一次的聽力練習，那整體的學習效果可能會<strong>大打扣折</strong>。</p><hr><h2 id="做法與思路解析"><a href="#做法與思路解析" class="headerlink" title="做法與思路解析"></a>做法與思路解析</h2><p>法律系畢業的我，酷愛對任何重要事情的<strong>想法、思路</strong>進行整理，已經到了<strong>偏執狂</strong>的地步——寫程式也是如此😈</p><p>因此，對於「<strong>如何練習並增進英文聽力</strong>」這個議題，我也有一些話要說。這些想法主要源自過去的經驗和偏好，你看看就好。</p><p>我個人並不喜歡聽西洋歌曲，美劇也是可看可不看。所以很難用這方面（娛樂）來驅動自己學習英文，尤其是聽力。</p><p>所以，對我來說，我更需要「<strong>簡單、可重複</strong>」的策略。</p><p>這個策略的重點是<strong>阻力很低（簡單）</strong>，而且<strong>方便每天進行（可重複）</strong>。這樣就足夠了！</p><p>上述兩種「失敗」方法，對我來說不僅阻力大，就結果而言，常常也是三天曬網、兩天捕魚，難以堅持。</p><h3 id="方法簡評"><a href="#方法簡評" class="headerlink" title="方法簡評"></a>方法簡評</h3><p>BBC 6 Minute English 結合 AI，不僅縮短了單次學習的時間負擔——因為一集不長。藉由 AI 解說，更提升了你<strong>對細節的理解</strong>。</p><p>對於聽力還在起步階段的人（我也是），強烈建議避免「貪多」，可以從短節目開始，專注於重複聆聽，以獲得<strong>相對穩定的學習熟練度</strong>。</p><p>此外，<strong>降低學習過程中的阻力</strong>非常重要。</p><p>尤其對於工作或生活中<strong>不常用到英文</strong>的人，<strong>減少阻力</strong>可說是持續學習的<strong>唯一</strong>關鍵。</p><p>因此我選擇每集約 5-6 分鐘的內容，這樣的時長不會帶來太多負擔，反而更容易融入日常生活——任何時候開始都可以。</p><hr><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>你覺得，學英文是必要的嗎？我不認為。</p><p>個人非常認同 <a href="https://www.facebook.com/will.fans/?locale=zh_TW">Will 保哥</a>在《<a href="https://www.accupass.com/event/2408150700092666728070">ChatGPT 進階語音互動：打造個人化的英語口說教練</a>》這堂課中說的：「學語言如果沒有動機就別學了！」——事倍功半。</p><p>既然要學，就選擇擇一個<strong>不會太痛苦，又容易持續</strong>的方式，畢竟刻苦不是我的 style 😇</p><p>我認為「BBC 6 Minute English + AI」就是這樣的方式。</p><p>希望我們都能在每一天的練習中，逐步提升自己。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/aL3kCBo.jpeg&quot; alt=&quot;6 Minute English by BBC Learning English&quot;&gt;&lt;/p&gt;
-&lt;p&gt;眾所周知，&lt;strong&gt;學英文&lt;/strong&gt;不僅是軟體工程師的常見需求，更是許多台灣人的長期課題。&lt;/p&gt;
-&lt;p&gt;我自然也不例外。&lt;/p&gt;
-&lt;p&gt;為了彌補自己在英文&lt;strong&gt;聽力&lt;/strong&gt;和&lt;strong&gt;閱讀&lt;/strong&gt;之間的落差，我最近開始重新&lt;strong&gt;練習英文聽力&lt;/strong&gt;。而我使用的素材，如標題所言，正是 &lt;a href=&quot;https://www.youtube.com/playlist?list=PLcetZ6gSk96-FECmH9l7Vlx5VDigvgZpt&quot;&gt;BBC 6 Minute English&lt;/a&gt; 節目——外加 AI 🤖&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;為什麼開始練習聽力？&quot;&gt;&lt;a href=&quot;#為什麼開始練習聽力？&quot; class=&quot;headerlink&quot; title=&quot;為什麼開始練習聽力？&quot;&gt;&lt;/a&gt;為什麼開始練習聽力？&lt;/h2&gt;&lt;p&gt;多年前第一次轉職求職之際，曾考過一次多益（當公務員時完全不需要這東西XD），我的總分為 785 分，閱讀拿到 440 分，聽力則只有 345 分。&lt;/p&gt;
-&lt;p&gt;兩者相差了 95 分。&lt;/p&gt;
-&lt;p&gt;這樣的差距與&lt;strong&gt;不均&lt;/strong&gt;，難免讓人不快，也反映了許多台灣人的常見問題：我們能讀懂英文文章，卻&lt;strong&gt;無法聽懂簡單的日常對話&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;提升英文聽力的動機很多，比如希望&lt;strong&gt;進入外商工作&lt;/strong&gt;，或是在國外旅遊時能&lt;strong&gt;與當地人交流&lt;/strong&gt;等等。我應該屬於前者。&lt;/p&gt;
-&lt;p&gt;在台灣，生活中缺乏自然的英文環境，我們必須自行尋找適合自己的練習方式。&lt;/p&gt;
-&lt;p&gt;在嘗試多種方法後，我發現目前的方式相對簡單且可持續，&lt;strong&gt;不會太過負擔&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;至於有沒有效，等我實踐一段時間後，再向大夥報告🫡&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/aL3kCBo.jpeg" type="image"/>
-    
-    
-    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
-    
-    
-    <category term="語言學習" scheme="https://blog.kyomind.tw/tags/%E8%AA%9E%E8%A8%80%E5%AD%B8%E7%BF%92/"/>
-    
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
   </entry>
   
