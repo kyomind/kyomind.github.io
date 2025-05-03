@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-03T02:46:25+08:00" />
+  <meta property="article:modified_time" content="2025-05-03T04:31:40+08:00" />
 
 
 
@@ -235,7 +235,7 @@
 <p>不過，我覺得風格不是重點，清楚與一致才是關鍵。</p>
 <p>下一篇文章會介紹如何用 VS Code 的套件快速生成各種風格的 Docstring，這裡就先不深入。</p>
 <hr>
-<h2 id="不是每個函式都需要-Docstring"><a href="#不是每個函式都需要-Docstring" class="headerlink" title="不是每個函式都需要 Docstring"></a><strong>不是每個函式都需要 Docstring</strong></h2><p>Docstring 可以寫在模組、類別與函式的開頭，我們在這裡主要討論函式的 Docstring 撰寫，因為它是<strong>最常用</strong>，同時也是<strong>最需要說明</strong>的程式碼元件。</p>
+<h2 id="不是每個函式都需要-Docstring"><a href="#不是每個函式都需要-Docstring" class="headerlink" title="不是每個函式都需要 Docstring"></a>不是每個函式都需要 Docstring</h2><p>Docstring 可以寫在模組、類別與函式的開頭，我們在這裡主要討論函式的 Docstring 撰寫，因為它是<strong>最常用</strong>，同時也是<strong>最需要說明</strong>的程式碼元件。</p>
 <p>在開始介紹四個層次之前，有一個觀念必須先釐清：<strong>不是每個函式都需要 Docstring</strong>。</p>
 <p>有些函式，一看就知道用途，例如簡單的資料轉換、資料初始化，或是完全沒有參數。</p>
 <p>這些函式若執意要寫 Docstring，反而可能造成<strong>雜訊</strong>。</p>
@@ -254,7 +254,7 @@
 
 <p>這樣的 Docstring 雖然簡單，卻仍比沒有好。</p>
 <p>這段主旨的文眼在於「判斷」二字，它直接說明了程式的行為與意圖，別人一眼就能「確信」這個函式<strong>打算做什麼</strong>。</p>
-<h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a><strong>錯誤示範</strong></h3><p>要寫好一行式的 Docstring 有時並不容易，我們偶爾會陷入<strong>過於細節的描述</strong>，以下是個不太好的示範：</p>
+<h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>要寫好一行式的 Docstring 有時並不容易，我們偶爾會陷入<strong>過於細節的描述</strong>，以下是個不太好的示範：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;透過 SQL 查詢比對用戶的電子郵件是否為內部使用者&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>這種寫法就太底層了，提到了那些<strong>不必要的細節</strong>（SQL 查詢），容易讓人分心。</p>
