@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-03T06:31:21+08:00" />
+  <meta property="article:modified_time" content="2025-05-03T06:52:34+08:00" />
 
 
 
@@ -208,8 +208,10 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="什麼是-Docstring？"><a href="#什麼是-Docstring？" class="headerlink" title="什麼是 Docstring？"></a>什麼是 Docstring？</h2><p>Docstring（Documentation String）是 Python 中用來描述<strong>模組、類別、函式</strong>用途的<strong>字串</strong>。它通常放在定義語法（比如<code>def xxx</code>）之後，由<strong>三個雙引號</strong>（<code>&quot;&quot;&quot;</code>）包覆，方便工具或 IDE 自動擷取，生成文件或顯示說明。</p>
-<p>良好的 Docstring 不僅可以幫助他人快速理解程式碼，也能在開發、維護、協作中扮演關鍵角色。它是「<a href="https://blog.kyomind.tw/django-ninja-17/#Documentation-as-Code">程式碼即文件</a>」理念的具體實踐方式之一。</p>
+<h2 id="什麼是-Docstring？"><a href="#什麼是-Docstring？" class="headerlink" title="什麼是 Docstring？"></a>什麼是 Docstring？</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Docstring">Docstring</a>（Documentation String）是 Python 中用來描述<strong>模組、類別、函式（包括類別中的方法）</strong>用途的<strong>字串</strong>。</p>
+<p>它通常放在定義語法（比如<code>def xxx</code>）之後，由<strong>三個雙引號</strong>（<code>&quot;&quot;&quot;</code>）包覆，方便工具或 IDE 自動擷取，生成文件或顯示說明。</p>
+<p>良好的 Docstring 不僅可以幫助他人快速理解程式碼，也能在開發、維護、協作中扮演關鍵角色。</p>
+<p>它是「<a href="https://blog.kyomind.tw/django-ninja-17/#Documentation-as-Code">程式碼即文件</a>」理念的具體實踐方式之一。</p>
 <p>Docstring 這種設計在許多語言中都有，例如 Java 的 JavaDoc、C# 的 XML Comments 等，Python 版本因為簡單好用，更成為日常開發不可或缺的一環。</p>
 <hr>
 <h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p><strong>我將透過具體的案例來闡述如何寫好 Docstring。</strong></p>
@@ -246,8 +248,9 @@
 <p>Docstring 的重點在於補充「<strong>別人不容易一眼看懂的東西</strong>」，它是一種基於「同理心」的實踐，而非教條。</p>
 <hr>
 <h2 id="Docstring-的四個層次"><a href="#Docstring-的四個層次" class="headerlink" title="Docstring 的四個層次"></a>Docstring 的四個層次</h2><p>根據不同的情境與複雜度，決定 Docstring 撰寫的詳細程度很重要。</p>
-<p>不過，我也必須承認，在大多數情況下，我們都是透過工具輔助——工具產生的通常是第三層次的 Docstring 框架。</p>
-<p>因此，即使你想把每一個 Docstring 的情境都寫到第三層次，我也不會反對。</p>
+<p>不過，必須承認，在多數情況下，我們都是透過工具輔助——工具產生的通常是第三層次的 Docstring 框架。</p>
+<p>因此，如果把每一個 Docstring 都寫到第三層次，我也不反對。畢竟它最常見。</p>
+<p>我自己則會依照程式碼的複雜度，進行一定程度的調整。</p>
 <p>無論如何，在實務情境中，有寫通常比沒寫好☺️ </p>
 <h2 id="一、只有主旨的-Docstring"><a href="#一、只有主旨的-Docstring" class="headerlink" title="一、只有主旨的 Docstring"></a>一、只有主旨的 Docstring</h2><p>有些簡單但<strong>需要了解「大概意圖」</strong>的函式，只需要一句話就足夠：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_internal_user</span>(<span class="params">email</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;判斷電子郵件是否為內部使用者&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> email.endswith(<span class="string">&quot;@company.com&quot;</span>)</span><br></pre></td></tr></table></figure>
