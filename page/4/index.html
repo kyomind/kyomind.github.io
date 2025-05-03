@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (37)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (38)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,48 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-28/">身分認證——Session 認證與全域設定</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-10
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 28 篇。</p>
+<p>歡迎來到第七章！本章總共有兩篇內容：</p>
+<ul>
+<li>卷 28：身分認證——Session 認證與全域設定</li>
+<li>卷 29：單元測試——使用 Test Client 與 pytest 測試 API</li>
+</ul>
+<p>這些主題的核心功能，<strong>並非由 Django Ninja 實作</strong>，但框架仍提供了<strong>一定程度的整合</strong>。並且，這些功能對於任何 Django 專案來說，都至關重要。</p>
+<p>本文介紹幾乎所有 API 專案都需要的——<strong>身分認證</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/authentication/">Authentication</a>）。</p>
+<p>我們將探討如何在 Django Ninja 中利用 Django 內建的 session-based 認證，實現完整的登入驗證功能，並進一步說明如何設定<strong>全域認證</strong>，以減少程式碼的重複。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/19">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="認證的兩個層次"><a href="#認證的兩個層次" class="headerlink" title="認證的兩個層次"></a>認證的兩個層次</h2><p>進入實作前，我們要先了解，所謂的<strong>身分認證</strong>，究竟代表什麼。</p>
+<p>以「帳號密碼 + session 認證」為例，身分認證的範圍主要涵蓋<strong>兩個階段</strong>。</p>
+<p>首先，當使用者透過帳號密碼進行登入時，系統會檢查這些內容、確認身分<strong>合法</strong>。登入成功後，系統會將使用者資訊（比如用戶 id）儲存至 session，以<strong>維持登入狀態</strong>。</p>
+<p>這是<strong>登入時的認證</strong>，也是我們最常說的認證。（<strong>狹義的認證</strong>）</p>
+<p>接著，當使用者嘗試存取受「<strong>認證保護</strong>」的 API 時，系統會檢查 session 並確認身分，確保每個 API 請求都來自<strong>合法登入</strong>的使用者。</p>
+<p>簡言之：</p>
+<ul>
+<li>第一階段：初次登入時的身分確認。</li>
+<li>第二階段：後續請求時的身分確認。</li>
+</ul>
+<p>兩個層次相輔相成、一體兩面，確保服務能夠在使用者<strong>登入</strong>和<strong>後續操作</strong>中，提供適當的安全保障。</p>
+          <div class="read-more">
+            <a href="/django-ninja-28/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-27/">資料查詢與過濾（下）FilterSchema 多欄位查詢</a>
         </h1>
@@ -362,44 +404,6 @@
 <p>這篇文章，就要來回答這些問題。所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/13">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-22/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-21/">錯誤處理（上）HttpError 與自定義 HTTP 回應</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-03
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 21 篇。</p>
-<p>在軟體開發中，<strong>錯誤處理</strong>是一個不容忽視——但<strong>常常被忽視</strong>——的環節。</p>
-<p>不誇張地說，錯誤處理是一個「<strong>做得好沒人誇，做不好系統就慘兮兮</strong>」的議題。</p>
-<p>沒關係，我們還是<strong>盡可能把自己做好</strong>。</p>
-<p>Django Ninja 使用 Pydantic 進行資料驗證，失敗時，預設回應「422 Unprocessable Entity」。</p>
-<p>然而，我們有時候需要回應「400 Bad Request」或別的狀態碼，以符合<strong>現實業務需求</strong>或<strong>團隊開發習慣</strong>。</p>
-<p>總之，無論出於何種原因，我們想<strong>自訂錯誤訊息、格式，以及回應的狀態碼</strong>，而<strong>不使用</strong> Django Ninja 預設的 422 回應——不得不說，這個制式回應的資訊有點多、結構有點複雜，因為它要兼容各種情況。</p>
-<p>本文將介紹如何<strong>自定義錯誤處理與回應</strong>——使用 Django Ninja 內建的<code>HttpError</code>。</p>
-<p>所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/12">這個 PR</a>。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="Django-Ninja-的自動錯誤處理"><a href="#Django-Ninja-的自動錯誤處理" class="headerlink" title="Django Ninja 的自動錯誤處理"></a>Django Ninja 的自動錯誤處理</h2><p>上一篇我們提到，如果你在 Schema 的驗證方法中，拋出<code>ValueError</code>錯誤，Django Ninja 將會<strong>自動捕捉並回應</strong>。</p>
-<p>事實上，不止<code>ValueError</code>，Django Ninja 還會替你處理以下這幾種錯誤：</p>
-<ul>
-<li><code>pydantic.ValidationError</code>，來自 Pydantic 的驗證錯誤，這是<strong>為何</strong>當 Schema 欄位有問題時，我們會直接收到 422 回應。</li>
-<li>此外，Django Ninja 還內建了一個 <code>ninja.errors.ValidationError</code>，這些錯誤同樣會返回 422。</li>
-<li><code>ninja.errors.HttpError</code>：這是本文的重點，下面會介紹。</li>
-</ul>
-<p>這些都是 Django Ninja 會自動捕捉的錯誤，但不是每一種都給出制式的 422 回應——第三種就不是。</p>
-          <div class="read-more">
-            <a href="/django-ninja-21/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/3/">
