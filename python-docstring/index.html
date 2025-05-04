@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-03T06:52:34+08:00" />
+  <meta property="article:modified_time" content="2025-05-04T03:33:42+08:00" />
 
 
 
@@ -245,23 +245,23 @@
 <blockquote>
 <p>如果一個函式「一望即知」，那就不需要為寫而寫。</p>
 </blockquote>
-<p>Docstring 的重點在於補充「<strong>別人不容易一眼看懂的東西</strong>」，它是一種基於「同理心」的實踐，而非教條。</p>
+<p>Docstring 的重點在於補充「<strong>別人不容易一眼看懂的東西</strong>」，它是一種<strong>基於「同理心」的實踐</strong>，而非教條。</p>
 <hr>
 <h2 id="Docstring-的四個層次"><a href="#Docstring-的四個層次" class="headerlink" title="Docstring 的四個層次"></a>Docstring 的四個層次</h2><p>根據不同的情境與複雜度，決定 Docstring 撰寫的詳細程度很重要。</p>
-<p>不過，必須承認，在多數情況下，我們都是透過工具輔助——工具產生的通常是第三層次的 Docstring 框架。</p>
+<p>不過，必須承認，在多數情況下，我們都是透過工具輔助——而工具產生的通常是下述<strong>第三層次</strong>（對輸入輸出有完整說明）的 Docstring 框架。</p>
 <p>因此，如果把每一個 Docstring 都寫到第三層次，我也不反對。畢竟它最常見。</p>
 <p>我自己則會依照程式碼的複雜度，進行一定程度的調整。</p>
-<p>無論如何，在實務情境中，有寫通常比沒寫好☺️ </p>
+<p>無論如何，在實務情境中，<strong>有寫通常比沒寫好</strong>☺️ </p>
 <h2 id="一、只有主旨的-Docstring"><a href="#一、只有主旨的-Docstring" class="headerlink" title="一、只有主旨的 Docstring"></a>一、只有主旨的 Docstring</h2><p>有些簡單但<strong>需要了解「大概意圖」</strong>的函式，只需要一句話就足夠：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_internal_user</span>(<span class="params">email</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;判斷電子郵件是否為內部使用者&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> email.endswith(<span class="string">&quot;@company.com&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這樣的 Docstring 雖然簡單，卻仍比沒有好。</p>
-<p>這段主旨的文眼在於「判斷」二字，它直接說明了程式的行為與意圖，別人一眼就能「確信」這個函式<strong>打算做什麼</strong>。</p>
+<p>這段主旨的文眼在於「<strong>判斷</strong>」二字，它直接說明了程式的行為與意圖，讓別人一眼就能知曉這個函式<strong>打算做什麼</strong>——判斷並回傳布林值。</p>
 <h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>要寫好一行式的 Docstring 有時並不容易，我們偶爾會陷入<strong>過於細節的描述</strong>，以下是個不太好的示範：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;透過 SQL 查詢比對用戶的電子郵件是否為內部使用者&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>這種寫法就太底層了，提到了那些<strong>不必要的細節</strong>（SQL 查詢），容易讓人分心。</p>
-<p>Docstring 應描述高階意圖，而非內部細節。</p>
+<p>Docstring 應描述<strong>高階意圖</strong>，而非內部細節。</p>
 <hr>
 <h2 id="二、主旨-說明（加上-context，讓人看得懂用在什麼情境）"><a href="#二、主旨-說明（加上-context，讓人看得懂用在什麼情境）" class="headerlink" title="二、主旨 + 說明（加上 context，讓人看得懂用在什麼情境）"></a>二、主旨 + 說明（加上 context，讓人看得懂用在什麼情境）</h2><p>當函式稍微複雜，或有特定使用情境時，可以有更多的<strong>說明</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">clear_user_session</span>(<span class="params">user_id</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    清除使用者的登入狀態</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    注意：此操作會立即登出使用者，需要重新登入</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
@@ -272,23 +272,24 @@
 <h3 id="說明的變化與彈性"><a href="#說明的變化與彈性" class="headerlink" title="說明的變化與彈性"></a>說明的變化與彈性</h3><p>說明沒有一定規則，重點在於補充那些「使用者<strong>不容易自行推測</strong>」的資訊。</p>
 <p>你覺得<strong>最需要提醒使用者（開發者）什麼</strong>，就寫下這些內容。</p>
 <p>只要能幫助他人更好理解，怎麼寫都可以。</p>
-<p>對於複雜的情境，說明可能會很長，這是正常的！</p>
+<p>對於複雜的情境，說明<strong>可能會很長</strong>（常見於開源專案的 Docstring），這是正常的！</p>
 <hr>
 <h2 id="3-主旨-參數與回傳"><a href="#3-主旨-參數與回傳" class="headerlink" title="3. 主旨 + 參數與回傳"></a>3. 主旨 + 參數與回傳</h2><p>若函式有多個參數，清楚列出參數與回傳型態與說明，能大幅降低理解門檻。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_discounted_price</span>(<span class="params">original_price, discount_rate</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    計算折扣後的價格</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        original_price (float): 原價</span></span><br><span class="line"><span class="string">        discount_rate (float): 折扣率，介於 0 到 1 之間</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        float: 折扣後的價格</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> original_price * (<span class="number">1</span> - discount_rate)</span><br></pre></td></tr></table></figure>
 
 <p>這個第三層次，大概是我們寫 Docstring 時<strong>最常使用的格式</strong>！</p>
-<p>函式的參數與回傳，是最容易讓人感到困惑的地方。</p>
+<p>函式的<strong>參數與回傳</strong>，是最容易讓人感到困惑的地方。</p>
 <p>我們可以想像：同事寫了一個共用函式，現在你要去調用它，你肯定需要知道，它應該有什麼樣的 input，以及調用之後會得到<strong>什麼樣的結果</strong>。</p>
 <p>如果不清楚這些，根本無法正常使用這個函式。</p>
 <p>因此，在有參數的函式裡，每個參數代表什麼，包括參數型別，都很重要。</p>
-<p>Docstring 的價值在這裡得到了充分發揮。</p>
+<p><strong>Docstring 的價值在這裡得到了充分發揮。</strong></p>
 <h3 id="說明的轉換"><a href="#說明的轉換" class="headerlink" title="說明的轉換"></a>說明的轉換</h3><p>細心的你可能發現了，這個例子沒有一段獨立的說明。</p>
 <p>原因很簡單，在這個地方的說明，<strong>已經化為了對 input 跟 output 的闡釋。</strong></p>
 <p>額外再寫一段說明，可能會有些冗餘。（但也不盡然）</p>
 <p>這裡只是要提醒，在這種有參數的情境下，說明落段往往會被省略。 </p>
 <hr>
-<h2 id="四、主旨-說明-參數與回傳-範例"><a href="#四、主旨-說明-參數與回傳-範例" class="headerlink" title="四、主旨 + 說明 + 參數與回傳 + 範例"></a>四、主旨 + 說明 + 參數與回傳 + 範例</h2><p>有了舉例，就算不清楚函式細節，也能迅速理解它的用途與結果。</p>
+<h2 id="四、主旨-說明-參數與回傳-範例"><a href="#四、主旨-說明-參數與回傳-範例" class="headerlink" title="四、主旨 + 說明 + 參數與回傳 + 範例"></a>四、主旨 + 說明 + 參數與回傳 + 範例</h2><p>第四層次的重點是<strong>舉例</strong>。</p>
+<p>有了舉例，就算不清楚函式細節，也能迅速理解它的用途與結果。</p>
 <p>這個場景中，資料庫裡面有一個欄位已經儲存了格式化過的 Mac 地址，長這樣：<code>1234567890AB</code>。</p>
 <p>我們要從 API 回傳給前端的時候，需要做一些處理，它讓變成這樣：<code>12 34 56 78 90 AB</code>。</p>
 <p>它真正的邏輯只有這一行：</p>
