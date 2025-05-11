@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-11T08:05:21+08:00" />
+  <meta property="article:modified_time" content="2025-05-11T08:06:34+08:00" />
 
 
 
@@ -266,7 +266,7 @@
 <p><strong>而 Poetry 就是為了解決它們而生。</strong></p>
 <hr>
 <h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><blockquote>
-<p><code>2025/05/11</code>：為縮減篇幅、方便讀者回顧，我將關於 pip 相依性管理缺陷的背景與實例細節，移至這個 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。</p>
+<p><code>2025/05/11</code>：為縮減篇幅、方便讀者回顧，我將關於 pip 相依性管理缺陷的背景與實例細節，移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。</p>
 </blockquote>
 <p>簡言之，直接 pip 手動移除依賴套件存在下列兩大疑慮，不建議輕易嘗試：</p>
 <h4 id="一、不確定想移除的套件「有多少依賴套件」"><a href="#一、不確定想移除的套件「有多少依賴套件」" class="headerlink" title="一、不確定想移除的套件「有多少依賴套件」"></a>一、不確定想移除的套件「有多少依賴套件」</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
