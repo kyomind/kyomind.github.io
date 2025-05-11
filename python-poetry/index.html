@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-04-27T01:39:43+08:00" />
+  <meta property="article:modified_time" content="2025-05-11T08:05:21+08:00" />
 
 
 
@@ -181,7 +181,7 @@
         <span class="post-time">
           2022-04-06
         </span><span class="post-update">
-            →  2024-06-17
+            →  2025-05-11
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -196,7 +196,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"><span class="cap">by Feifei Ruan on Behance</span></p>
 <blockquote>
-<p><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<a href="/python-poetry/#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a>」相關部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。<br><code>2024/03/13</code>：補充<a href="#%E7%AF%84%E4%BE%8B-repository">範例 repository</a> 作為具體參考。<br><code>2024/01/09</code>：重新修訂「<a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a>」章節。具體說明 <strong>Poetry 解決的兩大痛點</strong>。<br><code>2024/01/05</code>：新增「<a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件版本範圍</a>」章節。<br><code>2023/12/30</code>：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」章節。</p>
+<p><code>2025/05/11</code>：將「<a href="/python-poetry/#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a>」大部分內容移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。<br><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<a href="/python-poetry/#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a>」相關部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。<br><code>2024/03/13</code>：補充<a href="#%E7%AF%84%E4%BE%8B-repository">範例 repository</a> 作為具體參考。<br><code>2024/01/09</code>：重新修訂「<a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a>」章節。具體說明 <strong>Poetry 解決的兩大痛點</strong>。<br><code>2024/01/05</code>：新增「<a href="#%E6%8C%87%E5%AE%9A%E5%A5%97%E4%BB%B6%E3%80%8C%E7%89%88%E6%9C%AC%E3%80%8D%E7%AF%84%E5%9C%8D">指定套件版本範圍</a>」章節。<br><code>2023/12/30</code>：重新修訂「<a href="#%E5%AE%89%E8%A3%9D-Poetry">安裝 Poetry</a>」章節。</p>
 </blockquote>
 <blockquote>
 <p>相關文章：<a href="/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
@@ -213,7 +213,6 @@
 </blockquote>
 <h3 id="本文定位：獻給-Poetry-新手的使用說明書"><a href="#本文定位：獻給-Poetry-新手的使用說明書" class="headerlink" title="本文定位：獻給 Poetry 新手的使用說明書"></a>本文定位：獻給 Poetry 新手的使用說明書</h3><p>有鑑於 Poetry 真的有點複雜，如果要推薦別人使用，我想還是有必要好好介紹一下。換句話說，這會是一篇<strong>完整的入門教學</strong>。</p>
 <span id="more"></span>
-
 
 <p>本文除了講解如何使用 Poetry，還會先<strong>不厭其煩地闡述它所解決的痛點</strong>，如果對此興趣有限，可以直接跳到「<a href="#%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8-Poetry">從零開始使用 Poetry</a>」章節，但看完前導部分，相信能更加體會 Poetry 的<strong>必要性與強大</strong>之處。</p>
 <p>為了讓你<strong>無痛上手</strong>，這將會是一篇超過 8000 字的長文，還請多多擔待。🙏</p>
@@ -266,48 +265,9 @@
 <p>這兩大問題，都是 pip 所無法解決的，也是 Python 開發上的<strong>兩大痛點</strong>。</p>
 <p><strong>而 Poetry 就是為了解決它們而生。</strong></p>
 <hr>
-<h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><p>大概在 2 年前就聽過 Poetry 的大名，不過那時我還沒有套件相依性管理的強烈需求，加上看起來需要一些學習成本（確實如此），所以就一直擱在一旁，直到真正體會到了 pip 的不足。</p>
-<p>pip 是 Python 內建的套件管理工具，而它的最大罩門，就是對於「套件間的相依性管理」能力不足。尤其是在「<strong>移除</strong>」套件時的依賴解析——可以說沒有。這也是我提議改用 Poetry 的根本原因。</p>
-<p>怎麼說？看完下面的例子就能明白。</p>
-<h3 id="pip-uninstall的困境：以-Flask-為例"><a href="#pip-uninstall的困境：以-Flask-為例" class="headerlink" title="pip uninstall的困境：以 Flask 為例"></a><code>pip uninstall</code>的困境：以 Flask 為例</h3><p>假設現在你的工作專案中有開發 API 的需求，經過一番研究與討論，決定使用 <a target="_blank" rel="noopener" href="https://github.com/pallets/flask">Flask</a> 網頁框架來進行開發。</p>
-<p>我們知道，很多套件都有依賴的套件，也就是使用「別人已經造好的輪子」來構成套件功能的一部分。</p>
-<p>安裝主套件時，這些依賴套件也<strong>必須一併安裝，主套件才能正常運作</strong>，這裡的 Flask 就是如此。安裝 Flask 時，不會只安裝單一個<code>flask</code>套件，還會安裝所有 Flask 的必要構成部分——也就是依賴套件，結果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">❯ pip install flask</span><br><span class="line">Collecting flask</span><br><span class="line">  Downloading Flask-2.1.1-py3-none-any.whl (95 kB)</span><br><span class="line">     |████████████████████████████████| 95 kB 993 kB/s</span><br><span class="line">...</span><br><span class="line">Installing collected packages: zipp, MarkupSafe, Werkzeug, Jinja2, itsdangerous, importlib-metadata, click, flask</span><br><span class="line">Successfully installed Jinja2-3.1.1 MarkupSafe-2.1.1 Werkzeug-2.1.1 click-8.1.2 flask-2.1.1 importlib-metadata-4.11.3 itsdangerous-2.1.2 zipp-3.7.0</span><br></pre></td></tr></table></figure>
-
-<p>從上可知，<code>pip install flask</code>還會一併安裝<code>importlib-metadata</code>、<code>itsdangerous</code>等 7 個依賴套件，實際上總共安裝了 8 個套件！</p>
-<p>可以說，pip 在「安裝」套件時的相依性管理還是可以的，這並不難，因為套件的依賴要求都寫在安裝檔裡了，根本不需要「管理」。</p>
-<hr>
-<p>附帶一提，這 8 個套件包括<code>flask</code>，除了<code>importlib-metadata</code>和<code>zipp</code>外，其餘 6 個實際上都是由 <a target="_blank" rel="noopener" href="https://palletsprojects.com/p/">Flask 團隊自行開發</a>。</p>
-<p><strong>但並非只有 Flask 框架會使用（依賴）這些套件。</strong></p>
-<p>比如其中的 <a target="_blank" rel="noopener" href="https://palletsprojects.com/p/click/">Click</a> 就是一個<strong>被廣泛使用的命令列製作工具</strong>。套件官網是這麼介紹的：</p>
-<blockquote>
-<p>Click is a Python package for <strong>creating beautiful command line interfaces</strong> in a composable way with as little code as necessary.</p>
+<h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><blockquote>
+<p><code>2025/05/11</code>：為縮減篇幅、方便讀者回顧，我將關於 pip 相依性管理缺陷的背景與實例細節，移至這個 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。</p>
 </blockquote>
-<p>別的套件也可能依賴<code>click</code>來提供命令列的功能，換句話說，主套件的依賴套件也可能被其他第三方套件所依賴、使用。<strong>這就產生了「衝突」的可能。</strong></p>
-<hr>
-<p>好，一切都很美好，就這樣一年過去，團隊決定改用火紅的 FastAPI 取代 Flask 來實作專案的 API，作為 API 的主要開發人員，你對新技術充滿了期待（或排斥），興高采列地安裝了 FastAPI，更新了所有程式碼，最後要移除 Flask，這時問題就來了。</p>
-<p>安裝 Flask 的時候，我們只需要<code>pip install flask</code>，pip 就會幫你一併安裝所有依賴套件。現在要移除它，也只要<code>pip uninstall flask</code>就可以了嗎？</p>
-<blockquote>
-<p><strong>很遺憾，答案是否定的</strong>。</p>
-</blockquote>
-<h3 id="pip-的致命缺陷：缺乏移除套件時的相依性管理"><a href="#pip-的致命缺陷：缺乏移除套件時的相依性管理" class="headerlink" title="pip 的致命缺陷：缺乏移除套件時的相依性管理"></a>pip 的致命缺陷：缺乏移除套件時的相依性管理</h3><p>僅執行<code>pip uninstall flask</code>的話，pip 就<strong>真的只會</strong>幫你移除<code>flask</code>這個套件<strong>本身</strong>而已。那剩下的、再也用不到的套件怎麼辦？你只能一個一個手動移除！</p>
-<p>但你千萬不要真的嘗試手動移除依賴套件！——因為你無法確定這些依賴套件<strong>是否同時被別的套件所依賴</strong>。</p>
-<p>也就是 pip 做不到上面「<a href="#%E5%A5%97%E4%BB%B6%E7%9A%84%E3%80%8C%E7%9B%B8%E4%BE%9D%E6%80%A7%E7%AE%A1%E7%90%86%E3%80%8D%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89">套件的相依性管理</a>」中的<strong>第一點</strong>：<strong>移除套件時的相依性管理</strong>。（其實第二點也做不到，但這裡先不談）</p>
-<h3 id="pip-手動移除依賴套件的潛在風險：以-Flask-Black-為例"><a href="#pip-手動移除依賴套件的潛在風險：以-Flask-Black-為例" class="headerlink" title="pip 手動移除依賴套件的潛在風險：以 Flask + Black 為例"></a>pip 手動移除依賴套件的潛在風險：以 Flask + Black 為例</h3><p>繼續以 Flask 為例，還記得其中一個依賴套件是<code>click</code>，如前所述，它是一個協助製作命令列界面的工具。</p>
-<p>假設專案中已同時安裝了 <a target="_blank" rel="noopener" href="https://github.com/psf/black">Black</a> 這個 formatter，Black 是一個可以透過 CLI 指令執行的格式化工具，<strong>剛好，它也是使用<code>click</code>來實作命令列功能。</strong></p>
-<blockquote>
-<p><strong>Black Formatter</strong> 相關文章：</p>
-<ul>
-<li><a href="https://blog.kyomind.tw/black-and-isort/">試用從 Python extension 拆分的 Black、isort 套件</a></li>
-<li><a href="https://blog.kyomind.tw/flake8-and-black/">Python Flake8 與 Black Formatter 擴充套件快速上手</a></li>
-</ul>
-</blockquote>
-<p>我們可以藉由 Poetry 指令來查看，目前這兩個套件的<strong>依賴關係狀態</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── mypy-extensions &gt;=0.4.3</span><br><span class="line">├── pathspec &gt;=0.9.0</span><br><span class="line">├── platformdirs &gt;=2</span><br><span class="line">├── tomli &gt;=1.1.0</span><br><span class="line">└── typing-extensions &gt;=3.10.0.0</span><br><span class="line">flask 2.1.2 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br></pre></td></tr></table></figure>
-
-<p>可以明顯看出，<strong>兩者都依賴了<code>click</code>套件</strong>。</p>
-<p>可想而知，移除 Flask 時，如果你同時把<code>click</code>也<strong>跟著一併手動移除</strong>，會發生什麼樣的悲劇——<strong>你的 Black 壞了</strong>——因為它缺少了必要的依賴套件<code>click</code>。</p>
-<hr>
 <p>簡言之，直接 pip 手動移除依賴套件存在下列兩大疑慮，不建議輕易嘗試：</p>
 <h4 id="一、不確定想移除的套件「有多少依賴套件」"><a href="#一、不確定想移除的套件「有多少依賴套件」" class="headerlink" title="一、不確定想移除的套件「有多少依賴套件」"></a>一、不確定想移除的套件「有多少依賴套件」</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ pip show flask</span><br><span class="line">Name: Flask</span><br><span class="line">Version: 2.1.1</span><br><span class="line">Summary: A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">Home-page: https://palletsprojects.com/p/flask</span><br><span class="line">Author: Armin Ronacher</span><br><span class="line">Author-email: armin.ronacher@active-4.com</span><br><span class="line">License: BSD-3-Clause</span><br><span class="line">Location: /Users/kyo/.pyenv/versions/3.8.12/envs/test/lib/python3.8/site-packages</span><br><span class="line">Requires: importlib-metadata, Werkzeug, click, Jinja2, itsdangerous</span><br><span class="line">Required-by:</span><br></pre></td></tr></table></figure>
