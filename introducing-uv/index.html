@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Python 套件管理器 uv 介紹——與 Poetry 比較">
+  <meta property="og:title" content="Python 套件管理器 uv 介紹——與 Poetry 比較"><meta name="twitter:description" content="這篇文章將介紹 uv 的背景、特點，以及和 Poetry 的比較，幫助你評估是否要轉向這個新工具。">
+  <meta property="og:description" content="這篇文章將介紹 uv 的背景、特點，以及和 Poetry 的比較，幫助你評估是否要轉向這個新工具。"><meta name="twitter:image" content="https://i.imgur.com/8qdJkr4.png">
+  <meta property="og:image" content="https://i.imgur.com/8qdJkr4.png">
+<meta name="description" content="這篇文章將介紹 uv 的背景、特點，以及和 Poetry 的比較，幫助你評估是否要轉向這個新工具。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-05-18T13:42:59+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-05-18T13:07:27+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/introducing-uv/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Python 套件管理器 uv 介紹——與 Poetry 比較 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (53)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Python 套件管理器 uv 介紹——與 Poetry 比較
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-05-18
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E7%9A%84%E7%8F%BE%E6%B3%81%E8%88%87%E6%8C%91%E6%88%B0"><span class="toc-text">Python 套件管理的現況與挑戰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uv-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="toc-text">uv 是什麼？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E5%8B%A2%E4%B8%80%EF%BC%9A%E5%BE%8C%E7%99%BC%E5%84%AA%E5%8B%A2%E8%88%87%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="toc-text">優勢一：後發優勢與透明度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E5%8B%A2%E4%BA%8C%EF%BC%9A%E6%9B%B4%E5%BF%AB%E3%80%81%E6%9B%B4%E7%B0%A1%E5%96%AE"><span class="toc-text">優勢二：更快、更簡單</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%84%AA%E5%8B%A2%E4%B8%89%EF%BC%9A%E5%8C%85%E5%90%AB%E4%BA%86-Python-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="toc-text">優勢三：包含了 Python 版本管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E8%A6%81%E5%AD%B8-uv-%E5%97%8E%EF%BC%9F%E4%B8%89%E7%A8%AE%E8%AE%80%E8%80%85%E6%83%85%E5%A2%83%E5%88%86%E6%9E%90"><span class="toc-text">我要學 uv 嗎？三種讀者情境分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/8qdJkr4.png"></p>
+<p>3 年前，我寫了這篇〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉，它成為了本站最受歡迎的文章之一。</p>
+<p>隨著 Python 開發生態的發展，新的工具不斷湧現，你可能已經聽過，我們今天要介紹的主角——Astral 的 uv。</p>
+<p>之前有讀者希望我介紹 uv，但因為沒有急迫需求，所以一直拖到最近才開始嘗試。</p>
+<p>這幾天，我終於在 side project 中開始使用它，因此有了初步的心得。</p>
+<p>這篇文章將先介紹 uv 的背景、特點，以及<strong>和 Poetry 的比較</strong>（這是我最在乎的，也是所有習慣 Poetry 的讀者可能感興趣的），幫助你評估是否要轉向這個新工具。</p>
+<p>至於教學，我會在下一篇文章中分享 uv 的實際使用方式，包括安裝、專案初始化、依賴管理等操作，協助你快速上手。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Python-套件管理的現況與挑戰"><a href="#Python-套件管理的現況與挑戰" class="headerlink" title="Python 套件管理的現況與挑戰"></a>Python 套件管理的現況與挑戰</h2><p>在 Python 開發生態中，<code>pip</code>和<code>virtualenv</code>在過去很長一段時間裡，都是套件安裝與虛擬環境管理的主流工具。</p>
+<p>然而，隨著專案規模的擴大與需求的多樣化，這些工具逐漸暴露出一些限制，例如安裝速度慢、依賴衝突難以解決，以及缺乏統一的專案管理流程。</p>
+<p>為了解決這些問題，社群中出現了如 <code>pip-tools</code>、<code>pipenv</code> 和 <code>poetry</code> 等工具，試圖提供更完善的解決方案。</p>
+<p>這些工具在一定程度上改善了套件管理的體驗，但也引入了<strong>新的學習曲線和複雜度</strong>。</p>
+<p>讓人不禁羨慕起 Rust 的 <a target="_blank" rel="noopener" href="https://github.com/rust-lang/cargo">Cargo</a> 套件管理器——唯一的選擇，而且體驗絕佳。</p>
+<h3 id="該如何選擇？"><a href="#該如何選擇？" class="headerlink" title="該如何選擇？"></a>該如何選擇？</h3><p>總之，我們不得不選擇，而且<strong>沒有一個完全壓倒性的方案</strong>——這是 Python 生態的一大特色XD</p>
+<p>過去我選擇了 Poetry，現在則開始嘗試 uv。</p>
+<p>本文記錄我的<strong>思路與心得</strong>，讓你可以根據自己的需求做出判斷。</p>
+<hr>
+<h2 id="uv-是什麼？"><a href="#uv-是什麼？" class="headerlink" title="uv 是什麼？"></a>uv 是什麼？</h2><p><a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv">uv</a> 是由 <a target="_blank" rel="noopener" href="https://astral.sh/">Astral</a> 團隊開發的一款現代化 Python 專案打包（packing）與套件管理工具。</p>
+<p>乍聽之下，它做的事和 <a target="_blank" rel="noopener" href="https://python-poetry.org/">Poetry</a> 大小同異——確實如此，只是更加<strong>包山包海</strong>，並且是用 Rust 寫的。</p>
+<p>就像同為 Astral 出品的 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/">Ruff</a>，它們的共同目標都是成為該領域的「<strong>唯一選擇</strong>」XD</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+</blockquote>
+<p>而且從目前的趨勢看起來，似乎很有機會！</p>
+<h3 id="uv-的核心特點"><a href="#uv-的核心特點" class="headerlink" title="uv 的核心特點"></a>uv 的核心特點</h3><p>uv 作為一個現代化的 Python 套件管理工具，具有以下幾個核心特點：</p>
+<ul>
+<li><strong>高效能</strong>：uv 在套件安裝與依賴解析方面比傳統工具快上 10 到 100 倍。</li>
+<li><strong>整合式工具</strong>：結合了打包、套件管理、虛擬環境管理、<strong>Python 版本管理</strong>等功能。其中 Python 版本管理是 uv 的一大特色，意味著你不必再搭配<code>pyenv</code>等工具。</li>
+<li><strong>跨平台支援</strong>：支援 macOS、Linux 和 Windows，適用於多種開發環境。雖然是 Rust 寫的，但你無須擔心環境設定與安裝問題。</li>
+</ul>
+<p>uv 的特點很多，作為使用者，我必須要找到一些<strong>具體切入點</strong>，來作為是否使用的判斷依據。</p>
+<hr>
+<p>因此，身為一個 Poetry 長期使用者，我自然會更關心它<strong>相對於 Poetry 有哪些優勢、是否值得我學習並轉向這個新工具</strong>。</p>
+<p>經過幾天的嘗試，我認為 uv 相較於 Poetry 具備三個主要優勢。</p>
+<h2 id="優勢一：後發優勢與透明度"><a href="#優勢一：後發優勢與透明度" class="headerlink" title="優勢一：後發優勢與透明度"></a>優勢一：後發優勢與透明度</h2><p>uv 比較晚出現，所以它的「<strong>歷史包袱</strong>」遠比 Poetry 要少得多。</p>
+<p>Poetry 在 2018 年開始發展，這意味著它需要考慮到許多舊版的相容問題。而且很多時候，Poetry 團隊<strong>直接選擇不相容</strong>——而且也沒有充分說明，然後被社群罵爆。</p>
+<p>例如，某個 minor&#x2F;patch release 引入了不向後相容的變更，導致 CI&#x2F;CD 流程或 Docker 容器重建失敗。</p>
+<p>這類事件讓部分使用者對 Poetry 的版本管理失去信心。</p>
+<p>我從 1.1.x 開始使用，幾乎每個大版本都會有一些惱人 breaking change🤬</p>
+<p>uv 不止比較新，而且在 breaking change 的透明度和文件化方面，看起來比 Poetry 更謹慎。</p>
+<hr>
+<h2 id="優勢二：更快、更簡單"><a href="#優勢二：更快、更簡單" class="headerlink" title="優勢二：更快、更簡單"></a>優勢二：更快、更簡單</h2><p>uv 用 Rust 寫的，這意味著它在性能上有著天然的優勢。</p>
+<p>本來我覺得這不算很重要的事情，畢竟套件的安裝、依賴解析等操作，通常不會頻繁發生。</p>
+<p>但實際上，這些操作的速度差異還是會影響到<strong>開發者的體驗</strong>。</p>
+<p>如果考慮到 CI&#x2F;CD 流程，差異就更明顯了。</p>
+<h3 id="更簡單的指令設計"><a href="#更簡單的指令設計" class="headerlink" title="更簡單的指令設計"></a>更簡單的指令設計</h3><p>我一直覺得，Poetry 的指令設計有些複雜，而且太多了！</p>
+<p>uv 則相對好一些（雖然還是不少），子命令的設計也更為<strong>直觀</strong>，例如 <code>uv python</code>、<code>uv pip</code>等。</p>
+<p>這裡我覺得「更簡單」的主要意思是：uv 在日常操作下的<strong>常用指令更少、更精簡</strong>。</p>
+<hr>
+<h2 id="優勢三：包含了-Python-版本管理"><a href="#優勢三：包含了-Python-版本管理" class="headerlink" title="優勢三：包含了 Python 版本管理"></a>優勢三：包含了 Python 版本管理</h2><p>事實上，不止 Python 的套件管理生態是一鍋大雜燴，Python 的版本管理生態也是。</p>
+<p>什麼 Anaconda、pyenv，甚至是 Docker，都可以用來管理 Python 環境。</p>
+<p>太煩了！</p>
+<p>尤其在使用 Poetry 建立虛擬環境時，你很可能會遇到<strong>無法精確控制</strong>它用哪個 Python 版本的情況。</p>
+<p>為此我又寫了這篇〈<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a>〉——這實在是無奈之舉。</p>
+<p>uv 的一大特色是內建了 Python 版本管理功能，你可以直接透過它<strong>下載與管理不同的 Python</strong> 版本，無需額外安裝<code>pyenv</code>或其他工具。</p>
+<p>省去這個 Python 版本指定的麻煩，讓我在使用 uv 時感覺輕鬆許多。</p>
+<hr>
+<h2 id="我要學-uv-嗎？三種讀者情境分析"><a href="#我要學-uv-嗎？三種讀者情境分析" class="headerlink" title="我要學 uv 嗎？三種讀者情境分析"></a>我要學 uv 嗎？三種讀者情境分析</h2><p>在了解了 uv 的三個主要優勢後，接下來我們可以根據不同的使用情境，來探討它是否適合你的需求。</p>
+<p>以下是我給下列三種讀者的建議。</p>
+<h3 id="1-只用過pip"><a href="#1-只用過pip" class="headerlink" title="1. 只用過pip"></a>1. 只用過<code>pip</code></h3><p>不用說，這個年代只有<code>pip</code>肯定是不夠的，而此時此刻要學一個能夠長久使用的套件管理工具，我應該還是會推薦 uv。（而不是 Poetry）</p>
+<h3 id="2-正在使用-Poetry，覺得還行"><a href="#2-正在使用-Poetry，覺得還行" class="headerlink" title="2. 正在使用 Poetry，覺得還行"></a>2. 正在使用 Poetry，覺得還行</h3><p>學習新的 Python 套件管理工具的「<strong>認知成本</strong>」並不低，如果沒有實際需求，<strong>維持現狀</strong>也不失為一個好選擇。</p>
+<h3 id="3-已經使用-Poetry，但有很多不滿"><a href="#3-已經使用-Poetry，但有很多不滿" class="headerlink" title="3. 已經使用 Poetry，但有很多不滿"></a>3. 已經使用 Poetry，但有很多不滿</h3><p>如果上述 uv 相對 Poetry 的優勢，正好是你不滿的地方，則可以認真考慮轉向 uv。</p>
+<h3 id="我的選擇"><a href="#我的選擇" class="headerlink" title="我的選擇"></a>我的選擇</h3><p>我目前在工作上還是使用 Poetry，所以沒辦法直接捨棄它。</p>
+<p>不過，預計未來個人專案應該都會轉向 uv。</p>
+<p>要說理由，對我來說核心理由<strong>只有一個</strong>，就是<strong>它包含了 Python 版本的管理</strong>。</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>綜上所述，uv 相較於 Poetry，確實有它<strong>令人心動</strong>的地方。</p>
+<p>無論你是剛接觸 Python 套件管理的新手，還是對現有工具感到不滿的進階使用者，uv 都是一個值得嘗試的選擇。</p>
+<p>在下一篇文章中，我將進一步介紹 uv 的實際使用方式，包含安裝、專案初始化、依賴管理等操作，幫助你快速上手這個新工具。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="Python 開發：pyproject.toml 介紹 + 使用教學" rel="bookmark">Python 開發：pyproject.toml 介紹 + 使用教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="Python 套件管理器——Poetry 完全入門指南" rel="bookmark">Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/poetry-pyenv-practical-tips/" title="Poetry + pyenv 教學：常用指令與注意事項" rel="bookmark">Poetry + pyenv 教學：常用指令與注意事項</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Poetry/">Poetry</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/python-docstring/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">寫好 Python Docstring 的 4 個層次——從簡單到詳細</span>
+        <span class="prev-text nav-mobile">寫好 Python Docstring 的 4 個層次——從簡單到詳細</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">53</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">39</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
