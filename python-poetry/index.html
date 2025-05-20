@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-15T12:02:52+08:00" />
+  <meta property="article:modified_time" content="2025-05-20T14:53:20+08:00" />
 
 
 
@@ -253,10 +253,9 @@
 <li>套件的打包與發布</li>
 </ul>
 <p>其中<strong>最為關鍵</strong>的是「<strong>套件的相依性管理</strong>」，也是本文的重點，而「套件的打包與發布」與本文主題無關，所以不會提及。</p>
-<h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>開始前，要先大致說明下列三者的區別，才不易混淆文中的內容。這裡的定義可能不盡準確，但至少對理解文中的表達能有所幫助。</p>
+<h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>開始前，要先大致說明下列三者的區別，才不易混淆文中的內容。</p>
 <h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>指的是使用內建的 venv 或 virtualenv 套件來建立及管理 Python 的虛擬環境，不同的虛擬環境間各自獨立，也就是<strong>對應的路徑</strong>各不相同。</p>
 <h3 id="套件管理（dependency-management）"><a href="#套件管理（dependency-management）" class="headerlink" title="套件管理（dependency management）"></a>套件管理（dependency management）</h3><p>指的是使用 pip 這類的套件管理器來管理 Python 環境（未必是虛擬環境），即管理環境中所安裝的全部套件（package、dependency）及其版本。</p>
-<p>在這個<strong>語境</strong>下，<strong>dependency</strong> 基本上就是你安裝的<strong>套件（package）</strong>。</p>
 <h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>這個有點難定義，因為它不是一個很有共識的名詞，我在英文中也難找到對應的單字。這裡指<strong>管理套件之間的「依賴關係」及「版本衝突」這兩件事</strong>：</p>
 <ol>
 <li><strong>依賴關係</strong>指的是，當一個套件被安裝時，它所依賴的套件也必須<strong>一併安裝</strong>（這個很簡單）。反之，當一個套件被移除時，它所依賴的套件也必須<strong>一併移除——除非這些套件還被其他套件所依賴（這個就比較複雜了）。</strong></li>
@@ -281,10 +280,9 @@
 <h3 id="pip-替代方案選擇——Pipenv-vs-Poetry"><a href="#pip-替代方案選擇——Pipenv-vs-Poetry" class="headerlink" title="pip 替代方案選擇——Pipenv vs Poetry"></a>pip 替代方案選擇——Pipenv vs Poetry</h3><p>考慮內容時效性與縮減篇幅，本段及「<strong>選擇 Poetry 的兩個理由</strong>」已移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion</a>。</p>
 <h3 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h3><p>好，漫長的前言到此結束，讓我們進入正題，開始上手學習 Poetry。</p>
 <blockquote>
-<p><code>2023/04/08</code>：本文最初創作於 Poetry 版本 1.1.19 時期，目前最新版為 1.4.x，部分指令的參數可能略有變動（但不影響理解），請以官方文件為準。</p>
+<p><code>2023/04/08</code>：本文最初創作於 Poetry 版本 1.1.19 時期，部分指令已有變動，請以官方文件為準。</p>
 </blockquote>
-<p>本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，建議參考官方文件內容修正。</p>
-<p>不過，即使有問題，應該也是集中在安裝與設定階段，其餘部分仍可適用。</p>
+<p>本文主要以 macOS 和 Linux（Ubuntu）環境來進行安裝及教學，Windows 用戶如果有無法順利安裝的情況，可參考官方文件內容修正。</p>
 <h2 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h2><blockquote>
 <p><code>2023/12/30</code>：之前把安裝分為「全域」和「pip 安裝」兩種，具有一定<strong>誤導性</strong>。加上官方文件後來也更新了<code>pipx</code>安裝方式，所以本段重新修訂。</p>
 </blockquote>
@@ -321,11 +319,8 @@
 </ul>
 <p>以 macOS 為例，如果要下<code>poetry</code>指令，就需要打完整路徑<code>$HOME/.local/bin/poetry</code>，顯然不太方便，所以我們需要設定 PATH。</p>
 <hr>
-<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p>如果你選擇<code>pipx</code>安裝 Poetry，原則上不需要設定 PATH，因為<code>pipx</code>會自動幫你設定——難怪官方把<code>pipx</code>安裝方式放在分頁的首位。</p>
-<p>如果你選擇「<strong>official installer 安裝」，那這一步非常重要</strong>，我們<strong>必須先「手動設定」PATH</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
-<blockquote>
+<h2 id="設定-PATH-環境變數"><a href="#設定-PATH-環境變數" class="headerlink" title="設定 PATH 環境變數"></a>設定 PATH 環境變數</h2><p>如果你選擇「<strong>official installer 安裝」，那這一步非常重要</strong>，我們<strong>必須先「手動設定」PATH</strong>，否則作業系統不知道<code>poetry</code>指令的執行檔在哪，根本<strong>無法使用</strong>。</p>
 <p>至於 PATH 是什麼，可以參考良葛格這篇〈<a target="_blank" rel="noopener" href="https://openhome.cc/Gossip/JavaEssence/WhatPath.html">PATH 是什麼？</a>〉。</p>
-</blockquote>
 <p>總之，我們要將<code>poetry</code>執行檔所在的路徑（目錄）新增至 PATH。</p>
 <h3 id="在-macOS-或-Linux-上設定-PATH"><a href="#在-macOS-或-Linux-上設定-PATH" class="headerlink" title="在 macOS 或 Linux 上設定 PATH"></a>在 macOS 或 Linux 上設定 PATH</h3><p>使用 macOS 或 Linux，設定 PATH 的步驟相對簡單，只要在<code>.zshrc</code>或<code>.bashrc</code>或<code>.bash_profile</code>新增：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/.local/bin</span><br></pre></td></tr></table></figure>
@@ -400,7 +395,7 @@
 <p>而<code>virtualenvs.in-project = false</code>就是我們要修改的目標，使用指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-<p>好，我們先把之前建立的虛擬環境刪除：</p>
+<p>我們先把之前建立的虛擬環境刪除：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry <span class="built_in">env</span> remove python</span><br><span class="line">Deleted virtualenv: /Users/kyo/Library/Caches/pypoetry/virtualenvs/poetry-demo-IEWSZKSE-py3.8</span><br></pre></td></tr></table></figure>
 
 <p>重新建立，看看行為有何差異：</p>
@@ -411,7 +406,7 @@
 <li>虛擬環境的路徑改為「<strong>專案的根目錄</strong>」。</li>
 <li>名稱固定為<code>.venv</code>。</li>
 </ul>
-<p>我覺得這樣的設定更加簡潔。</p>
+<p>這樣的設定更加簡潔。</p>
 <h3 id="啟動與退出虛擬環境"><a href="#啟動與退出虛擬環境" class="headerlink" title="啟動與退出虛擬環境"></a>啟動與退出虛擬環境</h3><p>啟動虛擬環境，需移至專案目錄底下，使用指令<code>poetry shell</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry shell</span><br><span class="line">Spawning shell within /Users/kyo/Documents/code/poetry-demo/.venv</span><br><span class="line">❯ . /Users/kyo/Documents/code/poetry-demo/.venv/bin/activate</span><br></pre></td></tr></table></figure>
 
@@ -537,12 +532,11 @@
 <p>你可能會想，來自於<code>poetry.lock</code>或虛擬環境，有差嗎？兩者不是應該要一致？</p>
 <p>沒錯，理論上是，但也有不一致的時候，比如你使用了<code>pip install</code>指令安裝套件，就不會記載在<code>poetry.lock</code>中，那<code>poetry show</code>自然也不會顯示。</p>
 <h3 id="「樹狀」顯示套件依賴層級"><a href="#「樹狀」顯示套件依賴層級" class="headerlink" title="「樹狀」顯示套件依賴層級"></a>「樹狀」顯示套件依賴層級</h3><p>Poetry 最為人津津樂道的就是它的樹狀顯示——<code>poetry show --tree</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show --tree</span><br><span class="line">flask 2.1.1 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── mypy-extensions &gt;=0.4.3</span><br><span class="line">├── pathspec &gt;=0.9.0</span><br><span class="line">├── platformdirs &gt;=2</span><br><span class="line">├── tomli &gt;=1.1.0</span><br><span class="line">└── typing-extensions &gt;=3.10.0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show --tree</span><br><span class="line">flask 2.1.1 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>讓主要套件與其依賴套件的<strong>關係與層次，一目了然</strong>。</p>
-<p>而且很貼心的是，它也可以<strong>只顯示「指定套件」</strong>的依賴層級，以<code>celery</code>為例：</p>
+<p>而且很貼心的是，它也可以<strong>只顯示「特定套件」</strong>的依賴層級，以<code>celery</code>為例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show celery --tree</span><br><span class="line">celery 4.4.0 Distributed Task Queue.</span><br><span class="line">├── billiard &gt;=3.6.1,&lt;4.0</span><br><span class="line">├── kombu &gt;=4.6.7,&lt;4.7</span><br><span class="line">│   ├── amqp &gt;=2.6.0,&lt;2.7</span><br><span class="line">│   │   └── vine &gt;=1.1.3,&lt;5.0.0a1</span><br><span class="line">│   └── importlib-metadata &gt;=0.18</span><br><span class="line">│       ├── typing-extensions &gt;=3.6.4</span><br><span class="line">│       └── zipp &gt;=0.5</span><br><span class="line">├── pytz &gt;0.0-dev</span><br><span class="line">└── vine 1.3.0</span><br></pre></td></tr></table></figure>
-
 
 <hr>
 <h2 id="Poetry-移除套件"><a href="#Poetry-移除套件" class="headerlink" title="Poetry 移除套件"></a>Poetry 移除套件</h2><p>使用<code>poetry remove</code>指令。和<code>poetry add</code>一樣，可以加上<code>-D</code>參數來移除置於開發區的套件。</p>
@@ -570,9 +564,6 @@
 <p>預設的輸出結果會有 hash 值，很干擾閱讀。不想納入 hash 則要<strong>加上參數</strong>去除。<strong>以下就是我固定用來輸出<code>requirements.txt</code>的指令與參數：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p><code>2022/08/24</code>補充：網友提醒，<strong>hash 有其價值，並建議保留</strong>，詳見<a target="_blank" rel="noopener" href="https://github.com/kyomind/blog-reply/issues/5#issuecomment-1195904820">留言區</a>。</p>
-</blockquote>
 <p>我們再看一下輸出結果，雖然不盡相同，但也相去不遠了……嗎？等等，怎麼是空白？</p>
 <h3 id="輸出-dev-dependencies"><a href="#輸出-dev-dependencies" class="headerlink" title="輸出 dev-dependencies"></a>輸出 dev-dependencies</h3><p>因為<code>poetry export</code><strong>預設</strong>只會輸出<code>toml</code>中的<code>[tool.poetry.dependencies]</code>區塊的套件！還記得上面我們把 Black 安裝到<code>[tool.poetry.dev-dependencies]</code>了嗎？</p>
 <p>顯然 Poetry 認為你 export 基本上就為了部署，並不需要開發區的套件。</p>
