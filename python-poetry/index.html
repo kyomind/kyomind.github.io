@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-21T13:17:27+08:00" />
+  <meta property="article:modified_time" content="2025-05-22T22:58:32+08:00" />
 
 
 
@@ -196,7 +196,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/3QW32TX.jpg" alt="by Feifei Ruan on Behance"><span class="cap">by Feifei Ruan on Behance</span></p>
 <blockquote>
-<p><code>2025/05/11</code>：將「<a href="/python-poetry/#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a>」大部分內容移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。<br><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<a href="/python-poetry/#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a>」相關部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。<br><code>2024/03/13</code>：補充<a href="#%E7%AF%84%E4%BE%8B-repository">範例 repository</a> 作為具體參考。<br><code>2024/01/09</code>：重新修訂「<a href="#%E5%90%8D%E8%A9%9E%E8%A7%A3%E9%87%8B">名詞解釋</a>」章節。具體說明 <strong>Poetry 解決的兩大痛點</strong>。</p>
+<p><code>2025/05/11</code>：將「<a href="/python-poetry/#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a>」大部分內容移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。<br><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<a href="/python-poetry/#pip-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E9%81%B8%E6%93%87%E2%80%94%E2%80%94Pipenv-vs-Poetry">pip 替代方案選擇——Pipenv vs Poetry</a>」相關部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。</p>
 </blockquote>
 <blockquote>
 <p>相關文章：<a href="/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></p>
@@ -213,8 +213,7 @@
 <h3 id="本文定位：獻給-Poetry-新手的使用說明書"><a href="#本文定位：獻給-Poetry-新手的使用說明書" class="headerlink" title="本文定位：獻給 Poetry 新手的使用說明書"></a>本文定位：獻給 Poetry 新手的使用說明書</h3><p>有鑑於 Poetry 真的有點複雜，如果要推薦別人使用，我想還是有必要好好介紹一下。換句話說，這會是一篇<strong>完整的入門教學</strong>。</p>
 <span id="more"></span>
 
-<p>本文除了講解如何使用 Poetry，還會先<strong>不厭其煩地闡述它所解決的痛點</strong>，如果對此興趣有限，可以直接跳到「<a href="#%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8-Poetry">從零開始使用 Poetry</a>」章節，但看完前導部分，相信能更加體會 Poetry 的<strong>必要性與強大</strong>之處。</p>
-<p>為了讓你<strong>無痛上手</strong>，這將會是一篇超過 8000 字的長文，還請多多擔待。🙏</p>
+<p>本文除了講解如何使用 Poetry，還會先<strong>不厭其煩地闡述它所解決的痛點</strong>，如果興趣有限，可以直接跳到「<a href="#%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8-Poetry">從零開始使用 Poetry</a>」章節。</p>
 <h3 id="範例-repository"><a href="#範例-repository" class="headerlink" title="範例 repository"></a>範例 repository</h3><p>想要善用 Poetry，除了必須了解 Poetry 指令，熟悉<code>pyproject.toml</code>檔案的設定也很重要。</p>
 <p>有關 Poetry 的<code>pyproject.toml</code>具體內容，可以參考這個範例專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">Django-Tutorial</a> 中的<code>pyproject.toml</code>；或直接前往<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/blob/main/pyproject.toml">檔案網址</a>。</p>
 <h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><p>方便快速跳轉到有興趣的部分，桌面版用戶可和右下角的「回到最上方」搭配使用：</p>
@@ -252,32 +251,24 @@
 <li>套件的打包與發布</li>
 </ul>
 <p>其中<strong>最為關鍵</strong>的是「<strong>套件的相依性管理</strong>」，也是本文的重點，而「套件的打包與發布」與本文主題無關，所以不會提及。</p>
-<h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>開始前，要先大致說明下列三者的區別，才不易混淆文中的內容。</p>
-<h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>指的是使用內建的 venv 或 virtualenv 套件來建立及管理 Python 的虛擬環境，不同的虛擬環境間各自獨立，也就是<strong>對應的路徑</strong>各不相同。</p>
-<h3 id="套件管理（dependency-management）"><a href="#套件管理（dependency-management）" class="headerlink" title="套件管理（dependency management）"></a>套件管理（dependency management）</h3><p>指的是使用 pip 這類的套件管理器來管理 Python 環境（未必是虛擬環境），即管理環境中所安裝的全部套件（package、dependency）及其版本。</p>
-<h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>這個有點難定義，因為它不是一個很有共識的名詞，我在英文中也難找到對應的單字。這裡指<strong>管理套件之間的「依賴關係」及「版本衝突」這兩件事</strong>：</p>
-<ol>
-<li><strong>依賴關係</strong>指的是，當一個套件被安裝時，它所依賴的套件也必須<strong>一併安裝</strong>（這個很簡單）。反之，當一個套件被移除時，它所依賴的套件也必須<strong>一併移除——除非這些套件還被其他套件所依賴（這個就比較複雜了）。</strong></li>
-<li>而<strong>版本衝突</strong>，指的是單一套件被兩個以上的套件所依賴，但不同的套件對依賴的套件有著不同的<strong>最低或最高版本要求</strong>，若兩者要求的範圍「<strong>沒有交集</strong>」，則會發生衝突而導致套件<strong>失效</strong>或<strong>無法安裝</strong>。</li>
-</ol>
-<p>這兩大問題，都是 pip 所無法解決的，也是 Python 開發上的<strong>兩大痛點</strong>。</p>
-<p><strong>而 Poetry 就是為了解決它們而生。</strong></p>
+<h2 id="名詞解釋"><a href="#名詞解釋" class="headerlink" title="名詞解釋"></a>名詞解釋</h2><p>為了避免混淆，先說明以下概念。</p>
+<h3 id="虛擬環境管理"><a href="#虛擬環境管理" class="headerlink" title="虛擬環境管理"></a>虛擬環境管理</h3><p>使用 venv 或 virtualenv 等工具，建立獨立的 Python 環境，不同環境間的套件互不影響。</p>
+<h3 id="套件管理（dependency-management）"><a href="#套件管理（dependency-management）" class="headerlink" title="套件管理（dependency management）"></a>套件管理（dependency management）</h3><p>使用 pip 等工具，新增、刪除，管理 Python 環境中的所有套件及其版本。</p>
+<h3 id="套件的「相依性管理」（重要）"><a href="#套件的「相依性管理」（重要）" class="headerlink" title="套件的「相依性管理」（重要）"></a>套件的「相依性管理」（重要）</h3><p>管理套件之間的依賴關係和版本衝突，確保專案的穩定性。</p>
+<p><strong>Poetry 的主要目標，正是解決 pip 在相依性管理上的不足。</strong></p>
 <hr>
 <h2 id="pip-的最大不足"><a href="#pip-的最大不足" class="headerlink" title="pip 的最大不足"></a>pip 的最大不足</h2><blockquote>
 <p><code>2025/05/11</code>：為縮減篇幅、方便讀者回顧，我將關於 pip 相依性管理缺陷的背景與實例細節，移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。</p>
 </blockquote>
 <p>簡言之，直接 pip 手動移除依賴套件存在下列兩大疑慮，不建議輕易嘗試：</p>
-<h4 id="一、不確定想移除的套件「有多少依賴套件」"><a href="#一、不確定想移除的套件「有多少依賴套件」" class="headerlink" title="一、不確定想移除的套件「有多少依賴套件」"></a>一、不確定想移除的套件「有多少依賴套件」</h4><p>正常而言，你不會去注意安裝時總共一併安裝了多少依賴套件。雖然有<code>pip show</code>這類的指令可以大概知曉套件的依賴，但這指令只會顯示「<strong>直接</strong>依賴套件」而不會顯示「依賴套件的依賴」，所以列出來的結果未必準確：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ pip show flask</span><br><span class="line">Name: Flask</span><br><span class="line">Version: 2.1.1</span><br><span class="line">Summary: A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">Home-page: https://palletsprojects.com/p/flask</span><br><span class="line">Author: Armin Ronacher</span><br><span class="line">Author-email: armin.ronacher@active-4.com</span><br><span class="line">License: BSD-3-Clause</span><br><span class="line">Location: /Users/kyo/.pyenv/versions/3.8.12/envs/test/lib/python3.8/site-packages</span><br><span class="line">Requires: importlib-metadata, Werkzeug, click, Jinja2, itsdangerous</span><br><span class="line">Required-by:</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，<code>Requires:</code>只顯示了 5 個依賴套件，因為剩下的 2 個（<code>zipp</code>、<code>markupsafe</code>）是「<strong>依賴的依賴</strong>」，在更下層，並未顯示。</p>
-<h4 id="二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」"><a href="#二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」" class="headerlink" title="二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」"></a>二、即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」</h4><p>好繞口啊！上述的<code>click</code>例子就是解釋這個困境。</p>
-<h3 id="小結：pip-只適合小型專案或「只新增不移除」套件的專案"><a href="#小結：pip-只適合小型專案或「只新增不移除」套件的專案" class="headerlink" title="小結：pip 只適合小型專案或「只新增不移除」套件的專案"></a>小結：pip 只適合小型專案或「只新增不移除」套件的專案</h3><p>以前我的個人或工作上的專案往往規模不大，pip 就真的只負責新增，鮮少需要考慮移除套件的情況，所以缺少移除套件時的依賴解析，似乎也沒什麼大問題。</p>
-<p>但稍具模規的專案往往就需要考慮套件的退場，以維持開發及部署環境的簡潔，尤其在使用容器化部署時，<strong>過多不必要的套件會徒增 image 肥大，產生額外的成本與資源浪費不說，同時也提升了「套件之間發生衝突」的可能。</strong></p>
-<p>然而透過上述的例子可知，僅靠 pip 想要<strong>乾淨移除</strong>過時的套件，且不影響既有的套件，簡直是<strong>不可能的任務！</strong>所以我們需要擁有「<strong>完整套件相依性管理功能</strong>」的套件管理器。</p>
+<ol>
+<li>不確定想移除的套件「有多少依賴套件」</li>
+<li>即使確定依賴套件，也無法確定這些套件「是否還被其他套件所依賴」</li>
+</ol>
+<h3 id="小結：pip-適用於小型專案，但缺乏相依性管理"><a href="#小結：pip-適用於小型專案，但缺乏相依性管理" class="headerlink" title="小結：pip 適用於小型專案，但缺乏相依性管理"></a>小結：pip 適用於小型專案，但缺乏相依性管理</h3><p>對於小型專案或只需新增套件的專案，pip 尚可應付。但當專案規模擴大，需要移除套件以維持環境簡潔時，pip 缺少依賴解析的問題便會浮現。</p>
+<p>尤其在<strong>容器化部署</strong>中，過多不必要的套件會<strong>增加 image 大小、浪費資源，並提高衝突風險</strong>。因此，若要乾淨移除過時套件且不影響其他套件，<strong>完整套件相依性管理</strong>工具是必要的。</p>
 <hr>
-<h3 id="pip-替代方案選擇——Pipenv-vs-Poetry"><a href="#pip-替代方案選擇——Pipenv-vs-Poetry" class="headerlink" title="pip 替代方案選擇——Pipenv vs Poetry"></a>pip 替代方案選擇——Pipenv vs Poetry</h3><p>考慮內容時效性與縮減篇幅，本段及「<strong>選擇 Poetry 的兩個理由</strong>」已移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion</a>。</p>
-<h3 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h3><p>好，漫長的前言到此結束，讓我們進入正題，開始上手學習 Poetry。</p>
+<h3 id="從零開始使用-Poetry"><a href="#從零開始使用-Poetry" class="headerlink" title="從零開始使用 Poetry"></a>從零開始使用 Poetry</h3><p>好，前言到此結束，讓我們進入正題，開始上手學習 Poetry。</p>
 <blockquote>
 <p><code>2023/04/08</code>：本文最初創作於 Poetry 版本 1.1.19 時期，部分指令已有變動，請以官方文件為準。</p>
 </blockquote>
@@ -412,7 +403,6 @@
 <p><code>poetry shell</code>指令會偵測當前目錄或所屬上層目錄是否存在<code>pyproject.toml</code>來確定所要啟動的虛擬環境，所以如果不移至專案目錄，則會出現下列錯誤：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry shell</span><br><span class="line"></span><br><span class="line">  RuntimeError</span><br><span class="line"></span><br><span class="line">  Poetry could not find a pyproject.toml file <span class="keyword">in</span> /Users/kyo/Documents/code or its parents</span><br><span class="line"></span><br><span class="line">  at ~/Library/Application Support/pypoetry/venv/lib/python3.8/site-packages/poetry/core/factory.py:369 <span class="keyword">in</span> locate</span><br><span class="line">      365│             <span class="keyword">if</span> poetry_file.exists():</span><br><span class="line">      366│                 <span class="built_in">return</span> poetry_file</span><br><span class="line">      367│</span><br><span class="line">      368│         <span class="keyword">else</span>:</span><br><span class="line">    → 369│             raise RuntimeError(</span><br><span class="line">      370│                 <span class="string">&quot;Poetry could not find a pyproject.toml file in &#123;&#125; or its parents&quot;</span>.format(</span><br><span class="line">      371│                     cwd</span><br><span class="line">      372│                 )</span><br><span class="line">      373│             )</span><br></pre></td></tr></table></figure>
 
-<p>可以看到，Poetry 的錯誤訊息非常清楚，讓你很容易知曉修正的方向，這是作為一個優秀命令列工具的必要條件。</p>
 <p>退出就簡單多了，只需要<code>exit</code>即可。</p>
 <hr>
 <h3 id="Poetry-指令"><a href="#Poetry-指令" class="headerlink" title="Poetry 指令"></a>Poetry 指令</h3><p>Poetry 是一個獨立的命令列工具，就像 pyenv，它有自己的指令，需要花費額外的心力學習，且較 pip 更加複雜，這可能是使用 Poetry 的<strong>第二道關卡</strong>。好在常用的指令，其實也不超過 10 個，下面就來一一介紹。</p>
