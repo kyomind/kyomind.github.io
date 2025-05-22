@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-22T23:21:36+08:00" />
+  <meta property="article:modified_time" content="2025-05-22T23:30:05+08:00" />
 
 
 
@@ -475,13 +475,6 @@
 <p>一般我只在 linter、formatter 等工具上使用固定版本，自己手動更新。因為<strong>它們必須和 pre-commit 設定檔中的版本一致</strong>。所以我不會讓它們自動升級。</p>
 <hr>
 <p>依我個人經驗，<strong>最常用的是第 1 和第 4 種方式。</strong></p>
-<h3 id="一次安裝複數套件"><a href="#一次安裝複數套件" class="headerlink" title="一次安裝複數套件"></a>一次安裝複數套件</h3><p>Poetry 的<code>add</code>指令，也可以一次安裝複數套件，比如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django@^4.2.9 requests@^2.26.0</span><br></pre></td></tr></table></figure>
-<p>或不指定版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django requests</span><br></pre></td></tr></table></figure>
-
-
-<hr>
 <h2 id="新增套件至-dev-dependencies"><a href="#新增套件至-dev-dependencies" class="headerlink" title="新增套件至 dev-dependencies"></a>新增套件至 dev-dependencies</h2><p>有些套件，比如<code>pytest</code>、<code>flake8</code>等等，<strong>只會在開發環境中使用</strong>，產品的<strong>部署環境</strong>並不需要。</p>
 <p>Poetry 允許你<strong>區分</strong>這兩者，將上述的套件安裝至<code>dev-dependencies</code>區塊，方便讓你<strong>輕鬆建立一份「不包含」<code>dev-dependencies</code>開發套件的安裝清單</strong>。</p>
 <p>在此以 Black 為例，安裝指令如下，<del>舊版</del>：</p>
