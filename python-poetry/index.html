@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-22T23:30:05+08:00" />
+  <meta property="article:modified_time" content="2025-05-23T23:45:26+08:00" />
 
 
 
@@ -508,26 +508,23 @@
 <p>這部分稍嫌複雜，且有多種表達方式，可見 <a target="_blank" rel="noopener" href="https://python-poetry.org/docs/dependency-specification/">Dependency specification</a>。</p>
 <hr>
 <h2 id="列出全部套件清單"><a href="#列出全部套件清單" class="headerlink" title="列出全部套件清單"></a>列出全部套件清單</h2><p>類似<code>pip list</code>，這裡要使用<code>poetry show</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show</span><br><span class="line">black              22.3.0 The uncompromising code formatter.</span><br><span class="line">click              8.1.3  Composable <span class="built_in">command</span> line interface toolkit</span><br><span class="line">flask              2.1.2  A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">importlib-metadata 4.11.4 Read metadata from Python packages</span><br><span class="line">itsdangerous       2.1.2  Safely pass data to untrusted environments and back.</span><br><span class="line">jinja2             3.1.2  A very fast and expressive template engine.</span><br><span class="line">markupsafe         2.1.1  Safely add untrusted strings to HTML/XML markup.</span><br><span class="line">mypy-extensions    0.4.3  Experimental <span class="built_in">type</span> system extensions <span class="keyword">for</span> programs checked...</span><br><span class="line">pathspec           0.9.0  Utility library <span class="keyword">for</span> gitignore style pattern matching of ...</span><br><span class="line">platformdirs       2.5.2  A small Python module <span class="keyword">for</span> determining appropriate platfo...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show</span><br><span class="line">black              22.3.0 The uncompromising code formatter.</span><br><span class="line">click              8.1.3  Composable <span class="built_in">command</span> line interface toolkit</span><br><span class="line">flask              2.1.2  A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">importlib-metadata 4.11.4 Read metadata from Python packages</span><br><span class="line">itsdangerous       2.1.2  Safely pass data to untrusted environments and back.</span><br><span class="line">jinja2             3.1.2  A very fast and expressive template engine.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>特別提醒的是，這裡的清單內容<strong>並不是來自於虛擬環境</strong>，這點和 pip 不同，而是來自於<code>poetry.lock</code>的內容。</p>
-<p>你可能會想，來自於<code>poetry.lock</code>或虛擬環境，有差嗎？兩者不是應該要一致？</p>
-<p>沒錯，理論上是，但也有不一致的時候，比如你使用了<code>pip install</code>指令安裝套件，就不會記載在<code>poetry.lock</code>中，那<code>poetry show</code>自然也不會顯示。</p>
 <h3 id="「樹狀」顯示套件依賴層級"><a href="#「樹狀」顯示套件依賴層級" class="headerlink" title="「樹狀」顯示套件依賴層級"></a>「樹狀」顯示套件依賴層級</h3><p>Poetry 最為人津津樂道的就是它的樹狀顯示——<code>poetry show --tree</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show --tree</span><br><span class="line">flask 2.1.1 A simple framework <span class="keyword">for</span> building complex web applications.</span><br><span class="line">├── click &gt;=8.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── importlib-metadata &gt;=3.6.0</span><br><span class="line">│   └── zipp &gt;=0.5</span><br><span class="line">├── itsdangerous &gt;=2.0</span><br><span class="line">├── jinja2 &gt;=3.0</span><br><span class="line">│   └── markupsafe &gt;=2.0</span><br><span class="line">└── werkzeug &gt;=2.0</span><br><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>讓主要套件與其依賴套件的<strong>關係與層次，一目了然</strong>。</p>
-<p>而且很貼心的是，它也可以<strong>只顯示「特定套件」</strong>的依賴層級，以<code>celery</code>為例：</p>
+<p>你也可以<strong>只顯示「特定套件」</strong>的依賴層級，以<code>celery</code>為例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show celery --tree</span><br><span class="line">celery 4.4.0 Distributed Task Queue.</span><br><span class="line">├── billiard &gt;=3.6.1,&lt;4.0</span><br><span class="line">├── kombu &gt;=4.6.7,&lt;4.7</span><br><span class="line">│   ├── amqp &gt;=2.6.0,&lt;2.7</span><br><span class="line">│   │   └── vine &gt;=1.1.3,&lt;5.0.0a1</span><br><span class="line">│   └── importlib-metadata &gt;=0.18</span><br><span class="line">│       ├── typing-extensions &gt;=3.6.4</span><br><span class="line">│       └── zipp &gt;=0.5</span><br><span class="line">├── pytz &gt;0.0-dev</span><br><span class="line">└── vine 1.3.0</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="Poetry-移除套件"><a href="#Poetry-移除套件" class="headerlink" title="Poetry 移除套件"></a>Poetry 移除套件</h2><p>使用<code>poetry remove</code>指令。和<code>poetry add</code>一樣，可以加上<code>-D</code>參數來移除置於開發區的套件。</p>
 <p>而移除套件時的「<strong>依賴解析（相依性管理）</strong>」能力，正是 Poetry 遠優於 pip 的主要環節，因為 pip 沒有嘛！也是我提議改用 Poetry 的關鍵理由——<strong>為了順利移除套件</strong>。</p>
 <p>前面已經提過，pip 的<code>pip uninstall</code>只會移除你所指定的套件，而不會連同依賴套件一起移除。</p>
-<p>這是基於安全考量，因為 pip 沒有「依賴解析」功能。如果貿然移除所有「安裝時一併安裝」的依賴套件，可能會造成巨大災難，讓別的套件失去效用。</p>
 <p>前面也舉了 Flask 和 Black 都共同依賴<code>click</code>這個套件的例子，在手動移除套件的情況下，你可能未曾注意 Black 也依賴了<code>click</code>，結果為了「徹底移除」Flask 的所有相關套件，不小心把<code>click</code>也移除掉了。</p>
 <p>所以，使用 pip 時，我們鮮少會去移除已經不再使用的套件。畢竟<strong>依賴關係錯綜複雜</strong>，移除套件可能造成許多「<strong>副作用</strong>」，實在是太麻煩了。</p>
-<h3 id="poetry-remove的依賴解析"><a href="#poetry-remove的依賴解析" class="headerlink" title="poetry remove的依賴解析"></a><code>poetry remove</code>的依賴解析</h3><p>好，解釋了很多，接下來就是 Poetry 的表演了，它會幫你處理這些棘手的「套件相依性」難題，讓你輕鬆移除 Flask 而不影響 Black：</p>
+<h3 id="poetry-remove的依賴解析能力"><a href="#poetry-remove的依賴解析能力" class="headerlink" title="poetry remove的依賴解析能力"></a><code>poetry remove</code>的依賴解析能力</h3><p>而 Poetry 會幫你處理這些棘手的「套件相依性」難題，讓你輕鬆移除 Flask 而不影響 Black：</p>
 <p><img src="https://i.imgur.com/79TycuL.png" alt="poetry remove flask"><span class="cap">poetry remove flask</span></p>
 <p>可以對比上面安裝 Flask 時的截圖，那時總共安裝了 8 個套件，但現在移除的卻只有 7 個——沒錯，因為有依賴解析，<strong>Poetry 知道 Black 還需要</strong><code>click</code>！所以不能移除：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry show --tree</span><br><span class="line">black 22.3.0 The uncompromising code formatter.</span><br><span class="line">├── click &gt;=8.0.0</span><br><span class="line">│   └── colorama *</span><br><span class="line">├── mypy-extensions &gt;=0.4.3</span><br><span class="line">├── pathspec &gt;=0.9.0</span><br><span class="line">├── platformdirs &gt;=2</span><br><span class="line">├── tomli &gt;=1.1.0</span><br><span class="line">└── typing-extensions &gt;=3.10.0.0</span><br></pre></td></tr></table></figure>
@@ -540,22 +537,7 @@
 <p>預設的輸出結果會有 hash 值，不想納入 hash 則要<strong>加上參數</strong>去除。<strong>以下就是我固定用來輸出<code>requirements.txt</code>的指令與參數：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes</span><br></pre></td></tr></table></figure>
 
-<p>我們再看一下輸出結果，雖然不盡相同，但也相去不遠了……嗎？等等，怎麼是空白？</p>
-<h3 id="輸出-dev-dependencies"><a href="#輸出-dev-dependencies" class="headerlink" title="輸出 dev-dependencies"></a>輸出 dev-dependencies</h3><p>因為<code>poetry export</code><strong>預設</strong>只會輸出<code>toml</code>中的<code>[tool.poetry.dependencies]</code>區塊的套件！還記得上面我們把 Black 安裝到<code>[tool.poetry.dev-dependencies]</code>了嗎？</p>
-<p>顯然 Poetry 認為你 export 基本上就為了部署，並不需要開發區的套件。</p>
-<p>這倒是沒錯，不過基於演示需求，我們必須輸出<code>[tool.poetry.dev-dependencies]</code>的套件，才能看到 Black。</p>
-<p>加上<code>--dev</code>參數即可（<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#options-13">新版</a>須使用<code>--with dev</code>參數）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes --dev</span><br></pre></td></tr></table></figure>
-
-<p>輸出的<code>requirements.txt</code>內容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">black==22.3.0; python_full_version &gt;= <span class="string">&quot;3.6.2&quot;</span></span><br><span class="line">click==8.1.2; python_version &gt;= <span class="string">&quot;3.7&quot;</span> and python_full_version &gt;= <span class="string">&quot;3.6.2&quot;</span></span><br><span class="line">colorama==0.4.4; python_version &gt;= <span class="string">&quot;3.7&quot;</span> and python_full_version &gt;= <span class="string">&quot;3.6.2&quot;</span> and platform_system == <span class="string">&quot;Windows&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>雖然長得有點不一樣，但這個檔案確實是可以<code>pip install</code>的。</p>
-<p>從這裡也可以看出先前一再提及「<strong>區分開發、部署套件</strong>」的價值——大部分時候我們並不需要輸出開發用套件。</p>
-<p><code>poetry export</code>所有參數用法與說明，請參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#export">文件</a>。</p>
-<p>此時專案目錄結構如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">poetry-demo</span><br><span class="line">├── poetry.lock</span><br><span class="line">├── pyproject.toml</span><br><span class="line">└── requirements.txt</span><br><span class="line"></span><br><span class="line">0 directories, 3 files</span><br></pre></td></tr></table></figure>
-
+<p><code>2025/05/24</code>：在 Poetry 2.0 以後，<code>export</code>指令需要<a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry-plugin-export">額外安裝</a>才行，具體可參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/">文件</a>。</p>
 <hr>
 <h2 id="Poetry-常用指令清單"><a href="#Poetry-常用指令清單" class="headerlink" title="Poetry 常用指令清單"></a>Poetry 常用指令清單</h2><p>算來算去，Poetry 的常用指令主要有下面幾個：</p>
 <ul>
@@ -590,21 +572,17 @@
 </ol>
 <p>這部分和前面內容沒有差別，因為前面內容就是以全新專案作為基礎。</p>
 <h3 id="二、現有專案改用-Poetry"><a href="#二、現有專案改用-Poetry" class="headerlink" title="二、現有專案改用 Poetry"></a>二、現有專案改用 Poetry</h3><p>極為常見的需求，但並沒有很正式的做法，因為不存在<code>poetry import</code>之類的指令。</p>
-<p>首先要考量的就是：要怎麼把<code>requirements.txt</code>的所有項目加到<code>pyproject.toml</code>中呢？經過一番 Google，基本上<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62764148/how-to-import-requirements-txt-from-an-existing-project-using-poetry">只能土法煉鋼</a>：</p>
+<p>常見的做法是使用 shell 指令將<code>requirements.txt</code>的內容匯入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> requirements.txt | xargs poetry add</span><br></pre></td></tr></table></figure>
 
 <p>然而這樣做是有可能遇到一些問題的，因為 Poetry <strong>對套件的版本衝突比較敏感</strong>，所以即便用<code>pip install -r requirements.txt</code>都能正常安裝，透過上述指令的遷移過程卻仍有機會出現錯誤。</p>
-<p>那怎麼辦？只能照著錯誤訊息手動修正<code>requirements.txt</code>中的套件版本。</p>
-<p>只能說這個「<strong>手動 import</strong>」做法實在是不得已，因為我們最早介紹<code>pyproject.toml</code>時有提到，<code>poetry add</code>只會在<code>pyproject.toml</code>中寫入「主套件」，但這樣的 import 方式相當於把<code>requirements.txt</code>中的<strong>所有套件，都當作主套件</strong>來<code>add</code>了！</p>
-<p>畢竟在<code>requirements.txt</code>中<strong>無從區分</strong>主套件與依賴套件，都是「一視同仁」地列出。</p>
-<p>但如此做法也讓專案的套件<strong>失去主從之分</strong>，這樣會有什麼<strong>壞處</strong>？日後要移除主套件時，<strong>需要花額外的心力去區分主從</strong>（因為僅僅移除依賴套件<strong>並不會有移除效果</strong>），比如使用<code>poetry show --tree</code>去一個一個檢視，終究是件麻煩事。</p>
-<p>完成轉換後，為保險起見，建議透過新的<code>pyproject.toml</code>來重建一個虛擬環境。</p>
+<p>只能說這個「<strong>手動 import</strong>」做法實在是不得已，我覺得最好的做法還是一一在 Poetry 中重新安裝，長痛不如短痛，這樣能確保不會有任何問題。</p>
 <h3 id="三、在別台主機上重現專案的-Poetry-虛擬環境"><a href="#三、在別台主機上重現專案的-Poetry-虛擬環境" class="headerlink" title="三、在別台主機上重現專案的 Poetry 虛擬環境"></a>三、在別台主機上重現專案的 Poetry 虛擬環境</h3><p>這也是非常常見的需求。</p>
 <p>第一步當然是<code>git clone</code>專案，此時專案中已經有 Poetry 所需的必要資訊了——也就是<code>pyproject.toml</code>和<code>poetry.lock</code>。</p>
 <p>你還缺少的僅僅是虛擬環境。如果是全新的主機，則還得先安裝、設定好 Poetry。</p>
 <p>確定 Poetry 可正常使用後，移至專案目錄底下，依序執行指令：</p>
 <ol>
-<li><code>poetry env use python</code>：建立專案虛擬環境並使用。如果你懶得打這麼長的指令，直接<code>poetry shell</code>也是可以。此時我們會有一個「<strong>空的</strong>」虛擬環境。</li>
+<li><code>poetry env use python</code>：建立專案虛擬環境並使用。</li>
 <li><code>poetry install</code>：因為是舊專案，不需要<code>init</code>，會直接依<code>poetry.lock</code>記載的套件版本安裝到虛擬環境中！類似<code>npm install</code>。</li>
 </ol>
 <h3 id="四、我想要移除並重建虛擬環境"><a href="#四、我想要移除並重建虛擬環境" class="headerlink" title="四、我想要移除並重建虛擬環境"></a>四、我想要移除並重建虛擬環境</h3><p>在使用「專案內虛擬環境」方案，也就是<code>.venv</code>的前提下，想要刪除這個虛擬環境並加以重建，不能使用<code>poetry env remove python</code>指令，很可能會出錯。</p>
