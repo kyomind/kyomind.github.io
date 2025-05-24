@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境">
+  <meta property="og:title" content="Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境"><meta name="twitter:description" content="使用 Docker multi-stage build 整合 Poetry，讓部署流程更簡潔">
+  <meta property="og:description" content="使用 Docker multi-stage build 整合 Poetry，讓部署流程更簡潔"><meta name="twitter:image" content="https://img.kyomind.tw/poetry-multi-stage-build.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/poetry-multi-stage-build.jpg">
+<meta name="description" content="使用 Docker multi-stage build 整合 Poetry，讓部署流程更簡潔" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-05-24T03:20:55+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-05-24T02:36:33+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/poetry-multi-stage-build/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (53)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-05-24
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%88%8A%E6%9C%89%E5%81%9A%E6%B3%95%EF%BC%9Arequirements-txt-%E5%8F%8A%E5%85%B6%E9%99%90%E5%88%B6"><span class="toc-text">舊有做法：requirements.txt 及其限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E7%9B%B4%E6%8E%A5%E5%9C%A8-Docker-image-%E4%B8%AD%E5%AE%89%E8%A3%9D-Poetry%EF%BC%9F"><span class="toc-text">為什麼不直接在 Docker image 中安裝 Poetry？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-stage-build-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F%E7%82%BA%E4%BB%80%E9%BA%BC%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="toc-text">Multi-stage build 是什麼？為什麼重要？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-stage-build-%E7%9A%84%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8%E5%A0%B4%E6%99%AF"><span class="toc-text">Multi-stage build 的常見應用場景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile-%E7%AF%84%E4%BE%8B%E8%88%87%E8%A7%A3%E8%AA%AA"><span class="toc-text">Dockerfile 範例與解說</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/poetry-multi-stage-build.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<p>最近都在為〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉一文進行「減肥」，讓它更容易閱讀、回顧。</p>
+<p>除此之外，是時候為「<a href="/series/#Python-Poetry-%E4%B8%89%E9%83%A8%E6%9B%B2">Python Poetry</a>」這個系列畫下句點了——而本文就是最後一塊拼圖！</p>
+<p>我曾在前文中提到，為什麼不在 Docker 容器中使用 Poetry。主要原因是：</p>
+<blockquote>
+<p>啟動容器後需要先安裝 Poetry 到全域，或打包一個帶有 Poetry 的 image，兩者都會<strong>增加新的耦合與依賴</strong>，需要更細緻的管理。</p>
+</blockquote>
+<p>但這樣的限制，其實可以透過 Docker 的 <strong>multi-stage build</strong> 解決。</p>
+<p>本文將從實務角度出發，介紹如何使用 multi-stage build，在 Docker 中整合 Poetry。</p>
+<p>讓你既能享有 Poetry 的套件管理優勢，又不會對部署流程增加額外負擔。</p>
+<h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
+<ol>
+<li><a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
+<li><a href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></li>
+<li><strong>Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</strong></li>
+</ol>
+</blockquote>
+<p>我們開始吧！</p>
+<span id="more"></span>
+<hr>
+<h2 id="舊有做法：requirements-txt-及其限制"><a href="#舊有做法：requirements-txt-及其限制" class="headerlink" title="舊有做法：requirements.txt 及其限制"></a>舊有做法：requirements.txt 及其限制</h2><p>在過去的容器建構流程中，我們多半會使用<code>requirements.txt</code>來安裝 Python 套件、建立專案虛擬環境。</p>
+<p>這是因為 Python 的官方 image <strong>已經內建 pip</strong>，我們可以在 Docker（Dockerfile）直接透過下列指令安裝相依套件：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>這種做法最大的優勢就是<strong>方便</strong>。</p>
+<p>然而仔細想想，我們在開發階段使用 Poetry，部署時卻用 pip，這樣的流程會產生一個「斷點」。</p>
+<p>我們必須從 Poetry 匯出一份與<code>poetry.lock</code>對應的<code>requirements.txt</code>，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt --without-hashes -o requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p>這樣做看似簡單、直觀，但經驗告訴我，在更新<code>poetry.lock</code>時，<strong>常常會忘記同步</strong>到<code>requirements.txt</code>。所以 uv 還專門提供了一個 pre-commit hook 來自動化同步。</p>
+<p>退一步來說，<code>export</code>指令產出的結果，其實和 pip 也<strong>不是 100% 相容</strong>，如果遇到相容問題，將會使得<code>requirements.txt</code>無法如預期安裝。</p>
+<blockquote>
+<p>真麻煩！</p>
+</blockquote>
+<h2 id="為什麼不直接在-Docker-image-中安裝-Poetry？"><a href="#為什麼不直接在-Docker-image-中安裝-Poetry？" class="headerlink" title="為什麼不直接在 Docker image 中安裝 Poetry？"></a>為什麼不直接在 Docker image 中安裝 Poetry？</h2><p>我們已經知道使用<code>requirements.txt</code>的方式有其限制，那是否可以直接在 Docker 中安裝 Poetry，來避免 export 同步的麻煩呢？</p>
+<p>這似乎是一個<strong>簡單粗暴</strong>的解法，但除了開頭說的「增加新的耦合與依賴」問題外，這樣做還會導致<strong>另一個棘手問題</strong>——<strong>image 會變得過於龐大</strong>。</p>
+<p>因為我們必須額外安裝 Poetry 及其所有相依套件（如 curl、build tools 等），這些工具在部署時其實並不需要。</p>
+<p>結果是：</p>
+<ul>
+<li>不必要的工具進入部署環境，增加潛在維護成本。</li>
+<li>Docker image 體積變得難以控管。</li>
+</ul>
+<p>而這正是 Docker multi-stage build 要解決的關鍵痛點。</p>
+<p>它讓我們可以在前一階段「<strong>用完即丟</strong>」，只保留執行需要的檔案與相依套件，而非將整套開發工具都一併打包進去。</p>
+<hr>
+<h2 id="Multi-stage-build-是什麼？為什麼重要？"><a href="#Multi-stage-build-是什麼？為什麼重要？" class="headerlink" title="Multi-stage build 是什麼？為什麼重要？"></a>Multi-stage build 是什麼？為什麼重要？</h2><p>Docker 的 multi-stage build 允許我們在一個 Dockerfile 中定義<strong>多個建構階段</strong>。</p>
+<p>透過這種方式，我們可以在前一階段中安裝與建構需要的工具（例如 Poetry 與依賴套件），然後<strong>在後續階段捨棄它們</strong>，只留下必要的執行檔與依賴，大幅減少最終 image 的體積與耦合程度。</p>
+<p>對於使用 Poetry 管理套件的 Python 專案而言，這是一種相對理想的建構策略：</p>
+<ol>
+<li>只在第一階段使用 Poetry，並安裝專案所需的套件。</li>
+<li>第二階段則不再需要 Poetry——<strong>留下建好的 Python 虛擬環境已足</strong>。</li>
+</ol>
+<h2 id="Multi-stage-build-的常見應用場景"><a href="#Multi-stage-build-的常見應用場景" class="headerlink" title="Multi-stage build 的常見應用場景"></a>Multi-stage build 的常見應用場景</h2><p>Multi-stage build 適用於多種開發與部署情境，以下是幾個常見的應用場景。</p>
+<h3 id="1-編譯型語言的建構階段與執行階段分離"><a href="#1-編譯型語言的建構階段與執行階段分離" class="headerlink" title="1. 編譯型語言的建構階段與執行階段分離"></a>1. 編譯型語言的建構階段與執行階段分離</h3><ul>
+<li>在 Go、Rust、C++ 等語言中，編譯階段通常需要安裝大量工具與編譯器。</li>
+<li>透過 multi-stage build，可以在第一階段完成編譯，第二階段僅保留編譯後的 binary，讓 image 更精簡。</li>
+</ul>
+<p>可參考<a target="_blank" rel="noopener" href="https://kucw.io/about/">古古</a>的這篇〈<a target="_blank" rel="noopener" href="https://kucw.io/blog/springboot-docker-image/">為 Spring Boot 生成 Docker image</a>〉，對編譯型語言（文中為 Java）的 multi-stage build 應用，有著更加詳細的講解。</p>
+<h3 id="2-執行環境的依賴管理分離"><a href="#2-執行環境的依賴管理分離" class="headerlink" title="2. 執行環境的依賴管理分離"></a>2. 執行環境的依賴管理分離</h3><ul>
+<li>Poetry 就是典型範例：建構階段需要 Poetry 處理 dependencies，執行階段只需保留 site-packages 即可。</li>
+<li>pipenv、npm&#x2F;yarn（JS 世界）也可套用類似概念，第一階段建構，第二階段保留 node_modules 或 dist。</li>
+</ul>
+<h3 id="3-CI-CD-中的環境控制與映像輕量化"><a href="#3-CI-CD-中的環境控制與映像輕量化" class="headerlink" title="3. CI&#x2F;CD 中的環境控制與映像輕量化"></a>3. CI&#x2F;CD 中的環境控制與映像輕量化</h3><ul>
+<li>有些 CI pipeline 在建構階段需要額外工具（如 linters、testing frameworks），但最終部署不需要。</li>
+<li>Multi-stage 可讓這些工具不進入最終 image，保持部署清爽。</li>
+</ul>
+<hr>
+<h2 id="Dockerfile-範例與解說"><a href="#Dockerfile-範例與解說" class="headerlink" title="Dockerfile 範例與解說"></a>Dockerfile 範例與解說</h2><p>以下範例中，我們將整個建構流程分為兩個階段：</p>
+<ul>
+<li><strong>第一階段（builder）</strong>：專責安裝 Poetry 與專案相依套件，不進入最終 image 中。</li>
+<li><strong>第二階段（runtime）</strong>：為實際執行環境，僅保留必要的程式碼與套件。</li>
+</ul>
+<p>以下是一份簡化過後的 Dockerfile 範例，展示如何使用 multi-stage build 來整合 Poetry，同時<strong>省略與主題無關的環節</strong>。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一階段：建構環境與安裝 Poetry 相依套件</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.12</span>-slim AS builder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝系統相依套件（Poetry 需要 curl 等工具）</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt install -y curl build-essential ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 Poetry 並設定環境變數</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> curl -sSL https://install.python-poetry.org | python3 -</span></span><br><span class="line"><span class="keyword">ENV</span> PATH=<span class="string">&quot;/root/.local/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> pyproject.toml poetry.lock ./</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> your_module your_module</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Poetry 安裝相依套件</span></span><br><span class="line"><span class="comment"># 變更設定：不建立虛擬環境，因為 Docker 本身就是隔離環境</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> poetry config virtualenvs.create <span class="literal">false</span> \</span></span><br><span class="line"><span class="language-bash">    <span class="comment"># 只安裝 main 的套件，即不含 dev、test 等 group</span></span></span><br><span class="line">    &amp;&amp; poetry install --only main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二階段：建立乾淨的 image</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.12</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝運行 Poetry 時需要的 Linux 系統套件</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt install -y libpq-dev ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;your_entrypoint.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="重點說明"><a href="#重點說明" class="headerlink" title="重點說明"></a>重點說明</h3><ul>
+<li>第一階段只負責安裝 Poetry 與相依套件——透過<code>poetry install</code>安裝。這裡的 Dockerfile 慣用語是<code>FROM xxx AS yyy</code>，其中<code>builder</code>是常見名稱。</li>
+<li>Poetry 安裝套件時，可先調整設定，改成<strong>不建立虛擬環境</strong>，因為 Docker 本身即為獨立環境，沒必要再隔離。<ul>
+<li>用於部署階段，所以也不必安裝開發、測試相關套件。</li>
+<li>使用<code>--only main</code>來安裝主要的相依套件。</li>
+</ul>
+</li>
+<li>第二階段只保留已安裝好的 site-packages 與應用程式程式碼。<ul>
+<li>具體做法就是<strong>複製「前階段」產生的檔案、目錄到當前環境。</strong></li>
+<li>關鍵句則是<code>COPY --from=builder xxx</code>。</li>
+</ul>
+</li>
+</ul>
+<p>一切就這麼簡單！</p>
+<p>在 AI 時代，重要的是<strong>知曉這些概念</strong>，而具體該怎麼寫，只要實際操作時一邊詢問 AI 就可以了。</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Poetry 是一個強大的 Python 套件管理工具，但若直接將它納入部署環境，可能導致不必要的複雜與耦合。</p>
+<p>透過 multi-stage build，我們可以同時兼顧建構效率與部署簡潔。</p>
+<p>使用正確策略，Poetry 不只是開發者的利器，也能優雅地融入部署流程。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-docker-sdk/" title="Python Docker SDK 快速上手" rel="bookmark">Python Docker SDK 快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/linux-dev-setup/" title="Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker" rel="bookmark">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyproject-toml/" title="Python 開發：pyproject.toml 介紹 + 使用教學" rel="bookmark">Python 開發：pyproject.toml 介紹 + 使用教學</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Docker/">Docker</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Poetry/">Poetry</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/introducing-uv/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Python 套件管理器 uv 介紹——與 Poetry 比較</span>
+        <span class="prev-text nav-mobile">Python 套件管理器 uv 介紹——與 Poetry 比較</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">53</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">40</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

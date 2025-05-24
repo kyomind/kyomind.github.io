@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-24T00:07:30+08:00" />
+  <meta property="article:modified_time" content="2025-05-24T03:06:21+08:00" />
 
 
 
@@ -133,7 +133,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -199,7 +199,7 @@
 <p>相關文章：<a href="https://blog.kyomind.tw/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a></p>
 </blockquote>
 <blockquote>
-<p><code>2025/05/24</code>：持續為全文<strong>減肥</strong>，提高可讀性。<br><code>2025/05/11</code>：將「<a href="/python-poetry/#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a>」大部分內容移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。<br><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<strong>pip 替代方案選擇——Pipenv vs Poetry</strong>」部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。</p>
+<p><code>2025/05/24</code>：更新系列第三篇——〈<a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉。<br><code>2025/05/23</code>：持續為全文<strong>減肥</strong>，提高可讀性。<br><code>2025/05/11</code>：將「<a href="/python-poetry/#pip-%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B8%8D%E8%B6%B3">pip 的最大不足</a>」大部分內容移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-1f06a92a98a680debebfce69672d0eb6">Notion 頁面</a>。<br><code>2024/06/17</code>：縮減本文篇幅，方便讀者回顧，將「<strong>pip 替代方案選擇——Pipenv vs Poetry</strong>」部分移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/pip-Pipenv-vs-Poetry-87c97bfba71340efa58d65ce22e71b97">Notion 頁面</a>。</p>
 </blockquote>
 <p>前陣子工作上的專案從原先的 pip 改用 Poetry 管理 Python 套件，拜這個機會所賜，我對 Poetry 總算有了一個較為全面的理解。</p>
 <p>對於 Poetry 這個略嫌複雜的工具（相較 pip），上手的同時我也感受到它確實存在一些<strong>學習門檻</strong>，間接促使了本文的誕生。</p>
@@ -207,7 +207,7 @@
 <ol>
 <li><strong>Python 套件管理器——Poetry 完全入門指南</strong></li>
 <li><a href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></li>
-<li>Docker 教學：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
+<li><a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a></li>
 </ol>
 </blockquote>
 <h3 id="本文定位：獻給-Poetry-新手的使用說明書"><a href="#本文定位：獻給-Poetry-新手的使用說明書" class="headerlink" title="本文定位：獻給 Poetry 新手的使用說明書"></a>本文定位：獻給 Poetry 新手的使用說明書</h3><p>有鑑於 Poetry 真的有點複雜，如果要推薦別人使用，我想還是有必要好好介紹一下。換句話說，這會是一篇<strong>完整的入門教學</strong>。</p>
@@ -591,10 +591,8 @@
 <h3 id="四、我想要移除並重建虛擬環境"><a href="#四、我想要移除並重建虛擬環境" class="headerlink" title="四、我想要移除並重建虛擬環境"></a>四、我想要移除並重建虛擬環境</h3><p>在使用「專案內虛擬環境」方案，也就是<code>.venv</code>的前提下，想要刪除這個虛擬環境並加以重建，不能使用<code>poetry env remove python</code>指令，很可能會出錯。</p>
 <p>不過有更簡單的做法——<strong>直接刪除</strong><code>.venv</code>資料夾即可。</p>
 <p>然後再<code>poetry env use python</code>或<code>poetry shell</code>建一個新的就好。</p>
-<h3 id="五、為什麼我不在-Docker-環境中使用-Poetry？"><a href="#五、為什麼我不在-Docker-環境中使用-Poetry？" class="headerlink" title="五、為什麼我不在 Docker 環境中使用 Poetry？"></a>五、為什麼我不在 Docker 環境中使用 Poetry？</h3><p>因為啟動容器後需要先安裝 Poetry 到全域，或打包一個帶有 Poetry 的 image，兩者都會<strong>增加新的耦合與依賴</strong>，需要更細緻的管理。</p>
-<blockquote>
-<p><code>2023/02/24</code>補充：使用 <a target="_blank" rel="noopener" href="https://docs.docker.com/build/building/multi-stage/">multi-stage builds</a> 的 Dockerfile，可以在第一階段安裝 Poetry，第二階段再把 Poetry 捨棄，這樣就不會有多餘的耦合與依賴了。日後會專文介紹。</p>
-</blockquote>
+<h3 id="五、為什麼我不在-Docker-環境中使用-Poetry？（已更新）"><a href="#五、為什麼我不在-Docker-環境中使用-Poetry？（已更新）" class="headerlink" title="五、為什麼我不在 Docker 環境中使用 Poetry？（已更新）"></a>五、為什麼我不在 Docker 環境中使用 Poetry？（已更新）</h3><p>因為啟動容器後需要先安裝 Poetry 到全域，或打包一個帶有 Poetry 的 image，兩者都會<strong>增加新的耦合與依賴</strong>，需要更細緻的管理。</p>
+<p>但可以使用 multi-stage build 來解決這個問題，具體可參考系列第三篇——〈<a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉。</p>
 <hr>
 <h2 id="結語：井然有序的複雜"><a href="#結語：井然有序的複雜" class="headerlink" title="結語：井然有序的複雜"></a>結語：井然有序的複雜</h2><p>總的來說，Poetry 是一款優秀的套件管理工具，但並不像 pip 那般簡單、好上手。</p>
 <p>使用 Poetry 來管理專案的套件與虛擬環境，需要一定的學習成本，但帶來的效益還是相當可觀的，尤其在你希望能夠乾淨且安心地移除套件之際，可謂莫它莫屬。</p>
@@ -659,7 +657,7 @@
 <div style="background-color: #e7e9ec; border-radius: 5px;">
   <div class="categories">
     <div class="categories-tags">
-      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">53</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">39</span></a>
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">53</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">40</span></a>
     </div>
   </div>
 </div>

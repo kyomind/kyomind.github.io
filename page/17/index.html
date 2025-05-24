@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -166,6 +166,38 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-19/">AI 時代的生存指南（二）數位斷捨離</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-06-10
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/mmEzb21.png"></p>
+<p>上一篇〈<a href="https://blog.kyomind.tw/weekly-review-17/">AI 時代的生存指南（一）我對 AI 工具的投入與觀望</a>〉並沒有真正進入「生存指南」這個核心主題，只能算是整個系列的前言。</p>
+<p>為避免你忘記，我們再來回顧一下，前一篇所提出的，本系列的宗旨：</p>
+<blockquote>
+<p>我期望這系列和一般談論 AI 文章的一個核心差別是：<strong>它們主要用來「降低」AI 資訊焦慮，而非增加。</strong></p>
+</blockquote>
+<blockquote>
+<p>更具體地說，這個系列是「<strong>我為了降低自己對 AI 的資訊焦慮，付諸過的實踐與行動記錄</strong>」，這樣才有趣。</p>
+</blockquote>
+<p>而本篇要探討的，就是這系列最核心的「生存手段」：數位斷捨離。</p>
+<p>數位斷捨離（Digital Declutter）作家卡爾．紐波特（Cal Newport）在其著作《<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/0010843512">深度數位大掃除</a>》一書中所提出。</p>
+<p>數位斷捨離是一種整理和簡化數位世界的方法，旨在<strong>減少干擾並提升專注力</strong>。通過過濾數位訊息和限制使用數位工具（尤其是社交平台），我們可以節省時間和精力，更好地專注於重要的事情。</p>
+<p>這種方法有助於建立一個更有意義和平衡的數位生活。所以它不止是方法，也是一種「<strong>價值觀與實踐</strong>」。</p>
+<p>概念理解上沒什麼困難，但實踐起來可遠遠不是如此。</p>
+          <div class="read-more">
+            <a href="/weekly-review-19/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a>
         </h1>
 
@@ -193,7 +225,7 @@
 <ol>
 <li><a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
 <li><strong>Poetry + pyenv 教學：常用指令與注意事項</strong></li>
-<li>Docker 教學：Dockerfile 多階段建構 Poetry 虛擬環境（待發表）</li>
+<li><a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a></li>
 </ol>
 </blockquote>
           <div class="read-more">
@@ -344,37 +376,6 @@
 <p>或更常見的「香菜之爭」，要說它對部分人而言，屬於價值觀層級的事物，或許也不為過。</p>
           <div class="read-more">
             <a href="/weekly-review-16/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-04-09
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/AGhzS0d.jpg" alt="from Pixabay"></p>
-<p>本文主要寫給軟體工程師，尤其是後端。</p>
-<p>不過，<strong>這並不是一篇 yadm 操作教學</strong>，而是我在選擇 dotfiles 同步方案時，所做的功課與思路整理，其中的考量大概有下：</p>
-<ol>
-<li>靠自己簡單實作就好，還是要透過工具？</li>
-<li>如果要用工具，<strong>工具這麼多，該如何選擇</strong>？</li>
-<li>工具之間有什麼本質的差別嗎？（其實就是下述流派上的差別）</li>
-</ol>
-<hr>
-<h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>如〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Python 開發環境設定：zsh、zinit、pyenv、Poetry、Docker</a>〉所言，因為新 VM 的建立，我又得重設一次開發環境，而重設開發環境往往是一個耗時且繁瑣的過程。</p>
-<p>在這個過程中，需要重新建立一些設定檔，例如<code>.bashrc</code>、<code>.zshrc</code>。這些設定檔通常包含了工具設定、命令別名、環境變數等大量內容，因此特別惱人。</p>
-<p>此外，即使不是重建環境，平時要在不同 VM 包括本機電腦間「<strong>手動同步</strong>」這些檔案，也是一件讓人很想逃避的事。</p>
-<p>以<code>.zshrc</code>為例，如果它很少變動，那可能還好。但很不幸的，我又是一個很愛為命令列工具建立 <a target="_blank" rel="noopener" href="https://dywang.csie.cyut.edu.tw/dywang/linuxSystem/node88.html">alias</a>（別名）的人，光憑這點，就使我不時會修改<code>.zshrc</code>。</p>
-          <div class="read-more">
-            <a href="/yadm/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/16/">

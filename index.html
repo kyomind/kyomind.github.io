@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-05-24
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/poetry-multi-stage-build.jpg" alt="from Pixabay"></p>
+<p>最近都在為〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉一文進行「減肥」，讓它更容易閱讀、回顧。</p>
+<p>除此之外，是時候為「<a href="/series/#Python-Poetry-%E4%B8%89%E9%83%A8%E6%9B%B2">Python Poetry</a>」這個系列畫下句點了——而本文就是最後一塊拼圖！</p>
+<p>我曾在前文中提到，為什麼不在 Docker 容器中使用 Poetry。主要原因是：</p>
+<blockquote>
+<p>啟動容器後需要先安裝 Poetry 到全域，或打包一個帶有 Poetry 的 image，兩者都會<strong>增加新的耦合與依賴</strong>，需要更細緻的管理。</p>
+</blockquote>
+<p>但這樣的限制，其實可以透過 Docker 的 <strong>multi-stage build</strong> 解決。</p>
+<p>本文將從實務角度出發，介紹如何使用 multi-stage build，在 Docker 中整合 Poetry。</p>
+<p>讓你既能享有 Poetry 的套件管理優勢，又不會對部署流程增加額外負擔。</p>
+<h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
+<ol>
+<li><a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
+<li><a href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></li>
+<li><strong>Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</strong></li>
+</ol>
+</blockquote>
+<p>我們開始吧！</p>
+          <div class="read-more">
+            <a href="/poetry-multi-stage-build/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>
         </h1>
@@ -343,37 +379,6 @@
 <p>用階段來區分，主要可分為三個部分。</p>
           <div class="read-more">
             <a href="/weekly-review-42/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/upnote/">筆記軟體 UpNote 最吸引我的三大亮點</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-03-29
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/uAUlRuc.jpeg" alt="by William Chen on Pexels"></p>
-<p>如你所知，我是一個「<a target="_blank" rel="noopener" href="https://github.com/kyomind#%E7%B0%A1%E4%BB%8B">不做筆記就不會學習</a>」的人🥹</p>
-<p>但就像我在〈<a href="/noteless/">逐漸被我遺忘的卡片筆記</a>〉中提到的那樣，我並不喜歡對特定的筆記軟體過於鑽研、深挖它的大量用法與變化，更不可能建立一個所謂的<a href="/less-is-more/">筆記系統</a>。</p>
-<p><strong>我更愛「簡單粗暴」的方式</strong>😎</p>
-<p>關於我的筆記軟體使用演進史，可以參考過往這幾篇文章：（依時間順序）</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://medium.com/code-and-me/why-evernote-7cd2abbfbafd">心得 |《曼無止盡》第 40 期：Evernote 的重生之路</a></li>
-<li><a href="/simple-notion/">使用Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a></li>
-<li><a href="/logseq/">Logseq 心得：一顆冉冉升起的「卡片筆記」新星</a></li>
-<li><a href="/bear/">Evernote 替代方案——筆記軟體 Bear 2 升級心得</a></li>
-</ul>
-<p>除了 Evernote 之外，其餘三者都是我現在仍有在使用的。所以它們相互之間<strong>並不是進化式的替代關係</strong>，而是不斷完善的<strong>補充關係</strong>。</p>
-<p>本文要來講講，為何在這三個筆記軟體之外，我還需要第四個筆記軟體——UpNote。</p>
-          <div class="read-more">
-            <a href="/upnote/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
