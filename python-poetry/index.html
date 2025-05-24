@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-23T23:47:29+08:00" />
+  <meta property="article:modified_time" content="2025-05-24T00:07:30+08:00" />
 
 
 
@@ -531,13 +531,16 @@
 
 <p>一個套件直到環境中的<strong>其餘套件都不再依賴它</strong>，Poetry 才會安心讓它被移除。</p>
 <hr>
-<h2 id="輸出-requirements-txt"><a href="#輸出-requirements-txt" class="headerlink" title="輸出 requirements.txt"></a>輸出 requirements.txt</h2><p>理論上，全面改用 Poetry 後，專案中是不需要存在<code>requirements.txt</code>，因為它的角色已經完全被<code>poetry.lock</code>所取代。</p>
+<h2 id="輸出-requirements-txt"><a href="#輸出-requirements-txt" class="headerlink" title="輸出 requirements.txt"></a>輸出 requirements.txt</h2><blockquote>
+<p><code>2025/05/24</code>：在 Poetry 2.0 以後，<code>export</code>指令需要<a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry-plugin-export">額外安裝</a>才行，具體可參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/">官方文件</a>。</p>
+</blockquote>
+<p>理論上，全面改用 Poetry 後，專案中是不需要存在<code>requirements.txt</code>，因為它的角色已經完全被<code>poetry.lock</code>所取代。</p>
 <p>但事實是，<strong>你可能還是需要它，甚至希望它隨著<code>poetry.lock</code>的內容更新！</strong>至少對我而言就是如此，我在 Docker 部署環境中並不使用 Poetry，所以我需要一份<strong>完全等價於<code>poetry.lock</code>的<code>requirements.txt</code>，</strong>用於 Docker 部署。</p>
 <p>此時需要使用<code>poetry export</code>指令，這個指令會根據<code>poetry.lock</code>的內容，輸出一份<code>requirements.txt</code>檔案。</p>
 <p>預設的輸出結果會有 hash 值，不想納入 hash 則要<strong>加上參數</strong>去除。<strong>以下就是我固定用來輸出<code>requirements.txt</code>的指令與參數：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt -o requirements.txt --without-hashes</span><br></pre></td></tr></table></figure>
 
-<p><code>2025/05/24</code>：在 Poetry 2.0 以後，<code>export</code>指令需要<a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry-plugin-export">額外安裝</a>才行，具體可參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/">文件</a>。</p>
+
 <hr>
 <h2 id="Poetry-常用指令清單"><a href="#Poetry-常用指令清單" class="headerlink" title="Poetry 常用指令清單"></a>Poetry 常用指令清單</h2><p>算來算去，Poetry 的常用指令主要有下面幾個：</p>
 <ul>
