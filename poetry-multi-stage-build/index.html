@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-24T03:31:38+08:00" />
+  <meta property="article:modified_time" content="2025-05-25T02:18:39+08:00" />
 
 
 
@@ -211,7 +211,7 @@
 <p>我們開始吧！</p>
 <span id="more"></span>
 <hr>
-<h2 id="舊有做法：requirements-txt-及其限制"><a href="#舊有做法：requirements-txt-及其限制" class="headerlink" title="舊有做法：requirements.txt 及其限制"></a>舊有做法：requirements.txt 及其限制</h2><p>在過去的容器建構流程中，我們多半會使用<code>requirements.txt</code>來安裝 Python 套件、建立專案虛擬環境。</p>
+<h2 id="舊有做法：requirements-txt-及其限制"><a href="#舊有做法：requirements-txt-及其限制" class="headerlink" title="舊有做法：requirements.txt 及其限制"></a>舊有做法：requirements.txt 及其限制</h2><p>在過去的容器建構流程中，我們多半會使用<code>requirements.txt</code>來安裝 Python 套件、建立容器中的專案虛擬環境。</p>
 <p>這是因為 Python 的官方 image <strong>已經內建 pip</strong>，我們可以在 Docker（Dockerfile）直接透過下列指令安裝相依套件：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
 
