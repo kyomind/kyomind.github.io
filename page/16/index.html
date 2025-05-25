@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (54)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (55)</a>
           
             <a href="/categories/Django/">Django (13)</a>
           
@@ -165,6 +165,60 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/notion-database/">Notion 資料庫「反複雜」使用指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2023-08-29
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/TJQDGmr.jpg" alt="by Daria Kolesnikova"></p>
+<blockquote>
+<p><code>2024/02/01</code>：新增「<a href="#%E6%9C%AC%E6%96%87%E7%9B%AE%E9%8C%84">本文目錄</a>」與「<a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E9%81%A9%E5%8F%AF%E8%80%8C%E6%AD%A2%E7%9A%84%E8%A4%87%E9%9B%9C">結語：適可而止的複雜</a>」兩個部分。<br><code>2024/01/28</code>：重新修訂全文，增加若干內容，使整體論述更清晰、完整。</p>
+</blockquote>
+<p>讓我們進入「Simple Notion」系列的第三篇，同時也是最後一篇。這次我們要聊聊，<strong>最能夠代表 Notion 的關鍵元素：資料庫（<a target="_blank" rel="noopener" href="https://www.notion.so/help/intro-to-databases">database</a>）</strong>。</p>
+<p>一提到 Notion 你會想到什麼？沒錯，就是資料庫。資料庫就是 <strong>Notion 的代名詞</strong>。</p>
+<p>Notion 在 2016 年就誕生了（你也可以說是 2013年，請參考維基百科關於 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Notion">Notion 的「歷史與發展」</a>），但直到 2018 年才大紅，為什麼？——<strong>因為加入了 database。</strong></p>
+<p>儘管在 UI 加入類似<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93">關聯式資料庫</a>功能，並非 Notion 獨創。畢竟，在此之前，<a target="_blank" rel="noopener" href="https://www.airtable.com/">Airtable</a> 已經是這方面的佼佼者。</p>
+<p>但我們不得不承認，<strong>Notion 確實把資料庫玩出了新的高度</strong>。</p>
+<h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
+<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85">本文主旨與目標讀者</a></li>
+<li><a href="#%E6%9C%AC%E6%96%87%E6%9E%B6%E6%A7%8B%E8%88%87%E4%B8%BB%E8%BB%B8">本文架構與主軸</a></li>
+<li><a href="#Notion-%E7%9A%84%E5%BF%83%E8%87%9F%EF%BC%9A%E8%B3%87%E6%96%99%E5%BA%AB">Notion 的心臟：資料庫</a></li>
+<li><a href="#Craft%E2%80%94%E2%80%94%E6%B2%92%E6%9C%89-database-%E7%9A%84-Notion%EF%BC%9F">Craft——沒有 database 的 Notion？</a></li>
+<li><a href="#%E5%AD%B8%E7%BF%92-Notion-database-%E7%9A%84%E4%B8%89%E5%A4%A7%E5%B8%B8%E8%A6%8B%E5%9B%B0%E5%A2%83">學習 Notion database 的三大常見困境</a></li>
+<li><a href="#%E5%9B%B0%E5%A2%83%E4%B8%80%EF%BC%9A%E5%AD%B8%E7%BF%92%E9%96%80%E6%AA%BB">困境一：學習門檻</a></li>
+<li><a href="#%E5%9B%B0%E5%A2%83%E4%BA%8C%EF%BC%9A%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E8%A4%87%E9%9B%9C">困境二：不必要的複雜</a></li>
+<li><a href="#%E5%9B%B0%E5%A2%83%E4%B8%89%EF%BC%9A%E9%81%8E%E5%BA%A6%E4%BD%BF%E7%94%A8">困境三：過度使用</a></li>
+<li><a href="#%E8%B3%87%E6%96%99%E5%BA%AB%E5%A4%AA%E5%A4%9A%E4%BA%86%EF%BC%81">資料庫太多了！</a></li>
+<li><a href="#%E7%84%A1%E8%A7%A3%E7%9A%84%E3%80%8C%E5%88%86%E9%A1%9E%E3%80%8D%E9%9B%A3%E9%A1%8C">無解的「分類」難題</a></li>
+<li><a href="#%E6%88%91%E7%9A%84-Notion-database-%E7%B0%A1%E6%BD%94%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">我的 Notion database 簡潔使用指南</a></li>
+<li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E9%81%A9%E5%8F%AF%E8%80%8C%E6%AD%A2%E7%9A%84%E8%A4%87%E9%9B%9C">結語：適可而止的複雜</a></li>
+<li><a href="#%E9%A1%8C%E5%A4%96%E8%A9%B1%EF%BC%9ANotion-%E4%B8%A6%E4%B8%8D%E9%81%A9%E5%90%88%E5%81%9A%E5%8D%A1%E7%89%87%E7%AD%86%E8%A8%98">題外話：Notion 並不適合做卡片筆記</a></li>
+</ol>
+<h3 id="系列：Simple-Notion"><a href="#系列：Simple-Notion" class="headerlink" title="系列：Simple Notion"></a><strong>系列：Simple Notion</strong></h3><blockquote>
+<ol>
+<li><a href="https://blog.kyomind.tw/simple-notion/">使用 Notion 滿 3 年，為何我仍「不推薦」用它來管理你的人生？</a></li>
+<li><a href="https://blog.kyomind.tw/stumbling-on-notion/">少則得，多則惑：使用 Notion 時的兩個常見陷阱</a></li>
+<li><strong>Notion 資料庫「反複雜」使用指南</strong></li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>資料庫（database）無疑是 Notion 最強大的功能，但也是最複雜的。「<strong>過度使用</strong>」的結果，<strong>可能比不用還糟糕</strong>。</p>
+<p>既然是「Simple Notion」系列文章，主軸仍會聚焦在「<strong>簡潔</strong>」二字。而講到簡潔使用 Notion，資料庫絕對是<strong>一個無法繞過的主要議題</strong>。</p>
+<p>我希望不落俗套地，討論 Notion 資料庫的<strong>美麗與哀愁</strong>。並提供<strong>簡單有效</strong>的<a href="#%E6%88%91%E7%9A%84-Notion-database-%E7%B0%A1%E6%BD%94%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97">使用指南</a>，讓你能夠<strong>避免「陷阱」</strong>，<strong>適度使用</strong>，從而<strong>真正發揮它的價值</strong>。</p>
+<p>更重要的是：<strong>減少不必要的學習焦慮感。</strong></p>
+          <div class="read-more">
+            <a href="/notion-database/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/beyond-the-basic-stuff-with-python-02/">如何寫出 Pythonic 程式碼——《Python 功力提升的樂趣》</a>
         </h1>
@@ -356,57 +410,6 @@
 <p>而要充分表達其中的「感動」，還得從採用 Intel 處理器時代的 Mac 說起。</p>
           <div class="read-more">
             <a href="/apple-silicon/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/mac-mini/">Mac mini 心得：寫程式的最佳選擇！</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2023-07-01
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/h8Mebn5.jpg" alt="Cassiopeia A 超新星殘骸，直徑約 10 光年"></p>
-<p>今年 4 月，我入手了 M2 Pro 版的 <a target="_blank" rel="noopener" href="https://www.apple.com/tw/mac-mini/">Mac mini</a>，至今已使用了快 3 個月。隨著配備 M2 Max 的 <a target="_blank" rel="noopener" href="https://www.apple.com/tw/mac-studio/">Mac Studio</a> 發表，我認為是時候分享一下我的心得和選購指南——雖然這只是一個粗略的指南。</p>
-<blockquote>
-<p>相關文章：<a href="/apple-studio-display/">Apple Studio Display 適合你嗎？——我的心得與選購指南</a></p>
-</blockquote>
-<hr>
-<h2 id="M4-晶片系列產品簡評（2024-10-31更新）"><a href="#M4-晶片系列產品簡評（2024-10-31更新）" class="headerlink" title="M4 晶片系列產品簡評（2024/10/31更新）"></a>M4 晶片系列產品簡評（<code>2024/10/31</code>更新）</h2><p>Apple 連續 3 天發表了 M4 版本的 iMac、Mac mini 與 Macbook Pro，簡評如下。</p>
-<h3 id="M4-iMac"><a href="#M4-iMac" class="headerlink" title="M4 iMac"></a>M4 iMac</h3><p>不是我的菜，因為我終始不能接受白色邊框！</p>
-<h3 id="M4-Mac-mini——好想要🥹"><a href="#M4-Mac-mini——好想要🥹" class="headerlink" title="M4 Mac mini——好想要🥹"></a>M4 Mac mini——好想要🥹</h3><p>超．級．想．買！但我不能買，因為我已經有 M2 Pro 版了。</p>
-<p>這絕對是<strong>今年最值得買的 Apple 產品</strong>！注意，是所有的 Apple 產品中，最棒的升級。</p>
-<p>對我而言，它有<strong>三大亮點</strong>：</p>
-<ol>
-<li><strong>全新設計的機殼</strong>：更小巧、更美觀。揮別了延用超過 10 年的設計，這是一個重大的改變。</li>
-<li><strong>超級強大的 M4 Pro 晶片</strong>：相較之下，M3 Pro 就像是一個<strong>過渡品</strong>，而 M4 Pro 的 CPU 效能<strong>大幅提升</strong>，因為它竟然有 <strong>10 個效能核心</strong>！（M3 Pro 只有 6 個）</li>
-<li><strong>RAM 可以升級至 64 GB</strong>：64 GB RAM 以往只有 Max 版才能擁有，沒想到這次的 Pro 版也有了，amazing！</li>
-</ol>
-<p>這次 Apple 給 M4 Pro 的福利<strong>實在太多了</strong>！</p>
-<p>單論 CPU 效能，<strong>M4 Pro 甚至還超越了 M3 Max</strong>，就知道這次的升級有多可怕。</p>
-<p>我真的好想買啊！但我不能買😭</p>
-<h3 id="M4-Macbook-Pro"><a href="#M4-Macbook-Pro" class="headerlink" title="M4 Macbook Pro"></a>M4 Macbook Pro</h3><p>一樣，14 吋一律推薦 M4 Pro 版——<strong>尤其是今年的 M4 Pro 版</strong>，16 吋則看需求。</p>
-<p>今年的 M4 Pro 非常強勢，M4 Max 的優勢剩下：</p>
-<ol>
-<li>更多的 GPU 核心。</li>
-<li>支援更大的記憶體。</li>
-<li>外接更多的螢幕。</li>
-</ol>
-<p>綜上所述，M4 Pro 版 Macbook Pro 是<strong>今年最值得買的 Macbook</strong>。</p>
-<h2 id="M3-系列簡評與選購建議（2023-11-02更新）"><a href="#M3-系列簡評與選購建議（2023-11-02更新）" class="headerlink" title="M3 系列簡評與選購建議（2023/11/02更新）"></a>M3 系列簡評與選購建議（<code>2023/11/02</code>更新）</h2><blockquote>
-<p><code>2024/10/31</code>更新：由於 M4 系列晶片與相關產品皆已發表，我將 M3 系列的簡評與選購建議移至 <a target="_blank" rel="noopener" href="https://kyomind.notion.site/M3-54d79b1f2f9f4fb2a2651605d63f234b">Notion 頁面</a>。</p>
-</blockquote>
-<hr>
-<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>本文主要寫給那些<strong>「想買 Mac mini 但還有所遲疑的人」</strong>作為參考，我不會特別鼓吹要買哪一款，這是一篇「平靜」的心得。</p>
-<p>此外，這篇文章是以<strong>我的核心需求</strong>——<a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>——為出發點，對同為軟體工程師的讀者而言，可能更具參考價值。</p>
-          <div class="read-more">
-            <a href="/mac-mini/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/15/">

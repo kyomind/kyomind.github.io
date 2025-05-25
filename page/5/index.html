@@ -119,7 +119,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (54)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (55)</a>
           
             <a href="/categories/Django/">Django (13)</a>
           
@@ -165,6 +165,45 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-25/">分頁（下）自定義分頁類別</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-07
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 25 篇。</p>
+<p>上一篇我們介紹了 Django Ninja 的內建分頁器，並用它實作了簡單的分頁功能。</p>
+<p>雖然內建的<code>PageNumberPagination</code>確實方便，但在很多時候，我們仍需要一些<strong>客製化</strong>功能。</p>
+<p>為了實現這個目的，你需要<strong>自定義一個分頁類別</strong>。</p>
+<p>不過別擔心，這種自定義，<strong>並非從零開始</strong>。而是繼承 Django Ninja 所提供的基礎分頁類別，再進行自己的「<strong>加工</strong>」。</p>
+<p>這篇文章就要來教你怎麼做。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/16">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="客製化需求"><a href="#客製化需求" class="headerlink" title="客製化需求"></a>客製化需求</h2><p>除了基本的分頁，我們還希望能夠：</p>
+<ul>
+<li><strong>允許客戶端選擇</strong>每頁顯示的資料數量，<strong>可選範圍</strong>限定在 1 至 100 之間。</li>
+<li>在回應中<strong>新增兩個欄位</strong>，顯示當前的<strong>分頁資訊</strong>：<ul>
+<li>當前頁數（<code>page</code>）。</li>
+<li>每頁顯示數量（<code>per_page</code>）。</li>
+</ul>
+</li>
+</ul>
+<p>這無疑是很常見的需求。我們將透過自定義分頁類別，來實現這些功能。</p>
+<p>話不多說，直接開始！</p>
+          <div class="read-more">
+            <a href="/django-ninja-25/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-24/">分頁（上）Django Ninja 的內建分頁器</a>
         </h1>
@@ -373,37 +412,6 @@
 <p>Django Ninja 的資料驗證與錯誤處理機制，相較 Django REST framework <strong>更加複雜</strong>，因此我們得用<strong>完整的篇幅</strong>來介紹，幫助你清楚地理解它們。</p>
           <div class="read-more">
             <a href="/django-ninja-19/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-18/">API 文件（下）Pydantic Field 設定範例與預設值</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-30
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 18 篇。</p>
-<p>上一篇文章中，我們探討了 Django Ninja 影響 API 文件<strong>呈現</strong>的一些重要設定。它們是<strong>自動化 API 文件</strong>的基本功，不容忽視。</p>
-<p>但這樣<strong>還不夠</strong>！我們想要讓這份文件更加<strong>生動</strong>，讀起來清晰易懂。</p>
-<p>其中的關鍵在於 API 文件上的<strong>資料範例</strong>。好的範例讓人一讀就懂，能有效縮短理解和思考的時間。</p>
-<p>本文將介紹如何運用 Pydantic 的<code>Field</code>設定，全方位提升 API 文件的清晰與可讀性。我們會探討如何為自動生成的文件加上<strong>栩栩如生的範例</strong>，讓文件<strong>更貼近真實</strong>。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/9">這個 PR</a>。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="Pydantic-在-Django-Ninja-中的角色"><a href="#Pydantic-在-Django-Ninja-中的角色" class="headerlink" title="Pydantic 在 Django Ninja 中的角色"></a>Pydantic 在 Django Ninja 中的角色</h2><p>Pydantic 是一個實現<strong>資料驗證、序列化</strong>的套件，廣泛應用於 FastAPI 和 Django Ninja 等框架。</p>
-<p>在 Django Ninja 中，Pydantic 被用來定義 Schema，這些 Schema 決定了 API 如何處理 HTTP 請求和回應中的資料，並自動轉換成<strong>符合 OpenAPI 標準的文件</strong>。</p>
-<p>Pydantic 的強大之處在於，它不僅能驗證資料，還可以通過<code>Field</code>設定，為文件欄位<strong>提供額外的說明、範例和預設值</strong>。</p>
-<p>這些細節設定會<strong>自動反映</strong>在轉換後的 API 文件中，幫助開發者更好地理解 API 的行為與內涵。</p>
-          <div class="read-more">
-            <a href="/django-ninja-18/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/4/">
