@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
             
 
-  <meta property="article:modified_time" content="2025-05-25T02:59:02+08:00" />
+  <meta property="article:modified_time" content="2025-05-25T03:30:14+08:00" />
 
 
 
@@ -255,7 +255,7 @@
 <h3 id="3-Qwen3-32B"><a href="#3-Qwen3-32B" class="headerlink" title="3. Qwen3-32B"></a>3. Qwen3-32B</h3><p><a target="_blank" rel="noopener" href="https://openrouter.ai/qwen/qwen3-32b:free">▶️ Qwen: Qwen3 32B (free)</a></p>
 <p>阿里巴巴的通義千問系列，英文是 Qwen。</p>
 <p>Qwen3 這系列的模型非常新，發表還未滿一個月，而且全都是推理與非推理的<strong>混合型模型</strong>。可參考官方 <a target="_blank" rel="noopener" href="https://qwenlm.github.io/blog/qwen3/">blog 介紹</a>，值得一讀。</p>
-<p>本質上是推理模型，但可以透過提示詞「<code>/no_think</code>」來關閉它的推理能力，這樣你就不用等太久。</p>
+<p>本質上是推理模型，但可以透過提示詞「<code>/no_think</code>」來關閉它的推理能力，這樣你就不用等待它在回答過程中的「自言自語」了。</p>
 <p>而 Qwen3-32B 是「緊湊」模型中，規模最大的那個，能力相當不錯。</p>
 <p>基本上擁有 32 GB 統一記憶體的 Mac 就能跑起來，接 API 的好處則是——輸出更快！</p>
 <h3 id="4-Qwen3-235B-A22B"><a href="#4-Qwen3-235B-A22B" class="headerlink" title="4. Qwen3-235B-A22B"></a>4. Qwen3-235B-A22B</h3><p><a target="_blank" rel="noopener" href="https://openrouter.ai/qwen/qwen3-235b-a22b:free">▶️ Qwen: Qwen3 235B A22B (free)</a></p>
@@ -264,7 +264,7 @@
 <li>Qwen3-30B-A3B</li>
 <li>Qwen3-235B-A22B</li>
 </ol>
-<p>這類模型的特色就是在推理時——也就是<strong>輸出結果時，只需要動用到一部分的參數</strong>，所以計算速度特別快。（因為計算量少很多）</p>
+<p>這類模型的特色就是<strong>輸出結果（回答）時，只需要動用到一部分的參數</strong>，所以計算速度特別快——因為計算量少很多。</p>
 <p>以 Qwen3-30B-A3B 為例，作為一個 30B 模型，它的「聰明程度」是 30B 等級的，但輸出速度卻像 3B 的小模型這麼快。</p>
 <p>附帶一提，DeepSeek V3 也是 MoE 模型，只是通常不會特別強調。</p>
 <p>Qwen3-235B-A22B 這樣超過 200B 的規模，很難在消費級硬體中跑起它，所以 API 更顯得有價值。</p>
