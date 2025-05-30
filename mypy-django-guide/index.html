@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-04-27T01:45:53+08:00" />
+  <meta property="article:modified_time" content="2025-05-30T03:51:07+08:00" />
 
 
 
@@ -231,7 +231,7 @@
 <h2 id="一、建立-Mypy-設定檔"><a href="#一、建立-Mypy-設定檔" class="headerlink" title="一、建立 Mypy 設定檔"></a>一、建立 Mypy 設定檔</h2><p>Mypy 支援<a target="_blank" rel="noopener" href="https://mypy.readthedocs.io/en/stable/config_file.html">好幾種</a>常見的設定檔。</p>
 <p>最常見的是<code>mypy.ini</code>，它同時也支援<code>pyproject.toml</code>，而且很多大型開源專案都會採用後者，比如 <a target="_blank" rel="noopener" href="https://github.com/fastapi/fastapi/blob/master/pyproject.toml#L123">FastAPI</a>。</p>
 <p>上述兩種最推薦，這裡我們先採用<code>mypy.ini</code>。</p>
-<p>不建立設定檔，也能使用 Mypy。設定檔主要是讓你的型別檢查更加<strong>客製化。</strong>尤其用來排除那些你不需要的規則。</p>
+<p>不建立設定檔，也能使用 Mypy。設定檔主要是讓你的型別檢查更加<strong>客製化。</strong>尤其用來排除那些<strong>你不需要的規則</strong>。</p>
 <h3 id="Django-特殊設定"><a href="#Django-特殊設定" class="headerlink" title="Django 特殊設定"></a>Django 特殊設定</h3><p>但對於 Django 專案來說，設定檔則是「必要」，因為有幾處必須定義——否則 Mypy 會跳出一大堆錯誤XD。</p>
 <p>這是因為 Django 有很多<strong>動態屬性（執行時才會確定內容）</strong>，少了這些設定，Mypy 很可能無法正確檢查。</p>
 <p>我們看一下設定內容：</p>
