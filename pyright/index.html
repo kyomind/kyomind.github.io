@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Pyright 上手指南：Python 型別檢查的新選擇">
+  <meta property="og:title" content="Pyright 上手指南：Python 型別檢查的新選擇"><meta name="twitter:description" content="本文介紹 Pyright 的優勢、安裝方式以及如何在 VS Code 中使用，幫助你提升 Python 開發體驗。">
+  <meta property="og:description" content="本文介紹 Pyright 的優勢、安裝方式以及如何在 VS Code 中使用，幫助你提升 Python 開發體驗。"><meta name="twitter:image" content="https://img.kyomind.tw/pyright.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/pyright.jpg">
+<meta name="description" content="本文介紹 Pyright 的優勢、安裝方式以及如何在 VS Code 中使用，幫助你提升 Python 開發體驗。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-05-30T03:28:15+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-05-30T02:23:51+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/pyright/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Pyright 上手指南：Python 型別檢查的新選擇 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (55)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (41)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Pyright 上手指南：Python 型別檢查的新選擇
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-05-30
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E5%9E%8B%E5%88%A5%E6%AA%A2%E6%9F%A5%EF%BC%9F"><span class="toc-text">為什麼需要型別檢查？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pyright-%E7%B0%A1%E4%BB%8B%E2%80%94%E2%80%94%E7%82%BA%E4%BB%80%E9%BA%BC%E9%81%B8%E5%AE%83%EF%BC%9F"><span class="toc-text">Pyright 簡介——為什麼選它？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pyright-%E7%9A%84%E4%B8%89%E5%A4%A7%E5%84%AA%E5%8B%A2"><span class="toc-text">Pyright 的三大優勢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mypy-vs-Pyright-%E9%87%8D%E9%BB%9E%E6%AF%94%E8%BC%83"><span class="toc-text">Mypy vs Pyright 重點比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Pyright"><span class="toc-text">安裝 Pyright</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%96%BC%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="toc-text">關於設定檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pyright-%E7%9A%84%E4%B8%89%E7%A8%AE%E7%AD%89%E7%B4%9A"><span class="toc-text">Pyright 的三種等級</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%90%88-pre-commit-%E8%88%87%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="toc-text">整合 pre-commit 與注意事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-%E8%A8%AD%E5%AE%9A%E5%BE%85%E8%A3%9C"><span class="toc-text">CI 設定待補</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%96%B0%E5%B7%A5%E5%85%B7%E3%80%81%E6%96%B0%E6%B0%A3%E8%B1%A1"><span class="toc-text">結語：新工具、新氣象</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/pyright.jpg"></p>
+<p>如〈<a href="https://blog.kyomind.tw/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>〉一文中所述，最近我開始了一個新的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">side project</a>。</p>
+<p>我打算好好利用這個專案，練習並實踐那些，在工作中無法盡情揮灑，或想學習但是還用不到的新技術。包括後端、AI、DevOps。</p>
+<p>為了嘗試不同的開發體驗，從框架到工具都有所更新：</p>
+<ul>
+<li>因應 AI 時代，後端框架改用 FastAPI——輕量，且非同步支援佳。</li>
+<li>套件管理器從 Poetry 換成 uv——快，就是快。</li>
+</ul>
+<p>而型別檢查器——本文的主角，則從 Mypy 改為 Pyright。</p>
+<p>這不是一時興起的炫技選擇，而是一連串有意識的技術決策：選擇那些效能更好、體驗更佳，並且有長期潛力的替代方案。</p>
+<p>Pyright，就是其中之一。</p>
+<hr>
+<h2 id="為什麼需要型別檢查？"><a href="#為什麼需要型別檢查？" class="headerlink" title="為什麼需要型別檢查？"></a>為什麼需要型別檢查？</h2><p>如果你對 Python 的「型別檢查」議題還不熟，歡迎參考我之前寫的「<a href="https://blog.kyomind.tw/series/#Mypy-%E4%B8%89%E9%83%A8%E6%9B%B2">Mypy 三部曲</a>」，其中對 Python type hints 與型別靜態分析工具做了深入說明。</p>
+<p>Type hints 歷經多代 Python 發展至今，已趨於成熟。但它在實際專案中的流行程度，恐怕還不算高。</p>
+<p>甚至直白地說，對部分 Python 開發者而言，可能：</p>
+<ol>
+<li>沒聽過。</li>
+<li>知道但無感。</li>
+</ol>
+<p>這正是本文要努力的目標——讓更多人加入撰寫 Python type hints 的行列。</p>
+<span id="more"></span>
+
+<h3 id="型別檢查的價值"><a href="#型別檢查的價值" class="headerlink" title="型別檢查的價值"></a>型別檢查的價值</h3><p>簡言之，型別檢查不是為了「多寫幾行」程式碼，而是為了讓 IDE 幫我們多想一點、早點報錯，減少 runtime 的 trial &amp; error。</p>
+<p>它能比單元測試讓你更早、更容易發現語法錯誤。</p>
+<p>要做到這點——讓 Python 像「<strong>半個靜態語言</strong>」一樣可靠。我們除了需要好好寫 type hints，還要搭配「型別檢查器」（type checker）。</p>
+<p>對我來說，type hints 與型別檢查，已經從「選配」變成「開發必需品」，就像 linter、formatter 一樣。</p>
+<hr>
+<p>在擁抱 type hints 成為開發習慣後，接下來就是要選擇一個好用的「型別檢查器」來幫我們把關。</p>
+<p>除了老牌的 Mypy 之外，有沒有其它選擇呢？</p>
+<p>答案是肯定的，這就是本文接下來要介紹的主角——Pyright。</p>
+<h2 id="Pyright-簡介——為什麼選它？"><a href="#Pyright-簡介——為什麼選它？" class="headerlink" title="Pyright 簡介——為什麼選它？"></a>Pyright 簡介——為什麼選它？</h2><p>如〈<a href="https://blog.kyomind.tw/mypy/">Python type checker：Mypy 介紹</a>〉中所言，Mypy 誕生於 2012 年——這甚至比 Python 正式導入 type hints 還早！</p>
+<p>作為第一個被廣泛採用的型別檢查工具，它為 Python 型別註解奠定了基礎，但同時也背負了早期設計的限制與<strong>歷史包袱</strong>。</p>
+<p>Pyright 誕生於 2019 年，由微軟開發，設計之初即參考 TypeScript 的靜態型別系統，並針對 IDE 整合與效能優化。它更年輕、設計更現代——後發者優勢。</p>
+<h2 id="Pyright-的三大優勢"><a href="#Pyright-的三大優勢" class="headerlink" title="Pyright 的三大優勢"></a>Pyright 的三大優勢</h2><p>Pyright 有以下三大賣點。</p>
+<h3 id="1-效能極快，檢查大型專案也很輕鬆"><a href="#1-效能極快，檢查大型專案也很輕鬆" class="headerlink" title="1. 效能極快，檢查大型專案也很輕鬆"></a>1. 效能極快，檢查大型專案也很輕鬆</h3><p>Pyright 以<strong>高效能</strong>著稱。</p>
+<blockquote>
+<p>Pyright is a full-featured, standards-based static type checker for Python. It is designed for high performance and can be used with large Python source bases.</p>
+</blockquote>
+<p>使用 TypeScript 實現並運行於 Node.js 上，號稱效能比 Mypy 快 5 倍以上，特別適合大型 Python 專案。</p>
+<h3 id="2-能進行「型別推斷」"><a href="#2-能進行「型別推斷」" class="headerlink" title="2. 能進行「型別推斷」"></a>2. 能進行「型別推斷」</h3><p>Pyright 能對「未型別註解」的程式碼進行<strong>型別推斷（type inference）</strong>，嘗試分析並提供檢查結果。</p>
+<p>這使得它對舊有的程式碼專案（無型別註解）依然有效。</p>
+<p>不過，Pyright 的型別檢查效果在「有明確型別註解時」會<strong>更好</strong>，且對於未註解的程式碼，檢查深度可能<strong>不如</strong>有註解的程式碼嚴謹。</p>
+<h3 id="3-與-VS-Code-的整合幾乎是零設定"><a href="#3-與-VS-Code-的整合幾乎是零設定" class="headerlink" title="3 .與 VS Code 的整合幾乎是零設定"></a>3 .與 VS Code 的整合幾乎是零設定</h3><p>直接內建於 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance</a>！</p>
+<p>用 VS Code 寫 Python，一定會裝 Pylance，相當於當年 Windows 綁 IE 的概念XD</p>
+<p>只需要你在 VS Code 的 UI 把型別檢查打開即可。如下圖：</p>
+<p><img src="https://img.kyomind.tw/pyright-4.png"></p>
+<p>這樣就能享受 Pyright 的型別檢查功能，不需要額外設定。</p>
+<hr>
+<p>看完 Pyright 的優勢，接下來和老牌的 Mypy 比較一下。</p>
+<h2 id="Mypy-vs-Pyright-重點比較"><a href="#Mypy-vs-Pyright-重點比較" class="headerlink" title="Mypy vs Pyright 重點比較"></a>Mypy vs Pyright 重點比較</h2><p>兩者雖然都是 Python 的靜態型別檢查工具，但設計哲學與使用體驗差很多。</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><strong>Mypy</strong></th>
+<th><strong>Pyright</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>開發者</td>
+<td>Python 官方支援（部分）</td>
+<td>Microsoft（富爸爸）</td>
+</tr>
+<tr>
+<td>執行速度</td>
+<td>較慢，尤其在大型專案中</td>
+<td>非常快</td>
+</tr>
+<tr>
+<td>Type Checking 嚴格性</td>
+<td>偏保守，有些 type error 不會抓</td>
+<td>更嚴格，預設就更接近 TypeScript 的風格</td>
+</tr>
+<tr>
+<td>支援型別提示（PEP）</td>
+<td>完整支援 PEP 484 等標準</td>
+<td>同樣完整，但對 edge cases 處理得更細緻</td>
+</tr>
+<tr>
+<td>自動化工具整合</td>
+<td>較傳統、整合需要設定</td>
+<td>用 VS Code 即可獲得完整體驗</td>
+</tr>
+<tr>
+<td>錯誤訊息易讀性（<strong>重要</strong>）</td>
+<td>普通，訊息有時不夠具體</td>
+<td>很清楚，並且能指出路徑與具體型別差異</td>
+</tr>
+</tbody></table>
+<p>我認為比較重要的是「執行速度」與「錯誤訊息易讀性」這兩點。</p>
+<hr>
+<p>介紹完背景，現在可以來實作了。</p>
+<h2 id="安裝-Pyright"><a href="#安裝-Pyright" class="headerlink" title="安裝 Pyright"></a>安裝 Pyright</h2><p>如前所述，Pyright 是使用 TypeScript 寫成，所以原則上要使用 npm 來安裝——聽到這裡你可能就不是很想用了XD</p>
+<p>別擔心，Pyright 當然提供了 <a target="_blank" rel="noopener" href="https://pypi.org/project/pyright/">Python wrapper 版本</a>，因此也可以直接用 Python 套件方式安裝，推薦使用 uv 並安裝到 dev group：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv add --dev pyright</span><br></pre></td></tr></table></figure>
+
+<p>VS Code 只要裝好 Pylance 擴充套件，幾乎不需要再額外設定。</p>
+<h3 id="安裝套件的意義"><a href="#安裝套件的意義" class="headerlink" title="安裝套件的意義"></a>安裝套件的意義</h3><p>裝是裝了，但這個工具基本上<strong>不是給開發者直接使用的</strong>。主要用途在：</p>
+<ol>
+<li>作為 pre-commit 執行檔。</li>
+<li>CI 的環境安裝。</li>
+</ol>
+<p>至於開發時，Pylance 本來就安裝了 Pyright，自然就會顯示錯誤提示。</p>
+<hr>
+<h2 id="關於設定檔"><a href="#關於設定檔" class="headerlink" title="關於設定檔"></a>關於設定檔</h2><p>如同 Mypy 使用 <code>mypy.ini</code>或<code>pyproject.toml</code>。</p>
+<p>你可以透過<code>pyrightconfig.json</code>或<code>pyproject.toml</code>來客製化 Pyright 的檢查行為。</p>
+<p>其中<code>pyrightconfig.json</code>是原生的設定檔格式，而<code>pyproject.toml</code>則是後來才追加的。</p>
+<p>如果專案中同時存在<code>pyrightconfig.json</code>和<code>pyproject.toml</code>，Pyright 會優先使用<code>pyrightconfig.json</code>的設定。</p>
+<p>兩者目前基本上可以視為等價，所以要選擇哪一種格式，主要取決於<strong>你希望 Pyright 的設定檔要獨立還和其它工具放在一起</strong>。</p>
+<p>我暫時選擇獨立，採<code>pyrightconfig.json</code>，<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/pyrightconfig.json">內容</a>如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;venvPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;venv&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.venv&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;migrations&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;.venv&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;typeCheckingMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;basic&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，一旦 VS Code 偵測到有設定檔存在，預設的檢查等級就會是<code>standard</code>——不管你 VS Code 本來怎麼設定。</p>
+<p>此時最好就明示設定<code>typeCheckingMode</code>，如上所示。</p>
+<h2 id="Pyright-的三種等級"><a href="#Pyright-的三種等級" class="headerlink" title="Pyright 的三種等級"></a>Pyright 的三種等級</h2><p>Pyright 提供三種檢查等級：</p>
+<ul>
+<li><code>basic</code>：適合大部分實務開發，檢查範圍涵蓋常見錯誤，擾動小。</li>
+<li><code>standard</code>：預設值，較為嚴格，容易導致大量紅線。</li>
+<li><code>strict</code>：極致嚴格，適合對型別非常重視的專案或團隊。</li>
+</ul>
+<p>就我的經驗，<code>standard</code>所提示的錯誤量，通常比<code>basic</code>要<strong>多很多</strong>。</p>
+<p>至於<code>strict</code>——根本不敢想。</p>
+<p>我個人認為<code>basic</code>已相當足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
+<hr>
+<h2 id="整合-pre-commit-與注意事項"><a href="#整合-pre-commit-與注意事項" class="headerlink" title="整合 pre-commit 與注意事項"></a>整合 pre-commit 與注意事項</h2><p>我習慣將型別檢查加入 pre-commit hook，確保每次 commit 都經過檢查。</p>
+<p>但是，不可否認，型別檢查器的 hook 設定比 linter、formatter 要來得<strong>講究許多</strong>！</p>
+<p>因為它需要<strong>完整的執行環境</strong>——包括相依套件，不像 linter 只需對程式碼直接進行檢查即可。</p>
+<p>所以設定上會麻煩一些，之前使用 Mypy 就踩過不少坑。</p>
+<p>從結論上來說，把 hook 設定為「本地」會單純得多。適合單人開發的 side project，我的設定如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pyright</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pyright</span> <span class="string">(local</span> <span class="string">venv)</span></span><br><span class="line">      <span class="attr">entry:</span> <span class="string">.venv/bin/pyright</span></span><br><span class="line">      <span class="attr">language:</span> <span class="string">system</span></span><br><span class="line">      <span class="attr">pass_filenames:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">types:</span> [<span class="string">python</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>name</code>欄位的名稱可以自訂，<code>id</code>部分因為是 local hook，也能夠自訂。<code>entry</code>的路徑則要看專案虛擬環境所在。</p>
+<p>值得一提的是，上述 hook 設定還得搭配<code>pyrightconfig.json</code>中的：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;venvPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;venv&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.venv&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>才能正常執行。</p>
+<h3 id="使用-Remote-Hook"><a href="#使用-Remote-Hook" class="headerlink" title="使用 Remote Hook"></a>使用 Remote Hook</h3><p>用遠端倉庫的 hook 也行，但常見的做法我試不成功，以下設定則可以 work：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/RobertCraigie/pyright-python</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v1.1.401</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pyright</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pyright</span> <span class="string">(via</span> <span class="string">pyright-python)</span></span><br><span class="line">      <span class="attr">pass_filenames:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>但一樣要搭配上述的<code>pyrightconfig.json</code>設定內容。</p>
+<p>或寫成<code>pyproject.toml</code>格式如下：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.pyright]</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="attr">venvPath</span> = <span class="string">&quot;.&quot;</span></span><br><span class="line"><span class="attr">venv</span> = <span class="string">&quot;.venv&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>更多細節可參考上述 hook 的 <a target="_blank" rel="noopener" href="https://github.com/RobertCraigie/pyright-python">GitHub 主頁</a>介紹。</p>
+<h2 id="CI-設定待補"><a href="#CI-設定待補" class="headerlink" title="CI 設定待補"></a>CI 設定待補</h2><p>目前還沒有實作 CI，之後實作會再補上設定檔。</p>
+<hr>
+<h2 id="結語：新工具、新氣象"><a href="#結語：新工具、新氣象" class="headerlink" title="結語：新工具、新氣象"></a>結語：新工具、新氣象</h2><p>我感覺光是寫完這篇文章，又讓我對 Pyright 的了解增進許多XD</p>
+<p>其實，無論是 Mypy 或 Pyright，還是其它工具。願意寫 type hints、進行型別檢查，就已經是很好的實踐。</p>
+<p>工具只是細節上的分歧，並不影響大局。</p>
+<p>我們最終想成為的，是優秀的開發者——問題解決者。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python Linter、Formatter 教學" rel="bookmark">VS Code 設定 Python Linter、Formatter 教學</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/VS-Code/">VS Code</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/Type-Hints/">Type Hints</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/pocket-alternatives/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Pocket 替代方案推薦：Raindrop.io 與 Karakeep</span>
+        <span class="prev-text nav-mobile">Pocket 替代方案推薦：Raindrop.io 與 Karakeep</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">42</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">55</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">41</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (41)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,44 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-05-30
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/pyright.jpg"></p>
+<p>如〈<a href="https://blog.kyomind.tw/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>〉一文中所述，最近我開始了一個新的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">side project</a>。</p>
+<p>我打算好好利用這個專案，練習並實踐那些，在工作中無法盡情揮灑，或想學習但是還用不到的新技術。包括後端、AI、DevOps。</p>
+<p>為了嘗試不同的開發體驗，從框架到工具都有所更新：</p>
+<ul>
+<li>因應 AI 時代，後端框架改用 FastAPI——輕量，且非同步支援佳。</li>
+<li>套件管理器從 Poetry 換成 uv——快，就是快。</li>
+</ul>
+<p>而型別檢查器——本文的主角，則從 Mypy 改為 Pyright。</p>
+<p>這不是一時興起的炫技選擇，而是一連串有意識的技術決策：選擇那些效能更好、體驗更佳，並且有長期潛力的替代方案。</p>
+<p>Pyright，就是其中之一。</p>
+<hr>
+<h2 id="為什麼需要型別檢查？"><a href="#為什麼需要型別檢查？" class="headerlink" title="為什麼需要型別檢查？"></a>為什麼需要型別檢查？</h2><p>如果你對 Python 的「型別檢查」議題還不熟，歡迎參考我之前寫的「<a href="https://blog.kyomind.tw/series/#Mypy-%E4%B8%89%E9%83%A8%E6%9B%B2">Mypy 三部曲</a>」，其中對 Python type hints 與型別靜態分析工具做了深入說明。</p>
+<p>Type hints 歷經多代 Python 發展至今，已趨於成熟。但它在實際專案中的流行程度，恐怕還不算高。</p>
+<p>甚至直白地說，對部分 Python 開發者而言，可能：</p>
+<ol>
+<li>沒聽過。</li>
+<li>知道但無感。</li>
+</ol>
+<p>這正是本文要努力的目標——讓更多人加入撰寫 Python type hints 的行列。</p>
+          <div class="read-more">
+            <a href="/pyright/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/pocket-alternatives/">Pocket 替代方案推薦：Raindrop.io 與 Karakeep</a>
         </h1>
@@ -343,39 +381,6 @@
 <p>我們開始吧！</p>
           <div class="read-more">
             <a href="/hetzner/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/memos/">開源工具 Memos 介紹：寫日記的好選擇</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-04-05
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/OCwkXLz.png">  </p>
-<p>你寫日記嗎？</p>
-<p>你想像中的日記是什麼模樣？充滿積極與規劃，還是對內心的失落與探索？</p>
-<p>時間飛逝，從這篇<a target="_blank" rel="noopener" href="https://www.facebook.com/share/p/18UV2Yz6ya/">臉書貼文</a>起算，轉眼之間，我已經用 Memos 寫日記超過一年了。</p>
-<p>寫這篇文章，是想跟大家分享我選擇 Memos 的原因、這段期間的心得，以及為什麼我認為它是「寫日記」這件事上，最適合我的工具。</p>
-<p>不過，我們還是先從「<strong>為什麼要寫日記</strong>」開始說起吧！</p>
-<hr>
-<h2 id="為什麼我要寫日記？"><a href="#為什麼我要寫日記？" class="headerlink" title="為什麼我要寫日記？"></a>為什麼我要寫日記？</h2><p>前面提到的臉書貼文，有指出其中的原因，那時的我是這樣說的：</p>
-<blockquote>
-<p>因為想要記錄當下的想法和心情<br>現在回想當時，我只會覺得那時的日子很充實<br>但我已經不記得那時自己都在想些什麼、擔心什麼<br>　<br>美好的一面，很多時候是給別人看的<br>對我而言，我更想知道，那時的自己，是如何的狼狽、焦慮與不安<br>唯有這些，才能讓現在的我產生共鳴，進而更加理解自己<br>　<br>可惜，我已經很難回想起來了<br>雖然肯定有留下一些文字記錄，但說真的，我早已忘記它們在哪<br>真的太可惜了！ </p>
-</blockquote>
-<p>對那時的我來說，寫日記可說是一種「讓自己變得積極」的方法。</p>
-<p>不過，現在的我，不太喜歡用這種「過於積極」的角度來看待這件事情。</p>
-<p>我覺得這樣的心態，對「寫日記」而言是不健康的。</p>
-<p>這個就跟〈<a href="/feel-good-productivity/">《高效原力》書評：做人要 NICE，不要 SMART？</a> 〉中提到的，對「休息是為了走更長遠的路」這類心態的<strong>反感</strong>一樣——不用那麼複雜啦！</p>
-          <div class="read-more">
-            <a href="/memos/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
