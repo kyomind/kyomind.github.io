@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-30T03:57:41+08:00" />
+  <meta property="article:modified_time" content="2025-05-30T10:05:54+08:00" />
 
 
 
@@ -286,8 +286,11 @@
 <h2 id="安裝-Pyright"><a href="#安裝-Pyright" class="headerlink" title="安裝 Pyright"></a>安裝 Pyright</h2><p>如前所述，Pyright 是使用 TypeScript 寫成，所以原則上要使用 npm 來安裝——聽到這裡你可能就不是很想用了XD</p>
 <p>別擔心，Pyright 當然提供了 <a target="_blank" rel="noopener" href="https://pypi.org/project/pyright/">Python wrapper 版本</a>，因此也可以直接用 Python 套件方式安裝，推薦使用 uv 並安裝到 dev group：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv add --dev pyright</span><br></pre></td></tr></table></figure>
+<p>或者更穩健的做法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv add --dev pyright[nodejs]</span><br></pre></td></tr></table></figure>
 
-<p>VS Code 只要裝好 Pylance 擴充套件，幾乎不需要再額外設定。</p>
+<p>這個套件實際上是在背後幫你自動安裝了 Pyright 的 Node.js 執行檔與環境，並提供了一個 Python wrapper。</p>
+<p>而上述兩種指令的區別，可以參考<strong>留言區的討論</strong>。</p>
 <h3 id="安裝套件的意義"><a href="#安裝套件的意義" class="headerlink" title="安裝套件的意義"></a>安裝套件的意義</h3><p>裝是裝了，但這個工具基本上<strong>不是給開發者直接使用的</strong>。主要用途在：</p>
 <ol>
 <li>作為 pre-commit 執行檔。</li>
@@ -312,7 +315,7 @@
 <li><code>strict</code>：極致嚴格，適合對型別非常重視的專案或團隊。</li>
 </ul>
 <p>就我的經驗，<code>standard</code>所提示的錯誤量，通常比<code>basic</code>要<strong>多很多</strong>。</p>
-<p>至於<code>strict</code>——根本不敢想。</p>
+<p>不過體感不一定準啦（會因專案而異），想知道這三個等級的<strong>具體區別</strong>，可以參考官方文件的這個<a target="_blank" rel="noopener" href="https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults">對照表</a>。</p>
 <p>我個人認為<code>basic</code>已相當足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
 <hr>
 <h2 id="整合-pre-commit-與注意事項"><a href="#整合-pre-commit-與注意事項" class="headerlink" title="整合 pre-commit 與注意事項"></a>整合 pre-commit 與注意事項</h2><p>我習慣將型別檢查加入 pre-commit hook，確保每次 commit 都經過檢查。</p>
