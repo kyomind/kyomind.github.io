@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-03T07:01:03+08:00" />
+  <meta property="article:modified_time" content="2025-06-03T12:48:12+08:00" />
 
 
 
@@ -317,12 +317,11 @@
 <h2 id="Pyright-的三種等級"><a href="#Pyright-的三種等級" class="headerlink" title="Pyright 的三種等級"></a>Pyright 的三種等級</h2><p>Pyright 提供三種檢查等級：</p>
 <ul>
 <li><code>basic</code>：適合大部分實務開發，檢查範圍涵蓋常見錯誤，擾動小。</li>
-<li><code>standard</code>：預設值，較為嚴格，容易導致大量紅線。</li>
-<li><code>strict</code>：極致嚴格，適合對型別非常重視的專案或團隊。</li>
+<li><code>standard</code>：預設值，比 basic 略為嚴格。</li>
+<li><code>strict</code>：嚴格，適合對型別非常重視的專案或團隊。</li>
 </ul>
-<p>就我的經驗，<code>standard</code>所提示的錯誤量，通常比<code>basic</code>要<strong>多很多</strong>。</p>
-<p>不過體感不一定準啦（會因專案而異），想知道這三個等級的<strong>具體區別</strong>，可以參考官方文件的這個<a target="_blank" rel="noopener" href="https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults">對照表</a>。</p>
-<p>我個人認為<code>basic</code>已相當足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
+<p>想知道這三個等級的<strong>具體區別</strong>，可以參考官方文件的這個<a target="_blank" rel="noopener" href="https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults">對照表</a>。</p>
+<p>個人認為<code>basic</code>或<code>standard</code>就已足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
 <hr>
 <h2 id="整合-pre-commit-與注意事項"><a href="#整合-pre-commit-與注意事項" class="headerlink" title="整合 pre-commit 與注意事項"></a>整合 pre-commit 與注意事項</h2><p>我習慣將型別檢查加入 pre-commit hook，確保每次 commit 都經過檢查。</p>
 <p>但是，不可否認，型別檢查器的 hook 設定比 linter、formatter 要來得<strong>講究許多</strong>！</p>
