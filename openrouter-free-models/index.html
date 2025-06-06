@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
             
 
-  <meta property="article:modified_time" content="2025-06-05T00:10:12+08:00" />
+  <meta property="article:modified_time" content="2025-06-06T07:01:03+08:00" />
 
 
 
@@ -259,9 +259,10 @@
 <p>這個應該不用多說，某種程度上可以說是<strong>改變世界的開源模型</strong>。</p>
 <p>開源模型在它誕生之前，很大程度上被視為一種<strong>玩具</strong>，但在它之後，大家發現開源模型是一個重要的發展方向，而且性能可以與閉源模型一較高下。</p>
 <p>R1 絕對是跨時代的作品，而且到了現在，表現依舊名列前茅。</p>
+<p>實際上 R1 是由 V3 的架構改進而來，只是 R1 在訓練上特別加強了推理能力。</p>
 <h3 id="2-DeepSeek-V3"><a href="#2-DeepSeek-V3" class="headerlink" title="2. DeepSeek V3"></a>2. DeepSeek V3</h3><p><a target="_blank" rel="noopener" href="https://openrouter.ai/deepseek/deepseek-chat-v3-0324:free">▶️ DeepSeek: DeepSeek V3 0324 (free)</a></p>
 <p>0324 又稱為 DeepSeek V3.1，是 DeepSeek 在 2025 年 3 月 24 日發表的<strong>更新</strong>版本。</p>
-<p>DeepSeek V3 屬於「<strong>非推理</strong>」模型，而且寫程式的能力特別強，是 OpenRouter 網站上被大量工具用來寫程式的頂尖模型之一。</p>
+<p>DeepSeek V3 屬於「<strong>非推理</strong>」模型，而且寫程式能力頗受好評，是 OpenRouter 網站上被大量工具用來寫程式的頂尖模型之一。</p>
 <p>在所有開源模型中，用量基本上穩居<a target="_blank" rel="noopener" href="https://openrouter.ai/rankings">第一名</a>。</p>
 <p>不過要特別注意：OpenRouter 上的這個免費版本，在 Input Token 超過 25K 之後，可能會出現回答時「<strong>不斷自我重複</strong>」的問題——我就遇到過。</p>
 <h3 id="3-Qwen3-32B"><a href="#3-Qwen3-32B" class="headerlink" title="3. Qwen3-32B"></a>3. Qwen3-32B</h3><p><a target="_blank" rel="noopener" href="https://openrouter.ai/qwen/qwen3-32b:free">▶️ Qwen: Qwen3 32B (free)</a></p>
@@ -278,7 +279,7 @@
 </ol>
 <p>這類模型的特色就是<strong>輸出結果（回答）時，只需要動用到一部分的參數</strong>，所以計算速度特別快——因為計算量少很多。</p>
 <p>以 Qwen3-30B-A3B 為例，作為一個 30B 模型，它的「聰明程度」是 30B 等級的，但輸出速度卻像 3B 的小模型這麼快。</p>
-<p>附帶一提，DeepSeek V3 也是 MoE 模型，只是通常不會特別強調。</p>
+<p>附帶一提，DeepSeek R1、V3 也是 MoE 模型（兩者系出同源），只是通常不會特別強調。</p>
 <p>Qwen3-235B-A22B 這樣超過 200B 的規模，很難在消費級硬體中跑起它，所以 API 更顯得有價值。</p>
 <h3 id="5-Google-Gemma-3-27B"><a href="#5-Google-Gemma-3-27B" class="headerlink" title="5. Google Gemma 3 27B"></a>5. Google Gemma 3 27B</h3><p><a target="_blank" rel="noopener" href="https://openrouter.ai/google/gemma-3-27b-it:free">▶️ Google: Gemma 3 27B (free)</a></p>
 <p>Google 推出的開源模型，個人評價很高，我曾經在〈<a target="_blank" rel="noopener" href="https://kyomind.notion.site/17-Gemma-3-Vibe-Coding-1c66a92a98a680fe94cfde64ccb96719">訂戶限定 17：強大的 Gemma 3、上班前夕的花蓮之旅、Vibe Coding</a>〉中大力推薦過。</p>
@@ -301,7 +302,7 @@
 <tbody><tr>
 <td>DeepSeek R1</td>
 <td>DeepSeek</td>
-<td>超大型</td>
+<td>超大型（MoE）</td>
 <td>改變時代的開源推理型模型，號稱比美 OpenAI o1</td>
 </tr>
 <tr>

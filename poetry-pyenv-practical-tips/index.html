@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-24T02:53:07+08:00" />
+  <meta property="article:modified_time" content="2025-06-05T07:45:18+08:00" />
 
 
 
@@ -181,7 +181,7 @@
         <span class="post-time">
           2023-06-05
         </span><span class="post-update">
-            →  2024-04-26
+            →  2025-06-05
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -397,20 +397,9 @@
 
 <hr>
 <h2 id="七、安裝套件至-dev-dependencies"><a href="#七、安裝套件至-dev-dependencies" class="headerlink" title="七、安裝套件至 dev dependencies"></a>七、安裝套件至 dev dependencies</h2><p>上篇文章中，我們已經探討過「<a href="https://blog.kyomind.tw/python-poetry/#%E6%96%B0%E5%A2%9E%E5%A5%97%E4%BB%B6%E8%87%B3-dev-dependencies">明確區分開發環境專用的套件</a>」的重要性。</p>
-<p>舊版的指令是這樣的，以<code>black</code>為例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -D</span><br></pre></td></tr></table></figure>
-
-<p>然而<code>--dev (-D)</code>在新版<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli/#options-4">已棄用</a>：</p>
-<blockquote>
-<p>• <code>--dev (-D)</code>: Add package as development dependency. (Deprecated, use <code>-G dev</code> instead)</p>
-</blockquote>
-<p>因為加入了 group 機制，新版的指令<strong>略有不同</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --group dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -G dev</span><br></pre></td></tr></table></figure>
-
-<p>講白了就是變囉嗦了！</p>
-<p>此時的 toml 檔內容如下：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.poetry]</span></span><br><span class="line"><span class="attr">name</span> = <span class="string">&quot;poetry-demo&quot;</span></span><br><span class="line"><span class="attr">version</span> = <span class="string">&quot;0.1.0&quot;</span></span><br><span class="line"><span class="attr">description</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="attr">authors</span> = [<span class="string">&quot;kyo &lt;odinxp@gmail.com&gt;&quot;</span>]</span><br><span class="line"><span class="attr">packages</span> = [&#123;include = <span class="string">&quot;poetry_demo&quot;</span>&#125;]</span><br><span class="line"></span><br><span class="line"><span class="section">[tool.poetry.dependencies]</span></span><br><span class="line"><span class="attr">python</span> = <span class="string">&quot;^3.8&quot;</span></span><br><span class="line"><span class="attr">django</span> = <span class="string">&quot;^3.2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.poetry.group.dev.dependencies]</span></span><br><span class="line"><span class="attr">black</span> = <span class="string">&quot;^23.3.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[build-system]</span></span><br><span class="line"><span class="attr">requires</span> = [<span class="string">&quot;poetry-core&quot;</span>]</span><br><span class="line"><span class="attr">build-backend</span> = <span class="string">&quot;poetry.core.masonry.api&quot;</span></span><br></pre></td></tr></table></figure>
-
+<p><code>2025/06/05</code>更新：在 Poetry 2 以上，以下 4 種寫法皆可，以<code>black</code>為例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">poetry add black --dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -D</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black --group dev</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">poetry add black -G dev</span><br></pre></td></tr></table></figure>
+<p>這些指令都會將<code>black</code>安裝至 dev dependencies 中。</p>
 <hr>
 <h2 id="八、poetry-install-sync"><a href="#八、poetry-install-sync" class="headerlink" title="八、poetry install --sync"></a>八、<code>poetry install --sync</code></h2><p>不久前才發現，虛擬環境用久了，安裝的套件似乎和 lock 檔不完全一致！我一直以為兩者是一定同步的🐸，顯然不是。</p>
 <p>參考<a target="_blank" rel="noopener" href="https://python-poetry.org/docs/managing-dependencies/#synchronizing-dependencies">文件</a>，可用下列指令確保同步：</p>
@@ -425,11 +414,7 @@
 <li>套件有變動時，常常會<strong>忘記匯出</strong><code>requirements.txt</code>。你可以說這是人的問題，但這個 export <code>requirements.txt</code>做法，就<strong>真的</strong>很容易讓人忘記🤣</li>
 <li>由 Poetry 匯出的<code>requirements.txt</code>，不一定能透過 pip 正常安裝套件——兩者存在<strong>輕微的相容性問題</strong>。</li>
 </ol>
-<p>怎麼解？我在原文也已經補充了：</p>
-<blockquote>
-<p>使用 <strong><a target="_blank" rel="noopener" href="https://docs.docker.com/build/building/multi-stage/">multi-stage builds</a></strong> 的 Dockerfile，可以在第一階段安裝 Poetry，第二階段再把 Poetry 捨棄，這樣就不會有多餘的耦合與依賴了。日後會專文介紹。</p>
-</blockquote>
-<p>對，所以系列的第三篇會把這部分補完。</p>
+<p>而系列的第三篇——《<a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>》就是針對這兩個問題，提供一個<strong>更好的解決方案</strong>。</p>
 
       </div>
 
