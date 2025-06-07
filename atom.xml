@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2025-06-03T12:48:12.138Z</updated>
+  <updated>2025-06-07T05:31:05.746Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Imgur 封鎖台灣 IP，我把圖床搬到 Cloudflare R2</title>
+    <link href="https://blog.kyomind.tw/weekly-review-43/"/>
+    <id>https://blog.kyomind.tw/weekly-review-43/</id>
+    <published>2025-06-07T03:00:10.000Z</published>
+    <updated>2025-06-07T05:31:05.746Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://img.kyomind.tw/weekly-review.png">  </p><p>上個月中，我在寫部落格時，突然發現圖片上傳失敗，無論怎麼嘗試都無法成功。</p><p>我的寫作流程是用 VS Code 的 <a href="https://code.visualstudio.com/docs/languages/markdown">Markdown Image</a> 外掛，透過鍵盤快捷鍵，直接把圖片傳到 Imgur 上，這個流程已經持續了好幾年，非常方便、順手。</p><p>但這次踢到鐵板了。</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></p></blockquote><p>認真查了一下，才發現原來是 Imgur 大概從 5 月 16 日開始，封鎖了來自台灣的 IP，不再允許台灣使用者上傳圖片。（但已上傳的圖片還是可以看）</p><p>對此 PTT 也有<a href="http://ptt.cc/bbs/Gossiping/M.1747406974.A.003.html">討論</a>。</p><p>可以想見，這是多麼大的衝擊！</p><p>官方既然沒有給出任何理由，這個舉動（封鎖 IP）又顯然是蓄意的，那我們可以合理推測，短期間內恐怕不會回復正常了。</p><p>但我的部落格肯定還是要繼續寫啊！只能乖乖尋找替代方案。</p><span id="more"></span><hr><h2 id="尋找替代方案"><a href="#尋找替代方案" class="headerlink" title="尋找替代方案"></a>尋找替代方案</h2><p>Markdown Image 這個外掛其實支援不少圖床服務，其中也包括 AWS S3 或其他相容的服務。</p><p>這讓我想到，可以用 <a href="https://www.cloudflare.com/zh-tw/developer-platform/products/r2/">Cloudflare R2</a> 來當圖床（網路上確實有很多人這麼做），畢竟它支援 S3 相容 API，而且最大的優勢是「出口流量」免費，整體成本會比 AWS S3 更低——基本上就是 0。</p><h3 id="其他考慮過的選項：GitHub-公開-Repo"><a href="#其他考慮過的選項：GitHub-公開-Repo" class="headerlink" title="其他考慮過的選項：GitHub 公開 Repo"></a>其他考慮過的選項：GitHub 公開 Repo</h3><p>除了 R2，我也考慮過其他可能性，其中一個就是直接使用 GitHub 的公開 Repository 來當圖床。</p><p>這個方法在某些社群間其實蠻流行的，只要把圖片放進一個公開 Repo，再拿原始連結當作圖床的連結使用。</p><p>看起來也頗為簡便，不過畢竟不是 GitHub 官方鼓勵的用途，頗有「免費仔」的意味，多少讓人有點不安心。</p><p>和 AI 討論了一下這個方案的可行性，結論是：如果 GitHub 政策哪天改了，整個圖床系統可能會瞬間失效，到時候就得從頭來過，光想就覺得頭皮發麻。</p><p>相較之下，把 Cloudflare R2 當作圖床，則是一種<strong>合理且可長期運作</strong>的使用情境，因此我最後還是選擇了 R2。</p><hr><h2 id="認識-Cloudflare"><a href="#認識-Cloudflare" class="headerlink" title="認識 Cloudflare"></a>認識 Cloudflare</h2><p>Cloudflare 是一家美國的網路基礎建設公司，主要提供 <a href="https://www.cloudflare.com/zh-tw/learning/cdn/what-is-a-cdn/">CDN</a>（內容傳遞網路）、網站加速、防火牆與 DDoS 防護等服務。</p><p>許多網站背後的流量處理，其實都仰賴他們的基礎設施——包括我的 blog。</p><p>近年來他們也推出了一些開發者導向的服務，像是 Workers、KV、Pages、R2 等，試圖建立一整套雲端應用的堆疊。</p><p>我本來就對 Cloudflare 的服務很感興趣，聽聞他們家的服務如何「佛心」等等，只是一直苦無實際應用的契機。</p><p>沒想到這次 Imgur 的事件，反而讓我終於有了理由動手玩看看 R2，算是一種誤打誤撞的收穫。</p><blockquote><p>延伸閱讀（Podcast）：<a href="https://pythonhunter.org/episodes/ep46"><strong>Ep 46. 你知道『赛博佛祖』Cloudflare 吗？</strong></a></p></blockquote><hr><h2 id="遷移的大綱與挑戰"><a href="#遷移的大綱與挑戰" class="headerlink" title="遷移的大綱與挑戰"></a>遷移的大綱與挑戰</h2><p>這個圖床遷移實際上花了我好一些功夫才完成，其中的細節頗多，無法在本文詳述。</p><p>但我們可以簡單講講，讓你有個方向。 </p><h3 id="一、域名托管"><a href="#一、域名托管" class="headerlink" title="一、域名托管"></a>一、域名托管</h3><p>我希望圖片網址是以我自己的網域開頭，而不是 Cloudflare 給的預設網址。這樣網址比較乾淨、也容易管理。</p><p>為此，我得先把 DNS 託管給 Cloudflare，接著才能用自定義網域綁定 R2 的 Bucket。</p><p>這個部分花了一點時間摸索，但好在有 AI，最後順利完成。</p><p>如此一來，圖片的網址就會長得像這樣：</p><blockquote><p><a href="https://img.kyomind.tw/poetry-multi-stage-build.jpg">https://img.kyomind.tw/poetry-multi-stage-build.jpg</a></p></blockquote><p>非常精美！</p><h3 id="二、Cache-Rule-設定"><a href="#二、Cache-Rule-設定" class="headerlink" title="二、Cache Rule 設定"></a>二、Cache Rule 設定</h3><p>事情還沒結束。Imgur 本身是一個專業圖床，所以他們對圖片的快取做了非常多優化。</p><p>但 Cloudflare R2 是一個通用的「<a href="https://aws.amazon.com/tw/what-is/object-storage/">物件儲存</a>」服務，不是專門拿來放圖片的——它根本不知道你的具體用途。</p><p>所以它不會自動幫你把快取設定成「最適合公開分享圖片」的模式。</p><p>我們得<strong>手動設定快取策略</strong>，透過 Cloudflare 的 <a href="http://developers.cloudflare.com/cache/how-to/cache-rules/">Cache Rules</a> 來提升圖片的載入速度。</p><p>雖然是附加工作（你不做也不影響使用），但這同時讓我更了解 Cloudflare 的服務內容與運作方式。還增進了對 CDN、瀏覽器快取與 Cookie 設定的一些了解。</p><p>感覺收獲良多耶XD！</p><h3 id="三、Markdown-Image-外掛設定"><a href="#三、Markdown-Image-外掛設定" class="headerlink" title="三、Markdown Image 外掛設定"></a>三、Markdown Image 外掛設定</h3><p>完成前兩步後，你便能透過 Cloudflare 官網的 UI 來上傳圖片並<strong>取得網址</strong>：</p><!-- ![](https://img.kyomind.tw/20250607-112306-wr43.png)   --><p><img src="https://img.kyomind.tw/20250607-131952-1312-min.png">  </p><p>但這樣做<strong>非常不方便</strong>！</p><p>所以我們還要設定 Markdown Image，讓它可以成功支援 R2 上傳。</p><p>這過程我進行得不太順利，在 Google + AI 的協作下，花了快兩個小時才成功。（明明應該是很簡單的事😅）</p><p>除了用 Markdown Image（限 VS Code），更多人則是選擇 <a href="https://github.com/Molunerfinn/PicGo">PicGo</a> 這個開源工具來上傳圖片——需要加裝 Cloudflare R2 外掛，這方面的資料就多很多！</p><p>但畢竟我是 VS Code 用戶，也用它來寫作，Markdown Image 對我而言，仍是最簡單有效的選擇。</p><hr><h2 id="結語：失之東隅，收之桑榆"><a href="#結語：失之東隅，收之桑榆" class="headerlink" title="結語：失之東隅，收之桑榆"></a>結語：失之東隅，收之桑榆</h2><p>這次圖床的遷移，原本只是為了解決一個外部服務封鎖問題。沒想到最後竟發展成一次<strong>基礎建設升級</strong>。</p><p>從依賴 Imgur 這類圖床平台，轉為使用 Cloudflare R2 + 自定義網域，我對 blog 圖片的掌控力更高了，未來也比較不怕平台政策突變造成影響。</p><p>R2 作為我接觸 Cloudflare 服務的開端，但不會是最後一步。接下來，我要嘗試他們家的 Pages、Worker、D1 等等。</p><p>想想不禁有點小興奮！</p><p>這是一種專屬於開發者的愉悅，是<a href="https://www.youtube.com/watch?v=bFd3l8Mrhgw">知覺與快樂的螺旋</a>❤️</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.kyomind.tw/weekly-review.png&quot;&gt;  &lt;/p&gt;
+&lt;p&gt;上個月中，我在寫部落格時，突然發現圖片上傳失敗，無論怎麼嘗試都無法成功。&lt;/p&gt;
+&lt;p&gt;我的寫作流程是用 VS Code 的 &lt;a href=&quot;https://code.visualstudio.com/docs/languages/markdown&quot;&gt;Markdown Image&lt;/a&gt; 外掛，透過鍵盤快捷鍵，直接把圖片傳到 Imgur 上，這個流程已經持續了好幾年，非常方便、順手。&lt;/p&gt;
+&lt;p&gt;但這次踢到鐵板了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;相關文章：&lt;a href=&quot;https://blog.kyomind.tw/my-markdown-writing-flow/&quot;&gt;Notion + VS Code：我的 Markdown 寫作工作流&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;認真查了一下，才發現原來是 Imgur 大概從 5 月 16 日開始，封鎖了來自台灣的 IP，不再允許台灣使用者上傳圖片。（但已上傳的圖片還是可以看）&lt;/p&gt;
+&lt;p&gt;對此 PTT 也有&lt;a href=&quot;http://ptt.cc/bbs/Gossiping/M.1747406974.A.003.html&quot;&gt;討論&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;可以想見，這是多麼大的衝擊！&lt;/p&gt;
+&lt;p&gt;官方既然沒有給出任何理由，這個舉動（封鎖 IP）又顯然是蓄意的，那我們可以合理推測，短期間內恐怕不會回復正常了。&lt;/p&gt;
+&lt;p&gt;但我的部落格肯定還是要繼續寫啊！只能乖乖尋找替代方案。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://img.kyomind.tw/weekly-review.png" type="image"/>
+    
+    
+    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
+    
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Pyright 上手指南：Python 型別檢查的新選擇</title>
@@ -365,43 +401,6 @@
     <category term="書" scheme="https://blog.kyomind.tw/tags/%E6%9B%B8/"/>
     
     <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>待業 6 個月，我做了哪些事？</title>
-    <link href="https://blog.kyomind.tw/weekly-review-42/"/>
-    <id>https://blog.kyomind.tw/weekly-review-42/</id>
-    <published>2025-04-03T09:01:12.000Z</published>
-    <updated>2025-04-11T16:40:15.588Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://i.imgur.com/3auatX0.png"></p><p>這是第 42 期的 Weekly Review，這系列主要記錄我的一些近況、生活與想法。</p><p>在第 38 期〈<a href="/weekly-review-38/">Kyo 待業中！細數我過去的待業時光（上）</a>〉曾提過，我大學畢業後待業的總時間，長達 4 年 8 個月。如果再加上這半年，就超過 5 年了😂</p><p>當然，這些時期，往往也是我人生的重要轉折點：</p><ol><li>第一次待業：書記官考試。</li><li>第二次待業：律師考試 + 轉職軟體工程師。</li></ol><p>而這次，雖然沒有那麼大幅度的轉換，但感覺也是不輕鬆的半年。</p><p>本期就來聊聊，這半年發生了哪些事、我有哪些心得。</p><p>用階段來區分，主要可分為三個部分。</p><span id="more"></span><hr><h2 id="階段一：鐵人賽"><a href="#階段一：鐵人賽" class="headerlink" title="階段一：鐵人賽"></a>階段一：鐵人賽</h2><p>從 Day 1 就開始的鐵人賽準備。</p><p>我在去年 8 月底正式從公司離職，9 月 1 日起進入待業狀態。</p><p>沒有工作的第一天，我做的不是休息，而是直接投入寫作。因為我報名了 iThome 鐵人賽，一場需要連續寫作 30 天的活動。</p><blockquote><p>相關文章：</p><ul><li><a href="/weekly-review-35/">35，開始備戰 2024 iThome 鐵人賽</a></li><li><a href="/2024-ironman-event/">2024 iThome 鐵人賽參賽思路：主題選擇、命名與標題策略</a></li></ul></blockquote><p>我知道，如果等到開賽再寫肯定來不及，容易虎頭蛇尾。因此從 9 月 1 日開始就逐日撰寫內容，為開賽日作「準備」。</p><h3 id="全神貫注"><a href="#全神貫注" class="headerlink" title="全神貫注"></a>全神貫注</h3><p>寫作——哪怕是有壓力的寫作——也可以是一種享受。</p><p>參加鐵人賽這種競賽型的寫作，心理上並不輕鬆。但這段時間是本次待業三個階段中，內心最篤定，行為模式也最為固定的一段時光。</p><p>從完賽的角度，我們不必和別人比較，而是要用力去追逐心中認為「好」的內容。</p><p>這種一心一意的追求，在全職準備的前提下，沒有太多外力的束縛與干擾。</p><p>就是寫！</p><p>辛苦是必然的，但這樣的狀態讓人著迷。</p><p>不過話說回來，我覺得這種經驗一次就可以了🤗</p><hr><h2 id="階段二：軟體工程師求職準備"><a href="#階段二：軟體工程師求職準備" class="headerlink" title="階段二：軟體工程師求職準備"></a>階段二：軟體工程師求職準備</h2><p>過完充實的寫作時光後，接下來就要面對現實了！</p><p>雖然十月中有小休一星期，但內心還是很難放鬆啦！為什麼？當然是因為後續就要開始求職了。</p><p>10 月下旬，我正式啟動求職的前置準備：</p><ul><li>回顧之前工作上的專案，整理<a href="https://www.cake.me/kyomind">履歷</a>、更新 <a href="https://www.linkedin.com/in/kyo-huang/">LinkedIn</a>。</li><li><a href="https://github.com/kyomind/Grind-75">LeetCode 刷題</a>，還發表了「<a href="/series/#%E6%88%91%E7%9A%84-LeetCode-%E5%88%B7%E9%A1%8C%E4%B9%8B%E9%81%93">我的 LeetCode 刷題之道</a>」系列文章。</li><li>學習系統設計。</li></ul><p>其實就是一般軟體工程師求職時會做的事。</p><blockquote><p>相關文章：<a href="/weekly-review-39/">10 月回顧——鐵人賽、演算法與 AI</a></p></blockquote><h3 id="履歷、LinkedIn，也是文字的藝術"><a href="#履歷、LinkedIn，也是文字的藝術" class="headerlink" title="履歷、LinkedIn，也是文字的藝術"></a>履歷、LinkedIn，也是文字的藝術</h3><p>我相信，更新履歷或 LinkedIn 這種事情，應該是很多人下意識在逃避的吧——至少我就一直在逃避XD</p><p>結果開始做之後發現——<strong>事情果然如我想像中的困難</strong>🤣</p><p>要整理自己過去累積的經驗、有效地向別人表達，從來都不是一件容易的事。</p><p>尤其像我這種對文字十分敏感的人，更容易感受到其中讓我不滿意的地方。</p><p>而且我寫履歷比較喜歡有幾分就寫幾分，任何超過我實際能力或經驗的描述甚至推論，都會讓我感受到一絲心虛跟罪惡。</p><p>但我建議你不要這樣，如果你覺得實際上是 7 分，但你寫到 8、9 分，我認為完全可以接受。</p><p>一來是你不一定真的只有 7 分；二來是……你懂的，JD 描述也未必真實。</p><p>更別說，求職是一個自我推廣的舞台與戰場，太過謙虛、含蓄或保守，基本上只會有害無利。</p><h3 id="我真的不喜歡刷題"><a href="#我真的不喜歡刷題" class="headerlink" title="我真的不喜歡刷題"></a>我真的不喜歡刷題</h3><p>接著是 LeetCode 刷題。</p><p>我一開始就知道這不是我喜歡的部分，也知道它是多數工程師面試的「必要之惡」。</p><p>這幾個月我大約刷了七、八十小時，約莫 40 題，但說真的，效果普通。</p><p>進步當然有，但很難說這樣的學習是高效的。</p><p>雖然這個系列還沒有完成，不過我可以確定，實際自己親身刷題過後，<strong>我感受到我對 LeetCode 的厭惡是如此之大，遠超乎我的想像。</strong></p><p>一言以蔽之：<strong>我不認為這是一個成年人該做的事</strong>。我們只是迫不得已。</p><hr><h2 id="階段三：求職與-Burnout"><a href="#階段三：求職與-Burnout" class="headerlink" title="階段三：求職與 Burnout"></a>階段三：求職與 Burnout</h2><p>該來的還是要來，準備是準備不完的。</p><h3 id="早點面試真的很重要"><a href="#早點面試真的很重要" class="headerlink" title="早點面試真的很重要"></a>早點面試真的很重要</h3><p>進入 1 月，我開始投遞履歷。</p><p>第一場面試便讓我意識到一件事：<strong>準備再久，都比不上「實戰一次」有效</strong>。</p><p>面試能讓你知道哪些題目真正重要、哪些表達還需要修正，<strong>效率比自己埋頭苦練要高出不知多少</strong>。（當然，我並不是說毫無準備就可以去面試，會被洗臉！）</p><p>你甚至能夠從面試中，<strong>更加了解自己</strong>。</p><p>如果可以重來，我會在適度準備後，更早開始面試——大概提前一個月吧！</p><h3 id="面試能力明顯進步，但身體接近極限"><a href="#面試能力明顯進步，但身體接近極限" class="headerlink" title="面試能力明顯進步，但身體接近極限"></a>面試能力明顯進步，但身體接近極限</h3><p>2 月時，我能明顯感受到自己的進步。不論是技術表達、問答邏輯，還是面對問題時的沉著度，都提升許多。</p><p>雖然，每次面試官要說出「下一題」的前一秒，我的內心還是超緊張！——這似乎是無法適應的🐥</p><p>與此同時，我的身體也漸漸產生了 burnout 的前兆。</p><p>那種「每天醒來就要戰鬥」的感覺，把我的精神推向了極限。</p><p>這是一個不健康的過程。</p><h3 id="拿到-Offer-後的-Burnout-症狀"><a href="#拿到-Offer-後的-Burnout-症狀" class="headerlink" title="拿到 Offer 後的 Burnout 症狀"></a>拿到 Offer 後的 Burnout 症狀</h3><p>當我終於拿到 offer，情緒才剛放鬆下來，身體就出現了睡不好、短眠等窘況。</p><p>AI 認為，這是求職壓力褪去後，少了抑制 burnout 無力感的正常反應，也就是身體此時的<strong>真實狀態</strong>。</p><p>然後它極力建議我一定要進入「<strong>強制休息</strong>」模式，不然會很危險。</p><blockquote><p>先別想著要為新工作做什麼準備，而是好好休息。</p></blockquote><p>一開始我還不甚情願，還好我一向很信任 AI，於是安排了幾次短暫旅行，和所謂的「<a href="https://kyomind.notion.site/15-Threads-1b36a92a98a680909220dfbd6fce9bbe">資訊斷捨離</a>」，讓身體和心靈從高壓中慢慢解脫出來。</p><hr><h2 id="小結：慢一點、輕鬆一點"><a href="#小結：慢一點、輕鬆一點" class="headerlink" title="小結：慢一點、輕鬆一點"></a>小結：慢一點、輕鬆一點</h2><p>在這個快速變動的時代，休息數個月重新準備與摸索方向，應該會變得更加常見，至少比以前更容易發生。</p><p>其實，<strong>能夠適度休息、好好放鬆，本身就是一種能力</strong>，而這樣的能力也是需要培養的——卻往往被忽視。</p><p>隨時都在汲汲營營，孜孜不倦，最終所能帶來成果，未必如想像中可觀。</p><p>更多是一種自我安慰和徒勞吧！</p><p>所以，即使是待業和求職的階段，也沒必要把自己逼得太緊。</p><p>這樣想，可能會讓人輕鬆些，並帶來更好的結果。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/3auatX0.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;這是第 42 期的 Weekly Review，這系列主要記錄我的一些近況、生活與想法。&lt;/p&gt;
-&lt;p&gt;在第 38 期〈&lt;a href=&quot;/weekly-review-38/&quot;&gt;Kyo 待業中！細數我過去的待業時光（上）&lt;/a&gt;〉曾提過，我大學畢業後待業的總時間，長達 4 年 8 個月。如果再加上這半年，就超過 5 年了😂&lt;/p&gt;
-&lt;p&gt;當然，這些時期，往往也是我人生的重要轉折點：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;第一次待業：書記官考試。&lt;/li&gt;
-&lt;li&gt;第二次待業：律師考試 + 轉職軟體工程師。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;而這次，雖然沒有那麼大幅度的轉換，但感覺也是不輕鬆的半年。&lt;/p&gt;
-&lt;p&gt;本期就來聊聊，這半年發生了哪些事、我有哪些心得。&lt;/p&gt;
-&lt;p&gt;用階段來區分，主要可分為三個部分。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://i.imgur.com/3auatX0.png" type="image"/>
-    
-    
-    <category term="Weekly Review" scheme="https://blog.kyomind.tw/categories/Weekly-Review/"/>
-    
-    
-    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
-    
-    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
-    <category term="寫作" scheme="https://blog.kyomind.tw/tags/%E5%AF%AB%E4%BD%9C/"/>
     
   </entry>
   

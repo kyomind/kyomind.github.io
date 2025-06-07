@@ -123,7 +123,7 @@
           
             <a href="/categories/Django/">Django (13)</a>
           
-            <a href="/categories/Weekly-Review/">Weekly Review (42)</a>
+            <a href="/categories/Weekly-Review/">Weekly Review (43)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (41)</a>
           
@@ -165,6 +165,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/flake8-and-black/">Python Flake8 與 Black Formatter 擴充套件快速上手</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2022-11-26
+        </span><span class="post-category">
+            <a href="/categories/VS-Code/">VS Code</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/tjIDNjn.jpg"></p>
+<blockquote>
+<p><strong>替代方案——Ruff</strong>：<a href="/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p>
+</blockquote>
+<hr>
+<p>Python linter、formatter 整合 VS Code 的文章，已經寫過好幾篇，但還是不厭其煩地繼續寫，原因很簡單——它們實在太基本也太重要，卻往往未受到足夠的重視。</p>
+<p>永遠不要小看這些<strong>排版上的細節</strong>對<strong>程式寫作習慣</strong>的影響。</p>
+<p>如同我在〈<a href="/isort/">Python isort 擴充套件介紹與簡易設定教學</a>〉文末所言：</p>
+<blockquote>
+<p>對於重視程式寫作規範，意在貫徹 Clean Code 精神的開發者而言，它不是一種選擇，而是一種必然。</p>
+</blockquote>
+<p>以及〈<a href="/flake8-yapf-setting/">VS Code 設定 Python Linter、Formatter 教學</a>〉中說的：</p>
+<blockquote>
+<p>Linter 和 formatter 雖然無法保證你寫出 Clean Code，但至少能協助你盡可能符合 PEP 8 風格，並省下處理排版細節上的心力，讓你更專注在程式的核心部分。</p>
+</blockquote>
+<p>儘管「善用 linter、formatter」和「寫出 Clean Code」之間，還相隔著不知多少努力與反省，但後者必定是建立在前者之上——我對此深信不疑。</p>
+<p>所以我不曾去質疑這些工具的<strong>必要性</strong>，因為它們就像陽光、空氣、水一般，不可或缺，只要我還寫程式的一天，就只會立足於它們之上。</p>
+<p>廢話不多說，我們進入正題。</p>
+          <div class="read-more">
+            <a href="/flake8-and-black/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/notion-markdown/">Notion 教學：10 個我最常用的 Markdown 語法與快捷鍵介紹</a>
         </h1>
@@ -324,47 +360,6 @@
 <p>這系列主要是為了記錄，自己對一些重要事情的<strong>思考與反省</strong>。而公開發表有助於強化這些事物的影響與形成，無論是對外還是對內——因為不再只有我自己知道。</p>
           <div class="read-more">
             <a href="/weekly-review-01/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/logseq/">Logseq 心得：一顆冉冉升起的「卡片筆記」新星</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2022-10-13
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/Hi2ITYa.jpg" alt="by Denis Yudin"></p>
-<p>今年 8 月下旬，我起心動念想要再度開始學英文。於是就思索著：學英文嘛！背單字還是不可少——我需要一個背單字的工具。</p>
-<p>經過一番搜尋與做功課，我決定選擇「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%A1%E7%89%87%E7%9B%92%E7%AD%86%E8%A8%98%E6%B3%95">卡片盒筆記法</a>」的代表性 app 之一：<a target="_blank" rel="noopener" href="https://logseq.com/">Logseq</a>。類似的替代方案還有 <a target="_blank" rel="noopener" href="https://roamresearch.com/">Roam Research</a>、<a target="_blank" rel="noopener" href="https://obsidian.md/">Obsidian</a>、<a target="_blank" rel="noopener" href="https://heptabase.com/">Heptabase</a> 等等。</p>
-<h3 id="本文目錄"><a href="#本文目錄" class="headerlink" title="本文目錄"></a>本文目錄</h3><ol>
-<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%B3%BB%E5%88%97%E7%B0%A1%E4%BB%8B">本文主旨與系列簡介</a></li>
-<li><a href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%8D%A1%E7%89%87%E7%9B%92%E7%AD%86%E8%A8%98%E6%B3%95">前言：卡片盒筆記法</a></li>
-<li><a href="#%E5%85%83%E7%B4%A0%E5%8C%96%E8%88%87%E9%80%A3%E7%B5%90%E5%B0%8E%E5%90%91">元素化與連結導向</a></li>
-<li><a href="#%E7%AD%86%E8%A8%98%E6%80%9D%E7%B6%AD%E8%88%87%E6%83%B3%E5%83%8F%E5%8A%9B">筆記思維與想像力</a></li>
-<li><a href="#%E9%96%83%E5%8D%A1%E7%9A%84%E5%85%A9%E5%80%8B%E8%B3%A3%E9%BB%9E">閃卡的兩個賣點</a></li>
-<li><a href="#Why-not-Anki%EF%BC%9F">Why not Anki？</a></li>
-<li><a href="#%E7%82%BA%E4%BD%95%E9%81%B8%E6%93%87-Logseq%EF%BC%9F%E2%80%94%E2%80%94%E6%96%87%E4%BB%B6%E5%BC%8F-vs-%E6%B8%85%E5%96%AE%E5%BC%8F">為何選擇 Logseq？——文件式 vs 清單式</a></li>
-<li><a href="#%E6%96%87%E4%BB%B6%E8%88%87%E6%B8%85%E5%96%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8D%80%E5%88%A5">文件與清單的主要區別</a></li>
-<li><a href="#%E6%B8%85%E5%96%AE%E7%9A%84%E5%84%AA%E5%8B%A2%E8%88%87%E5%8A%A3%E5%8B%A2">清單的優勢與劣勢</a></li>
-<li><a href="#Logseq-%E6%BB%BF%E4%B8%80%E5%80%8B%E6%9C%88%E5%BF%83%E5%BE%97">Logseq 滿一個月心得</a></li>
-<li><a href="#%E4%B8%80%E3%80%81%E7%AD%86%E8%A8%98%E7%9A%84%E6%A8%82%E8%B6%A3">一、筆記的樂趣</a></li>
-<li><a href="#%E4%BA%8C%E3%80%81%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96%E7%AD%86%E8%A8%98">二、去中心化筆記</a></li>
-<li><a href="#%E4%B8%89%E3%80%81%E6%97%A5%E8%AA%8C%E7%9A%84%E5%8A%9B%E9%87%8F">三、日誌的力量</a></li>
-<li><a href="#%E7%95%B6%E6%97%A5%E8%AA%8C%E4%B8%8D%E5%8F%AA%E6%98%AF%E6%97%A5%E8%AA%8C">當日誌不只是日誌</a></li>
-<li><a href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%86%89%E5%86%89%E5%8D%87%E8%B5%B7%E7%9A%84%E6%96%B0%E6%98%9F">結語：冉冉升起的新星</a></li>
-</ol>
-<hr>
-<h2 id="本文主旨與系列簡介"><a href="#本文主旨與系列簡介" class="headerlink" title="本文主旨與系列簡介"></a>本文主旨與系列簡介</h2><p>這篇文章主要介紹<strong>我選擇的動機與考量，與一個多月下來，Logseq 帶給我的整體感受以及心得</strong>。文中先不會涉及 Logseq 或卡片筆記的細節，僅從個人角度出發，探討這個軟體以及卡片筆記（卡片盒筆記法），<strong>可能為你帶來的改變</strong>。</p>
-<p>先說<strong>結論</strong>：我已經非常確信，<strong>Logseq 勢必將成為我的筆記工具主力</strong>。並<strong>一定程度取代</strong>目前 Notion 在我日常筆記——即<strong>記錄與學習</strong>——中的地位。</p>
-          <div class="read-more">
-            <a href="/logseq/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/20/">
