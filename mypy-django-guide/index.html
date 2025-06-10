@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-05-30T03:51:07+08:00" />
+  <meta property="article:modified_time" content="2025-06-09T09:45:18+08:00" />
 
 
 
@@ -181,7 +181,7 @@
         <span class="post-time">
           2024-09-03
         </span><span class="post-update">
-            →  2024-09-09
+            →  2025-06-09
           </span>
         <span class="post-category">
             <a href="/categories/Django/">Django</a>
@@ -235,14 +235,19 @@
 <h3 id="Django-特殊設定"><a href="#Django-特殊設定" class="headerlink" title="Django 特殊設定"></a>Django 特殊設定</h3><p>但對於 Django 專案來說，設定檔則是「必要」，因為有幾處必須定義——否則 Mypy 會跳出一大堆錯誤XD。</p>
 <p>這是因為 Django 有很多<strong>動態屬性（執行時才會確定內容）</strong>，少了這些設定，Mypy 很可能無法正確檢查。</p>
 <p>我們看一下設定內容：</p>
+<blockquote>
+<p><code>2025/06/09</code>補充：特別注意，<code>mypy.ini</code>中，只能使用「<strong>單行註解</strong>」。如果直接在設定值後面加上註解，該行設定會因為解析錯誤而<strong>無效</strong>。</p>
+</blockquote>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mypy]</span></span><br><span class="line"><span class="comment"># 排除所有 migrations 資料夾和 manage.py</span></span><br><span class="line"><span class="attr">exclude</span> = ^(migrations|.*manage\.py)$</span><br><span class="line"></span><br><span class="line"><span class="attr">warn_return_any</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_untyped_calls</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">allow_redefinition</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">check_untyped_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">ignore_missing_imports</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">incremental</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">strict_optional</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">show_traceback</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unused_ignores</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_redundant_casts</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unused_configs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">warn_unreachable</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_untyped_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disallow_incomplete_defs</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">disable_error_code</span> = empty-body</span><br><span class="line"><span class="attr">force_uppercase_builtins</span> = <span class="literal">true</span></span><br><span class="line"><span class="attr">force_union_syntax</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">plugins</span> =</span><br><span class="line">    mypy_django_plugin.main</span><br><span class="line"></span><br><span class="line"><span class="section">[mypy.plugins.django-stubs]</span></span><br><span class="line"><span class="attr">django_settings_module</span> = DjangoTutorial.settings</span><br></pre></td></tr></table></figure>
 
-<p>對 Django 專案來說，其中重點有三：</p>
+<h3 id="重點說明"><a href="#重點說明" class="headerlink" title="重點說明"></a>重點說明</h3><p>對 Django 專案來說，其中重點有三：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclude = ^(migrations|.*manage\.py)$</span><br><span class="line">...</span><br><span class="line">plugins =</span><br><span class="line">    mypy_django_plugin.main</span><br><span class="line"></span><br><span class="line">[mypy.plugins.django-stubs]</span><br><span class="line">django_settings_module = &lt;你的 Django 專案名稱&gt;.settings</span><br></pre></td></tr></table></figure>
 
-<p><code>exclude</code>中把 db 遷移檔資料夾和 Django 自帶的<code>manage.py</code>排除檢查，這是很常見的設定，強烈建議加上。</p>
-<p><code>plugins</code>一定要有<code>mypy_django_plugin.main</code>（它的值可以是多個）。</p>
-<p><code>django_settings_module</code>設定也是必要的，<strong>要使用你自己的 Django 專案名稱。</strong></p>
+<ol>
+<li><code>exclude</code>中把 db 遷移檔資料夾和 Django 自帶的<code>manage.py</code>排除檢查，這是很常見的設定，強烈建議加上。</li>
+<li><code>plugins</code>一定要有<code>mypy_django_plugin.main</code>（它的值可以是多個）。</li>
+<li><code>django_settings_module</code>設定也是必要的，<strong>要使用你自己的 Django 專案名稱。</strong></li>
+</ol>
 <p>其實，上述設定大多是我從 django-stubs 的 <a target="_blank" rel="noopener" href="https://github.com/typeddjango/django-stubs/blob/master/mypy.ini">mypy.ini</a> 照搬過來的。</p>
 <p>而且它在註解有聲明，其餘專案也可以適用：</p>
 <blockquote>
@@ -257,9 +262,15 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">bulk_create</span>(<span class="params"></span></span><br><span class="line"><span class="params">   self,</span></span><br><span class="line"><span class="params">   objs: Iterable[_T],</span></span><br><span class="line"><span class="params">   batch_size: <span class="built_in">int</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   ignore_conflicts: <span class="built_in">bool</span> = ...,</span></span><br><span class="line"><span class="params">   update_conflicts: <span class="built_in">bool</span> | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   update_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params">   unique_fields: <span class="type">Sequence</span>[<span class="built_in">str</span>] | <span class="literal">None</span> = ...,</span></span><br><span class="line"><span class="params"></span>) -&gt; <span class="built_in">list</span>[_T]: ...</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://github.com/typeddjango/django-stubs/tree/master">django-stubs</a> 就是為 Django 提供的 type hints 補充包，使用 <code>django-stubs</code> 可以讓 Django 在不修改原始程式碼的情況下，享受到 type hints 的優勢。</p>
+<h3 id="具體操作"><a href="#具體操作" class="headerlink" title="具體操作"></a>具體操作</h3><p>使用指令安裝：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-stubs</span><br></pre></td></tr></table></figure>
+<p>或使用 Poetry：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry add django-stubs</span><br></pre></td></tr></table></figure>
+
+<p>安裝後，搭配前述設定，Mypy 就能正確解析 Django 的型別資訊。</p>
 <hr>
 <h2 id="三、VS-Code-Mypy-套件整合"><a href="#三、VS-Code-Mypy-套件整合" class="headerlink" title="三、VS Code Mypy 套件整合"></a>三、VS Code Mypy 套件整合</h2><p>如果你使用 VS Code IDE，那 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker">Mypy 套件</a>肯定是必須的，它能讓你在開發的當下就得知 Mypy 的型別錯誤提示。</p>
-<p>該套件也會自動讀取專案根目錄下的 Mypy 設定檔，如果有設定檔，建議就<strong>不要</strong>在 VS Code 的 <code>settings.json</code>再額外<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-mypy?tab=readme-ov-file#settings">設定 Mypy 套件</a>的行為，以免衝突。</p>
+<p>該套件也會自動讀取<strong>專案根目錄</strong>下的 Mypy 設定檔，如果有設定檔，建議就<strong>不要</strong>在 VS Code 的 <code>settings.json</code>再額外<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-mypy?tab=readme-ov-file#settings">設定 Mypy 套件</a>的行為，以免衝突。</p>
 <p>和其它<strong>開發類套件</strong>（如 linter、formatter）相同，該套件已自帶了一個 Mypy 版本，但如果你的虛擬環境中有安裝 Mypy，則會優先使用虛擬環境中的版本。</p>
 <p>VS Code 的 Mypy 套件整合很簡單，卻非常實用。強烈建議你安裝。</p>
 <hr>
