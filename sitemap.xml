@@ -4,7 +4,16 @@
   <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
-    <lastmod>2025-06-11</lastmod>
+    <lastmod>2025-06-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyright/</loc>
+    
+    <lastmod>2025-06-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -356,15 +365,6 @@
     <loc>https://blog.kyomind.tw/ruff/</loc>
     
     <lastmod>2025-06-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyright/</loc>
-    
-    <lastmod>2025-06-03</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1795,7 +1795,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2025-06-11</lastmod>
+    <lastmod>2025-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
