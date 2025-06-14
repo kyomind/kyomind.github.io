@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-13T23:15:39+08:00" />
+  <meta property="article:modified_time" content="2025-06-14T03:35:54+08:00" />
 
 
 
@@ -181,7 +181,7 @@
         <span class="post-time">
           2023-02-19
         </span><span class="post-update">
-            →  2023-12-25
+            →  2025-06-14
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -215,7 +215,7 @@
 <p>如果你還沒接觸過任何 dotfiles 管理工具，那麼我推薦 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a>，可參考文章：</p>
 <blockquote>
 <ul>
-<li><a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
+<li><a href="/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a></li>
 </ul>
 </blockquote>
 <hr>
@@ -241,12 +241,12 @@
 <li>本機電腦與遠端 VM 的連線。</li>
 <li><a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">遠端 VM 與 GitHub 的連線。</a>（或其它 Git 服務）</li>
 </ol>
-<p>至於具體要怎麼做，還請自行 Google。</p>
+<p>至於具體要怎麼做，可參考〈<a href="/vm-ssh-setup/">為 e2-micro VM 建立 SSH 連線：本機與 GitHub</a>〉。</p>
 <h2 id="二、設定-zsh、zinit、Powerlevel10k"><a href="#二、設定-zsh、zinit、Powerlevel10k" class="headerlink" title="二、設定 zsh、zinit、Powerlevel10k"></a>二、設定 zsh、zinit、Powerlevel10k</h2><blockquote>
 <p>參考原文：</p>
 <ul>
-<li><a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></li>
-<li><a href="https://blog.kyomind.tw/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></li>
+<li><a href="/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></li>
+<li><a href="/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></li>
 </ul>
 </blockquote>
 <h3 id="安裝-zsh"><a href="#安裝-zsh" class="headerlink" title="安裝 zsh"></a>安裝 zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;</span><br><span class="line">sudo apt-get upgrade -y;</span><br><span class="line">sudo apt-get install -y zsh;</span><br></pre></td></tr></table></figure>
@@ -275,7 +275,7 @@
 <p>之後如果要重新設定，可使用指令<code>p10k configure</code>。</p>
 <hr>
 <h2 id="三、設定-pyenv"><a href="#三、設定-pyenv" class="headerlink" title="三、設定 pyenv"></a>三、設定 pyenv</h2><blockquote>
-<p>參考原文：<a href="https://blog.kyomind.tw/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></p>
+<p>參考原文：<a href="/ubuntu-pyenv/">Ubuntu 安裝使用 pyenv + pyenv-virtualenv</a></p>
 </blockquote>
 <h3 id="安裝-dependency"><a href="#安裝-dependency" class="headerlink" title="安裝 dependency"></a>安裝 dependency</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;</span><br><span class="line">sudo apt-get install -y --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev</span><br></pre></td></tr></table></figure>
 
@@ -296,11 +296,11 @@
 <h3 id="不安裝-pyenv-virtualenv"><a href="#不安裝-pyenv-virtualenv" class="headerlink" title="不安裝 pyenv-virtualenv"></a>不安裝 pyenv-virtualenv</h3><p>因為 Poetry 自帶了虛擬環境管理功能，容易和 pyenv-virtualenv <strong>疊床架屋</strong>，徒增<strong>管理上的混淆</strong>，所以<strong>我現在一律只用 Poetry + venv 來管理 Python 虛擬環境</strong>。</p>
 <p>這也是我目前覺得<strong>最簡潔</strong>的做法。</p>
 <blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></p>
+<p>相關文章：<a href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></p>
 </blockquote>
 <hr>
 <h2 id="四、設定-Poetry"><a href="#四、設定-Poetry" class="headerlink" title="四、設定 Poetry"></a>四、設定 Poetry</h2><blockquote>
-<p>參考原文：<a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></p>
+<p>參考原文：<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></p>
 </blockquote>
 <h3 id="安裝-Poetry"><a href="#安裝-Poetry" class="headerlink" title="安裝 Poetry"></a>安裝 Poetry</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://install.python-poetry.org | python3 -</span><br></pre></td></tr></table></figure>
 
