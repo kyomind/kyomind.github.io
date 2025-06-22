@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-15T07:21:36+08:00" />
+  <meta property="article:modified_time" content="2025-06-22T02:54:56+08:00" />
 
 
 
@@ -189,7 +189,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C%E4%B8%80%E5%A1%8A%E6%8B%BC%E5%9C%96"><span class="toc-text">最後一塊拼圖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%BC%E5%BE%97%E4%B8%80%E5%8F%B0-E2-Micro%EF%BC%9F"><span class="toc-text">為什麼你值得一台 E2 Micro？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-SSH-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Github SSH 設定</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%BE%8C%E4%B8%80%E5%A1%8A%E6%8B%BC%E5%9C%96"><span class="toc-text">最後一塊拼圖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%BD%A0%E5%80%BC%E5%BE%97%E4%B8%80%E5%8F%B0-E2-Micro%EF%BC%9F"><span class="toc-text">為什麼你值得一台 E2 Micro？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%8F%90%E9%86%92%EF%BC%9A%E5%B0%8D%E5%A4%96%E6%B5%81%E9%87%8F%E9%99%90%E5%88%B6"><span class="toc-text">小提醒：對外流量限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">設定 SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-SSH-%E8%A8%AD%E5%AE%9A"><span class="toc-text">Github SSH 設定</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
 <p>不久前，我看完了朋友<a target="_blank" rel="noopener" href="https://kucw.io/about/">古古</a>的電子報〈<a target="_blank" rel="noopener" href="https://kucw.io/blog/gcp-free-tier/">終身免費的 VM 服務！Google Cloud 免費方案分享</a>〉，介紹 GCP 的 E2 Micro（產品代號：e2-micro）免費 VM。</p>
@@ -225,15 +225,17 @@
 <p>等到不堪負荷了（但仍不想付錢XD），再考慮像 Fly.io 或 render 這些供應商也不遲。</p>
 <p>畢竟 GCP 這樣的大廠，福利政策突然變更、收回的機率，通常比上述公司小得多。</p>
 <p>除此之外，還有兩個關鍵理由。 </p>
-<h3 id="一、延遲優勢"><a href="#一、延遲優勢" class="headerlink" title="一、延遲優勢"></a>一、延遲優勢</h3><p>我覺得，這台免費 VM 的最大亮點，是「延遲極低」。</p>
-<p>GCP 雖然只開放美國三個地區的資料中心供免費機器使用，但實際測試從台灣連線，延遲普遍低於 10ms，這比我在 Hetzner（德國）或 DigitalOcean（新加坡）上的機器表現好非常多。</p>
+<h3 id="一、延遲優勢"><a href="#一、延遲優勢" class="headerlink" title="一、延遲優勢"></a>一、延遲優勢</h3><p>我覺得，這台免費 VM 的最大亮點，是「<strong>延遲低</strong>」。</p>
+<p>GCP 雖然只開放美國三個地區的資料中心供免費機器使用，但實際測試從台灣連線，<strong>延遲還可以</strong>！</p>
+<p>請優先選擇<code>us-west1</code>（美國西部）地區，因為這個地區的延遲最低。</p>
+<p>實測比我在 Hetzner（德國）上的機器表現好非常多。與 DigitalOcean（新加坡）的延遲相當。</p>
 <p>我自己的 <a target="_blank" rel="noopener" href="https://www.cloudpingtest.com/">Cloud Ping Test</a> 網站測試結果如下：</p>
 <ul>
-<li>GCP（us-west1）：~10 ms</li>
+<li>GCP（us-west1）：130-150 ms</li>
 <li>Hetzner（德國）：600-800 ms</li>
 <li>DigitalOcean（新加坡）：120-150 ms</li>
 </ul>
-<p>實在不知為何可以這麼快，而且 GCP 所有地區都很快，真是奇了！</p>
+<p>雖然比不上 GCP 台灣機房動輒 10-30 ms 的延遲，但對於大多數應用來說，130-150 ms 的延遲應屬「<strong>可接受</strong>」。</p>
 <h3 id="二、免費額度堪稱大方"><a href="#二、免費額度堪稱大方" class="headerlink" title="二、免費額度堪稱大方"></a>二、免費額度堪稱大方</h3><p>免費機器的內容如下：</p>
 <ul>
 <li>0.25 至 2 個 vCPU（1 個共用核心，動態分配資源）</li>
@@ -244,6 +246,9 @@
 <p>這些規格看似陽春，但其實已能支撐許多日常小 app。若對照 DigitalOcean，類似的 VM 要價在每個月 5 美元以上。</p>
 <p><img src="https://img.kyomind.tw/20250614-110147-vm-ssh-setup.png">  </p>
 <p>所以，這樣的 VM 竟然可以免費使用，我覺得已經很大方。</p>
+<h2 id="小提醒：對外流量限制"><a href="#小提醒：對外流量限制" class="headerlink" title="小提醒：對外流量限制"></a>小提醒：對外流量限制</h2><p>雖然一直強調它的優點，但是 1GB 的「對外流量」如果要拿來做公開服務，很可能會不夠用。</p>
+<p>你看上圖 DigitalOcean 的價格，6 美元的 VM 每月有著 1000 GiB 的流量。</p>
+<p>E2 Micro <strong>強烈建議只拿來部署自用服務</strong>。</p>
 <hr>
 <p>介紹完我認為的 E2 Micro 優點，接下來進入正題。</p>
 <h2 id="設定-SSH-連線"><a href="#設定-SSH-連線" class="headerlink" title="設定 SSH 連線"></a>設定 SSH 連線</h2><p>在使用雲端平台或 VPS 服務建立 VM 後，通常有<strong>兩種</strong>主要的<strong>初次登入方式</strong>：</p>
