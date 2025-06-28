@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-28T15:28:13+08:00" />
+  <meta property="article:modified_time" content="2025-06-28T15:30:05+08:00" />
 
 
 
@@ -244,7 +244,7 @@
 <p>不過我覺得，<strong>區分 macOS 和 Linux 就已經非常實用</strong>。</p>
 <p>我也建議你這樣做就好了。</p>
 <h3 id="二、路徑的尋找規則"><a href="#二、路徑的尋找規則" class="headerlink" title="二、路徑的尋找規則"></a>二、路徑的尋找規則</h3><p>在<strong>相同前綴不同後綴</strong>的一系列的檔名中，yadm 只會依照「尋找規則」，選取其中一個建立 Symbolic Link，讓它指向系統真正會讀取的檔。</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
 
 <p>以<code>.zshrc</code>為例，在 macOS 上，它會找到<code>.zshrc##os.Darwin</code>。</p>
 <p>而在 Linux 上則是<code>.zshrc##os.Linux</code>。</p>
@@ -252,11 +252,11 @@
 <h3 id="三、共用檔的角色"><a href="#三、共用檔的角色" class="headerlink" title="三、共用檔的角色"></a>三、共用檔的角色</h3><p>承上，熟悉 dotfiles 的你應該不難猜到，<code>.zshrc##default</code>要放的內容，就是兩邊都會「共用」的部分。</p>
 <p>然後，在「變體」檔的開頭，要去<code>source</code>共用檔的內容！</p>
 <p>以我的<code>.zshrc##os.Darwin</code>為例，開頭內容如下：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS 專屬 zsh 設定</span></span><br><span class="line"><span class="comment"># 先載入共用設定</span></span><br><span class="line">source &quot;$HOME/.zshrc<span class="comment">##default&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Homebrew node@18 路徑（macOS 專屬）</span></span><br><span class="line">export <span class="attr">PATH</span>=<span class="string">&quot;/opt/homebrew/opt/node@18/bin:$PATH&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS 專屬 zsh 設定</span></span><br><span class="line"><span class="comment"># 先載入共用設定</span></span><br><span class="line"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.zshrc##default&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Homebrew node@18 路徑（macOS 專屬）</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/opt/homebrew/opt/node@18/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>如果沒有共用檔，自然就不需要開頭的<code>source</code>。</p>
 <p>像<code>p10k.zsh</code>因為設定複雜，我直接區分兩種版本，根本沒有共用部分：</p>
-<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="指令操作：yadm-alt"><a href="#指令操作：yadm-alt" class="headerlink" title="指令操作：yadm alt"></a>指令操作：yadm alt</h2><p>當你完成上述的檔案設計並同步 dotfiles 後，只需執行以下指令：</p>
