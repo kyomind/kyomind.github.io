@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步">
+  <meta property="og:title" content="yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步"><meta name="twitter:description" content="本文介紹如何使用 yadm 實作 macOS 與 Linux 的 dotfiles 跨平台同步，詳細教學設定檔與關聯機制。">
+  <meta property="og:description" content="本文介紹如何使用 yadm 實作 macOS 與 Linux 的 dotfiles 跨平台同步，詳細教學設定檔與關聯機制。"><meta name="twitter:image" content="https://img.kyomind.tw/20250628-230318-AGhzS0d.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/20250628-230318-AGhzS0d.jpg">
+<meta name="description" content="本文介紹如何使用 yadm 實作 macOS 與 Linux 的 dotfiles 跨平台同步，詳細教學設定檔與關聯機制。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-06-28T15:28:13+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-06-28T15:01:29+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/yadm-cross-platform/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (55)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (43)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-06-28
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Alternate-Files-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Alternate Files 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yadm-Alt-Files-%E7%9A%84%E4%B8%89%E5%A4%A7%E9%87%8D%E9%BB%9E"><span class="toc-text">yadm Alt Files 的三大重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%EF%BC%9Ayadm-alt"><span class="toc-text">指令操作：yadm alt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yadm-%E4%BD%BF%E7%94%A8%E5%BF%A0%E5%91%8A"><span class="toc-text">yadm 使用忠告</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%90%8C%E6%AD%A5-dotfiles-%E7%9C%9F%E7%9A%84%E9%9D%9E%E5%B8%B8%E6%84%89%E5%BF%AB"><span class="toc-text">結語：同步 dotfiles 真的非常愉快</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/20250628-230318-AGhzS0d.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p>
+<p>兩年多前，我寫了這篇〈<a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a>〉，當時的主要動機是想要在多個 Linux VM 之間同步設定檔。</p>
+<p>該文章介紹了「何謂 dotfiles」（後端工程師應該都很熟悉），以及我認為的「dotfiles 同步工具」的兩大流派：</p>
+<ol>
+<li>Symbolic Link。</li>
+<li>Bare Git。</li>
+</ol>
+<p>然而，兩年之間，我幾乎很少在文中提起它。</p>
+<p>事實上，我這段期間使用的 yadm 的頻率<strong>確實不高</strong>！</p>
+<p>但這並不代表我沒有同步 dotfiles 的需求，只是真正的核心需求在於<strong>跨平台</strong>，尤其是 macOS 與 Linux 之間。</p>
+<p>若僅是在不同 Linux VM 之間同步，就顯得有點小打小鬧，<strong>實用性不足</strong>。</p>
+<hr>
+<p>我日常開發主要都在 Mac 上，而 Mac 與 Linux 的設定落差雖不大，但<strong>絕不會完全相同</strong>——這讓單一套設定難以通用。</p>
+<p>比如我的 Mac 上有一些 Homebrew 的環境變數，在 Linux 上無用武之地不說，還可能造成執行錯誤。</p>
+<p>總之，<strong>若不解決跨平台問題，那 yadm 的價值將發揮不到一半。</strong></p>
+<p>上個月我終於鐵了心，<strong>把這件事搞定了！</strong></p>
+<p>做完只覺得，我實在太晚開始，跨平台同步的<strong>價值非常巨大且實用</strong>。</p>
+<p>因此，儘管使用這類工具的人並不多，我也要寫下這篇文章，供有志之士參考！</p>
+<span id="more"></span>
+
+<h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>本文重點在於介紹 yadm 的跨平台<strong>設定檔、關聯機制</strong>，還有基本操作。</p>
+<p>所以我會假設你已經用過了 yadm——其實沒用過也無妨，因為常見的操作並不複雜。你可以等看了效果後再決定是否學習 yadm。</p>
+<h3 id="目標讀者"><a href="#目標讀者" class="headerlink" title="目標讀者"></a>目標讀者</h3><p>不可否認，本文的目標讀者是軟體工程師，尤其是後端開發者。</p>
+<p>非技術出身的讀者，可能連 dotfiles 的作用都不容易理解——這很正常。</p>
+<p>總之，對於一個喜歡調整設定的開發者，我相信 dotfiles 的同步是肯定要學的。</p>
+<p>太實用了！</p>
+<hr>
+<h2 id="Alternate-Files-介紹"><a href="#Alternate-Files-介紹" class="headerlink" title="Alternate Files 介紹"></a>Alternate Files 介紹</h2><p>yadm 最強大的能力之一，就是透過「<a target="_blank" rel="noopener" href="https://yadm.io/docs/alternates">Alternate Files</a>」（下稱 alt files）來實現跨平台同步，<strong>它能依據作業系統、主機名稱等條件，自動尋找對應的設定檔</strong>。</p>
+<p>這是實現跨平台 dotfiles 管理的核心關鍵。</p>
+<h3 id="實際範例：我的-dotfiles-結構"><a href="#實際範例：我的-dotfiles-結構" class="headerlink" title="實際範例：我的 dotfiles 結構"></a>實際範例：我的 dotfiles 結構</h3><p>這是我的 dotfiles repo 現況，我們只要關注這些「檔名」即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .aliases<span class="comment">##default</span></span><br><span class="line">├── .aliases<span class="comment">##os.Darwin</span></span><br><span class="line">├── .aliases<span class="comment">##os.Linux</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br><span class="line">├── .zprofile<span class="comment">##default</span></span><br><span class="line">├── .zprofile<span class="comment">##os.Darwin</span></span><br><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
+
+<p>可以粗略看出，我僅僅同步了 4 個主要檔案——雖然實際上總共有 10 個檔。</p>
+<p>這個命名結構反映出三種主要形式：</p>
+<ul>
+<li><code>##default</code>：所有平台共通的預設設定（共用檔）</li>
+<li><code>##os.Darwin</code> &#x2F; <code>os.Darwin</code>：依作業系統不同而變化的設定（變體檔）</li>
+</ul>
+<p>這種設計的重點是「<strong>分層與組合</strong>」。</p>
+<p>yadm 在處理 alt files 時，會<strong>優先使用符合條件的變體</strong>（如 Darwin），若該變體不存在，則退回（fallback）至 default 檔案。</p>
+<p>如此一來，我們就能<strong>針對特定平台進行客製設定，同時保有共用邏輯</strong>。</p>
+<hr>
+<h2 id="yadm-Alt-Files-的三大重點"><a href="#yadm-Alt-Files-的三大重點" class="headerlink" title="yadm Alt Files 的三大重點"></a>yadm Alt Files 的三大重點</h2><p>我知道，光這樣講並不容易理解。</p>
+<p>簡單來說，我覺得這些 alt files 有三個學習重點。</p>
+<h3 id="一、「後綴」命名格式是固定的"><a href="#一、「後綴」命名格式是固定的" class="headerlink" title="一、「後綴」命名格式是固定的"></a>一、「後綴」命名格式是固定的</h3><p>在特殊標記<code>##</code>之後的命名格式是固定的！</p>
+<p>換言之，<code>os.Darwin</code>、<code>os.Darwin</code>這些「後綴」名稱<strong>不可自訂</strong>，千萬不要打錯了。</p>
+<p>事實上後綴可以有很多層的寫法，比如文件中的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##class.Work</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##class.Work,~os.Darwin</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##os.Darwin,hostname.host1</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##os.Darwin,hostname.host2</span></span><br></pre></td></tr></table></figure>
+
+<p>這允許你即使在同一種平台，也能讓不同主機之間產生一定的差異與客製。</p>
+<p>不過我覺得，<strong>區分 macOS 和 Linux 就已經非常實用</strong>。</p>
+<p>我也建議你這樣做就好了。</p>
+<h3 id="二、路徑的尋找規則"><a href="#二、路徑的尋找規則" class="headerlink" title="二、路徑的尋找規則"></a>二、路徑的尋找規則</h3><p>在<strong>相同前綴不同後綴</strong>的一系列的檔名中，yadm 只會依照「尋找規則」，選取其中一個建立 Symbolic Link，讓它指向系統真正會讀取的檔。</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
+
+<p>以<code>.zshrc</code>為例，在 macOS 上，它會找到<code>.zshrc##os.Darwin</code>。</p>
+<p>而在 Linux 上則是<code>.zshrc##os.Linux</code>。</p>
+<p>透過這套尋找規則，yadm 就能在不同作業系統提供<strong>設定檔的差異化</strong>。</p>
+<h3 id="三、共用檔的角色"><a href="#三、共用檔的角色" class="headerlink" title="三、共用檔的角色"></a>三、共用檔的角色</h3><p>承上，熟悉 dotfiles 的你應該不難猜到，<code>.zshrc##default</code>要放的內容，就是兩邊都會「共用」的部分。</p>
+<p>然後，在「變體」檔的開頭，要去<code>source</code>共用檔的內容！</p>
+<p>以我的<code>.zshrc##os.Darwin</code>為例，開頭內容如下：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS 專屬 zsh 設定</span></span><br><span class="line"><span class="comment"># 先載入共用設定</span></span><br><span class="line">source &quot;$HOME/.zshrc<span class="comment">##default&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Homebrew node@18 路徑（macOS 專屬）</span></span><br><span class="line">export <span class="attr">PATH</span>=<span class="string">&quot;/opt/homebrew/opt/node@18/bin:$PATH&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>如果沒有共用檔，自然就不需要開頭的<code>source</code>。</p>
+<p>像<code>p10k.zsh</code>因為設定複雜，我直接區分兩種版本，根本沒有共用部分：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="指令操作：yadm-alt"><a href="#指令操作：yadm-alt" class="headerlink" title="指令操作：yadm alt"></a>指令操作：yadm alt</h2><p>當你完成上述的檔案設計並同步 dotfiles 後，只需執行以下指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yadm alt</span><br></pre></td></tr></table></figure>
+
+<p>yadm 就會<strong>尋找並關聯</strong>該主機上對應的檔案。</p>
+<p>在 Mac 上執行結果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ yadm alt</span><br><span class="line">Linking /Users/kyo/.aliases<span class="comment">##os.Darwin to /Users/kyo/.aliases</span></span><br><span class="line">Linking /Users/kyo/.p10k.zsh<span class="comment">##os.Darwin to /Users/kyo/.p10k.zsh</span></span><br><span class="line">Linking /Users/kyo/.zprofile<span class="comment">##os.Darwin to /Users/kyo/.zprofile</span></span><br><span class="line">Linking /Users/kyo/.zshrc<span class="comment">##os.Darwin to /Users/kyo/.zshrc</span></span><br></pre></td></tr></table></figure>
+
+<p>而 Linux 則是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">❯ yadm alt</span><br><span class="line">Linking /home/kyo/.aliases<span class="comment">##os.Linux to /home/kyo/.aliases</span></span><br><span class="line">Linking /home/kyo/.p10k.zsh<span class="comment">##os.Linux to /home/kyo/.p10k.zsh</span></span><br><span class="line">Linking /home/kyo/.zprofile<span class="comment">##default to /home/kyo/.zprofile</span></span><br><span class="line">Linking /home/kyo/.zshrc<span class="comment">##os.Linux to /home/kyo/.zshrc</span></span><br></pre></td></tr></table></figure>
+
+<p>Beautiful！</p>
+<hr>
+<h2 id="yadm-使用忠告"><a href="#yadm-使用忠告" class="headerlink" title="yadm 使用忠告"></a>yadm 使用忠告</h2><p>yadm 是 Git 的 wrapper，操作它等於在操作一個裸露的 Git repo——而且這個 repo 還是你的 Home 目錄😱</p>
+<p>如果你太隨意下達像是<code>yadm reset</code>、<code>yadm add .</code>等指令，有可能會讓你的系統檔案直接損毀XD</p>
+<p>我就曾因為情急不慎操作，導致某台 VM 的設定變得半殘XD，只能砍掉重練。</p>
+<h3 id="安全使用法則"><a href="#安全使用法則" class="headerlink" title="安全使用法則"></a>安全使用法則</h3><p>因此，我歸納了一個更安全的使用之道：</p>
+<ul>
+<li>所有設定的修改，都集中在本機上的 dotfiles repo 進行（也就是統一放置 dotfiles 的 Git 倉庫）。</li>
+<li>其他機器（包括本機）<strong>僅透過</strong><code>yadm pull</code><strong>同步修改後的結果</strong>，不進行任何<code>yadm commit</code>、<code>yadm push</code>等動作。</li>
+</ul>
+<p>這樣的模式確保你的設定變動<strong>只從單一來源發出</strong>，降低毀損風險，也讓同步過程更安全可控。</p>
+<p>此外，如果我要做<code>yadm pull</code>、<code>yadm list</code>、<code>yadm status</code>三個指令（後兩者並不會改變檔案狀態）<strong>以外</strong>的操作，<strong>我一定會先問 AI！</strong></p>
+<p>因為這工具看似簡單，但威力絕不容小覷。</p>
+<hr>
+<h2 id="結語：同步-dotfiles-真的非常愉快"><a href="#結語：同步-dotfiles-真的非常愉快" class="headerlink" title="結語：同步 dotfiles 真的非常愉快"></a>結語：同步 dotfiles 真的非常愉快</h2><p>不誇張，自從設好跨平台同步後，開發幸福感大幅提升！</p>
+<p>我以前太小看 yadm 了，可以跨平台之後，我變得更常改動 dotfiles、加入新的 alias，絲毫不用擔心同步問題。</p>
+<p>我知道這篇文章不會有太多受眾，怕哪是軟體工程師，也不是人人都熱衷此道。</p>
+<p>但如果你想在多台 Mac 和多台 Linux VM（我目前有 3 台 Mac 與兩台 Linux VM）同步設定檔，卻仍在猶豫要選用哪一款工具的話。</p>
+<p><strong>不用想了，就選 yadm 吧！</strong></p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner/" title="從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商" rel="bookmark">從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/mac-mini/" title="Mac mini 心得：寫程式的最佳選擇！" rel="bookmark">Mac mini 心得：寫程式的最佳選擇！</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-16/" title="我的「價值觀層級」器物清單" rel="bookmark">我的「價值觀層級」器物清單</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/Mac/">Mac</a>
+            <a href="/tags/Linux/">Linux</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weekly-review-44/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Gandi 惹惱了我😡——怒將域名轉至 Dynadot</span>
+        <span class="prev-text nav-mobile">Gandi 惹惱了我😡——怒將域名轉至 Dynadot</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">44</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">55</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">43</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
