@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-44/</loc>
+    
+    <lastmod>2025-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/yadm/</loc>
     
     <lastmod>2025-06-28</lastmod>
@@ -30,15 +39,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/vm-ssh-setup/</loc>
-    
-    <lastmod>2025-06-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-44/</loc>
     
     <lastmod>2025-06-22</lastmod>
     

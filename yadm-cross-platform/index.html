@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-29T01:22:45+08:00" />
+  <meta property="article:modified_time" content="2025-06-29T02:27:39+08:00" />
 
 
 
@@ -223,11 +223,11 @@
 <h3 id="實際範例：我的-dotfiles-結構"><a href="#實際範例：我的-dotfiles-結構" class="headerlink" title="實際範例：我的 dotfiles 結構"></a>實際範例：我的 dotfiles 結構</h3><p>這是我的 dotfiles repo 現況，我們只要關注這些「檔名」即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .aliases<span class="comment">##default</span></span><br><span class="line">├── .aliases<span class="comment">##os.Darwin</span></span><br><span class="line">├── .aliases<span class="comment">##os.Linux</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br><span class="line">├── .zprofile<span class="comment">##default</span></span><br><span class="line">├── .zprofile<span class="comment">##os.Darwin</span></span><br><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
 
-<p>可以粗略看出，我僅僅同步了 4 個主要檔案——雖然實際上總共有 10 個檔。</p>
-<p>這個命名結構反映出三種主要形式：</p>
+<p>可以大概看出，我僅僅同步了 4 個主要設定檔——雖然加上 alt files 後，實際上總共有 10 個檔案。</p>
+<p>這個命名結構反映出<strong>兩種</strong>主要形式：</p>
 <ul>
-<li><code>##default</code>：所有平台共通的預設設定（共用檔）</li>
-<li><code>##os.Darwin</code> &#x2F; <code>os.Darwin</code>：依作業系統不同而變化的設定（變體檔）</li>
+<li><code>##default</code>：所有平台共通的預設設定（<strong>共用檔</strong>）</li>
+<li><code>##os.Darwin</code> &#x2F; <code>os.Darwin</code>：依作業系統不同而變化的設定（<strong>變體檔</strong>）</li>
 </ul>
 <p>這種設計的重點是「<strong>分層與組合</strong>」。</p>
 <p>yadm 在處理 alt files 時，會<strong>優先使用符合條件的變體</strong>（如 Darwin），若該變體不存在，則退回（fallback）至 default 檔案。</p>
