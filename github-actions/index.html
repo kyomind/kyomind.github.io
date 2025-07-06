@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-06T03:29:41+08:00" />
+  <meta property="article:modified_time" content="2025-07-06T03:41:12+08:00" />
 
 
 
@@ -201,10 +201,10 @@
 <p>如標題所示，本文主要介紹 <a target="_blank" rel="noopener" href="https://github.com/features/actions">GitHub Actions</a>。不過在此之前，我們得先對 CI 有初步的了解。</p>
 <hr>
 <h2 id="什麼是-CI？為什麼需要-CI？"><a href="#什麼是-CI？為什麼需要-CI？" class="headerlink" title="什麼是 CI？為什麼需要 CI？"></a>什麼是 CI？為什麼需要 CI？</h2><p>CI 是「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88">Continuous Integration</a>」的縮寫，中文是「持續整合」。</p>
-<p>它的核心概念是：<strong>當開發人員提交程式碼時，系統可以「自動檢查」這些改動，是否與現有程式相容、是否能正常運作</strong>。</p>
-<p>在軟體開發流程中，我們常常要處理很多<strong>重複但又不可忽略</strong>的工作：檢查程式碼格式、執行靜態分析、跑單元測試等。</p>
+<p>它的核心概念是：<strong>當開發人員提交程式碼時，系統可以「自動執行一系列預先定義的檢查流程」</strong>，例如檢查程式碼是否與現有程式相容、是否能正常運作。</p>
+<p>在軟體開發流程中，我們常常要處理很多<strong>重複但又不可忽略</strong>的工作：檢查程式碼格式、執行靜態分析、跑單元測試，甚至產生 API 文件等。</p>
 <p>如果每次提交都要手動跑一輪，既麻煩又易忘。</p>
-<p>這時 CI 就派上用場了。它能在每次 push 或開 PR 時（或其它事件），自動幫我們做這些事，讓問題提早浮現，使得開發流程更加穩健。</p>
+<p>這時 CI 就派上用場了。它能在每次 push 或開 PR 時（或其它事件），自動幫我們做這些事，讓問題提早浮現，使得開發流程更加穩健，也能節省大量重複性勞動。</p>
 <span id="more"></span>
 
 <h2 id="常見的-CI-工具有哪些？"><a href="#常見的-CI-工具有哪些？" class="headerlink" title="常見的 CI 工具有哪些？"></a>常見的 CI 工具有哪些？</h2><p>市面上已有不少 CI 工具可以選擇，例如：</p>
