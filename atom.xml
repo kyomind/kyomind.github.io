@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2025-07-06T04:52:51.695Z</updated>
+  <updated>2025-07-10T14:54:05.465Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vibe Coding 與人類的時代</title>
+    <link href="https://blog.kyomind.tw/vibe-coding/"/>
+    <id>https://blog.kyomind.tw/vibe-coding/</id>
+    <published>2025-07-10T14:22:29.000Z</published>
+    <updated>2025-07-10T14:54:05.465Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p><blockquote><p>任何人類都能使用魔法的時代要到來了——《葬送的芙莉蓮》漫畫第 53 話 | 人類的時代</p></blockquote><p>有了強大的 AI 輔助 ，寫程式再也不是軟體工程師的專屬。</p><p>如此的時代巨變，首先讓我聯想到的，就是「芙莉蓮」中的這段劇情。</p><p>不過把這個比喻與感受表達得最好的，當屬財經作家王伯達的這篇<a href="https://www.facebook.com/share/p/173juCsKre/">臉書文</a>。</p><p>他寫道：</p><blockquote><p>AI 讓更多人，用更容易的方式使用程式語言與複雜軟體。</p><p>這讓我想到芙莉蓮的老師，弗蘭梅。</p><p>她說服了人類的皇帝，讓人類得以開始研究魔法，魔法不再是個禁忌，開啟了人人有魔法可以練的年代。</p></blockquote><p>顯然，在我這個軟體工程師眼中，AI 就像芙蘭梅，把原本高門檻的知識、技術變成大眾能輕易接觸的工具，<strong>讓所有人都有機會參與創造</strong>。</p><p>本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。</p><span id="more"></span><hr><h2 id="工程師的傲慢：自詡為魔法的守門人"><a href="#工程師的傲慢：自詡為魔法的守門人" class="headerlink" title="工程師的傲慢：自詡為魔法的守門人"></a>工程師的傲慢：自詡為魔法的守門人</h2><p>曾幾何時，軟體工程師就像這個世界的魔法使，掌握著一種魔法般的語言——程式碼。</p><p>我們用它來創造服務、建立平台、構築起一個個廣袤無垠的數位世界。</p><p>然而，AI 的出現，讓一切開始改變。</p><p>ChatGPT 問世後，所有的「文本生成」變得簡單起來——包括程式碼。</p><p>隨著 AI 持續演進、AI Agent 工具日漸成熟，你越來越常聽到這種說法：</p><blockquote><p>我不懂程式語言，但我能用 AI 寫程式。</p></blockquote><p>剛聽到這類言論時，老實說，我的內心充滿了鄙夷之情。</p><p>就像師祖賽莉耶說的：「魔法就應該是特別的。」</p><p>我也覺得，程式應該是「特別」的，不是誰都能隨口說自己「會寫程式」。</p><h2 id="因為稀缺，所以傲慢"><a href="#因為稀缺，所以傲慢" class="headerlink" title="因為稀缺，所以傲慢"></a>因為稀缺，所以傲慢</h2><p>這種想法有道理嗎？我覺得，這是人性的一部分。</p><p>作家朱宥勳在《<a href="https://www.books.com.tw/products/0010867643">文壇生態導覽——作家新手村2 心法篇</a>》一書中提到，如果一位文人既會寫散文又會寫詩，他會希望人們稱他為「詩人」。</p><p>如果既會寫散文又會寫小說呢？當然是小說家！</p><p>為什麼？可能因為——散文的門檻比較低吧。</p><p>任何人，只要識字、能表達，都能自稱會寫散文（文采如何另當別論）。</p><p>而寫詩、寫小說，對我們這種普羅大眾來說，可能連想都不敢想——就像寫程式一樣。</p><hr><h2 id="態度的轉變"><a href="#態度的轉變" class="headerlink" title="態度的轉變"></a>態度的轉變</h2><p>懷抱上述想法，我一直希望自己是特別的。</p><p>直到今年 2 月，當 Andrej Karpathy 提出 Vibe Coding 一詞時，我心中的這份傲慢被敲響了喪鐘。</p><p>我心想：如果連這種大神級的軟體工程師，都提出並嘗試了這樣有趣的軟體開發方式，那一般人用這種方式來開發自己需要的工具或服務，完全說得通啊！</p><p>加上 <a href="https://www.facebook.com/will.fans/?locale=zh_TW">Will 保哥</a>的各種鼓吹，我對 Vibe Coding 的接納度迅速上升。</p><h2 id="什麼是-Vibe-Coding？"><a href="#什麼是-Vibe-Coding？" class="headerlink" title="什麼是 Vibe Coding？"></a>什麼是 Vibe Coding？</h2><p>這個新詞已經有了<a href="https://zh.wikipedia.org/zh-tw/Vibe_coding">維基百科條目</a>。我簡要摘錄如下（定義來自英文頁面）：</p><blockquote><p>Vibe coding is an artificial intelligence-assisted software development style popularized by Andrej Karpathy in early 2025. It describes a fast, improvisational, collaborative approach to creating software where the developer and a large language model (LLM) tuned for coding is acting rather like pair programmers in a conversational loop.</p></blockquote><p>簡單講，就是開發者透過自然語言與 AI 對話，反覆合作、即興修正，一步步建立並完善軟體。</p><p>作為一個 Vibe Coder，你不需了解各種開發細節，甚至不用懂程式語言，而是專注於想要達成的目標和功能需求。</p><p>AI 成為了翻譯者，把我們的意圖轉化為可執行的程式碼。</p><hr><h2 id="軟體只是手段"><a href="#軟體只是手段" class="headerlink" title="軟體只是手段"></a>軟體只是手段</h2><p>越來越多人開始用 AI 寫程式，解決各種日常問題。</p><p>近期讓我最有感的一篇報導是〈<a href="https://www.inside.com.tw/feature/2025-generative-ai/38545-ai-coding-ngoer">【Generative AI 年會】人力少但服務不打折！Peggy Lo：AI Coding 是 NGO 工作者最強大靠山</a>〉。</p><p>我知道，程式從來只是手段。重要的不是「會不會寫」，而是「能不能用來解決真正的問題」。</p><p>一方面覺得自己的傲慢有些可笑，一方面也鬆了口氣。</p><p>我想，我更該在乎的，不是透過 AI 開發到底算不算「會寫程式」。</p><p>而是作為一個軟體工程師，我能解決什麼樣的問題。</p><hr><h2 id="「一般人」的優勢"><a href="#「一般人」的優勢" class="headerlink" title="「一般人」的優勢"></a>「一般人」的優勢</h2><p>而且話說回來，我不禁在想，不會程式的人用 AI 來開發，反而有自己的獨特優勢！</p><p>工程師多少知道某些技術的困難度，這反而會成為心理負擔，限制想像——覺得 AI 應該辦不到。</p><p>事實證明，AI 往往超乎人們的想像——在厲害與不厲害兩個方面都是XD</p><p>不懂程式的人沒這層包袱，做事的方式就很簡單：提出要求，請 AI 想辦法實現。</p><blockquote><p>魔法是想像的世界，在魔法世界中，無法想像的事情就無法實現</p></blockquote><p>沒有限制，反而更能天馬行空，專注於達成目標。</p><p>雖然未必每次都這麼順利，但少了這些束縛，有時候我認為是一個巨大的優勢。</p><p>唉，我就是缺乏想像力。</p><hr><h2 id="工程師也要會-Vibe-Coding"><a href="#工程師也要會-Vibe-Coding" class="headerlink" title="工程師也要會 Vibe Coding"></a>工程師也要會 Vibe Coding</h2><p>當然，這不代表工程師就該束手就擒。</p><p>相反地，我們更需要進化。</p><p>直白地說，我認為軟體工程師比一般人更需要學會 Vibe Coding。</p><p>像我這樣一個只熟悉後端的 Python 工程師，面對不熟的技術領域（例如前端），也需要發揮 Vibe Coding 的精神與實踐能力。</p><p>善於與 AI 協作的工程師（再加上一點想像力😎），可能是這個時代最有力的創造者。</p><h3 id="一般人打造工具，工程師打造系統"><a href="#一般人打造工具，工程師打造系統" class="headerlink" title="一般人打造工具，工程師打造系統"></a>一般人打造工具，工程師打造系統</h3><p>我覺得工程師應用 AI 放大軟體開發的能力，理應遠超過一般人。</p><p>這讓人充滿期待。</p><p>有人說，AI 讓工程師從作者變成了編輯者，<a href="https://www.managertoday.com.tw/articles/view/70451">讓寫程式像審稿</a>。好像自降了格調一般。</p><p>我認為這沒錯啊！重點是——<strong>審稿本身就是門技術活</strong>！</p><p>就像我在〈<a href="https://blog.kyomind.tw/myth-of-ai-writing-efficiency/">AI 讓寫作變輕鬆了？我可不這麼認為</a>〉提到的，AI 對我寫作的影響：</p><blockquote><p>為了善用 AI 的力量，我發現自己<strong>變成了 5 分作者、5 分編輯</strong>，而且<strong>經常在兩種身分間游移互換</strong>：一下子自己寫，讓 AI 看；一下子要 AI 寫、我來看。</p></blockquote><blockquote><p>它寫完後，你又得化身編輯看看結果合不合意。不行就得再修。自己寫的東西不滿意，再請它當編輯，給出改善意見。<strong>如此反覆，直到大功告成。</strong></p></blockquote><blockquote><p>AI 的普及，讓我們不僅僅是創作者，也成了編輯，甚至是策劃者。<strong>這種角色的轉換增加了工作量和難度，但也讓我們對內容的掌控更為精細。</strong></p></blockquote><p>沒有足夠的經驗，不可能成為優秀的編輯。</p><hr><p>總之，我覺得，工程師也好，非工程師也罷，在 AI 面前，我們都是人類，都需要藉由 AI 的輔助，不斷擴展自己的邊界。</p><p>這是個令人興奮的時代。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg&quot; alt=&quot;from Pixabay&quot;&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;任何人類都能使用魔法的時代要到來了——《葬送的芙莉蓮》漫畫第 53 話 | 人類的時代&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有了強大的 AI 輔助 ，寫程式再也不是軟體工程師的專屬。&lt;/p&gt;
+&lt;p&gt;如此的時代巨變，首先讓我聯想到的，就是「芙莉蓮」中的這段劇情。&lt;/p&gt;
+&lt;p&gt;不過把這個比喻與感受表達得最好的，當屬財經作家王伯達的這篇&lt;a href=&quot;https://www.facebook.com/share/p/173juCsKre/&quot;&gt;臉書文&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;他寫道：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;AI 讓更多人，用更容易的方式使用程式語言與複雜軟體。&lt;/p&gt;
+&lt;p&gt;這讓我想到芙莉蓮的老師，弗蘭梅。&lt;/p&gt;
+&lt;p&gt;她說服了人類的皇帝，讓人類得以開始研究魔法，魔法不再是個禁忌，開啟了人人有魔法可以練的年代。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;顯然，在我這個軟體工程師眼中，AI 就像芙蘭梅，把原本高門檻的知識、技術變成大眾能輕易接觸的工具，&lt;strong&gt;讓所有人都有機會參與創造&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。&lt;/p&gt;</summary>
+    
+    
+    <content src="https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg" type="image"/>
+    
+    
+    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+    <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="Vibe Coding" scheme="https://blog.kyomind.tw/tags/Vibe-Coding/"/>
+    
+  </entry>
   
   <entry>
     <title>GitHub Actions 入門：自動化 Lint、Format 與 Type Check</title>
@@ -368,37 +407,6 @@
     
     
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
-    
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
-    <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 套件管理器 uv 介紹——與 Poetry 比較</title>
-    <link href="https://blog.kyomind.tw/introducing-uv/"/>
-    <id>https://blog.kyomind.tw/introducing-uv/</id>
-    <published>2025-05-18T13:07:27.000Z</published>
-    <updated>2025-05-19T12:58:12.563Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://img.kyomind.tw/introducing-uv-min.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p><p>3 年前，我寫了這篇〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉，它成為了本站最受歡迎的文章之一。</p><p>隨著 Python 開發生態的發展，新的工具不斷湧現，你可能已經聽過，我們今天要介紹的主角——Astral 的 uv。</p><p>之前有讀者希望我介紹 uv，但因為沒有急迫需求，所以一直拖到最近才開始嘗試。</p><p>這幾天，我終於在 side project 中開始使用它，因此有了初步的心得。</p><p>這篇文章將先介紹 uv 的背景、特點，以及<strong>和 Poetry 的比較</strong>（這是我最在乎的，也是所有習慣 Poetry 的讀者可能感興趣的），幫助你評估是否要轉向這個新工具。</p><p>至於教學，我會在下一篇文章中分享 uv 的實際使用方式，包括安裝、專案初始化、依賴管理等操作，協助你快速上手。</p><span id="more"></span><hr><h2 id="Python-套件管理的現況與挑戰"><a href="#Python-套件管理的現況與挑戰" class="headerlink" title="Python 套件管理的現況與挑戰"></a>Python 套件管理的現況與挑戰</h2><p>在 Python 開發生態中，<code>pip</code>和<code>virtualenv</code>在過去很長一段時間裡，都是套件安裝與虛擬環境管理的主流工具。</p><p>然而，隨著專案規模的擴大與需求的多樣化，這些工具逐漸暴露出一些限制，例如安裝速度慢、依賴衝突難以解決，以及缺乏統一的專案管理流程。</p><p>為了解決這些問題，社群中出現了如 <code>pip-tools</code>、<code>pipenv</code> 和 <code>poetry</code> 等工具，試圖提供更完善的解決方案。</p><p>這些工具在一定程度上改善了套件管理的體驗，但也引入了<strong>新的學習曲線和複雜度</strong>。</p><p>讓人不禁羨慕起 Rust 的 <a href="https://github.com/rust-lang/cargo">Cargo</a> 套件管理器——唯一的選擇，而且體驗絕佳。</p><h3 id="該如何選擇？"><a href="#該如何選擇？" class="headerlink" title="該如何選擇？"></a>該如何選擇？</h3><p>總之，我們不得不選擇，而且<strong>沒有一個完全壓倒性的方案</strong>——這是 Python 生態的一大特色XD</p><p>過去我選擇了 Poetry，現在則開始嘗試 uv。</p><p>本文記錄我的<strong>思路與心得</strong>，讓你可以根據自己的需求做出判斷。</p><hr><h2 id="uv-是什麼？"><a href="#uv-是什麼？" class="headerlink" title="uv 是什麼？"></a>uv 是什麼？</h2><p><a href="https://github.com/astral-sh/uv">uv</a> 是由 <a href="https://astral.sh/">Astral</a> 團隊開發的一款現代化的 Python 套件管理暨打包（packing）工具。</p><p>乍聽之下，它做的事和 <a href="https://python-poetry.org/">Poetry</a> 大小同異——確實如此，只是更加<strong>包山包海</strong>，並且是用 Rust 寫的。</p><p>就像同為 Astral 出品的 <a href="https://docs.astral.sh/ruff/">Ruff</a>，它們的共同目標都是成為該領域的「<strong>唯一選擇</strong>」XD</p><blockquote><p>相關文章：<a href="https://blog.kyomind.tw/ruff/">Python 開發：Ruff Linter、Formatter 介紹 + 設定教學</a></p></blockquote><p>而且從目前的趨勢看起來，似乎很有機會！</p><h3 id="uv-的核心特點"><a href="#uv-的核心特點" class="headerlink" title="uv 的核心特點"></a>uv 的核心特點</h3><p>uv 作為一個現代化的 Python 套件管理工具，具有以下幾個核心特點：</p><ul><li><strong>高效能</strong>：uv 在套件安裝與依賴解析方面比傳統工具快上 10 到 100 倍。</li><li><strong>整合式工具</strong>：結合了打包、套件管理、虛擬環境管理、<strong>Python 版本管理</strong>等功能。其中 Python 版本管理是 uv 的一大特色，意味著你不必再搭配<code>pyenv</code>等工具。</li><li><strong>跨平台支援</strong>：支援 macOS、Linux 和 Windows，適用於多種開發環境。雖然是 Rust 寫的，但你無須擔心環境設定與安裝問題。</li></ul><p>uv 的特點很多，作為使用者，我必須要找到一些<strong>具體切入點</strong>，來作為是否使用的判斷依據。</p><hr><p>因此，身為一個 Poetry 長期使用者，我自然會更關心它<strong>相對於 Poetry 有哪些優勢、是否值得我學習並轉向這個新工具</strong>。</p><p>經過幾天的嘗試，我認為 uv 相較於 Poetry 具備三個主要優勢。</p><h2 id="優勢一：後發優勢與透明度"><a href="#優勢一：後發優勢與透明度" class="headerlink" title="優勢一：後發優勢與透明度"></a>優勢一：後發優勢與透明度</h2><p>uv 比較晚出現，所以它的「<strong>歷史包袱</strong>」遠比 Poetry 要少得多。</p><p>Poetry 在 2018 年開始發展，這意味著它需要考慮到許多舊版的相容問題。而且很多時候，Poetry 團隊<strong>直接選擇不相容</strong>——而且也沒有充分說明，然後被社群罵爆。</p><p>例如，某個 minor&#x2F;patch release 引入了不向後相容的變更，導致 CI&#x2F;CD 流程或 Docker 容器重建失敗。</p><p>這類事件讓部分使用者對 Poetry 的版本管理失去信心。</p><p>我從 1.1.x 開始使用，幾乎每個大版本都會有一些惱人 breaking change🤬</p><p>uv 不止比較新，而且在 breaking change 的透明度和文件化方面，看起來比 Poetry 更謹慎。</p><hr><h2 id="優勢二：更快、更簡單"><a href="#優勢二：更快、更簡單" class="headerlink" title="優勢二：更快、更簡單"></a>優勢二：更快、更簡單</h2><p>uv 用 Rust 寫的，這意味著它在性能上有著天然的優勢。</p><p>本來我是覺得這不算很重要的事情，畢竟套件的安裝、依賴解析等操作，通常不會頻繁發生。</p><p>但實際上，這些操作的速度如果不夠快，還是會影響<strong>開發者體驗</strong>——尤其在套件愈裝愈多的情況下。</p><p>如果考慮到 CI&#x2F;CD 流程，差異就更明顯了。</p><h3 id="更簡單的指令設計"><a href="#更簡單的指令設計" class="headerlink" title="更簡單的指令設計"></a>更簡單的指令設計</h3><p>我一直覺得，Poetry 的指令設計<strong>有些複雜</strong>，而且<strong>太多了</strong>！</p><p>uv 則相對好一些（雖然還是不少），子命令的設計也更為<strong>直觀</strong>，例如 <code>uv python</code>、<code>uv pip</code>等。</p><p>這裡我覺得「更簡單」的主要意思是：uv 在日常操作下的<strong>常用指令更少、更精簡</strong>。</p><hr><h2 id="優勢三：包含了-Python-版本管理"><a href="#優勢三：包含了-Python-版本管理" class="headerlink" title="優勢三：包含了 Python 版本管理"></a>優勢三：包含了 Python 版本管理</h2><p>事實上，不止 Python 的套件管理生態是一鍋大雜燴，Python 的版本管理生態也是。</p><p>什麼 Anaconda、pyenv，甚至是 Docker，都可以用來管理 Python 環境。</p><p>太煩了！</p><p>尤其在使用 Poetry 建立虛擬環境時，你很可能會遇到<strong>無法精確控制</strong>它用哪個 Python 版本的情況。</p><p>為此我又寫了這篇〈<a href="https://blog.kyomind.tw/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a>〉——這實在是無奈之舉。</p><p>uv 的一大特色是內建了 Python 版本管理功能，你可以直接透過它<strong>下載與管理不同的 Python</strong> 版本，無需額外安裝<code>pyenv</code>或其他工具。</p><p>省去這個 Python 版本指定的麻煩，讓我在使用 uv 時感覺輕鬆許多。</p><hr><h2 id="我要學-uv-嗎？三種讀者情境分析"><a href="#我要學-uv-嗎？三種讀者情境分析" class="headerlink" title="我要學 uv 嗎？三種讀者情境分析"></a>我要學 uv 嗎？三種讀者情境分析</h2><p>在了解了 uv 的三個主要優勢後，接下來我們可以根據不同的使用情境，來探討它是否適合你的需求。</p><p>以下是我給下列三種讀者的建議。</p><h3 id="1-只用過pip"><a href="#1-只用過pip" class="headerlink" title="1. 只用過pip"></a>1. 只用過<code>pip</code></h3><p>不用說，這個年代只有<code>pip</code>肯定是不夠的，而此時此刻要學一個能夠長久使用的套件管理工具，我應該還是會推薦 uv。（而不是 Poetry）</p><h3 id="2-正在使用-Poetry，覺得還行"><a href="#2-正在使用-Poetry，覺得還行" class="headerlink" title="2. 正在使用 Poetry，覺得還行"></a>2. 正在使用 Poetry，覺得還行</h3><p>學習新的 Python 套件管理工具的「<strong>認知成本</strong>」並不低，如果沒有實際需求，<strong>維持現狀</strong>也不失為一個好選擇。</p><h3 id="3-已經使用-Poetry，但有很多不滿"><a href="#3-已經使用-Poetry，但有很多不滿" class="headerlink" title="3. 已經使用 Poetry，但有很多不滿"></a>3. 已經使用 Poetry，但有很多不滿</h3><p>如果上述 uv 相對 Poetry 的優勢，正好是你不滿的地方，則可以認真考慮轉向 uv。</p><h3 id="我的選擇"><a href="#我的選擇" class="headerlink" title="我的選擇"></a>我的選擇</h3><p>我目前在工作上還是使用 Poetry，所以沒辦法直接捨棄它。</p><p>不過，預計未來個人專案應該都會轉向 uv。</p><p>要說理由，對我來說核心理由<strong>只有一個</strong>，就是<strong>它包含了 Python 版本的管理</strong>。</p><hr><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>綜上所述，uv 相較於 Poetry，確實有它<strong>令人心動</strong>的地方。</p><p>無論你是剛接觸 Python 套件管理的新手，還是對現有工具感到不滿的進階使用者，uv 都是一個值得嘗試的選擇。</p><p>在下一篇文章中，我將進一步介紹 uv 的實際使用方式，包含安裝、專案初始化、依賴管理等操作，幫助你快速上手這個新工具。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.kyomind.tw/introducing-uv-min.jpg&quot; alt=&quot;from Pixabay&quot;&gt;&lt;/p&gt;
-&lt;p&gt;3 年前，我寫了這篇〈&lt;a href=&quot;/python-poetry/&quot;&gt;Python 套件管理器——Poetry 完全入門指南&lt;/a&gt;〉，它成為了本站最受歡迎的文章之一。&lt;/p&gt;
-&lt;p&gt;隨著 Python 開發生態的發展，新的工具不斷湧現，你可能已經聽過，我們今天要介紹的主角——Astral 的 uv。&lt;/p&gt;
-&lt;p&gt;之前有讀者希望我介紹 uv，但因為沒有急迫需求，所以一直拖到最近才開始嘗試。&lt;/p&gt;
-&lt;p&gt;這幾天，我終於在 side project 中開始使用它，因此有了初步的心得。&lt;/p&gt;
-&lt;p&gt;這篇文章將先介紹 uv 的背景、特點，以及&lt;strong&gt;和 Poetry 的比較&lt;/strong&gt;（這是我最在乎的，也是所有習慣 Poetry 的讀者可能感興趣的），幫助你評估是否要轉向這個新工具。&lt;/p&gt;
-&lt;p&gt;至於教學，我會在下一篇文章中分享 uv 的實際使用方式，包括安裝、專案初始化、依賴管理等操作，協助你快速上手。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://img.kyomind.tw/introducing-uv-min.jpg" type="image"/>
-    
-    
-    <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
-    
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     

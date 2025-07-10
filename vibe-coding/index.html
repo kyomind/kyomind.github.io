@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Vibe Coding 與人類的時代">
+  <meta property="og:title" content="Vibe Coding 與人類的時代"><meta name="twitter:description" content="本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。">
+  <meta property="og:description" content="本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。"><meta name="twitter:image" content="https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg">
+<meta name="description" content="本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
+            
+
+  <meta property="article:modified_time" content="2025-07-10T14:54:05+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-07-10T14:22:29+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/vibe-coding/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Vibe Coding 與人類的時代 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (56)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (44)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Vibe Coding 與人類的時代
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-07-10
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E5%82%B2%E6%85%A2%EF%BC%9A%E8%87%AA%E8%A9%A1%E7%82%BA%E9%AD%94%E6%B3%95%E7%9A%84%E5%AE%88%E9%96%80%E4%BA%BA"><span class="toc-text">工程師的傲慢：自詡為魔法的守門人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%82%BA%E7%A8%80%E7%BC%BA%EF%BC%8C%E6%89%80%E4%BB%A5%E5%82%B2%E6%85%A2"><span class="toc-text">因為稀缺，所以傲慢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%85%8B%E5%BA%A6%E7%9A%84%E8%BD%89%E8%AE%8A"><span class="toc-text">態度的轉變</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Vibe-Coding%EF%BC%9F"><span class="toc-text">什麼是 Vibe Coding？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BB%9F%E9%AB%94%E5%8F%AA%E6%98%AF%E6%89%8B%E6%AE%B5"><span class="toc-text">軟體只是手段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8C%E4%B8%80%E8%88%AC%E4%BA%BA%E3%80%8D%E7%9A%84%E5%84%AA%E5%8B%A2"><span class="toc-text">「一般人」的優勢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%B8%AB%E4%B9%9F%E8%A6%81%E6%9C%83-Vibe-Coding"><span class="toc-text">工程師也要會 Vibe Coding</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/20250710-223843-city-7625204_1280.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p>
+<blockquote>
+<p>任何人類都能使用魔法的時代要到來了——《葬送的芙莉蓮》漫畫第 53 話 | 人類的時代</p>
+</blockquote>
+<p>有了強大的 AI 輔助 ，寫程式再也不是軟體工程師的專屬。</p>
+<p>如此的時代巨變，首先讓我聯想到的，就是「芙莉蓮」中的這段劇情。</p>
+<p>不過把這個比喻與感受表達得最好的，當屬財經作家王伯達的這篇<a target="_blank" rel="noopener" href="https://www.facebook.com/share/p/173juCsKre/">臉書文</a>。</p>
+<p>他寫道：</p>
+<blockquote>
+<p>AI 讓更多人，用更容易的方式使用程式語言與複雜軟體。</p>
+<p>這讓我想到芙莉蓮的老師，弗蘭梅。</p>
+<p>她說服了人類的皇帝，讓人類得以開始研究魔法，魔法不再是個禁忌，開啟了人人有魔法可以練的年代。</p>
+</blockquote>
+<p>顯然，在我這個軟體工程師眼中，AI 就像芙蘭梅，把原本高門檻的知識、技術變成大眾能輕易接觸的工具，<strong>讓所有人都有機會參與創造</strong>。</p>
+<p>本文聊聊我作為一個軟體工程師，如何看待 AI 普及後這個「魔法時代」。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="工程師的傲慢：自詡為魔法的守門人"><a href="#工程師的傲慢：自詡為魔法的守門人" class="headerlink" title="工程師的傲慢：自詡為魔法的守門人"></a>工程師的傲慢：自詡為魔法的守門人</h2><p>曾幾何時，軟體工程師就像這個世界的魔法使，掌握著一種魔法般的語言——程式碼。</p>
+<p>我們用它來創造服務、建立平台、構築起一個個廣袤無垠的數位世界。</p>
+<p>然而，AI 的出現，讓一切開始改變。</p>
+<p>ChatGPT 問世後，所有的「文本生成」變得簡單起來——包括程式碼。</p>
+<p>隨著 AI 持續演進、AI Agent 工具日漸成熟，你越來越常聽到這種說法：</p>
+<blockquote>
+<p>我不懂程式語言，但我能用 AI 寫程式。</p>
+</blockquote>
+<p>剛聽到這類言論時，老實說，我的內心充滿了鄙夷之情。</p>
+<p>就像師祖賽莉耶說的：「魔法就應該是特別的。」</p>
+<p>我也覺得，程式應該是「特別」的，不是誰都能隨口說自己「會寫程式」。</p>
+<h2 id="因為稀缺，所以傲慢"><a href="#因為稀缺，所以傲慢" class="headerlink" title="因為稀缺，所以傲慢"></a>因為稀缺，所以傲慢</h2><p>這種想法有道理嗎？我覺得，這是人性的一部分。</p>
+<p>作家朱宥勳在《<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/0010867643">文壇生態導覽——作家新手村2 心法篇</a>》一書中提到，如果一位文人既會寫散文又會寫詩，他會希望人們稱他為「詩人」。</p>
+<p>如果既會寫散文又會寫小說呢？當然是小說家！</p>
+<p>為什麼？可能因為——散文的門檻比較低吧。</p>
+<p>任何人，只要識字、能表達，都能自稱會寫散文（文采如何另當別論）。</p>
+<p>而寫詩、寫小說，對我們這種普羅大眾來說，可能連想都不敢想——就像寫程式一樣。</p>
+<hr>
+<h2 id="態度的轉變"><a href="#態度的轉變" class="headerlink" title="態度的轉變"></a>態度的轉變</h2><p>懷抱上述想法，我一直希望自己是特別的。</p>
+<p>直到今年 2 月，當 Andrej Karpathy 提出 Vibe Coding 一詞時，我心中的這份傲慢被敲響了喪鐘。</p>
+<p>我心想：如果連這種大神級的軟體工程師，都提出並嘗試了這樣有趣的軟體開發方式，那一般人用這種方式來開發自己需要的工具或服務，完全說得通啊！</p>
+<p>加上 <a target="_blank" rel="noopener" href="https://www.facebook.com/will.fans/?locale=zh_TW">Will 保哥</a>的各種鼓吹，我對 Vibe Coding 的接納度迅速上升。</p>
+<h2 id="什麼是-Vibe-Coding？"><a href="#什麼是-Vibe-Coding？" class="headerlink" title="什麼是 Vibe Coding？"></a>什麼是 Vibe Coding？</h2><p>這個新詞已經有了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Vibe_coding">維基百科條目</a>。我簡要摘錄如下（定義來自英文頁面）：</p>
+<blockquote>
+<p>Vibe coding is an artificial intelligence-assisted software development style popularized by Andrej Karpathy in early 2025. It describes a fast, improvisational, collaborative approach to creating software where the developer and a large language model (LLM) tuned for coding is acting rather like pair programmers in a conversational loop.</p>
+</blockquote>
+<p>簡單講，就是開發者透過自然語言與 AI 對話，反覆合作、即興修正，一步步建立並完善軟體。</p>
+<p>作為一個 Vibe Coder，你不需了解各種開發細節，甚至不用懂程式語言，而是專注於想要達成的目標和功能需求。</p>
+<p>AI 成為了翻譯者，把我們的意圖轉化為可執行的程式碼。</p>
+<hr>
+<h2 id="軟體只是手段"><a href="#軟體只是手段" class="headerlink" title="軟體只是手段"></a>軟體只是手段</h2><p>越來越多人開始用 AI 寫程式，解決各種日常問題。</p>
+<p>近期讓我最有感的一篇報導是〈<a target="_blank" rel="noopener" href="https://www.inside.com.tw/feature/2025-generative-ai/38545-ai-coding-ngoer">【Generative AI 年會】人力少但服務不打折！Peggy Lo：AI Coding 是 NGO 工作者最強大靠山</a>〉。</p>
+<p>我知道，程式從來只是手段。重要的不是「會不會寫」，而是「能不能用來解決真正的問題」。</p>
+<p>一方面覺得自己的傲慢有些可笑，一方面也鬆了口氣。</p>
+<p>我想，我更該在乎的，不是透過 AI 開發到底算不算「會寫程式」。</p>
+<p>而是作為一個軟體工程師，我能解決什麼樣的問題。</p>
+<hr>
+<h2 id="「一般人」的優勢"><a href="#「一般人」的優勢" class="headerlink" title="「一般人」的優勢"></a>「一般人」的優勢</h2><p>而且話說回來，我不禁在想，不會程式的人用 AI 來開發，反而有自己的獨特優勢！</p>
+<p>工程師多少知道某些技術的困難度，這反而會成為心理負擔，限制想像——覺得 AI 應該辦不到。</p>
+<p>事實證明，AI 往往超乎人們的想像——在厲害與不厲害兩個方面都是XD</p>
+<p>不懂程式的人沒這層包袱，做事的方式就很簡單：提出要求，請 AI 想辦法實現。</p>
+<blockquote>
+<p>魔法是想像的世界，在魔法世界中，無法想像的事情就無法實現</p>
+</blockquote>
+<p>沒有限制，反而更能天馬行空，專注於達成目標。</p>
+<p>雖然未必每次都這麼順利，但少了這些束縛，有時候我認為是一個巨大的優勢。</p>
+<p>唉，我就是缺乏想像力。</p>
+<hr>
+<h2 id="工程師也要會-Vibe-Coding"><a href="#工程師也要會-Vibe-Coding" class="headerlink" title="工程師也要會 Vibe Coding"></a>工程師也要會 Vibe Coding</h2><p>當然，這不代表工程師就該束手就擒。</p>
+<p>相反地，我們更需要進化。</p>
+<p>直白地說，我認為軟體工程師比一般人更需要學會 Vibe Coding。</p>
+<p>像我這樣一個只熟悉後端的 Python 工程師，面對不熟的技術領域（例如前端），也需要發揮 Vibe Coding 的精神與實踐能力。</p>
+<p>善於與 AI 協作的工程師（再加上一點想像力😎），可能是這個時代最有力的創造者。</p>
+<h3 id="一般人打造工具，工程師打造系統"><a href="#一般人打造工具，工程師打造系統" class="headerlink" title="一般人打造工具，工程師打造系統"></a>一般人打造工具，工程師打造系統</h3><p>我覺得工程師應用 AI 放大軟體開發的能力，理應遠超過一般人。</p>
+<p>這讓人充滿期待。</p>
+<p>有人說，AI 讓工程師從作者變成了編輯者，<a target="_blank" rel="noopener" href="https://www.managertoday.com.tw/articles/view/70451">讓寫程式像審稿</a>。好像自降了格調一般。</p>
+<p>我認為這沒錯啊！重點是——<strong>審稿本身就是門技術活</strong>！</p>
+<p>就像我在〈<a href="https://blog.kyomind.tw/myth-of-ai-writing-efficiency/">AI 讓寫作變輕鬆了？我可不這麼認為</a>〉提到的，AI 對我寫作的影響：</p>
+<blockquote>
+<p>為了善用 AI 的力量，我發現自己<strong>變成了 5 分作者、5 分編輯</strong>，而且<strong>經常在兩種身分間游移互換</strong>：一下子自己寫，讓 AI 看；一下子要 AI 寫、我來看。</p>
+</blockquote>
+<blockquote>
+<p>它寫完後，你又得化身編輯看看結果合不合意。不行就得再修。自己寫的東西不滿意，再請它當編輯，給出改善意見。<strong>如此反覆，直到大功告成。</strong></p>
+</blockquote>
+<blockquote>
+<p>AI 的普及，讓我們不僅僅是創作者，也成了編輯，甚至是策劃者。<strong>這種角色的轉換增加了工作量和難度，但也讓我們對內容的掌控更為精細。</strong></p>
+</blockquote>
+<p>沒有足夠的經驗，不可能成為優秀的編輯。</p>
+<hr>
+<p>總之，我覺得，工程師也好，非工程師也罷，在 AI 面前，我們都是人類，都需要藉由 AI 的輔助，不斷擴展自己的邊界。</p>
+<p>這是個令人興奮的時代。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/bbc-6-minute-english/" title="BBC 6 Minute English：提升英文聽力的好夥伴" rel="bookmark">BBC 6 Minute English：提升英文聽力的好夥伴</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner/" title="從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商" rel="bookmark">從 DigitalOcean 到 Hetzner：我為何轉向這家德國 VPS 供應商</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-40/" title="壓力太大怎麼辦？——接受殘缺與遺憾" rel="bookmark">壓力太大怎麼辦？——接受殘缺與遺憾</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/Vibe-Coding/">Vibe Coding</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/github-actions/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</span>
+        <span class="prev-text nav-mobile">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">44</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">56</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">44</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
