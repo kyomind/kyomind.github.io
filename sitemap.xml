@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/vibe-coding/</loc>
+    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-07-11</lastmod>
     
@@ -11,9 +11,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/ranking/index.html</loc>
+    <loc>https://blog.kyomind.tw/vibe-coding/</loc>
     
-    <lastmod>2025-07-10</lastmod>
+    <lastmod>2025-07-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
