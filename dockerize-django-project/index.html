@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-05-24T07:15:44+08:00" />
+  <meta property="article:modified_time" content="2025-07-13T01:53:26+08:00" />
 
 
 
@@ -180,7 +180,10 @@
       <div class="post-meta">
         <span class="post-time">
           2025-01-24
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2025-07-13
+          </span>
+        <span class="post-category">
             <a href="/categories/Django/">Django</a>
             </span>
         </div>
@@ -192,7 +195,7 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%8C%96%E9%96%8B%E7%99%BC"><span class="toc-text">容器化開發</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8%E8%88%87%E7%9B%AE%E6%A8%99%E8%AE%80%E8%80%85"><span class="toc-text">本文主旨與目標讀者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-%E8%88%87%E5%AE%B9%E5%99%A8"><span class="toc-text">Docker 與容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA-Django-%E5%B0%88%E6%A1%88%E5%BB%BA%E7%AB%8B-Dockerfile"><span class="toc-text">為 Django 專案建立 Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8-Dockerfile-%E5%BB%BA%E7%AB%8B-Image"><span class="toc-text">用 Dockerfile 建立 Image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8B%E8%A1%8C-Docker-%E5%AE%B9%E5%99%A8"><span class="toc-text">運行 Docker 容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E4%B8%8D%E8%B6%B3%E4%B9%8B%E8%99%95"><span class="toc-text">目前的不足之處</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%E8%88%87%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-text">小結與下一步</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
-<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 11 篇，同時也是「Django 專案容器化」<strong>三部曲</strong>的第 1 篇。</p>
+<p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 11 篇，同時也是「<a href="/series/#Python-%E5%BE%8C%E7%AB%AF%E5%B0%88%E6%A1%88%E5%AE%B9%E5%99%A8%E5%8C%96">Python 後端專案容器化</a>」的第 1 篇。</p>
 <p>範例程式碼可參考我的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial">GitHub 專案</a>。</p>
 <p>本文相關的程式碼改動，都集中在這個 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Tutorial/pull/6">PR</a>。</p>
 <h3 id="系列：Python-後端專案容器化"><a href="#系列：Python-後端專案容器化" class="headerlink" title="系列：Python 後端專案容器化"></a>系列：Python 後端專案容器化</h3><ul>
@@ -208,9 +211,10 @@
 
 <h2 id="容器化開發"><a href="#容器化開發" class="headerlink" title="容器化開發"></a>容器化開發</h2><p>由此可見，「容器化」是現代開發的 ABC。</p>
 <p>我更想強調是：<strong>哪怕只是在本機上運行，維持專案的容器化也是一個好習慣</strong>，方便日後遷移、分享，甚至協作。</p>
-<p>本文是「Django 專案容器化」三部曲系列的第一篇，將帶你從零開始，將一個 Django 專案進行容器化。</p>
-<p>下一篇介紹如何將 Django 專案容器與的 db 容器整合，並使用 Docker Compose 建立多容器架構。</p>
-<p>最後則是（拖稿許久的）Python 套件管理器——Poetry——的容器化設定，讓你正式告別<code>requirements.txt</code>。</p>
+<p>本文是「<a href="/series/#Python-%E5%BE%8C%E7%AB%AF%E5%B0%88%E6%A1%88%E5%AE%B9%E5%99%A8%E5%8C%96">Python 後端專案容器化</a>」三部曲系列的第一篇，將帶你從零開始，將一個 Django 專案進行容器化。讓 Django app 可以運行在 Docker 容器中。</p>
+<p>第二篇講述當專案<strong>使用 uv 作為套件管理器</strong>時，將 uv 一併容器化的最佳實踐。而不是採用傳統的<code>requirements.txt</code>。</p>
+<p>Poetry 的容器化則可直接參考〈<a href="/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉。</p>
+<p>最後是如何將專案容器與的 db 容器整合，並使用 Docker Compose 建立多容器架構。</p>
 <p>這些都是<strong>現代開發日常</strong>，值得我們一一了解並實踐。</p>
 <hr>
 <h2 id="本文主旨與目標讀者"><a href="#本文主旨與目標讀者" class="headerlink" title="本文主旨與目標讀者"></a>本文主旨與目標讀者</h2><p>本文會帶你手把手<strong>將一個 Django 專案進行容器化改造。</strong></p>
