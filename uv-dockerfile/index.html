@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="uv 容器化實作：使用官方 image 建立 Dockerfile">
+  <meta property="og:title" content="uv 容器化實作：使用官方 image 建立 Dockerfile"><meta name="twitter:description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。">
+  <meta property="og:description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。"><meta name="twitter:image" content="https://img.kyomind.tw/introducing-uv-min.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/introducing-uv-min.jpg">
+<meta name="description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-07-19T08:12:58+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-07-19T07:15:27+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/uv-dockerfile/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>uv 容器化實作：使用官方 image 建立 Dockerfile - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (56)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">uv 容器化實作：使用官方 image 建立 Dockerfile
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-07-19
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%9E-Poetry-%E5%88%B0-uv%EF%BC%9ADockerfile-%E5%AF%AB%E6%B3%95%E5%A4%A7%E4%B8%8D%E5%90%8C"><span class="toc-text">從 Poetry 到 uv：Dockerfile 寫法大不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-uv-%E5%AE%98%E6%96%B9-image"><span class="toc-text">使用 uv 官方 image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9-image-%E6%92%B0%E5%AF%AB-Dockerfile"><span class="toc-text">如何使用官方 image 撰寫 Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E9%9C%80%E8%A6%81-Multi-stage-build%EF%BC%9F"><span class="toc-text">為什麼不需要 Multi-stage build？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uv-%E8%88%87-pip-requirements-txt-%E6%B7%B7%E6%90%AD%E6%B3%95"><span class="toc-text">uv 與 pip &#x2F; requirements.txt 混搭法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Dockerfile"><span class="toc-text">我的 Dockerfile</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/introducing-uv-min.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 3 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/">uv</a> 是近年來快速竄起的 Python 套件管理器，憑藉其最關鍵的核心特性——快😎，在 Python 開發圈引發了不少關注。</p>
+<p>我之前已寫過〈<a href="/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>〉介紹。有興趣的讀者歡迎參考。</p>
+<p>本文是 uv 系列的第二篇，<strong>聚焦於 Dockerfile</strong>。</p>
+<p>當我要將「使用 uv 的 Python 專案」容器化時，我發現相關的討論與介紹較少，所以花了一些時間摸索。</p>
+<p>本文目標是<strong>大幅減少你的試錯時間</strong>，並提出我的實踐與看法。</p>
+<span id="more"></span>
+
+<h3 id="系列：Python-後端專案容器化"><a href="#系列：Python-後端專案容器化" class="headerlink" title="系列：Python 後端專案容器化"></a>系列：Python 後端專案容器化</h3><ul>
+<li><a href="/series/#Python-%E5%BE%8C%E7%AB%AF%E5%B0%88%E6%A1%88%E5%AE%B9%E5%99%A8%E5%8C%96">文章清單（連載中）</a></li>
+</ul>
+<h3 id="系列：Python-套件管理——使用-uv"><a href="#系列：Python-套件管理——使用-uv" class="headerlink" title="系列：Python 套件管理——使用 uv"></a>系列：Python 套件管理——使用 uv</h3><ul>
+<li><a href="/series/#Python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8-uv">文章清單（連載中）</a></li>
+</ul>
+<hr>
+<h2 id="從-Poetry-到-uv：Dockerfile-寫法大不同"><a href="#從-Poetry-到-uv：Dockerfile-寫法大不同" class="headerlink" title="從 Poetry 到 uv：Dockerfile 寫法大不同"></a>從 Poetry 到 uv：Dockerfile 寫法大不同</h2><p>不久前，我才寫下了〈<a href="https://blog.kyomind.tw/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉，講述如何在 Docker 中，使用 Poetry 建立容器內的 Python 執行環境。</p>
+<p>本文算是該篇文章的「<strong>uv 姐妹篇</strong>」，但是，做法非常不同！</p>
+<p>我本以為，只要簡單模仿 Poetry 的 multi-stage build 方式就好，但實際操作後才發現問題多多。</p>
+<p>畢竟兩者的指令不同，尤其對於「全域安裝套件」有著截然不同的做法。</p>
+<p>這裡就不仔細比較差異了，經過一番探索，我們已經得到了最佳解😇</p>
+<p>那就是<strong>使用 uv 團隊推出的官方 Docker image！</strong></p>
+<hr>
+<h2 id="使用-uv-官方-image"><a href="#使用-uv-官方-image" class="headerlink" title="使用 uv 官方 image"></a>使用 uv 官方 image</h2><p>關於 uv 容器化議題，uv 開發團隊推出了專用的<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv/pkgs/container/uv">官方 image</a>。</p>
+<p>該 image 直接內建 uv，而且在體積上進行了最佳化，大概只有 60 MB。（指的是使用 slim 版本的 Linux 基底）</p>
+<p>這個託管在 GitHub 上的官方 image，可以視為最正統的來源。</p>
+<p>如果習慣從 Docker hub 拉取，則可參考<a target="_blank" rel="noopener" href="https://hub.docker.com/r/astral/uv/tags">這裡</a>。</p>
+<p>一般而言，仍建議你使用 GitHub 托管的版本——也就是<code>ghcr.io/</code>開頭的版本。因為它才是「第一手」。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ghcr.io/astral-sh/uv:python3.12-bookworm-slim</span><br></pre></td></tr></table></figure>
+
+<p>作為 Dockerfile 的基底 image。</p>
+<h2 id="如何使用官方-image-撰寫-Dockerfile"><a href="#如何使用官方-image-撰寫-Dockerfile" class="headerlink" title="如何使用官方 image 撰寫 Dockerfile"></a>如何使用官方 image 撰寫 Dockerfile</h2><p>有了 image，那我們要怎麼撰寫 Dockerfile 呢？</p>
+<p>對此，我們也不需要自己苦苦思考了，大部分挑戰都已經有了答案——請直接參考這個<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example">官方倉庫</a>中的 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example/blob/main/Dockerfile">Dockerfile</a> 寫法！</p>
+<p><strong>我強烈建議你，如果沒有特殊需求，就 follow 它的寫法</strong>，因為 uv 的操作有很多繁瑣的細節，考驗著你對該工具的了解，尤其在 Docker 容器化的時候更是如此。</p>
+<p>官方的 Dockerfile 也非常細心，在多個指令都加上了簡要的註解，讓你知其然又知其所以然。</p>
+<p>其實看過其中一些指令內容就知道，要自己寫肯定很難寫得這麼好。</p>
+<p>所以我們還是盡可能參考甚至遵照這份 Dockerfile 的寫法。</p>
+<p>可以少走很多彎路。</p>
+<hr>
+<h2 id="為什麼不需要-Multi-stage-build？"><a href="#為什麼不需要-Multi-stage-build？" class="headerlink" title="為什麼不需要 Multi-stage build？"></a>為什麼不需要 Multi-stage build？</h2><p>前述〈<a href="https://blog.kyomind.tw/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉教你如何用 multi-stage build 建立 Poetry 虛擬環境。</p>
+<p>因為 Poetry 和 uv 這類工具有<strong>各自需要的執行環境與依賴套件</strong>，不那麼適合在 Docker 建構過程中直接安裝並封裝成 image，這會造成<strong>一定程度的空間浪費與冗餘</strong>。</p>
+<p>所以我們選擇用 multi-stage build 來建立 image。</p>
+<p>那為什麼這裡就<strong>沒有這麼做</strong>呢？ </p>
+<p>原因很簡單，<strong>官方已經提供這份乾淨、極簡的 image，讓你直接開箱即用</strong>。雖然最終的 image 中仍會有 uv，但它的體積佔用已然經過最佳化。</p>
+<p>此時自己再搞個 multi-stage build，也省不了多少空間，還徒增 Dockerfile 的複雜度與出錯的可能。</p>
+<h3 id="MCP-時代"><a href="#MCP-時代" class="headerlink" title="MCP 時代"></a>MCP 時代</h3><p>附帶一提，在這個 MCP（模型上下文協定，<a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">Model Context Protocol</a>）盛行的時代，我們可以看到 MCP Server 的開發，主要由兩種語言佔多數：</p>
+<ol>
+<li>TypeScript（JavaScript）</li>
+<li>Python</li>
+</ol>
+<p>如果你想用 Python 來開發 MCP 服務，並希望讓使用者執行<code>uv run &lt;你定義的指令&gt;</code>來啟動 MCP Server——這是目前的主流做法，那 uv 就需要在你的最終 image 中。</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2025/04/01/Write-your-own-MCP-server-using-uv-and-Python">使用 uv 輔助開發 MCP 伺服器並安裝到 Claude Desktop 與 VS Code</a></p>
+</blockquote>
+<p>如此一來，自然也不需要透過 multi-stage build 來移除 uv。</p>
+<h3 id="我就是要-Multi-stage-build！"><a href="#我就是要-Multi-stage-build！" class="headerlink" title="我就是要 Multi-stage build！"></a>我就是要 Multi-stage build！</h3><p>不同專案有不同需求，如果你真的需要 multi-stage build 以進一步節省空間的話，同一個倉庫中有<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile">另一個 Dockerfile</a> 可供參考。</p>
+<hr>
+<h2 id="uv-與-pip-requirements-txt-混搭法"><a href="#uv-與-pip-requirements-txt-混搭法" class="headerlink" title="uv 與 pip &#x2F; requirements.txt 混搭法"></a>uv 與 pip &#x2F; requirements.txt 混搭法</h2><p>其實，uv 對 pip 的相容性相當不錯——畢竟它有子命令<code>uv pip</code>。</p>
+<p>因此，你也可以不用官方的 uv image，而是使用一般 Python image，再直接搭配<code>requirements.txt</code>安裝容器中的 Python 虛擬環境就好。</p>
+<p>好處是延續了既有的 pip 開發習慣，降低認知負擔。</p>
+<p>而且官方還非常貼心地準備了 <a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/guides/integration/pre-commit/">pre-commit hook</a>，來協助你輕鬆同步<code>uv.lock</code>與<code>requirements.txt</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">&lt;https://github.com/astral-sh/uv-pre-commit&gt;</span></span><br><span class="line">    <span class="comment"># uv version.</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">0.8</span><span class="number">.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">uv-export</span></span><br></pre></td></tr></table></figure>
+
+<p>如此一來，就不會再發生<a href="https://blog.kyomind.tw/poetry-multi-stage-build/#%E8%88%8A%E6%9C%89%E5%81%9A%E6%B3%95%EF%BC%9Arequirements-txt-%E5%8F%8A%E5%85%B6%E9%99%90%E5%88%B6">前文</a>中提到的「在更新<code>poetry.lock</code>時，常常會忘記同步到<code>requirements.txt</code>」這類問題。</p>
+<p>此外，你也可以使用官方 image 但保留<code>requirements.txt</code>作為安裝依據，Dockerfile 寫法同樣簡單。</p>
+<p>以上這兩種混搭方式與 Dockerfile 實際範例，可以參考這篇〈<a target="_blank" rel="noopener" href="https://jumping-code.com/2024/08/23/uv-pip-docker-image/#dockerfile-using-uv">如何使用 Python 套件管理工具「uv」取代 pip 來加速 Docker Image 的建立</a>〉中的「<a target="_blank" rel="noopener" href="https://jumping-code.com/2024/08/23/uv-pip-docker-image/#%E5%AF%A6%E6%B8%AC%E6%AA%94%E6%A1%88">實測檔案</a>」一節。</p>
+<hr>
+<h2 id="我的-Dockerfile"><a href="#我的-Dockerfile" class="headerlink" title="我的 Dockerfile"></a>我的 Dockerfile</h2><p>最後附上 WeaMind 專案中，我目前使用的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/uv-dockerfile-2025-07-19-v1/Dockerfile">Dockerfile</a>。</p>
+<p>我對官方寫法做了一定的<strong>刪減</strong>，這是跟 AI 詳細討論過的。</p>
+<p>所以如果你沒有把握，還是和 AI 討論或者直接 follow 官方的寫法就好。</p>
+<p>此外，我還加上了一些註解，供讀者參考。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ghcr.io/astral-sh/uv:python3.<span class="number">12</span>-bookworm-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use &#x27;code&#x27; to avoid confusion with the &#x27;app&#x27; directory</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /code</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Compile bytecode and avoid symlinks</span></span><br><span class="line"><span class="keyword">ENV</span> UV_COMPILE_BYTECODE=<span class="number">1</span></span><br><span class="line"><span class="keyword">ENV</span> UV_LINK_MODE=<span class="keyword">copy</span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash"></span></span><br><span class="line"><span class="comment"># ---------- layer 1: heavy dependencies ----------</span></span><br><span class="line"><span class="comment"># Cache only invalidates when these two files change</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> pyproject.toml uv.lock ./</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> --mount=<span class="built_in">type</span>=cache,target=/root/.cache/uv \</span></span><br><span class="line"><span class="language-bash">    uv <span class="built_in">sync</span> --locked --no-dev</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ---------- layer 2: application code ----------</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /code</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Put the venv at the beginning of PATH</span></span><br><span class="line"><span class="keyword">ENV</span> PATH=<span class="string">&quot;/code/.venv/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Do not use uv as the entrypoint</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> []</span></span><br></pre></td></tr></table></figure>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-docker-sdk/" title="Python Docker SDK 快速上手" rel="bookmark">Python Docker SDK 快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/poetry-multi-stage-build/" title="Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境" rel="bookmark">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/dockerize-django-project/" title="用 Docker 容器化你的 Django 專案" rel="bookmark">用 Docker 容器化你的 Django 專案</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Docker/">Docker</a>
+            <a href="/tags/Python/">Python</a>
+            <a href="/tags/uv/">uv</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/vibe-coding/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Vibe Coding 與人類的時代</span>
+        <span class="prev-text nav-mobile">Vibe Coding 與人類的時代</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">44</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">56</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">45</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

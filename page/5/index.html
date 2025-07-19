@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (44)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,31 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/ithome-ironman-tips/">iThome 鐵人賽寫作攻略——新手必看指南</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-11-13
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/8kDoWyy.jpeg"></p>
+<p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/2024ironman/">2024 iThome 鐵人賽</a>已圓滿落幕，經過一番艱苦的戰鬥，我也順利完賽——還拿到了 Python 組的「<strong>優選</strong>」獎。（<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/2024ironman/reward">得獎名單</a>）</p>
+<p>在讀完〈<a target="_blank" rel="noopener" href="https://kucw.io/blog/ithome-sharing/">iThome 鐵人賽 - 得《優選》獎項的寫作心法</a>〉和〈<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10358571">【Day 31】- 忙碌上班族如何在鐵人賽中堅持30天寫作？從靈感到策略：9個關鍵步驟</a>〉這兩篇大作後，我不禁見獵心喜、心癢難耐🤩</p>
+<p>也想好好寫一篇攻略，獻給還在觀望中、猶豫明年是否要參賽的你。</p>
+<p>雖說是「寫作」攻略，但其實更適合稱為「<strong>參賽與完賽</strong>」攻略。</p>
+<p>本文不會介紹任何寫作技巧，而是聚焦於<strong>如何成功跑完這場「寫作馬拉松」</strong>——最好再拿個獎！</p>
+<p>接下來，我將分享我的鐵人賽參賽經驗，以及一些實際的做法。</p>
+          <div class="read-more">
+            <a href="/ithome-ironman-tips/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-39/">10 月回顧——鐵人賽、演算法與 AI</a>
         </h1>
@@ -382,33 +407,6 @@
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/18">這個 PR</a>。</p>
           <div class="read-more">
             <a href="/django-ninja-27/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-26/">資料查詢與過濾（上）FilterSchema 介紹</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-10-08
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 26 篇。</p>
-<p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
-<p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
-<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>
-<p>這種方法簡單直接，適合基本的查詢需求。然而，它也有其<strong>局限性</strong>——隨著欄位與需求的增加，查詢條件可能變得<strong>越來越複雜</strong>，導致程式碼<strong>冗長</strong>且難以維護。</p>
-<p>為了解決這一問題，Django Ninja 提供了 FilterSchema，讓我們可以用更「<strong>結構化</strong>」的方式，定義並管理查詢條件。</p>
-<p>本文將介紹 FilterSchema，一步步實作與講解，讓你了解如何在 Django Ninja 中使用 FilterSchema，實現<strong>更加靈活、模組化</strong>的 API 查詢功能。</p>
-<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/17">這個 PR</a>。</p>
-          <div class="read-more">
-            <a href="/django-ninja-26/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/4/">

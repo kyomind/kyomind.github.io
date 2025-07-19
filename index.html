@@ -125,7 +125,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (44)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -165,6 +165,33 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/uv-dockerfile/">uv 容器化實作：使用官方 image 建立 Dockerfile</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-07-19
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/introducing-uv-min.jpg" alt="from Pixabay"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 3 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/">uv</a> 是近年來快速竄起的 Python 套件管理器，憑藉其最關鍵的核心特性——快😎，在 Python 開發圈引發了不少關注。</p>
+<p>我之前已寫過〈<a href="/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>〉介紹。有興趣的讀者歡迎參考。</p>
+<p>本文是 uv 系列的第二篇，<strong>聚焦於 Dockerfile</strong>。</p>
+<p>當我要將「使用 uv 的 Python 專案」容器化時，我發現相關的討論與介紹較少，所以花了一些時間摸索。</p>
+<p>本文目標是<strong>大幅減少你的試錯時間</strong>，並提出我的實踐與看法。</p>
+          <div class="read-more">
+            <a href="/uv-dockerfile/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/vibe-coding/">Vibe Coding 與人類的時代</a>
         </h1>
@@ -362,47 +389,6 @@
 <p>但我的部落格還是要繼續寫啊！只能乖乖尋找替代方案。</p>
           <div class="read-more">
             <a href="/weekly-review-43/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-05-30
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://img.kyomind.tw/pyright.jpg"></p>
-<blockquote>
-<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 1 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
-</blockquote>
-<p>如〈<a href="/introducing-uv/">Python 套件管理器 uv 介紹——與 Poetry 比較</a>〉一文中所述，最近我開始了一個新的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">side project</a>。</p>
-<p>我打算好好利用這個專案，練習並實踐那些，在工作中無法盡情揮灑，或想學習但是還用不到的新技術。包括後端、AI、DevOps。</p>
-<p>為了嘗試不同的開發體驗，從框架到工具都有所更新：</p>
-<ul>
-<li>因應 AI 時代，後端框架改用 FastAPI——輕量，且非同步支援佳。</li>
-<li>套件管理器從 Poetry 換成 uv——快，就是快。</li>
-</ul>
-<p>而型別檢查器——本文的主角，則從 Mypy 改為 Pyright。</p>
-<p>這不是一時興起的炫技選擇，而是一連串有意識的技術決策：選擇那些效能更好、體驗更佳，並且有長期潛力的替代方案。</p>
-<p>Pyright，就是其中之一。</p>
-<hr>
-<h2 id="為什麼需要型別檢查？"><a href="#為什麼需要型別檢查？" class="headerlink" title="為什麼需要型別檢查？"></a>為什麼需要型別檢查？</h2><p>如果你對 Python 的「型別檢查」議題還不熟，歡迎參考我之前寫的「<a href="/series/#Mypy-%E4%B8%89%E9%83%A8%E6%9B%B2">Mypy 三部曲</a>」，其中對 Python type hints 與型別靜態分析工具做了深入說明。</p>
-<p>Type hints 歷經多代 Python 發展至今，已趨於成熟。但它在實際專案中的流行程度，恐怕還不算高。</p>
-<p>甚至直白地說，對部分 Python 開發者而言，可能：</p>
-<ol>
-<li>沒聽過。</li>
-<li>知道但無感。</li>
-</ol>
-<p>這正是本文要努力的目標——讓更多人加入撰寫 Python type hints 的行列🔥😎</p>
-          <div class="read-more">
-            <a href="/pyright/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">
