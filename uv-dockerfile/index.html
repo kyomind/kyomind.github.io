@@ -17,8 +17,8 @@
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="uv 容器化實作：使用官方 image 建立 Dockerfile">
   <meta property="og:title" content="uv 容器化實作：使用官方 image 建立 Dockerfile"><meta name="twitter:description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。">
-  <meta property="og:description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
-  <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。"><meta name="twitter:image" content="https://img.kyomind.tw/introducing-uv-min.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/introducing-uv-min.jpg">
 <meta name="description" content="本文介紹如何使用 uv 官方提供的 Docker image，撰寫優質的 Dockerfile，並分享我的實踐經驗。" />
 
 
@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-19T08:13:59+08:00" />
+  <meta property="article:modified_time" content="2025-07-19T08:21:58+08:00" />
 
 
 
@@ -191,7 +191,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%9E-Poetry-%E5%88%B0-uv%EF%BC%9ADockerfile-%E5%AF%AB%E6%B3%95%E5%A4%A7%E4%B8%8D%E5%90%8C"><span class="toc-text">從 Poetry 到 uv：Dockerfile 寫法大不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-uv-%E5%AE%98%E6%96%B9-image"><span class="toc-text">使用 uv 官方 image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9-image-%E6%92%B0%E5%AF%AB-Dockerfile"><span class="toc-text">如何使用官方 image 撰寫 Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E4%B8%8D%E9%9C%80%E8%A6%81-Multi-stage-build%EF%BC%9F"><span class="toc-text">為什麼不需要 Multi-stage build？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uv-%E8%88%87-pip-requirements-txt-%E6%B7%B7%E6%90%AD%E6%B3%95"><span class="toc-text">uv 與 pip &#x2F; requirements.txt 混搭法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Dockerfile"><span class="toc-text">我的 Dockerfile</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/introducing-uv-min.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <blockquote>
 <p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 3 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
 </blockquote>
