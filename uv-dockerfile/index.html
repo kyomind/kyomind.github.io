@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-19T08:23:25+08:00" />
+  <meta property="article:modified_time" content="2025-07-19T08:46:27+08:00" />
 
 
 
@@ -218,13 +218,13 @@
 <hr>
 <h2 id="使用-uv-官方-image"><a href="#使用-uv-官方-image" class="headerlink" title="使用 uv 官方 image"></a>使用 uv 官方 image</h2><p>關於 uv 容器化議題，uv 開發團隊推出了專用的<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv/pkgs/container/uv">官方 image</a>。</p>
 <p>該 image 直接內建 uv，而且在體積上進行了最佳化，大概只有 60 MB。（指的是使用 slim 版本的 Linux 基底）</p>
-<p>這個託管在 GitHub 上的官方 image，可以視為最正統的來源。</p>
+<p>透過它，你可以省去許多繁瑣的設定與調整，而且在安全性上更有保障。</p>
 <p>如果習慣從 Docker hub 拉取，則可參考<a target="_blank" rel="noopener" href="https://hub.docker.com/r/astral/uv/tags">這裡</a>。</p>
 <p>一般而言，仍建議你使用 GitHub 托管的版本——也就是<code>ghcr.io/</code>開頭的版本。因為它才是「第一手」。</p>
 <p>例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ghcr.io/astral-sh/uv:python3.12-bookworm-slim</span><br></pre></td></tr></table></figure>
 
-<p>作為 Dockerfile 的基底 image。</p>
+<p>建議用它作為 Dockerfile 的基底 image。</p>
 <h2 id="如何使用官方-image-撰寫-Dockerfile"><a href="#如何使用官方-image-撰寫-Dockerfile" class="headerlink" title="如何使用官方 image 撰寫 Dockerfile"></a>如何使用官方 image 撰寫 Dockerfile</h2><p>有了 image，那我們要怎麼撰寫 Dockerfile 呢？</p>
 <p>對此，我們也不需要自己苦苦思考了，大部分挑戰都已經有了答案——請直接參考這個<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example">官方倉庫</a>中的 <a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example/blob/main/Dockerfile">Dockerfile</a> 寫法！</p>
 <p><strong>我強烈建議你，如果沒有特殊需求，就 follow 它的寫法</strong>，因為 uv 的操作有很多繁瑣的細節，考驗著你對該工具的了解，尤其在 Docker 容器化的時候更是如此。</p>
@@ -244,11 +244,11 @@
 <li>TypeScript（JavaScript）</li>
 <li>Python</li>
 </ol>
-<p>如果你想用 Python 來開發 MCP 服務，並希望讓使用者執行<code>uv run &lt;你定義的指令&gt;</code>來啟動 MCP Server——這是目前的主流做法，那 uv 就需要在你的最終 image 中。</p>
+<p>如果你想用 Python 來開發 MCP 服務，並希望讓使用者執行<code>uv run &lt;你定義的指令&gt;</code>來啟動 MCP Server（這是目前主流做法），那 uv 就需要存在你的最終 image 中。</p>
 <blockquote>
 <p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2025/04/01/Write-your-own-MCP-server-using-uv-and-Python">使用 uv 輔助開發 MCP 伺服器並安裝到 Claude Desktop 與 VS Code</a></p>
 </blockquote>
-<p>如此一來，自然也不需要透過 multi-stage build 來移除 uv。</p>
+<p>如此一來，自然也不需要透過 multi-stage build 來移除 uv 了。</p>
 <h3 id="我就是要-Multi-stage-build！"><a href="#我就是要-Multi-stage-build！" class="headerlink" title="我就是要 Multi-stage build！"></a>我就是要 Multi-stage build！</h3><p>不同專案有不同需求，如果你真的需要 multi-stage build 以進一步節省空間的話，同一個倉庫中有<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile">另一個 Dockerfile</a> 可供參考。</p>
 <hr>
 <h2 id="uv-與-pip-requirements-txt-混搭法"><a href="#uv-與-pip-requirements-txt-混搭法" class="headerlink" title="uv 與 pip &#x2F; requirements.txt 混搭法"></a>uv 與 pip &#x2F; requirements.txt 混搭法</h2><p>其實，uv 對 pip 的相容性相當不錯——畢竟它有子命令<code>uv pip</code>。</p>
