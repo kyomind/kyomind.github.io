@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/github-actions/</loc>
+    
+    <lastmod>2025-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyright/</loc>
+    
+    <lastmod>2025-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/uv-dockerfile/</loc>
+    
+    <lastmod>2025-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-07-20</lastmod>
@@ -14,15 +41,6 @@
     <loc>https://blog.kyomind.tw/vibe-coding/</loc>
     
     <lastmod>2025-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/uv-dockerfile/</loc>
-    
-    <lastmod>2025-07-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -272,15 +290,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/pyright/</loc>
-    
-    <lastmod>2025-07-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/dockerize-django-project/</loc>
     
     <lastmod>2025-07-13</lastmod>
@@ -291,15 +300,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-44/</loc>
-    
-    <lastmod>2025-07-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/github-actions/</loc>
     
     <lastmod>2025-07-11</lastmod>
     

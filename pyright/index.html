@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-13T05:31:55+08:00" />
+  <meta property="article:modified_time" content="2025-07-20T07:08:11+08:00" />
 
 
 
@@ -334,7 +334,7 @@
 <p>但是，不可否認，型別檢查器的 hook 設定比 linter、formatter 要來得<strong>講究許多</strong>！</p>
 <p>因為它需要<strong>完整的執行環境</strong>——包括相依套件，不像 linter 只需對程式碼直接進行檢查即可。</p>
 <p>所以設定上會麻煩一些，之前使用 Mypy 就踩過不少坑。</p>
-<p>從結論上來說，把 hook 設定為「本地」會單純得多。適合單人開發的 side project，我的設定如下：</p>
+<p>從結論上來說，把 hook 設定為「本地」會單純得多。適合單人開發的 side project，<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/pyright-v1-20250530/pyrightconfig.json">我的設定</a>如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pyright</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pyright</span> <span class="string">(local</span> <span class="string">venv)</span></span><br><span class="line">      <span class="attr">entry:</span> <span class="string">.venv/bin/pyright</span></span><br><span class="line">      <span class="attr">language:</span> <span class="string">system</span></span><br><span class="line">      <span class="attr">pass_filenames:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">types:</span> [<span class="string">python</span>]</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>name</code>欄位的名稱可以自訂，<code>id</code>部分因為是 local hook，也能夠自訂。<code>entry</code>的路徑則要看專案虛擬環境所在。</p>

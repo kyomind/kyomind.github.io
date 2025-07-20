@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-19T13:57:28+08:00" />
+  <meta property="article:modified_time" content="2025-07-20T07:07:10+08:00" />
 
 
 
@@ -257,12 +257,12 @@
 <p>而且官方還非常貼心地準備了 <a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/guides/integration/pre-commit/">pre-commit hook</a>，來協助你輕鬆同步<code>uv.lock</code>與<code>requirements.txt</code>：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">&lt;https://github.com/astral-sh/uv-pre-commit&gt;</span></span><br><span class="line">    <span class="comment"># uv version.</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">0.8</span><span class="number">.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">uv-export</span></span><br></pre></td></tr></table></figure>
 
-<p>如此一來，就不會再發生<a href="https://blog.kyomind.tw/poetry-multi-stage-build/#%E8%88%8A%E6%9C%89%E5%81%9A%E6%B3%95%EF%BC%9Arequirements-txt-%E5%8F%8A%E5%85%B6%E9%99%90%E5%88%B6">前文</a>中提到的「在更新<code>poetry.lock</code>時，常常會忘記同步到<code>requirements.txt</code>」這類問題。</p>
+<p>如此一來，就不會再發生<a href="/poetry-multi-stage-build/#%E8%88%8A%E6%9C%89%E5%81%9A%E6%B3%95%EF%BC%9Arequirements-txt-%E5%8F%8A%E5%85%B6%E9%99%90%E5%88%B6">前文</a>中提到的「在更新<code>poetry.lock</code>時，常常會忘記同步到<code>requirements.txt</code>」這類問題。</p>
 <p>此外，你也可以使用官方 image 但保留<code>requirements.txt</code>作為安裝依據，Dockerfile 寫法同樣簡單。</p>
 <p>以上這兩種混搭方式的具體實作，可以參考 <a target="_blank" rel="noopener" href="https://jumping-code.com/about-me/">JumpingCode 資料科學手記</a>的這篇〈<a target="_blank" rel="noopener" href="https://jumping-code.com/2024/08/23/uv-pip-docker-image/#dockerfile-using-uv">如何使用 Python 套件管理工具「uv」取代 pip 來加速 Docker Image 的建立</a>〉。</p>
 <p>其中的「<a target="_blank" rel="noopener" href="https://jumping-code.com/2024/08/23/uv-pip-docker-image/#%E5%AF%A6%E6%B8%AC%E6%AA%94%E6%A1%88">實測檔案</a>」一節就提供了完整的 Dockerfile 範例。</p>
 <hr>
-<h2 id="我的-Dockerfile"><a href="#我的-Dockerfile" class="headerlink" title="我的 Dockerfile"></a>我的 Dockerfile</h2><p>最後附上 WeaMind 專案中，我目前使用的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/uv-dockerfile-2025-07-19-v1/Dockerfile">Dockerfile</a>。</p>
+<h2 id="我的-Dockerfile"><a href="#我的-Dockerfile" class="headerlink" title="我的 Dockerfile"></a>我的 Dockerfile</h2><p>最後附上 WeaMind 專案中，我目前使用的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/uv-dockerfile-v1-20250719/Dockerfile">Dockerfile</a>。</p>
 <p>我對官方寫法做了一定的<strong>刪減</strong>，這是跟 AI 詳細討論過的。</p>
 <p>如果你沒有把握，建議和 AI 討論或者直接 follow 官方的寫法就好。</p>
 <p>此外，我還加上了一些註解，供讀者參考。</p>
