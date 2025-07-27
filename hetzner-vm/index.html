@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="在 Hetzner 開新 VM 指南：選機房、SSH 連線、防火牆">
+  <meta property="og:title" content="在 Hetzner 開新 VM 指南：選機房、SSH 連線、防火牆"><meta name="twitter:description" content="本文介紹如何在 Hetzner 上建立 VM，包括選擇資料中心、SSH 連線和防火牆設定等。">
+  <meta property="og:description" content="本文介紹如何在 Hetzner 上建立 VM，包括選擇資料中心、SSH 連線和防火牆設定等。"><meta name="twitter:image" content="https://i.imgur.com/GhElIMy.jpeg">
+  <meta property="og:image" content="https://i.imgur.com/GhElIMy.jpeg">
+<meta name="description" content="本文介紹如何在 Hetzner 上建立 VM，包括選擇資料中心、SSH 連線和防火牆設定等。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-07-27T15:34:07+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-07-27T15:03:31+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/hetzner-vm/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>在 Hetzner 開新 VM 指南：選機房、SSH 連線、防火牆 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/tags/" class="">
+        <li class="mobile-menu-item">標籤
+          </li>
+      </a><a href="/ranking/" class="">
+        <li class="mobile-menu-item">排名
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (56)</a>
+          
+            <a href="/categories/Django/">Django (13)</a>
+          
+            <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (46)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列 (30)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/tags/" >
+          標籤
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/ranking/" >
+          排名
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">在 Hetzner 開新 VM 指南：選機房、SSH 連線、防火牆
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-07-27
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%B3%87%E6%96%99%E4%B8%AD%E5%BF%83%E9%81%B8%E6%93%87"><span class="toc-text">一、資料中心選擇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81SSH-%E9%80%A3%E7%B7%9A%E8%A8%AD%E5%AE%9A"><span class="toc-text">三、SSH 連線設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%98%B2%E7%81%AB%E7%89%86"><span class="toc-text">四、防火牆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%9B%9C%E9%A0%85"><span class="toc-text">五、雜項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9AHetzner-%E5%B0%B1%E6%98%AF%E9%A6%99%EF%BC%81"><span class="toc-text">結語：Hetzner 就是香！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%88%91%E7%9A%84%E6%8E%A8%E8%96%A6%E9%80%A3%E7%B5%90%EF%BC%8C%E4%BA%AB%E5%8F%97-20-%E6%AD%90%E5%85%83%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6"><span class="toc-text">使用我的推薦連結，享受 20 歐元免費額度</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p>
+<p>〈<a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a>〉介紹了 Hetzner 這個來自德國的 VPS 供應商，該篇文章在 VM 價格與規格上，與 DigitalOcean 進行比較。</p>
+<p>使用下來已超過 3 個月，除了台灣連歐洲的延遲較高，以這樣的價格，整體表現仍讓我十分滿意。</p>
+<p>我之後絕大部分的服務，都會部署在目前租用的 Hetzner VM 上。</p>
+<p>上一篇是介紹與推廣，本篇則是進一步教你怎麼在 Hetzner 平台上建立新 VM，簡單實用。</p>
+<p>話不多說，直接開始。</p>
+<span id="more"></span>
+
+<hr>
+<p>登入後，先打開 Hetzner 的 <a target="_blank" rel="noopener" href="https://console.hetzner.com/">Console 頁面</a>。</p>
+<p><img src="https://img.kyomind.tw/20250727-230712-hz1-min.png" alt="Hetzner Console"><span class="cap">Hetzner Console</span>  </p>
+<p>新增專案並點擊「Create Server」後，我們會在該頁面完成全部流程。</p>
+<p>大部分步驟都不難理解，以下只針對其中幾步進行重點解說。</p>
+<hr>
+<h2 id="一、資料中心選擇"><a href="#一、資料中心選擇" class="headerlink" title="一、資料中心選擇"></a>一、資料中心選擇</h2><p>如圖，全世界有 6 處資料中心可供選擇，3 個在歐洲，2 個在美國，1 個在新加坡。</p>
+<p><img src="https://img.kyomind.tw/20250727-230936-hz2-min.png" alt="機房選擇"><span class="cap">機房選擇</span>  </p>
+<p>但如果你和我一樣選 ARM 版的 CPU，那就只剩下歐洲的 3 個可選。</p>
+<p>這部分請參考上一篇的「<a href="/hetzner/#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6%EF%BC%9ALatency-%E6%AF%94%E8%BC%83">實際測試：Latency 比較</a>」（包含我的測試結果），並用你的電腦、網路進行實際測試。</p>
+<p>令人遺憾的是，即使選擇最接近台灣的新加坡機房，我測試的 ping 值也達到 400 毫秒。</p>
+<p>雖然比歐洲機房的 600-800 毫秒快，但相比 DigitalOcean 新加坡機房僅 130 毫秒，仍屬太慢。</p>
+<p>而且價格是歐洲機房的 2 倍左右，個人是覺得不太划算啦！</p>
+<h3 id="歐洲優先"><a href="#歐洲優先" class="headerlink" title="歐洲優先"></a>歐洲優先</h3><p>所以強烈建議，如果對延遲速度有要求，還是不要選它們家的 VM。</p>
+<p>如果可以接受延遲，那選擇歐洲機房與 ARM 處理器，就是最高 CP 值的組合！</p>
+<p><img src="https://img.kyomind.tw/20250727-231130-hz3-min.png" alt="我選擇 CAX21 機型"><span class="cap">我選擇 CAX21 機型</span>  </p>
+<p>以上都是以 Shared vCPU 為準。</p>
+<p>ARM CPU 的 VM，CP 值都極高！此外，以上價格不含稅——還有 5% 的營業稅。</p>
+<h2 id="三、SSH-連線設定"><a href="#三、SSH-連線設定" class="headerlink" title="三、SSH 連線設定"></a>三、SSH 連線設定</h2><p>我們在〈<a href="/vm-ssh-setup/">為 e2-micro VM 建立 SSH 連線：本機與 GitHub</a>〉提過，新 VM 設定 SSH 連線的方式不外乎這兩種：</p>
+<ol>
+<li>Web Console 登入後自行設定。</li>
+<li>建立 VM 時直接上傳公鑰。</li>
+</ol>
+<p>Hetzner 屬於第二種，上傳一組後，可以設為「預設」，讓全專案都可以使用。這樣一來，開第 2 台、第 3 台時就不必再重新上傳了。</p>
+<p>所以，請先準備好你的公鑰。指令可參考「<a href="/vm-ssh-setup/#%E6%9C%AC%E6%A9%9F%E5%BB%BA%E7%AB%8B-SSH-%E9%87%91%E9%91%B0">本機建立 SSH 金鑰</a>」。</p>
+<p>建立完成後，用 terminal 測試 SSH 連線：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@&lt;你的ip&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SSH-補充建議"><a href="#SSH-補充建議" class="headerlink" title="SSH 補充建議"></a>SSH 補充建議</h3><ol>
+<li>使用 config 檔管理 SSH 連線。</li>
+<li>在<code>root</code>帳號登入後，建立一個普通使用者與獨立的 SSH 連線，並加入 sudo 群組。然後沒事不要再用<code>root</code>登入XD</li>
+</ol>
+<p>保持好習慣，可以省去不必要的麻煩。</p>
+<h2 id="四、防火牆"><a href="#四、防火牆" class="headerlink" title="四、防火牆"></a>四、防火牆</h2><p>Hetzner 的設計是：</p>
+<ul>
+<li>防火牆綁在「專案」層級</li>
+<li>VM 建立時，從現有的防火牆中選擇套用</li>
+</ul>
+<p>如果你尚未建立防火牆，系統會提示你先設定一個，然後再繼續 VM 建立流程。</p>
+<h3 id="Port-開放原則"><a href="#Port-開放原則" class="headerlink" title="Port 開放原則"></a>Port 開放原則</h3><p>建議只開放 22（SSH）、80（HTTP）、443（HTTPS），其餘一律不開。</p>
+<p>其實就是預設值啦！具體設定如下：</p>
+<p><img src="https://img.kyomind.tw/20250727-231422-hz4-min.png" alt="基本防火牆設定"><span class="cap">基本防火牆設定</span>  </p>
+<p>你可以針對不同用途建立多個防火牆設定檔，或直接共用同一個即可。</p>
+<h2 id="五、雜項"><a href="#五、雜項" class="headerlink" title="五、雜項"></a>五、雜項</h2><p>以下是建立 VM 流程中，我對於雜項的選擇：</p>
+<ol>
+<li>作業系統：當然是 <a target="_blank" rel="noopener" href="https://ubuntu.com/blog/tag/ubuntu-24-04-lts">Ubuntu 24.04 LTS</a>。（純個人偏好）</li>
+<li>網路：IPv4（需要一點點費用：€0.0008&#x2F;h）、IPv6（免費）勾選。</li>
+<li>Volumes：預設的 80 GB，很夠用，先不選，真的不夠再加。</li>
+<li>Backups：看需求，我沒選。</li>
+</ol>
+<hr>
+<h2 id="結語：Hetzner-就是香！"><a href="#結語：Hetzner-就是香！" class="headerlink" title="結語：Hetzner 就是香！"></a>結語：Hetzner 就是香！</h2><p>不同需求有不同的選擇，不過在多數情況下，Hetzner 提供的產品服務，對我而言就是絕佳選擇！</p>
+<p>我目前已經在上面部署了：</p>
+<ol>
+<li>2 個 <a href="/memos/">memos</a> 服務。</li>
+<li>1 個 <a href="/weekly-review-21/">Umami</a> 服務（GA4 替代品）。</li>
+<li>Ningx、Certbot、<a target="_blank" rel="noopener" href="https://www.portainer.io/">Portainer</a> 容器等等。</li>
+<li>我自己的 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">side project</a>。</li>
+</ol>
+<p>未來還有很大空間可以發擇，預計還要再部署 <a target="_blank" rel="noopener" href="https://n8n.io/">n8n</a>。</p>
+<p>這樣的彈性與餘裕，一個月竟然只要 6.5 歐元，真是非常美妙☺️</p>
+<p>這也是為什麼我願意為 Hetzner 寫下兩篇文章介紹並推廣。</p>
+<hr>
+<h2 id="使用我的推薦連結，享受-20-歐元免費額度"><a href="#使用我的推薦連結，享受-20-歐元免費額度" class="headerlink" title="使用我的推薦連結，享受 20 歐元免費額度"></a>使用我的推薦連結，享受 20 歐元免費額度</h2><p>最後，如果你想試試 Hetzner，歡迎使用<a target="_blank" rel="noopener" href="https://hetzner.cloud/?ref=gD26JqrE8c9t"><strong>我的推薦連結</strong></a>註冊，你可以直接獲得 <strong>20 歐元的使用額度</strong>。</p>
+<p>而我在<strong>一定條件</strong>下（用戶使用連結註冊並付費達 10 歐元），可以獲得 10 歐元的回饋。<strong>這是贊助本站最有效的方式。</strong></p>
+<p>希望這篇分享能幫助你，在選擇 VPS 的路上，多一個可靠的選擇。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner/" title="Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？" rel="bookmark">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/yadm-cross-platform/" title="yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步" rel="bookmark">yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/bbc-6-minute-english/" title="BBC 6 Minute English：提升英文聽力的好夥伴" rel="bookmark">BBC 6 Minute English：提升英文聽力的好夥伴</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/Linux/">Linux</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/uv-dockerfile/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">uv 容器化實作：使用官方 image 建立 Dockerfile</span>
+        <span class="prev-text nav-mobile">uv 容器化實作：使用官方 image 建立 Dockerfile</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">13</span></a> <a class="category-link" href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列<span class="category-count">30</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/Weekly-Review/">Weekly Review<span class="category-count">44</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">56</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">46</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

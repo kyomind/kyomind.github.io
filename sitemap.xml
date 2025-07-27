@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/hetzner/</loc>
+    
+    <lastmod>2025-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/hetzner-vm/</loc>
+    
+    <lastmod>2025-07-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ranking/index.html</loc>
     
     <lastmod>2025-07-27</lastmod>
@@ -32,15 +50,6 @@
     <loc>https://blog.kyomind.tw/poetry-multi-stage-build/</loc>
     
     <lastmod>2025-07-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/hetzner/</loc>
-    
-    <lastmod>2025-07-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

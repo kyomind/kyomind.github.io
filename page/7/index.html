@@ -126,7 +126,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (46)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -166,6 +166,37 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-20/">資料驗證（下）Pydantic 跨欄位驗證</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-02
+        </span><span class="post-category">
+            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 20 篇。</p>
+<p>上一篇我們講完了單一欄位的自定義驗證，這篇則要來討論<strong>跨欄位</strong>之間的驗證。</p>
+<p>跨欄位驗證同樣是 API 開發中十分常見的需求，例如註冊帳號時，要保證「密碼」與「確認密碼」兩個欄位內容相同；選擇<strong>日期期間</strong>時，開始日期不能晚於結束日期等。</p>
+<p>這些驗證場景<strong>無法</strong>透過單一欄位驗證實現，因為它們需要同時檢查<strong>多個欄位之間的邏輯關聯</strong>，來確保整體資料的<strong>一致性和正確性</strong>。</p>
+<p>本文將介紹如何透過 Pydantic 來實現跨欄位驗證需求——以「確認密碼」為例，展示這個功能的實際應用。</p>
+<p>本文所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/11">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="跨欄位驗證與關注點分離"><a href="#跨欄位驗證與關注點分離" class="headerlink" title="跨欄位驗證與關注點分離"></a>跨欄位驗證與關注點分離</h2><p>其實，無論是單一欄位還是跨欄位的自定義驗證，都<strong>不一定</strong>要藉由 Pydantic 來完成。</p>
+<p>理論上，資料驗證可以<strong>直接</strong>在 view 函式中進行，例如取出輸入的欄位值，手動驗證它的合法性。跨欄位驗證也是如此。</p>
+<p>然而，這是一種方便但「<strong>粗糙</strong>」的做法——只適合用在驗證邏輯非常單純的情況。</p>
+<p>透過 Pydantic 進行資料驗證，則能夠帶來一個明顯的好處：<strong>關注點分離</strong>。</p>
+          <div class="read-more">
+            <a href="/django-ninja-20/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-19/">資料驗證（上）Pydantic 單一欄位驗證</a>
         </h1>
@@ -361,36 +392,6 @@
 <p>API 可以直接在回應中，嵌入作者的「必要資訊」，這樣用戶就不必再進行多次請求。這裡我們以一併顯示作者的「<strong>名字</strong>」和「<strong>email</strong>」為例。</p>
           <div class="read-more">
             <a href="/django-ninja-14/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-13/">回應（一）Django Ninja 處理 HTTP 回應</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-25
-        </span><span class="post-category">
-            <a href="/categories/Django-Ninja-%E7%B3%BB%E5%88%97/">Django Ninja 系列</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 13 篇。</p>
-<p>這一篇要正式進入「<strong>HTTP 回應</strong>」環節，也就是第三小節。</p>
-<p>本節將透過 4 篇文章，介紹 Django Ninja <strong>如何處理 HTTP 回應</strong>：</p>
-<ul>
-<li><strong>卷 13：回應（一）Django Ninja 處理 HTTP 回應</strong>（本文）</li>
-<li><a href="https://blog.kyomind.tw/django-ninja-14/">卷 14：回應（二）用 Schema 建立巢狀結構回應</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-15/">卷 15：回應（三）為何不用 ModelSchema？——相比 DRF，我更偏愛 Django Ninja 的理由</a></li>
-<li><a href="https://blog.kyomind.tw/django-ninja-16/">卷 16：回應（四）Resolver 方法——欄位資料格式化</a></li>
-</ul>
-<p>我們會講述更多 Schema 用法，透過這些技巧，你能夠精確地控制 API 的輸出格式。無論是<strong>單一物件回應</strong>，還是複雜的<strong>嵌套結構</strong>，接下來都會一一提及。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/5">這個 PR</a>。</p>
-          <div class="read-more">
-            <a href="/django-ninja-13/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/6/">

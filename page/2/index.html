@@ -126,7 +126,7 @@
           
             <a href="/categories/Weekly-Review/">Weekly Review (44)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (46)</a>
           
             <a href="/categories/VS-Code/">VS Code (9)</a>
           
@@ -166,6 +166,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weekly-review-43/">Imgur 封鎖台灣 IP，我把圖床搬到 Cloudflare R2</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-06-07
+        </span><span class="post-category">
+            <a href="/categories/Weekly-Review/">Weekly Review</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/weekly-review.png">  </p>
+<p>上個月中，我在寫部落格時，突然發現圖片上傳失敗，無論怎麼嘗試都無法成功。</p>
+<p>我的寫作流程是用 VS Code 的 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/languages/markdown">Markdown Image</a> 外掛，透過鍵盤快捷鍵，直接把圖片傳到 Imgur 上，這個流程已經持續了好幾年，非常方便、順手。</p>
+<p>但這次踢到鐵板了。</p>
+<blockquote>
+<p>相關文章：<a href="https://blog.kyomind.tw/my-markdown-writing-flow/">Notion + VS Code：我的 Markdown 寫作工作流</a></p>
+</blockquote>
+<p>認真查了一下，才發現原來是 Imgur 大概從 5 月 16 日開始，<strong>無預警地封鎖</strong>了來自台灣的 IP，不再允許台灣使用者上傳圖片。（所幸已上傳的圖片還是可以看）</p>
+<p>PTT 上也有<a target="_blank" rel="noopener" href="http://ptt.cc/bbs/Gossiping/M.1747406974.A.003.html">討論</a>。</p>
+<p>可以想見，這是多麼大的衝擊！</p>
+<p>官方既然沒有給出任何理由，這個舉動（封鎖 IP）又顯然是<strong>蓄意</strong>的，那我們可以合理推測——短期內恐怕不會恢復正常了。</p>
+<p>但我的部落格還是要繼續寫啊！只能乖乖尋找替代方案。</p>
+          <div class="read-more">
+            <a href="/weekly-review-43/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a>
         </h1>
@@ -359,39 +389,6 @@
 <p>作為 Docstring 信奉者，本文將分享我在過去工作經驗中所累積的 <strong>Python Docstring</strong> 寫作心得，並整理成<strong>教學指南</strong>。</p>
           <div class="read-more">
             <a href="/python-docstring/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-04-26
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay">  </p>
-<blockquote>
-<p><code>2025/07/22</code>：新增<a target="_blank" rel="noopener" href="https://hetzner.cloud/?ref=gD26JqrE8c9t">推廣連結</a>，使用該連結註冊，可獲得 20 歐元使用額度。</p>
-</blockquote>
-<hr>
-<p>很長一段時間裡，當我需要使用<strong>虛擬機器</strong>（Virtual Machine）來部署自己的個人專案時，來自美國的 <a target="_blank" rel="noopener" href="https://www.digitalocean.com/">DigitalOcean</a> 一直是我的首選。</p>
-<p>可能是因為這個「海洋」的意象讓人覺得很舒服吧！價格也還過得去。</p>
-<p>我曾在這篇〈<a href="https://blog.kyomind.tw/update-my-droplet/">計畫更新我的 DigitalOcean VM</a> 〉提過它。</p>
-<p>然而，最近決定在 VM 上部署 Memos 時，我的選擇就不再是 DigitalOcean 了。</p>
-<blockquote>
-<p>相關文章：<a href="https://blog.kyomind.tw/memos/">開源工具 Memos：寫日記的好選擇</a></p>
-</blockquote>
-<p>原因無他，我們有了<strong>更便宜、更強大</strong>的選擇——也就是本文要介紹的 Hetzner。</p>
-<p>在這篇文章中，我將分享我從 DigitalOcean 轉向 Hetzner 的原因，以及這個德國 VPS 供應商的優勢和劣勢。</p>
-<p>我們開始吧！</p>
-          <div class="read-more">
-            <a href="/hetzner/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
