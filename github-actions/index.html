@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-26T01:39:57+08:00" />
+  <meta property="article:modified_time" content="2025-07-27T01:25:12+08:00" />
 
 
 
@@ -237,7 +237,7 @@
 <p>你不需要一開始就設計一套完整的 CI 流程，只要從<strong>最簡單的需求</strong>開始，例如：</p>
 <ul>
 <li>跑 Lint、跑 Formatter</li>
-<li>檢查型別</li>
+<li>檢查型別（Python type check）</li>
 </ul>
 <p>這正是本文的出發點——用 GitHub Actions 設定一個最小可用的 CI 流程，整合 Lint、Format 與 Type Check。</p>
 <h2 id="沒有需求怎麼辦？"><a href="#沒有需求怎麼辦？" class="headerlink" title="沒有需求怎麼辦？"></a>沒有需求怎麼辦？</h2><p>前面強調了需求的重要性，絕非隨便說說。</p>
@@ -269,7 +269,7 @@
 <p>我們可以暫時無視這部分，因為測試的相關設定細節更多，之後再另篇討論。</p>
 <p>其餘細節也都先略過，只看最後的<code>steps</code>部分。</p>
 <p>每個<code>run:</code>就是執行一個 CLI 指令，只不過是在 GitHub 的遠端 runner 上執行而已。</p>
-<p>這就是 CI 的本質：<strong>開另一台機器，做一連串你「事先預定」的事情！</strong></p>
+<p>這個流程透露了 CI 的本質：<strong>開另一台機器，做一連串你「事先預定」的事情！</strong></p>
 <h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><p>寫好 yaml 設定檔後，只要你 commit 並 push，GitHub 就會開始跑 CI workflow 了！（每一個設定檔都是一個 workflow）</p>
 <p>無論成功或失敗，結果都會顯示在專案的「<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/actions">Actions</a>」分頁：</p>
 <p><img src="https://img.kyomind.tw/20250706-112153-action-min.png" alt="GitHub Actions 執行結果"><span class="cap">GitHub Actions 執行結果</span></p>
