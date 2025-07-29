@@ -79,9 +79,9 @@
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
-    <category term="pre-commit" scheme="https://blog.kyomind.tw/tags/pre-commit/"/>
-    
     <category term="uv" scheme="https://blog.kyomind.tw/tags/uv/"/>
+    
+    <category term="pre-commit" scheme="https://blog.kyomind.tw/tags/pre-commit/"/>
     
   </entry>
   
@@ -200,9 +200,9 @@
     
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
     
-    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
-    
     <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
+    
+    <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
   </entry>
   
@@ -362,11 +362,11 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="VS Code" scheme="https://blog.kyomind.tw/tags/VS-Code/"/>
-    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Type Hints" scheme="https://blog.kyomind.tw/tags/Type-Hints/"/>
+    
+    <category term="VS Code" scheme="https://blog.kyomind.tw/tags/VS-Code/"/>
     
   </entry>
   
