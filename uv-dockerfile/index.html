@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-22T08:45:13+08:00" />
+  <meta property="article:modified_time" content="2025-08-07T09:45:15+08:00" />
 
 
 
@@ -247,7 +247,11 @@
 </ol>
 <p>如果你想用 Python 來開發 MCP 服務，並希望讓使用者執行<code>uv run &lt;你定義的指令&gt;</code>來啟動 MCP Server（這是目前主流做法），那 uv 就需要存在你的最終 image 中。</p>
 <blockquote>
-<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2025/04/01/Write-your-own-MCP-server-using-uv-and-Python">使用 uv 輔助開發 MCP 伺服器並安裝到 Claude Desktop 與 VS Code</a></p>
+<p>延伸閱讀（外部）：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.miniasp.com/post/2025/04/01/Write-your-own-MCP-server-using-uv-and-Python">使用 uv 輔助開發 MCP 伺服器並安裝到 Claude Desktop 與 VS Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://oalieno.tw/posts/mcp">MCP 開發實戰手冊：SSE、STDIO、Tool、Resource 一次搞懂</a>（尤其是「<strong>MCP Server 開發語言與執行方式</strong>」部分）</li>
+</ul>
 </blockquote>
 <p>如此一來，自然也不需要透過 multi-stage build 來移除 uv 了。</p>
 <h3 id="我就是要-Multi-stage-build！"><a href="#我就是要-Multi-stage-build！" class="headerlink" title="我就是要 Multi-stage build！"></a>我就是要 Multi-stage build！</h3><p>不同專案有不同需求，如果你真的需要 multi-stage build 以進一步節省空間的話，同一個倉庫中有<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile">另一個 Dockerfile</a> 可供參考。</p>
