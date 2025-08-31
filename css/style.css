@@ -1621,6 +1621,8 @@ h6 {
 }
 .archive .archive-title {
   font-family: "nunito", sans-serif;
+  /* 更具體的選擇器作為備用 */
+  /* 終極解決方案：最高特異性 */
 }
 .archive .archive-title.tag, .archive .archive-title.category {
   margin: 15px 0;
@@ -1634,13 +1636,35 @@ h6 {
 }
 .archive .archive-title .tag-home-link,
 .archive .archive-title .category-home-link {
-  color: #c05b4d;
-  text-decoration: none;
+  color: #c05b4d !important;
+  /* 使用預設主題色 */
+  text-decoration: none !important;
 }
 .archive .archive-title .tag-home-link:hover,
 .archive .archive-title .category-home-link:hover {
-  color: #a14639;
-  text-decoration: underline;
+  color: #a04a3d !important;
+  /* 深色版本 */
+  text-decoration: underline !important;
+}
+.archive .archive-title .archive-title.tag a.tag-home-link,
+.archive .archive-title .archive-title.category a.category-home-link {
+  color: #c05b4d !important;
+  text-decoration: none !important;
+}
+.archive .archive-title .archive-title.tag a.tag-home-link:hover,
+.archive .archive-title .archive-title.category a.category-home-link:hover {
+  color: #a04a3d !important;
+  text-decoration: underline !important;
+}
+.archive .archive-title section#archive .archive-title.tag a.tag-home-link,
+.archive .archive-title section#archive .archive-title.category a.category-home-link {
+  color: #c05b4d !important;
+  text-decoration: none !important;
+}
+.archive .archive-title section#archive .archive-title.tag a.tag-home-link:hover,
+.archive .archive-title section#archive .archive-title.category a.category-home-link:hover {
+  color: #a04a3d !important;
+  text-decoration: underline !important;
 }
 .archive .archive-title .archive-post-counter {
   display: none;
