@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="用 Side Project 學 CI：WeaMind 的 CI 實作策略">
+  <meta property="og:title" content="用 Side Project 學 CI：WeaMind 的 CI 實作策略"><meta name="twitter:description" content="介紹 WeaMind 專案的 CI（持續整合）設計與實作，分享我如何選擇與配置各種 CI 工具，並說明其背後的思考與原則。">
+  <meta property="og:description" content="介紹 WeaMind 專案的 CI（持續整合）設計與實作，分享我如何選擇與配置各種 CI 工具，並說明其背後的思考與原則。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
+<meta name="description" content="介紹 WeaMind 專案的 CI（持續整合）設計與實作，分享我如何選擇與配置各種 CI 工具，並說明其背後的思考與原則。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2025-08-31T13:57:05+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2025-08-31T06:56:59+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/weamind-ci/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>用 Side Project 學 CI：WeaMind 的 CI 實作策略 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link ">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a target="_blank" rel="noopener" href="https://kyomind.notion.site/40b324f98ca94827921a6831b0d7a38f" class="">
+        <li class="mobile-menu-item">電子報
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link" href="/archives/" >
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (85)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (47)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/series/" >
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/subscribe/" style="color: #3b82f6;" >
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" target="_blank" rel="noopener" href="https://kyomind.notion.site/40b324f98ca94827921a6831b0d7a38f" >
+          電子報
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link" href="/about/" >
+          關於
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">用 Side Project 學 CI：WeaMind 的 CI 實作策略
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-08-31
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%9E-CRUD-%E5%88%B0-CI-CD"><span class="toc-text">從 CRUD 到 CI&#x2F;CD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeaMind-CI-%E9%A0%85%E7%9B%AE%E4%B8%80%E8%A6%BD"><span class="toc-text">WeaMind CI 項目一覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%93%81%E8%B3%AA%E6%AA%A2%E6%9F%A5%EF%BC%9ALint%E3%80%81Format%E3%80%81Type-Check"><span class="toc-text">一、程式碼品質檢查：Lint、Format、Type Check</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E8%88%87%E8%A6%86%E8%93%8B%E7%8E%87%EF%BC%9ACodecov"><span class="toc-text">二、單元測試與覆蓋率：Codecov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Docker-Build-%E9%A9%97%E8%AD%89"><span class="toc-text">三、Docker Build 驗證</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%85%A8%E6%8E%83%E6%8F%8F%EF%BC%9AGitHub-CodeQL"><span class="toc-text">四、安全掃描：GitHub CodeQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%93%81%E8%B3%AA%E5%88%86%E6%9E%90%EF%BC%9ASonarCloud"><span class="toc-text">五、程式碼品質分析：SonarCloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%9B%B8%E4%BE%9D%E5%A5%97%E4%BB%B6%E6%9B%B4%E6%96%B0%EF%BC%9ADependabot"><span class="toc-text">六、相依套件更新：Dependabot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%87%AA%E5%8B%95-GitHub-Release"><span class="toc-text">七、自動 GitHub Release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%A6%82%E8%A6%BD"><span class="toc-text">流程概覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 4 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p>〈<a href="/github_actions">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a>〉一文中，我們使用了 GitHub Actions 作為 CI（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88">持續整合</a>）的入門工具。</p>
+<p>建立了專案中最基本且常見的 CI 流程。</p>
+<p>接下來，我將繼續介紹，WeaMind 專案中<strong>所有實作的 CI 項目</strong>，並說明我選擇它們的原因與設計原則。</p>
+<p>本文創作時，專案版本為 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/tree/v0.5.1">v0.5.1</a>。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="從-CRUD-到-CI-CD"><a href="#從-CRUD-到-CI-CD" class="headerlink" title="從 CRUD 到 CI&#x2F;CD"></a>從 CRUD 到 CI&#x2F;CD</h2><p>當我們剛開始軟體開發職涯時，確保功能與邏輯的正確，無疑是工作上的第一要務。</p>
+<p>我們專注於「<strong>寫出正確的程式碼</strong>」（這時可能連「優雅」都還稱不上），而不太關心整個開發流程的健全度——或者說「還沒有能力」去關心。</p>
+<p>我們忙著學習框架、查資料、確認 API response 是否符合 spec、debug 各種問題。</p>
+<h3 id="部署和開發一樣重要"><a href="#部署和開發一樣重要" class="headerlink" title="部署和開發一樣重要"></a>部署和開發一樣重要</h3><p>但隨著年資增長，我們不得不面對一個殘酷現實：<strong>縱使程式寫得再漂亮，如果部署流程設計不當，整個系統的可靠性還是會問題百出。</strong></p>
+<p>開發與部署，是個需要<strong>互相配合的整體</strong>，尤其在大型專案或團隊中，兩者的實踐與維護往往是分開的。</p>
+<p>而連接開發、部署的橋樑，就是 CI——<strong>它不只是工具，而是一種機制，用來守護程式品質與穩定服務的基本盤。</strong></p>
+<hr>
+<p>那麼，一個專案的 CI 應該包含哪些項目？如何在「實用」與「簡潔」之間取得平衡？</p>
+<p>這個答案自然得因地制宜——但也有一些<strong>共通原則</strong>。</p>
+<p>這裡我以 WeaMind 專案為例，說明我在 CI 設計上的實作與考慮。</p>
+<h2 id="WeaMind-CI-項目一覽"><a href="#WeaMind-CI-項目一覽" class="headerlink" title="WeaMind CI 項目一覽"></a>WeaMind CI 項目一覽</h2><p>我不會在這裡提供詳細的設定教學，因為每個專案的需求不同，而且<strong>只有在自己的專案中實際操作，才能真正理解每個設定的意義</strong>。</p>
+<p>所以我們<strong>點到為止</strong>，但仍會提供一些基本的指引與參考。比起做法（問 AI 就足夠了），更重要的是其中的<strong>思路</strong>。</p>
+<p>WeaMind 專案目前整合的 CI 項目如下，每一項都會說明實作方式與用途。</p>
+<p>不過，一到五才是<strong>嚴格意義上的 CI</strong>；六、七則屬於<strong>自動化流程</strong>的一部分。</p>
+<hr>
+<h2 id="一、程式碼品質檢查：Lint、Format、Type-Check"><a href="#一、程式碼品質檢查：Lint、Format、Type-Check" class="headerlink" title="一、程式碼品質檢查：Lint、Format、Type Check"></a>一、程式碼品質檢查：Lint、Format、Type Check</h2><p>實作概要：</p>
+<ul>
+<li>使用<code>ruff check</code>、<code>ruff format</code>、<code>pyright</code>等指令檢查程式碼品質</li>
+<li>全部定義在 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/workflows/ci.yml">ci.yml</a> 中，執行環境使用 uv 官方容器</li>
+<li>檢查會在 PR 或 push 到 main 時自動執行，避免髒 commit 混入 main</li>
+</ul>
+<p>這些是上述文章的介紹重點，屬於<strong>基本中的基本</strong>。</p>
+<h2 id="二、單元測試與覆蓋率：Codecov"><a href="#二、單元測試與覆蓋率：Codecov" class="headerlink" title="二、單元測試與覆蓋率：Codecov"></a>二、單元測試與覆蓋率：Codecov</h2><p>實作概要：</p>
+<ul>
+<li>使用<code>pytest</code>搭配<code>pytest-cov</code>收集覆蓋率，產生 <code>coverage.xml</code></li>
+<li>資料自動上傳至 Codecov，設定在<code>ci.yml</code>，並使用  <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/codecov.yml">codecov.yml</a> 對 GitHub App 的行為進行客製化——主要是關閉成功留言、比對 patch 覆蓋率</li>
+</ul>
+<p><strong>單元測試</strong>無疑是 CI 中最重要的環節之一。</p>
+<p>提供覆蓋率的工具有很多種，我選擇 <a target="_blank" rel="noopener" href="https://about.codecov.io/">Codecov</a> 因為它與 GitHub 整合度高，且對開源專案來說非常友善。</p>
+<p>不過，測試函式和覆蓋率報告<strong>仍需要你在 CI 流程中先準備好</strong>。</p>
+<p>你可以透過 GitHub Actions 執行（需要定義自己的 YAML 檔），或連接官方提供的 <a target="_blank" rel="noopener" href="https://github.com/marketplace/codecov">GitHub App</a>，直接在 CI 流程中上傳覆蓋率報告即可。</p>
+<p>我選擇後者。因為它更簡單，且已能夠自動處理許多細節。</p>
+<h2 id="三、Docker-Build-驗證"><a href="#三、Docker-Build-驗證" class="headerlink" title="三、Docker Build 驗證"></a>三、Docker Build 驗證</h2><p>實作概要：</p>
+<ul>
+<li>使用<code>docker/setup-buildx-action</code>建立建置環境，執行<code>docker buildx build</code>驗證 Dockerfile</li>
+<li>這項檢查對我來說是一種「部署預演」，能在尚未正式上線前提早發現問題</li>
+<li>定義在<code>ci.yml</code>，<strong>平行執行</strong>，不影響主流程速度</li>
+</ul>
+<p>雖然專案目前還沒有 CD，但進行 Image Build 的預演，看看會不會建構失敗，我覺得還是蠻有價值的。</p>
+<hr>
+<h2 id="四、安全掃描：GitHub-CodeQL"><a href="#四、安全掃描：GitHub-CodeQL" class="headerlink" title="四、安全掃描：GitHub CodeQL"></a>四、安全掃描：GitHub CodeQL</h2><p>實作概要：</p>
+<ul>
+<li>採用 GitHub 官方 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/workflows/codeql.yml">codeql.yml</a> 設定，支援 Python 與 GitHub Actions 安全分析</li>
+<li>push 到 main、PR 時觸發，另外每週日也會<strong>定期執行</strong></li>
+<li><strong>排除</strong>資料庫 migrations 等目錄（需要自行額外撰寫 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/codeql/codeql-config.yml">codeql-config.yml</a> 控制）</li>
+</ul>
+<p>安全掃描或許不是必需，但我認為它是一種對「<strong>技術成熟度</strong>」追求的象徵。</p>
+<p>要建立這份 YAML 檔很簡單，只要去 GitHub 倉庫設定那邊開啟該功能，系列就會自動幫你產生一份 template。</p>
+<p>不過我還是有進行一些客製化，這部分就跟 AI 討論吧！</p>
+<h2 id="五、程式碼品質分析：SonarCloud"><a href="#五、程式碼品質分析：SonarCloud" class="headerlink" title="五、程式碼品質分析：SonarCloud"></a>五、程式碼品質分析：SonarCloud</h2><p>實作概要：</p>
+<ul>
+<li>使用 <a target="_blank" rel="noopener" href="https://github.com/marketplace/sonarcloud">SonarQube Cloud GitHub App</a>，透過官方整合自動執行程式碼品質分析</li>
+<li>分析專案中包括 code smells、bugs、security hotspots、technical debt 等事項</li>
+<li>每次 PR 都會產生品質報告，幫助維持程式碼健康度</li>
+</ul>
+<p>老牌的程式碼品質分析工具——<a target="_blank" rel="noopener" href="https://www.sonarsource.com/products/sonarqube/">SonarQube</a>，提供比基本 lint 更深入的程式碼分析，包括複雜度、重複程度、潛在安全風險等。</p>
+<p>對於想提升程式碼品質的專案來說，是很好的工具，且不限程式語言。</p>
+<p>我同樣選擇使用 GitHub App 而非自己定義 Action，因為我比較懶。</p>
+<p>自定義的話，可以更靈活地控制分析條件與操作細節。</p>
+<hr>
+<p>以下兩項不算嚴格意義上的 CI，而屬於<strong>專案自動化流程</strong>的一部分。</p>
+<h2 id="六、相依套件更新：Dependabot"><a href="#六、相依套件更新：Dependabot" class="headerlink" title="六、相依套件更新：Dependabot"></a>六、相依套件更新：Dependabot</h2><p>實作概要：</p>
+<ul>
+<li>使用<code>dependabot.yml</code>設定 uv 與 GitHub Actions 的週期性更新</li>
+<li>設定 commit message 格式與自動 rebase，減少手動維護成本</li>
+<li>每週自動檢查並<strong>自動建立 PR</strong>（如果有新版），讓套件更新變得可控且透明</li>
+</ul>
+<p><strong>套件的管理</strong>是專案維護中容易被忽略的環節之一。套件版本過舊可能帶來安全風險，但手動更新又容易忘記。</p>
+<p>Dependabot 讓這個過程自動化，同時透過 PR 機制讓每次更新都經過 CI 驗證。</p>
+<p>更重要的是，<strong>它讓「更新」這件事變得可見、可追蹤</strong>，而不是藏在某個角落的技術債。</p>
+<h2 id="七、自動-GitHub-Release"><a href="#七、自動-GitHub-Release" class="headerlink" title="七、自動 GitHub Release"></a>七、自動 GitHub Release</h2><p>實作概要：</p>
+<ul>
+<li>使用<code>softprops/action-gh-release</code>，當 tag 以<code>v*</code>命名時自動建立 release 並附上 notes</li>
+<li>定義在<code>auto-release.yml</code>，適合小型專案做版本整理</li>
+</ul>
+<p>其實就是<strong>取代手動發布 Release</strong>的流程。</p>
+<p>主要是受到 Will 保哥的《<a target="_blank" rel="noopener" href="https://github.com/doggy8088/ask-page-extension">頁問 AskPage</a>》和其它開源專案的啟發。</p>
+<p>先是實作了<a target="_blank" rel="noopener" href="https://www.threads.com/@kyomind.tw/post/DN5rYhNge8x">半自動的 CHANGELOG 更新機制</a>，後來乾脆連 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/releases">Release Notes</a> 都一起自動產生。</p>
+<p>雖然格式稍嫌呆板，但感覺就是兩個字——愉悅！</p>
+<hr>
+<h2 id="流程概覽"><a href="#流程概覽" class="headerlink" title="流程概覽"></a>流程概覽</h2><p>講了一堆，我們複習一下。</p>
+<h3 id="核心-CI-流程（每次程式碼時變更觸發）"><a href="#核心-CI-流程（每次程式碼時變更觸發）" class="headerlink" title="核心 CI 流程（每次程式碼時變更觸發）"></a>核心 CI 流程（每次程式碼時變更觸發）</h3><ol>
+<li><strong>程式碼品質檢查</strong>：使用 Lint、Format、Type Check 確保程式碼風格一致性</li>
+<li><strong>測試與覆蓋率上傳</strong>：執行單元測試並上傳覆蓋率報告至 Codecov</li>
+<li><strong>Docker Build 驗證</strong>：驗證 Dockerfile 的正確性，確保容器化部署不出錯</li>
+<li><strong>安全掃描</strong>：GitHub CodeQL 掃描，檢查潛在安全風險（push + 週期性觸發）</li>
+<li><strong>程式碼品質分析</strong>：使用 SonarCloud 進行深入的程式碼品質分析</li>
+</ol>
+<h3 id="輔助自動化工具"><a href="#輔助自動化工具" class="headerlink" title="輔助自動化工具"></a>輔助自動化工具</h3><ol>
+<li><strong>相依套件更新</strong>：透過 Dependabot 自動更新相依套件，減少手動維護成本</li>
+<li><strong>自動發布</strong>：使用 GitHub Release 自動建立版本釋出</li>
+</ol>
+<p>最後附上 CI 流程的示意圖：</p>
+<p><img src="https://img.kyomind.tw/20250831-160911-ci-min.png" alt="WeaMind CI 流程圖"><span class="cap">WeaMind CI 流程圖</span>  </p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>以上就是 WeaMind 專案目前的 CI 設計全貌。</p>
+<p>這套設計不是為了炫技，而是出於對品質的堅持，讓一個產品型 Side Project 能在成長過程中<strong>穩定運作——並累積信任</strong>。</p>
+<p>如果你也在經營 Side Project，不妨從中挑選幾項開始實作。</p>
+<p>CI 不必一次到位，但每一步都在為未來的基礎打底。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div>
+  <script type="text/javascript">
+    document.write(
+      "<iframe scrolling='no' frameborder='0' sandbox='allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation' style='height: 212px; width: 100%;' src='https://button.like.co/in/embed/kyomind/button?referrer=" +
+      encodeURIComponent(location.href.split("?")[0].split("#")[0]) + "'></iframe>");
+  </script>
+<div>
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-actions/" title="GitHub Actions 入門：自動化 Lint、Format 與 Type Check" rel="bookmark">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/uv-dockerfile/" title="uv 容器化實作：使用官方 image 建立 Dockerfile" rel="bookmark">uv 容器化實作：使用官方 image 建立 Dockerfile</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/GitHub-Actions/">GitHub Actions</a>
+            <a href="/tags/WeaMind/">WeaMind</a>
+            <a href="/tags/Side-Project/">Side Project</a>
+            <a href="/tags/Continuous-Integration/">Continuous Integration</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/hetzner-vm/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆</span>
+        <span class="prev-text nav-mobile">在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">85</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">47</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="iconfont icon-twitter" title="twitter"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2025<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

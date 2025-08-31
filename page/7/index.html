@@ -121,7 +121,7 @@
           
             <a href="/categories/Django/">Django (43)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (46)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (47)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -156,6 +156,44 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-21/">錯誤處理（上）HttpError 與自定義 HTTP 回應</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-10-03
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 21 篇。</p>
+<p>在軟體開發中，<strong>錯誤處理</strong>是一個不容忽視——但<strong>常常被忽視</strong>——的環節。</p>
+<p>不誇張地說，錯誤處理是一個「<strong>做得好沒人誇，做不好系統就慘兮兮</strong>」的議題。</p>
+<p>沒關係，我們還是<strong>盡可能把自己做好</strong>。</p>
+<p>Django Ninja 使用 Pydantic 進行資料驗證，失敗時，預設回應「422 Unprocessable Entity」。</p>
+<p>然而，我們有時候需要回應「400 Bad Request」或別的狀態碼，以符合<strong>現實業務需求</strong>或<strong>團隊開發習慣</strong>。</p>
+<p>總之，無論出於何種原因，我們想<strong>自訂錯誤訊息、格式，以及回應的狀態碼</strong>，而<strong>不使用</strong> Django Ninja 預設的 422 回應——不得不說，這個制式回應的資訊有點多、結構有點複雜，因為它要兼容各種情況。</p>
+<p>本文將介紹如何<strong>自定義錯誤處理與回應</strong>——使用 Django Ninja 內建的<code>HttpError</code>。</p>
+<p>所有的程式碼改動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/12">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="Django-Ninja-的自動錯誤處理"><a href="#Django-Ninja-的自動錯誤處理" class="headerlink" title="Django Ninja 的自動錯誤處理"></a>Django Ninja 的自動錯誤處理</h2><p>上一篇我們提到，如果你在 Schema 的驗證方法中，拋出<code>ValueError</code>錯誤，Django Ninja 將會<strong>自動捕捉並回應</strong>。</p>
+<p>事實上，不止<code>ValueError</code>，Django Ninja 還會替你處理以下這幾種錯誤：</p>
+<ul>
+<li><code>pydantic.ValidationError</code>，來自 Pydantic 的驗證錯誤，這是<strong>為何</strong>當 Schema 欄位有問題時，我們會直接收到 422 回應。</li>
+<li>此外，Django Ninja 還內建了一個 <code>ninja.errors.ValidationError</code>，這些錯誤同樣會返回 422。</li>
+<li><code>ninja.errors.HttpError</code>：這是本文的重點，下面會介紹。</li>
+</ul>
+<p>這些都是 Django Ninja 會自動捕捉的錯誤，但不是每一種都給出制式的 422 回應——第三種就不是。</p>
+          <div class="read-more">
+            <a href="/django-ninja-21/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-20/">資料驗證（下）Pydantic 跨欄位驗證</a>
         </h1>
@@ -347,41 +385,6 @@
 <p>我們曾在第 3 篇中討論過，兩者在功能上的主要區別。本文將透過「<strong>Django 模型物件的序列化</strong>」這個頗具代表性的議題，說明「<strong>為何相比於 DRF，我更喜歡寫 Django Ninja</strong>」。</p>
           <div class="read-more">
             <a href="/django-ninja-15/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-14/">回應（二）用 Schema 建立巢狀結構回應</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-26
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 14 篇。</p>
-<p>在 API 開發中，我們經常會遇到<strong>關聯模型</strong>之間的資料需要<strong>同時返回</strong>的情況。</p>
-<p>特別是在處理「一對一」或「一對多」關聯時，<strong>多層結構</strong>往往是常態。</p>
-<p>我們希望以<strong>巢狀結構</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#nested-objects">Nested Objects</a>）的方式返回資料，這樣可以讓 API 的使用者<strong>一次取得必要資訊</strong>，而不需要進行多次請求。</p>
-<p>本文將繼續使用並擴充「單一文章資訊」API 這個範例，講述如何在 Django Ninja 中實現<strong>巢狀結構回應</strong>，讓我們的 API 回應更加豐富、有體系。</p>
-<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/6">這個 PR</a>。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="一、問題背景"><a href="#一、問題背景" class="headerlink" title="一、問題背景"></a>一、問題背景</h2><p>在之前的 API 設計中，「取得單一文章資訊」的回應包括了文章資訊及<strong>作者的 id</strong>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
-
-<p>有經驗的開發者都知道，無論是<code>id</code>還是<code>author_id</code>，通常<strong>不是</strong>給服務的使用者看的——而是<strong>給前端人員靈活運用</strong>的。</p>
-<p>比如在系統的畫面中，文章可能包括作者的<strong>個人資訊連結</strong>，點進去可以看到作者資訊。此時前端必須<strong>透過 id</strong>，再呼叫另一支 API「取得用戶資訊」來獲得額外的內容。</p>
-<p>如果額外資訊很多，這樣的「<strong>解耦</strong>」設計是非常合理的。但如果我們希望<strong>一併呈現</strong>作者的「<strong>必要資訊</strong>」，那分次呼叫的設計就<strong>略嫌拖沓</strong>。</p>
-<p>所以我們需要<strong>巢狀結構</strong>！</p>
-<p>API 可以直接在回應中，嵌入作者的「必要資訊」，這樣用戶就不必再進行多次請求。這裡我們以一併顯示作者的「<strong>名字</strong>」和「<strong>email</strong>」為例。</p>
-          <div class="read-more">
-            <a href="/django-ninja-14/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/6/">

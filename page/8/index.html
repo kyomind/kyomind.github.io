@@ -121,7 +121,7 @@
           
             <a href="/categories/Django/">Django (43)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (46)</a>
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (47)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -156,6 +156,41 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/django-ninja-14/">回應（二）用 Schema 建立巢狀結構回應</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2024-09-26
+        </span><span class="post-category">
+            <a href="/categories/Django/">Django</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
+<p>這是 Django Ninja 系列教學的第 14 篇。</p>
+<p>在 API 開發中，我們經常會遇到<strong>關聯模型</strong>之間的資料需要<strong>同時返回</strong>的情況。</p>
+<p>特別是在處理「一對一」或「一對多」關聯時，<strong>多層結構</strong>往往是常態。</p>
+<p>我們希望以<strong>巢狀結構</strong>（<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/response/#nested-objects">Nested Objects</a>）的方式返回資料，這樣可以讓 API 的使用者<strong>一次取得必要資訊</strong>，而不需要進行多次請求。</p>
+<p>本文將繼續使用並擴充「單一文章資訊」API 這個範例，講述如何在 Django Ninja 中實現<strong>巢狀結構回應</strong>，讓我們的 API 回應更加豐富、有體系。</p>
+<p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/6">這個 PR</a>。</p>
+<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
+<hr>
+<h2 id="一、問題背景"><a href="#一、問題背景" class="headerlink" title="一、問題背景"></a>一、問題背景</h2><p>在之前的 API 設計中，「取得單一文章資訊」的回應包括了文章資訊及<strong>作者的 id</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostResponse</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    author_id: <span class="built_in">int</span></span><br><span class="line">    created_at: datetime</span><br><span class="line">    updated_at: datetime</span><br></pre></td></tr></table></figure>
+
+<p>有經驗的開發者都知道，無論是<code>id</code>還是<code>author_id</code>，通常<strong>不是</strong>給服務的使用者看的——而是<strong>給前端人員靈活運用</strong>的。</p>
+<p>比如在系統的畫面中，文章可能包括作者的<strong>個人資訊連結</strong>，點進去可以看到作者資訊。此時前端必須<strong>透過 id</strong>，再呼叫另一支 API「取得用戶資訊」來獲得額外的內容。</p>
+<p>如果額外資訊很多，這樣的「<strong>解耦</strong>」設計是非常合理的。但如果我們希望<strong>一併呈現</strong>作者的「<strong>必要資訊</strong>」，那分次呼叫的設計就<strong>略嫌拖沓</strong>。</p>
+<p>所以我們需要<strong>巢狀結構</strong>！</p>
+<p>API 可以直接在回應中，嵌入作者的「必要資訊」，這樣用戶就不必再進行多次請求。這裡我們以一併顯示作者的「<strong>名字</strong>」和「<strong>email</strong>」為例。</p>
+          <div class="read-more">
+            <a href="/django-ninja-14/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/django-ninja-13/">回應（一）Django Ninja 處理 HTTP 回應</a>
         </h1>
@@ -341,48 +376,6 @@
 <p>你可以一步步地跟著每一篇的 PR，來學習當次的新內容。這也是我為文章建立 PR 的用意所在。</p>
           <div class="read-more">
             <a href="/django-ninja-08/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/django-ninja-07/">路由（上）傳統 Django 路由做法</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2024-09-19
-        </span><span class="post-category">
-            <a href="/categories/Django/">Django</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
-<p>這是 Django Ninja 系列教學的第 7 篇。我們來到系列的<strong>第三章</strong>。</p>
-<p>第三章是全系列的重頭戲，因為我們要介紹 Django Ninja 的<strong>核心部分——API</strong>。</p>
-<p>我把本章分成了三個小節：</p>
-<ol>
-<li><strong>第一節：路由（Router）</strong></li>
-<li><strong>第二節：請求（Request）</strong></li>
-<li><strong>第三節：回應（Response）</strong></li>
-</ol>
-<p>第三章也是<strong>唯一</strong>有區分小節的篇章。</p>
-<p>現在我們進入第一節——<strong>路由</strong>。讓我們先了解一下本節的學習重點。</p>
-<h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
-<hr>
-<h2 id="本節重點"><a href="#本節重點" class="headerlink" title="本節重點"></a>本節重點</h2><p>本節一共有兩篇，分別是：</p>
-<ul>
-<li>卷 7：路由（上）傳統 Django 路由做法</li>
-<li>卷 8：路由（下）Django Ninja 路由設定</li>
-</ul>
-<p>為什麼要這樣安排呢？因為<strong>端點與路由是 API 請求的起點</strong>。</p>
-<p>沒有它們，你的 view 函式根本無法接收請求，更不用說回應了。因此，路由設定必須放在第一位，作為 API 開發的學習入口。</p>
-<p>所謂的「<strong>端點</strong>」（endpoints），你就簡單想成 <strong>API 所在的 URL</strong> 就可以了。</p>
-<h3 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h3><p>其次，Django Ninja 的路由設定與傳統 Django 或 Django REST framework（<strong>以下簡稱 DRF</strong>）的路由設定有<strong>很大的不同</strong>，反而更接近 FastAPI 或 Flask 風格。</p>
-<p>這是我在學習 Django Ninja 時遇到的<strong>第一個門檻</strong>（畢竟我寫了 2 年的 DRF😅），所以決定分成上下兩篇文章詳細解說，幫助你打好基礎、減少混淆。</p>
-<p>本文的重點是<strong>介紹 Django 傳統路由</strong>的設定方式。讓我們開始吧！</p>
-          <div class="read-more">
-            <a href="/django-ninja-07/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/page/7/">
