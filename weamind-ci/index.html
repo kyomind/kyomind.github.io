@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T14:21:18+08:00" />
+  <meta property="article:modified_time" content="2025-08-31T14:52:27+08:00" />
 
 
 
@@ -220,9 +220,9 @@
 <li>資料自動上傳至 Codecov，設定在<code>ci.yml</code>，並使用  <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/codecov.yml">codecov.yml</a> 對 GitHub App 的行為進行客製化——主要是關閉成功留言、比對 patch 覆蓋率</li>
 </ul>
 <p><strong>單元測試</strong>無疑是 CI 中最重要的環節之一。</p>
-<p>提供覆蓋率的工具有很多種，我選擇 <a target="_blank" rel="noopener" href="https://about.codecov.io/">Codecov</a> 因為它與 GitHub 整合度高，且對開源專案來說非常友善。</p>
-<p>不過，測試函式和覆蓋率報告<strong>仍需要你在 CI 流程中先準備好</strong>。</p>
-<p>你可以透過 GitHub Actions 執行（需要定義自己的 YAML 檔），或連接官方提供的 <a target="_blank" rel="noopener" href="https://github.com/marketplace/codecov">GitHub App</a>，直接在 CI 流程中上傳覆蓋率報告即可。</p>
+<p>做<strong>覆蓋率分析報告</strong>的工具有很多，我選擇 <a target="_blank" rel="noopener" href="https://about.codecov.io/">Codecov</a> 因為它與 GitHub 整合度高，且對開源專案來說非常友善。</p>
+<p>不過，測試函式和覆蓋率報告<strong>仍需要你在 CI 流程中預先準備好</strong>。分析報告只是提供了一個<strong>視覺化結果</strong>，幫助你快速了解測試覆蓋的情況。</p>
+<p>你可以透過 GitHub Actions 執行（需要定義自己的 YAML 檔） Codecov，或連接官方提供的 <a target="_blank" rel="noopener" href="https://github.com/marketplace/codecov">GitHub App</a>，直接在 CI 流程中上傳覆蓋率報告即可。</p>
 <p>我選擇後者。因為它更簡單，且已能夠自動處理許多細節。</p>
 <h2 id="三、Docker-Build-驗證"><a href="#三、Docker-Build-驗證" class="headerlink" title="三、Docker Build 驗證"></a>三、Docker Build 驗證</h2><p>實作概要：</p>
 <ul>
@@ -238,8 +238,8 @@
 <li>push 到 main、PR 時觸發，另外每週日也會<strong>定期執行</strong></li>
 <li><strong>排除</strong>資料庫 migrations 等目錄（需要自行額外撰寫 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/v0.5.1/.github/codeql/codeql-config.yml">codeql-config.yml</a> 控制）</li>
 </ul>
-<p>安全掃描或許不是必需，但我認為它是一種對「<strong>技術成熟度</strong>」追求的象徵。</p>
-<p>要建立這份 YAML 檔很簡單，只要去 GitHub 倉庫設定那邊開啟該功能，系列就會自動幫你產生一份 template。</p>
+<p>安全掃描或許不是必須，但我認為它是一種對「<strong>技術成熟度</strong>」追求的象徵。</p>
+<p>要建立這份 YAML 檔很簡單，只要去 GitHub 倉庫設定那邊開啟該功能，系統就會自動幫你產生一份 template。</p>
 <p>不過我還是有進行一些客製化，這部分就跟 AI 討論吧！</p>
 <h2 id="五、程式碼品質分析：SonarCloud"><a href="#五、程式碼品質分析：SonarCloud" class="headerlink" title="五、程式碼品質分析：SonarCloud"></a>五、程式碼品質分析：SonarCloud</h2><p>實作概要：</p>
 <ul>
@@ -247,7 +247,7 @@
 <li>分析專案中包括 code smells、bugs、security hotspots、technical debt 等事項</li>
 <li>每次 PR 都會產生品質報告，幫助維持程式碼健康度</li>
 </ul>
-<p>老牌的程式碼品質分析工具——<a target="_blank" rel="noopener" href="https://www.sonarsource.com/products/sonarqube/">SonarQube</a>，提供比基本 lint 更深入的程式碼分析，包括複雜度、重複程度、潛在安全風險等。</p>
+<p>老牌的<strong>程式碼品質分析工具</strong>——<a target="_blank" rel="noopener" href="https://www.sonarsource.com/products/sonarqube/">SonarQube</a>，提供比基本 lint 更深入的程式碼分析，包括複雜度、重複程度、潛在安全風險等。</p>
 <p>對於想提升程式碼品質的專案來說，是很好的工具，且不限程式語言。</p>
 <p>我同樣選擇使用 GitHub App 而非自己定義 Action，因為我比較懶。</p>
 <p>自定義的話，可以更靈活地控制分析條件與操作細節。</p>
@@ -270,6 +270,7 @@
 <p>其實就是<strong>取代手動發布 Release</strong>的流程。</p>
 <p>主要是受到 Will 保哥的《<a target="_blank" rel="noopener" href="https://github.com/doggy8088/ask-page-extension">頁問 AskPage</a>》和其它開源專案的啟發。</p>
 <p>先是實作了<a target="_blank" rel="noopener" href="https://www.threads.com/@kyomind.tw/post/DN5rYhNge8x">半自動的 CHANGELOG 更新機制</a>，後來乾脆連 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/releases">Release Notes</a> 都一起自動產生。</p>
+<p>實際的效果就是：每次 push 帶有<code>v*</code>的 tag 時，會自動建立對應的 GitHub release。</p>
 <p>雖然格式稍嫌呆板，但感覺就是兩個字——愉悅！</p>
 <hr>
 <h2 id="流程概覽"><a href="#流程概覽" class="headerlink" title="流程概覽"></a>流程概覽</h2><p>為方便回顧，再次整理 WeaMind 專案中各 CI 流程的關鍵步驟。</p>
