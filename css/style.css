@@ -1632,6 +1632,16 @@ h6 {
   font-size: 23px;
   line-height: 25px;
 }
+.archive .archive-title .tag-home-link,
+.archive .archive-title .category-home-link {
+  color: #c05b4d;
+  text-decoration: none;
+}
+.archive .archive-title .tag-home-link:hover,
+.archive .archive-title .category-home-link:hover {
+  color: #a14639;
+  text-decoration: underline;
+}
 .archive .archive-title .archive-post-counter {
   display: none;
   color: #8a8a8a;
