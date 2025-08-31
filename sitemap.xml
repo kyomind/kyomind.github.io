@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -119,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -947,15 +947,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
-    
-    <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-33/</loc>
     
     <lastmod>2025-08-11</lastmod>
@@ -965,7 +956,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -975,6 +966,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-07/</loc>
+    
+    <lastmod>2025-08-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-03/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1307,7 +1307,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
     
     <lastmod>2025-07-14</lastmod>
     
@@ -1325,7 +1325,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2025-07-14</lastmod>
     
@@ -1532,7 +1532,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-enum/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1541,7 +1541,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/python-enum/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1595,15 +1595,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
-    
-    <lastmod>2025-05-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
     
     <lastmod>2025-05-11</lastmod>
@@ -1613,7 +1604,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
+    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1623,6 +1614,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/grind-leetcode-with-ai-preparation/</loc>
+    
+    <lastmod>2025-05-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/gpts-for-leetcode/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1766,7 +1766,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
+    <loc>https://blog.kyomind.tw/apple-studio-display/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1775,7 +1775,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-studio-display/</loc>
+    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1838,7 +1838,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1847,7 +1847,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-one/</loc>
     
     <lastmod>2025-05-11</lastmod>
     

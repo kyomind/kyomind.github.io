@@ -1618,12 +1618,10 @@ h6 {
 .archive {
   margin: 1em 0px;
   max-width: 730px;
+  /* 標籤和分類首頁連結樣式 - 移到正確位置 */
 }
 .archive .archive-title {
   font-family: "nunito", sans-serif;
-  /* 標籤和分類首頁連結樣式 */
-  /* 更具體的選擇器作為備用 */
-  /* 終極解決方案：最高特異性 */
 }
 .archive .archive-title.tag, .archive .archive-title.category {
   margin: 15px 0;
@@ -1635,6 +1633,10 @@ h6 {
   font-size: 23px;
   line-height: 25px;
 }
+.archive .archive-title .archive-post-counter {
+  display: none;
+  color: #8a8a8a;
+}
 .archive .archive-title .tag-home-link,
 .archive .archive-title .category-home-link {
   color: #c05b4d !important;
@@ -1644,30 +1646,6 @@ h6 {
 .archive .archive-title .category-home-link:hover {
   color: #a04a3d !important;
   text-decoration: underline !important;
-}
-.archive .archive-title .archive-title.tag a.tag-home-link,
-.archive .archive-title .archive-title.category a.category-home-link {
-  color: #c05b4d !important;
-  text-decoration: none !important;
-}
-.archive .archive-title .archive-title.tag a.tag-home-link:hover,
-.archive .archive-title .archive-title.category a.category-home-link:hover {
-  color: #a04a3d !important;
-  text-decoration: underline !important;
-}
-.archive .archive-title section#archive .archive-title.tag a.tag-home-link,
-.archive .archive-title section#archive .archive-title.category a.category-home-link {
-  color: #c05b4d !important;
-  text-decoration: none !important;
-}
-.archive .archive-title section#archive .archive-title.tag a.tag-home-link:hover,
-.archive .archive-title section#archive .archive-title.category a.category-home-link:hover {
-  color: #a04a3d !important;
-  text-decoration: underline !important;
-}
-.archive .archive-title .archive-post-counter {
-  display: none;
-  color: #8a8a8a;
 }
 .archive .collection-title {
   font-family: "nunito", sans-serif;
