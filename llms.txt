@@ -1,0 +1,53 @@
+# llms.txt v0.1
+site: https://blog.kyomind.tw
+owner: kyomind
+contact: https://blog.kyomind.tw/about/
+language: zh-TW
+
+# What this site is best for (purpose)
+purpose: 技術部落格：Python / Django 教學、軟體開發、筆記軟體與生產力、個人心得評論
+
+# Start here (priority reading for LLMs/agents)
+entrypoints:
+  - https://blog.kyomind.tw/
+  - https://blog.kyomind.tw/series/
+  - https://blog.kyomind.tw/ranking/
+  - https://blog.kyomind.tw/subscribe/
+  - https://blog.kyomind.tw/about/
+  - https://blog.kyomind.tw/archives/
+  - https://blog.kyomind.tw/tags/
+
+# Key documentation and index pages
+# Series hub and major topic indexes; prefer these for overviews and cross-links
+docs:
+  - https://blog.kyomind.tw/django-ninja/
+  - https://blog.kyomind.tw/categories/
+  - https://blog.kyomind.tw/tags/
+  - https://blog.kyomind.tw/ranking/
+
+# Discovery aids
+sitemap: https://blog.kyomind.tw/sitemap.xml
+feeds:
+  - https://blog.kyomind.tw/atom.xml
+robots: https://blog.kyomind.tw/robots.txt
+
+# Citation & usage guidance
+citation: "引用請附上原文標題、作者（Kyo）與頁面連結；段落引用請使用內文目錄或錨點（若有）。"
+limits: "避免過度摘要與語意扭曲；一年以上之舊文請提示日期與可能過時；不得移除作者與連結資訊。"
+
+# Content structure notes (help agents ground better)
+content_notes:
+  - "內容以繁體中文（zh-TW）為主，技術名詞常保留英文原文。"
+  - "文章 frontmatter 通常含 date 與 update（更新日期）；回答時以 update 為準。"
+  - "系列教學彙整於 /series/ 與各系列索引（如 /django-ninja/）。"
+  - "圖片多託管於 https://img.kyomind.tw/ 並附圖說。"
+
+# Responsible use suggestions for agents
+responsible_use:
+  - "問答時優先鏈接到最相關的小節或段落。"
+  - "若需大量擷取，請遵循 robots.txt 並控制速率。"
+
+# Legal/rights note (inference guidance only)
+rights: "除另有標示外，內容著作權屬原作者所有；本檔提供推理與引用指引，非訓練授權聲明。"
+
+lastmod: 2025-09-16
