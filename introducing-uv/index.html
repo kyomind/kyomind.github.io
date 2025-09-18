@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-07-19T07:53:32+08:00" />
+  <meta property="article:modified_time" content="2025-09-18T02:45:13+08:00" />
 
 
 
@@ -232,7 +232,10 @@
 <p>本來我是覺得這不算很重要的事情，畢竟套件的安裝、依賴解析等操作，通常不會頻繁發生。</p>
 <p>但實際上，這些操作的速度如果不夠快，還是會影響<strong>開發者體驗</strong>——尤其在套件愈裝愈多的情況下。</p>
 <p>如果考慮到 CI&#x2F;CD 流程，差異就更明顯了。</p>
-<h3 id="更簡單的指令設計"><a href="#更簡單的指令設計" class="headerlink" title="更簡單的指令設計"></a>更簡單的指令設計</h3><p>我一直覺得，Poetry 的指令設計<strong>有些複雜</strong>，而且<strong>太多了</strong>！</p>
+<h3 id="更簡單的指令設計"><a href="#更簡單的指令設計" class="headerlink" title="更簡單的指令設計"></a>更簡單的指令設計</h3><blockquote>
+<p><code>2025/09/18</code>補充：隨著 uv 的不斷發展，指令也愈多、愈複雜了XD，所以這點可持保留意見。</p>
+</blockquote>
+<p>我一直覺得，Poetry 的指令設計<strong>有些複雜</strong>，而且<strong>太多了</strong>！</p>
 <p>uv 則相對好一些（雖然還是不少），子命令的設計也更為<strong>直觀</strong>，例如 <code>uv python</code>、<code>uv pip</code>等。</p>
 <p>這裡我覺得「更簡單」的主要意思是：uv 在日常操作下的<strong>常用指令更少、更精簡</strong>。</p>
 <hr>
