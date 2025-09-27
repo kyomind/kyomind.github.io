@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-09-19T01:45:14+08:00" />
+  <meta property="article:modified_time" content="2025-09-27T23:03:44+08:00" />
 
 
 
@@ -227,7 +227,7 @@
 <h2 id="為什麼不需要-Multi-stage-build？"><a href="#為什麼不需要-Multi-stage-build？" class="headerlink" title="為什麼不需要 Multi-stage build？"></a>為什麼不需要 Multi-stage build？</h2><p>前述〈<a href="https://blog.kyomind.tw/poetry-multi-stage-build/">Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</a>〉教你如何用 multi-stage build 建立 Poetry 虛擬環境。</p>
 <p>因為 Poetry 和 uv 這類工具有<strong>各自需要的執行環境與依賴套件</strong>，不那麼適合在 Docker 建構過程中直接安裝並封裝成 image，這會造成<strong>一定程度的空間浪費與冗餘</strong>。</p>
 <p>所以我們選擇用 multi-stage build 來建立 image。省去不必要的依賴，有效減少最終 image 的體積。</p>
-<p>那為什麼這裡就<strong>沒有這麼做</strong>呢？ </p>
+<p>那為什麼這裡就<strong>沒有這麼做</strong>呢？</p>
 <p>原因很簡單，<strong>官方已經提供這份簡單、乾淨的 image，讓你直接開箱即用</strong>。雖然最終的 image 中仍會有 uv，但它的體積佔用已然經過最佳化。</p>
 <p>此時自己再搞個 multi-stage build，也省不了多少空間，還徒增 Dockerfile 的複雜度與出錯可能。</p>
 <h3 id="MCP-時代需要-uv"><a href="#MCP-時代需要-uv" class="headerlink" title="MCP 時代需要 uv"></a>MCP 時代需要 uv</h3><p>附帶一提，在這個 MCP（模型上下文協定，<a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">Model Context Protocol</a>）盛行的時代，我們可以看到 MCP Server 的開發，主要由兩種語言佔多數：</p>
@@ -269,7 +269,7 @@
 
 <hr>
 <blockquote>
-<p><strong>如果這篇文章對你有幫助，歡迎到 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind GitHub 首頁</a> 給我一個星星</strong><br>你的支持是我持續分享的動力😇</p>
+<p><strong>如果這篇文章對你有幫助，歡迎到 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind GitHub 首頁</a> 給我一個星星</strong><br>你的支持是我持續分享的動力</p>
 </blockquote>
 
       </div>
