@@ -47,13 +47,13 @@
     
     <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
     
-    <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
+    <category term="Claude" scheme="https://blog.kyomind.tw/tags/Claude/"/>
     
     <category term="GitHub Copilot" scheme="https://blog.kyomind.tw/tags/GitHub-Copilot/"/>
     
     <category term="Setapp" scheme="https://blog.kyomind.tw/tags/Setapp/"/>
     
-    <category term="Claude" scheme="https://blog.kyomind.tw/tags/Claude/"/>
+    <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
     
   </entry>
   
@@ -150,9 +150,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
-    
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
+    
+    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
@@ -316,9 +316,9 @@
     <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
     
     
-    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
     <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
+    
+    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
