@@ -117,7 +117,7 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (86)</a>
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (87)</a>
           
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (47)</a>
           
@@ -156,6 +156,42 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/yadm-cross-platform/">yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2025-06-28
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/20250628-230318-AGhzS0d.jpg" alt="from Pixabay">  </p>
+<p>兩年多前，我寫了這篇〈<a href="https://blog.kyomind.tw/yadm/">是時候同步你的 dotfiles 了——我選擇 yadm</a>〉，當時的主要動機是想要在多個 Linux VM 之間同步設定檔。</p>
+<p>該文章介紹了「何謂 dotfiles」（後端工程師應該都很熟悉），以及我認為的「dotfiles 同步工具」的兩大流派：</p>
+<ol>
+<li>Symbolic Link。</li>
+<li>Bare Git。</li>
+</ol>
+<p>然而，兩年之間，我幾乎很少在文中提起它。</p>
+<p>事實上，我這段期間使用的 yadm 的頻率<strong>確實不高</strong>！</p>
+<p>但這並不代表我沒有同步 dotfiles 的需求，只是真正的核心需求在於<strong>跨平台</strong>，尤其是 macOS 與 Linux 之間。</p>
+<p>若僅是在不同 Linux VM 之間同步，就顯得有點小打小鬧，<strong>實用性不足</strong>。</p>
+<hr>
+<p>我日常開發主要都在 Mac 上，而 Mac 與 Linux 的設定落差雖不大，但<strong>絕不會完全相同</strong>——這讓單一套設定難以通用。</p>
+<p>比如我的 Mac 上有一些 Homebrew 的環境變數，在 Linux 上無用武之地不說，還可能造成執行錯誤。</p>
+<p>總之，<strong>若不解決跨平台問題，那 yadm 的價值將發揮不到一半。</strong></p>
+<p>上個月我終於鐵了心，<strong>把這件事搞定了！</strong></p>
+<p>做完只覺得，我實在太晚開始，跨平台同步的<strong>價值非常巨大且實用</strong>。</p>
+<p>因此，儘管使用這類工具的人並不多，我也要寫下這篇文章，供有志之士參考！</p>
+          <div class="read-more">
+            <a href="/yadm-cross-platform/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/weekly-review-44/">將域名註冊移轉至 Dynadot</a>
         </h1>
@@ -358,42 +394,6 @@
 <p>總之，OpenRouter 不僅為開發者提供了統一的介面，更讓非技術出身的用戶也能輕鬆使用 AI。</p>
           <div class="read-more">
             <a href="/openrouter-free-models/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/poetry-multi-stage-build/">用 Docker Multi-stage build 建立 Poetry 虛擬環境</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-05-24
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://img.kyomind.tw/poetry-multi-stage-build.jpg" alt="from Pixabay"></p>
-<p>最近都在為〈<a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a>〉一文進行「減肥」，讓它更容易閱讀、回顧。</p>
-<p>除此之外，是時候為「<a href="/series/#Python-Poetry-%E4%B8%89%E9%83%A8%E6%9B%B2">Python Poetry</a>」這個系列畫下句點了——而本文就是最後一塊拼圖！</p>
-<p>我曾在前文中提到，為什麼不在 Docker 容器中使用 Poetry。主要原因是：</p>
-<blockquote>
-<p>啟動容器後需要先安裝 Poetry 到全域，或打包一個帶有 Poetry 的 image，兩者都會<strong>增加新的耦合與依賴</strong>，需要更細緻的管理。</p>
-</blockquote>
-<p>但這樣的限制，其實可以透過 Docker 的 <strong>multi-stage build</strong> 解決。</p>
-<p>本文將從實務角度出發，介紹如何使用 multi-stage build，在 Docker 中整合 Poetry。</p>
-<p>讓你既能享有 Poetry 的套件管理優勢，又不會對部署流程增加額外負擔。</p>
-<h3 id="系列：Python-Poetry-三部曲"><a href="#系列：Python-Poetry-三部曲" class="headerlink" title="系列：Python Poetry 三部曲"></a>系列：Python Poetry 三部曲</h3><blockquote>
-<ol>
-<li><a href="/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
-<li><a href="/poetry-pyenv-practical-tips/">Poetry + pyenv 教學：常用指令與注意事項</a></li>
-<li><strong>Docker 教學：用 Multi-stage build 建立 Poetry 虛擬環境</strong></li>
-</ol>
-</blockquote>
-<p>我們開始吧！</p>
-          <div class="read-more">
-            <a href="/poetry-multi-stage-build/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="prev" href="/">
