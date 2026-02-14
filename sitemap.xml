@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/logseq/</loc>
+    <loc>https://blog.kyomind.tw/noteless/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -218,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    <loc>https://blog.kyomind.tw/logseq/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-22/</loc>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -245,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/noteless/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-22/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -1316,6 +1316,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    
+    <lastmod>2025-07-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
     
     <lastmod>2025-07-14</lastmod>
@@ -1326,15 +1335,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/robust-python-01/</loc>
-    
-    <lastmod>2025-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2025-07-14</lastmod>
     
@@ -1523,7 +1523,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/tags/index.html</loc>
+    <loc>https://blog.kyomind.tw/404.html</loc>
     
     <lastmod>2025-05-20</lastmod>
     
@@ -1532,7 +1532,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/404.html</loc>
+    <loc>https://blog.kyomind.tw/tags/index.html</loc>
     
     <lastmod>2025-05-20</lastmod>
     
@@ -1559,7 +1559,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/python-enum/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1568,7 +1568,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-enum/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1622,7 +1622,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
+    <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1631,7 +1631,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
+    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1784,7 +1784,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-studio-display/</loc>
+    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1793,7 +1793,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/apple-silicon/</loc>
+    <loc>https://blog.kyomind.tw/apple-studio-display/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1820,7 +1820,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
+    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1829,7 +1829,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
+    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
