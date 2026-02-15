@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -1019,7 +1019,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-33/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1028,7 +1028,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-33/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1559,7 +1559,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-enum/</loc>
+    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1568,7 +1568,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/reverse-relationships/</loc>
+    <loc>https://blog.kyomind.tw/python-enum/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1622,7 +1622,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
+    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1631,7 +1631,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/keyboard-shortcuts/</loc>
+    <loc>https://blog.kyomind.tw/leetcode-notes-method/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1676,7 +1676,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-rest-framework-02/</loc>
+    <loc>https://blog.kyomind.tw/django-rest-framework-03/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1685,7 +1685,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-rest-framework-03/</loc>
+    <loc>https://blog.kyomind.tw/django-rest-framework-02/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1820,7 +1820,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
+    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1829,7 +1829,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/</loc>
+    <loc>https://blog.kyomind.tw/good-vscode-extensions/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1876,7 +1876,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-02-14</lastmod>
+    <lastmod>2026-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

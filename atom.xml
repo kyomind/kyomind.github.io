@@ -187,9 +187,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
-    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
+    
+    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     

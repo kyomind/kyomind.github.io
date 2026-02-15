@@ -145,14 +145,6 @@ li {
   border-bottom-color: #2563eb;
 }
 
-.subscribe-link {
-  color: #3b82f6;
-}
-
-.subscribe-link:hover {
-  color: #2563eb;
-}
-
 .tag-home-link,
 .category-home-link {
   color: #c05b4d !important;
