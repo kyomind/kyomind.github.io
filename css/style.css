@@ -145,6 +145,10 @@ li {
   border-bottom-color: #2563eb;
 }
 
+.weamind-link {
+  color: #3b82f6;
+}
+
 .tag-home-link,
 .category-home-link {
   color: #c05b4d !important;
