@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
             
 
-  <meta property="article:modified_time" content="2025-07-27T15:35:31+08:00" />
+  <meta property="article:modified_time" content="2026-02-25T16:39:00+08:00" />
 
 
 
@@ -172,7 +172,7 @@
         <span class="post-time">
           2025-04-26
         </span><span class="post-update">
-            →  2025-07-22
+            →  2026-02-26
           </span>
         <span class="post-category">
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
@@ -185,7 +185,10 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%B6%E7%84%B6%E9%81%87%E8%A6%8B-Hetzner"><span class="toc-text">偶然遇見 Hetzner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VPS-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-VPS%EF%BC%9F"><span class="toc-text">VPS 是什麼？為什麼需要 VPS？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-%E5%85%AC%E5%8F%B8%E7%B0%A1%E4%BB%8B"><span class="toc-text">Hetzner 公司簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-vs-DigitalOcean%EF%BC%9A%E5%83%B9%E5%B7%AE%E8%88%87%E8%A6%8F%E6%A0%BC%E5%B0%8D%E6%AF%94"><span class="toc-text">Hetzner vs DigitalOcean：價差與規格對比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%A6%E9%9A%9B%E6%B8%AC%E8%A9%A6%EF%BC%9ALatency-%E6%AF%94%E8%BC%83"><span class="toc-text">實際測試：Latency 比較</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hetzner-%E7%9A%84%E5%AE%A2%E6%88%B6%E8%AA%8D%E8%AD%89%E8%88%87%E8%A8%BB%E5%86%8A%E6%B5%81%E7%A8%8B"><span class="toc-text">Hetzner 的客戶認證與註冊流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%83%B9%E6%A0%BC%E8%88%87%E9%9C%80%E6%B1%82%E7%9A%84%E5%B9%B3%E8%A1%A1"><span class="toc-text">結語：價格與需求的平衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%88%91%E7%9A%84%E6%8E%A8%E8%96%A6%E9%80%A3%E7%B5%90%EF%BC%8C%E4%BA%AB%E5%8F%97-20-%E6%AD%90%E5%85%83%E5%85%8D%E8%B2%BB%E9%A1%8D%E5%BA%A6"><span class="toc-text">使用我的推薦連結，享受 20 歐元免費額度</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span>  </p>
+  </div><div class="post-content"><p><img src="https://i.imgur.com/GhElIMy.jpeg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<blockquote>
+<p><code>2026/02/26</code>：Hetzner 的 VM 價格將在今年 4 月 1 日進行調漲，詳情可參考該<a target="_blank" rel="noopener" href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/">文件</a>。</p>
+</blockquote>
 <blockquote>
 <p><code>2025/07/22</code>：新增<a target="_blank" rel="noopener" href="https://hetzner.cloud/?ref=gD26JqrE8c9t">推廣連結</a>，使用該連結註冊，可獲得 20 歐元使用額度。</p>
 </blockquote>
@@ -206,7 +209,7 @@
 <h2 id="偶然遇見-Hetzner"><a href="#偶然遇見-Hetzner" class="headerlink" title="偶然遇見 Hetzner"></a>偶然遇見 Hetzner</h2><p>如前所述，我使用 DigitalOcean 的 VM 很長一段時間。</p>
 <p>基本款從最初的每月 5 美元，到後來漲到了 6、7 美元，儘管覺得有些小貴，但因為 DigitalOcean 在新加坡有機房，從台灣連過去延遲較低，大約 100 多毫秒，而且已經習慣，所以也沒想過另尋「新歡」。</p>
 <p>直到有一天，我在 Twitter 上偶然看到有人提到 Hetzner——這才意識到，原來世界上還有這麼這麼「便宜」的 VPS 選擇 ！</p>
-<p>不過在此之前，我們還是先來介紹一下，本文前面說到的 VM 或者是 VPS 究竟是什麼東西呢？ </p>
+<p>不過在此之前，我們還是先來介紹一下，本文前面說到的 VM 或者是 VPS 究竟是什麼東西呢？</p>
 <h2 id="VPS-是什麼？為什麼需要-VPS？"><a href="#VPS-是什麼？為什麼需要-VPS？" class="headerlink" title="VPS 是什麼？為什麼需要 VPS？"></a>VPS 是什麼？為什麼需要 VPS？</h2><p>VPS，全名 Virtual Private Server，是<strong>從一台實體伺服器上虛擬出來的獨立空間</strong>。它讓你用租用價格，享受類似獨立主機的自由。</p>
 <p>對於愛搞 side project 的開發者來說，有一台自己的 VPS，意味著能自由部署應用、測試新技術、建立個人服務。不必擔心免費平台的流量限制，也不用和別人搶資源。</p>
 <p>其實我覺得最重要的就是——<strong>你獲得了一個固定 IP</strong>，讓別人可以 24 小時連線。</p>
@@ -271,7 +274,7 @@
 <p>我感覺十分阿妹竟（Amazing）！</p>
 <p>其它不論，光 RAM 的大小其實就<strong>很影響使用體驗</strong>——沒有 2 GB 真的會比較辛苦。</p>
 <p>我請 AI 查了一下，如果 DigitalOcean 要達到右邊 Hetzner 的規格，大概需要一個月 28 美元。</p>
-<p>這個差距，讓人想要不變心都難🥹 </p>
+<p>這個差距，讓人想要不變心都難🥹</p>
 <hr>
 <p>等等，你先別急著掏出信用卡！</p>
 <p>重點是接下來的部分——<strong>連線速度</strong>與<strong>註冊審核</strong>。</p>
@@ -279,7 +282,7 @@
 <h2 id="實際測試：Latency-比較"><a href="#實際測試：Latency-比較" class="headerlink" title="實際測試：Latency 比較"></a>實際測試：Latency 比較</h2><p>為了有更直觀的數據，我使用了 <a target="_blank" rel="noopener" href="https://www.cloudpingtest.com/">cloudpingtest.com</a> 測試了它所屬 VM 的延遲表現。</p>
 <p>測試環境：中華電信 4G 手機網路。</p>
 <p>以下是測試結果，可以看出，Hetzner 無論你選哪個資料中心，延遲的表現<strong>都不是很好</strong>——尤其是歐洲：</p>
-<p><img src="https://i.imgur.com/G7ETZ7p.png" alt="測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考"><span class="cap">測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考</span>  </p>
+<p><img src="https://i.imgur.com/G7ETZ7p.png" alt="測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考"><span class="cap">測試時間為晚上高峰期，網路環境為中華電信 4G，結果僅供參考</span></p>
 <p>以上是我在晚上高峰時段測試的，白天會稍微好一些，但基本上，歐洲機房的<strong>平均延遲</strong>不會低於 600 ms。</p>
 <p>600 毫秒延遲是什麼概念？可以理解成：<strong>你發出一個請求，伺服器在 0.6 秒後才會收到並開始處理——好久XD</strong></p>
 <p>美國和新加坡的機房會好一點——就一點，但<strong>價格也更貴（尤其是新加坡）</strong>，這需要你自行拿捏。</p>
@@ -297,7 +300,7 @@
 <p>這個過程從幾小時到一兩天都有可能。雖然初期略嫌麻煩，但換來的是更穩定的使用體驗。所以我覺得還可以接受。</p>
 <hr>
 <p>綜上所述，你主要需要考慮的，就是<strong>這個延遲你是否能夠接受</strong>。像我主要就是做我自己的東西而已，不是要提供給別人用的，所以還行。</p>
-<p>但如果是要給別人用的，600 毫秒的延遲，絕對是<strong>有感的慢</strong>😂 </p>
+<p>但如果是要給別人用的，600 毫秒的延遲，絕對是<strong>有感的慢</strong>😂</p>
 <hr>
 <h2 id="結語：價格與需求的平衡"><a href="#結語：價格與需求的平衡" class="headerlink" title="結語：價格與需求的平衡"></a>結語：價格與需求的平衡</h2><p>這次轉戰 Hetzner，最大的收穫就是重新認識了「原來 VM 可以這麼便宜！」</p>
 <p>不是每個人都適合 Hetzner。如果你的專案對延遲極度敏感，那麼 DigitalOcean 這類更接近台灣、連線快的服務仍然更合適。（或者選直接在台灣有機房的 GCP）</p>
