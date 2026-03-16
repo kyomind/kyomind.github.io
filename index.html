@@ -127,6 +127,8 @@
           
             <a href="/categories/Django/">Django (43)</a>
           
+            <a href="/categories/DevOps/">DevOps (1)</a>
+          
         </div>
       </li>
     <li class="menu-item">
@@ -156,6 +158,36 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weamind/">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-03-16
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 5 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind</a> 是一個查詢台灣天氣的 LINE Bot——<strong>點擊選單或輸入地名</strong>就能查天氣，是我花了數月共 150+ 小時做的 Side Project。</p>
+<p>以下會從<strong>兩個層面</strong>介紹這個專案：</p>
+<ul>
+<li>第一部分是<strong>應用層</strong>（你直接看到、用到的那一面），聊聊這個 Bot 本身的技術設計和工程品質追求。</li>
+<li>第二部分是<strong>基礎設施層</strong>（支撐 Bot 在雲端運行的底層環境），談談為什麼我要把它部署到 K8s 叢集上。</li>
+</ul>
+<p>從本文開始，這個寫了近 5 年的 Python 後端部落格，寫作重心將逐漸從<strong>後端開發</strong>轉向<strong>雲端與 DevOps</strong>。</p>
+<p>這是一個全新的開始。</p>
+          <div class="read-more">
+            <a href="/weamind/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/perplexity/">我可能「不會」付費 Perplexity</a>
         </h1>
@@ -323,38 +355,6 @@
 <p>本文聊聊我作為一個軟體工程師，如何看待這個 AI 普及後的「魔法時代」。</p>
           <div class="read-more">
             <a href="/vibe-coding/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/github-actions/">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-07-06
-        </span><span class="post-category">
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
-<blockquote>
-<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 2 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
-</blockquote>
-<p>從這篇文章開始，我將啟動一個新的系列。</p>
-<p>搭配我正在實作中的 Side Project——<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind</a>，寫下一篇又一篇的技術實作心得。</p>
-<p>讓我們一起在專案中成長，並獲得更多的開發樂趣。</p>
-<p>如標題所示，本文主要介紹 <a target="_blank" rel="noopener" href="https://github.com/features/actions">GitHub Actions</a>。不過在此之前，我們得先對 CI 有初步的了解。</p>
-<hr>
-<h2 id="什麼是-CI？為什麼需要-CI？"><a href="#什麼是-CI？為什麼需要-CI？" class="headerlink" title="什麼是 CI？為什麼需要 CI？"></a>什麼是 CI？為什麼需要 CI？</h2><p>CI 是「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88">Continuous Integration</a>」的縮寫，中文是「持續整合」。</p>
-<p>它的核心概念是：<strong>當開發人員提交程式碼時，系統可以「自動執行一系列預先定義的檢查流程」</strong>，例如檢查程式碼是否與現有程式相容、是否能正常運作。</p>
-<p>在軟體開發流程中，我們常常要處理很多<strong>重複但又不可忽略</strong>的工作：檢查程式碼格式、執行靜態分析、跑單元測試，甚至產生 API 文件等。</p>
-<p>如果每次提交都要手動跑一輪，既麻煩又易忘。</p>
-<p>這時 CI 就派上用場了。它能在每次 push 或開 PR 時（或其它事件），自動幫我們做這些事，讓問題提早浮現，使得開發流程更加穩健，也能節省大量重複性勞動。</p>
-          <div class="read-more">
-            <a href="/github-actions/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

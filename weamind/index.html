@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集">
+  <meta property="og:title" content="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集"><meta name="twitter:description" content="介紹 WeaMind 如何從解決天氣查詢痛點的 LINE Bot，逐步延伸成結合 CI 與 K3s 叢集的 DevOps 練習專案。">
+  <meta property="og:description" content="介紹 WeaMind 如何從解決天氣查詢痛點的 LINE Bot，逐步延伸成結合 CI 與 K3s 叢集的 DevOps 練習專案。"><meta name="twitter:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+  <meta property="og:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+<meta name="description" content="介紹 WeaMind 如何從解決天氣查詢痛點的 LINE Bot，逐步延伸成結合 CI 與 K3s 叢集的 DevOps 練習專案。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
+            
+
+  <meta property="article:modified_time" content="2026-03-16T09:42:14+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-03-16T08:02:49+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/weamind/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind" class="weamind-link">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (47)</a>
+          
+            <a href="/categories/VS-Code/">VS Code (9)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (87)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/DevOps/">DevOps (1)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link weamind-link" target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-03-16
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E4%B8%80%E5%80%8B%E5%A4%A9%E6%B0%A3-Bot-%E7%9A%84%E8%AA%95%E7%94%9F"><span class="toc-text">第一部分：一個天氣 Bot 的誕生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%B4%B9"><span class="toc-text">功能介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%87%89%E7%94%A8%E5%B1%A4%E6%9E%B6%E6%A7%8B%E8%A8%AD%E8%A8%88"><span class="toc-text">應用層架構設計</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%93%81%E8%B3%AA%E7%9A%84%E3%80%8C%E5%88%BB%E6%84%8F%E3%80%8D%E8%BF%BD%E6%B1%82"><span class="toc-text">工程品質的「刻意」追求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E5%BE%9E%E5%96%AE%E6%A9%9F%E5%88%B0%E5%8F%A2%E9%9B%86"><span class="toc-text">第二部分：從單機到叢集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Infra-%E9%97%9C%E9%8D%B5%E6%9E%B6%E6%A7%8B%E6%B1%BA%E7%AD%96"><span class="toc-text">Infra 關鍵架構決策</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 5 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind</a> 是一個查詢台灣天氣的 LINE Bot——<strong>點擊選單或輸入地名</strong>就能查天氣，是我花了數月共 150+ 小時做的 Side Project。</p>
+<p>以下會從<strong>兩個層面</strong>介紹這個專案：</p>
+<ul>
+<li>第一部分是<strong>應用層</strong>（你直接看到、用到的那一面），聊聊這個 Bot 本身的技術設計和工程品質追求。</li>
+<li>第二部分是<strong>基礎設施層</strong>（支撐 Bot 在雲端運行的底層環境），談談為什麼我要把它部署到 K8s 叢集上。</li>
+</ul>
+<p>從本文開始，這個寫了近 5 年的 Python 後端部落格，寫作重心將逐漸從<strong>後端開發</strong>轉向<strong>雲端與 DevOps</strong>。</p>
+<p>這是一個全新的開始。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="第一部分：一個天氣-Bot-的誕生"><a href="#第一部分：一個天氣-Bot-的誕生" class="headerlink" title="第一部分：一個天氣 Bot 的誕生"></a>第一部分：一個天氣 Bot 的誕生</h2><blockquote>
+<p>最好的 side project 往往來自於<strong>自己的痛點</strong>。</p>
+</blockquote>
+<p>我個人是中央氣象局「<a target="_blank" rel="noopener" href="https://www.cwa.gov.tw/V8/C/S/eservice/app/app_w.html">生活氣象 App</a> 」的<strong>重度使用者</strong>，但每次要在<strong>不同行政區之間</strong>切換查天氣，操作都很麻煩。</p>
+<p>這個痛點存在很久了，一直希望有更好的手機查詢體驗。考慮到氣象資料有<a target="_blank" rel="noopener" href="https://opendata.cwa.gov.tw/index">公開資料與 API</a>，我就想說，乾脆自己做一個 LINE Bot 吧！</p>
+<p>除此之外，它必須是一個能展示我<strong>真實 Infra 能力</strong>的作品——不只是把 Bot 寫好，而是從程式碼到雲端部署，都<strong>有真實工程水準</strong>的那種。</p>
+<p>多年前，從法律公務員轉職軟體工程師，我正是花了兩個月做了這個「<a target="_blank" rel="noopener" href="https://medium.com/code-and-me/my-python-flask-web-service-2844b8b2f7b0">給嗜讀者的 Python Flask 網頁服務</a>」才順利找到工作。</p>
+<h3 id="三個第一次"><a href="#三個第一次" class="headerlink" title="三個第一次"></a>三個第一次</h3><p>這是我第一次做 LINE Bot——要學習令人痛苦的 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python">LINE Bot SDK - Python</a>😂——強烈懷疑它就是 Java 版本直接「翻譯」過來的，程式碼非常不 Pythonic！</p>
+<p>第一次用 FastAPI（工作上都是 Django）、第一次大量使用 GitHub Copilot 輔助開發。</p>
+<p>三個「第一次」疊在一起，學習曲線並不低。但正因為有 Copilot 全程參與，一個人也能在合理時間內把這些東西做出來——還做得<strong>有模有樣</strong>！</p>
+<p>這大概就是 AI 時代的開發樣貌。</p>
+<hr>
+<h2 id="功能介紹"><a href="#功能介紹" class="headerlink" title="功能介紹"></a>功能介紹</h2><p>WeaMind 的核心功能很直覺：直接輸入行政區名稱就能查天氣，像是「大安區」、「中壢」；也可以<strong>設定住家和公司地址</strong>，之後<strong>一鍵查詢</strong>——<strong>後者</strong>才是重點，因為它真正解決了我切換行政區的難題。</p>
+<p>還有地圖查詢功能，在 LINE 地圖上選任意位置就能查。系統也會記錄最近查過的 5 個地點，方便快速重複查詢。</p>
+<p>我相信這就是一個好的 bot 該做的事：<strong>簡單易用、直指痛點</strong>。</p>
+<hr>
+<h2 id="應用層架構設計"><a href="#應用層架構設計" class="headerlink" title="應用層架構設計"></a>應用層架構設計</h2><p>做過 LINE Bot 的人都知道，它有幾個<strong>特別的坑</strong>：</p>
+<ul>
+<li>webhook <strong>必須在時限內回應</strong>（這個時限是動態的，而且官方不會告訴你），否則 LINE Platform 會重送請求——用戶此時會收到<strong>重複的回覆</strong>，影響體驗。</li>
+<li>無論有心還是無意，少部分用戶可能會<strong>瘋狂連點按鈕</strong>XD。而 LINE Platform 並未提供類似 rate limit 的機制，後端對每個請求都要處理——你的 db 正在燃燒🔥</li>
+<li>webhook handler 邏輯不同於<strong>一般 API 開發</strong>，天然容易變成一團大泥球——解析、查詢、回覆全擠在一起，功能一多就很難看懂與維護。</li>
+</ul>
+<p>WeaMind 對這三個問題都有明確的解法：</p>
+<ul>
+<li><strong>Fast ACK Webhook</strong>：花數十毫秒先回應 LINE Platform，業務邏輯交給 FastAPI 的<code>BackgroundTasks</code>非同步跑，用戶感受到的回應在 <strong>2 秒以內</strong>——實際只需要<strong>幾百毫秒</strong>，但 Hetzner 主機對台灣的延遲很高😂</li>
+<li><strong>Redis 分散式鎖</strong>：按鈕操作有 2 秒鎖定以防止連點，文字查詢則不受影響。</li>
+<li><strong>DDD 模組劃分</strong>：<code>core</code>、<code>user</code>、<code>line</code>、<code>weather</code>四個領域，router → service → models 三層分離，邊界清晰不互相污染。</li>
+</ul>
+<p>更多細節可參考 WeaMind 專案 README 的「<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind?tab=readme-ov-file#%E9%96%8B%E7%99%BC%E8%80%85%E6%8A%80%E8%A1%93%E4%BA%AE%E9%BB%9E">開發者技術亮點</a>」。</p>
+<hr>
+<h2 id="工程品質的「刻意」追求"><a href="#工程品質的「刻意」追求" class="headerlink" title="工程品質的「刻意」追求"></a>工程品質的「刻意」追求</h2><p>自己的專案，可以用<strong>自己的標準</strong>。</p>
+<h3 id="我親愛的偏執狂"><a href="#我親愛的偏執狂" class="headerlink" title="我親愛的偏執狂"></a>我親愛的偏執狂</h3><p><strong>100% 的 type hints 覆蓋</strong>——使用 Pyright、<strong>94% 的單元測試覆蓋率</strong>、pre-commit 強制檢查、完整的 CI pipeline。</p>
+<blockquote>
+<p>相關文章：</p>
+<ul>
+<li><a href="/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a></li>
+<li><a href="/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></li>
+</ul>
+</blockquote>
+<p>這些都不是偶然，而是<strong>刻意選擇</strong>的結果。在自己的專案裡，終於沒有人會說「這個可以之後再補」。</p>
+<p>你可能會好奇「為什麼測試覆蓋率不是 100%？現在不是有 AI 了嗎？讓它一口氣寫完不就好了？」</p>
+<p>我的看法是，覆蓋率畢竟只是測試品質的其中一個面向而已。為了讓覆蓋率達到百分之百，而寫一大堆不好讀、不好維護的<strong>機械性測試邏輯</strong>，這不符合我的開發價值觀。</p>
+<p>哪怕是在 AI 時代，凡事也宜<strong>適可而止</strong>。</p>
+<h3 id="偏執狂的工具鏈與-CI"><a href="#偏執狂的工具鏈與-CI" class="headerlink" title="偏執狂的工具鏈與 CI"></a>偏執狂的工具鏈與 CI</h3><p>工具鏈基本上是，想的到的一口氣全上了——說好的適可而止呢XD</p>
+<p>uv 管理 Python 虛擬環境；Ruff 一個工具取代了 Flake8、Black、isort 三個；Pyright 做型別檢查。</p>
+<p>安全掃描建了三層，角色不同：Bandit（靜態分析）、pip-audit（CVE 檢查）、detect-secrets（敏感資料防護）。這是我以前比較生疏的部分，這次特別加強。</p>
+<p>每次 push 都會跑完 Ruff → Pyright → Bandit → pip-audit → pytest + Codecov 的完整流程。</p>
+<p>CI 通過後，最後會<strong>自動推送</strong> image 到 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/pkgs/container/weamind">GHCR</a>。</p>
+<blockquote>
+<p>相關文章：<a href="/weamind-ci/">用 Side Project 學 CI：WeaMind 的 CI 實作策略</a></p>
+</blockquote>
+<hr>
+<h2 id="第二部分：從單機到叢集"><a href="#第二部分：從單機到叢集" class="headerlink" title="第二部分：從單機到叢集"></a>第二部分：從單機到叢集</h2><p>講完應用層，你可能會想：</p>
+<blockquote>
+<p>這個 LINE Bot 跑在單機 VM 上就能正常運作了，幹嘛還要搞 K8s？</p>
+</blockquote>
+<p>原因很簡單：因為這個專案從一開始就「不只是」為了做一個 LINE Bot——它是我為了 DevOps 轉職所做的<strong>刻意練習</strong>。</p>
+<h3 id="K3s-on-Hetzner"><a href="#K3s-on-Hetzner" class="headerlink" title="K3s on Hetzner"></a>K3s on Hetzner</h3><p>我在 <a target="_blank" rel="noopener" href="https://www.hetzner.com/">Hetzner</a> 上另外開了三台 VM 組成 K3s 叢集，加上一台付費的 Load Balancer——都是錢啊啊啊！</p>
+<p>原本那台跑 Docker Compose 的 VM，在叢集建成後角色順勢轉變為<strong>堡壘機兼資料層</strong>，負責跑 PostgreSQL 和 Redis，同時作為 SSH 跳板管理叢集。</p>
+<blockquote>
+<p>相關文章：<a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更劃算的選擇？</a></p>
+</blockquote>
+<h3 id="持續演進的平台"><a href="#持續演進的平台" class="headerlink" title="持續演進的平台"></a>持續演進的平台</h3><p>這個叢集不只是現在的狀態——它是一個持續演進的學習平台。預計接下來我還會實作<strong>可觀測性、Helm</strong> 等 DevOps 必修主題。</p>
+<p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。這比什麼線上課附的 lab 都有趣且真實多了——想想就有點小興奮🤩</p>
+<hr>
+<h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
+<p><strong>流量路徑</strong>：LINE Platform → Hetzner Load Balancer（TCP 443 passthrough）→ Traefik Ingress（TLS 終止）→ line-bot Service → line-bot Pod。</p>
+<h3 id="為什麼選-Hetzner？"><a href="#為什麼選-Hetzner？" class="headerlink" title="為什麼選 Hetzner？"></a>為什麼選 Hetzner？</h3><p>當然是因為<strong>便宜</strong>！雖然它在今年 4 月就要<a target="_blank" rel="noopener" href="https://www.hetzner.com/pressroom/statement-price-adjustment/">漲價</a>了🥲</p>
+<p>表格是整個架構的所有成本（每月&#x2F;歐元，漲價前，未稅）：</p>
+<table>
+<thead>
+<tr>
+<th>節點</th>
+<th>規格</th>
+<th>月費</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原 VM（堡壘機兼資料層）</td>
+<td>4C&#x2F;8GB</td>
+<td>€6.5</td>
+</tr>
+<tr>
+<td>K8s 控制平面</td>
+<td>2C&#x2F;4GB</td>
+<td>€3.5</td>
+</tr>
+<tr>
+<td>K8s 工作節點 × 2</td>
+<td>2C&#x2F;4GB</td>
+<td>€7</td>
+</tr>
+<tr>
+<td>Hetzner Load Balancer</td>
+<td>—</td>
+<td>€5</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td></td>
+<td><strong>€22&#x2F;月</strong></td>
+</tr>
+</tbody></table>
+<p>這個總開銷，差不多等於訂閱一個 ChatGPT Plus 的月費。</p>
+<p>但同樣的機器若要部署在 DigitalOcean 或者 GCP 上，所需的價格大概是 4 到 6 倍。（即使漲價後也要 3 到 5 倍）</p>
+<p>總之，我愛 Hetzner，德國人萬歲！</p>
+<h3 id="為什麼選-K3s？"><a href="#為什麼選-K3s？" class="headerlink" title="為什麼選 K3s？"></a>為什麼選 K3s？</h3><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 是由 Rancher（現為 SUSE）推出的<strong>輕量級 Kubernetes 發行版</strong>，專為資源受限的環境設計。</p>
+<p>K3s 這個名稱就暗示了「比 K8s 少 5 個字元的複雜度」——本質上就是一個更精簡、更易部署的 Kubernetes。</p>
+<p>單一二進位檔、內建 Traefik Ingress Controller、<strong>CNCF 認證</strong>。</p>
+<p>對於單人維運的小型叢集，這是<strong>最務實</strong>的選擇。</p>
+<h3 id="資料層為什麼留在-VM？"><a href="#資料層為什麼留在-VM？" class="headerlink" title="資料層為什麼留在 VM？"></a>資料層為什麼留在 VM？</h3><p>簡潔與穩定性優先。</p>
+<p>PostgreSQL 和 Redis 現階段不需要水平擴展——以後大概也不需要XD，放進 K8s 反而要處理 StatefulSet 和 PV 的管理複雜度。</p>
+<p>而且用內網連接，延遲幾乎可以忽略不計。</p>
+<h3 id="LINE-Webhook-URL-切換"><a href="#LINE-Webhook-URL-切換" class="headerlink" title="LINE Webhook URL 切換"></a>LINE Webhook URL 切換</h3><p>這是一個意外好用的設計！</p>
+<p>我原本的想法是：LINE webhook 固定打<code>api.kyomind.tw</code>，平常 DNS 的 A record 指向 K8s 的 Load Balancer；若叢集出問題需要 rollback，就手動把 A record 改回舊 VM 的 IP 地址，這樣就能快速切換回單機環境。</p>
+<p>但這樣的問題是 <strong>DNS 傳播有延遲</strong>，少則幾分鐘、多則數小時，rollback 並不即時。</p>
+<p>後來發現一個更簡單的做法：保留 <code>api.kyomind.tw</code> 指向舊 VM，另外新建一個 <code>k8s.kyomind.tw</code> 指向 K8s Load Balancer——兩個環境各自有固定網址。</p>
+<p>要切換時，只要在 LINE Platform 後台把 webhook URL 從一個換成另一個，秒級生效，不需要動 DNS。</p>
+<p>這讓 K8s 環境和原本的單機環境可以並行運行，測試和 rollback 都很方便。</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>WeaMind 對我來說不只是一個天氣 Bot。</p>
+<p>應用層是五年後端經驗的集大成——終於有機會按自己的標準，從頭到尾做一次。基礎設施層則是跨入 DevOps 的第一步，用真金白銀搭出來的練兵場🐥</p>
+<p>如同我在自己的 <a target="_blank" rel="noopener" href="https://kyomind.tw/">Landing Page</a> 說的：</p>
+<blockquote>
+<p>我相信 AI 與 Infra 是開發者的未來。</p>
+</blockquote>
+<p>而 WeaMind，則是未來的開端。</p>
+<hr>
+<p>想看程式碼的讀者，歡迎逛逛 GitHub，並給我一個 ⭐️ 唷！</p>
+<ul>
+<li>應用層：<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind</a></li>
+<li>基礎設施：<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">weamind-infra</a></li>
+</ul>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind-ci/" title="用 Side Project 學 CI：WeaMind 的 CI 實作策略" rel="bookmark">用 Side Project 學 CI：WeaMind 的 CI 實作策略</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-actions/" title="GitHub Actions 入門：自動化 Lint、Format 與 Type Check" rel="bookmark">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyright/" title="Pyright 上手指南：Python 型別檢查的新選擇" rel="bookmark">Pyright 上手指南：Python 型別檢查的新選擇</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/GitHub-Actions/">GitHub Actions</a>
+            <a href="/tags/WeaMind/">WeaMind</a>
+            <a href="/tags/Side-Project/">Side Project</a>
+            <a href="/tags/Continuous-Integration/">Continuous Integration</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/perplexity/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">我可能「不會」付費 Perplexity</span>
+        <span class="prev-text nav-mobile">我可能「不會」付費 Perplexity</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">1</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/VS-Code/">VS Code<span class="category-count">9</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">87</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">47</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
