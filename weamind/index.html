@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-16T10:14:09+08:00" />
+  <meta property="article:modified_time" content="2026-03-16T10:15:05+08:00" />
 
 
 
@@ -268,7 +268,7 @@
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
 <p><strong>流量路徑</strong>：LINE Platform → Hetzner Load Balancer（TCP 443 passthrough）→ Traefik Ingress（TLS 終止）→ line-bot Service → line-bot Pod。</p>
 <h3 id="為什麼選-Hetzner？"><a href="#為什麼選-Hetzner？" class="headerlink" title="為什麼選 Hetzner？"></a>為什麼選 Hetzner？</h3><p>當然是因為<strong>便宜</strong>！雖然它在今年 4 月就要<a target="_blank" rel="noopener" href="https://www.hetzner.com/pressroom/statement-price-adjustment/">漲價</a>了🥲</p>
-<p>表格是整個架構的所有成本（每月&#x2F;歐元，漲價前，未稅）：</p>
+<p>表格是整個架構的所有成本（每月&#x2F;歐元，漲價前，稅前）：</p>
 <table>
 <thead>
 <tr>
