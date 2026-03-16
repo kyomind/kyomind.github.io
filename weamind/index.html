@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-16T16:05:16+08:00" />
+  <meta property="article:modified_time" content="2026-03-16T16:15:55+08:00" />
 
 
 
@@ -266,9 +266,9 @@
 </blockquote>
 <p>原因很簡單：因為這個專案從一開始就「不只是」為了做一個 LINE Bot——它是我為了 DevOps 轉職所做的<strong>刻意練習</strong>。</p>
 <h3 id="K3s-on-Hetzner"><a href="#K3s-on-Hetzner" class="headerlink" title="K3s on Hetzner"></a>K3s on Hetzner</h3><p>我在 <a target="_blank" rel="noopener" href="https://www.hetzner.com/">Hetzner</a> 上另外開了三台 VM 組成 K3s 叢集，加上一台付費的 Load Balancer——<strong>都是錢啊啊啊</strong>！🤯</p>
-<p>原本那台跑 Docker Compose 的 VM，在叢集建成後角色順勢轉變為<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bastion_host">堡壘機</a><strong>兼資料層</strong>，負責跑 PostgreSQL 和 Redis，同時作為 SSH 跳板與管理 Kubernetes 叢集——雖然我絕大部分時候都是在本機透過<code>ProxyJump</code>連到 API Server。</p>
+<p>原本那台跑 Docker Compose 的 VM，在叢集建成後角色順勢轉變為<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bastion_host">堡壘機</a><strong>兼資料層</strong>，負責跑 PostgreSQL 和 Redis，同時作為 SSH 跳板與管理叢集——雖然我大部分時候都是在本機透過<code>ProxyJump</code>連到 Control Plane 上的 API Server。</p>
 <h3 id="持續演進的平台"><a href="#持續演進的平台" class="headerlink" title="持續演進的平台"></a>持續演進的平台</h3><p>對我來說，這套 Kubernetes 部署不是做完就收工的作品。接下來，我還想在上面實作<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8F%AF%E8%A7%80%E6%B8%AC%E6%80%A7">可觀測性</a>、<a target="_blank" rel="noopener" href="https://helm.sh/">Helm</a> 等 DevOps 必修課題。</p>
-<p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。它顯比任何線上課附的 lab 都<strong>有趣且真實多了</strong>——想想就有點小興奮🤩</p>
+<p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。它顯然比任何線上課附的 lab 都<strong>有趣且真實</strong>多了——想想就有點小興奮🤩</p>
 <hr>
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
 <p><strong>流量路徑</strong>：LINE Platform → Hetzner Load Balancer（TCP 443 passthrough）→ Traefik Ingress（TLS 終止）→ line-bot Service → line-bot Pod。</p>
