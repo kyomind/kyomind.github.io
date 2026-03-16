@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-16T09:42:14+08:00" />
+  <meta property="article:modified_time" content="2026-03-16T10:04:23+08:00" />
 
 
 
@@ -209,6 +209,7 @@
 <h3 id="三個第一次"><a href="#三個第一次" class="headerlink" title="三個第一次"></a>三個第一次</h3><p>這是我第一次做 LINE Bot——要學習令人痛苦的 <a target="_blank" rel="noopener" href="https://github.com/line/line-bot-sdk-python">LINE Bot SDK - Python</a>😂——強烈懷疑它就是 Java 版本直接「翻譯」過來的，程式碼非常不 Pythonic！</p>
 <p>第一次用 FastAPI（工作上都是 Django）、第一次大量使用 GitHub Copilot 輔助開發。</p>
 <p>三個「第一次」疊在一起，學習曲線並不低。但正因為有 Copilot 全程參與，一個人也能在合理時間內把這些東西做出來——還做得<strong>有模有樣</strong>！</p>
+<p>老實說，如果沒有 AI 輔助，我大概不會想一口氣挑戰「三個第一次」。</p>
 <p>這大概就是 AI 時代的開發樣貌。</p>
 <hr>
 <h2 id="功能介紹"><a href="#功能介紹" class="headerlink" title="功能介紹"></a>功能介紹</h2><p>WeaMind 的核心功能很直覺：直接輸入行政區名稱就能查天氣，像是「大安區」、「中壢」；也可以<strong>設定住家和公司地址</strong>，之後<strong>一鍵查詢</strong>——<strong>後者</strong>才是重點，因為它真正解決了我切換行政區的難題。</p>
@@ -261,7 +262,7 @@
 <blockquote>
 <p>相關文章：<a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更劃算的選擇？</a></p>
 </blockquote>
-<h3 id="持續演進的平台"><a href="#持續演進的平台" class="headerlink" title="持續演進的平台"></a>持續演進的平台</h3><p>這個叢集不只是現在的狀態——它是一個持續演進的學習平台。預計接下來我還會實作<strong>可觀測性、Helm</strong> 等 DevOps 必修主題。</p>
+<h3 id="持續演進的平台"><a href="#持續演進的平台" class="headerlink" title="持續演進的平台"></a>持續演進的平台</h3><p>對我來說，這套 K3s 不是做完就收工的作品。接下來我還想在上面實作<strong>可觀測性、Helm</strong> 等 DevOps 必修主題。</p>
 <p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。這比什麼線上課附的 lab 都有趣且真實多了——想想就有點小興奮🤩</p>
 <hr>
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
