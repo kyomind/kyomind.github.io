@@ -46,13 +46,13 @@
     <category term="DevOps" scheme="https://blog.kyomind.tw/categories/DevOps/"/>
     
     
-    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
-    
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
     <category term="Side Project" scheme="https://blog.kyomind.tw/tags/Side-Project/"/>
     
     <category term="Continuous Integration" scheme="https://blog.kyomind.tw/tags/Continuous-Integration/"/>
+    
+    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
     
   </entry>
   
@@ -160,13 +160,13 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
-    
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
     <category term="Side Project" scheme="https://blog.kyomind.tw/tags/Side-Project/"/>
     
     <category term="Continuous Integration" scheme="https://blog.kyomind.tw/tags/Continuous-Integration/"/>
+    
+    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
     
   </entry>
   
@@ -194,9 +194,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
-    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
     
   </entry>
   
@@ -227,13 +227,13 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
+    <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
-    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
-    <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
+    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
     <category term="uv" scheme="https://blog.kyomind.tw/tags/uv/"/>
     
@@ -310,9 +310,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
-    
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
+    
+    <category term="GitHub Actions" scheme="https://blog.kyomind.tw/tags/GitHub-Actions/"/>
     
   </entry>
   
@@ -352,9 +352,9 @@
     <category term="軟體開發" scheme="https://blog.kyomind.tw/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/"/>
     
     
-    <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
-    
     <category term="軟體工程師" scheme="https://blog.kyomind.tw/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/"/>
+    
+    <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
     
     <category term="Mac" scheme="https://blog.kyomind.tw/tags/Mac/"/>
     
@@ -393,9 +393,9 @@
     <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
     
     
-    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
-    
     <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
+    
+    <category term="人生思考" scheme="https://blog.kyomind.tw/tags/%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83/"/>
     
   </entry>
   
