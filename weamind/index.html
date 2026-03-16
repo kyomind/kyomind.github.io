@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-16T16:15:55+08:00" />
+  <meta property="article:modified_time" content="2026-03-16T16:20:04+08:00" />
 
 
 
@@ -272,6 +272,10 @@
 <hr>
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
 <p><strong>流量路徑</strong>：LINE Platform → Hetzner Load Balancer（TCP 443 passthrough）→ Traefik Ingress（TLS 終止）→ line-bot Service → line-bot Pod。</p>
+<h3 id="為什麼選-K3s？"><a href="#為什麼選-K3s？" class="headerlink" title="為什麼選 K3s？"></a>為什麼選 K3s？</h3><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 是由 Rancher（現為 SUSE）推出的<strong>輕量級 Kubernetes 發行版</strong>，專為<strong>資源受限</strong>的環境設計。</p>
+<p>K3s 這個名稱意味「<strong>比 K8s 少 5 個字元的複雜度</strong>」——本質上就是一個<strong>更精簡、更易部署</strong>的 Kubernetes。</p>
+<p>採單一 binary 檔、內建 Traefik Ingress Controller、通過 <strong>CNCF 認證</strong>。</p>
+<p>對於單人維運的小型叢集，這是<strong>最務實</strong>的選擇。</p>
 <h3 id="為什麼選-Hetzner？"><a href="#為什麼選-Hetzner？" class="headerlink" title="為什麼選 Hetzner？"></a>為什麼選 Hetzner？</h3><blockquote>
 <p>相關文章：<a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更劃算的選擇？</a></p>
 </blockquote>
@@ -314,10 +318,6 @@
 <p>總體開銷，差不多等於訂閱一個 ChatGPT Plus 的月費。</p>
 <p>但同樣的機器若要部署在 DigitalOcean 或者 GCP 上，所需的價格大概是 4 到 6 倍。（即使 Hetzner 漲價後也要 3 到 5 倍）</p>
 <p>總之，我愛 Hetzner，德國人萬歲！</p>
-<h3 id="為什麼選-K3s？"><a href="#為什麼選-K3s？" class="headerlink" title="為什麼選 K3s？"></a>為什麼選 K3s？</h3><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 是由 Rancher（現為 SUSE）推出的<strong>輕量級 Kubernetes 發行版</strong>，專為<strong>資源受限</strong>的環境設計。</p>
-<p>K3s 這個名稱意味「<strong>比 K8s 少 5 個字元的複雜度</strong>」——本質上就是一個<strong>更精簡、更易部署</strong>的 Kubernetes。</p>
-<p>採單一 binary 檔、內建 Traefik Ingress Controller、通過 <strong>CNCF 認證</strong>。</p>
-<p>對於單人維運的小型叢集，這是<strong>最務實</strong>的選擇。</p>
 <h3 id="資料層為什麼留在-VM？"><a href="#資料層為什麼留在-VM？" class="headerlink" title="資料層為什麼留在 VM？"></a>資料層為什麼留在 VM？</h3><p>簡潔與穩定性優先。</p>
 <p>PostgreSQL 和 Redis 現階段不需要水平擴展——以後大概也不需要XD，放進 K8s 反而要處理 StatefulSet 和 PV 的管理複雜度。</p>
 <p>而且用內網連接，延遲幾乎可以忽略不計。</p>
