@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/feel-good-productivity/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-05/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-ninja-10/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -12,6 +21,69 @@
   
   <url>
     <loc>https://blog.kyomind.tw/four-thousand-weeks-02/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-05/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-21/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/on-writing/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/feel-good-productivity/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -39,15 +111,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/robust-python-01/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/four-thousand-weeks-01/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -102,15 +165,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -740,15 +794,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/on-writing/</loc>
-    
-    <lastmod>2025-08-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/just-a-note-cover/</loc>
     
     <lastmod>2025-08-31</lastmod>
@@ -1100,15 +1145,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-10/</loc>
-    
-    <lastmod>2025-08-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/django-ninja-14/</loc>
     
     <lastmod>2025-08-20</lastmod>
@@ -1155,15 +1191,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/django-ninja-21/</loc>
-    
-    <lastmod>2025-08-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-ninja-05/</loc>
     
     <lastmod>2025-08-20</lastmod>
     
@@ -1226,15 +1253,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-05/</loc>
-    
-    <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-31/</loc>
     
     <lastmod>2025-08-11</lastmod>
@@ -1245,15 +1263,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-14/</loc>
-    
-    <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-21/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1848,15 +1857,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/flake8-and-black/</loc>
-    
-    <lastmod>2025-05-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/django-mongoengine/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
