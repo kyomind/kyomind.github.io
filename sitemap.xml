@@ -209,6 +209,33 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python/</loc>
     
     <lastmod>2026-03-18</lastmod>
@@ -228,33 +255,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/python-craftsman-01/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-02/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-03/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -335,6 +335,33 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weekly-review-39/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-25/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/stoicism/</loc>
     
     <lastmod>2026-03-18</lastmod>
@@ -380,7 +407,16 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-39/</loc>
+    <loc>https://blog.kyomind.tw/think-riverside/</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-20/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -398,34 +434,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-25/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-28/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/think-riverside/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-20/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -462,15 +471,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
-    
-    <lastmod>2026-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weekly-review-10/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1280,15 +1280,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-35/</loc>
-    
-    <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-11/</loc>
     
     <lastmod>2025-08-11</lastmod>
@@ -1298,7 +1289,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-31/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-35/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1316,7 +1307,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-30/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-31/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1326,6 +1317,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-24/</loc>
+    
+    <lastmod>2025-08-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-30/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1361,15 +1361,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-27/</loc>
-    
-    <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-13/</loc>
     
     <lastmod>2025-08-11</lastmod>
@@ -1379,7 +1370,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-27/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1397,7 +1388,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-36/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-26/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1407,6 +1398,15 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-16/</loc>
+    
+    <lastmod>2025-08-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weekly-review-36/</loc>
     
     <lastmod>2025-08-11</lastmod>
     
@@ -1820,7 +1820,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-models/</loc>
+    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
@@ -1829,7 +1829,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-tutorial/</loc>
+    <loc>https://blog.kyomind.tw/django-models/</loc>
     
     <lastmod>2025-05-11</lastmod>
     

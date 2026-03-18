@@ -1767,6 +1767,17 @@ h6 {
   transform: scale(1.1);
 }
 
+.post-categories-box {
+  display: flow-root;
+  padding: 6px 0;
+}
+.post-categories-box .categories {
+  margin: 0;
+}
+.post-categories-box .categories-tags {
+  margin: 0;
+}
+
 @font-face {
   font-family: "iconfont"; /* project id 96542 */
   src: url("//at.alicdn.com/t/font_96542_ixz9jngnf1sb57b9.eot");

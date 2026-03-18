@@ -229,9 +229,9 @@
     
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
-    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
-    
     <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
+    
+    <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
     
