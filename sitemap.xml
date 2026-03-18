@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/about/index.html</loc>
+    
+    <lastmod>2026-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/weekly-review-04/</loc>
     
     <lastmod>2026-03-18</lastmod>
@@ -311,15 +320,6 @@
     <loc>https://blog.kyomind.tw/openrouter-free-models/</loc>
     
     <lastmod>2026-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/about/index.html</loc>
-    
-    <lastmod>2026-02-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
