@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-18T16:43:58+08:00" />
+  <meta property="article:modified_time" content="2026-03-19T18:05:22+08:00" />
 
 
 
@@ -275,7 +275,7 @@
 <p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。它顯然比任何線上課附的 lab 都<strong>有趣且真實</strong>多了——想想就有點小興奮🤩</p>
 <hr>
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
-<p><strong>流量路徑</strong>：LINE Platform → Hetzner Load Balancer（TCP 443 passthrough）→ Traefik Ingress（TLS 終止）→ line-bot Service → line-bot Pod。</p>
+<p><strong>流量路徑</strong>：LINE Platform 的 webhook 請求會先到 Hetzner Load Balancer（TCP 443 passthrough），再由 Traefik Ingress Controller 完成 TLS 終止，最後轉送到 line-bot Service 與 line-bot Pod。</p>
 <h3 id="為什麼選-K3s？"><a href="#為什麼選-K3s？" class="headerlink" title="為什麼選 K3s？"></a>為什麼選 K3s？</h3><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 是由 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a>（現為 SUSE）推出的<strong>輕量級 Kubernetes 發行版</strong>，專為<strong>資源受限</strong>的環境設計。</p>
 <p>K3s 這個名稱意味「<strong>比 K8s 少 5 個字元的複雜度</strong>」——本質上就是一個<strong>更精簡、更易部署</strong>的 Kubernetes。</p>
 <p>採單一 binary 檔、內建 Traefik Ingress Controller，並通過 <strong>CNCF 認證</strong>。</p>
@@ -326,9 +326,9 @@
 <p>PostgreSQL 和 Redis 現階段不需要水平擴展——以後大概也不需要XD，放進 K8s 反而要處理 StatefulSet 和 PV 的管理複雜度。</p>
 <p>而且用內網連接，延遲幾乎可以忽略不計。</p>
 <h3 id="LINE-Webhook-URL-切換"><a href="#LINE-Webhook-URL-切換" class="headerlink" title="LINE Webhook URL 切換"></a>LINE Webhook URL 切換</h3><p>這是一個<strong>意外好用</strong>的設計！</p>
-<p>我原本的想法是：LINE webhook 固定打<code>api.kyomind.tw</code>，平常 DNS 的 A record 指向 K8s 的 Load Balancer；若叢集出問題需要 rollback，就手動把 A record 改回舊 VM 的 IP 地址，這樣就能快速切換回單機環境。</p>
+<p>我原本的想法是：LINE webhook 固定打<code>api.kyomind.tw</code>，平常 DNS 的 A record 指向 Hetzner Load Balancer；若叢集出問題需要 rollback，就手動把 A record 改回舊 VM 的 IP 地址，這樣就能快速切換回單機環境。</p>
 <p>但這樣的問題是 <strong>DNS 傳播有延遲</strong>，少則幾分鐘、多則數小時，rollback 並不即時。</p>
-<p>後來發現一個更簡單的做法：保留 <code>api.kyomind.tw</code> 指向舊 VM，另外新建一個 <code>k8s.kyomind.tw</code> 指向 K8s Load Balancer——兩個環境各自有固定網址。</p>
+<p>後來發現一個更簡單的做法：保留<code>api.kyomind.tw</code>指向舊 VM，另外新建一個<code>k8s.kyomind.tw</code>指向 Hetzner Load Balancer——兩個環境各自有固定網址。</p>
 <p>要切換時，只要在 LINE Platform 後台把 webhook URL 從一個換成另一個，秒級生效，不需要動 DNS。</p>
 <p>這讓 K8s 環境和原本的單機環境可以並行運行，測試和 rollback 都很方便。</p>
 <hr>
