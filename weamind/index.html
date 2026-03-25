@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-03-25T03:18:58+08:00" />
+  <meta property="article:modified_time" content="2026-03-25T03:21:06+08:00" />
 
 
 
@@ -326,7 +326,7 @@
 <p>PostgreSQL 和 Redis 現階段不需要水平擴展——以後大概也不需要XD，放進 K8s 反而要處理 StatefulSet 和 PV 的管理複雜度。</p>
 <p>而且用內網連接，延遲幾乎可以忽略不計。</p>
 <h3 id="LINE-Webhook-URL-切換"><a href="#LINE-Webhook-URL-切換" class="headerlink" title="LINE Webhook URL 切換"></a>LINE Webhook URL 切換</h3><p>這是一個<strong>意外好用</strong>的設計！</p>
-<p>我原本的想法是：LINE webhook 固定打 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a>（直接點擊網址會回應<code>&#123;&quot;message&quot;:&quot;Welcome to WeaMind API&quot;&#125;</code>）上的 webhook endpoint，平常 DNS 的 A record 指向 Hetzner Load Balancer。</p>
+<p>我原本的想法是：LINE webhook 固定打 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a>（你直接點擊網址，會回應<code>&#123;&quot;message&quot;:&quot;Welcome to WeaMind API&quot;&#125;</code>）上的 webhook endpoint，平常 DNS 的 A record 指向 Hetzner Load Balancer。</p>
 <p>若叢集出問題需要 rollback，就<strong>手動把 A record 改回舊 VM 的 IP 地址</strong>，這樣就能快速切換回單機環境。</p>
 <p>但這樣的問題是 <strong>DNS 傳播有延遲</strong>，少則幾分鐘、多則數小時，rollback 並不即時。</p>
 <p>後來發現一個更簡單的做法：保留 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a> 指向舊 VM，另外新建一個 <a target="_blank" rel="noopener" href="https://k8s.kyomind.tw/">k8s.kyomind.tw</a> 指向 Hetzner Load Balancer——兩個環境各自有固定網址。</p>
