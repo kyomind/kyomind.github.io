@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-20T15:04:18+08:00" />
+  <meta property="article:modified_time" content="2026-03-22T16:22:15+08:00" />
 
 
 
@@ -246,7 +246,7 @@
 <p>不過，必須承認，在多數情況下，我們都是透過工具輔助——而工具產生的通常是下述<strong>第三層次</strong>（對輸入輸出有完整說明）的 Docstring 框架。</p>
 <p>因此，如果把每一個 Docstring 都寫到第三層次，我也不反對。畢竟它最常見。</p>
 <p>我自己則會依照程式碼的複雜度，進行一定程度的調整。</p>
-<p>無論如何，在實務情境中，<strong>有寫通常比沒寫好</strong>☺️ </p>
+<p>無論如何，在實務情境中，<strong>有寫通常比沒寫好</strong>☺️</p>
 <h2 id="一、只有主旨的-Docstring"><a href="#一、只有主旨的-Docstring" class="headerlink" title="一、只有主旨的 Docstring"></a>一、只有主旨的 Docstring</h2><p>有些簡單但<strong>需要了解「大概意圖」</strong>的函式，只需要一句話就足夠：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_internal_user</span>(<span class="params">email</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;判斷電子郵件是否為內部使用者&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> email.endswith(<span class="string">&quot;@company.com&quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -281,7 +281,7 @@
 <h3 id="說明的轉換"><a href="#說明的轉換" class="headerlink" title="說明的轉換"></a>說明的轉換</h3><p>細心的你可能發現了，這個例子沒有一段獨立的說明。</p>
 <p>原因很簡單，在這個地方的說明，<strong>已經化為了對 input 跟 output 的闡釋。</strong></p>
 <p>額外再寫一段說明，可能會有些冗餘。（但也不盡然）</p>
-<p>這裡只是要提醒，在這種有參數的情境下，說明落段往往會被省略。 </p>
+<p>這裡只是要提醒，在這種有參數的情境下，說明落段往往會被省略。</p>
 <hr>
 <h2 id="四、主旨-說明-參數與回傳-範例"><a href="#四、主旨-說明-參數與回傳-範例" class="headerlink" title="四、主旨 + 說明 + 參數與回傳 + 範例"></a>四、主旨 + 說明 + 參數與回傳 + 範例</h2><p>第四層次的重點是<strong>舉例</strong>。</p>
 <p>有了舉例，就算不清楚函式細節，也能迅速理解它的用途與結果。</p>
