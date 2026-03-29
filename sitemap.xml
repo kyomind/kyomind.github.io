@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kyomind.tw/dockerize-django-project/</loc>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
     
     <lastmod>2026-03-29</lastmod>
     
@@ -11,7 +11,25 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    <loc>https://blog.kyomind.tw/ruff/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/dockerize-django-project/</loc>
     
     <lastmod>2026-03-29</lastmod>
     
@@ -354,15 +372,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/flake8-and-isort/</loc>
-    
-    <lastmod>2026-03-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/ruff/</loc>
     
     <lastmod>2026-03-20</lastmod>
     
@@ -1677,15 +1686,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/no-result/</loc>
-    
-    <lastmod>2025-05-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/migrate-to-ruff/</loc>
     
     <lastmod>2025-05-11</lastmod>
     
