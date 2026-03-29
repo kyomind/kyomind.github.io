@@ -20,6 +20,24 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/hetzner-vm/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/hetzner/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2026-03-29</lastmod>
@@ -282,15 +300,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/cardio-evolution-2-months/</loc>
-    
-    <lastmod>2026-03-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/hetzner/</loc>
     
     <lastmod>2026-03-22</lastmod>
     
@@ -1607,15 +1616,6 @@
     <loc>https://blog.kyomind.tw/weekly-review-19/</loc>
     
     <lastmod>2025-08-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/hetzner-vm/</loc>
-    
-    <lastmod>2025-07-27</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
