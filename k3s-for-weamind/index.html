@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind">
+  <meta property="og:title" content="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind"><meta name="twitter:description" content="介紹 K3s 在 Kubernetes 學習與自建叢集中的定位，並說明我如何依據 WeaMind 的需求選擇它作為部署方案。">
+  <meta property="og:description" content="介紹 K3s 在 Kubernetes 學習與自建叢集中的定位，並說明我如何依據 WeaMind 的需求選擇它作為部署方案。"><meta name="twitter:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+  <meta property="og:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+<meta name="description" content="介紹 K3s 在 Kubernetes 學習與自建叢集中的定位，並說明我如何依據 WeaMind 的需求選擇它作為部署方案。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
+            
+
+  <meta property="article:modified_time" content="2026-03-29T05:18:10+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-03-29T04:54:39+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/k3s-for-weamind/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/weamind/" class="weamind-link">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/DevOps/">DevOps (2)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (61)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Self/">Self (24)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link weamind-link" href="/weamind/">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-03-29
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Minikube-%E5%92%8C-Kind%EF%BC%9A%E5%90%88%E7%90%86%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%BD%86%E4%B8%8D%E6%98%AF%E6%88%91%E8%A6%81%E7%9A%84"><span class="toc-text">Minikube 和 Kind：合理的工具，但不是我要的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%A2%9D-K8s-%E5%8F%A2%E9%9B%86%E5%BB%BA%E7%BD%AE%E8%B7%AF%E7%B7%9A"><span class="toc-text">三條 K8s 叢集建置路線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EKS-GKE%EF%BC%9A%E9%81%A9%E5%90%88%E6%83%B3%E3%80%8C%E7%9C%81%E4%BA%8B%E3%80%8D%E7%9A%84%E4%BA%BA"><span class="toc-text">EKS &#x2F; GKE：適合想「省事」的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kubeadm%EF%BC%9A%E9%81%A9%E5%90%88%E6%83%B3%E6%8E%8C%E6%8E%A7%E5%BA%95%E5%B1%A4%E7%9A%84%E4%BA%BA"><span class="toc-text">kubeadm：適合想掌控底層的人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K3s%EF%BC%9A%E6%88%91%E7%9A%84%E9%81%B8%E6%93%87"><span class="toc-text">K3s：我的選擇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K3s-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-text">K3s 是什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeaMind-%E7%9A%84-K3s-%E5%8F%A2%E9%9B%86%E9%95%B7%E4%BB%80%E9%BA%BC%E6%A8%A3"><span class="toc-text">WeaMind 的 K3s 叢集長什麼樣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%89%9B%E5%89%9B%E5%A5%BD%E7%9A%84%E8%A4%87%E9%9B%9C"><span class="toc-text">結語：剛剛好的複雜</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 6 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p>「想學 Kubernetes，要用什麼工具？」這是我在轉向 DevOps 時，不得不回答的問題。</p>
+<p>你可能拿到的標準答案是：「用 <a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/">Minikube</a> 或 <a target="_blank" rel="noopener" href="https://kind.sigs.k8s.io/">Kind</a> 在本機開個環境，先跑起來再說」。這答案當然沒錯，對多數人來說也是合理的起點。但對我而言，問題沒有這麼簡單。</p>
+<p>這篇文章針對「<strong>想自己建 Kubernetes 叢集，但又不想搞得太複雜</strong>」的情境，說明 K3s 是什麼、適合誰，以及我為什麼最後選擇它。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Minikube-和-Kind：合理的工具，但不是我要的"><a href="#Minikube-和-Kind：合理的工具，但不是我要的" class="headerlink" title="Minikube 和 Kind：合理的工具，但不是我要的"></a>Minikube 和 Kind：合理的工具，但不是我要的</h2><p>學習 Kubernetes 的最佳起手式，無疑就是 <a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/">Minikube</a> 或 <a target="_blank" rel="noopener" href="https://kind.sigs.k8s.io/">Kind</a> 這兩個工具。它們都是專為在本機快速建立 Kubernetes 環境而設計的，安裝簡單、資源需求低，非常適合初學者。</p>
+<p>如果你只是想練習 <code>kubectl</code> 的指令、跑幾個 Deployment 看看效果，這兩個工具已經足夠。它們就是為這個目的設計的，進入門檻低、環境乾淨、不用花錢，一台電腦就能搞定。</p>
+<h3 id="方便的代價"><a href="#方便的代價" class="headerlink" title="方便的代價"></a>方便的代價</h3><p>但為了<strong>方便與降低門檻</strong>，它們在架構上都存在著一定程度的<strong>簡化</strong>：網路行為、多節點環境、儲存層，都和真實 production 環境有差距。</p>
+<p>這不是缺點，是<strong>設計取捨</strong>——為了在本機好用，犧牲了一些真實性。</p>
+<h3 id="我需要更多真實感"><a href="#我需要更多真實感" class="headerlink" title="我需要更多真實感"></a>我需要更多真實感</h3><p>對我來說，這個取捨剛好<strong>和我的學習目標衝突</strong>。我準備轉職 DevOps，想弄懂的是建置過程本身：節點怎麼加入叢集、網路介面怎麼配置、Ingress 怎麼和 Load Balancer 串起來。</p>
+<p>用真實的 VM 學習，起碼問題更具體一些，不被環境提前幫你消化掉。</p>
+<p>剛好我也已經在用 <a href="/hetzner/">Hetzner Cloud</a>，開一台最小規格的 VM 一個月幾歐元。有這樣的條件，用真實環境學習就是自然的選擇。</p>
+<p>簡言之，不是因為 Minikube 或 Kind 不好，而是對我的目標來說，這樣能得到更接近現實的學習效果。</p>
+<hr>
+<h2 id="三條-K8s-叢集建置路線"><a href="#三條-K8s-叢集建置路線" class="headerlink" title="三條 K8s 叢集建置路線"></a>三條 K8s 叢集建置路線</h2><p>決定用真實 VM 之後，問題就從「<strong>用哪個工具模擬</strong>」變成「<strong>用哪種方式建立叢集</strong>」。這是另一層選擇，面向的是想認真接觸真實環境的人。此時有三條路可以選：</p>
+<table>
+<thead>
+<tr>
+<th>路線</th>
+<th>control plane 誰管</th>
+<th>學習深度</th>
+<th>維運成本</th>
+<th>適合情境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EKS &#x2F; GKE</td>
+<td>雲端供應商</td>
+<td>低</td>
+<td>低</td>
+<td>想專注把服務跑起來、不要自己維護底層</td>
+</tr>
+<tr>
+<td>kubeadm</td>
+<td>自己</td>
+<td>高</td>
+<td>高</td>
+<td>想完整掌握 Kubernetes 底層，或企業需要高度控制</td>
+</tr>
+<tr>
+<td>K3s</td>
+<td>自己</td>
+<td>中</td>
+<td>中</td>
+<td>想自己建叢集，但不想從零組裝每個元件</td>
+</tr>
+</tbody></table>
+<p>這三條路代表三種不同的假設，選哪條取決於你的目標是什麼。以下我們依序來看。</p>
+<h2 id="EKS-GKE：適合想「省事」的人"><a href="#EKS-GKE：適合想「省事」的人" class="headerlink" title="EKS &#x2F; GKE：適合想「省事」的人"></a>EKS &#x2F; GKE：適合想「省事」的人</h2><p>Control plane 由雲端管理，你只需要管 worker node 和應用程式。對想把服務跑起來、不想維護基礎設施的情境來說，這是最省事的選擇。</p>
+<p>但「省事」只是表面。managed K8s 真正的價值在於<strong>高可用與穩定性</strong>——control plane 的多副本、自動修復、SLA 保證，都不是自己建叢集能輕易複製的——甚至大部分的公司也無法做到這一點。</p>
+<p>這是為什麼大部分 production 環境的首選還是 EKS 或 GKE，而不是自建叢集。</p>
+<p>對企業來說尤其合理——工程師的時間比 VM 費用貴，沒有必要把人力花在 Kubernetes 底層維護上。managed K8s 的存在價值，就是讓團隊專注在應用層。</p>
+<p>代價是：你幾乎碰不到底層。Control plane 的建置、節點的加入、網路設定都由雲端處理好，你學到的就只有操作，不是建置。</p>
+<h2 id="kubeadm：適合想掌控底層的人"><a href="#kubeadm：適合想掌控底層的人" class="headerlink" title="kubeadm：適合想掌控底層的人"></a>kubeadm：適合想掌控底層的人</h2><p><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/">kubeadm</a> 是 Kubernetes 官方的叢集建置工具，從頭手工組裝：裝 kubelet、設定 API server、用 token 讓 worker node 加入。學習深度最高，最貼近 Kubernetes 原始面貌。</p>
+<p>這條路適合 platform team，或需要對底層有完整掌控的企業環境。</p>
+<p>代價是<strong>複雜</strong>——網路套件、憑證管理、etcd 備份，每個環節都要自己處理。</p>
+<p>對我這種單人維運的小型專案來說，這樣的複雜度<strong>很難換來相應的回報</strong>。</p>
+<h2 id="K3s：我的選擇"><a href="#K3s：我的選擇" class="headerlink" title="K3s：我的選擇"></a>K3s：我的選擇</h2><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 介於兩者之間。它不會像 EKS 那樣把底層全部藏起來，也不像 kubeadm 那樣把所有複雜度都攤在你面前。對我來說，這正是我想要的<strong>平衡</strong>。</p>
+<p>我選 K3s 的核心原因很簡單：我不只是想把 Kubernetes 用起來，還想理解它是<strong>怎麼被建起來的</strong>。它的價值不在於「比較輕」，而在於保留了<strong>恰到好處</strong>的建置細節，同時又不會把維運成本一下子拉得太高。</p>
+<p>幾個實際考量：</p>
+<ul>
+<li><strong>整合度高</strong>：<a target="_blank" rel="noopener" href="https://traefik.io/">Traefik</a>、<a target="_blank" rel="noopener" href="https://github.com/flannel-io/flannel">Flannel</a> 網路套件開箱即用，不需要像 kubeadm 一樣逐一自己裝</li>
+<li><strong>夠真實</strong>：節點加入、kubeconfig 管理、網路介面綁定這些事還是要自己處理</li>
+<li><strong>不適合大型叢集</strong>：高度客製化底層或企業級規模的需求，kubeadm 或 managed K8s 才是對的路</li>
+</ul>
+<hr>
+<h2 id="K3s-是什麼"><a href="#K3s-是什麼" class="headerlink" title="K3s 是什麼"></a>K3s 是什麼</h2><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 不是另一套系統，它是 Kubernetes 的一個<strong>發行版</strong>（distribution）。</p>
+<p>「distribution」這個詞，用過 Linux 的人應該不陌生。Linux kernel 是基礎，Ubuntu、Fedora、Arch Linux 則是不同的發行版（distribution）——它們都是 Linux，但各自做了不同的<strong>打包與整合</strong>。</p>
+<p>K3s 和 Kubernetes 的關係類似：它不是另一套不同的系統，而是建立在 Kubernetes 標準安裝之上的一個<strong>輕量發行版</strong>，由 Rancher Labs 開發，現由 SUSE（2020 年收購 Rancher Labs）維護，並通過 CNCF 認證。</p>
+<p>這裡說的 Kubernetes 標準安裝，就是 Kubernetes 專案原本提供的元件與安裝方式，不會先幫你把常用元件整合成開箱即用的發行版。</p>
+<p>和 Kubernetes 標準安裝相比，K3s 的核心差異是：單一執行檔、更精簡的依賴、預設內建 Traefik Ingress Controller，並以 SQLite 取代 etcd 作為資料儲存（有需要也可以換回 etcd）。</p>
+<p>你不需要自己從零把這些零件拼起來，就能快速擁有一個能跑的叢集。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Kubernetes 標準安裝</th>
+<th>K3s</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安裝方式</td>
+<td>多元件分開安裝</td>
+<td>單一執行檔</td>
+</tr>
+<tr>
+<td>預設 Ingress Controller</td>
+<td>無</td>
+<td><a target="_blank" rel="noopener" href="https://traefik.io/">Traefik</a>（內建）</td>
+</tr>
+<tr>
+<td>預設網路套件</td>
+<td>無</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/flannel-io/flannel">Flannel</a>（內建）</td>
+</tr>
+<tr>
+<td>資料儲存</td>
+<td>etcd</td>
+<td>SQLite 取代 etcd（可換回）</td>
+</tr>
+<tr>
+<td>記憶體需求</td>
+<td>較高</td>
+<td>較低（適合小型 VM）</td>
+</tr>
+<tr>
+<td>CNCF 認證</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+</tbody></table>
+<h2 id="WeaMind-的-K3s-叢集長什麼樣"><a href="#WeaMind-的-K3s-叢集長什麼樣" class="headerlink" title="WeaMind 的 K3s 叢集長什麼樣"></a>WeaMind 的 K3s 叢集長什麼樣</h2><p>叢集是 1 個控制平面節點 + 2 個工作節點，跑在 Hetzner 私有網路內。</p>
+<p>可以把這個架構簡單理解成：應用層放進 K3s 叢集，資料層則獨立留在叢集外。</p>
+<p><img src="https://img.kyomind.tw/img-20260329-120952.png" alt="WeaMind K3s 叢集架構圖，使用 Obsidian 渲染"><span class="cap">WeaMind K3s 叢集架構圖，使用 Obsidian 渲染</span></p>
+<p>K3s 預設以 DaemonSet 方式部署 Traefik，所以每台 worker 都會有一個實例。</p>
+<p>外部流量先經過 Hetzner Load Balancer 的 TCP 443 passthrough，再在 Traefik 這一層完成 TLS 終止，憑證則由 cert-manager 向 Let’s Encrypt 取得。</p>
+<p>資料層沒有放進叢集，而是保留在叢集外的堡壘機，透過 Hetzner 私有網路連接。</p>
+<hr>
+<h2 id="結語：剛剛好的複雜"><a href="#結語：剛剛好的複雜" class="headerlink" title="結語：剛剛好的複雜"></a>結語：剛剛好的複雜</h2><p>回到最初的問題：想學 Kubernetes，要用什麼工具？</p>
+<p>如果你的情境和我類似——個人專案或作品集、目標是真正理解建置過程、不想花大錢——那 K3s + 雲端 VM 是目前我覺得最務實的起點。</p>
+<p>不需要在 Minikube 和 Kind 之間糾結，也不需要一開始就上 managed K8s 或硬啃 kubeadm。選一個夠真實、又不會把你淹沒的環境，先跑起來再說。</p>
+<hr>
+<blockquote>
+<p><strong>如果這篇文章對你有幫助，歡迎到 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind">WeaMind GitHub 首頁</a> 給我一個星星</strong><br>想試用 WeaMind，可掃描下方 QR Code 或搜尋 LINE ID <code>@370ndhmf</code> 加入好友<br>你的支持是我持續分享的動力</p>
+</blockquote>
+<p><img src="https://img.kyomind.tw/wea-qrcode-min-20250929-223022.png"></p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind/" title="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集" rel="bookmark">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-actions/" title="GitHub Actions 入門：自動化 Lint、Format 與 Type Check" rel="bookmark">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/pyright/" title="Pyright 上手指南：Python 型別檢查的新選擇" rel="bookmark">Pyright 上手指南：Python 型別檢查的新選擇</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/WeaMind/">WeaMind</a>
+            <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/Kubernetes/">Kubernetes</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/orange-days-02/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">細數我過去的待業時光（二）律師國考與告別法律</span>
+        <span class="prev-text nav-mobile">細數我過去的待業時光（二）律師國考與告別法律</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">2</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">61</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">45</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

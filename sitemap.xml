@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/k3s-for-weamind/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind/</loc>
+    
+    <lastmod>2026-03-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/beyond-the-basic-stuff-with-python-01/</loc>
     
     <lastmod>2026-03-29</lastmod>
@@ -239,15 +257,6 @@
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2026-03-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weamind/</loc>
-    
-    <lastmod>2026-03-25</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
