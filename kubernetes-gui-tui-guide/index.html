@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-04-12T09:49:29+08:00" />
+  <meta property="article:modified_time" content="2026-04-12T12:43:00+08:00" />
 
 
 
@@ -247,7 +247,8 @@
 <h2 id="Headlamp：Dashboard-接班人"><a href="#Headlamp：Dashboard-接班人" class="headerlink" title="Headlamp：Dashboard 接班人"></a>Headlamp：Dashboard 接班人</h2><p>Kubernetes Dashboard 被封存後，官方在 repo 中建議改用 <a target="_blank" rel="noopener" href="https://headlamp.dev/">Headlamp</a> 作為替代方案。它目前由 Kubernetes SIG 維護，是一條有延續性的路線。</p>
 <p>實際用過之後，不難理解它為什麼會被指定為替代選項。</p>
 <p><img src="https://img.kyomind.tw/img-20260410-191937.png" alt="Headlamp UI"><span class="cap">Headlamp UI</span></p>
-<p>Headlamp 是個桌面 App，可直接讀取本機的 kubeconfig 連線資訊，不需要先往 cluster 裡裝一套東西，有效降低了使用門檻。</p>
+<p>Headlamp 一樣支援透過 Helm 以 <a target="_blank" rel="noopener" href="https://headlamp.dev/docs/latest/installation/in-cluster/">in-cluster</a> 的方式部署成 Web UI。</p>
+<p>不過對大多數人而言，最直覺的用法還是桌面版 app：可直接讀取本機的 kubeconfig 連線資訊，不需要先往 cluster 裡裝一套東西，有效降低了使用門檻。</p>
 <p>對「<strong>我只是想看懂叢集裡有什麼</strong>」這個需求來說，這條路明顯簡單得多。</p>
 <p>更別說它一樣能夠操作資源，但通常我不會這麼做😅。操作資源我會乖乖使用 <code>kubectl</code>。</p>
 <p>我未必認為它的畫面呈現有全方位超越 Dashboard，但它至少把安裝與登入的摩擦感降了很多。</p>
