@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南">
+  <meta property="og:title" content="Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南"><meta name="twitter:description" content="整理 Kubernetes Dashboard 退場後的現役 GUI 與 TUI 選項，幫助初學者依需求選出合適的叢集視覺化工具。">
+  <meta property="og:description" content="整理 Kubernetes Dashboard 退場後的現役 GUI 與 TUI 選項，幫助初學者依需求選出合適的叢集視覺化工具。"><meta name="twitter:image" content="https://img.kyomind.tw/img-20260412-174100.png">
+  <meta property="og:image" content="https://img.kyomind.tw/img-20260412-174100.png">
+<meta name="description" content="整理 Kubernetes Dashboard 退場後的現役 GUI 與 TUI 選項，幫助初學者依需求選出合適的叢集視覺化工具。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
+            
+
+  <meta property="article:modified_time" content="2026-04-12T09:46:14+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-04-12T09:30:22+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/kubernetes-gui-tui-guide/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/weamind/" class="weamind-link">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/DevOps/">DevOps (3)</a>
+          
+            <a href="/categories/Self/">Self (24)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (45)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (61)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link weamind-link" href="/weamind/">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-04-12
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernetes-Dashboard%EF%BC%9A%E6%99%82%E4%BB%A3%E7%9A%84%E7%9C%BC%E6%B7%9A"><span class="toc-text">Kubernetes Dashboard：時代的眼淚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8F%BE%E5%BD%B9%E9%81%B8%E9%A0%85%E4%B8%80%E8%A6%BD"><span class="toc-text">現役選項一覽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Headlamp%EF%BC%9ADashboard-%E6%8E%A5%E7%8F%AD%E4%BA%BA"><span class="toc-text">Headlamp：Dashboard 接班人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lens%EF%BC%9A%E5%AE%8C%E6%95%B4%EF%BC%8C%E4%BD%86%E6%9B%B4%E9%87%8D"><span class="toc-text">Lens：完整，但更重</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rancher%EF%BC%9A%E4%B8%8D%E5%8F%AA%E6%98%AF-cluster-viewer"><span class="toc-text">Rancher：不只是 cluster viewer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K9s%EF%BC%9ATUI-%E7%9A%84%E9%A6%96%E9%81%B8"><span class="toc-text">K9s：TUI 的首選</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20260412-174100.png" alt="圖片來源：Headlamp GitHub"><span class="cap">圖片來源：Headlamp GitHub</span></p>
+<p>前陣子讀《<a target="_blank" rel="noopener" href="https://readmoo.com/book/210309079000101">從異世界歸來發現只剩自己不會 Kubernetes</a>》時，作者在開篇不久就推薦了 Kubernetes Dashboard。</p>
+<p>我立刻燃起了興趣！畢竟我本來就是 GUI 愛好者。</p>
+<p>尤其 Kubernetes 這種東西，一開始光是名詞就夠多了。Pod、Deployment、Service、Node、Namespace，還沒開始排查問題，光是先建立畫面感就已經很吃力。</p>
+<p>如果有個視覺化工具，對初學者想必會很有幫助，本書作者也是這麼想的。</p>
+<p>本文想回答的問題是：「現在如果想用視覺化方式看 Kubernetes 叢集，該選什麼？」</p>
+<span id="more"></span>
+
+<p>討論範圍只限用來看叢集狀態的 GUI 和 TUI。像 Prometheus、Grafana、stern 這類不同範疇的工具，就先不展開。</p>
+<h2 id="Kubernetes-Dashboard：時代的眼淚"><a href="#Kubernetes-Dashboard：時代的眼淚" class="headerlink" title="Kubernetes Dashboard：時代的眼淚"></a>Kubernetes Dashboard：時代的眼淚</h2><p><a target="_blank" rel="noopener" href="https://github.com/kubernetes-retired/dashboard">Kubernetes Dashboard</a> 是官方推出的 Web UI，由 Kubernetes 社群維護，部署在 cluster 內，並透過瀏覽器存取。</p>
+<p>我照著書中的說明去裝了，也實際把它跑起來了，如下圖：</p>
+<p><img src="https://img.kyomind.tw/img-20260410-151325.png" alt="Kubernetes Dashboard"><span class="cap">Kubernetes Dashboard</span></p>
+<p>然而，這個專案已經在 2026 年 1 月 21 日被官方<strong>封存</strong>了。</p>
+<p>實際裝過一次之後，我也必須承認，它真的<strong>不算友好</strong>。</p>
+<h3 id="麻煩一：自己部署進-cluster"><a href="#麻煩一：自己部署進-cluster" class="headerlink" title="麻煩一：自己部署進 cluster"></a>麻煩一：自己部署進 cluster</h3><p>首先，它不是下載即用。你得把一整套元件<strong>手動部署到自己的 cluster</strong>，即便用 Helm 這種最簡單的方式，也需要一連串步驟才能裝好。</p>
+<p>而且這不只是「多做幾步」那麼簡單——它會<strong>持續佔用</strong> cluster 的資源。</p>
+<h3 id="麻煩二：每次連線都要重來一輪"><a href="#麻煩二：每次連線都要重來一輪" class="headerlink" title="麻煩二：每次連線都要重來一輪"></a>麻煩二：每次連線都要重來一輪</h3><p>更煩的是後續使用。每次要開 Dashboard，你得先跑一次 port-forward，然後透過指令產生 token。</p>
+<p>而且 token 的效期很短——用 <code>kubectl create token</code> 產生的話，預設只有一小時，過了就得重拿。長效 token 則要用另一套流程來產生。</p>
+<p>相較之下，像 Headlamp 這種直接吃 kubeconfig 的桌面 App，進入門檻明顯低得多。</p>
+<h3 id="舊時代的退場"><a href="#舊時代的退場" class="headerlink" title="舊時代的退場"></a>舊時代的退場</h3><p>只能說，Dashboard 這種 browser-based、in-cluster 的思路，確實愈來愈不符合現在大家使用 Kubernetes 的方式。</p>
+<p>也難怪它會被官方封存了。</p>
+<hr>
+<h2 id="現役選項一覽"><a href="#現役選項一覽" class="headerlink" title="現役選項一覽"></a>現役選項一覽</h2><p>講完退場的，接下來進入現役選項。本文要介紹的工具如下：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>類型</th>
+<th>特色</th>
+<th>適合情境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Headlamp</td>
+<td>GUI</td>
+<td>輕量、直接吃 kubeconfig、由 Kubernetes SIG 維護</td>
+<td>個人學習、單叢集、想要 GUI 輔助</td>
+</tr>
+<tr>
+<td>Lens</td>
+<td>GUI</td>
+<td>功能完整、整合度高、視覺化強</td>
+<td>想要 all-in-one 體驗、不介意工具較重</td>
+</tr>
+<tr>
+<td>Rancher</td>
+<td>GUI</td>
+<td>多叢集管理、權限與平台治理</td>
+<td>企業、平台團隊、多叢集場景</td>
+</tr>
+<tr>
+<td>K9s</td>
+<td>TUI</td>
+<td>快、輕、排查導向</td>
+<td>日常巡檢、快速觀察、鍵盤工作流</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Headlamp：Dashboard-接班人"><a href="#Headlamp：Dashboard-接班人" class="headerlink" title="Headlamp：Dashboard 接班人"></a>Headlamp：Dashboard 接班人</h2><p>Kubernetes Dashboard 被封存後，官方在 repo 中建議改用 <a target="_blank" rel="noopener" href="https://headlamp.dev/">Headlamp</a> 作為替代方案。它目前由 Kubernetes SIG 維護，是一條有延續性的路線。</p>
+<p>實際用過之後，不難理解它為什麼會被指定為替代選項。</p>
+<p><img src="https://img.kyomind.tw/img-20260410-191937.png" alt="Headlamp UI"><span class="cap">Headlamp UI</span></p>
+<p>Headlamp 是個桌面 App，可直接讀取本機的 kubeconfig 連線資訊，不需要先往 cluster 裡裝一套東西，有效降低了使用門檻。</p>
+<p>對「<strong>我只是想看懂叢集裡有什麼</strong>」這個需求來說，這條路明顯簡單得多。</p>
+<p>更別說它一樣能夠操作資源，但通常我不會這麼做😅。操作資源我會乖乖使用 <code>kubectl</code>。</p>
+<p>我未必認為它的畫面呈現有全方位超越 Dashboard，但它至少把安裝與登入的摩擦感降了很多。</p>
+<p>有了 Headlamp，你可以很快地點進 Pod、Deployment、Node，看資源關係、事件、YAML，先把整個 cluster 的結構感建立起來。對還在學 Kubernetes 的人來說，這種畫面感很有價值。</p>
+<p>所以如果你的需求是：單人、單叢集、學習導向、想保留 GUI 輔助，那 Headlamp 幾乎就是目前最合理的起點。</p>
+<hr>
+<h2 id="Lens：完整，但更重"><a href="#Lens：完整，但更重" class="headerlink" title="Lens：完整，但更重"></a>Lens：完整，但更重</h2><p><a target="_blank" rel="noopener" href="https://lenshq.io/">Lens</a> 是由 Mirantis 維護的 Kubernetes 桌面客戶端，也是目前功能最完整的選項之一。</p>
+<p>比起 Headlamp，Lens 的整合度與周邊都更完整：內建的 metrics 視覺化、整合式 terminal、多 cluster workspace，以及比較成熟的 extension 生態，這些都是它長年累積下來的優勢。</p>
+<p>對於想用一個工具滿足多種需求的人來說，這種體驗是有吸引力的。</p>
+<p>但它的缺點也很明顯，就是比較「<strong>重</strong>」。不只是執行層面的重，也包括整個工具帶有比較強的<strong>商業產品感</strong>。雖然有免費版可以用，但你打開它的時候，感受上比較像是進入一個完整產品的生態，而不只是開了一個輕量工具。</p>
+<p>更多關於 Lens 的介紹，可參考以下文章：</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10325689">可觀測性宇宙的第八天 - Kubernetes Lens 推坑 K8S GUI 神器介紹</a></p>
+</blockquote>
+<hr>
+<h2 id="Rancher：不只是-cluster-viewer"><a href="#Rancher：不只是-cluster-viewer" class="headerlink" title="Rancher：不只是 cluster viewer"></a>Rancher：不只是 cluster viewer</h2><p><a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a> 是由 SUSE 維護的開源平台，跟我<a href="/k3s-for-weamind/">之前文章</a>介紹過的 K3s 是同一家出品。</p>
+<p>它的定位跟前面兩個桌面工具不太一樣。如果只是把它跟 Headlamp、Lens 一起當成「看叢集狀態的工具」，就有點小看它了。</p>
+<p>先用一張表看清楚差異：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Headlamp &#x2F; Lens</th>
+<th>Rancher</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>桌面客戶端</td>
+<td>平台級管理介面</td>
+</tr>
+<tr>
+<td>部署方式</td>
+<td>本機安裝，直接吃 kubeconfig</td>
+<td>需要部署到 cluster 或獨立主機上</td>
+</tr>
+<tr>
+<td>使用對象</td>
+<td>個人開發者、學習者</td>
+<td>平台團隊、多叢集管理者</td>
+</tr>
+<tr>
+<td>核心能力</td>
+<td>查看與操作叢集資源</td>
+<td>多叢集治理、權限控管、應用發佈、團隊協作</td>
+</tr>
+</tbody></table>
+<p>Rancher 真正的主場，是平台團隊、多叢集、權限控管這些工作。它解決的是<strong>治理</strong>，而不僅僅是「看懂叢集」這樣的需求。</p>
+<p>Lens 和 Rancher 我在工作上都用過。就個人使用感受來說，Rancher 的 UI 我比較能接受；Lens 那種一看就知道是用 Electron 寫的笨重感，如果可以，我真的不想用XD</p>
+<hr>
+<h2 id="K9s：TUI-的首選"><a href="#K9s：TUI-的首選" class="headerlink" title="K9s：TUI 的首選"></a>K9s：TUI 的首選</h2><p><a target="_blank" rel="noopener" href="https://k9scli.io/">K9s</a> 是一個開源的 Kubernetes TUI 工具。所謂 TUI，就是「<strong>Terminal UI</strong>」——在終端機裡提供類似 GUI 的視覺化介面，但以鍵盤操作為主。像 htop（系統監控）、lazygit（Git 操作），都是經典的 TUI 工具。</p>
+<p>如果說 GUI 比較像是幫你<strong>建立畫面感</strong>，那 TUI 更像是幫你<strong>建立操作節奏</strong>——K9s 的價值就在這裡。它快、輕，而且非常排查導向。</p>
+<p>你可以透過它快速切換 namespace、查看 Pod 的狀態、進入容器的 terminal，甚至直接在裡面編輯資源的 YAML。</p>
+<p>跟 Headlamp、Lens 一樣，它也是本機安裝、直接吃 kubeconfig，不需要在 cluster 裡部署任何東西。</p>
+<p>對已經有一點 Kubernetes 手感、也不排斥終端機的人來說，K9s 很容易變成日常主力，因為它剛好補上了 GUI 不擅長的那一面。</p>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p><code>kubectl</code> 當然是最重要的，這點無庸置疑。</p>
+<p>GUI 和 TUI 的價值在於，它們讓初學者可以先透過比較友善的介面建立全局感，以更低的認知負擔熟悉 Kubernetes。</p>
+<p>所以如果你問我，Kubernetes 視覺化工具，該從哪個開始？</p>
+<p>那就是 <strong>Headlamp</strong>！</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind/" title="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集" rel="bookmark">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-way/" title="中信 My Way 數位帳戶：開戶、升級與使用心得" rel="bookmark">中信 My Way 數位帳戶：開戶、升級與使用心得</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Kubernetes/">Kubernetes</a>
+            <a href="/tags/%E9%96%8B%E7%AE%B1%E8%A9%95%E8%AB%96/">開箱評論</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/k3s-for-weamind/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</span>
+        <span class="prev-text nav-mobile">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">3</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">24</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">61</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">45</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:odinxp@email.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+      <i class="iconfont icon-right"></i>
+    </span>
+    <span class="author">Kyo Huang</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
