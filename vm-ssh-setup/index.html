@@ -16,8 +16,8 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
-<meta property="og:type" content="article"><meta name="twitter:title" content="為 e2-micro VM 建立 SSH 連線：本機與 GitHub">
-  <meta property="og:title" content="為 e2-micro VM 建立 SSH 連線：本機與 GitHub"><meta name="twitter:description" content="本文補完 e2-micro VM SSH 連線設定，包含本機與 GitHub 的連線。並介紹為何值得擁有一台免費的 E2 Micro VM。">
+<meta property="og:type" content="article"><meta name="twitter:title" content="GCP e2-micro VM SSH 設定補完">
+  <meta property="og:title" content="GCP e2-micro VM SSH 設定補完"><meta name="twitter:description" content="本文補完 e2-micro VM SSH 連線設定，包含本機與 GitHub 的連線。並介紹為何值得擁有一台免費的 E2 Micro VM。">
   <meta property="og:description" content="本文補完 e2-micro VM SSH 連線設定，包含本機與 GitHub 的連線。並介紹為何值得擁有一台免費的 E2 Micro VM。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
   <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
 <meta name="description" content="本文補完 e2-micro VM SSH 連線設定，包含本機與 GitHub 的連線。並介紹為何值得擁有一台免費的 E2 Micro VM。" />
@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-22T03:15:46+08:00" />
+  <meta property="article:modified_time" content="2026-05-08T07:09:30+08:00" />
 
 
 
@@ -73,7 +73,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
 </script>
 
-    <title>為 e2-micro VM 建立 SSH 連線：本機與 GitHub - Code and Me</title>
+    <title>GCP e2-micro VM SSH 設定補完 - Code and Me</title>
   <meta name="generator" content="Hexo 6.3.0"></head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -169,7 +169,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">為 e2-micro VM 建立 SSH 連線：本機與 GitHub
+      <h1 class="post-title">GCP e2-micro VM SSH 設定補完
         </h1>
 
       <div class="post-meta">
@@ -196,7 +196,7 @@
 <p>F1 時代的 RAM 大約只有 0.6 GiB（約 600MB），有開發經驗的都知道，這在某些情況下，用起來會有點捉襟見肘😂</p>
 <p>於是，我也跟著教學開了一台！免費的午餐怎麼能不拿呢？</p>
 <p>附帶一提，對 GCP 不熟的人——比如我，<strong>請一定要照著教學來建立 VM</strong>，以免設定時有所遺漏，一不小心就被收費。</p>
-<h2 id="最後一塊拼圖"><a href="#最後一塊拼圖" class="headerlink" title="最後一塊拼圖"></a>最後一塊拼圖</h2><p>不過原來的教學只寫到 VM 建立完成為止，對於我們這些後端工程師而言，顯然還有一個很重要的基礎設定沒做——SSH 連線。 </p>
+<h2 id="最後一塊拼圖"><a href="#最後一塊拼圖" class="headerlink" title="最後一塊拼圖"></a>最後一塊拼圖</h2><p>不過原來的教學只寫到 VM 建立完成為止，對於我們這些後端工程師而言，顯然還有一個很重要的基礎設定沒做——SSH 連線。</p>
 <p>因此，我想補齊這剩下的部分，包含：</p>
 <ol>
 <li>建立自己的 Linux 帳號。</li>
@@ -222,7 +222,7 @@
 <p>退一步來說，如果你真的需要一台免費的 VM 來部署 memos 這類的小服務，那麼與其選擇 <a target="_blank" rel="noopener" href="https://fly.io/">Fly.io</a> 或 <a target="_blank" rel="noopener" href="https://render.com/">render</a>，還不如先開一台 E2 免費 VM！</p>
 <p>等到不堪負荷了（但仍不想付錢XD），再考慮像 Fly.io 或 render 這些供應商也不遲。</p>
 <p>畢竟 GCP 這樣的大廠，福利政策突然變更、收回的機率，通常比上述公司小得多。</p>
-<p>除此之外，還有兩個關鍵理由。 </p>
+<p>除此之外，還有兩個關鍵理由。</p>
 <h3 id="一、延遲優勢"><a href="#一、延遲優勢" class="headerlink" title="一、延遲優勢"></a>一、延遲優勢</h3><p>我覺得，這台免費 VM 的最大亮點，是「<strong>延遲低</strong>」。</p>
 <p>GCP 雖然只開放美國三個地區的資料中心供免費機器使用，但實際測試從台灣連線，<strong>延遲還可以</strong>！</p>
 <p>請優先選擇<code>us-west1</code>（美國西部）地區，因為這個地區的延遲最低。</p>
@@ -242,7 +242,7 @@
 <li>每月 1 GB 出站流量</li>
 </ul>
 <p>這些規格看似陽春，但其實已能支撐許多日常小 app。若對照 DigitalOcean，類似的 VM 要價在每個月 5 美元以上。</p>
-<p><img src="https://img.kyomind.tw/20250614-110147-vm-ssh-setup.png">  </p>
+<p><img src="https://img.kyomind.tw/20250614-110147-vm-ssh-setup.png"></p>
 <p>所以，這樣的 VM 竟然可以免費使用，我覺得已經很大方。</p>
 <h2 id="小提醒：對外流量限制"><a href="#小提醒：對外流量限制" class="headerlink" title="小提醒：對外流量限制"></a>小提醒：對外流量限制</h2><p>雖然一直強調它的優點，但是 1GB 的「對外流量」如果要拿來做公開服務，很可能會不夠用。</p>
 <p>你看上圖 DigitalOcean 的價格，6 美元的 VM 每月有著 1000 GiB 的流量。</p>
@@ -326,6 +326,7 @@
     </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-zsh-zinit/" title="Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit" rel="bookmark">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/update-my-droplet/" title="計畫更新我的 DigitalOcean VM" rel="bookmark">計畫更新我的 DigitalOcean VM</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Linux/">Linux</a>
+            <a href="/tags/GCP/">GCP</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/weekly-review-43/">
