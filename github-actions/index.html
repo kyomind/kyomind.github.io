@@ -18,8 +18,8 @@
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="GitHub Actions 入門：自動化 Lint、Format 與 Type Check">
   <meta property="og:title" content="GitHub Actions 入門：自動化 Lint、Format 與 Type Check"><meta name="twitter:description" content="介紹 CI（Continuous Integration），與如何使用 GitHub Actions 實作 CI 流程，並討論真實需求對學習 CI 工具的重要性。">
-  <meta property="og:description" content="介紹 CI（Continuous Integration），與如何使用 GitHub Actions 實作 CI 流程，並討論真實需求對學習 CI 工具的重要性。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
-  <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:description" content="介紹 CI（Continuous Integration），與如何使用 GitHub Actions 實作 CI 流程，並討論真實需求對學習 CI 工具的重要性。"><meta name="twitter:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+  <meta property="og:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
 <meta name="description" content="介紹 CI（Continuous Integration），與如何使用 GitHub Actions 實作 CI 流程，並討論真實需求對學習 CI 工具的重要性。" />
 
 
@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-05-08T08:01:03+08:00" />
+  <meta property="article:modified_time" content="2026-05-08T14:03:01+08:00" />
 
 
 
@@ -186,7 +186,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-CI%EF%BC%9F%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81-CI%EF%BC%9F"><span class="toc-text">什麼是 CI？為什麼需要 CI？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84-CI-%E5%B7%A5%E5%85%B7%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">常見的 CI 工具有哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%8D%E8%AD%98-GitHub-Actions"><span class="toc-text">認識 GitHub Actions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%B8%E7%BF%92-CI-%E5%B7%A5%E5%85%B7%E6%9C%80%E5%A5%BD%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%BE%9E%E9%9C%80%E6%B1%82%E9%96%8B%E5%A7%8B"><span class="toc-text">學習 CI 工具最好的方式：從需求開始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%92%E6%9C%89%E9%9C%80%E6%B1%82%E6%80%8E%E9%BA%BC%E8%BE%A6%EF%BC%9F"><span class="toc-text">沒有需求怎麼辦？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Actions-%E5%AF%A6%E4%BD%9C"><span class="toc-text">GitHub Actions 實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Action-YAML-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Action YAML 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%9C%80%E9%97%9C%E9%8D%B5%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-text">結語：最關鍵的第一步</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
 <blockquote>
 <p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 2 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
 </blockquote>
