@@ -71,11 +71,11 @@
     <category term="DevOps" scheme="https://blog.kyomind.tw/categories/DevOps/"/>
     
     
+    <category term="Kubernetes" scheme="https://blog.kyomind.tw/tags/Kubernetes/"/>
+    
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
     <category term="Linux" scheme="https://blog.kyomind.tw/tags/Linux/"/>
-    
-    <category term="Kubernetes" scheme="https://blog.kyomind.tw/tags/Kubernetes/"/>
     
     <category term="Hetzner" scheme="https://blog.kyomind.tw/tags/Hetzner/"/>
     
@@ -138,9 +138,9 @@
     <category term="DevOps" scheme="https://blog.kyomind.tw/categories/DevOps/"/>
     
     
-    <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
-    
     <category term="Kubernetes" scheme="https://blog.kyomind.tw/tags/Kubernetes/"/>
+    
+    <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
     <category term="Hetzner" scheme="https://blog.kyomind.tw/tags/Hetzner/"/>
     
@@ -317,11 +317,11 @@
     
     <category term="WeaMind" scheme="https://blog.kyomind.tw/tags/WeaMind/"/>
     
+    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
+    
     <category term="Python" scheme="https://blog.kyomind.tw/tags/Python/"/>
     
     <category term="Poetry" scheme="https://blog.kyomind.tw/tags/Poetry/"/>
-    
-    <category term="Docker" scheme="https://blog.kyomind.tw/tags/Docker/"/>
     
     <category term="uv" scheme="https://blog.kyomind.tw/tags/uv/"/>
     
