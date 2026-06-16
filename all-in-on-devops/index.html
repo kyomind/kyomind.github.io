@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Self" />
             
 
-  <meta property="article:modified_time" content="2026-06-16T06:23:41+08:00" />
+  <meta property="article:modified_time" content="2026-06-16T14:27:38+08:00" />
 
 
 
@@ -188,10 +188,10 @@
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20260614-143640.jpg"></p>
 <p>2018 年夏，我剛從資策會結訓不久，參加了一場同為「<a target="_blank" rel="noopener" href="https://www.ispan.com.tw/longterm/JJBDSET/">大數據班</a>」學長姐們的聚餐。想當然耳，只有還繼續留在軟體這個領域的人才會想出席吧！</p>
-<p>那時我正處於「人生的暑假」——結訓後不知道該何去何從，對程式的興趣普通，但又不清楚自己能做什麼，所以就去了，聽聽前輩的意見也好。</p>
-<p>餐會上遇到了一個當 DevOps 的學長，和他聊了許多，後來才重新振作、自學程式，隔年終於找到了工作，開始了我的軟體開發之路。</p>
+<p>那時我正處於「人生的暑假」——結訓後不知道該何去何從，對程式的興趣普通，但又不清楚自己能做什麼，所以就去了，聽聽前輩們的意見也好。</p>
+<p>會上遇到了一個正在當 DevOps 的學長，和他聊了許多，幾天後我才重新振作，繼續自學程式，隔年終於找到了工作，開始了我的軟體開發之路。</p>
 <hr>
-<p>從資料工程師到 Python 後端，我自認為對程式充滿熱情。</p>
+<p>從資料工程師到 Python 後端，隨著時間的推移，我自認為對程式充滿熱情。</p>
 <p>幾年前和女友介紹什麼是 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/DevOps">DevOps</a>，她聽完後不禁問我：</p>
 <blockquote>
 <p>那你會不會想當 DevOps？</p>
@@ -221,7 +221,7 @@
 <hr>
 <h2 id="刺激-2025"><a href="#刺激-2025" class="headerlink" title="刺激 2025"></a>刺激 2025</h2><p>2025 年，AI 輔助開發的進展快得嚇人。</p>
 <p>年初，AI coding agent 還沒那麼稱手好用，寫出來的東西常常需要大幅修改，但擁有視覺能力（vision）的模型已經逐漸成為標配。</p>
-<p>到了年中，工具成熟的速度遠超預期——GitHub Copilot 推出 agent 模式，AI 不再只是補全程式碼，而是能<strong>理解整個專案的脈絡</strong>，主動完成跨檔案的修改。</p>
+<p>到了年中，工具成熟的速度遠超預期——GitHub Copilot 推出 Agent 模式，AI 不再只是補全程式碼，而是能<strong>理解整個專案的脈絡</strong>，主動完成跨檔案的修改。</p>
 <p>年底，AI 已經能透過自然語言互動，幾分鐘內完成過去需要工程師花好幾個小時才能寫好的功能。</p>
 <p>現在再回頭看看我寫的這篇〈<a href="/cursor/">Cursor IDE 心得：三大亮點與三個阻礙</a>〉，不禁感嘆，那簡直是「上古時代」的事了——其實才過了快 2 年而已😅</p>
 <h2 id="AI-正在重寫開發生態"><a href="#AI-正在重寫開發生態" class="headerlink" title="AI 正在重寫開發生態"></a>AI 正在重寫開發生態</h2><p>作為 2022 年就開始使用 GitHub Copilot 的老用戶，我的 AI 輔助開發演進史如下：</p>
@@ -240,29 +240,29 @@
 </blockquote>
 <p>這個問題，每個人有自己的答案。可以確定的是，從 2025 下半年開始，我已<a href="/about/#AI-%E6%99%82%E4%BB%A3%E7%9A%84%E9%96%8B%E7%99%BC%E8%80%85">不再自己動手寫程式</a>。</p>
 <hr>
-<h2 id="Application-的極限"><a href="#Application-的極限" class="headerlink" title="Application 的極限"></a>Application 的極限</h2><p>第三份工作，我首次進到有完整 SRE 團隊的公司，開發 LLM App 專案，類似企業版的 ChatGPT。</p>
-<p>我所在的後端團隊負責寫 application，SRE 則透過 Kubernetes 部署與維運。彼此分工清晰，但也讓我看清一件事：application 寫好，不代表服務就會穩定運作。</p>
-<p>有些問題不一定是程式邏輯出錯，而是部署、環境、服務之間的協調。甚至程式錯誤時，我也無法在本地看 log，要先登入 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a>，再去 Pod 裡面撈資料。有時候則是 <a target="_blank" rel="noopener" href="https://ai.azure.com/">AI Foundry</a> 或其他 infra 組件出了狀況。</p>
-<p>這些東西——尤其是 Kubernetes——讓我覺得<strong>非常陌生</strong>。</p>
-<p>以前都是 VM 部署，然後 docker-compose，這是我第一次深深感受到，<strong>服務遠不止是寫程式而已</strong>。</p>
-<p>部署並不是配角。而我現階段只懂應用層，這是一個<strong>明顯的局限</strong>。</p>
-<h2 id="回到入職之前"><a href="#回到入職之前" class="headerlink" title="回到入職之前"></a>回到入職之前</h2><p>其實在 2025 年 3 月入職之前，我就有考慮要學習 DevOps 相關技能。</p>
-<p>在投遞那波後端職缺時，我都會特別問到：「你們這邊有沒有 SRE 團隊？DevOps 流程怎麼跑？」——這是我挑選職缺的重要考量之一。</p>
-<p>當時的想法是：「我已具備一定後端經驗，如果再多學些 DevOps 技能，像是 CI&#x2F;CD、雲端架構等，我就能成為一個<strong>更全面的後端開發者</strong>。Scope 更大，價值更高。」</p>
+<h2 id="Application-的極限"><a href="#Application-的極限" class="headerlink" title="Application 的極限"></a>Application 的極限</h2><p>第三份工作，我首次進到了有完整 SRE 團隊的公司，開發 LLM App 專案，可以想成是企業內部版的 ChatGPT。</p>
+<p>我所在的後端團隊負責寫 application，SRE 則用 <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a> 部署與維運。彼此分工清晰，但也讓我看清一件事：application 寫好，<strong>不代表</strong>服務就會穩定運作。</p>
+<p>有些問題不一定是程式邏輯出錯，而是環境、部署、微服務之間的<strong>協調</strong>。甚至程式發生錯誤時，我無法直接在本地看 log，要先登入 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a>，再去 Pod 裡面撈資料。有時候則是 <a target="_blank" rel="noopener" href="https://ai.azure.com/">AI Foundry</a> 或其他 infra 組件出了狀況。</p>
+<p>這些東西——<strong>尤其是 Kubernetes</strong>——讓我覺得<strong>非常陌生</strong>。</p>
+<p>以前都是 VM 部署，然後 <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Docker Compose</a>，這是我第一次深深感受到，<strong>服務遠不止是寫程式而已</strong>。</p>
+<p>部署並不是配角。而我當下只懂應用層，這是一個<strong>明顯的局限</strong>。</p>
+<h2 id="回到入職之前"><a href="#回到入職之前" class="headerlink" title="回到入職之前"></a>回到入職之前</h2><p>其實在 2025 年 3 月入職前，我就有考慮要學習 DevOps 相關技能。</p>
+<p>在面試那波後端職缺時，我都會特別問到：「你們有沒有 SRE 團隊？DevOps 流程怎麼跑？」——這是我挑選職缺的重要考量之一。</p>
+<p>當時的想法是：「我已具備一定後端經驗，如果再多學些 DevOps 技能，像是 CI&#x2F;CD、雲端架構等，我就能成為一個<strong>更全面的後端開發者</strong>。」</p>
 <p>所以我選了這份工作：有完整 SRE 團隊，同時是開發 LLM App——目前正流行，也是我很想接觸的領域。</p>
 <p>但不得不承認，那時我的心態還是「<strong>後端才是王道，DevOps 只是輔助</strong>」。</p>
 <p>看著我對面的 SRE leader，每天對著不同的 YAML 檔搞部署。總覺得那不是我要的。我只是想「<strong>多學一點技能</strong>」而已。</p>
 <hr>
 <h2 id="八月的一場聚會"><a href="#八月的一場聚會" class="headerlink" title="八月的一場聚會"></a>八月的一場聚會</h2><p>2025 年 8 月，我參加了一場軟體工程師聚會。</p>
-<p>遇到幾個年資相近的後端，彼此分享了不少後端甘苦談。聊著聊著，話題自然轉向同一個問題：「<strong>職涯滿 5 年之後</strong>，下一步是什麼？」</p>
+<p>遇到幾個年資相近的後端，彼此分享了不少後端甘苦談。聊著聊著，話題自然而然轉向了一個靈魂拷問：「<strong>職涯滿 5 年之後</strong>，下一步是什麼？」</p>
 <p>我們好像都遇到了一個「瓶頸」——這似乎是軟體工程師的普遍現象。</p>
 <p>職涯的前 5 年，你可以自由探索、發揮，學一堆技能，但滿 5 年之後，市場可能會用<strong>完全不一樣的標準</strong>來看待你：你要資深、要擁有深刻的實戰經驗。</p>
 <p>屆時若沒有一個相對鮮明的<strong>角色定位</strong>，你很難說出自己能帶來什麼不一樣的價值。</p>
 <p>這場聚會，成了我軟體職涯的<strong>重要轉折點</strong>。</p>
 <hr>
-<h2 id="收起「扮家家酒」的決心"><a href="#收起「扮家家酒」的決心" class="headerlink" title="收起「扮家家酒」的決心"></a>收起「扮家家酒」的決心</h2><p>這次聚會讓我意識到，原先那種「既要、又要」、「後端才是主體、DevOps 只是輔助」的心態，雖然不能說是錯，但它可能會讓我最終一事無成，依舊是個平凡的後端。</p>
+<h2 id="收起「扮家家酒」的決心"><a href="#收起「扮家家酒」的決心" class="headerlink" title="收起「扮家家酒」的決心"></a>收起「扮家家酒」的決心</h2><p>這次聚會讓我意識到，原先那種「既要、又要」、「後端才是主體、DevOps 只是輔助」的心態，雖然不能說是錯，但它可能會讓我最終一事無成，依舊是個平庸的後端。</p>
 <p>這不是我想要的模樣。<strong>要玩，就要 all in</strong>。</p>
-<p>但此刻要做出重大改變，顯然有困難，而且基於團隊與職責分工，身為後端開發人員，我無法接觸到太多 SRE 的 infra 設施，自然也無法學習多少 DevOps 技能。</p>
+<p>但此刻要做出重大改變，顯有困難，而且基於團隊與職責分工，身為後端人員，我無法接觸到太多 SRE 的 infra，自然也無法學習多少 DevOps 技能。</p>
 <blockquote>
 <p>那怎麼辦？</p>
 </blockquote>
@@ -277,13 +277,13 @@
 <p>後端要辛苦手刻的 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10267454">db 主從複製</a>，雲端早就服務化了！不得不說，有一種「已知用火」的興奮感🤩</p>
 <p>一邊工作一邊準備，總計花了 105 小時，我在 12 月 15 日<a target="_blank" rel="noopener" href="https://www.credly.com/badges/b23af905-9523-41cf-ad93-02106c6d1be0">通過了 SAA 考試</a>。</p>
 <p>此時我轉職 DevOps 的<strong>內心篤定感</strong>，已經從 8 月時的 20-30% 大幅成長到 60-70%。</p>
-<h3 id="遷移到-K3s"><a href="#遷移到-K3s" class="headerlink" title="遷移到 K3s"></a>遷移到 K3s</h3><p>通過 SAA 後，我「休息」了一星期，接著開始學習 <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a>（K8s）。</p>
+<h3 id="遷移到-K3s"><a href="#遷移到-K3s" class="headerlink" title="遷移到 K3s"></a>遷移到 K3s</h3><p>通過 SAA 後，我「休息」了一星期，接著開始學習 Kubernetes（K8s）。</p>
 <p>哪怕已有近 6 年的後端開發經驗，說真的，<strong>剛開始我很難上手</strong>，看 Udemy 的線上課也覺得成效不佳。</p>
 <p>於是我決定——<strong>直接實作</strong>：把 WeaMind 從單機部署遷移到 <a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 叢集。這剛好是一個絕佳的練習機會。</p>
 <blockquote>
 <p>相關文章：<a href="/k3s-for-weamind/">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></p>
 </blockquote>
-<p>在 AI 輔助下，從頭開始在 <a href="https://blog.kyomind.tw/hetzner/">Hetzner</a> 上建立 Kubernetes 叢集環境：開 VM、架私網、加 Node、寫 Deployment、設定 Ingress、搞定 TLS 憑證等。</p>
+<p>在 AI 輔助下，從頭開始在 <a href="https://blog.kyomind.tw/hetzner/">Hetzner</a> 上建立 <strong>Kubernetes 叢集</strong>：開 VM、架私有網路、加 Node、寫 Deployment、設定 Ingress、搞定 TLS 憑證等。</p>
 <p>過程中踩了不少坑——比如節點竟然預設吃公網 IP！——但也因此對 K8s 的運作有了更多了解。</p>
 <p>2026 年 1 月底，<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">K3s 版本的 WeaMind</a> 上線。</p>
 <p>此時，我對轉職 DevOps 的決心，已經來到 80% 以上——足夠了。</p>
