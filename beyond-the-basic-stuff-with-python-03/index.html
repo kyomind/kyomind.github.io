@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:52:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -239,23 +239,23 @@
 <p>卻常常沒有被好好遵守。</p>
 <p>簡言之，為確保函式的「<strong>可預測性</strong>」，我們應該努力讓函式只回傳「<strong>單一資料型別</strong>」的值。比如<strong>總是</strong>回傳整數或字串，而不要有時回傳字串，有時則回傳布林值。</p>
 <p>這不一定容易做到，但我更常遇到的情況是：<strong>明明有替代方案讓回傳型別單一化，卻沒有善用。</strong></p>
-<h3 id="以False代替raise"><a href="#以False代替raise" class="headerlink" title="以False代替raise"></a>以<code>False</code>代替<code>raise</code></h3><p>最常見的例子就是：<strong>該拋出錯誤時候，卻只用<code>return False</code> 替代</strong>。</p>
-<p>意即，當函式正常執行時，回傳一般正常的 output 值。但當執行失敗時，卻是回傳<code>False</code>——這簡直令人髮指，而且我相信你一定看過這樣的函式。</p>
-<p>必須說明，發生錯誤時不拋出而選擇<code>return False</code>未必總是不好的，就像 Django REST framework 序列化器的<code>is_valid</code>方法，預設也是返回一個布林值（可以用<code>raise_exception=True</code>參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
-<p>不過，<strong>如果你選擇在遇到錯誤時<code>return False</code>，則應該在函式正確執行時，<code>return True</code>，</strong>以保持回傳型別的一致性。</p>
-<p>而且<strong>函式命名</strong>也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的<code>is_valid</code>，或常見的<code>has_permission</code>、<code>is_authenticated</code>等。這些都是常見的最佳實踐。</p>
+<h3 id="以-False-代替-raise"><a href="#以-False-代替-raise" class="headerlink" title="以 False 代替 raise"></a>以 <code>False</code> 代替 <code>raise</code></h3><p>最常見的例子就是：<strong>該拋出錯誤時候，卻只用 <code>return False</code> 替代</strong>。</p>
+<p>意即，當函式正常執行時，回傳一般正常的 output 值。但當執行失敗時，卻是回傳 <code>False</code>——這簡直令人髮指，而且我相信你一定看過這樣的函式。</p>
+<p>必須說明，發生錯誤時不拋出而選擇 <code>return False</code> 未必總是不好的，就像 Django REST framework 序列化器的 <code>is_valid</code> 方法，預設也是返回一個布林值（可以用 <code>raise_exception=True</code> 參數改為直接拋出錯誤），方便你進行更多後續操作。</p>
+<p>不過，<strong>如果你選擇在遇到錯誤時 <code>return False</code>，則應該在函式正確執行時，<code>return True</code>，</strong>以保持回傳型別的一致性。</p>
+<p>而且<strong>函式命名</strong>也要跟著配合，讓人一看就知曉<strong>該函式、方法會返回一個布林值</strong>，比如上述的 <code>is_valid</code>，或常見的 <code>has_permission</code>、<code>is_authenticated</code> 等。這些都是常見的最佳實踐。</p>
 <h3 id="錯誤示範"><a href="#錯誤示範" class="headerlink" title="錯誤示範"></a>錯誤示範</h3><p>我們看一下這個錯誤示範：假設我們有一個函式，目的是從一個 JSON 文件中讀取設定資訊。</p>
-<p>如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常——並返回<code>False</code>。</p>
+<p>如果讀取成功，它會返回一個 Python 字典；如果讀取失敗，它會捕捉異常——並返回 <code>False</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_config_from_file</span>(<span class="params">file_path</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            config = json.load(f)</span><br><span class="line">        <span class="keyword">return</span> config</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span>  <span class="comment"># 這裡是問題所在</span></span><br></pre></td></tr></table></figure>
 
-<p>這個函式在<code>except</code>區塊裡面直接返回<code>False</code>，這會導致以下問題：</p>
+<p>這個函式在 <code>except</code> 區塊裡面直接返回 <code>False</code>，這會導致以下問題：</p>
 <ol>
-<li><strong>資料型別不一致</strong>：正常情況下返回一個字典，異常情況下返回<code>False</code>（布林值）。</li>
-<li><strong>誤導函式使用者</strong>：使用者可能會<strong>誤以為</strong><code>False</code>是一個<strong>有效的設定</strong>（只是設定值為<code>False</code>），進而嘗試在其上進行操作，導致更多的錯誤。</li>
-<li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為<code>False</code>，然後再決定是否進行後續的操作。</li>
+<li><strong>資料型別不一致</strong>：正常情況下返回一個字典，異常情況下返回 <code>False</code>（布林值）。</li>
+<li><strong>誤導函式使用者</strong>：使用者可能會<strong>誤以為</strong> <code>False</code> 是一個<strong>有效的設定</strong>（只是設定值為 <code>False</code>），進而嘗試在其上進行操作，導致更多的錯誤。</li>
+<li><strong>後續處理困難</strong>：函式使用者必須額外檢查返回值是否為 <code>False</code>，然後再決定是否進行後續的操作。</li>
 </ol>
 <hr>
-<p>「<code>return</code>型別不確定」不只發生在例外處理，但它確實<strong>很常發生</strong>在例外處理，我看過<strong>不止一次</strong>類似的真實案例。</p>
+<p>「<code>return</code> 型別不確定」不只發生在例外處理，但它確實<strong>很常發生</strong>在例外處理，我看過<strong>不止一次</strong>類似的真實案例。</p>
 <p>除此之外，還有「函式正常執行回傳一個類別物件，失敗時回傳一個 Python tuple——包含錯誤代碼和錯誤訊息」這種非常<strong>反直覺</strong>的設計。彷彿是在告訴我們：</p>
 <blockquote>
 <p>這個函式的回傳值，可能是一個物件，也可能是一個 tuple，<strong>你自己判斷吧！</strong></p>

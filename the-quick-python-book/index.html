@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-03-22T16:53:39+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -257,7 +257,7 @@
 <p>這是一個重要且<strong>影響無所不在</strong>的概念。</p>
 <p>把變數和「變數值」的關係，想像成水桶和「水桶中的水」，無疑是符合人類直覺的思維——然而 Python 並非如此。Python 中的變數，<a href="https://blog.kyomind.tw/gitlens-sourcetree-diff-branches/#%E5%88%86%E6%94%AF%E5%B7%AE%E7%95%B0%E5%8D%B3-commit-%E5%B7%AE%E7%95%B0">就像 Git 的分支一樣</a>，都只是一張「<strong>貼紙（標籤）</strong>」，而變數的實際內容，則另有<strong>參照</strong>主體——<strong>物件</strong>。</p>
 <p>換句話說，在 Python 中，我們只是把變數這張貼紙，<strong>貼到「物件」上面</strong>而已。</p>
-<p>比如<code>number = 3</code>，number 是一個變數，而 3 是一個獨立的整數物件，是這個<code>=</code>把兩者<strong>暫時綁定（參照）</strong>在一起了。但 3 依舊不是 number 的一部分，只是 number 變數的「<strong>參考（reference）</strong>」。</p>
+<p>比如 <code>number = 3</code>，number 是一個變數，而 3 是一個獨立的整數物件，是這個 <code>=</code> 把兩者<strong>暫時綁定（參照）</strong>在一起了。但 3 依舊不是 number 的一部分，只是 number 變數的「<strong>參考（reference）</strong>」。</p>
 <blockquote>
 <p>為什麼這個觀念很重要？</p>
 </blockquote>
@@ -265,11 +265,11 @@
 <h3 id="實例說明"><a href="#實例說明" class="headerlink" title="實例說明"></a>實例說明</h3><p>想要驗證變數是標籤而非水桶，最典型的例子，就是當<strong>多個變數同時參考（參照）到同一個可變物件</strong>（比如 list）時：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">c = b = a</span><br><span class="line">c[<span class="number">1</span>] = <span class="number">5</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c)</span><br></pre></td></tr></table></figure>
 
-<p>上面的 a、b、c，實際上都參考了同一個可變物件<code>[1 ,2 ,3]</code>（標籤說），而不是各自擁有自己變數值（水桶說）。</p>
-<p>因此，<code>print</code>輸出結果會是：</p>
+<p>上面的 a、b、c，實際上都參考了同一個可變物件 <code>[1 ,2 ,3]</code>（標籤說），而不是各自擁有自己變數值（水桶說）。</p>
+<p>因此，<code>print</code> 輸出結果會是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>], [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
-<p>上面第 3 行程式碼<code>c[1] = 5</code>，僅僅是變更了 c 變數的內容，結果卻是 <strong>a、b、c 三者都受到了影響</strong>，正是因為 a、b、c 的參照，其實都是指向（參照）<strong>同一個物件</strong>所致。</p>
+<p>上面第 3 行程式碼 <code>c[1] = 5</code>，僅僅是變更了 c 變數的內容，結果卻是 <strong>a、b、c 三者都受到了影響</strong>，正是因為 a、b、c 的參照，其實都是指向（參照）<strong>同一個物件</strong>所致。</p>
 <p>此外，為何說 Python「變數即標籤」特性影響無所不在？因為只有理解了這個特性，才能進一步理解它所<strong>衍生出來的各種 Python 行為特徵。</strong></p>
 <p>其中最具代表性的，就屬接下來要登場的「使用可變物件作為引數」。</p>
 <h2 id="二、使用可變物件作為引數時要小心"><a href="#二、使用可變物件作為引數時要小心" class="headerlink" title="二、使用可變物件作為引數時要小心"></a>二、使用可變物件作為引數時要小心</h2><p>參見本書：頁 9-16。</p>
@@ -302,17 +302,17 @@
 <h3 id="實例"><a href="#實例" class="headerlink" title="實例"></a>實例</h3><p>用書中實例來說明上述概念：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">num, list1, list2</span>):</span><br><span class="line">    num = <span class="number">3</span></span><br><span class="line">    list1 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">    list2[<span class="number">0</span>] = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">y = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">z = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">func(x, y, z)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x, y, z, sep=<span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>為了方便辨識，我用<code>sep=&#39;\n&#39;</code>讓<code>print</code>的每一個結果換行，實際輸出如下：</p>
+<p>為了方便辨識，我用 <code>sep=&#39;\n&#39;</code> 讓 <code>print</code> 的每一個結果換行，實際輸出如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">[[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
 <h3 id="x、y、z-變數狀態解說"><a href="#x、y、z-變數狀態解說" class="headerlink" title="x、y、z 變數狀態解說"></a>x、y、z 變數狀態解說</h3><ol>
-<li><code>x</code>在函式外部的值為 5，型別是<code>int</code>，屬於<strong>不可變物件</strong>。作為<strong>引數</strong>傳入函式中，因為在函式中「<strong>重新參照（重新賦值）</strong>」了新物件 3。<ol>
+<li><code>x</code> 在函式外部的值為 5，型別是 <code>int</code>，屬於<strong>不可變物件</strong>。作為<strong>引數</strong>傳入函式中，因為在函式中「<strong>重新參照（重新賦值）</strong>」了新物件 3。<ol>
 <li>依上述說明，重新參照時，外部的變數<strong>不受影響</strong>，其值仍為原來的 5。</li>
 <li>無論引數是可變或不可變物件，只要函式內部<strong>只是重新參照而非修改內容</strong>，外部變數都不受影響。</li>
 </ol>
 </li>
-<li>同理，<code>y</code>傳入函式後為參數<code>list1</code>，雖然<code>y</code>是「<strong>可變物件</strong>」，但其在函式內部的行為<strong>也只是重新參照</strong>（重新賦值）為<code>[4, 5, 6]</code>，所以外部變數<code>y</code>也不受影響。</li>
-<li>但<code>z</code>就不同，<code>list2[0] = [4, 5, 6]</code>並非重新賦值，而是<strong>對其內容進行修改</strong>。前面已經提過，因為引數與參數所參照的是「<strong>同一個物件</strong>」，對參數的修改，相當於<strong>「對共同參照物件的修改」</strong>。結果就是——外部的<code>z</code>跟著一起改變！</li>
+<li>同理，<code>y</code> 傳入函式後為參數 <code>list1</code>，雖然 <code>y</code> 是「<strong>可變物件</strong>」，但其在函式內部的行為<strong>也只是重新參照</strong>（重新賦值）為 <code>[4, 5, 6]</code>，所以外部變數 <code>y</code> 也不受影響。</li>
+<li>但 <code>z</code> 就不同，<code>list2[0] = [4, 5, 6]</code> 並非重新賦值，而是<strong>對其內容進行修改</strong>。前面已經提過，因為引數與參數所參照的是「<strong>同一個物件</strong>」，對參數的修改，相當於<strong>「對共同參照物件的修改」</strong>。結果就是——外部的 <code>z</code> 跟著一起改變！</li>
 </ol>
 <p>若稍微修改一下上面程式碼的內容，把這兩行：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br><span class="line">z = [<span class="number">1</span> ,<span class="number">2</span> ,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
@@ -332,28 +332,28 @@
 <p>即便是使用 Python 一段時間的開發人員，還是很可能對<strong>函式內的區域變數</strong>只有<strong>模糊的概念</strong>，因而寫出一些乍看有點摸不著頭緒的內容，比如下面的程式碼：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_total</span>(<span class="params">list1</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;取得傳入的list中的數值總合，如果為空list，則拋出錯誤&quot;&quot;&quot;</span></span><br><span class="line">    total = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> list1:</span><br><span class="line">        total = <span class="built_in">sum</span>(list1)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Empty list values！&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
 
-<p>這是一個我在 code review 時很常遇到的問題，而且每隔一段時間就會反覆出現——<code>total = None</code>這行純屬多餘。</p>
-<p>在本例中，並<strong>不需要</strong>給定<code>total</code>變數的<strong>預設值</strong>。換句話說，即使沒有<code>total = None</code>這一行，函式的行為也不會受到影響。</p>
-<p>在此我們先不考慮<code>else</code>其實可以用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%AB%E8%AF%AD%E5%8F%A5">衛語句</a>（guard clause）替代，且假設<code>list1</code>參數的元素內容不會有型別錯誤。以此為前提，<strong>我們只關注一個核心問題</strong>：</p>
+<p>這是一個我在 code review 時很常遇到的問題，而且每隔一段時間就會反覆出現——<code>total = None</code> 這行純屬多餘。</p>
+<p>在本例中，並<strong>不需要</strong>給定 <code>total</code> 變數的<strong>預設值</strong>。換句話說，即使沒有 <code>total = None</code> 這一行，函式的行為也不會受到影響。</p>
+<p>在此我們先不考慮 <code>else</code> 其實可以用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8D%AB%E8%AF%AD%E5%8F%A5">衛語句</a>（guard clause）替代，且假設 <code>list1</code> 參數的元素內容不會有型別錯誤。以此為前提，<strong>我們只關注一個核心問題</strong>：</p>
 <blockquote>
-<p>為什麼開發人員會覺得在<code>if</code>&#x2F;<code>else</code>判斷式之前，應該要先有一行<code>total = None</code>作為預設值？</p>
+<p>為什麼開發人員會覺得在 <code>if</code>&#x2F;<code>else</code> 判斷式之前，應該要先有一行 <code>total = None</code> 作為預設值？</p>
 </blockquote>
 <h3 id="未賦值先使用？"><a href="#未賦值先使用？" class="headerlink" title="未賦值先使用？"></a>未賦值先使用？</h3><p>當你詢問對方為何要加上這一行，得到的回答通常是：</p>
 <blockquote>
 <p>因為怕產生<strong>未賦值先使用</strong>的錯誤。</p>
 </blockquote>
 <p><strong>但其實這裡不會。</strong></p>
-<p>會產生如此誤解的原因是：<code>else</code>裡面雖然缺少關於<code>total</code>的賦值行為，但因為是直接拋出錯誤，進了<code>else</code>後就<strong>不會</strong>觸發函式的<code>return</code>——不會有機會使用到<code>total</code>。</p>
-<p>換句話說，<code>return</code><strong>只可能發生</strong>在<code>if</code>成立時。而<code>if</code>內確實有<code>total</code>的賦值行為，所以<strong>根本不會</strong>出現開發人員所擔心的未賦值先使用（<code>UnboundLocalError</code>）：</p>
+<p>會產生如此誤解的原因是：<code>else</code> 裡面雖然缺少關於 <code>total</code> 的賦值行為，但因為是直接拋出錯誤，進了 <code>else</code> 後就<strong>不會</strong>觸發函式的 <code>return</code>——不會有機會使用到 <code>total</code>。</p>
+<p>換句話說，<code>return</code> <strong>只可能發生</strong>在 <code>if</code> 成立時。而 <code>if</code> 內確實有 <code>total</code> 的賦值行為，所以<strong>根本不會</strong>出現開發人員所擔心的未賦值先使用（<code>UnboundLocalError</code>）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不會發生，只是給你看一下想像中的錯誤訊息</span></span><br><span class="line">UnboundLocalError: local variable <span class="string">&#x27;total&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
 
-<p>反之，假設<code>else</code>內沒有<code>raise</code>，而是做了一些事，但不包括<code>total</code>的賦值，那進了<code>else</code>後，最後要<code>return</code>時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
+<p>反之，假設 <code>else</code> 內沒有 <code>raise</code>，而是做了一些事，但不包括 <code>total</code> 的賦值，那進了 <code>else</code> 後，最後要 <code>return</code> 時，<strong>才會</strong>出現上述「未賦值先使用」問題。</p>
 <p>很小兒科的問題吧？但很遺憾，對新手 Python 工程師而言，它真的不算罕見。</p>
 <hr>
 <p>開發人員沒有明確區分上述可能的不同情況，而一律加上預設值，往往是因為概念不夠清晰，或未能進一步思考使然。</p>
 <p>或許你會問：「即使一律都加上預設值，也不會真的造成什麼大問題啊？<strong>只是程式碼有點冗餘而已</strong>」，這正是我們第三本書所要討論的議題，在此先按下不表。</p>
 <hr>
-<h2 id="書中的經典案例"><a href="#書中的經典案例" class="headerlink" title="書中的經典案例"></a>書中的經典案例</h2><p>上述開發人員如果看過接下來要介紹的，本書的經典案例，相信就會明白為何<code>total</code>變數不需要預設值。</p>
+<h2 id="書中的經典案例"><a href="#書中的經典案例" class="headerlink" title="書中的經典案例"></a>書中的經典案例</h2><p>上述開發人員如果看過接下來要介紹的，本書的經典案例，相信就會明白為何 <code>total</code> 變數不需要預設值。</p>
 <p>這個「老手帶路」範例，就像書中所述，是連老手都可能失足的所在。在此我們先來看一段關鍵引言：</p>
 <blockquote>
 <p>只要函式內部（不論位置、前後順序）對該變數<strong>有賦值動作</strong>，該變數一律視為<strong>區域變數</strong>。</p>
@@ -364,23 +364,23 @@
 <p>執行上述程式碼，你將得到熟悉的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError: local variable <span class="string">&#x27;a&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
 
-<p>理由是函式中有<code>a = 1</code>這個<strong>賦值行為</strong>，且先未使用<code>global</code>宣告，則無論<code>a</code>在函式中的任何地方，都會被視為<strong>區域變數</strong>。</p>
-<p>儘管<code>a = 1</code>出現的順序在<code>print(a)</code>之後——以致於可能讓你覺得<code>print(a)</code>好像可以印出「one」字串（其實不然）——仍不影響<code>a</code><strong>早已被視為區域變數</strong>的事實。</p>
-<p>換句話說，在這個情況下，區域變數<code>a</code>必須<strong>先賦值再使用，且這個賦值必須先於任何取值行為，才不會發生錯誤。</strong></p>
-<p>本例中，<code>print(a)</code>是典型的<strong>取值行為</strong>，而賦值卻在<strong>之後才發生</strong>，自然會出現「未賦值先使用」的錯誤。</p>
+<p>理由是函式中有 <code>a = 1</code> 這個<strong>賦值行為</strong>，且先未使用 <code>global</code> 宣告，則無論 <code>a</code> 在函式中的任何地方，都會被視為<strong>區域變數</strong>。</p>
+<p>儘管 <code>a = 1</code> 出現的順序在 <code>print(a)</code> 之後——以致於可能讓你覺得 <code>print(a)</code> 好像可以印出「one」字串（其實不然）——仍不影響 <code>a</code> <strong>早已被視為區域變數</strong>的事實。</p>
+<p>換句話說，在這個情況下，區域變數 <code>a</code> 必須<strong>先賦值再使用，且這個賦值必須先於任何取值行為，才不會發生錯誤。</strong></p>
+<p>本例中，<code>print(a)</code> 是典型的<strong>取值行為</strong>，而賦值卻在<strong>之後才發生</strong>，自然會出現「未賦值先使用」的錯誤。</p>
 <h3 id="實例二"><a href="#實例二" class="headerlink" title="實例二"></a>實例二</h3><p>實例一的簡單變形，讓你更清楚其中的概念，程式碼如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;one&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> x:</span><br><span class="line">        a = <span class="number">1</span></span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">func(<span class="literal">True</span>)</span><br><span class="line">func([])</span><br></pre></td></tr></table></figure>
 
-<p>上面的<code>True</code>可以任意替換為<code>1</code>、非空字串等等會被視為<code>True</code>的值；<code>[]</code>亦然，可以替換為<code>False</code>或<code>0</code>等等。</p>
+<p>上面的 <code>True</code> 可以任意替換為 <code>1</code>、非空字串等等會被視為 <code>True</code> 的值；<code>[]</code> 亦然，可以替換為 <code>False</code> 或 <code>0</code> 等等。</p>
 <p>這個例子的<strong>重點</strong>是：</p>
 <ul>
-<li>當引數是<code>True</code>時，<code>if x:</code>會成立，<code>a = 1</code>會被執行，故<code>print(a)</code>會印出<code>1</code>；</li>
-<li>而當引數是<code>False</code>時，<code>if x:</code>不成立，<code>a = 1</code>不會被執行——但是！<strong>區域變數</strong><code>a</code>仍然會<strong>被視為已經存在</strong>，只是<strong>未賦值</strong>而已。</li>
+<li>當引數是 <code>True</code> 時，<code>if x:</code> 會成立，<code>a = 1</code> 會被執行，故 <code>print(a)</code> 會印出 <code>1</code>；</li>
+<li>而當引數是 <code>False</code> 時，<code>if x:</code> 不成立，<code>a = 1</code> 不會被執行——但是！<strong>區域變數</strong> <code>a</code> 仍然會<strong>被視為已經存在</strong>，只是<strong>未賦值</strong>而已。</li>
 </ul>
 <p>執行結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">UnboundLocalError                         Traceback (most recent call last)</span><br><span class="line">&lt;ipython-<span class="built_in">input</span>-<span class="number">20</span>-30399ac74ec7&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">      <span class="number">5</span>     <span class="built_in">print</span>(a)</span><br><span class="line">      <span class="number">6</span> func(<span class="literal">True</span>)</span><br><span class="line">----&gt; <span class="number">7</span> func([])</span><br><span class="line"></span><br><span class="line">&lt;ipython-<span class="built_in">input</span>-<span class="number">20</span>-30399ac74ec7&gt; <span class="keyword">in</span> func(x)</span><br><span class="line">      <span class="number">3</span>     <span class="keyword">if</span> x:</span><br><span class="line">      <span class="number">4</span>         a = <span class="number">1</span></span><br><span class="line">----&gt; <span class="number">5</span>     <span class="built_in">print</span>(a)</span><br><span class="line">      <span class="number">6</span> func(<span class="literal">True</span>)</span><br><span class="line">      <span class="number">7</span> func([])</span><br><span class="line"></span><br><span class="line">UnboundLocalError: local variable <span class="string">&#x27;a&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
-<p>不出所料，我們在執行<code>func([])</code>時，得到了一個<code>UnboundLocalError</code>。</p>
-<p>有了實例一加持，這裡的<code>func([])</code>為何會出錯，相信不難理解——因為<strong>沒有先賦值</strong>。</p>
+<p>不出所料，我們在執行 <code>func([])</code> 時，得到了一個 <code>UnboundLocalError</code>。</p>
+<p>有了實例一加持，這裡的 <code>func([])</code> 為何會出錯，相信不難理解——因為<strong>沒有先賦值</strong>。</p>
 <p>從我舉的例子與書中的範例可以看出，弄清楚 Python 變數的各種特性，如賦值、修改與參照的本質，真是為了學好 Python，所不得不下的功夫。</p>
 <p>而本書在這方面，確實頗有助益。</p>
 <hr>

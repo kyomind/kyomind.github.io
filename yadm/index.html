@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-06-28T15:04:08+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -194,22 +194,22 @@
 </ol>
 <hr>
 <h2 id="場景與需求"><a href="#場景與需求" class="headerlink" title="場景與需求"></a>場景與需求</h2><p>如〈<a href="https://blog.kyomind.tw/linux-dev-setup/">Linux 上的 Python 開發環境設定</a>〉所言，因為新 VM 的建立，我又得重設一次開發環境，而重設開發環境往往是一個耗時且繁瑣的過程。</p>
-<p>在這個過程中，需要重新建立一些設定檔，例如<code>.bashrc</code>、<code>.zshrc</code>。這些設定檔通常包含了工具設定、命令別名、環境變數等大量內容，因此特別惱人。</p>
+<p>在這個過程中，需要重新建立一些設定檔，例如 <code>.bashrc</code>、<code>.zshrc</code>。這些設定檔通常包含了工具設定、命令別名、環境變數等大量內容，因此特別惱人。</p>
 <p>此外，即使不是重建環境，平時要在不同 VM 包括本機電腦間「<strong>手動同步</strong>」這些檔案，也是一件讓人很想逃避的事。</p>
-<p>以<code>.zshrc</code>為例，如果它很少變動，那可能還好。但很不幸的，我又是一個很愛為命令列工具建立 <a target="_blank" rel="noopener" href="https://dywang.csie.cyut.edu.tw/dywang/linuxSystem/node88.html">alias</a>（別名）的人，光憑這點，就使我不時會修改<code>.zshrc</code>。</p>
+<p>以 <code>.zshrc</code> 為例，如果它很少變動，那可能還好。但很不幸的，我又是一個很愛為命令列工具建立 <a target="_blank" rel="noopener" href="https://dywang.csie.cyut.edu.tw/dywang/linuxSystem/node88.html">alias</a>（別名）的人，光憑這點，就使我不時會修改 <code>.zshrc</code>。</p>
 <span id="more"></span>
 
-<h2 id="不同-VM-間的-dotfiles-手動同步讓人想逃避"><a href="#不同-VM-間的-dotfiles-手動同步讓人想逃避" class="headerlink" title="不同 VM 間的 dotfiles 手動同步讓人想逃避"></a>不同 VM 間的 dotfiles 手動同步讓人想逃避</h2><p>而當你有 1 台、2 台……甚至更多 VM 時，<code>.zshrc</code>修改後的「<strong>內容同步</strong>」問題，足以讓你非常痛苦。</p>
+<h2 id="不同-VM-間的-dotfiles-手動同步讓人想逃避"><a href="#不同-VM-間的-dotfiles-手動同步讓人想逃避" class="headerlink" title="不同 VM 間的 dotfiles 手動同步讓人想逃避"></a>不同 VM 間的 dotfiles 手動同步讓人想逃避</h2><p>而當你有 1 台、2 台……甚至更多 VM 時，<code>.zshrc</code> 修改後的「<strong>內容同步</strong>」問題，足以讓你非常痛苦。</p>
 <p>以我自己為例，我工作上「只有」2 台 VM，哪怕是兩台，<strong>在很長一段時間裡</strong>，這兩台 VM 的 alias 設定都<strong>沒有完全一致</strong>——因為我在其中一台新增了 alias 後，就懶得手動為另一台更新相同內容。</p>
 <p>這聽起來有點愚蠢，卻是人之常情……但這次我不忍了！為了解決這個問題，我打算使用「更先進的手段」，來同步和管理這些設定檔。</p>
 <p>如此一來，無論「重設開發環境」或「在多個 VM 之間同步設定」，我的 dotfiles 都可以輕鬆保持一致，提高工作效率。</p>
-<h2 id="什麼是-dotfiles？"><a href="#什麼是-dotfiles？" class="headerlink" title="什麼是 dotfiles？"></a>什麼是 dotfiles？</h2><p>前面已經提了幾次 dotfiles，卻還沒有解釋它。不過相信對於很多人來說，應該一點也不陌生：舉凡在<code>$HOME</code>目錄底下的各種<strong>工具設定檔</strong>，常常都是以一個點「<code>.</code>」開頭，所以它們被稱為 dotfiles。</p>
-<p>當然，它們未必<strong>全都</strong>放在<code>$HOME</code>目錄底下，甚至也未必皆以「<code>.</code>」開頭，只是在多數時候如此而已。</p>
+<h2 id="什麼是-dotfiles？"><a href="#什麼是-dotfiles？" class="headerlink" title="什麼是 dotfiles？"></a>什麼是 dotfiles？</h2><p>前面已經提了幾次 dotfiles，卻還沒有解釋它。不過相信對於很多人來說，應該一點也不陌生：舉凡在 <code>$HOME</code> 目錄底下的各種<strong>工具設定檔</strong>，常常都是以一個點「<code>.</code>」開頭，所以它們被稱為 dotfiles。</p>
+<p>當然，它們未必<strong>全都</strong>放在 <code>$HOME</code> 目錄底下，甚至也未必皆以「<code>.</code>」開頭，只是在多數時候如此而已。</p>
 <p>一些常見的 dotfiles 包括：</p>
 <ol>
-<li><code>.bashrc</code>和<code>.bash_profile</code>：最常見的 dotfiles。</li>
+<li><code>.bashrc</code> 和 <code>.bash_profile</code>：最常見的 dotfiles。</li>
 <li><code>.vimrc</code>：Vim 編輯器的設定檔，包含了一些編輯器偏好、快捷鍵綁定等。</li>
-<li><code>.gitconfig</code>：Git 版控系統的設定檔，最基本的功能是儲存使用者的 name 和 email。而我個人也習慣把 Git「子命令」相關的 alias 放在這裡，而非放在<code>.zshrc</code>，像下面這樣：</li>
+<li><code>.gitconfig</code>：Git 版控系統的設定檔，最基本的功能是儲存使用者的 name 和 email。而我個人也習慣把 Git「子命令」相關的 alias 放在這裡，而非放在 <code>.zshrc</code>，像下面這樣：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">    name = kyo</span><br><span class="line">    email = odinxp@gmail.com</span><br><span class="line"></span><br><span class="line">[<span class="built_in">alias</span>]</span><br><span class="line">    st = status</span><br><span class="line">    br = branch</span><br><span class="line">    co = checkout</span><br><span class="line">    brs = branch -a</span><br></pre></td></tr></table></figure>
 
@@ -257,7 +257,7 @@
 <p>只要親身實踐過〈<a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/dotfiles">Dotfiles: Best Way to Store in a Bare Git Repository</a>〉就會發現：兩者大同小異，只是 yadm 隱藏了更多容易出錯的細節，讓人更容易上手。</p>
 <p>安裝好 yadm 後，它就變成了一種「特殊的 Git」指令——但只會影響你的 dotfiles repo。</p>
 <h2 id="yadm-常用指令"><a href="#yadm-常用指令" class="headerlink" title="yadm 常用指令"></a>yadm 常用指令</h2><p>常用的指令可參考<a target="_blank" rel="noopener" href="https://yadm.io/docs/common_commands#">這個頁面</a>。</p>
-<p>就跟 Git 非常類似——畢竟它本質上就是 Git。只是增加了一些<strong>額外的指令</strong>方便你查看目前 dotfiles repo 狀態，比如<code>yadm list</code>。</p>
+<p>就跟 Git 非常類似——畢竟它本質上就是 Git。只是增加了一些<strong>額外的指令</strong>方便你查看目前 dotfiles repo 狀態，比如 <code>yadm list</code>。</p>
 <p>這些區別，頁面中也都有說明：</p>
 <blockquote>
 <p>Most of these operations will look like Git commands; <strong>because they are. yadm wraps Git</strong>, allowing it to perform all of Git’s operations. <strong>The difference is your $HOME directory becomes the working directory</strong>, and you can run the commands from any directory.</p>
@@ -269,8 +269,8 @@
 <p><img src="https://i.imgur.com/WDwriPv.png"></p>
 <p>解說：</p>
 <ul>
-<li>我把<code>yadm</code>設 alias 為「<code>y</code>」了。</li>
-<li><code>pull</code>、<code>push</code>這些常見 Git 操作，在使用 yadm 時也一樣，所以如果發生「檔案狀態衝突」，也是要依照與 Git 相同方式去處理。</li>
+<li>我把 <code>yadm</code> 設 alias 為「<code>y</code>」了。</li>
+<li><code>pull</code>、<code>push</code> 這些常見 Git 操作，在使用 yadm 時也一樣，所以如果發生「檔案狀態衝突」，也是要依照與 Git 相同方式去處理。</li>
 <li>為了滿足同步需求，在遠端（比如 GitHub）還是要建立一個「收集這些 dotfiles 清單與狀態」的倉庫，通常我們也會命名為「dotfiles」。</li>
 </ul>
 
@@ -289,7 +289,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-02/" title="關於寫程式到 70 歲的想像" rel="bookmark">關於寫程式到 70 歲的想像</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-06/" title="十年後，還能繼續當軟體工程師嗎？" rel="bookmark">十年後，還能繼續當軟體工程師嗎？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/bbc-6-minute-english/" title="BBC 6 Minute English：提升英文聽力的好夥伴" rel="bookmark">BBC 6 Minute English：提升英文聽力的好夥伴</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/all-in-on-devops/" title="我 40 歲，主動離職，All in DevOps" rel="bookmark">我 40 歲，主動離職，All in DevOps</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-02/" title="關於寫程式到 70 歲的想像" rel="bookmark">關於寫程式到 70 歲的想像</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-06/" title="十年後，還能繼續當軟體工程師嗎？" rel="bookmark">十年後，還能繼續當軟體工程師嗎？</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
             </div>

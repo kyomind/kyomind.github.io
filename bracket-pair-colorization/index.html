@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-20T00:56:15+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -203,7 +203,7 @@
 <p>文字描述可能不夠直觀，要使用過才好理解，但沒用過的人只要看看這張 VS Code 官方圖片也能秒懂 bracket pair colorization 的意義與價值：</p>
 <p><img src="https://code.visualstudio.com/assets/blogs/2021/09/29/on-off-comparison.drawio.svg" alt="成對的括號與配色讓我們避免迷失在程式碼中"><span class="cap">成對的括號與配色讓我們避免迷失在程式碼中</span></p>
 <p>總之，可以想見，這樣的功能是何等的實用，可以說是所有開發者必備。</p>
-<h2 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h2><p>這類需求既然迫切，合理推測，為之開發的 IDE 套件一定也不少。在 VS Code 中，最有名的相關套件就是 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a>（該套件目前已標記為 <strong>deprecated</strong>），我也是用它！裝完它後只要在 VS Code 的<code>settings.json</code>進行層級與顏色的相關設定即可：</p>
+<h2 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h2><p>這類需求既然迫切，合理推測，為之開發的 IDE 套件一定也不少。在 VS Code 中，最有名的相關套件就是 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a>（該套件目前已標記為 <strong>deprecated</strong>），我也是用它！裝完它後只要在 VS Code 的 <code>settings.json</code> 進行層級與顏色的相關設定即可：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;bracket-pair-colorizer-2.colors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;#7777ff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;BlueViolet&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;Crimson&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;#5eaaa8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;Purple&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>最上面是第一層，最下面是第五層，Bracket Pair Colorizer 2 最多可以設定五層自訂顏色，並且支援使用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%A2%9C%E8%89%B2%E5%88%97%E8%A1%A8">顏色名稱</a>，所以允許出現「Crimson、Purple」等字樣。</p>
@@ -215,9 +215,9 @@
 <p>果然該來的還是要來，這麼重要的功能，當然是 VS Code 自行實作才是最佳方案。</p>
 <p>並且就這項更新他們還寫了這篇〈<a target="_blank" rel="noopener" href="https://code.visualstudio.com/blogs/2021/09/29/bracket-pair-colorization">Bracket pair colorization 10,000x faster</a>〉，詳細闡述 bracket pair colorization 的發展以及一直都存在的效能問題。這裡的「<strong>效能</strong>」指的主要是<strong>渲染</strong>——也就是<strong>為括號上色</strong>——的速度，以及開發團隊提出的解決之道，有興趣的讀者可以前往閱讀。</p>
 <p>總的來說，從此以後 bracket pair colorization 功能不止被 VS Code 內建了，還得到了渲染效能的巨幅提升，快來用吧！</p>
-<h2 id="settings-json-相關設定"><a href="#settings-json-相關設定" class="headerlink" title="settings.json 相關設定"></a>settings.json 相關設定</h2><p>好，說了這麼多，其實重點只有一個，那就是從今天開始可以解除安裝 Bracket Pair Colorizer 2，直接設定好 VS Code 內建的 bracket pair colorization 即可，請立即打開 VS Code 的<code>settings.json</code>並新增下列條目：（顏色自選）</p>
+<h2 id="settings-json-相關設定"><a href="#settings-json-相關設定" class="headerlink" title="settings.json 相關設定"></a>settings.json 相關設定</h2><p>好，說了這麼多，其實重點只有一個，那就是從今天開始可以解除安裝 Bracket Pair Colorizer 2，直接設定好 VS Code 內建的 bracket pair colorization 即可，請立即打開 VS Code 的 <code>settings.json</code> 並新增下列條目：（顏色自選）</p>
 <blockquote>
-<p><code>2022/05/07</code>更新：<br>從 VS Code 1.67 版起，bracket pair colorization 已改為「<a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates/v1_67#_bracket-pair-colorization-enabled-by-default">預設開啟</a>」，這意味著下面的第一個設定<code>editor.bracketPairColorization.enabled</code>，除非是要<strong>關閉</strong>而設定為<code>false</code>，否則<strong>可以整行省略</strong>。</p>
+<p><code>2022/05/07</code> 更新：<br>從 VS Code 1.67 版起，bracket pair colorization 已改為「<a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates/v1_67#_bracket-pair-colorization-enabled-by-default">預設開啟</a>」，這意味著下面的第一個設定 <code>editor.bracketPairColorization.enabled</code>，除非是要<strong>關閉</strong>而設定為 <code>false</code>，否則<strong>可以整行省略</strong>。</p>
 </blockquote>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 開啟 bracket pair colorization；1.67 以上可省略此開啟設定</span></span><br><span class="line"><span class="attr">&quot;editor.bracketPairColorization.enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// 設定顏色</span></span><br><span class="line"><span class="attr">&quot;workbench.colorCustomizations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 層級括號顏色，從 1 至 6 層，此處只設定了 5 層</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground1&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#7777ff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground2&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#8a2be2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground3&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#DC143C&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground4&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#5eaaa8&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.foreground5&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#800080&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// 異常括號的顏色，比如多出來的結尾括號</span></span><br><span class="line">    <span class="attr">&quot;editorBracketHighlight.unexpectedBracket.foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffffff&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
@@ -236,7 +236,7 @@
 <li><strong>第三層</strong>：第三層已屬於深海，值得有意識地減少它，否則勢必影響程式可讀性，畢竟〈<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Python%E4%B9%8B%E7%A6%85">Zen of Python</a>〉也提示我們「 <strong>Flat is better than nested.</strong> 」。所以我選擇鮮明且和前者二者大相逕庭的 <strong>Crimson 腥紅色</strong>，作為一種「<strong>紅色警戒</strong>」。</li>
 <li><strong>第四層</strong>：使用和第三層的<strong>對比色</strong>來<strong>強調</strong>，這裡採綠色系。使用對比色警告自己已觸碰到了<strong>合理層級</strong>的「<strong>底限</strong>」，作為 Clean Code 的貫徹者，最好不要再往下。</li>
 <li>第五層以後：只是備用，且應該要<strong>極盡所能地少用到</strong>。</li>
-<li>異常括號顏色：建議使用任何你覺得很顯眼甚至是刺眼的顏色，通常使用正紅色<code>#ff0000</code>。搭配深色佈景主題時，我也推薦純白色，非常顯眼，很符合需求。</li>
+<li>異常括號顏色：建議使用任何你覺得很顯眼甚至是刺眼的顏色，通常使用正紅色 <code>#ff0000</code>。搭配深色佈景主題時，我也推薦純白色，非常顯眼，很符合需求。</li>
 </ol>
 <p>儘管 Python 只以「<strong>純縮排</strong>」而沒有像其他語言採用常見的「<strong>括號 + 縮排</strong>」來對<strong>程式區塊</strong>進行封裝，所以<strong>括號顏色</strong>在「<strong>表現程式結構深度、增加程式可讀性</strong>」的作用與效果，相對沒那麼顯著，但還是值得在括號顏色選擇上花一些心思。</p>
 <p><img src="https://i.imgur.com/jtTZivq.png" alt="前三層括號顏色示意 in Python"><span class="cap">前三層括號顏色示意 in Python</span></p>
@@ -260,7 +260,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python Linter、Formatter 教學" rel="bookmark">VS Code 設定 Python Linter、Formatter 教學</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/VS-Code/">VS Code</a>
             </div>

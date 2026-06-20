@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-05-08T08:01:04+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:08:35+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -206,21 +206,21 @@
 <p>我們開始吧！</p>
 <span id="more"></span>
 <hr>
-<h2 id="舊有做法：requirements-txt-及其限制"><a href="#舊有做法：requirements-txt-及其限制" class="headerlink" title="舊有做法：requirements.txt 及其限制"></a>舊有做法：requirements.txt 及其限制</h2><p>在過去的容器建構流程中，我們多半會使用<code>requirements.txt</code>來安裝 Python 套件、建立容器中的專案虛擬環境。</p>
+<h2 id="舊有做法：requirements-txt-及其限制"><a href="#舊有做法：requirements-txt-及其限制" class="headerlink" title="舊有做法：requirements.txt 及其限制"></a>舊有做法：requirements.txt 及其限制</h2><p>在過去的容器建構流程中，我們多半會使用 <code>requirements.txt</code> 來安裝 Python 套件、建立容器中的專案虛擬環境。</p>
 <p>這是因為 Python 的官方 image <strong>已經內建 pip</strong>，我們可以在 Docker（Dockerfile）直接透過下列指令安裝相依套件：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install -r requirements.txt</span></span><br></pre></td></tr></table></figure>
 
 <p>這種做法最大的優勢就是<strong>方便</strong>。</p>
 <p>然而仔細想想，我們在開發階段使用 Poetry，部署時卻用 pip，這樣的流程會產生一個「斷點」。</p>
-<p>我們必須從 Poetry 匯出一份與<code>poetry.lock</code>對應的<code>requirements.txt</code>，例如：</p>
+<p>我們必須從 Poetry 匯出一份與 <code>poetry.lock</code> 對應的 <code>requirements.txt</code>，例如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">export</span> -f requirements.txt --without-hashes -o requirements.txt</span><br></pre></td></tr></table></figure>
 
-<p>這樣做看似簡單、直觀，但經驗告訴我，在更新<code>poetry.lock</code>時，<strong>常常會忘記同步</strong>到<code>requirements.txt</code>。所以 uv 還專門提供了一個 pre-commit hook 來自動化同步。</p>
-<p>退一步來說，<code>export</code>指令產出的結果，其實和 pip 也<strong>不是 100% 相容</strong>，如果遇到相容問題，將會使得<code>requirements.txt</code>無法如預期安裝。</p>
+<p>這樣做看似簡單、直觀，但經驗告訴我，在更新 <code>poetry.lock</code> 時，<strong>常常會忘記同步</strong>到 <code>requirements.txt</code>。所以 uv 還專門提供了一個 pre-commit hook 來自動化同步。</p>
+<p>退一步來說，<code>export</code> 指令產出的結果，其實和 pip 也<strong>不是 100% 相容</strong>，如果遇到相容問題，將會使得 <code>requirements.txt</code> 無法如預期安裝。</p>
 <blockquote>
 <p>真麻煩！</p>
 </blockquote>
-<h2 id="為什麼不直接在-Docker-image-中安裝-Poetry？"><a href="#為什麼不直接在-Docker-image-中安裝-Poetry？" class="headerlink" title="為什麼不直接在 Docker image 中安裝 Poetry？"></a>為什麼不直接在 Docker image 中安裝 Poetry？</h2><p>我們已經知道使用<code>requirements.txt</code>的方式有其限制，那是否可以直接在 Docker 中安裝 Poetry，來避免 export 同步的麻煩呢？</p>
+<h2 id="為什麼不直接在-Docker-image-中安裝-Poetry？"><a href="#為什麼不直接在-Docker-image-中安裝-Poetry？" class="headerlink" title="為什麼不直接在 Docker image 中安裝 Poetry？"></a>為什麼不直接在 Docker image 中安裝 Poetry？</h2><p>我們已經知道使用 <code>requirements.txt</code> 的方式有其限制，那是否可以直接在 Docker 中安裝 Poetry，來避免 export 同步的麻煩呢？</p>
 <p>這似乎是一個<strong>簡單粗暴</strong>的解法，但除了開頭說的「增加新的耦合與依賴」問題外，這樣做還會導致<strong>另一個棘手問題</strong>——<strong>image 會變得過於龐大</strong>。</p>
 <p>因為我們必須額外安裝 Poetry 及其所有相依套件（如 curl、build tools 等），這些工具在部署時其實並不需要。</p>
 <p>結果是：</p>
@@ -262,15 +262,15 @@
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一階段：建構環境與安裝 Poetry 相依套件</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.12</span>-slim AS builder</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝系統相依套件（Poetry 需要 curl 等工具）</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt update &amp;&amp; apt install -y curl build-essential ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安裝 Poetry 並設定環境變數</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> curl -sSL https://install.python-poetry.org | python3 -</span></span><br><span class="line"><span class="keyword">ENV</span> PATH=<span class="string">&quot;/root/.local/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> pyproject.toml poetry.lock ./</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> your_module your_module</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Poetry 安裝相依套件</span></span><br><span class="line"><span class="comment"># 變更設定：不建立虛擬環境，因為 Docker 本身就是隔離環境</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> poetry config virtualenvs.create <span class="literal">false</span> \</span></span><br><span class="line"><span class="language-bash">    <span class="comment"># 只安裝 main 的套件，即不含 dev、test 等 group</span></span></span><br><span class="line">    &amp;&amp; poetry install --only main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二階段：建立乾淨的 image</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.12</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="comment"># 從 builder 階段複製已安裝的 site-packages(重點在這裡)</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;your_entrypoint.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="重點說明"><a href="#重點說明" class="headerlink" title="重點說明"></a>重點說明</h3><ul>
-<li>第一階段只負責安裝 Poetry 與相依套件——透過<code>poetry install</code>安裝。這裡的 Dockerfile 慣用語是<code>FROM xxx AS yyy</code>，其中<code>builder</code>是常見名稱。</li>
+<li>第一階段只負責安裝 Poetry 與相依套件——透過 <code>poetry install</code> 安裝。這裡的 Dockerfile 慣用語是 <code>FROM xxx AS yyy</code>，其中 <code>builder</code> 是常見名稱。</li>
 <li>Poetry 安裝套件時，可先調整設定，改成<strong>不建立虛擬環境</strong>，因為 Docker 本身即為獨立環境，沒必要再隔離。<ul>
 <li>用於部署階段，所以也不必安裝開發、測試相關套件。</li>
-<li>使用<code>--only main</code>來安裝主要的相依套件。</li>
+<li>使用 <code>--only main</code> 來安裝主要的相依套件。</li>
 </ul>
 </li>
 <li>第二階段只保留已安裝好的 site-packages 與應用程式程式碼。<ul>
 <li>具體做法就是<strong>複製「前階段」產生的檔案、目錄到當前環境。</strong></li>
-<li>關鍵句則是<code>COPY --from=builder xxx</code>。</li>
+<li>關鍵句則是 <code>COPY --from=builder xxx</code>。</li>
 </ul>
 </li>
 </ul>

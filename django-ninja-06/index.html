@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -206,7 +206,7 @@
 <h3 id="Windows-使用者"><a href="#Windows-使用者" class="headerlink" title="Windows 使用者"></a>Windows 使用者</h3><ol>
 <li>前往 Python 官方的<a target="_blank" rel="noopener" href="https://www.python.org/downloads/">下載頁面</a>，下載 Python 3.12 的 Windows 安裝程式。</li>
 <li>執行下載的安裝檔，記得勾選「<strong>Add Python 3.12 to PATH</strong>」選項。</li>
-<li>完成安裝後，開啟<strong>命令提示字元</strong>並輸入<code>python --version</code>來確認是否安裝成功。</li>
+<li>完成安裝後，開啟<strong>命令提示字元</strong>並輸入 <code>python --version</code> 來確認是否安裝成功。</li>
 </ol>
 <h3 id="macOS-使用者"><a href="#macOS-使用者" class="headerlink" title="macOS 使用者"></a>macOS 使用者</h3><p>對於 macOS 使用者，我們有幾種安裝 Python 3.12 的方法：</p>
 <ol>
@@ -232,23 +232,23 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ poetry --version</span><br><span class="line">Poetry (version 1.4.0)</span><br></pre></td></tr></table></figure>
 
 <h3 id="Windows-安裝與設定-Poetry"><a href="#Windows-安裝與設定-Poetry" class="headerlink" title="Windows 安裝與設定 Poetry"></a>Windows 安裝與設定 Poetry</h3><p>Windows 用戶可參考 JetBrains 的 <a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/dataspell/poetry.html">Poetry 設定教學</a>，我覺得寫得很清楚。</p>
-<h3 id="修改-Poetry-config，改用-venv虛擬環境"><a href="#修改-Poetry-config，改用-venv虛擬環境" class="headerlink" title="修改 Poetry config，改用.venv虛擬環境"></a>修改 Poetry <code>config</code>，改用<code>.venv</code>虛擬環境</h3><p>預設為<code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！</p>
-<p>改成<code>true</code>以後，<strong>則直接在專案根目錄下建立虛擬環境，且名稱固定為</strong><code>.venv</code>。</p>
+<h3 id="修改-Poetry-config，改用-venv-虛擬環境"><a href="#修改-Poetry-config，改用-venv-虛擬環境" class="headerlink" title="修改 Poetry config，改用 .venv 虛擬環境"></a>修改 Poetry <code>config</code>，改用 <code>.venv</code> 虛擬環境</h3><p>預設為 <code>false</code>，Poetry 會在獨立目錄下建立虛擬環境，而名稱很冗長！</p>
+<p>改成 <code>true</code> 以後，<strong>則直接在專案根目錄下建立虛擬環境，且名稱固定為</strong> <code>.venv</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry config virtualenvs.in-project <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>把虛擬環境放在專案中，這是我個人更偏好的做法。</p>
 <h2 id="不使用-Poetry-的方案"><a href="#不使用-Poetry-的方案" class="headerlink" title="不使用 Poetry 的方案"></a>不使用 Poetry 的方案</h2><p>專案中準備了一份 <a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/blob/main/requirements.txt">requirements.txt</a> 給習慣用 pip 的讀者。省去安裝與設定 Poetry 的麻煩。</p>
 <hr>
 <h2 id="三、從-GitHub-下載專案、建立虛擬環境"><a href="#三、從-GitHub-下載專案、建立虛擬環境" class="headerlink" title="三、從 GitHub 下載專案、建立虛擬環境"></a>三、從 GitHub 下載專案、建立虛擬環境</h2><p>接下來是專案本身的設定。</p>
-<h3 id="一、Clone-專案"><a href="#一、Clone-專案" class="headerlink" title="一、Clone 專案"></a>一、Clone 專案</h3><p>這是<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">專案連結</a>。使用<code>git clone</code>指令：</p>
+<h3 id="一、Clone-專案"><a href="#一、Clone-專案" class="headerlink" title="一、Clone 專案"></a>一、Clone 專案</h3><p>這是<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">專案連結</a>。使用 <code>git clone</code> 指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/kyomind/Django-Ninja-Tutorial.git</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:kyomind/Django-Ninja-Tutorial.git</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、建立虛擬環境並安裝套件"><a href="#二、建立虛擬環境並安裝套件" class="headerlink" title="二、建立虛擬環境並安裝套件"></a>二、建立虛擬環境並安裝套件</h3><p>進入專案目錄，使用 Poetry 建立虛擬環境：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use 3.12</span><br></pre></td></tr></table></figure>
 
-<p>此時在專案根目錄應該會建立一個<code>.venv</code>資料夾，即專案的虛擬環境，<strong>目前是空的</strong>。</p>
-<p>使用<code>poetry shell</code>啟動虛擬環境。</p>
-<p>透過<code>poetry install</code>安裝套件：Poetry 會根據<code>pyproject.toml</code>和<code>poetry.lock</code>內容，自動下載並安裝專案需要的所有套件。</p>
+<p>此時在專案根目錄應該會建立一個 <code>.venv</code> 資料夾，即專案的虛擬環境，<strong>目前是空的</strong>。</p>
+<p>使用 <code>poetry shell</code> 啟動虛擬環境。</p>
+<p>透過 <code>poetry install</code> 安裝套件：Poetry 會根據 <code>pyproject.toml</code> 和 <code>poetry.lock</code> 內容，自動下載並安裝專案需要的所有套件。</p>
 <h3 id="pip-使用者"><a href="#pip-使用者" class="headerlink" title="pip 使用者"></a>pip 使用者</h3><p>pip 用戶可以透過以下步驟建立虛擬環境：（全程在<strong>專案根目錄</strong>下進行）</p>
 <ol>
 <li>使用 Python 內建的 venv 模組建立虛擬環境：<code>python -m venv .venv</code></li>
@@ -260,8 +260,8 @@
 <li>安裝套件：<code>pip install -r requirements.txt</code></li>
 </ol>
 <hr>
-<h2 id="四、初始化-pre-commit"><a href="#四、初始化-pre-commit" class="headerlink" title="四、初始化 pre-commit"></a>四、初始化 pre-commit</h2><p>建立虛擬環境並使用<code>poetry install</code>後，pre-commit 套件已被安裝到虛擬環境中。</p>
-<p>如你所見，專案中有一個<code>.pre-commit-config.yaml</code>檔。這個檔案定義了每次提交前要執行的檢查項目（Git Hooks）。</p>
+<h2 id="四、初始化-pre-commit"><a href="#四、初始化-pre-commit" class="headerlink" title="四、初始化 pre-commit"></a>四、初始化 pre-commit</h2><p>建立虛擬環境並使用 <code>poetry install</code> 後，pre-commit 套件已被安裝到虛擬環境中。</p>
+<p>如你所見，專案中有一個 <code>.pre-commit-config.yaml</code> 檔。這個檔案定義了每次提交前要執行的檢查項目（Git Hooks）。</p>
 <p>我們只需要透過下列指令，安裝 Git Hooks：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pre-commit install</span><br></pre></td></tr></table></figure>
 
@@ -271,7 +271,7 @@
 <p>兩者在安裝後，原則上都無須設定，因為專案內<strong>已經有了相關的設定檔</strong>：</p>
 <ol>
 <li>Ruff：<code>pyproject.toml</code></li>
-<li>Mypy：<code>mypy.ini</code>（在專案最新進度中已併入<code>pyproject.toml</code>）</li>
+<li>Mypy：<code>mypy.ini</code>（在專案最新進度中已併入 <code>pyproject.toml</code>）</li>
 </ol>
 <p>此外，它們都是 CLI 工具，所以你也可以<strong>手動執行</strong>它們，比如執行 Ruff 檢查：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ruff check</span><br><span class="line">ruff format</span><br></pre></td></tr></table></figure>

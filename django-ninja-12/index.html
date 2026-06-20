@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:18:25+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -194,12 +194,12 @@
 <p>本文所有的程式碼變動，可參考<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/4">這個 PR</a>。</p>
 <h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
-<h2 id="一、什麼是-Request-Body？"><a href="#一、什麼是-Request-Body？" class="headerlink" title="一、什麼是 Request Body？"></a>一、什麼是 Request Body？</h2><p><strong>Request body</strong> 指的是隨著 HTTP 請求一同傳送的資料，通常用於<code>POST</code>、<code>PUT</code>等<strong>需要建立或更新「資源」的請求。</strong></p>
+<h2 id="一、什麼是-Request-Body？"><a href="#一、什麼是-Request-Body？" class="headerlink" title="一、什麼是 Request Body？"></a>一、什麼是 Request Body？</h2><p><strong>Request body</strong> 指的是隨著 HTTP 請求一同傳送的資料，通常用於 <code>POST</code>、<code>PUT</code> 等<strong>需要建立或更新「資源」的請求。</strong></p>
 <p>這些資料不會出現在 URL 中，而是以 JSON 或其他格式（如 XML、form-data）作為請求的主體。</p>
 <p>例如，當用戶要發表一篇新文章時，可能會傳送以下 JSON 格式的 request body：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;我的第一篇文章&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;這是我在忍者論壇的第一篇文章，希望大家喜歡！&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>這個 request body 包含了<code>title</code>和<code>content</code>兩個欄位，Django Ninja 將協助我們處理這些資料並進行驗證。</p>
+<p>這個 request body 包含了 <code>title</code> 和 <code>content</code> 兩個欄位，Django Ninja 將協助我們處理這些資料並進行驗證。</p>
 <span id="more"></span>
 
 <hr>
@@ -213,7 +213,7 @@
 <p>The head ref <strong>may contain hidden characters</strong>: …</p>
 </blockquote>
 <p>而且應該也很少人使用中文來命名 git 分支！當初用中文是為了讀者比較好讀🥹</p>
-<p>所以從這個分支開始，改成<code>數字+英文</code>，比如本篇的「<code>12-request-body</code>」。但 PR 的標題仍維持中文。</p>
+<p>所以從這個分支開始，改成 <code> 數字+英文</code>，比如本篇的「<code>12-request-body</code>」。但 PR 的標題仍維持中文。</p>
 <hr>
 <h2 id="三、使用-Schema-定義與驗證-Request-Body"><a href="#三、使用-Schema-定義與驗證-Request-Body" class="headerlink" title="三、使用 Schema 定義與驗證 Request Body"></a>三、使用 Schema 定義與驗證 Request Body</h2><p>與 FastAPI 相同，Django Ninja 使用 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a> 來處理請求 body。</p>
 <p>不過因為 BaseModel 這個名稱容易和 Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/models/">Models</a> 混淆，所以 Django Ninja 將其重新命名為 Schema。</p>
@@ -223,23 +223,23 @@
 <p>回到專案，讓我們來看專案中的例子，這是定義「新增文章」API 的 request body 的 Schema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/schemas.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Schema</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CreatePostRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span></span><br><span class="line">    user_id: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
-<p>這個 Schema 要求 body 資料<strong>必須包含</strong>這三個欄位：<code>title</code>、<code>content</code>和<code>user_id</code>，而且<strong>資料的型別也要相符</strong>。</p>
+<p>這個 Schema 要求 body 資料<strong>必須包含</strong>這三個欄位：<code>title</code>、<code>content</code> 和 <code>user_id</code>，而且<strong>資料的型別也要相符</strong>。</p>
 <h3 id="在-View-函式中使用-Schema"><a href="#在-View-函式中使用-Schema" class="headerlink" title="在 View 函式中使用 Schema"></a>在 View 函式中使用 Schema</h3><p>定義好了「請求」Schema，就可以在 view 函式中以「<strong>函式參數</strong>」的形式使用它：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.schemas <span class="keyword">import</span> CreatePostRequest</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_post</span>(<span class="params">..., payload: CreatePostRequest</span>):  <span class="comment"># 這裡</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>我們將函式<code>payload</code>參數的 type hint 設定為我們剛剛定義的<code>CreatePostRequest</code>。</p>
-<p>當請求發送到這個 API 時，Django Ninja 會透過<code>CreatePostRequest</code>這個 Schema 來<strong>解析</strong>（<strong>parsing</strong>）並<strong>驗證</strong> body 中的資料。</p>
-<p>驗證成功後，再將資料傳入 view 函式的<code>payload</code>。此時<strong>函式內部</strong>的<code>payload</code>參數，本質上是一個 Schema（即 Pydantic BaseModel）物件。</p>
+<p>我們將函式 <code>payload</code> 參數的 type hint 設定為我們剛剛定義的 <code>CreatePostRequest</code>。</p>
+<p>當請求發送到這個 API 時，Django Ninja 會透過 <code>CreatePostRequest</code> 這個 Schema 來<strong>解析</strong>（<strong>parsing</strong>）並<strong>驗證</strong> body 中的資料。</p>
+<p>驗證成功後，再將資料傳入 view 函式的 <code>payload</code>。此時<strong>函式內部</strong>的 <code>payload</code> 參數，本質上是一個 Schema（即 Pydantic BaseModel）物件。</p>
 <h3 id="自動資料驗證與錯誤處理"><a href="#自動資料驗證與錯誤處理" class="headerlink" title="自動資料驗證與錯誤處理"></a>自動資料驗證與錯誤處理</h3><p>如果請求 body 中有欄位缺少，或者資料的型別不對，Django Ninja 會自動返回 <strong>422 回應</strong>，並提供<strong>具體的錯誤資訊</strong>：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;missing&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;content&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Field required&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>錯誤訊息表示：body 中缺少了<code>content</code>這個 field。</p>
+<p>錯誤訊息表示：body 中缺少了 <code>content</code> 這個 field。</p>
 <hr>
 <h2 id="四、可選的（Optional）欄位與預設值"><a href="#四、可選的（Optional）欄位與預設值" class="headerlink" title="四、可選的（Optional）欄位與預設值"></a>四、可選的（Optional）欄位與預設值</h2><p>在實際 API 開發中，<strong>並不是</strong>所有請求欄位都是必須的。</p>
-<p>我們可以透過 Pydantic 與 type hints 來定義<strong>可選欄位</strong>。假設，現在文章的內容是完全可選的：（留意<code>content</code>欄位）</p>
+<p>我們可以透過 Pydantic 與 type hints 來定義<strong>可選欄位</strong>。假設，現在文章的內容是完全可選的：（留意 <code>content</code> 欄位）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreatePostRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span> | <span class="literal">None</span> = <span class="literal">None</span></span><br><span class="line">    user_id: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
-<p>使用<code>=</code>運算子，將<code>content</code>欄位的<strong>預設值</strong>設定為<code>None</code>，該欄位<strong>就會變成可選欄位</strong>。此時<code>content</code>的 type hints 也要改為<code>str | None</code>。</p>
+<p>使用 <code>=</code> 運算子，將 <code>content</code> 欄位的<strong>預設值</strong>設定為 <code>None</code>，該欄位<strong>就會變成可選欄位</strong>。此時 <code>content</code> 的 type hints 也要改為 <code>str | None</code>。</p>
 <p>值得一提的是，如果 Schema 用在<strong>請求</strong>，這樣設定即使<strong>能通過驗證</strong>，你也要注意後續對應的 Django Model 欄位（也就是 db 欄位）<strong>是否允許 NULL</strong>。不然還是會出錯：</p>
 <blockquote>
 <p>django.db.utils.IntegrityError: NOT NULL constraint failed: post_post.content</p>
@@ -247,13 +247,13 @@
 <p>除了將欄位設為可選，也可以直接<strong>給定預設值</strong>，比如這裡的空字串。在使用者未輸入時，就會<strong>直接填入預設值</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreatePostRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    title: <span class="built_in">str</span></span><br><span class="line">    content: <span class="built_in">str</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    user_id: <span class="built_in">int</span></span><br></pre></td></tr></table></figure>
 
-<p>然而，除了預設值為<code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：Pydantic Field 設定範例與預設值〉還會再次討論。</p>
+<p>然而，除了預設值為 <code>None</code>，在 Schema 中<strong>給定預設值</strong>的行為要「<strong>非常慎用</strong>」。這部分我們在〈卷 18：Pydantic Field 設定範例與預設值〉還會再次討論。</p>
 <hr>
 <h2 id="五、Django-Ninja-判斷參數的順序"><a href="#五、Django-Ninja-判斷參數的順序" class="headerlink" title="五、Django Ninja 判斷參數的順序"></a>五、Django Ninja 判斷參數的順序</h2><p>你是否想過，一個 view 函式參數這麼多種，Django Ninja 怎麼知道<strong>誰要對應誰</strong>？</p>
 <p>事實上，Django Ninja 確實會根據 view 函式的<strong>參數簽名</strong>，自動判斷參數的來源（究竟是路徑參數、查詢參數或請求 body）。其<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/body/#request-body-path-query-parameters">判斷順序</a>如下：</p>
 <ol>
-<li><strong>路徑參數</strong>：任何定義在 URL path 中的變數（比如<code>/items/&#123;id&#125;</code>中的<code>id</code>）會<strong>優先被識別為路徑參數</strong>。</li>
-<li><strong>查詢參數</strong>：函式中的其他<strong>單數類型</strong>參數（比如<code>int</code>、<code>float</code>、<code>bool</code>、<code>str</code>，而不是<code>list</code>、<code>dict</code>），若<strong>未標註為路徑參數</strong>，則會被識別為查詢參數。</li>
+<li><strong>路徑參數</strong>：任何定義在 URL path 中的變數（比如 <code>/items/&#123;id&#125;</code> 中的 <code>id</code>）會<strong>優先被識別為路徑參數</strong>。</li>
+<li><strong>查詢參數</strong>：函式中的其他<strong>單數類型</strong>參數（比如 <code>int</code>、<code>float</code>、<code>bool</code>、<code>str</code>，而不是 <code>list</code>、<code>dict</code>），若<strong>未標註為路徑參數</strong>，則會被識別為查詢參數。</li>
 <li><strong>Request body</strong>：Schema 型別參數，才會被視為請求 body。</li>
 </ol>
 <p>原則上，view 函式<strong>只能有一個</strong> Schema 參數。畢竟一個請求就只有一個 body 而已。</p>
@@ -273,7 +273,7 @@
 <p>所以，不用麻煩了。</p>
 <p>我們直接透過 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/fixtures/">Django fixtures</a> 來匯入由我預先定義好的<strong>假資料</strong>。</p>
 <p>有關 Django fixtures 的介紹，可參考文章〈<a href="https://blog.kyomind.tw/django-fixtures/">用 Django Fixture 匯入與導出資料</a>〉。</p>
-<p>在下一篇<code>13-response</code>分支進度底下，你已經可以看到我<strong>導出</strong>的 fixtures 資料：</p>
+<p>在下一篇 <code>13-response</code> 分支進度底下，你已經可以看到我<strong>導出</strong>的 fixtures 資料：</p>
 <ol>
 <li><code>users.json</code>。</li>
 <li><code>posts.json</code>。</li>

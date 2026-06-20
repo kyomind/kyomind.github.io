@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-05-08T07:12:37+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:06:10+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -227,9 +227,9 @@
 </ul>
 <p>WeaMind 對這三個問題都有明確的解法：</p>
 <ul>
-<li><strong>Fast ACK Webhook</strong>：花數十毫秒先回應 LINE Platform，業務邏輯交給 FastAPI 的<code>BackgroundTasks</code>非同步運行，用戶感受到的回應在 <strong>2 秒以內</strong>——實際只需要<strong>幾百毫秒</strong>，但 Hetzner 主機對台灣的延遲很高😂</li>
+<li><strong>Fast ACK Webhook</strong>：花數十毫秒先回應 LINE Platform，業務邏輯交給 FastAPI 的 <code>BackgroundTasks</code> 非同步運行，用戶感受到的回應在 <strong>2 秒以內</strong>——實際只需要<strong>幾百毫秒</strong>，但 Hetzner 主機對台灣的延遲很高😂</li>
 <li><strong>Redis 分散式鎖</strong>：按鈕操作有 2 秒鎖定以防止連點，文字查詢則不受影響。</li>
-<li><strong>DDD 模組劃分</strong>：<code>core</code>、<code>user</code>、<code>line</code>、<code>weather</code>四個領域，並以 router → service → model 三層分離，邊界清晰不互相污染。</li>
+<li><strong>DDD 模組劃分</strong>：<code>core</code>、<code>user</code>、<code>line</code>、<code>weather</code> 四個領域，並以 router → service → model 三層分離，邊界清晰不互相污染。</li>
 </ul>
 <p>更多細節可參考 WeaMind 專案 README 的「<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind?tab=readme-ov-file#%E9%96%8B%E7%99%BC%E8%80%85%E6%8A%80%E8%A1%93%E4%BA%AE%E9%BB%9E">開發者技術亮點</a>」。</p>
 <hr>
@@ -270,7 +270,7 @@
 </blockquote>
 <p>原因很簡單：因為這個專案從一開始就「不只是」為了做一個 LINE Bot——它是我為了 DevOps 轉職所做的<strong>刻意練習</strong>。</p>
 <h3 id="K3s-on-Hetzner"><a href="#K3s-on-Hetzner" class="headerlink" title="K3s on Hetzner"></a>K3s on Hetzner</h3><p>我在 <a target="_blank" rel="noopener" href="https://www.hetzner.com/">Hetzner</a> 上另外開了三台 VM 組成 K3s 叢集，加上一台付費的 Load Balancer——<strong>都是錢啊啊啊</strong>！🤯</p>
-<p>原本那台跑 Docker Compose 的 VM，在叢集建成後角色順勢轉變為<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bastion_host">堡壘機</a><strong>兼資料層</strong>，負責跑 PostgreSQL 和 Redis，同時作為 SSH 跳板與管理叢集——雖然我大部分時候都是在本機透過<code>ProxyJump</code>連到 Control Plane 上的 API Server。</p>
+<p>原本那台跑 Docker Compose 的 VM，在叢集建成後角色順勢轉變為<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bastion_host">堡壘機</a><strong>兼資料層</strong>，負責跑 PostgreSQL 和 Redis，同時作為 SSH 跳板與管理叢集——雖然我大部分時候都是在本機透過 <code>ProxyJump</code> 連到 Control Plane 上的 API Server。</p>
 <h3 id="持續演進的平台"><a href="#持續演進的平台" class="headerlink" title="持續演進的平台"></a>持續演進的平台</h3><p>對我來說，這套 Kubernetes 部署不是做完就收工的作品。接下來，我還想在上面實作<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8F%AF%E8%A7%80%E6%B8%AC%E6%80%A7">可觀測性</a>、<a target="_blank" rel="noopener" href="https://helm.sh/">Helm</a> 等 DevOps 必修課題。</p>
 <p>任何我想學的 DevOps 技能，都可以在這上面繼續疊加。它顯然比任何線上課附的 lab 都<strong>有趣且真實</strong>多了——想想就有點小興奮🤩</p>
 <hr>
@@ -326,7 +326,7 @@
 <p>PostgreSQL 和 Redis 現階段不需要水平擴展——以後大概也不需要XD，放進 K8s 反而要處理 StatefulSet 和 PV 的管理複雜度。</p>
 <p>而且用內網連接，延遲幾乎可以忽略不計。</p>
 <h3 id="LINE-Webhook-URL-切換"><a href="#LINE-Webhook-URL-切換" class="headerlink" title="LINE Webhook URL 切換"></a>LINE Webhook URL 切換</h3><p>這是一個<strong>意外好用</strong>的設計！</p>
-<p>我原本的想法是：LINE webhook 固定打 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a>（你直接點擊網址，會回應<code>&#123;&quot;message&quot;:&quot;Welcome to WeaMind API&quot;&#125;</code>）上的 webhook endpoint，平常 DNS 的 A record 指向 Hetzner Load Balancer。</p>
+<p>我原本的想法是：LINE webhook 固定打 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a>（你直接點擊網址，會回應 <code>&#123;&quot;message&quot;:&quot;Welcome to WeaMind API&quot;&#125;</code>）上的 webhook endpoint，平常 DNS 的 A record 指向 Hetzner Load Balancer。</p>
 <p>若叢集出問題需要 rollback，就<strong>手動把 A record 改回舊 VM 的 IP 地址</strong>，這樣就能快速切換回單機環境。</p>
 <p>但這樣的問題是 <strong>DNS 傳播有延遲</strong>，少則幾分鐘、多則數小時，rollback 並不即時。</p>
 <p>後來發現一個更簡單的做法：保留 <a target="_blank" rel="noopener" href="https://api.kyomind.tw/">api.kyomind.tw</a> 指向舊 VM，另外新建一個 <a target="_blank" rel="noopener" href="https://k8s.kyomind.tw/">k8s.kyomind.tw</a> 指向 Hetzner Load Balancer——兩個環境各自有固定網址。</p>

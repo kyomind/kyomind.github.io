@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-22T16:18:34+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:08:35+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -306,16 +306,16 @@
 </ol>
 <p>至於開發時，Pylance 本來就安裝了 Pyright，自然就會顯示錯誤提示。</p>
 <hr>
-<h2 id="關於設定檔"><a href="#關於設定檔" class="headerlink" title="關於設定檔"></a>關於設定檔</h2><p>如同 Mypy 使用 <code>mypy.ini</code>或<code>pyproject.toml</code>。</p>
-<p>你可以透過<code>pyrightconfig.json</code>或<code>pyproject.toml</code>來客製化 Pyright 的檢查行為。</p>
-<p>其中<code>pyrightconfig.json</code>是原生的設定檔格式，而<code>pyproject.toml</code>則是後來才追加的。</p>
-<p>如果專案中同時存在<code>pyrightconfig.json</code>和<code>pyproject.toml</code>，Pyright 會優先使用<code>pyrightconfig.json</code>的設定。</p>
+<h2 id="關於設定檔"><a href="#關於設定檔" class="headerlink" title="關於設定檔"></a>關於設定檔</h2><p>如同 Mypy 使用 <code>mypy.ini</code> 或 <code>pyproject.toml</code>。</p>
+<p>你可以透過 <code>pyrightconfig.json</code> 或 <code>pyproject.toml</code> 來客製化 Pyright 的檢查行為。</p>
+<p>其中 <code>pyrightconfig.json</code> 是原生的設定檔格式，而 <code>pyproject.toml</code> 則是後來才追加的。</p>
+<p>如果專案中同時存在 <code>pyrightconfig.json</code> 和 <code>pyproject.toml</code>，Pyright 會優先使用 <code>pyrightconfig.json</code> 的設定。</p>
 <p>兩者目前基本上可以視為等價，所以要選擇哪一種格式，主要取決於<strong>你希望 Pyright 的設定檔要獨立還和其它工具放在一起</strong>。</p>
-<p>我暫時選擇獨立，採<code>pyrightconfig.json</code>，<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/pyright-v1-20250530/pyrightconfig.json">內容</a>如下：</p>
+<p>我暫時選擇獨立，採 <code>pyrightconfig.json</code>，<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/pyright-v1-20250530/pyrightconfig.json">內容</a>如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;venvPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;venv&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.venv&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;migrations&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;.venv&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;typeCheckingMode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;basic&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>此外，一旦 VS Code 偵測到有設定檔存在，預設的檢查等級就會是<code>standard</code>——不管你 VS Code 本來怎麼設定。</p>
-<p>此時最好就明示設定<code>typeCheckingMode</code>，如上所示。</p>
+<p>此外，一旦 VS Code 偵測到有設定檔存在，預設的檢查等級就會是 <code>standard</code>——不管你 VS Code 本來怎麼設定。</p>
+<p>此時最好就明示設定 <code>typeCheckingMode</code>，如上所示。</p>
 <h2 id="Pyright-的三種等級"><a href="#Pyright-的三種等級" class="headerlink" title="Pyright 的三種等級"></a>Pyright 的三種等級</h2><p>Pyright 提供三種檢查等級：</p>
 <ul>
 <li><code>basic</code>：適合大部分實務開發，檢查範圍涵蓋常見錯誤，擾動小。</li>
@@ -323,7 +323,7 @@
 <li><code>strict</code>：嚴格，適合對型別非常重視的專案或團隊。</li>
 </ul>
 <p>想知道這三個等級的<strong>具體區別</strong>，可以參考官方文件的這個<a target="_blank" rel="noopener" href="https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults">對照表</a>。</p>
-<p>個人認為<code>basic</code>或<code>standard</code>就已足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
+<p>個人認為 <code>basic</code> 或 <code>standard</code> 就已足夠，能在不影響開發節奏的情況下<strong>提供良好的型別保障</strong>。</p>
 <hr>
 <h2 id="整合-pre-commit-與注意事項"><a href="#整合-pre-commit-與注意事項" class="headerlink" title="整合 pre-commit 與注意事項"></a>整合 pre-commit 與注意事項</h2><p>我習慣將型別檢查加入 pre-commit hook，確保每次 commit 都經過檢查。</p>
 <p>但是，不可否認，型別檢查器的 hook 設定比 linter、formatter 要來得<strong>講究許多</strong>！</p>
@@ -332,16 +332,16 @@
 <p>從結論上來說，把 hook 設定為「本地」會單純得多。適合單人開發的 side project，<a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/blog/pyright-v1-20250530/pyrightconfig.json">我的設定</a>如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">local</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pyright</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pyright</span> <span class="string">(local</span> <span class="string">venv)</span></span><br><span class="line">      <span class="attr">entry:</span> <span class="string">.venv/bin/pyright</span></span><br><span class="line">      <span class="attr">language:</span> <span class="string">system</span></span><br><span class="line">      <span class="attr">pass_filenames:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">types:</span> [<span class="string">python</span>]</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>name</code>欄位的名稱可以自訂，<code>id</code>部分因為是 local hook，也能夠自訂。<code>entry</code>的路徑則要看專案虛擬環境所在。</p>
-<p>值得一提的是，上述 hook 設定還得搭配<code>pyrightconfig.json</code>中的：</p>
+<p>其中 <code>name</code> 欄位的名稱可以自訂，<code>id</code> 部分因為是 local hook，也能夠自訂。<code>entry</code> 的路徑則要看專案虛擬環境所在。</p>
+<p>值得一提的是，上述 hook 設定還得搭配 <code>pyrightconfig.json</code> 中的：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;venvPath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;venv&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.venv&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>才能正常執行。</p>
 <h3 id="使用-Remote-Hook"><a href="#使用-Remote-Hook" class="headerlink" title="使用 Remote Hook"></a>使用 Remote Hook</h3><p>用遠端倉庫的 hook 也行，但常見的做法我試不成功，以下設定則可以 work：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/RobertCraigie/pyright-python</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v1.1.401</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">pyright</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">pyright</span> <span class="string">(via</span> <span class="string">pyright-python)</span></span><br><span class="line">      <span class="attr">pass_filenames:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-<p>但一樣要搭配上述的<code>pyrightconfig.json</code>設定內容。</p>
-<p>或寫成<code>pyproject.toml</code>格式如下：</p>
+<p>但一樣要搭配上述的 <code>pyrightconfig.json</code> 設定內容。</p>
+<p>或寫成 <code>pyproject.toml</code> 格式如下：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.pyright]</span></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="attr">venvPath</span> = <span class="string">&quot;.&quot;</span></span><br><span class="line"><span class="attr">venv</span> = <span class="string">&quot;.venv&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>更多細節可參考上述 hook 的 <a target="_blank" rel="noopener" href="https://github.com/RobertCraigie/pyright-python">GitHub 首頁</a>介紹。</p>
@@ -372,7 +372,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/uv-dockerfile/" title="uv 容器化實作：使用官方 image 建立 Dockerfile" rel="bookmark">uv 容器化實作：使用官方 image 建立 Dockerfile</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/uv-dockerfile/" title="uv 容器化實作：使用官方 image 建立 Dockerfile" rel="bookmark">uv 容器化實作：使用官方 image 建立 Dockerfile</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python Linter、Formatter 教學" rel="bookmark">VS Code 設定 Python Linter、Formatter 教學</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/WeaMind/">WeaMind</a>
             <a href="/tags/VS-Code/">VS Code</a>

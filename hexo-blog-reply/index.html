@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T01:54:57+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -195,7 +195,7 @@
 <li>筆記、教學類文章有可能因為我的能力不足，出現一些內容、概念上的錯誤，如果讀者發現想要指正，卻還得自己寫 email，那肯定讓人興趣缺缺。反之有留言板的話，只要登入一下即可回覆，能顯著提高意願！</li>
 </ol>
 <h2 id="Hexo-如何新增留言板？"><a href="#Hexo-如何新增留言板？" class="headerlink" title="Hexo 如何新增留言板？"></a>Hexo 如何新增留言板？</h2><p>毫無疑問，「讀者留言」乃是部落格功能上的硬需求，所以無論 WordPress 或本站採用的 Hexo 等靜態框架，一定都整合了這類功能，通常是採用「外部服務」的形式。</p>
-<p>以 Hexo 為例，只要去主題（Theme）設定看一下，一定能找到留言板的可選擇方案與相關設定。就我使用的主題——Even——也在設定檔<code>_config.yml</code>中提供了數種常見的留言系統整合方案，包括最常見的三項：</p>
+<p>以 Hexo 為例，只要去主題（Theme）設定看一下，一定能找到留言板的可選擇方案與相關設定。就我使用的主題——Even——也在設定檔 <code>_config.yml</code> 中提供了數種常見的留言系統整合方案，包括最常見的三項：</p>
 <ol>
 <li>Disqus</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">Gitalk</a></li>
@@ -209,7 +209,7 @@
 <li><a target="_blank" rel="noopener" href="https://kidneyweakx.com/2019/19log-1026-hexo-com.html">Hexo Next 主題增加評論系統 utterances</a></li>
 </ul>
 <p>雖然每個 Hexo 用戶採用的主題不盡相同，但畢竟是框架，增加留言板的方式大同小異，差別在於主題是否已經幫你整合，方便你直接設定，在此就不多贅述。</p>
-<p>我使用的 Even 主題有整合，所以大部分的設定只需在<code>_config.yml</code>進行「填空」即可，內容大致如下：</p>
+<p>我使用的 Even 主題有整合，所以大部分的設定只需在 <code>_config.yml</code> 進行「填空」即可，內容大致如下：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">kyomind/blog-reply</span></span><br><span class="line">  <span class="attr">issueTerm:</span> <span class="string">title</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br><span class="line">  <span class="attr">label:</span> <span class="string">utterances</span></span><br></pre></td></tr></table></figure>
 
 
@@ -235,7 +235,7 @@
 <hr>
 <h2 id="Hexo-如何讓分類與標籤頁沒有留言區？"><a href="#Hexo-如何讓分類與標籤頁沒有留言區？" class="headerlink" title="Hexo 如何讓分類與標籤頁沒有留言區？"></a>Hexo 如何讓分類與標籤頁沒有留言區？</h2><p>剛加完留言功能後，赫然發現我的<a href="https://blog.kyomind.tw/categories/">分類</a>與<a href="https://blog.kyomind.tw/tags/">標籤</a>頁面下也都有了留言區（現已拿掉），雖然不是不行，但這顯然和我們平常的瀏覽經驗不符。</p>
 <p>最初我修正此問題的方式非常土法煉鋼，就是換掉分類與標籤頁的前端繼承模板，改繼承一個沒有留言區的基底模板。啊不就還好我寫過一點 Flask 與 Django 的前端模板？這實在不太科學。</p>
-<p>爬了一下文後才知道，留言區開關早就納入了 Hexo 內建的<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/front-matter">語法設定</a>了！請在頁面所屬的 Markdown 檔案中，加入下列<code>comments: false</code>標籤，以分類頁為例：</p>
+<p>爬了一下文後才知道，留言區開關早就納入了 Hexo 內建的<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/front-matter">語法設定</a>了！請在頁面所屬的 Markdown 檔案中，加入下列 <code>comments: false</code> 標籤，以分類頁為例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">layout: categories</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>如此該頁的留言功能便會被關閉，不用自己辛苦造輪子手刻——這告訴了我們看「文件」的重要性。</p>
@@ -258,7 +258,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="我自架部落格的理由與選擇（下）選擇篇" rel="bookmark">我自架部落格的理由與選擇（下）選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格心得：一週年總結與持續寫作策略" rel="bookmark">Hexo 部落格心得：一週年總結與持續寫作策略</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Hexo/">Hexo</a>
             </div>

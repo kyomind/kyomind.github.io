@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-18T16:22:32+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -203,7 +203,7 @@
 <p>本專案使用 Python 3.12.5、Django 4.2 LTS 及 Django Ninja 1.3.0，這部分只要知道即可。</p>
 <p>我們現在進入各個工具的介紹。</p>
 <h2 id="pyenv：Python-版本管理"><a href="#pyenv：Python-版本管理" class="headerlink" title="pyenv：Python 版本管理"></a>pyenv：Python 版本管理</h2><p><a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">pyenv</a>（對，它的 p 是小寫，同 <a target="_blank" rel="noopener" href="https://docs.pytest.org/en/stable/">pytest</a>）是一個<strong>管理多個 Python 版本</strong>的強大工具，它允許你在不同專案中使用不同版本的 Python，而不會產生衝突。</p>
-<p>這也是為什麼，專案中有一個<code>.python-version</code>檔——它向 pyenv 聲明了專案所使用的 Python 版本。</p>
+<p>這也是為什麼，專案中有一個 <code>.python-version</code> 檔——它向 pyenv 聲明了專案所使用的 Python 版本。</p>
 <p>pyenv 在處理多個使用不同 Python 版本的專案時特別有幫助，尤其是當某些專案需要使用舊版 Python 時。</p>
 <p>透過 pyenv，你可以輕鬆安裝和切換 Python 版本，確保每個專案都能在正確的環境中運行。</p>
 <p>詳細的 pyenv 教學，可以參考我之前寫的：</p>
@@ -230,7 +230,7 @@
 <hr>
 <h2 id="pre-commit：Git-Hooks-管理工具"><a href="#pre-commit：Git-Hooks-管理工具" class="headerlink" title="pre-commit：Git Hooks 管理工具"></a>pre-commit：Git Hooks 管理工具</h2><p>俗話說的好：「沒有 CI，至少也要有 pre-commit」——這是我自己說的。</p>
 <p><a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a>（沒錯，它的 p 也是小寫）是由 Python 所寫成的 Git Hooks 管理工具，<strong>適用於各類程式語言專案</strong>。讓使用者根據自己的需求，建立相關的 <a target="_blank" rel="noopener" href="https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks">Git Hooks</a>。</p>
-<p>以常見的「pre-commit hook」為例，它會在你執行<code>git commit</code>之際，自動運行各種檢查和格式化工具——也就是你設定的 hooks，確保提交的程式碼符合規範。</p>
+<p>以常見的「pre-commit hook」為例，它會在你執行 <code>git commit</code> 之際，自動運行各種檢查和格式化工具——也就是你設定的 hooks，確保提交的程式碼符合規範。</p>
 <p>這不僅能維護程式碼品質，還能<strong>減少</strong> code review 中的<strong>瑣碎問題</strong>，讓審核者專注於邏輯和架構的審查。</p>
 <p>在我們的範例專案中，pre-commit 被設定為運行 Ruff 和一些基本的格式確認，以確保程式碼風格的一致性。</p>
 <p>相關文章：<a href="/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></p>
@@ -268,7 +268,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="Python 套件管理器——Poetry 完全入門指南" rel="bookmark">Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/linux-dev-setup/" title="Linux 上的 Python 開發環境設定" rel="bookmark">Linux 上的 Python 開發環境設定</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/poetry-pyenv-practical-tips/" title="Poetry + pyenv 教學：常用指令與注意事項" rel="bookmark">Poetry + pyenv 教學：常用指令與注意事項</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/python-poetry/" title="Python 套件管理器——Poetry 完全入門指南" rel="bookmark">Python 套件管理器——Poetry 完全入門指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/poetry-pyenv-practical-tips/" title="Poetry + pyenv 教學：常用指令與注意事項" rel="bookmark">Poetry + pyenv 教學：常用指令與注意事項</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/linux-dev-setup/" title="Linux 上的 Python 開發環境設定" rel="bookmark">Linux 上的 Python 開發環境設定</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/pyenv/">pyenv</a>
             <a href="/tags/Poetry/">Poetry</a>

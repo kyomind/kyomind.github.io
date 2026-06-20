@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:53:01+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -258,23 +258,23 @@
 <p>先別說你不會XD，很多時候人都是健忘的。尤其當這個類別是 ORM 中的 Model 時，特別容易！</p>
 <p>而且冗餘的前綴不一定只發生在類別，有時<strong>模組</strong>中的變數命名，也會再度<strong>重複模組名稱</strong>作為前綴。</p>
 <p><strong>二、在名稱中以「循序數字」當作後綴</strong></p>
-<p>比如<code>payment1</code>、<code>payment2</code>、<code>payment3</code>。</p>
+<p>比如 <code>payment1</code>、<code>payment2</code>、<code>payment3</code>。</p>
 <p>我真的很討厭！因為這樣的命名<strong>缺乏表意性</strong>。</p>
 <p>有時候會在 pytest fixture 看到同事這樣寫，我會建議改成比較「<strong>能表現個體特質</strong>」的命名。</p>
-<p>比如<code>payment1</code>改成<code>payment_with_credit_card</code>、<code>payment2</code>改成<code>invalid_payment</code>等等。除非它們之間<strong>真的沒有任何區別</strong>——通常都有區別，<strong>只是懶得一一想名字</strong>😷</p>
-<h3 id="我認為不佳的命名模式——型別後綴"><a href="#我認為不佳的命名模式——型別後綴" class="headerlink" title="我認為不佳的命名模式——型別後綴"></a>我認為不佳的命名模式——型別後綴</h3><p>除了書中的兩種，還有一種我個人也覺得不妥的命名模式——<strong>型別後綴</strong>。也就是在變數的最後加上型別，比如<code>name_str</code>、<code>age_int</code>。</p>
+<p>比如 <code>payment1</code> 改成 <code>payment_with_credit_card</code>、<code>payment2</code> 改成 <code>invalid_payment</code> 等等。除非它們之間<strong>真的沒有任何區別</strong>——通常都有區別，<strong>只是懶得一一想名字</strong>😷</p>
+<h3 id="我認為不佳的命名模式——型別後綴"><a href="#我認為不佳的命名模式——型別後綴" class="headerlink" title="我認為不佳的命名模式——型別後綴"></a>我認為不佳的命名模式——型別後綴</h3><p>除了書中的兩種，還有一種我個人也覺得不妥的命名模式——<strong>型別後綴</strong>。也就是在變數的最後加上型別，比如 <code>name_str</code>、<code>age_int</code>。</p>
 <p>在某些場合，當開發者<strong>想要強調</strong>某個變數的型別時，就會這麼做。</p>
 <p>比如 code review 時，我常見到的「型別後綴」命名是：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response_dict = response.json()</span><br></pre></td></tr></table></figure>
 
 <p>這樣寫似乎有其道理，<strong>但我仍不推薦，理由有二：</strong></p>
 <ol>
-<li>型別後綴會<strong>讓語意變得混亂</strong>：比如本來很清楚的<code>is_valid</code>，加上後綴變成<code>is_valid_bool</code>，反而讓人不知所云。</li>
+<li>型別後綴會<strong>讓語意變得混亂</strong>：比如本來很清楚的 <code>is_valid</code>，加上後綴變成 <code>is_valid_bool</code>，反而讓人不知所云。</li>
 <li>現在已經有了 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/typing.html">type hints</a>，可以用來強調型別。前述例子，你想強調它是一個布林值，大可明示性地為它加上 type hint 就好：<code>is_valid: bool</code>。</li>
 </ol>
 <p>有了 type hints，我們很難再找到足夠充分的理由，再使用型別後綴來命名變數。</p>
 <h3 id="不要使用內建名稱"><a href="#不要使用內建名稱" class="headerlink" title="不要使用內建名稱"></a>不要使用內建名稱</h3><p>意即不要使用 Python 的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BF%9D%E7%95%99%E5%AD%97">保留字</a>。理由可想而知，因為它會覆蓋原來的內建物件，造成程式的錯誤與混亂。</p>
-<p>那真的需要怎麼辦？一個常見的做法是加上<code>_</code>作為<strong>後綴</strong>。比如<code>type_</code>。</p>
+<p>那真的需要怎麼辦？一個常見的做法是加上 <code>_</code> 作為<strong>後綴</strong>。比如 <code>type_</code>。</p>
 <hr>
 <h2 id="史上最糟的變數名稱——data"><a href="#史上最糟的變數名稱——data" class="headerlink" title="史上最糟的變數名稱——data"></a>史上最糟的變數名稱——data</h2><blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/no-result/">我絕不用 result 作為變數名稱</a></p>
@@ -299,7 +299,7 @@
 <hr>
 <h2 id="第-5-章：找出程式碼的異味"><a href="#第-5-章：找出程式碼的異味" class="headerlink" title="第 5 章：找出程式碼的異味"></a>第 5 章：找出程式碼的異味</h2><p>程式碼異味（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E4%BB%A3%E7%A0%81%E5%BC%82%E5%91%B3">code smell</a>）指的是程式中看起來「不對勁」，且可能在後續引發問題的地方。</p>
 <p>如果可以，我們當然要盡可能避免異味，至少要<strong>給予一定的關注</strong>才行。</p>
-<p>實務上，我會在覺得有明顯異味的地方留下<code>XXX</code>註解，闡述異味的理由，並留意後續發展。</p>
+<p>實務上，我會在覺得有明顯異味的地方留下 <code>XXX</code> 註解，闡述異味的理由，並留意後續發展。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX PATCH 做的事情太多了，很容易發生狀態殘留問題</span></span><br><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;PATCH&#x27;</span>:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>書中所舉的異味種類很多，也都很經典，值一一細讀。不過限於篇幅，只舉其中幾個我認為<strong>比較有代表性</strong>的異味。</p>
@@ -326,14 +326,14 @@
 
 <p>常數是在程式中使用的<strong>固定值</strong>，意味著<strong>不會改變</strong>。使用常數時，我們應該採取<strong>有描述性的命名</strong>，以提高程式的可讀性和可維護性。</p>
 <p>常數 + 有描述性的命名，就是應對魔術數字的絕佳手段。</p>
-<p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a> 中的<code>status</code>模組（<a target="_blank" rel="noopener" href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/status.py">原始碼</a>）：</p>
+<p>比如 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a> 中的 <code>status</code> 模組（<a target="_blank" rel="noopener" href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/status.py">原始碼</a>）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Response(context, status=status.HTTP_200_OK)</span><br></pre></td></tr></table></figure>
 <p>除了 200，常見的還有：</p>
 <ul>
 <li><code>status.HTTP_400_BAD_REQUEST</code></li>
 <li><code>status.HTTP_404_NOT_FOUND</code></li>
 </ul>
-<p>我們當然可以直接寫<code>status=200</code>、<code>400</code>、<code>404</code>，看起來也很直觀，但對於那些我們<strong>沒那麼熟悉</strong>的 HTTP 狀態碼，比如 <a target="_blank" rel="noopener" href="https://http.cat/status/509">509</a>，則又需要陷入停頓與思考。</p>
+<p>我們當然可以直接寫 <code>status=200</code>、<code>400</code>、<code>404</code>，看起來也很直觀，但對於那些我們<strong>沒那麼熟悉</strong>的 HTTP 狀態碼，比如 <a target="_blank" rel="noopener" href="https://http.cat/status/509">509</a>，則又需要陷入停頓與思考。</p>
 <p>而使用常數的話，則所有成員都更加<strong>一目了然</strong>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status.HTTP_509_BANDWIDTH_LIMIT_EXCEEDED</span><br></pre></td></tr></table></figure>
 

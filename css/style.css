@@ -1065,7 +1065,7 @@ h6 {
   border-color: #ddd;
   border-radius: 3px;
   padding: 0px 3px 2px 3px;
-  margin: 0px 3px;
+  margin: 0;
   color: #c7254e;
   word-break: normal;
   white-space: pre-warp;

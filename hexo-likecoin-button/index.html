@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T01:54:57+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -219,7 +219,7 @@
 <p>因為才剛實作完「相關文章」區塊沒多久，記憶猶新，我便想到乾脆就把 LikeCoin widget 的程式碼也一起塞到相關文章的 swig 模板裡，也就是把它們在呈現上綁在一起，畢竟它們通常是「同進同出」沒錯，模板的 HTML 長這樣：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    document.write(</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">      &quot;<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">scrolling</span>=<span class="string">&#x27;no&#x27;</span> <span class="attr">frameborder</span>=<span class="string">&#x27;0&#x27;</span> <span class="attr">sandbox</span>=<span class="string">&#x27;allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation&#x27;</span> <span class="attr">style</span>=<span class="string">&#x27;height: 212px; width: 100%;&#x27;</span> <span class="attr">src</span>=<span class="string">&#x27;https://button.like.co/in/embed/[LikerID]/button?referrer=&quot; +</span></span></span></span></span><br><span class="line"><span class="string"><span class="tag"><span class="language-xml"><span class="language-handlebars">      encodeURIComponent(location.href.split(&quot;?&quot;)[0].split(&quot;#&quot;)[0]) + &quot;&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span>&quot;);</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">  </span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">♠︎</span><br><span class="line">    <span class="tag">&lt;<span class="name">b</span>&gt;</span></span><br><span class="line">      相關文章</span><br><span class="line">    <span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br><span class="line">&#123;%- if theme.popular_posts.enable -%&#125;</span><br><span class="line">  &#123;&#123; popular_posts( &#123; ulClass: &#x27;popular-posts&#x27;, maxCount: theme.popular_posts.maxCount, PPMixingRate: theme.popular_posts.PPMixingRate, isImage:theme.popular_posts.isImage   &#125; , page ) &#125;&#125;</span><br><span class="line">&#123;%- endif -%&#125;</span><br></pre></td></tr></table></figure>
 
-<p>「♠︎」之前的部分，就是 LikeCoin widget 的程式碼，從上述官方文件複製而來，其中<code>[LikerID]</code>記得要改成你自己的 Liker ID。</p>
+<p>「♠︎」之前的部分，就是 LikeCoin widget 的程式碼，從上述官方文件複製而來，其中 <code>[LikerID]</code> 記得要改成你自己的 Liker ID。</p>
 <p>雖然每個主題的手刻方式略有不同，但也大同小異，只能靠自己費一些心思了。</p>
 <h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>令人滿意！這自然的「<strong>留白</strong>」，非常符合我的期待！簡直超乎想像。</p>
 <p><img src="https://i.imgur.com/TbTrLdd.png"></p>
@@ -241,7 +241,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="我自架部落格的理由與選擇（下）選擇篇" rel="bookmark">我自架部落格的理由與選擇（下）選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/adding-sitemap-issue/" title="解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面" rel="bookmark">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格心得：一週年總結與持續寫作策略" rel="bookmark">Hexo 部落格心得：一週年總結與持續寫作策略</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Hexo/">Hexo</a>
             </div>

@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-18T18:12:05+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -210,7 +210,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="本文重點"><a href="#本文重點" class="headerlink" title="本文重點"></a>本文重點</h2><p>有鑑於微軟已經從 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">VS Code Python extension</a> 中拆分了幾個重要的 Python linter、formatter 功能，所以在<code>settings.json</code>中的設定會有一些變化，本文就來介紹，這些新套件在設定上的重點。</p>
+<h2 id="本文重點"><a href="#本文重點" class="headerlink" title="本文重點"></a>本文重點</h2><p>有鑑於微軟已經從 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">VS Code Python extension</a> 中拆分了幾個重要的 Python linter、formatter 功能，所以在 <code>settings.json</code> 中的設定會有一些變化，本文就來介紹，這些新套件在設定上的重點。</p>
 <p>其實——也沒什麼重點啦！複製貼上即可。🐸</p>
 <p>目前已「獨立」出的 Python 相關擴充套件有：</p>
 <ul>
@@ -221,9 +221,9 @@
 <p>isort 我們<a href="/isort/">上一篇</a>講過了，這次把剩下的兩項補完，功德圓滿。</p>
 <hr>
 <h2 id="Flake8-設定"><a href="#Flake8-設定" class="headerlink" title="Flake8 設定"></a>Flake8 設定</h2><blockquote>
-<p><code>2023/07/05</code>補充：無論 Flake8 還是 Black Formatter，當你的虛擬環境<strong>沒有安裝</strong>該 package 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
+<p><code>2023/07/05</code> 補充：無論 Flake8 還是 Black Formatter，當你的虛擬環境<strong>沒有安裝</strong>該 package 時，擴充套件會使用它<strong>預設的版本</strong>。但一旦你的虛擬環境<strong>有安裝</strong>，擴充套件則會使用<strong>虛擬環境中的版本</strong>。</p>
 </blockquote>
-<p>舊有的 Flake8，是前述 Python 擴充套件的一部分，需要你額外安裝 Flake8 package 在專案的 Python 虛擬環境中。其<code>settings.json</code>設定如下：</p>
+<p>舊有的 Flake8，是前述 Python 擴充套件的一部分，需要你額外安裝 Flake8 package 在專案的 Python 虛擬環境中。其 <code>settings.json</code> 設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.linting.flake8Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--max-line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--ignore=E131,E302&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>使用 Flake8 擴充套件後，新的設定改為：</p>
@@ -231,7 +231,7 @@
 
 <p>內容相同，只是 token 名稱不同而已。</p>
 <p>和以前最大的區別是：Flake8 package 已安裝於擴充套件中，不必再額外安裝到專案虛擬環境，且可以<strong>跨專案共用</strong>！這也是採用新方案的<strong>最大優點</strong>。</p>
-<p>注意，新舊兩者是可以並存的！因為它們指向的<code>flake8</code>路徑各不相同。但我還是建議，安裝擴充套件以後，原來的設定就可以移除了，以免混淆。</p>
+<p>注意，新舊兩者是可以並存的！因為它們指向的 <code>flake8</code> 路徑各不相同。但我還是建議，安裝擴充套件以後，原來的設定就可以移除了，以免混淆。</p>
 <hr>
 <h2 id="Black-Formatter-設定"><a href="#Black-Formatter-設定" class="headerlink" title="Black Formatter 設定"></a>Black Formatter 設定</h2><p>舊有的設定：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;black&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.formatting.blackArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--skip-string-normalization&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
@@ -246,7 +246,7 @@
 <hr>
 <h2 id="不同專案使用不同格式化器"><a href="#不同專案使用不同格式化器" class="headerlink" title="不同專案使用不同格式化器"></a>不同專案使用不同格式化器</h2><p>最後補充一個常見的情境，以我自己為例：個人開發我使用 Black，但工作上都是使用 yapf，怎麼辦？</p>
 <p>此時要善用 VS Code 的<strong>專案設定檔</strong>。</p>
-<p>該設定檔預設並不存在，最簡單的方式就是先在<strong>專案的根目錄</strong>中建立<code>.vscode</code>資料夾（記得要加入<code>.gitignore</code>），並在其中新增一個<code>settings.json</code>檔。</p>
+<p>該設定檔預設並不存在，最簡單的方式就是先在<strong>專案的根目錄</strong>中建立 <code>.vscode</code> 資料夾（記得要加入 <code>.gitignore</code>），並在其中新增一個 <code>settings.json</code> 檔。</p>
 <p>假設我們平常以 Black 為預設格式化器，在<strong>特定專案</strong>才使用 yapf，那麼我們只要在專案設定檔中，把格式化器改為 yapf 即可，而<strong>專案設定會優先於使用者全域設定</strong>。</p>
 <p>以上述情境為例，我的專案設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;yapf&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;[python]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ms-python.python&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>

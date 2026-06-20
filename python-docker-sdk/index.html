@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-11T06:18:49+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -211,9 +211,9 @@
 <p>同理，要操作 Docker Engine 也需要先建立一個「<strong>客戶端連線</strong>」，畢竟 Docker 是典型的 client&#x2F;server 架構，我們平常使用的 Docker CLI 就是一個 Docker client，而 server 端則是 Docker Engine，又稱為 Docker daemon。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> docker</span><br><span class="line">client = docker.from_env()</span><br></pre></td></tr></table></figure>
 
-<p>絕大部分的 Docker 操作，都是從這個 client 開始。初始化 client 連線非常簡單，只需要<code>from_env()</code>一行解決，不過這裡有一個需要注意的點，那就是 Docker daemon 所在的連線位址——<code>DOCKER_HOST</code>環境變數。</p>
-<p>事實上，<code>from_env()</code>會<strong>自動使用</strong>相關環境變數，來取得 Docker daemon 的連線位址。如果沒有設定，那麼預設會連線到本機上的位址，通常是<code>unix://var/run/docker.sock</code>。</p>
-<p>和 Docker CLI 相同，<code>from_env()</code>會使用這三個環境變數：</p>
+<p>絕大部分的 Docker 操作，都是從這個 client 開始。初始化 client 連線非常簡單，只需要 <code>from_env()</code> 一行解決，不過這裡有一個需要注意的點，那就是 Docker daemon 所在的連線位址——<code>DOCKER_HOST</code> 環境變數。</p>
+<p>事實上，<code>from_env()</code> 會<strong>自動使用</strong>相關環境變數，來取得 Docker daemon 的連線位址。如果沒有設定，那麼預設會連線到本機上的位址，通常是 <code>unix://var/run/docker.sock</code>。</p>
+<p>和 Docker CLI 相同，<code>from_env()</code> 會使用這三個環境變數：</p>
 <ul>
 <li><code>DOCKER_HOST</code></li>
 <li><code>DOCKER_TLS_VERIFY</code></li>
@@ -222,46 +222,46 @@
 <p>通常我們只需要關注第一個——<code>DOCKER_HOST</code>——即可。</p>
 <h2 id="DOCKER-HOST-環境變數"><a href="#DOCKER-HOST-環境變數" class="headerlink" title="DOCKER_HOST 環境變數"></a>DOCKER_HOST 環境變數</h2><p>平常我們在本機安裝 Docker，實際上是同時安裝了 Docker CLI 和 Docker Engine，<strong>啟動 Docker Engine 在本機執行一個 process ，即為 Docker daemon。</strong></p>
 <blockquote>
-<p><strong>注意</strong>：一般提到 Docker host，通常指的是 Docker network 中的 host network，和這裡的<code>DOCKER_HOST</code>環境變數所代表的意義並不相同。</p>
+<p><strong>注意</strong>：一般提到 Docker host，通常指的是 Docker network 中的 host network，和這裡的 <code>DOCKER_HOST</code> 環境變數所代表的意義並不相同。</p>
 </blockquote>
-<p>因為 Docker client 和 Docker Engine 都安裝在同一台主機上，此時<code>DOCKER_HOST</code>位址通常是像<code>unix://var/run/docker.sock</code>或<code>tcp://127.0.0.1:2375</code>這類的本機路徑，使用<code>from_env()</code>可以輕鬆建立 client 連線。</p>
+<p>因為 Docker client 和 Docker Engine 都安裝在同一台主機上，此時 <code>DOCKER_HOST</code> 位址通常是像 <code>unix://var/run/docker.sock</code> 或 <code>tcp://127.0.0.1:2375</code> 這類的本機路徑，使用 <code>from_env()</code> 可以輕鬆建立 client 連線。</p>
 <p>當然，Docker Engine 必須先啟動。</p>
-<h3 id="Remote-Docker-daemon"><a href="#Remote-Docker-daemon" class="headerlink" title="Remote Docker daemon"></a>Remote Docker daemon</h3><p>但如果想要連線的 Docker daemon 是位於<strong>遠端主機</strong>，透過<code>from_env()</code>建立連線時，就要先設定<code>DOCKER_HOST</code>這個環境變數，以取代 SDK 提供的連線預設值。換句話說，在連線 localhost 時，這個變數可以不設定，而在連線遠端主機時，就<strong>必須要有</strong>。</p>
+<h3 id="Remote-Docker-daemon"><a href="#Remote-Docker-daemon" class="headerlink" title="Remote Docker daemon"></a>Remote Docker daemon</h3><p>但如果想要連線的 Docker daemon 是位於<strong>遠端主機</strong>，透過 <code>from_env()</code> 建立連線時，就要先設定 <code>DOCKER_HOST</code> 這個環境變數，以取代 SDK 提供的連線預設值。換句話說，在連線 localhost 時，這個變數可以不設定，而在連線遠端主機時，就<strong>必須要有</strong>。</p>
 <p>最簡單的方式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> docker</span><br><span class="line"></span><br><span class="line">os.environ[<span class="string">&quot;DOCKER_HOST&quot;</span>] = <span class="string">&#x27;tcp://22.22.22.22:2375&#x27;</span> <span class="comment"># ip 只是舉例</span></span><br><span class="line">client = docker.from_env()</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>但最好還是直接在<code>.env</code>之類的環境設定檔案把環境變數值設定好，並在 app 中取得。在程式碼中明示任何帳號、密碼、內部主機位址都不妥，<strong>應盡量避免</strong>。</p>
+<p>但最好還是直接在 <code>.env</code> 之類的環境設定檔案把環境變數值設定好，並在 app 中取得。在程式碼中明示任何帳號、密碼、內部主機位址都不妥，<strong>應盡量避免</strong>。</p>
 </blockquote>
-<p>如果遠端主機要求使用 SSL 連線，則連線位址要設定在<code>DOCKER_TLS_VERIFY</code>。</p>
-<p><code>from_env()</code>是 Docker SDK 提供建立連線的捷徑，如果想使用更完整的參數，則要直接呼叫<code>DockerClient</code>類別來建立連線物件（實例），如下：</p>
+<p>如果遠端主機要求使用 SSL 連線，則連線位址要設定在 <code>DOCKER_TLS_VERIFY</code>。</p>
+<p><code>from_env()</code> 是 Docker SDK 提供建立連線的捷徑，如果想使用更完整的參數，則要直接呼叫 <code>DockerClient</code> 類別來建立連線物件（實例），如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> docker</span><br><span class="line">client = docker.DockerClient(base_url=<span class="string">&#x27;unix://var/run/docker.sock&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>這部分請直接參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/client.html#client-reference">文件</a>，大部分情況使用<code>from_env()</code>應該已經足夠。</p>
+<p>這部分請直接參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/client.html#client-reference">文件</a>，大部分情況使用 <code>from_env()</code> 應該已經足夠。</p>
 <h2 id="Docker-socket-權限問題"><a href="#Docker-socket-權限問題" class="headerlink" title="Docker socket 權限問題"></a>Docker socket 權限問題</h2><p>即使是透過本機上的 socket 連接本機的 Docker daemon，程式也可能遇到連線問題，通常是程式 app 的<strong>執行權限</strong>不符合主機上 Docker socket 的要求，會出現類似下面的錯誤訊息：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error <span class="keyword">while</span> fetching server API version: (<span class="string">&#x27;Connection aborted.&#x27;</span>, PermissionError(<span class="number">13</span>, <span class="string">&#x27;Permission denied&#x27;</span>))</span><br></pre></td></tr></table></figure>
 
-<p>此時可能要修改<code>var/run/docker.sock</code>檔案或 app 本身的權限，而這樣做是否安全，需具體考量，這裡只是點出這個潛在問題。</p>
+<p>此時可能要修改 <code>var/run/docker.sock</code> 檔案或 app 本身的權限，而這樣做是否安全，需具體考量，這裡只是點出這個潛在問題。</p>
 <h2 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h2><p>Docker 最常見使用的就是容器操作，我們來大概了解一下。</p>
 <h3 id="建立並啟動容器：containers-run"><a href="#建立並啟動容器：containers-run" class="headerlink" title="建立並啟動容器：containers.run"></a>建立並啟動容器：<code>containers.run</code></h3><p>先看個例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, command=<span class="string">&#x27;echo hello world&#x27;</span>, ports=&#123;<span class="string">&#x27;2222/tcp&#x27;</span>: <span class="number">3333</span>&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>方式是使用 SDK 中<code>containers</code>模組的<code>run</code>方法（method），再看一下<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.ContainerCollection.run">文件</a>中<code>run</code>的使用說明：</p>
-<p> <strong>run</strong>(<code>image</code>, <code>command=None</code>, <code>**kwargs</code>)</p>
+<p>方式是使用 SDK 中 <code>containers</code> 模組的 <code>run</code> 方法（method），再看一下<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.ContainerCollection.run">文件</a>中 <code>run</code> 的使用說明：</p>
+<p> <strong>run</strong>(<code>image</code>, <code>command=None</code>, <code> **kwargs</code>)</p>
 <blockquote>
 <p>Run a container. By default, it will wait for the container to finish and return its logs, similar to <code>docker run</code>.</p>
 </blockquote>
-<p>簡單來說，執行<code>run</code>的結果，即是依據給定的參數，來建立相對應的<code>Container</code>物件，和你使用 CLI 執行<code>docker container run</code>指令很類似。</p>
-<p>從文件中可知<code>run</code>方法具有兩個位置參數：<code>image</code>與<code>command</code>。<code>image</code>呼叫時一定不可省略，而<code>command</code>有參數預設值<code>None</code>，呼叫時可以省略，位置參數的特色是可以直接依順序賦值調用，不需使用參數名稱，如下：</p>
+<p>簡單來說，執行 <code>run</code> 的結果，即是依據給定的參數，來建立相對應的 <code>Container</code> 物件，和你使用 CLI 執行 <code>docker container run</code> 指令很類似。</p>
+<p>從文件中可知 <code>run</code> 方法具有兩個位置參數：<code>image</code> 與 <code>command</code>。<code>image</code> 呼叫時一定不可省略，而 <code>command</code> 有參數預設值 <code>None</code>，呼叫時可以省略，位置參數的特色是可以直接依順序賦值調用，不需使用參數名稱，如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, <span class="string">&#x27;echo hello world&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>從這上述兩個例子可以輕易看出，這裡的參數就相當於我們使用 CLI 時的 flag（也是參數啦）！很容易理解與轉換，換句話說，本段開頭的第一個例子可以理解為下面的 CLI 指令：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container run -p <span class="number">2222</span>:<span class="number">3333</span> alpine echo hello world</span><br></pre></td></tr></table></figure>
 
-<p><code>containers</code>模組的角色相當於 CLI 中的<code>docker container</code>，了解怎麼建立與啟動容器後，剩下就是容器的取得與操作問題了。</p>
-<h3 id="建立時即取得容器物件：detach-True"><a href="#建立時即取得容器物件：detach-True" class="headerlink" title="建立時即取得容器物件：detach=True"></a>建立時即取得容器物件：<code>detach=True</code></h3><p>程式成功執行<code>containers.run</code>方法後，容器就會建立及啟用，但若想要直接取得該容器物件以進行後續操作，則需要在呼叫<code>run</code>方法時加上<code>detach=True</code>參數，類似於 CLI 中的<code>-d</code>：</p>
+<p><code>containers</code> 模組的角色相當於 CLI 中的 <code>docker container</code>，了解怎麼建立與啟動容器後，剩下就是容器的取得與操作問題了。</p>
+<h3 id="建立時即取得容器物件：detach-True"><a href="#建立時即取得容器物件：detach-True" class="headerlink" title="建立時即取得容器物件：detach=True"></a>建立時即取得容器物件：<code>detach=True</code></h3><p>程式成功執行 <code>containers.run</code> 方法後，容器就會建立及啟用，但若想要直接取得該容器物件以進行後續操作，則需要在呼叫 <code>run</code> 方法時加上 <code>detach=True</code> 參數，類似於 CLI 中的 <code>-d</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, detach=True)</span><br><span class="line">&lt;Container <span class="string">&#x27;45e6d2de7c54&#x27;</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>雖然都是 detach 的意思，但 CLI 使用<code>-d</code>通常是為了不要讓容器的 process 佔用前景，而這裡是程式執行，沒有前景佔用問題，<code>detach=True</code>的主要意義在於取得容器。</p>
+<p>雖然都是 detach 的意思，但 CLI 使用 <code>-d</code> 通常是為了不要讓容器的 process 佔用前景，而這裡是程式執行，沒有前景佔用問題，<code>detach=True</code> 的主要意義在於取得容器。</p>
 <p>取得容器並存為變數：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container = client.containers.run(<span class="string">&#x27;alpine&#x27;</span>, detach=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
@@ -269,23 +269,23 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container_id = container.<span class="built_in">id</span></span><br><span class="line">logs = container.logs</span><br></pre></td></tr></table></figure>
 
 <p>容器物件的所有屬性及方法，請參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/containers.html#docker.models.containers.Container">文件</a>。</p>
-<h3 id="取得已存在的容器物件：containers-get"><a href="#取得已存在的容器物件：containers-get" class="headerlink" title="取得已存在的容器物件：containers.get"></a>取得已存在的容器物件：<code>containers.get</code></h3><p>上一段講的是建立的時候順便取得容器物件，而如果要取得「已存在」的容器，不論容器是否執行中，都可以透過容器 id 或容器名稱取得——使用<code>get</code>方法：</p>
+<h3 id="取得已存在的容器物件：containers-get"><a href="#取得已存在的容器物件：containers-get" class="headerlink" title="取得已存在的容器物件：containers.get"></a>取得已存在的容器物件：<code>containers.get</code></h3><p>上一段講的是建立的時候順便取得容器物件，而如果要取得「已存在」的容器，不論容器是否執行中，都可以透過容器 id 或容器名稱取得——使用 <code>get</code> 方法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 無論 id 或名稱格式皆為「字串」</span></span><br><span class="line">container = client.containers.get(<span class="string">&#x27;&lt;容器id&gt;&#x27;</span>)</span><br><span class="line">container = client.containers.get(<span class="string">&#x27;&lt;容器名稱&gt;&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>這裡的容器 id 和使用 CLI 一樣，可以<strong>只取前面幾位</strong>即可，比如只取<code>&#39;45e6&#39;</code>，只要沒有重複的容器 id 就能成功取得，反之則會出 error。不過這畢竟是程式執行，謹慎見起，建議還是不要取太少位，但可以不必是全部。</p>
+<p>這裡的容器 id 和使用 CLI 一樣，可以<strong>只取前面幾位</strong>即可，比如只取 <code>&#39;45e6&#39;</code>，只要沒有重複的容器 id 就能成功取得，反之則會出 error。不過這畢竟是程式執行，謹慎見起，建議還是不要取太少位，但可以不必是全部。</p>
 <h3 id="常用容器操作例示"><a href="#常用容器操作例示" class="headerlink" title="常用容器操作例示"></a>常用容器操作例示</h3><p>取得特定容器物件後，才能對它進行操作，這裡就稍為演示一下幾個常用的操作即可。</p>
 <p><strong>刪除容器</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">container.remove()</span><br><span class="line">container.remove(force=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
-<p>相當於<code>docker container rm</code>、<code>docker container rm -f</code>。</p>
+<p>相當於 <code>docker container rm</code>、<code>docker container rm -f</code>。</p>
 <p><strong>啟動容器</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container.start()</span><br></pre></td></tr></table></figure>
 
-<p>相當於<code>docker container start</code>。</p>
+<p>相當於 <code>docker container start</code>。</p>
 <p><strong>停止容器</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">container.stop()</span><br></pre></td></tr></table></figure>
 
-<p>相當於<code>docker container stop</code>。</p>
+<p>相當於 <code>docker container stop</code>。</p>
 <hr>
 <h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>可以看出，只要熟悉 CLI 操作指令，使用 SDK 也會很容易上手。可以想見，平常我們透過 CLI 操作 Docker ，其實也是內部 SDK 幫你把指令轉換為程式碼再與 Docker daemon 進行溝通。</p>
 <p>更多操作請參考<a target="_blank" rel="noopener" href="https://docker-py.readthedocs.io/en/stable/">文件</a>，本文僅稍作演示，希望讓第一次使用的人在心中有個輪廓。</p>

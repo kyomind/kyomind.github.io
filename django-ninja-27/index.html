@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -191,7 +191,7 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"><span class="cap">2024 iThome 鐵人賽</span></p>
 <p>這是 Django Ninja 系列教學的第 27 篇。</p>
-<p>上篇中，我們學習了 Django ORM 的<code>Q</code>物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
+<p>上篇中，我們學習了 Django ORM 的 <code>Q</code> 物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
 <p>討論比較多的是，view 函式中使用 FilterSchema 的<strong>參數定義方式</strong>——這確實很重要，但這只是 FilterSchema 的一部分。</p>
 <p>本篇要來補完剩下的內容：</p>
 <ol>
@@ -214,11 +214,11 @@
 <p>來看看更合理的寫法——將查詢邏輯遷移到 FilterSchema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        <span class="literal">None</span>,</span><br><span class="line">        q=[<span class="string">&#x27;title__icontains&#x27;</span>, <span class="string">&#x27;author__username__icontains&#x27;</span>],</span><br><span class="line">        min_length=<span class="number">2</span>,</span><br><span class="line">        max_length=<span class="number">10</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
 
-<p>主要的變動是<code>query</code>欄位的 Field 部分，現在加上了<code>q=</code>參數內容：</p>
+<p>主要的變動是 <code>query</code> 欄位的 Field 部分，現在加上了 <code>q=</code> 參數內容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=[<span class="string">&quot;title__icontains&quot;</span>, <span class="string">&quot;author__name__icontains&quot;</span>]</span><br></pre></td></tr></table></figure>
 
-<p>很眼熟吧？沒錯，它們實際上就是<code>Q</code>物件的<strong>條件語句</strong>，Django Ninja 會在背後自動調用<code>Q</code>物件來執行這些查詢。</p>
-<h3 id="來自-Mypy-的提醒"><a href="#來自-Mypy-的提醒" class="headerlink" title="來自 Mypy 的提醒"></a>來自 Mypy 的提醒</h3><p>一旦使用<code>q=</code>參數，Mypy 又會提醒你：</p>
+<p>很眼熟吧？沒錯，它們實際上就是 <code>Q</code> 物件的<strong>條件語句</strong>，Django Ninja 會在背後自動調用 <code>Q</code> 物件來執行這些查詢。</p>
+<h3 id="來自-Mypy-的提醒"><a href="#來自-Mypy-的提醒" class="headerlink" title="來自 Mypy 的提醒"></a>來自 Mypy 的提醒</h3><p>一旦使用 <code>q=</code> 參數，Mypy 又會提醒你：</p>
 <blockquote>
 <p>Unexpected keyword argument “q” for “Field”</p>
 </blockquote>
@@ -236,14 +236,14 @@
 <li><code>start_date</code></li>
 <li><code>end_date</code></li>
 </ul>
-<p>兩者將用來查詢、過濾<code>Post</code>模型中的<code>created_at</code>欄位（即發文日期），以篩選特定時間範圍內的文章資料。</p>
+<p>兩者將用來查詢、過濾 <code>Post</code> 模型中的 <code>created_at</code> 欄位（即發文日期），以篩選特定時間範圍內的文章資料。</p>
 <p>還有一個<strong>額外要求</strong>：兩者必須「<strong>全有全無</strong>」——可以都沒有，但不可以只填其中一個。因為這是<strong>日期區間</strong>查詢，必須有<strong>開始</strong>和<strong>結束</strong>。</p>
 <p>這同時也是一個典型的「<strong>多欄位</strong>」查詢。</p>
 <h3 id="新增程式碼"><a href="#新增程式碼" class="headerlink" title="新增程式碼"></a>新增程式碼</h3><p>這是加入了上述邏輯後的 FilterSchema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(</span><br><span class="line">        <span class="literal">None</span>, q=[<span class="string">&quot;title__icontains&quot;</span>, <span class="string">&quot;author__username__icontains&quot;</span>])</span><br><span class="line">    start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__gte&quot;</span>)</span><br><span class="line">    end_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&quot;created_at__lte&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>其中，<code>start_date</code>和<code>end_date</code>都是對模型欄位<code>created_at</code>的<strong>查詢條件</strong>。</p>
-<p>所以我們使用<code>created_at__gte</code>和<code>created_at__lte</code>來<strong>描述過濾邏輯</strong>（它們都對應了各自的<code>Q</code>物件），以<strong>篩選</strong>出符合條件的資料。</p>
+<p>其中，<code>start_date</code> 和 <code>end_date</code> 都是對模型欄位 <code>created_at</code> 的<strong>查詢條件</strong>。</p>
+<p>所以我們使用 <code>created_at__gte</code> 和 <code>created_at__lte</code> 來<strong>描述過濾邏輯</strong>（它們都對應了各自的 <code>Q</code> 物件），以<strong>篩選</strong>出符合條件的資料。</p>
 <p>那 view 函式呢？你猜得沒錯——<strong>完全不用動</strong>！</p>
 <p>這就是使用 FilterSchema 的好處。</p>
 <h3 id="API-文件渲染問題"><a href="#API-文件渲染問題" class="headerlink" title="API 文件渲染問題"></a>API 文件渲染問題</h3><p>有趣的是，當我試著為這些查詢參數加上<strong>文件範例</strong>時，如果這樣寫：</p>
@@ -253,14 +253,14 @@
 <blockquote>
 <p>😱 Could not render Parameters, see the console.</p>
 </blockquote>
-<p>但寫<code>example=&#39;2021-01-01&#39;</code>卻可以成功。</p>
+<p>但寫 <code>example=&#39;2021-01-01&#39;</code> 卻可以成功。</p>
 <p>這可能是 Django Ninja 與 Pydantic 在整合上的一個 bug，我們暫且就先略過吧！</p>
 <h3 id="客戶端查詢範例"><a href="#客戶端查詢範例" class="headerlink" title="客戶端查詢範例"></a>客戶端查詢範例</h3><p>當我們要查詢某段時間內的文章時，可以使用以下的 URL 查詢參數：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?start_date=2023-01-01&amp;end_date=2023-01-31</span><br></pre></td></tr></table></figure>
 
 <p>這樣就能輕鬆查詢出 2023 年 1 月份的所有文章。</p>
 <p>附帶一提，日期中的時間因為沒有指定，預設上都是 0 點 0 分 0 秒。所以如果填同一天，就查不到任何東西。</p>
-<p>這是一個需要<strong>改善</strong>或<strong>重新調整</strong>的細節，常見的做法是在程式內部把<code>end_date</code>加 1 天，而我直接選擇<strong>讓兩者不能相同</strong>XD。實際該怎麼做，取決於你的需求。</p>
+<p>這是一個需要<strong>改善</strong>或<strong>重新調整</strong>的細節，常見的做法是在程式內部把 <code>end_date</code> 加 1 天，而我直接選擇<strong>讓兩者不能相同</strong>XD。實際該怎麼做，取決於你的需求。</p>
 <p>除了單純的期間查詢，我們也可以查詢<strong>某作者在某段時間內</strong>的文章，以查詢作者 Alice 為例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?start_date=2023-01-01&amp;end_date=2023-01-31&amp;query=alice</span><br></pre></td></tr></table></figure>
 
@@ -271,7 +271,7 @@
 <li>Field-level expressions are joined together using <code>OR</code> operator.</li>
 <li>The fields themselves are joined together using <code>AND</code> operator.</li>
 </ul>
-<p>意思就是說，單一欄位內的多個 Q 語句，彼此是 OR 關係，比如上面<code>query</code>的：</p>
+<p>意思就是說，單一欄位內的多個 Q 語句，彼此是 OR 關係，比如上面 <code>query</code> 的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q=[<span class="string">&#x27;title__icontains&#x27;</span>, <span class="string">&#x27;author__username__icontains&#x27;</span>]</span><br></pre></td></tr></table></figure>
 
 <p>可以查詢文章標題「<strong>或</strong>」作者名稱。</p>
@@ -281,27 +281,27 @@
 <h2 id="三、日期區間驗證"><a href="#三、日期區間驗證" class="headerlink" title="三、日期區間驗證"></a>三、日期區間驗證</h2><p>本例中，除了欄位查詢，我們還要確保，使用者輸入的開始日期<strong>必須早於</strong>結束日期。</p>
 <p>並且，兩個欄位的查詢值必須是「全有」或「全無」（<strong>全無則不必驗證</strong>）。</p>
 <p>這個需求非常眼熟——不就是第 20 篇提到的「<strong>跨欄位驗證</strong>」嗎？</p>
-<p>沒錯，我們要透過 Pydantic 的<code>model_validator</code>來實現，它允許我們在驗證過程中，對輸入資料進行<strong>自定義的邏輯檢查</strong>。</p>
+<p>沒錯，我們要透過 Pydantic 的 <code>model_validator</code> 來實現，它允許我們在驗證過程中，對輸入資料進行<strong>自定義的邏輯檢查</strong>。</p>
 <h3 id="使用-Pydantic-model-validator-實作日期區間驗證"><a href="#使用-Pydantic-model-validator-實作日期區間驗證" class="headerlink" title="使用 Pydantic model_validator 實作日期區間驗證"></a>使用 Pydantic model_validator 實作日期區間驗證</h3><p>程式碼有點多，我們直接看重點：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    ...</span><br><span class="line">    start_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&#x27;created_at__gte&#x27;</span>)</span><br><span class="line">    end_date: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, q=<span class="string">&#x27;created_at__lte&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @model_validator(<span class="params">mode=<span class="string">&#x27;after&#x27;</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_date_range</span>(<span class="params">self</span>) -&gt; Self:</span><br><span class="line">        <span class="comment"># 如果開始日期和結束日期都是 None，則不進行任何檢查</span></span><br><span class="line">        <span class="keyword">if</span> self.start_date <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">and</span> self.end_date <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">all</span>([self.start_date, self.end_date]):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;開始日期和結束日期必須同時提供或同時不提供&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            start_date_dt = datetime.strptime(self.start_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">            end_date_dt = datetime.strptime(self.end_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">        <span class="keyword">except</span> ValueError:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;日期格式無效，應為 YYYY-MM-DD&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> start_date_dt &gt; end_date_dt:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;開始日期必須早於結束日期&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>
-<p>對於查詢條件，我們使用 Pydantic 的<code>model_validator</code>進行跨欄位驗證，確保使用者輸入的日期是<strong>有效且合理</strong>的。</p>
+<p>對於查詢條件，我們使用 Pydantic 的 <code>model_validator</code> 進行跨欄位驗證，確保使用者輸入的日期是<strong>有效且合理</strong>的。</p>
 <p>事實上，跨欄位驗證往往要<strong>考慮很多細節</strong>，否則可能掛一漏萬，間接產生新的 bug。</p>
 <p>這個例子就是一個典型案例。</p>
 <p>我們必須<strong>全盤考慮</strong>各種可能的輸入情況，包括日期格式是否正確、日期範圍是否合理，以及兩個日期欄位是否同時存在或同時為空。</p>
 <p><strong>細緻的驗證邏輯</strong>能提升 API 的<strong>可靠性</strong>，避免因為無效或不合理的輸入而導致系統出現<strong>意外行為</strong>。而粗糙的邏輯則反之。</p>
-<h3 id="測試錯誤回應"><a href="#測試錯誤回應" class="headerlink" title="測試錯誤回應"></a>測試錯誤回應</h3><p>PS：這裡的拋出錯誤，範例程式碼中仍使用了<code>ValueError</code>，我並沒有變更為 Django 的<code>ValidationError</code>。（最新版已修正）</p>
-<p>但以下回應則是<strong>模擬</strong> Django 的<code>ValidationError</code>，以減少不必要的重複。</p>
+<h3 id="測試錯誤回應"><a href="#測試錯誤回應" class="headerlink" title="測試錯誤回應"></a>測試錯誤回應</h3><p>PS：這裡的拋出錯誤，範例程式碼中仍使用了 <code>ValueError</code>，我並沒有變更為 Django 的 <code>ValidationError</code>。（最新版已修正）</p>
+<p>但以下回應則是<strong>模擬</strong> Django 的 <code>ValidationError</code>，以減少不必要的重複。</p>
 <p>一、<strong>只輸入開始日期</strong>：（這發生機率不高，因為前端通常會限制）</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;開始日期和結束日期必須同時提供或同時不提供&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>二、輸入<strong>不合法的日期</strong>，比如<code>2023-02-30</code>：</p>
+<p>二、輸入<strong>不合法的日期</strong>，比如 <code>2023-02-30</code>：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;日期格式無效，應為 YYYY-MM-DD&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>三、輸入<strong>不合法的日期區間</strong>，比如<code>start_date=2023-01-31&amp;end_date=2023-01-01</code>：</p>
+<p>三、輸入<strong>不合法的日期區間</strong>，比如 <code>start_date=2023-01-31&amp;end_date=2023-01-01</code>：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="string">&quot;開始日期必須早於結束日期&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了 FilterSchema 的有效用法，完成了多欄位查詢和日期篩選，並示範如何使用<code>model_validator</code>來強化資料驗證，確保查詢邏輯的正確性。</p>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>這兩篇文章，我們介紹了 FilterSchema 的有效用法，完成了多欄位查詢和日期篩選，並示範如何使用 <code>model_validator</code> 來強化資料驗證，確保查詢邏輯的正確性。</p>
 <p>我們還看了這些應用場景的實例程式碼，幫助讀者更好地理解每個步驟的用途和效果。</p>
 <p>下一章，我們將探討 Django Ninja 中的認證（Authentication）機制，並介紹如何使用 pytest 進行單元測試，這些都是後端開發中，不可或缺的要素。</p>
 

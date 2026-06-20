@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-18T16:22:32+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -192,7 +192,7 @@
 <p>本來使用 MySQL 儲存，table 間的關係十分凌亂且複雜，ERD 都畫得很辛苦。</p>
 <p>而這種資料特性，正是 MongoDB 擅長的舞台。</p>
 <span id="more"></span>
-<h3 id="用-MongoEngine-整合-Django-與-MongoDB"><a href="#用-MongoEngine-整合-Django-與-MongoDB" class="headerlink" title="用 MongoEngine 整合 Django 與 MongoDB"></a>用 MongoEngine 整合 Django 與 MongoDB</h3><p>由於專案以 Django 建構，所以 MongoDB 導入勢必要考慮到與 Django 的相容，而且必須是 ODM（文件型 NoSQL 的 ORM）框架，方便以物件形態操作資料，最好能和<code>settings.py</code>有一定的整合。</p>
+<h3 id="用-MongoEngine-整合-Django-與-MongoDB"><a href="#用-MongoEngine-整合-Django-與-MongoDB" class="headerlink" title="用 MongoEngine 整合 Django 與 MongoDB"></a>用 MongoEngine 整合 Django 與 MongoDB</h3><p>由於專案以 Django 建構，所以 MongoDB 導入勢必要考慮到與 Django 的相容，而且必須是 ODM（文件型 NoSQL 的 ORM）框架，方便以物件形態操作資料，最好能和 <code>settings.py</code> 有一定的整合。</p>
 <p>經過團隊一番研究與討論，還是決定採用 Python 最主流的 MongoDB ODM 框架——<a target="_blank" rel="noopener" href="https://github.com/MongoEngine/mongoengine">MongoEngine</a>。</p>
 <p>本篇主要整理，Django 專案整合 MongoEngine 時，在<strong>設定</strong>上的一些重點。</p>
 <hr>
@@ -213,11 +213,11 @@
 <h2 id="Django-專案設定-MongoEngine"><a href="#Django-專案設定-MongoEngine" class="headerlink" title="Django 專案設定 MongoEngine"></a>Django 專案設定 MongoEngine</h2><p>前面提過，MongoEngine 並不和任何 Web 框架綁定，所以它自然不是為 Django 而生的產物。</p>
 <p>如果用過 Flask 這種小型框架，通常立刻能聯想到：這種情況肯定會有<strong>整合型的外掛</strong>可供選擇，而且名字通常就是把兩個套件的名字結合在一起。</p>
 <p>沒錯，這裡也是，即同樣由 MongoEngine 團隊開發的——<code>django-mongoengine</code>。</p>
-<h2 id="Django-MongoEngine-主要功能"><a href="#Django-MongoEngine-主要功能" class="headerlink" title="Django-MongoEngine 主要功能"></a>Django-MongoEngine 主要功能</h2><p>從 <a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#django-mongoengine">GitHub 頁面</a>可知，<code>django-mongoengine</code>只是提供了一些簡單的 Django 整合，所以它並不是必要。</p>
+<h2 id="Django-MongoEngine-主要功能"><a href="#Django-MongoEngine-主要功能" class="headerlink" title="Django-MongoEngine 主要功能"></a>Django-MongoEngine 主要功能</h2><p>從 <a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#django-mongoengine">GitHub 頁面</a>可知，<code>django-mongoengine</code> 只是提供了一些簡單的 Django 整合，所以它並不是必要。</p>
 <p>它甚至連獨立的文件網頁都沒有，實在有點無足輕重。</p>
 <p>看起來大致有三個作用：</p>
 <ol>
-<li><code>MONGODB_DATABASES</code>設定：下文會提及，這可能就是它最大的作用了。</li>
+<li><code>MONGODB_DATABASES</code> 設定：下文會提及，這可能就是它最大的作用了。</li>
 <li>重新封裝，增加了 Django 特色的 <a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#documents">ODM 類別、欄位</a>。</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine#sessions">Session 整合設定</a>。</li>
 </ol>
@@ -225,31 +225,31 @@
 <hr>
 <h2 id="安裝-Django-MongoEngine"><a href="#安裝-Django-MongoEngine" class="headerlink" title="安裝 Django-MongoEngine"></a>安裝 Django-MongoEngine</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django-mongoengine</span><br></pre></td></tr></table></figure>
 
-<p>作為進一步封裝 MongoEngine 的整合性套件，安裝<code>django-mongoengine</code>自然也會同時安裝<code>mongoengine</code>。</p>
+<p>作為進一步封裝 MongoEngine 的整合性套件，安裝 <code>django-mongoengine</code> 自然也會同時安裝 <code>mongoengine</code>。</p>
 <p>還是要再次提醒，不安裝它，一樣可以在 Django 中輕鬆使用 MongoEngine 的主要功能，只是裝了會更加方便而已。</p>
 <p>此外，它的 GitHub 頁面也說，這不是一個功能完全健全的套件：</p>
 <blockquote>
 <p>THIS IS UNSTABLE PROJECT, IF YOU WANT TO USE IT - FIX WHAT YOU NEED</p>
 </blockquote>
 <p>講白了就是它有點陽春！</p>
-<p>如果不打算安裝<code>django-mongoengine</code>，那就直接安裝<code>mongoengine</code>：</p>
+<p>如果不打算安裝 <code>django-mongoengine</code>，那就直接安裝 <code>mongoengine</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mongoengine</span><br></pre></td></tr></table></figure>
 
-<h2 id="Django-settings-py-設定"><a href="#Django-settings-py-設定" class="headerlink" title="Django settings.py 設定"></a>Django settings.py 設定</h2><p>幾乎所有對 Django 整合的附加功能，都需要新增相關設定到專案的<code>settings.py</code>。MongoEngine 也不例外。</p>
-<h3 id="一、已安裝-Django-MongoEngine"><a href="#一、已安裝-Django-MongoEngine" class="headerlink" title="一、已安裝 Django-MongoEngine"></a>一、已安裝 Django-MongoEngine</h3><p>上述第一個關於安裝 Django-MongoEngine 的好處，同時也是最大的好處，就是對於專案<code>settings.py</code>的直接整合，其設定大致如下：</p>
+<h2 id="Django-settings-py-設定"><a href="#Django-settings-py-設定" class="headerlink" title="Django settings.py 設定"></a>Django settings.py 設定</h2><p>幾乎所有對 Django 整合的附加功能，都需要新增相關設定到專案的 <code>settings.py</code>。MongoEngine 也不例外。</p>
+<h3 id="一、已安裝-Django-MongoEngine"><a href="#一、已安裝-Django-MongoEngine" class="headerlink" title="一、已安裝 Django-MongoEngine"></a>一、已安裝 Django-MongoEngine</h3><p>上述第一個關於安裝 Django-MongoEngine 的好處，同時也是最大的好處，就是對於專案 <code>settings.py</code> 的直接整合，其設定大致如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MONGODB_DATABASES = &#123;</span><br><span class="line">    <span class="string">&quot;default&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: database_name,</span><br><span class="line">        <span class="string">&quot;host&quot;</span>: database_host,</span><br><span class="line">        <span class="string">&quot;password&quot;</span>: database_password,</span><br><span class="line">        <span class="string">&quot;username&quot;</span>: database_user,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>支援類似 Django 的<code>DATABASES</code>設定，名為<code>MONGODB_DATABASES</code>，要讓此設定生效，必須把<code>django_mongoengine</code>加入<code>INSTALLED_APPS</code>：</p>
+<p>支援類似 Django 的 <code>DATABASES</code> 設定，名為 <code>MONGODB_DATABASES</code>，要讓此設定生效，必須把 <code>django_mongoengine</code> 加入 <code>INSTALLED_APPS</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;django_mongoengine&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<h3 id="二、未安裝-Django-MongoEngine"><a href="#二、未安裝-Django-MongoEngine" class="headerlink" title="二、未安裝 Django-MongoEngine"></a>二、未安裝 Django-MongoEngine</h3><p>如果沒有安裝 Django-MongoEngine，則需要在<code>settings.py</code>新增下列設定：</p>
+<h3 id="二、未安裝-Django-MongoEngine"><a href="#二、未安裝-Django-MongoEngine" class="headerlink" title="二、未安裝 Django-MongoEngine"></a>二、未安裝 Django-MongoEngine</h3><p>如果沒有安裝 Django-MongoEngine，則需要在 <code>settings.py</code> 新增下列設定：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mongoengine <span class="keyword">import</span> connect</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">connect(host=<span class="string">&quot;mongodb://127.0.0.1:27017/my_db&quot;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>只要這個<code>connect</code>函式可以在<code>settings.py</code>成功執行，Django app 就能成功取得對 MongoDB 的連線，進而存取資料庫。</p>
-<p>這個寫法比較大的問題就是和<code>settings.py</code>其餘設定的模式格格不入，從<strong>程式碼風格一致性</strong>的角度來看，我並不推薦。不過使用上應該不會構成太大影響。</p>
-<p>附帶一提：這個<code>connect</code>連線設定的參數有許多變化型態，可參考<a target="_blank" rel="noopener" href="https://docs.mongoengine.org/guide/connecting.html">文件</a>。</p>
+<p>只要這個 <code>connect</code> 函式可以在 <code>settings.py</code> 成功執行，Django app 就能成功取得對 MongoDB 的連線，進而存取資料庫。</p>
+<p>這個寫法比較大的問題就是和 <code>settings.py</code> 其餘設定的模式格格不入，從<strong>程式碼風格一致性</strong>的角度來看，我並不推薦。不過使用上應該不會構成太大影響。</p>
+<p>附帶一提：這個 <code>connect</code> 連線設定的參數有許多變化型態，可參考<a target="_blank" rel="noopener" href="https://docs.mongoengine.org/guide/connecting.html">文件</a>。</p>
 <hr>
-<p>本文只著眼於 MongoEngine 與 Django 的<strong>專案整合相關設定</strong>。至於實際使用與 ORM 查詢，比如<code>Document</code>、<code>Field</code>、<code>.objects</code>等等，則會在接下來的文章中介紹。</p>
+<p>本文只著眼於 MongoEngine 與 Django 的<strong>專案整合相關設定</strong>。至於實際使用與 ORM 查詢，比如 <code>Document</code>、<code>Field</code>、<code>.objects</code> 等等，則會在接下來的文章中介紹。</p>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://docs.mongoengine.org/guide/index.html">https://docs.mongoengine.org/guide/index.html</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/MongoEngine/django-mongoengine">https://github.com/MongoEngine/django-mongoengine</a></li>

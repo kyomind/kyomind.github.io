@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:49:35+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -184,7 +184,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E8%B3%87%E6%96%99%E7%B0%A1%E4%BB%8B"><span class="toc-text">範例資料簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-%E9%80%B2%E8%A1%8C-Django-ORM-%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用__進行 Django ORM 查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%9C%89%E5%89%AF%E6%A8%99%E9%A1%8C%E3%80%8D%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">一、查詢「有副標題」的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E8%A9%A2%E7%95%99%E8%A8%80%E4%B8%AD%E6%9C%89%E3%80%8CThanks%E3%80%8D%E4%B8%80%E8%A9%9E%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">二、查詢留言中有「Thanks」一詞的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E8%A9%A2-id-%E7%82%BA-1-%E7%9A%84%E6%96%87%E7%AB%A0%E7%95%99%E8%A8%80%E6%95%B8"><span class="toc-text">三、查詢 id 為 1 的文章留言數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E5%A4%96%E9%8D%B5-Primary-Key-%E7%9A%84%E4%B8%8D%E5%90%8C%E8%AE%8A%E9%AB%94"><span class="toc-text">查詢外鍵 Primary Key 的不同變體</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9F%A5%E8%A9%A2%E6%A8%99%E9%A1%8C%E6%9C%89%E3%80%8CDjango%E3%80%8D%E7%9A%84%E6%89%80%E6%9C%89%E7%95%99%E8%A8%80"><span class="toc-text">四、查詢標題有「Django」的所有留言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C%E7%9A%84%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D"><span class="toc-text">查詢結果的變數命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ADjangonic"><span class="toc-text">結語：Djangonic</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E8%B3%87%E6%96%99%E7%B0%A1%E4%BB%8B"><span class="toc-text">範例資料簡介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-%E9%80%B2%E8%A1%8C-Django-ORM-%E6%9F%A5%E8%A9%A2"><span class="toc-text">使用 __ 進行 Django ORM 查詢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%9C%89%E5%89%AF%E6%A8%99%E9%A1%8C%E3%80%8D%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">一、查詢「有副標題」的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%9F%A5%E8%A9%A2%E7%95%99%E8%A8%80%E4%B8%AD%E6%9C%89%E3%80%8CThanks%E3%80%8D%E4%B8%80%E8%A9%9E%E7%9A%84%E6%96%87%E7%AB%A0"><span class="toc-text">二、查詢留言中有「Thanks」一詞的文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%A5%E8%A9%A2-id-%E7%82%BA-1-%E7%9A%84%E6%96%87%E7%AB%A0%E7%95%99%E8%A8%80%E6%95%B8"><span class="toc-text">三、查詢 id 為 1 的文章留言數</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E5%A4%96%E9%8D%B5-Primary-Key-%E7%9A%84%E4%B8%8D%E5%90%8C%E8%AE%8A%E9%AB%94"><span class="toc-text">查詢外鍵 Primary Key 的不同變體</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%9F%A5%E8%A9%A2%E6%A8%99%E9%A1%8C%E6%9C%89%E3%80%8CDjango%E3%80%8D%E7%9A%84%E6%89%80%E6%9C%89%E7%95%99%E8%A8%80"><span class="toc-text">四、查詢標題有「Django」的所有留言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2%E7%B5%90%E6%9E%9C%E7%9A%84%E8%AE%8A%E6%95%B8%E5%91%BD%E5%90%8D"><span class="toc-text">查詢結果的變數命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9ADjangonic"><span class="toc-text">結語：Djangonic</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 8 篇、Django ORM 外鍵教學的第 3 篇——完結篇。</p>
@@ -223,7 +223,7 @@
 <li><strong>文章和留言（Comment）的一對多關聯</strong>，每個文章有不同數量的留言，這可以用來展示外鍵關聯的查詢。</li>
 </ol>
 <hr>
-<h2 id="使用-進行-Django-ORM-查詢"><a href="#使用-進行-Django-ORM-查詢" class="headerlink" title="使用__進行 Django ORM 查詢"></a>使用<code>__</code>進行 Django ORM 查詢</h2><p>開始學習前，還有另一件重要的事要提醒。</p>
+<h2 id="使用-進行-Django-ORM-查詢"><a href="#使用-進行-Django-ORM-查詢" class="headerlink" title="使用 __ 進行 Django ORM 查詢"></a>使用 <code>__</code> 進行 Django ORM 查詢</h2><p>開始學習前，還有另一件重要的事要提醒。</p>
 <p>Django ORM 會大量使用雙底線（<code>__</code>）進行查詢。因此，你的 Django 模型欄位名稱<strong>不可以有雙底線</strong>。</p>
 <p>而這些查詢主要分為<strong>兩大類。</strong></p>
 <h3 id="一、以特定條件查詢欄位"><a href="#一、以特定條件查詢欄位" class="headerlink" title="一、以特定條件查詢欄位"></a>一、以特定條件查詢欄位</h3><p>利用雙底線來指定欄位的<strong>查詢條件</strong>，例如等於、不等於、大於、小於等。</p>
@@ -232,7 +232,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查詢標題包含 &#x27;Python&#x27; 的文章，不區分大小寫</span></span><br><span class="line">Post.objects.<span class="built_in">filter</span>(title__icontains=<span class="string">&#x27;Python&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、外鍵關聯查詢"><a href="#二、外鍵關聯查詢" class="headerlink" title="二、外鍵關聯查詢"></a>二、外鍵關聯查詢</h3><p>外鍵關聯查詢，就是「跨 table」的查詢。只用一次查詢，就能同時對兩個 table 進行條件過濾並獲得結果。</p>
-<p>此時的雙底線，代表的是外鍵欄位的<strong>屬性</strong>。比如<code>post</code>是<code>Comment</code>的外鍵欄位，而<code>post__title</code>指的是<code>Post</code>的<code>title</code>欄位。</p>
+<p>此時的雙底線，代表的是外鍵欄位的<strong>屬性</strong>。比如 <code>post</code> 是 <code>Comment</code> 的外鍵欄位，而 <code>post__title</code> 指的是 <code>Post</code> 的 <code>title</code> 欄位。</p>
 <p>接來就用這些資料，示範常見的外鍵關聯查詢。</p>
 <p>附帶一提，第二篇使用<strong>反向關聯欄位</strong>的方式，也可以算是外鍵關聯查詢的一種。</p>
 <hr>
@@ -241,62 +241,62 @@
 <p>第二篇介紹的「<strong>反向關聯</strong>」，是必須熟悉的內容。因為前兩個例子都與反向關聯有關。</p>
 <p>讓我們開始吧！</p>
 <h2 id="一、查詢「有副標題」的文章"><a href="#一、查詢「有副標題」的文章" class="headerlink" title="一、查詢「有副標題」的文章"></a>一、查詢「有副標題」的文章</h2><p>文章有副標題，代表文章和副標題之間「存在」一對一關聯。</p>
-<p>這裡的重點：我們可以用<code>isnull</code>作為查詢條件，判斷「<strong>關聯是否存在</strong>」。</p>
+<p>這裡的重點：我們可以用 <code>isnull</code> 作為查詢條件，判斷「<strong>關聯是否存在</strong>」。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Post</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查詢所有「有副標題」的文章</span></span><br><span class="line">posts_with_subtitle = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    subtitle__isnull=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
 
-<p><code>subtitle</code>是<code>Post</code>的一對一<strong>反向關聯欄位</strong>，查詢方式是<code>subtitle__isnull</code>。</p>
-<p>值得注意的是，如果<code>subtitle</code>是<strong>普通欄位</strong>或<strong>正向關聯欄位</strong>，那相同寫法的查詢效果，將<strong>截然不同</strong>——會變成限制欄位值是否為<code>None</code>。</p>
-<p>當然，正向關聯欄位的值若為<code>None</code>，也是代表（正向）關聯不存在。不過這與<strong>反向關聯不存在</strong>，本質上仍有所區別。</p>
+<p><code>subtitle</code> 是 <code>Post</code> 的一對一<strong>反向關聯欄位</strong>，查詢方式是 <code>subtitle__isnull</code>。</p>
+<p>值得注意的是，如果 <code>subtitle</code> 是<strong>普通欄位</strong>或<strong>正向關聯欄位</strong>，那相同寫法的查詢效果，將<strong>截然不同</strong>——會變成限制欄位值是否為 <code>None</code>。</p>
+<p>當然，正向關聯欄位的值若為 <code>None</code>，也是代表（正向）關聯不存在。不過這與<strong>反向關聯不存在</strong>，本質上仍有所區別。</p>
 <p>查詢結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>posts_with_subtitles</span><br><span class="line">&lt;QuerySet [<span class="string">&#x27;Django Fixtures&#x27;</span>, <span class="string">&#x27;ORM Basics&#x27;</span>]&gt;</span><br></pre></td></tr></table></figure>
 
-<p>簡言之，<code>isnull</code><strong>很常用來查詢「關聯是否存在」</strong>，這在外鍵關聯查詢中非常實用。</p>
+<p>簡言之，<code>isnull</code> <strong>很常用來查詢「關聯是否存在」</strong>，這在外鍵關聯查詢中非常實用。</p>
 <h2 id="二、查詢留言中有「Thanks」一詞的文章"><a href="#二、查詢留言中有「Thanks」一詞的文章" class="headerlink" title="二、查詢留言中有「Thanks」一詞的文章"></a>二、查詢留言中有「Thanks」一詞的文章</h2><p>以「反向關聯欄位」進行查詢，我們來看<strong>第二種情況</strong>。</p>
 <p>查詢留言中包括特定字詞，比如「Thanks」的文章。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">posts_with_thankful_comments = Post.objects.<span class="built_in">filter</span>(</span><br><span class="line">    comments__content__icontains=<span class="string">&#x27;Thanks&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p><code>comments</code>是<code>Post</code>的反向關聯屬性，和前面的<code>subtitle</code>類似。只不過這裡是<strong>一對多</strong>關聯。</p>
+<p><code>comments</code> 是 <code>Post</code> 的反向關聯屬性，和前面的 <code>subtitle</code> 類似。只不過這裡是<strong>一對多</strong>關聯。</p>
 <p>這裡的重點是，<code>related_name</code> 不僅可以用來訪問 <code>post.comments</code>，也可以直接用在查詢中，就像上面寫的那樣。</p>
 <p>因為它也是一個外鍵關聯屬性——<strong>反向關聯屬性</strong>。</p>
 <p>查詢結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>posts_with_thankful_comments</span><br><span class="line">&lt;QuerySet [&lt;Post: &lt;<span class="number">3</span>&gt;: Advanced Queries&gt;]&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、查詢-id-為-1-的文章留言數"><a href="#三、查詢-id-為-1-的文章留言數" class="headerlink" title="三、查詢 id 為 1 的文章留言數"></a>三、查詢 id 為 1 的文章留言數</h2><p>無論是一對一或一對多，當查詢對象是外鍵關聯欄位時，可以直接以<code>__</code>查詢並過濾該<strong>外鍵欄位「值」</strong>（即<strong>另一個 db 實例</strong>）<strong>所擁有</strong>的欄位名稱。</p>
+<h2 id="三、查詢-id-為-1-的文章留言數"><a href="#三、查詢-id-為-1-的文章留言數" class="headerlink" title="三、查詢 id 為 1 的文章留言數"></a>三、查詢 id 為 1 的文章留言數</h2><p>無論是一對一或一對多，當查詢對象是外鍵關聯欄位時，可以直接以 <code>__</code> 查詢並過濾該<strong>外鍵欄位「值」</strong>（即<strong>另一個 db 實例</strong>）<strong>所擁有</strong>的欄位名稱。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> post.models <span class="keyword">import</span> Comment</span><br><span class="line"></span><br><span class="line">comment_count = Comment.objects.<span class="built_in">filter</span>(post__id=<span class="number">1</span>).count()</span><br></pre></td></tr></table></figure>
 
-<p><code>Comment</code>有一個<strong>外鍵欄位</strong>為<code>post</code>，指向一個<code>Post</code>實例。我們可以直接使用<code>__</code>，以 <code>Post</code>自己的屬性——本例中為<code>id</code>，作為查詢條件。</p>
+<p><code>Comment</code> 有一個<strong>外鍵欄位</strong>為 <code>post</code>，指向一個 <code>Post</code> 實例。我們可以直接使用 <code>__</code>，以 <code>Post</code> 自己的屬性——本例中為 <code>id</code>，作為查詢條件。</p>
 <p>查詢結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>comment_count</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>這種以「<strong>正向關聯</strong>欄位」的屬性（比如<code>post</code>的屬性<code>id</code>）作為條件的查詢，佔了關聯查詢需求的<strong>很大一部分</strong>。</p>
-<h2 id="查詢外鍵-Primary-Key-的不同變體"><a href="#查詢外鍵-Primary-Key-的不同變體" class="headerlink" title="查詢外鍵 Primary Key 的不同變體"></a>查詢外鍵 Primary Key 的不同變體</h2><p>上述的<code>id</code>是外鍵<code>post</code>的主鍵（Primary Key），用<code>id</code>查詢的情況很常見。</p>
+<p>這種以「<strong>正向關聯</strong>欄位」的屬性（比如 <code>post</code> 的屬性 <code>id</code>）作為條件的查詢，佔了關聯查詢需求的<strong>很大一部分</strong>。</p>
+<h2 id="查詢外鍵-Primary-Key-的不同變體"><a href="#查詢外鍵-Primary-Key-的不同變體" class="headerlink" title="查詢外鍵 Primary Key 的不同變體"></a>查詢外鍵 Primary Key 的不同變體</h2><p>上述的 <code>id</code> 是外鍵 <code>post</code> 的主鍵（Primary Key），用 <code>id</code> 查詢的情況很常見。</p>
 <p>因此，用外鍵的主鍵（Primary Key）欄位查詢時，Django 幫你準備了<strong>多種寫法</strong>。以下寫法效果皆相同：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 post__id 原來的寫法</span></span><br><span class="line">comments_count = Comment.objects.<span class="built_in">filter</span>(post__id=<span class="number">1</span>).count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 post_id</span></span><br><span class="line">comments_count = Comment.objects.<span class="built_in">filter</span>(post_id=<span class="number">1</span>).count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 post__pk</span></span><br><span class="line">comments_count = Comment.objects.<span class="built_in">filter</span>(post__pk=<span class="number">1</span>).count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用直接使用物件查詢</span></span><br><span class="line">post = Post.objects.get(<span class="built_in">id</span>=<span class="number">1</span>)</span><br><span class="line">comments_count = Comment.objects.<span class="built_in">filter</span>(post=post).count()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 你甚至可以這樣寫！</span></span><br><span class="line">comments_count = Comment.objects.<span class="built_in">filter</span>(post=<span class="number">1</span>).count()</span><br></pre></td></tr></table></figure>
-<p>Django 會自動為外鍵加上<code>_id</code>，代表<strong>該外鍵的主鍵</strong>，命名模式為<code>&lt;外鍵名稱&gt;_id</code>。且<strong>無論該外鍵欄位主鍵名稱是什麼</strong>，都可以使用這種寫法。</p>
-<p>同理，<code>post__pk</code>也是類似效果，它們都算是一種<strong>欄位別名</strong>。</p>
-<p>雖然用別名的寫法讓人感覺更加「道地」、更像內行人。但如果想保守起見，還是使用<code>post__id</code>比較好。因為這種寫法<strong>最直觀</strong>，而且<strong>適用於所有欄位。</strong></p>
+<p>Django 會自動為外鍵加上 <code>_id</code>，代表<strong>該外鍵的主鍵</strong>，命名模式為 <code>&lt;外鍵名稱&gt;_id</code>。且<strong>無論該外鍵欄位主鍵名稱是什麼</strong>，都可以使用這種寫法。</p>
+<p>同理，<code>post__pk</code> 也是類似效果，它們都算是一種<strong>欄位別名</strong>。</p>
+<p>雖然用別名的寫法讓人感覺更加「道地」、更像內行人。但如果想保守起見，還是使用 <code>post__id</code> 比較好。因為這種寫法<strong>最直觀</strong>，而且<strong>適用於所有欄位。</strong></p>
 <p>我個人認為，不用別名也沒關係，<strong>explicit 至上。</strong></p>
 <h3 id="何時使用哪種寫法？"><a href="#何時使用哪種寫法？" class="headerlink" title="何時使用哪種寫法？"></a>何時使用哪種寫法？</h3><p>Django 入門者最常使用的是第 4 種，它很好懂，因為欄位值正是一個 db 物件！</p>
-<p>然而，它需要程式碼上下文中，先有一個<code>post</code>物件。如果沒有，就要像上面寫的，先透過查詢取得<code>post</code>物件——<strong>這會增加一次 db 查詢。</strong></p>
-<p>如果當前上下文只有<code>post</code>的 id，強烈建議使用前 3 種寫法（個人推薦第 1 種），以減少不必要的查詢負擔。</p>
+<p>然而，它需要程式碼上下文中，先有一個 <code>post</code> 物件。如果沒有，就要像上面寫的，先透過查詢取得 <code>post</code> 物件——<strong>這會增加一次 db 查詢。</strong></p>
+<p>如果當前上下文只有 <code>post</code> 的 id，強烈建議使用前 3 種寫法（個人推薦第 1 種），以減少不必要的查詢負擔。</p>
 <p>第 5 種寫法雖然也「很 Django」，但很多人不熟悉，所以我不敢輕易採用。</p>
 <h2 id="四、查詢標題有「Django」的所有留言"><a href="#四、查詢標題有「Django」的所有留言" class="headerlink" title="四、查詢標題有「Django」的所有留言"></a>四、查詢標題有「Django」的所有留言</h2><p>上面「三」是用 id 查詢，這裡改用<strong>特定字詞</strong>查詢。</p>
 <p>而且，不是直接查詢標題中包含「Django」的文章（這和外鍵查詢無關），而是文章標題中包括 Django 的<strong>所有留言</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">comments_for_django_posts = Comment.objects.<span class="built_in">filter</span>(</span><br><span class="line">    post__title__icontains=<span class="string">&#x27;Django&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>「<a href="/django-orm-query-relations/#%E4%BA%8C%E3%80%81%E6%9F%A5%E8%A9%A2%E7%95%99%E8%A8%80%E4%B8%AD%E6%9C%89%E3%80%8CThanks%E3%80%8D%E4%B8%80%E8%A9%9E%E7%9A%84%E6%96%87%E7%AB%A0">二</a>」的<code>comments__content__icontains</code>，和這裡的<code>post__title__icontains</code>，有一個<strong>區別</strong>——前者是<strong>反向關聯欄位</strong>，後者是<strong>正向關聯欄位</strong>。</p>
-<p>兩者都用了經典的「<strong>兩次雙底線</strong>」查詢，即<code>post__title__icontains</code>。</p>
+<p>「<a href="/django-orm-query-relations/#%E4%BA%8C%E3%80%81%E6%9F%A5%E8%A9%A2%E7%95%99%E8%A8%80%E4%B8%AD%E6%9C%89%E3%80%8CThanks%E3%80%8D%E4%B8%80%E8%A9%9E%E7%9A%84%E6%96%87%E7%AB%A0">二</a>」的 <code>comments__content__icontains</code>，和這裡的 <code>post__title__icontains</code>，有一個<strong>區別</strong>——前者是<strong>反向關聯欄位</strong>，後者是<strong>正向關聯欄位</strong>。</p>
+<p>兩者都用了經典的「<strong>兩次雙底線</strong>」查詢，即 <code>post__title__icontains</code>。</p>
 <p>這樣的語句看起來有點「<strong>抽象</strong>」，這也是為什麼我們要把雙底線查詢分成兩大類，因為它們可能會<strong>同時出現！</strong></p>
 <p>弄清楚兩者之間的區別，才更容易明白，兩次雙底線各代表什麼查詢條件：</p>
 <ol>
-<li><code>post__title</code>：查詢<code>Post</code>的<code>title</code>欄位。</li>
-<li><code>title__icontains</code>：查詢<code>title</code>欄位中包含特定字詞（不分大小寫）的文章。</li>
+<li><code>post__title</code>：查詢 <code>Post</code> 的 <code>title</code> 欄位。</li>
+<li><code>title__icontains</code>：查詢 <code>title</code> 欄位中包含特定字詞（不分大小寫）的文章。</li>
 </ol>
 <p>查詢結果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>comments_for_django_posts</span><br><span class="line">&lt;QuerySet [&lt;Comment: &lt;<span class="number">1</span>&gt;: Great article!&gt;]&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="查詢結果的變數命名"><a href="#查詢結果的變數命名" class="headerlink" title="查詢結果的變數命名"></a>查詢結果的變數命名</h2><p>所有的 ORM 查詢結果的變數，只要結果是 0 到多個——也就是 QuerySet，請務必使用「複數」命名，比如<code>comments</code>、<code>posts</code>。</p>
-<p>只有在確定「最多只會拿到一個」db 實例時，才用單數。這通常只發生在，你使用了<code>get</code>或<code>first</code>、<code>last</code>等直接回傳實例的 QuerySet 方法。</p>
+<h2 id="查詢結果的變數命名"><a href="#查詢結果的變數命名" class="headerlink" title="查詢結果的變數命名"></a>查詢結果的變數命名</h2><p>所有的 ORM 查詢結果的變數，只要結果是 0 到多個——也就是 QuerySet，請務必使用「複數」命名，比如 <code>comments</code>、<code>posts</code>。</p>
+<p>只有在確定「最多只會拿到一個」db 實例時，才用單數。這通常只發生在，你使用了 <code>get</code> 或 <code>first</code>、<code>last</code> 等直接回傳實例的 QuerySet 方法。</p>
 <p>本文中的查詢結果變數命名都較為冗長，主要是為了教學上的表達。</p>
 <p>實務中我通常不會把查詢條件一一映射到變數命名，除非該條件、特性非常重要。</p>
 <hr>
@@ -325,8 +325,8 @@
     </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM 外鍵教學：設定一對一、一對多關聯" rel="bookmark">Django ORM 外鍵教學：設定一對一、一對多關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/reverse-relationships/" title="Django ORM：反向關聯（Reverse relationship）介紹" rel="bookmark">Django ORM：反向關聯（Reverse relationship）介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-tutorial/" title="Django Tutorial：系列介紹與導讀" rel="bookmark">Django Tutorial：系列介紹與導讀</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
-            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
             <a href="/tags/Django-ORM/">Django ORM</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/keyboard-shortcuts/">

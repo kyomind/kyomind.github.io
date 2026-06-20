@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:22:09+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -289,7 +289,7 @@
 <p>從這點可知，即使你沒有使用 Ruff 的 formatter 功能，它的 linter 部分還是<strong>帶有一定的 format 能力</strong>——也就是 <a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/linter/#fixes">autofix</a>。</p>
 <p>這個特性<strong>真的很方便</strong>，但同時帶來了一定的複雜。</p>
 <p>方便的是，你可以只安裝 Ruff linter，就<strong>獲得多種 linter 附帶的 format 行為</strong>。而複雜則在於：<strong>設定上的細節也比一般 linter 更多。</strong></p>
-<h3 id="小結：Ruff-linter-是個簡易版-formatter"><a href="#小結：Ruff-linter-是個簡易版-formatter" class="headerlink" title="小結：Ruff linter 是個簡易版 formatter"></a>小結：Ruff linter 是個簡易版 formatter</h3><p>我原本以為 Ruff（不考慮<code>ruff-format</code>部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
+<h3 id="小結：Ruff-linter-是個簡易版-formatter"><a href="#小結：Ruff-linter-是個簡易版-formatter" class="headerlink" title="小結：Ruff linter 是個簡易版 formatter"></a>小結：Ruff linter 是個簡易版 formatter</h3><p>我原本以為 Ruff（不考慮 <code>ruff-format</code> 部分）只是一個比較快的靜態分析工具，顯然事實並非如此。</p>
 <p>總之，我們只要記得：<strong>Ruff linter 有著簡易 format（autofix）能力</strong>——它是個簡易版的 formatter。</p>
 <p>這和 Flake8 只做單純的靜態分析不同，Ruff linter 在檢查過程中，<strong>能夠直接對程式碼進行修改</strong>。當然，如果你不喜歡，這功能是<strong>可以關閉的。</strong></p>
 <hr>
@@ -318,10 +318,10 @@
 <p>只有在比如 docstring 這種<strong>連續使用 3 個引號</strong>的場景，<strong>慣例</strong>上要求使用 3 個<strong>雙引號</strong>。</p>
 <p>如果你對 Black 有一些了解，應該會知道，早期 Black 是<strong>完全不管</strong>你習慣用單引號還是雙引號，<strong>它一律把你的 Python 程式碼格式化為雙引號！</strong></p>
 <p>這小小的硬性規則帶來了<strong>巨大的反彈</strong>，畢竟 Python 開發者中想必有不少人和我一樣，是「單引號」的支持者。</p>
-<p>最後，Black 開發團隊也不得不妥協（這是 Black <strong>少數的妥協</strong>，因為該工具本身就是以「<strong>不妥協</strong>」為賣點🤣），加入了<code>skip-string-normalization</code>選項。</p>
-<h3 id="Ruff-Formatter-的不同處理方式"><a href="#Ruff-Formatter-的不同處理方式" class="headerlink" title="Ruff Formatter 的不同處理方式"></a>Ruff Formatter 的不同處理方式</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是<code>quote-style</code>這個選項：</p>
+<p>最後，Black 開發團隊也不得不妥協（這是 Black <strong>少數的妥協</strong>，因為該工具本身就是以「<strong>不妥協</strong>」為賣點🤣），加入了 <code>skip-string-normalization</code> 選項。</p>
+<h3 id="Ruff-Formatter-的不同處理方式"><a href="#Ruff-Formatter-的不同處理方式" class="headerlink" title="Ruff Formatter 的不同處理方式"></a>Ruff Formatter 的不同處理方式</h3><p>而 Ruff linter 作為 Black 的替代方案，也會遇到相同的「困境」。不同於 Black，目前 Ruff linter 提供的是 <code>quote-style</code> 這個選項：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 選項有 &quot;single&quot; 和 &quot;double&quot;</span></span><br></pre></td></tr></table></figure>
-<p>如果設為<code>&quot;single&quot;</code>，Ruff 會把專案中的<strong>所有</strong>雙引號，都替換為單引號。不過，在上述<strong>慣例</strong>部分，Ruff 還是保留雙引號，不用擔心。</p>
+<p>如果設為 <code>&quot;single&quot;</code>，Ruff 會把專案中的<strong>所有</strong>雙引號，都替換為單引號。不過，在上述<strong>慣例</strong>部分，Ruff 還是保留雙引號，不用擔心。</p>
 <p>需要提醒的是，如果你的專案目前是<strong>單雙引號混用</strong>，因為 Ruff 會<strong>強制統一</strong>引號風格，<strong>這勢必會帶來不少的格式化差異。</strong>如上所述，這些變動最好<strong>統一獨立處理</strong>。</p>
 <hr>
 <p>接下來，我們要進入 Ruff 的「<strong>設定篇</strong>」。</p>
@@ -338,15 +338,15 @@
 <hr>
 <p>以上 3 點，<strong>Ruff 都有完整支援</strong>。下面就來一一解說。</p>
 <h2 id="一、pyproject-toml-設定"><a href="#一、pyproject-toml-設定" class="headerlink" title="一、pyproject.toml 設定"></a>一、pyproject.toml 設定</h2><p>Ruff 總共支援三種設定檔：<code>pyproject.toml</code>、<code>ruff.toml</code>、<code>.ruff.toml</code>。</p>
-<p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。以下的範例與解說，我採用設定檔格式是<code>pyproject.toml</code>。</p>
+<p>如果不知道怎麼開始，參考<a target="_blank" rel="noopener" href="https://docs.astral.sh/ruff/configuration/">文件</a>是最快上手的方式。以下的範例與解說，我採用設定檔格式是 <code>pyproject.toml</code>。</p>
 <p>Ruff 因為功能眾多，設定上較為複雜。所幸，<strong>大部分時候，我們只需要設定一些基本的項目</strong>。</p>
-<h3 id="基本設定與解說"><a href="#基本設定與解說" class="headerlink" title="基本設定與解說"></a>基本設定與解說</h3><p>首先，因為在<code>pyproject.toml</code>中，所以設定的 key 定是<code>[tool.xxx]</code>格式。</p>
-<p>Linter 部分，一些基本的設定比如<code>line-length</code>和 Flake8 類似。其中<code>select</code>和沒有列出的<code>ignore</code>相對重要。</p>
-<p><strong>Ruff 預設只會顯示 <code>E</code> 和 <code>F</code> 系列的錯誤訊息</strong>（而 Flake8 還有 <code>W</code> 系列）。想要增加或排除特定部分的錯誤訊息警示，就得透過<code>select</code>欄位調整。比如我的設定：</p>
+<h3 id="基本設定與解說"><a href="#基本設定與解說" class="headerlink" title="基本設定與解說"></a>基本設定與解說</h3><p>首先，因為在 <code>pyproject.toml</code> 中，所以設定的 key 定是 <code>[tool.xxx]</code> 格式。</p>
+<p>Linter 部分，一些基本的設定比如 <code>line-length</code> 和 Flake8 類似。其中 <code>select</code> 和沒有列出的 <code>ignore</code> 相對重要。</p>
+<p><strong>Ruff 預設只會顯示 <code>E</code> 和 <code>F</code> 系列的錯誤訊息</strong>（而 Flake8 還有 <code>W</code> 系列）。想要增加或排除特定部分的錯誤訊息警示，就得透過 <code>select</code> 欄位調整。比如我的設定：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">target-version</span> = <span class="string">&quot;py310&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>, <span class="string">&quot;UP&quot;</span>]  <span class="comment"># I 和 UP 是 isort 和 pyupgrade</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p><code>select</code>加上了<code>I</code>和<code>UP</code>。分別代表了 isort 和 pyupgrade。一旦你開啟了它們，Ruff 就會提示相關錯誤，並在有錯誤時<strong>自動修正</strong>。（<strong>autofix 預設為開啟</strong>）</p>
-<p>因為開啟了<code>UP</code>，所以我必須設定<code>target-version</code>（這裡為<code>py310</code>），意味著 Ruff 會將程式碼中<strong>舊的寫法</strong>自動轉換（autofix）為 Python 3.10 的寫法。</p>
+<p><code>select</code> 加上了 <code>I</code> 和 <code>UP</code>。分別代表了 isort 和 pyupgrade。一旦你開啟了它們，Ruff 就會提示相關錯誤，並在有錯誤時<strong>自動修正</strong>。（<strong>autofix 預設為開啟</strong>）</p>
+<p>因為開啟了 <code>UP</code>，所以我必須設定 <code>target-version</code>（這裡為 <code>py310</code>），意味著 Ruff 會將程式碼中<strong>舊的寫法</strong>自動轉換（autofix）為 Python 3.10 的寫法。</p>
 <p>總之，可設定的項目非常豐富。</p>
 <h3 id="設定懶人包"><a href="#設定懶人包" class="headerlink" title="設定懶人包"></a>設定懶人包</h3><p>如果你剛開始用 Ruff，不知道該設定哪些項目。我建議你可以先設定以下幾個：</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.ruff]</span></span><br><span class="line"><span class="attr">line-length</span> = <span class="number">100</span>  <span class="comment"># 依照自己的專案需求設定</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.lint]</span></span><br><span class="line"><span class="attr">select</span> = [<span class="string">&quot;E&quot;</span>, <span class="string">&quot;F&quot;</span>, <span class="string">&quot;I&quot;</span>]  <span class="comment"># 至少會加入 I，因為 isort 是必要的</span></span><br><span class="line"></span><br><span class="line"><span class="section">[tool.ruff.format]</span></span><br><span class="line"><span class="attr">quote-style</span> = <span class="string">&quot;single&quot;</span>  <span class="comment"># 依照自己的喜好或專案需求設定</span></span><br></pre></td></tr></table></figure>
@@ -359,13 +359,13 @@
 </ul>
 <p>基於上述兩個需求，如果一個全新的 linter 或 formatter 沒有相關的 VS Code 套件，我不會考慮使用。</p>
 <h3 id="安裝與設定-Ruff-套件"><a href="#安裝與設定-Ruff-套件" class="headerlink" title="安裝與設定 Ruff 套件"></a>安裝與設定 Ruff 套件</h3><p>套件安裝後就可以直接使用，如果你的專案中已有專屬的 Ruff 設定檔，我覺得<strong>不需要再特別設定</strong> VS Code Ruff 套件部分。</p>
-<p>不過還是提供我的設定：（以下為 VS Code <code>settings.json</code>內容）</p>
+<p>不過還是提供我的設定：（以下為 VS Code <code>settings.json</code> 內容）</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.enable&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.organizeImports&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.fixAll&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.showNotifications&quot;</span><span class="punctuation">:</span> <span class="string">&quot;onWarning&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>特別提醒，如果你在專案中有已經有自己的 Ruff 設定檔，那就<strong>不要設定 VS Code Ruff 套件的「<code>args</code>」部分</strong>。比如：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;ruff.lint.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;ruff.format.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;--fix&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
-<p>因為 VS Code 會<strong>優先使用<code>settings.json</code>的設定。</strong></p>
+<p>因為 VS Code 會<strong>優先使用 <code>settings.json</code> 的設定。</strong></p>
 <h3 id="建議設定-VS-Code-Python"><a href="#建議設定-VS-Code-Python" class="headerlink" title="建議設定 VS Code Python"></a>建議設定 VS Code Python</h3><p>因此，Ruff 套件我覺得不特別設定也沒關係，有專案中的 Ruff 設定檔就夠了。</p>
 <p>相對的，VS Code 的 Python 部分則<strong>建議要設定。</strong>開發會更順手。</p>
 <p>具體內容，Ruff 套件首頁有範例。我們直接看<strong>最完整的版本</strong>：</p>
@@ -419,7 +419,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/migrate-to-ruff/" title="Python 專案從 Flake8、Black 遷移至 Ruff 指南" rel="bookmark">Python 專案從 Flake8、Black 遷移至 Ruff 指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/migrate-to-ruff/" title="Python 專案從 Flake8、Black 遷移至 Ruff 指南" rel="bookmark">Python 專案從 Flake8、Black 遷移至 Ruff 指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-yapf-setting/" title="VS Code 設定 Python Linter、Formatter 教學" rel="bookmark">VS Code 設定 Python Linter、Formatter 教學</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/VS-Code/">VS Code</a>
             <a href="/tags/Flake8/">Flake8</a>

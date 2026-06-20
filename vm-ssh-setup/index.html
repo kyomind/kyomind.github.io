@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-05-08T08:01:04+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:08:35+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -225,7 +225,7 @@
 <p>除此之外，還有兩個關鍵理由。</p>
 <h3 id="一、延遲優勢"><a href="#一、延遲優勢" class="headerlink" title="一、延遲優勢"></a>一、延遲優勢</h3><p>我覺得，這台免費 VM 的最大亮點，是「<strong>延遲低</strong>」。</p>
 <p>GCP 雖然只開放美國三個地區的資料中心供免費機器使用，但實際測試從台灣連線，<strong>延遲還可以</strong>！</p>
-<p>請優先選擇<code>us-west1</code>（美國西部）地區，因為這個地區的延遲最低。</p>
+<p>請優先選擇 <code>us-west1</code>（美國西部）地區，因為這個地區的延遲最低。</p>
 <p>經實測比我在 Hetzner（德國）上的機器表現好非常多。與 DigitalOcean（新加坡）的延遲相當。</p>
 <p>我自己的 <a target="_blank" rel="noopener" href="https://www.cloudpingtest.com/">Cloud Ping Test</a> 網站測試結果如下：</p>
 <ul>
@@ -252,7 +252,7 @@
 <h2 id="設定-SSH-連線"><a href="#設定-SSH-連線" class="headerlink" title="設定 SSH 連線"></a>設定 SSH 連線</h2><p>在使用雲端平台或 VPS 服務建立 VM 後，通常有<strong>兩種</strong>主要的<strong>初次登入方式</strong>：</p>
 <ol>
 <li><strong>Web 界面提供內建 SSH 終端機</strong>：使用者可從平台介面直接開啟瀏覽器終端登入虛擬機器，無需事先設定金鑰。</li>
-<li><strong>建立 VM 時預先設定 SSH 金鑰</strong>：在建立過程中指定公鑰，平台會在 VM 建立時將其寫入<code>authorized_keys</code>，讓你能用該金鑰從本機連入。（通常是用 root 帳號）</li>
+<li><strong>建立 VM 時預先設定 SSH 金鑰</strong>：在建立過程中指定公鑰，平台會在 VM 建立時將其寫入 <code>authorized_keys</code>，讓你能用該金鑰從本機連入。（通常是用 root 帳號）</li>
 </ol>
 <p>這兩種方式大多數平台都支援，在原文的教學中，採用的是第一種方式，也就是透過 Web SSH 登入 VM。</p>
 <p>登入之後，我們就可以開始設定<strong>真正屬於自己</strong>的登入方式。</p>
@@ -262,23 +262,23 @@
 <p>建立新帳號，並加入管理者群組：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser kyo</span><br><span class="line">sudo usermod -aG sudo kyo</span><br></pre></td></tr></table></figure>
 
-<p>這裡直接用<code>kyo</code>舉例，實際操作時，請自行替換帳號名稱。</p>
-<p>為<code>kyo</code>建立<code>.ssh</code>目錄，設定並權限：</p>
+<p>這裡直接用 <code>kyo</code> 舉例，實際操作時，請自行替換帳號名稱。</p>
+<p>為 <code>kyo</code> 建立 <code>.ssh</code> 目錄，設定並權限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /home/kyo/.ssh</span><br><span class="line">sudo <span class="built_in">chown</span> kyo:kyo /home/kyo/.ssh</span><br><span class="line">sudo <span class="built_in">chmod</span> 700 /home/kyo/.ssh</span><br></pre></td></tr></table></figure>
 
 <h3 id="本機建立-SSH-金鑰"><a href="#本機建立-SSH-金鑰" class="headerlink" title="本機建立 SSH 金鑰"></a>本機建立 SSH 金鑰</h3><p>接下來，我們在<strong>本機電腦</strong>產出 SSH 金鑰，建議使用 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/EdDSA#Ed25519">Ed25519</a> 演算法，它更加現代，而且更重要的是——<strong>公鑰很短</strong>！（方便複製）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;odinxp@gmail.com&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>採用預設選項一路按<code>Enter</code>的話，會產生下面兩個檔案：</p>
+<p>採用預設選項一路按 <code>Enter</code> 的話，會產生下面兩個檔案：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ~/.ssh/</span></span><br><span class="line">id_ed25519</span><br><span class="line">id_ed25519.pub</span><br></pre></td></tr></table></figure>
 
-<p>通常我會先產出，再自行改名。比如把檔名改成<code>gcp</code>、<code>gcp.pub</code>，方便辨識。</p>
-<p>將產生的公鑰內容複製，並貼到 VM 上<code>kyo</code>帳戶下的<code>authorized_keys</code>中，此時因為是透過 Web SSH 登入的管理者帳號來操作自非身帳號，指令要加上<code>sudo</code>：</p>
+<p>通常我會先產出，再自行改名。比如把檔名改成 <code>gcp</code>、<code>gcp.pub</code>，方便辨識。</p>
+<p>將產生的公鑰內容複製，並貼到 VM 上 <code>kyo</code> 帳戶下的 <code>authorized_keys</code> 中，此時因為是透過 Web SSH 登入的管理者帳號來操作自非身帳號，指令要加上 <code>sudo</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/gcp.pub</span><br><span class="line"><span class="comment"># 複製內容後在 VM 上操作</span></span><br><span class="line">sudo nano /home/kyo/.ssh/authorized_keys <span class="comment"># 貼上內容後存檔</span></span><br><span class="line">sudo <span class="built_in">chown</span> kyo:kyo /home/kyo/.ssh/authorized_keys</span><br><span class="line">sudo <span class="built_in">chmod</span> 600 /home/kyo/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
 
 <p>在本機建立 <a target="_blank" rel="noopener" href="https://chusiang.gitbooks.io/working-on-gnu-linux/content/20.ssh_config.html">SSH config</a> 來簡化連線設定：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.ssh/config</span><br></pre></td></tr></table></figure>
-<p>然後編輯<code>~/.ssh/config</code>，加入以下內容：</p>
+<p>然後編輯 <code>~/.ssh/config</code>，加入以下內容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host gcp</span><br><span class="line">    HostName &lt;VM 的實際 ip&gt;</span><br><span class="line">    User kyo</span><br><span class="line">    IdentityFile ~/.ssh/gcp</span><br></pre></td></tr></table></figure>
 
 <p>本機測試使用新帳號連線 VM：</p>
@@ -292,12 +292,12 @@
 <p>一樣，先在 VM 上產生新的 SSH 金鑰：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;odinxp@gmail.com&quot;</span> -f ~/.ssh/github</span><br></pre></td></tr></table></figure>
 
-<p>加上<code>-f ~/.ssh/github</code>後，可以省去手動更名的麻煩，不過要注意，它同時也會<strong>覆蓋</strong>原有的檔案！（如果有的話）</p>
+<p>加上 <code>-f ~/.ssh/github</code> 後，可以省去手動更名的麻煩，不過要注意，它同時也會<strong>覆蓋</strong>原有的檔案！（如果有的話）</p>
 <p>複製公鑰內容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/github.pub</span><br></pre></td></tr></table></figure>
 
 <p>前往 <a target="_blank" rel="noopener" href="https://github.com/settings/ssh/new">Github SSH 設定頁</a>，貼上金鑰。</p>
-<p>新增、編輯<code>~/.ssh/config</code>加入 Github 設定：</p>
+<p>新增、編輯 <code>~/.ssh/config</code> 加入 Github 設定：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github</span><br></pre></td></tr></table></figure>
 
 <p>測試是否成功：</p>
@@ -323,7 +323,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-zsh-zinit/" title="Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit" rel="bookmark">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/update-my-droplet/" title="計畫更新我的 DigitalOcean VM" rel="bookmark">計畫更新我的 DigitalOcean VM</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/update-my-droplet/" title="計畫更新我的 DigitalOcean VM" rel="bookmark">計畫更新我的 DigitalOcean VM</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/ubuntu-zsh-zinit/" title="Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit" rel="bookmark">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Linux/">Linux</a>
             <a href="/tags/GCP/">GCP</a>

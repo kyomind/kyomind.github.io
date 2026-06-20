@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -216,23 +216,23 @@
 
 <p>這個 Schema 的設計，顯然<strong>有所不足</strong>。</p>
 <p>因為用戶註冊時，密碼通常需要<strong>輸入兩次</strong>，第二次的作用是「<strong>確認</strong>」——重要的事情說兩次嘛！</p>
-<p>所以，我們要新增一個<code>confirm_password</code>欄位，和<code>password</code>進行<strong>跨欄位驗證：確認兩者內容相同</strong>。</p>
+<p>所以，我們要新增一個 <code>confirm_password</code> 欄位，和 <code>password</code> 進行<strong>跨欄位驗證：確認兩者內容相同</strong>。</p>
 <p>儘管其中的驗證邏輯非常簡單，但這正是跨欄位驗證的<strong>絕佳舞台</strong>。</p>
 <hr>
-<h2 id="實作跨欄位驗證：使用-model-validator"><a href="#實作跨欄位驗證：使用-model-validator" class="headerlink" title="實作跨欄位驗證：使用 model_validator"></a>實作跨欄位驗證：使用 model_validator</h2><p>Pydantic v2 引入了<code>@model_validator</code>裝飾器來處理跨欄位驗證，這是對 Pydantic v1 中<code>@root_validator</code>的改進和替代。</p>
+<h2 id="實作跨欄位驗證：使用-model-validator"><a href="#實作跨欄位驗證：使用-model-validator" class="headerlink" title="實作跨欄位驗證：使用 model_validator"></a>實作跨欄位驗證：使用 model_validator</h2><p>Pydantic v2 引入了 <code>@model_validator</code> 裝飾器來處理跨欄位驗證，這是對 Pydantic v1 中 <code>@root_validator</code> 的改進和替代。</p>
 <p>這裡的 model，指的是 Pydantic 的 <a target="_blank" rel="noopener" href="https://docs.pydantic.dev/latest/api/base_model/">BaseModel</a>——也就是我們的 Schema，而不是 Django 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/models/">Models</a>。</p>
-<p>我們透過<code>@model_validator</code>來強化「新增使用者」API，加上「確認密碼」功能。</p>
+<p>我們透過 <code>@model_validator</code> 來強化「新增使用者」API，加上「確認密碼」功能。</p>
 <p>直接看修改後的程式碼：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CreateUserRequest</span>(<span class="title class_ inherited__">Schema</span>):</span><br><span class="line">    ...</span><br><span class="line">    password: <span class="built_in">str</span> = Field(min_length=<span class="number">8</span>, examples=[<span class="string">&#x27;password123&#x27;</span>])</span><br><span class="line">    confirm_password: <span class="built_in">str</span> = Field(</span><br><span class="line">        min_length=<span class="number">8</span>, examples=[<span class="string">&#x27;password123&#x27;</span>])</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">    @model_validator(<span class="params">mode=<span class="string">&#x27;after&#x27;</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">check_passwords_match</span>(<span class="params">self</span>) -&gt; Self:</span><br><span class="line">        <span class="keyword">if</span> self.password != self.confirm_password:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&#x27;密碼和確認密碼必須相同&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> self</span><br></pre></td></tr></table></figure>
 
 <h3 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h3><ul>
-<li>新增了一個<code>confirm_password</code>欄位。</li>
-<li>使用<code>@model_validator(mode=&#39;after&#39;)</code>裝飾器來定義跨欄位的驗證方法。<ul>
-<li><code>mode</code>總共有三種：before、after 和 wrap。其中的細節頗多，限於篇幅，本文無法展開（可能等番外篇再行補充）。</li>
-<li>你只要知道，<strong>大部分時候是用 after 模式</strong>，此時的驗證方法是一個「<strong>實例方法</strong>」，<code>self</code>參數代表 Schema 實例本身（從 input 資料初始化而來）。</li>
+<li>新增了一個 <code>confirm_password</code> 欄位。</li>
+<li>使用 <code>@model_validator(mode=&#39;after&#39;)</code> 裝飾器來定義跨欄位的驗證方法。<ul>
+<li><code>mode</code> 總共有三種：before、after 和 wrap。其中的細節頗多，限於篇幅，本文無法展開（可能等番外篇再行補充）。</li>
+<li>你只要知道，<strong>大部分時候是用 after 模式</strong>，此時的驗證方法是一個「<strong>實例方法</strong>」，<code>self</code> 參數代表 Schema 實例本身（從 input 資料初始化而來）。</li>
 </ul>
 </li>
-<li>驗證方法<code>check_passwords_match</code>比較<code>password</code>和<code>confirm_password</code>欄位，如果欄位內容不相同，則拋出<code>ValueError</code>。<ul>
+<li>驗證方法 <code>check_passwords_match</code> 比較 <code>password</code> 和 <code>confirm_password</code> 欄位，如果欄位內容不相同，則拋出 <code>ValueError</code>。<ul>
 <li>如前所述，儘管邏輯非常簡單，但它確實現了<strong>兩個欄位之間</strong>的驗證。</li>
 </ul>
 </li>
@@ -251,15 +251,15 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;value_error&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;password&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Value error, 密碼必須包含至少一個數字&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;密碼必須包含至少一個數字&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>好像<strong>差不多</strong>耶？沒錯，因為這也是 Django Ninja 的<strong>自動回應格式</strong>——除了錯誤訊息中<strong>包含</strong>我們自定義的內容。</p>
-<h3 id="拋出-ValueError-的回應"><a href="#拋出-ValueError-的回應" class="headerlink" title="拋出 ValueError 的回應"></a>拋出 ValueError 的回應</h3><p>但事實上，這是因為我們在驗證方法中拋出的是<code>ValueError</code>，所以 Django Ninja 會自動幫你處理。</p>
+<h3 id="拋出-ValueError-的回應"><a href="#拋出-ValueError-的回應" class="headerlink" title="拋出 ValueError 的回應"></a>拋出 ValueError 的回應</h3><p>但事實上，這是因為我們在驗證方法中拋出的是 <code>ValueError</code>，所以 Django Ninja 會自動幫你處理。</p>
 <p>類似的回應也發生在<strong>確認密碼不一致</strong>時：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;detail&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;value_error&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;loc&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                <span class="string">&quot;body&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="string">&quot;payload&quot;</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Value error, 密碼和確認密碼必須相同&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;ctx&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;error&quot;</span><span class="punctuation">:</span> <span class="string">&quot;密碼和確認密碼必須相同&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>那如果拋出的<strong>別種錯誤</strong>，比如 Django 的<code>ValidationError</code>，甚至是我們<strong>自己定義的錯誤</strong>，Django Ninja 還會自動處理嗎？</p>
+<p>那如果拋出的<strong>別種錯誤</strong>，比如 Django 的 <code>ValidationError</code>，甚至是我們<strong>自己定義的錯誤</strong>，Django Ninja 還會自動處理嗎？</p>
 <p>答案是：<strong>不會</strong>。</p>
 <p>你會得到「<strong>500 Internal Server Error</strong>」——這將是我們下下篇的重點。</p>
 <hr>
-<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>本文中，我們介紹了如何透過<code>@model_validator</code>來實現跨欄位驗證的需求，同時落實關注點分離原則。</p>
+<h2 id="小結與下一步"><a href="#小結與下一步" class="headerlink" title="小結與下一步"></a>小結與下一步</h2><p>本文中，我們介紹了如何透過 <code>@model_validator</code> 來實現跨欄位驗證的需求，同時落實關注點分離原則。</p>
 <p>學習完這兩篇以後，你對 <strong>Django Ninja 資料驗證</strong>的了解，已經超越大部分人。</p>
 <p>接下來，我們將深入探討，當資料驗證失敗時，要如何優雅地處理錯誤——並回應，以提升 API 的使用體驗。</p>
 
@@ -278,7 +278,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-12/" title="請求（四）Request Body 與 Schema 介紹" rel="bookmark">請求（四）Request Body 與 Schema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-16/" title="回應（四）Resolver 方法——欄位資料格式化" rel="bookmark">回應（四）Resolver 方法——欄位資料格式化</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-19/" title="資料驗證（上）Pydantic 單一欄位驗證" rel="bookmark">資料驗證（上）Pydantic 單一欄位驗證</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-12/" title="請求（四）Request Body 與 Schema 介紹" rel="bookmark">請求（四）Request Body 與 Schema 介紹</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-16/" title="回應（四）Resolver 方法——欄位資料格式化" rel="bookmark">回應（四）Resolver 方法——欄位資料格式化</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-ninja-18/" title="API 文件（下）Pydantic Field 設定範例與預設值" rel="bookmark">API 文件（下）Pydantic Field 設定範例與預設值</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Pydantic/">Pydantic</a>
             </div>

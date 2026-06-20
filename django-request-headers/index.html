@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-20T01:03:59+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -189,8 +189,8 @@
 <p>相關文章：<a href="https://blog.kyomind.tw/django-request/">Django HttpRequest 常用屬性介紹</a></p>
 </blockquote>
 <p>我們知道，Django 提供了專屬的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.0/ref/request-response/#httprequest-objects">HttpRequest</a> 類別，把從前端（主要為瀏覽器）傳過來的 HTTP 請求重新封裝成 OOP 物件，方便我們在 view 中操作、使用。</p>
-<p>而這個<code>HttpRequest</code>物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
-<p>我們經常使用<code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
+<p>而這個 <code>HttpRequest</code> 物件，也就是開發時，前端傳給 view 函式的<strong>第一位置參數</strong>——<code>request</code>。</p>
+<p>我們經常使用 <code>request</code>，在 view 函式（或類別）內部獲得本次 HTTP 請求的相關資訊，比如<strong>所使用的 HTTP 方法</strong>，或下面提到的 header 相關資訊等等。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">&#x27;GET&#x27;</span>:</span><br><span class="line">    do_something()</span><br><span class="line"><span class="keyword">elif</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">    do_something_else()</span><br></pre></td></tr></table></figure>
 
 
@@ -201,23 +201,23 @@
 <p>通常 token 會附在請求的 header 中，以下列鍵值對形式存在：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="attribute">accept-encoding</span><span class="punctuation">: </span>gzip, deflate, br</span><br><span class="line"><span class="attribute">accept-language</span><span class="punctuation">: </span>zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6</span><br><span class="line"><span class="attribute">cache-control</span><span class="punctuation">: </span>max-age=0</span><br><span class="line">...</span><br><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>Bearer &lt;token_string&gt;</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>Authorization</code>，就是我們要的，有關驗證 token 的 header 欄位。</p>
+<p>其中 <code>Authorization</code>，就是我們要的，有關驗證 token 的 header 欄位。</p>
 <p>所以我們的需求是：原封不動地取得它的值——「<code>&#39;Bearer &lt;token_string&gt;&#39;</code>」，並複製到我們重新封裝的 HTTP 請求的 header 中，以維持認證的有效性。</p>
 <h2 id="以往做法：使用-request-META"><a href="#以往做法：使用-request-META" class="headerlink" title="以往做法：使用 request.META"></a>以往做法：使用 request.META</h2><p>過去撰寫內部 API 的相關請求，驗證 token 部分通常是透過上述「<a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.META">request.META</a>」取得 request header 裡的 token 值。</p>
-<p>申言之，<code>HttpRequest</code>有一個物件屬性叫<code>META</code>，其值為一個 Python 字典，並以字典中的每一個鍵值對代表 HTTP header 相關資訊。</p>
+<p>申言之，<code>HttpRequest</code> 有一個物件屬性叫 <code>META</code>，其值為一個 Python 字典，並以字典中的每一個鍵值對代表 HTTP header 相關資訊。</p>
 <p>典型的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">HTTP header 欄位名稱</a>看起來像這樣：</p>
 <ul>
 <li><code>Accept-Language</code> – List of acceptable human languages for response.</li>
 <li><code>Authorization</code> – Authentication credentials for HTTP authentication.</li>
 </ul>
-<p>但實際上，<code>META</code>字典中的鍵名，<strong>並非上述格式</strong>，因為 request.META 在封裝 HTTP 請求的 header 時，會對「<strong>欄位名稱</strong>」進行<strong>格式轉換（mapping）</strong>，規則如下：</p>
+<p>但實際上，<code>META</code> 字典中的鍵名，<strong>並非上述格式</strong>，因為 request.META 在封裝 HTTP 請求的 header 時，會對「<strong>欄位名稱</strong>」進行<strong>格式轉換（mapping）</strong>，規則如下：</p>
 <ol>
-<li>加上<code>HTTP_</code><strong>前綴</strong>。</li>
+<li>加上 <code>HTTP_</code> <strong>前綴</strong>。</li>
 <li>轉為<strong>全大寫</strong>。</li>
-<li>將<code>-</code><strong>替換</strong>為<code>_</code>（底線）。</li>
+<li>將 <code>-</code> <strong>替換</strong>為 <code>_</code>（底線）。</li>
 </ol>
 <blockquote>
-<p>So, for example, a header called <strong><code>X-Bender</code></strong> would be mapped to the <strong><code>META</code></strong> key <strong><code>HTTP_X_BENDER</code></strong>.</p>
+<p>So, for example, a header called ** <code>X-Bender</code> ** would be mapped to the ** <code>META</code> ** key ** <code>HTTP_X_BENDER</code> **.</p>
 </blockquote>
 <p>因此，程式中取值的寫法差不多都是這樣，以獲得驗證 token 為例（注意名稱）：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: request.META.get(<span class="string">&#x27;HTTP_AUTHORIZATION&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
@@ -225,19 +225,19 @@
 <h2 id="request-META-缺點"><a href="#request-META-缺點" class="headerlink" title="request.META 缺點"></a>request.META 缺點</h2><p>我覺得大致有下：</p>
 <ol>
 <li>Header 欄位名稱被<strong>強制轉換</strong>，與原生的 HTTP header 並不相同。<ol>
-<li>比如<code>Accept-Language</code>→<code>HTTP_ACCEPT_LANGUAGE</code>。</li>
+<li>比如 <code>Accept-Language</code>→<code>HTTP_ACCEPT_LANGUAGE</code>。</li>
 <li>這樣的轉換雖然遵循一定規律，但畢竟和原來不同，所以<strong>並不直觀</strong>。</li>
 </ol>
 </li>
-<li><code>META</code>這個詞，太籠統太抽象：<code>request.META</code>究竟代表什麼？說真的第一時間你不太能和 HTTP header 聯想，多少會影響程式的<strong>可讀性</strong>。</li>
+<li><code>META</code> 這個詞，太籠統太抽象：<code>request.META</code> 究竟代表什麼？說真的第一時間你不太能和 HTTP header 聯想，多少會影響程式的<strong>可讀性</strong>。</li>
 </ol>
 <p>所以我一直不太喜歡「request.META」這個寫法——不易理解且存在較多出錯可能。</p>
-<h2 id="更好的做法：使用-request-headers"><a href="#更好的做法：使用-request-headers" class="headerlink" title="更好的做法：使用 request.headers"></a>更好的做法：使用 request.headers</h2><p>其實仔細想想就會覺得：使用<code>META</code>來取 header 資訊的做法實在<strong>很不直覺、不自然</strong>，對於一個成熟的框架，理論上應該要再給出「<strong>語法糖</strong>」加以簡化。</p>
-<h3 id="Django-2-2-更新"><a href="#Django-2-2-更新" class="headerlink" title="Django 2.2 更新"></a>Django 2.2 更新</h3><p>這個需求終於在 Django 2.2 獲得實現：加入了 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.headers">request.headers</a>。Django 文件也建議你，如果只是想單純取得 header 資訊，可以使用更簡潔的<code>headers</code>：</p>
+<h2 id="更好的做法：使用-request-headers"><a href="#更好的做法：使用-request-headers" class="headerlink" title="更好的做法：使用 request.headers"></a>更好的做法：使用 request.headers</h2><p>其實仔細想想就會覺得：使用 <code>META</code> 來取 header 資訊的做法實在<strong>很不直覺、不自然</strong>，對於一個成熟的框架，理論上應該要再給出「<strong>語法糖</strong>」加以簡化。</p>
+<h3 id="Django-2-2-更新"><a href="#Django-2-2-更新" class="headerlink" title="Django 2.2 更新"></a>Django 2.2 更新</h3><p>這個需求終於在 Django 2.2 獲得實現：加入了 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/4.0/ref/request-response/#django.http.HttpRequest.headers">request.headers</a>。Django 文件也建議你，如果只是想單純取得 header 資訊，可以使用更簡潔的 <code>headers</code>：</p>
 <blockquote>
-<p><strong><code>HttpRequest.headers</code></strong> is <strong>a simpler way</strong> to access all HTTP-prefixed headers</p>
+<p>** <code>HttpRequest.headers</code> ** is <strong>a simpler way</strong> to access all HTTP-prefixed headers</p>
 </blockquote>
-<h3 id="HttpRequest-headers特色"><a href="#HttpRequest-headers特色" class="headerlink" title="HttpRequest.headers特色"></a><code>HttpRequest.headers</code>特色</h3><ol>
+<h3 id="HttpRequest-headers-特色"><a href="#HttpRequest-headers-特色" class="headerlink" title="HttpRequest.headers 特色"></a><code>HttpRequest.headers</code> 特色</h3><ol>
 <li>依舊為 Python 字典格式。</li>
 <li>Header 鍵名維持原來的名稱，不再進行轉換。</li>
 <li>使用鍵名取值時，<strong>無須區分大小寫</strong>。</li>
@@ -253,14 +253,14 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;<span class="string">&#x27;Authorization&#x27;</span>: request.headers.get(<span class="string">&#x27;Authorization&#x27;</span>)&#125;</span><br></pre></td></tr></table></figure>
 
 <p>改變雖小，卻<strong>直觀了很多！</strong></p>
-<p>換句話說，其實就是改善<code>META</code>既有的缺點：</p>
+<p>換句話說，其實就是改善 <code>META</code> 既有的缺點：</p>
 <ol>
-<li>HTTP header 鍵名不必強制前綴<code>HTTP_</code>和<strong>全大寫</strong>了！只要使用原來的名稱即可，這才是符合人類直覺得設計！至於不區分大小寫我覺得還好，畢竟最好還是使用一致的命名，如上述程式碼，比較不易混淆。</li>
-<li><code>headers</code>這個屬性名稱比<code>META</code>更加直觀、可讀，容易聯想到 HTTP headers。</li>
+<li>HTTP header 鍵名不必強制前綴 <code>HTTP_</code> 和<strong>全大寫</strong>了！只要使用原來的名稱即可，這才是符合人類直覺得設計！至於不區分大小寫我覺得還好，畢竟最好還是使用一致的命名，如上述程式碼，比較不易混淆。</li>
+<li><code>headers</code> 這個屬性名稱比 <code>META</code> 更加直觀、可讀，容易聯想到 HTTP headers。</li>
 </ol>
 <hr>
 <h2 id="小結：可讀性為王"><a href="#小結：可讀性為王" class="headerlink" title="小結：可讀性為王"></a>小結：可讀性為王</h2><p><strong>簡潔、直觀、易讀</strong>，都是 Clean Code 的重要元素。</p>
-<p>因此，哪怕只是很小的改動，我仍然強烈建議你：在不影響原有需求的前提下，盡可能使用<code>request.headers</code>取代<code>request.META</code>。</p>
+<p>因此，哪怕只是很小的改動，我仍然強烈建議你：在不影響原有需求的前提下，盡可能使用 <code>request.headers</code> 取代 <code>request.META</code>。</p>
 <p>無時無刻遵守好習慣，你的隊友——包括未來的自己——會感謝現在的你。</p>
 
       </div>

@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-05-11T06:18:49+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -198,7 +198,7 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-python/issues/14254">Wrong order in import when using sort imports in vscode</a></li>
 </ul>
-<p>往下滑，很快你就得到了答案，在<code>settings.json</code>加入以下設定：</p>
+<p>往下滑，很快你就得到了答案，在 <code>settings.json</code> 加入以下設定：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.sortImports.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--src=$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>不過上面是以前的做法，<a href="https://blog.kyomind.tw/isort/">現在 isort 有獨立套件</a>，所以應該用下面的設定：</p>
@@ -206,20 +206,20 @@
 
 <hr>
 <h2 id="pyproject-toml-與-pre-commit-設定"><a href="#pyproject-toml-與-pre-commit-設定" class="headerlink" title="pyproject.toml 與 pre-commit 設定"></a>pyproject.toml 與 pre-commit 設定</h2><p>在有了 pre-commit 以後，僅設定 VS Code 是不夠的。因為即使 IDE 格式化的結果正確，若未設定 pre-commit 的 isort hook，仍可能受到阻擋，造成衝突。</p>
-<p>另外，在團隊開發時，使用<code>pyproject.toml</code>來設定 isort 參數，明顯比所有成員各自設定其自己的 VS Code 更加可行。</p>
+<p>另外，在團隊開發時，使用 <code>pyproject.toml</code> 來設定 isort 參數，明顯比所有成員各自設定其自己的 VS Code 更加可行。</p>
 <p>所以我們需要設定前述二者的 isort 參數。</p>
-<p>不過，仔細想想，顯然<code>pyproject.toml</code>和 pre-commit 的 isort 設定，不會是上述的<code>settings.json</code>的照抄。因為它們根本不知道<code>$&#123;workspaceFolder&#125;</code>是什麼。</p>
+<p>不過，仔細想想，顯然 <code>pyproject.toml</code> 和 pre-commit 的 isort 設定，不會是上述的 <code>settings.json</code> 的照抄。因為它們根本不知道 <code>$&#123;workspaceFolder&#125;</code> 是什麼。</p>
 <p>想必有別的做法。</p>
-<h3 id="pyproject-toml"><a href="#pyproject-toml" class="headerlink" title="pyproject.toml"></a>pyproject.toml</h3><p>設定如下，使用<code>src_paths = [&quot;.&quot;]</code>。</p>
+<h3 id="pyproject-toml"><a href="#pyproject-toml" class="headerlink" title="pyproject.toml"></a>pyproject.toml</h3><p>設定如下，使用 <code>src_paths = [&quot;.&quot;]</code>。</p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[tool.isort]</span></span><br><span class="line"><span class="attr">line_length</span> = <span class="number">100</span></span><br><span class="line"><span class="attr">src_paths</span> = [<span class="string">&quot;.&quot;</span>] <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="pre-commit"><a href="#pre-commit" class="headerlink" title="pre-commit"></a>pre-commit</h3><p><code>.pre-commit-config.yaml</code>設定如下，使用<code>--src=.</code>：</p>
+<h3 id="pre-commit"><a href="#pre-commit" class="headerlink" title="pre-commit"></a>pre-commit</h3><p><code>.pre-commit-config.yaml</code> 設定如下，使用 <code>--src=.</code>：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/PyCQA/isort</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="number">5.11</span><span class="number">.5</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">isort</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--line-length=100</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">--src=.</span> <span class="comment"># &lt;--- 這裡</span></span><br></pre></td></tr></table></figure>
 
 <p>基本上都是用「<code>.</code>」來代表專案根目錄。</p>
-<h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>值得注意的是，如果 VS Code 有設定 isort，那這個設定將<strong>優先於<code>pyproject.toml</code>。</strong>這樣的邏輯我不太能理解，因為理論上愈小範圍應該要優先適用才對。讀者使用時，可留意一下兩者的設定是否存在衝突。</p>
-<p>我自己平常都是透過<code>settings.json</code>設定 isort，至於<code>pyproject.toml</code>，則是給團隊其餘沒有設定 VS Code 的人使用的。</p>
-<p>不過，總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如<code>pyproject.toml</code>來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
+<h2 id="附帶一提"><a href="#附帶一提" class="headerlink" title="附帶一提"></a>附帶一提</h2><p>值得注意的是，如果 VS Code 有設定 isort，那這個設定將<strong>優先於 <code>pyproject.toml</code>。</strong>這樣的邏輯我不太能理解，因為理論上愈小範圍應該要優先適用才對。讀者使用時，可留意一下兩者的設定是否存在衝突。</p>
+<p>我自己平常都是透過 <code>settings.json</code> 設定 isort，至於 <code>pyproject.toml</code>，則是給團隊其餘沒有設定 VS Code 的人使用的。</p>
+<p>不過，總的來說，團隊協作還是盡可能透過「<strong>專案設定檔</strong>」如 <code>pyproject.toml</code> 來設定這些工具的參數會比較妥當。一旦有變動，也能在 Git 同步後，全體立即適用。</p>
 
       </div>
 

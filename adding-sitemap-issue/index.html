@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-20T01:19:21+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -190,15 +190,15 @@
 
 <h2 id="設定流程"><a href="#設定流程" class="headerlink" title="設定流程"></a>設定流程</h2><p>詳細設定流程只要輸入關鍵字「hexo sitemap」就可以找到很多教學了。流程很簡單，只有下列幾步：</p>
 <ol>
-<li>安裝套件<code>hexo-generator-sitemap</code>，讓你在使用<code>hexo generate</code>指令時同時幫你產生當前網站的 sitemap.xml。</li>
-<li>在 blog 目錄的<code>_config.yml</code>設定 sitemap 的路徑。</li>
-<li>使用<code>hexo generate</code>指令產生頁面，此時應該就能看到套件幫你產生的 sitemap.xml 檔了，使用<code>hexo deploy</code>部署到 Github 即大功告成！此時你的 Github 的 repo 根目錄應該也要能夠看到這份 sitemap.xml。</li>
-<li>部署後要確認是否成功，可以打「<code>https://&lt;yoursite_domain&gt;/sitemap.xml</code>」查看，正常情況下瀏覽器會顯示你的 sitemap.xml 文件內容。記得<code>yoursite_domain</code>是你自己的網址，比如我的就是<code>blog.kyomind.tw</code>。</li>
+<li>安裝套件 <code>hexo-generator-sitemap</code>，讓你在使用 <code>hexo generate</code> 指令時同時幫你產生當前網站的 sitemap.xml。</li>
+<li>在 blog 目錄的 <code>_config.yml</code> 設定 sitemap 的路徑。</li>
+<li>使用 <code>hexo generate</code> 指令產生頁面，此時應該就能看到套件幫你產生的 sitemap.xml 檔了，使用 <code>hexo deploy</code> 部署到 Github 即大功告成！此時你的 Github 的 repo 根目錄應該也要能夠看到這份 sitemap.xml。</li>
+<li>部署後要確認是否成功，可以打「<code>https://&lt;yoursite_domain&gt;/sitemap.xml</code>」查看，正常情況下瀏覽器會顯示你的 sitemap.xml 文件內容。記得 <code>yoursite_domain</code> 是你自己的網址，比如我的就是 <code>blog.kyomind.tw</code>。</li>
 </ol>
 <p><img src="https://i.imgur.com/VI3EeGs.png" alt="成功的話看起來像這樣"><span class="cap">成功的話看起來像這樣</span></p>
 <p>以上內容 Google 都有，就不細講，再來說說坑點。</p>
 <h2 id="遇到的坑點"><a href="#遇到的坑點" class="headerlink" title="遇到的坑點"></a>遇到的坑點</h2><p>一般而言這樣設定完應該就大功告成了，所以絕大部分的教學也只有講這些，但偏偏我卻沒有成功。</p>
-<p>我的情況是，設定後查看本地網址「<code>http://localhost:4000/sitemap.xml</code>」確實可以看到正確結果，但是 Github Page 上「<code>https://blog.kyomind.tw/sitemap.xml</code>」卻無法，只會顯示<code>404</code>！而且 repo 目錄下確實已經有 sitemap.xml 檔了，也可以在 repo 頁面打開查看，內容沒有問題，但就是無法透過網站網址找到它。</p>
+<p>我的情況是，設定後查看本地網址「<code>http://localhost:4000/sitemap.xml</code>」確實可以看到正確結果，但是 Github Page 上「<code>https://blog.kyomind.tw/sitemap.xml</code>」卻無法，只會顯示 <code>404</code>！而且 repo 目錄下確實已經有 sitemap.xml 檔了，也可以在 repo 頁面打開查看，內容沒有問題，但就是無法透過網站網址找到它。</p>
 <p><img src="https://i.imgur.com/cXxJsFs.png" alt="找不到我的 sitemap"><span class="cap">找不到我的 sitemap</span></p>
 <p>此時的思路如下：</p>
 <ol>
@@ -211,10 +211,10 @@
 </blockquote>
 <p>此時的思路如下：</p>
 <ol>
-<li>藉由他的發問內容，我也發現我用<code>https://blog.kyomind.tw/sitemap</code>（沒有 .xml 後綴）這個網址是<strong>找得到</strong> sitemap 的，從這裡可以知道<strong>他遇到的問題情境和我高度類似</strong>，所以解法很可能可以套用。</li>
+<li>藉由他的發問內容，我也發現我用 <code>https://blog.kyomind.tw/sitemap</code>（沒有 .xml 後綴）這個網址是<strong>找得到</strong> sitemap 的，從這裡可以知道<strong>他遇到的問題情境和我高度類似</strong>，所以解法很可能可以套用。</li>
 <li>其次，他提到「I am <strong>not using Jekyll or any other framework</strong>.」，可以推知顯然這不是 Hexo 的問題，而是一個更加普遍的問題——講白了就是 Github Pages 的問題！同時印證了我前述的推測，讓我們離答案更近一步了。</li>
 </ol>
-<p>而文章中的解法就是在 repo 根目錄底下新增一個<code>.nojekyll</code>檔案。</p>
+<p>而文章中的解法就是在 repo 根目錄底下新增一個 <code>.nojekyll</code> 檔案。</p>
 <hr>
 <p>在照做之前，我還是不免懷疑這樣真的有用嗎？所以先用關鍵字「.nojekyll」搜尋一下，搜尋結果的第一個就是這篇〈<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ac9b54176dbe">.nojekyll 文件是什麼</a>〉，裡面有更進一步的解釋：</p>
 <blockquote>
@@ -226,10 +226,10 @@
 <blockquote>
 <p>反之，如果你的網站<strong>不是 Jekyll 構建的</strong>，要部署到 Github Pages ，並且包含下劃線開頭的文件或文件夾，那麼<strong>你就需要在根目錄添加一個 .nojekyll 空文件</strong></p>
 </blockquote>
-<p>雖然 sitemap.xml 並不是文中所謂<code>_</code>開頭的檔案，但從這篇可以更加確信第一篇的解法應該是有效的。</p>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>動手吧！請直接在 Github repo 新增<code>.nojekyll</code>檔案（內容為空）並 commit，且確認已經在 repo 的根目錄底下。</p>
-<p>我這麼做之後確實就可以了。正常情況下，無論是<code>&lt;yoursite_domain&gt;/sitemap</code>或<code>&lt;yoursite_domain&gt;/sitemap.xml</code>這兩個網址應該都要能夠看到 sitemap 的內容。</p>
-<p>附帶一提，在重新<code>hexo deploy</code>後，<code>.nojekyll</code>檔案會被覆寫而<strong>從根目錄底下消失</strong>，但不影響正常運作。</p>
+<p>雖然 sitemap.xml 並不是文中所謂 <code>_</code> 開頭的檔案，但從這篇可以更加確信第一篇的解法應該是有效的。</p>
+<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>動手吧！請直接在 Github repo 新增 <code>.nojekyll</code> 檔案（內容為空）並 commit，且確認已經在 repo 的根目錄底下。</p>
+<p>我這麼做之後確實就可以了。正常情況下，無論是 <code>&lt;yoursite_domain&gt;/sitemap</code> 或 <code>&lt;yoursite_domain&gt;/sitemap.xml</code> 這兩個網址應該都要能夠看到 sitemap 的內容。</p>
+<p>附帶一提，在重新 <code>hexo deploy</code> 後，<code>.nojekyll</code> 檔案會被覆寫而<strong>從根目錄底下消失</strong>，但不影響正常運作。</p>
 
       </div>
 
@@ -246,7 +246,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/my-own-blog-part-two/" title="我自架部落格的理由與選擇（下）選擇篇" rel="bookmark">我自架部落格的理由與選擇（下）選擇篇</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格心得：一週年總結與持續寫作策略" rel="bookmark">Hexo 部落格心得：一週年總結與持續寫作策略</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/add-top10-page/" title="新增自製熱門文章頁面" rel="bookmark">新增自製熱門文章頁面</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/a-mind-for-blogs/" title="Hexo 部落格心得：一週年總結與持續寫作策略" rel="bookmark">Hexo 部落格心得：一週年總結與持續寫作策略</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hexo-blog-reply/" title="Hexo 新增 utterances 留言板與方案選擇思路" rel="bookmark">Hexo 新增 utterances 留言板與方案選擇思路</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Hexo/">Hexo</a>
             </div>

@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:49:55+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -231,12 +231,12 @@
 <p>我本來想用這種方式，讓讀者也可以自行建立資料並重現教學環境，但這樣的方式顯然不夠友好。</p>
 <p>更好的方式是使用 Django fixture。</p>
 <h3 id="導出為-Fixture"><a href="#導出為-Fixture" class="headerlink" title="導出為 Fixture"></a>導出為 Fixture</h3><p>一旦導出為 Django fixture，讀者只需要透過 Django 指令匯入，就可以重現整個 db 的資料環境，無疑是更好的選擇！</p>
-<p>如何導出，使用<code>dumpdata</code>指令：</p>
+<p>如何導出，使用 <code>dumpdata</code> 指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py dumpdata post --output=post_data.json</span><br></pre></td></tr></table></figure>
 
-<p>可以用<code>post</code>（Django app 名稱）來<strong>限定</strong>要輸出的 model 資料範圍。</p>
+<p>可以用 <code>post</code>（Django app 名稱）來<strong>限定</strong>要輸出的 model 資料範圍。</p>
 <p>如果不指定 app，<code>dumpdata</code> 指令會嘗試匯出整個專案的所有資料，包括 Django 本身的內建 db 資料。這通常包括大量不必要的內容，並且讓輸出文件變得過於複雜。</p>
-<h2 id="匯入-Fixture"><a href="#匯入-Fixture" class="headerlink" title="匯入 Fixture"></a>匯入 Fixture</h2><p>輸出之後就是匯入，匯入也非常簡單，使用<code>loaddata</code>指令：</p>
+<h2 id="匯入-Fixture"><a href="#匯入-Fixture" class="headerlink" title="匯入 Fixture"></a>匯入 Fixture</h2><p>輸出之後就是匯入，匯入也非常簡單，使用 <code>loaddata</code> 指令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py loaddata post_data.json</span><br></pre></td></tr></table></figure>
 
 <p>實際執行結果：</p>
@@ -261,7 +261,7 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-tutorial/" title="Django Tutorial：系列介紹與導讀" rel="bookmark">Django Tutorial：系列介紹與導讀</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM 外鍵教學：設定一對一、一對多關聯" rel="bookmark">Django ORM 外鍵教學：設定一對一、一對多關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM 外鍵查詢指南" rel="bookmark">Django ORM 外鍵查詢指南</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM 外鍵教學：設定一對一、一對多關聯" rel="bookmark">Django ORM 外鍵教學：設定一對一、一對多關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-tutorial/" title="Django Tutorial：系列介紹與導讀" rel="bookmark">Django Tutorial：系列介紹與導讀</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM 外鍵查詢指南" rel="bookmark">Django ORM 外鍵查詢指南</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
             <a href="/tags/Django-Tutorial/">Django Tutorial</a>

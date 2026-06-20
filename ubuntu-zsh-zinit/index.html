@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T01:54:57+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -191,7 +191,7 @@
 <blockquote>
 <p>相關文章<a href="/linux-dev-setup/">Linux 上的 Python 開發環境設定</a></p>
 </blockquote>
-<p><code>2022/03/18</code>重要更新：</p>
+<p><code>2022/03/18</code> 重要更新：</p>
 <blockquote>
 <p>這兩天看到這篇〈<a target="_blank" rel="noopener" href="https://blog.einverne.info/post/2021/10/zinit-author-delete-repository-and-alternative.html">zinit 作者刪庫事件以及後續代替方案</a>〉，才知道原來 zinit 的原作者竟然無預警把 GitHub 上的 repo 刪除了！嚴格來說是把 organization 刪了，所以其下的好多 repo 都變成孤兒，包括一些常用的 zsh 套件。</p>
 </blockquote>
@@ -208,24 +208,24 @@
 
 <h2 id="本文主旨"><a href="#本文主旨" class="headerlink" title="本文主旨"></a>本文主旨</h2><p><strong>只用最簡單的設定，獲取最重要的幾項功能，就能讓生產力得到大幅提升。</strong></p>
 <p>和前一篇關於<a href="/ubuntu-pyenv/">安裝 pyenv 的文章</a>一樣，為確保內容的正確與可行，我繼續使用同一個 Google f1-micro VM 來同步進行。</p>
-<p>值得一提的是，因為安裝 pyenv 時要修改<code>.zshrc</code>，如果同時要安裝 zsh 與 pyenv，那麼<strong>建議先從本篇的 zsh 設定做起</strong>，再安裝 pyenv，順序上較為合理、流暢。</p>
+<p>值得一提的是，因為安裝 pyenv 時要修改 <code>.zshrc</code>，如果同時要安裝 zsh 與 pyenv，那麼<strong>建議先從本篇的 zsh 設定做起</strong>，再安裝 pyenv，順序上較為合理、流暢。</p>
 <hr>
 <h2 id="Ubuntu-安裝與設定-zsh"><a href="#Ubuntu-安裝與設定-zsh" class="headerlink" title="Ubuntu 安裝與設定 zsh"></a>Ubuntu 安裝與設定 zsh</h2><p>這部分很簡單，幾個指令即可完成。</p>
 <h3 id="apt-安裝"><a href="#apt-安裝" class="headerlink" title="apt 安裝"></a>apt 安裝</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update;</span><br><span class="line">sudo apt-get upgrade -y;</span><br><span class="line">sudo apt-get install -y zsh;</span><br></pre></td></tr></table></figure>
 
-<h3 id="將-zsh-設定為登入時的預設-shell"><a href="#將-zsh-設定為登入時的預設-shell" class="headerlink" title="將 zsh 設定為登入時的預設 shell"></a>將 zsh 設定為登入時的預設 shell</h3><p>安裝完 zsh 後，打<code>zsh</code>就可以登入使用。</p>
-<p><code>sudo cat /etc/shells</code>指令可以看到目前 VM 上所有可用的 shell 路徑，包括了我們剛剛裝好的 zsh：</p>
+<h3 id="將-zsh-設定為登入時的預設-shell"><a href="#將-zsh-設定為登入時的預設-shell" class="headerlink" title="將 zsh 設定為登入時的預設 shell"></a>將 zsh 設定為登入時的預設 shell</h3><p>安裝完 zsh 後，打 <code>zsh</code> 就可以登入使用。</p>
+<p><code>sudo cat /etc/shells</code> 指令可以看到目前 VM 上所有可用的 shell 路徑，包括了我們剛剛裝好的 zsh：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh</span><br><span class="line">/bin/bash</span><br><span class="line">/usr/bin/bash</span><br><span class="line">...</span><br><span class="line">/bin/zsh</span><br><span class="line">/usr/bin/zsh</span><br></pre></td></tr></table></figure>
 
-<p>使用下列指令將「<strong>當前使用者</strong>」的登入 shell 預設為<code>/bin/zsh</code>：</p>
+<p>使用下列指令將「<strong>當前使用者</strong>」的登入 shell 預設為 <code>/bin/zsh</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -s /bin/zsh <span class="variable">$USER</span></span><br></pre></td></tr></table></figure>
 
-<p>這樣之後登入就不必再打<code>zsh</code>進行切換了。</p>
-<p>重登後，可使用<code>echo $SHELL</code>確認輸出結果是否為<code>/bin/zsh</code>：</p>
+<p>這樣之後登入就不必再打 <code>zsh</code> 進行切換了。</p>
+<p>重登後，可使用 <code>echo $SHELL</code> 確認輸出結果是否為 <code>/bin/zsh</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">❯ <span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line">/bin/zsh</span><br></pre></td></tr></table></figure>
 
-<h3 id="新增-zshrc與-zprofile"><a href="#新增-zshrc與-zprofile" class="headerlink" title="新增.zshrc與.zprofile"></a>新增<code>.zshrc</code>與<code>.zprofile</code></h3><p>登入後，系統可能會提示你沒有<code>.zshrc</code>相關檔案等等，這很正常，直接以指令新增即可。如果打算把<code>.bashrc</code>的內容複製貼上到<code>.zshrc</code>，要注意<strong>無法照單全收</strong>，因為兩者不完全相容。</p>
-<p>同時新增<code>.zprofile</code>。</p>
+<h3 id="新增-zshrc-與-zprofile"><a href="#新增-zshrc-與-zprofile" class="headerlink" title="新增 .zshrc 與 .zprofile"></a>新增 <code>.zshrc</code> 與 <code>.zprofile</code></h3><p>登入後，系統可能會提示你沒有 <code>.zshrc</code> 相關檔案等等，這很正常，直接以指令新增即可。如果打算把 <code>.bashrc</code> 的內容複製貼上到 <code>.zshrc</code>，要注意<strong>無法照單全收</strong>，因為兩者不完全相容。</p>
+<p>同時新增 <code>.zprofile</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> .zshrc</span><br><span class="line"><span class="built_in">touch</span> .zprofile</span><br></pre></td></tr></table></figure>
 
 <hr>
@@ -235,26 +235,26 @@
 <h3 id="略過佈景主題，推薦-Powerlevel10k"><a href="#略過佈景主題，推薦-Powerlevel10k" class="headerlink" title="略過佈景主題，推薦 Powerlevel10k"></a>略過佈景主題，推薦 Powerlevel10k</h3><p>本篇會略過佈景主題部分，倒不是它不重要，只是每個人各有偏好。真的不知道要選哪個的話，相信 <a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">Powerlevel10k</a> 還是目前最多人推薦的選項，我自己也是用它，而它在安裝上又有一些必要設定，且很可能需要額外安裝字型才能正常顯示。</p>
 <p>總之，這部分並非本篇重點，所以暫且不提。</p>
 <blockquote>
-<p><code>2022/08/14</code>已新增文章：<a href="/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></p>
+<p><code>2022/08/14</code> 已新增文章：<a href="/powerlevel10k/">zsh 透過 zinit 安裝 Powerlevel10k 佈景主題</a></p>
 </blockquote>
-<h3 id="簡潔的信仰"><a href="#簡潔的信仰" class="headerlink" title="簡潔的信仰"></a>簡潔的信仰</h3><p>關於所要安裝的外掛功能，之前都是複製貼上別人的<code>.zshrc</code>設定，為了寫這篇文章我又花了 2 小時把<strong>真正必要</strong>的部分弄清楚一點，以下就只進行這些必要設定，省略我也不確定是什麼功能的配置內容。</p>
+<h3 id="簡潔的信仰"><a href="#簡潔的信仰" class="headerlink" title="簡潔的信仰"></a>簡潔的信仰</h3><p>關於所要安裝的外掛功能，之前都是複製貼上別人的 <code>.zshrc</code> 設定，為了寫這篇文章我又花了 2 小時把<strong>真正必要</strong>的部分弄清楚一點，以下就只進行這些必要設定，省略我也不確定是什麼功能的配置內容。</p>
 <p>不得不承認，這些看起來很複雜的設定，往往是令人卻步、不想使用 zinit 等小眾管理器的主因，我第一次看到也覺得麻煩！</p>
 <p>所幸，如果只是簡單的安裝與使用，實際上一點也不困難。本文就是獻給那些不想被 Oh My Zsh 強制幫你裝一堆<strong>用不到的功能</strong>，而希望更加輕量、簡潔的用戶。</p>
 <p>對工程師而言，簡潔是一種信仰。</p>
 <h3 id="Install-zinit"><a href="#Install-zinit" class="headerlink" title="Install zinit"></a>Install zinit</h3><p>話不多說，我們直接參考<a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit#install">官方文件</a>的指令進行安裝：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c <span class="string">&quot;<span class="subst">$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="設定-zinit"><a href="#設定-zinit" class="headerlink" title="設定 zinit"></a>設定 zinit</h2><p>這邊是重點中的重點，輕量化的套件管理器如 zplug 或這裡的 zinit，基本上都是安裝 zsh 後，<strong>直接在<code>.zshrc</code>加上相對應的配置語句</strong>即可。</p>
-<h3 id="zshrc新增配置語句"><a href="#zshrc新增配置語句" class="headerlink" title=".zshrc新增配置語句"></a><code>.zshrc</code>新增配置語句</h3><p>而不同的管理器也有不同的語法，<strong>你可能根本不想知道這些語法細節，至少我是如此</strong>。所以通常裝完後就是去複製別人的<code>.zshrc</code>內容，以下我也會提供複製素材，並稍加介紹每一行設定的作用為何。</p>
+<h2 id="設定-zinit"><a href="#設定-zinit" class="headerlink" title="設定 zinit"></a>設定 zinit</h2><p>這邊是重點中的重點，輕量化的套件管理器如 zplug 或這裡的 zinit，基本上都是安裝 zsh 後，<strong>直接在 <code>.zshrc</code> 加上相對應的配置語句</strong>即可。</p>
+<h3 id="zshrc-新增配置語句"><a href="#zshrc-新增配置語句" class="headerlink" title=".zshrc 新增配置語句"></a><code>.zshrc</code> 新增配置語句</h3><p>而不同的管理器也有不同的語法，<strong>你可能根本不想知道這些語法細節，至少我是如此</strong>。所以通常裝完後就是去複製別人的 <code>.zshrc</code> 內容，以下我也會提供複製素材，並稍加介紹每一行設定的作用為何。</p>
 <p>新增所需的全部配置會放在最後，讓我先闡述一下這些功能。</p>
 <h3 id="zsh-套件四天王"><a href="#zsh-套件四天王" class="headerlink" title="zsh 套件四天王"></a>zsh 套件四天王</h3><p>各種動漫作品中常常出現四天王，而如果別人的配置你看多了，無論是哪一款 zsh 管理器，以下這四個絕對是最常出現的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zinit light zsh-users/zsh-completions</span><br><span class="line">zinit light zsh-users/zsh-autosuggestions</span><br><span class="line">zinit light zsh-users/zsh-history-substring-search</span><br><span class="line">zinit light zdharma-continuum/fast-syntax-highlighting</span><br></pre></td></tr></table></figure>
 
 <p>簡單介紹：</p>
 <ol>
-<li><strong>zsh-completions</strong>：強化 zsh 以<code>tab</code>鍵「命令自動補全」功能。強化的部分很多，其中一項是<code>cd</code>指令後面可以只接資料夾或檔名的「<strong>模糊搜尋</strong>」，按<code>tab</code>就會幫你搜尋與匹配。比如打<code>cd sk</code>就幫你找到<code>cd Desktop/</code>。</li>
+<li><strong>zsh-completions</strong>：強化 zsh 以 <code>tab</code> 鍵「命令自動補全」功能。強化的部分很多，其中一項是 <code>cd</code> 指令後面可以只接資料夾或檔名的「<strong>模糊搜尋</strong>」，按 <code>tab</code> 就會幫你搜尋與匹配。比如打 <code>cd sk</code> 就幫你找到 <code>cd Desktop/</code>。</li>
 <li><strong>zsh-autosuggestions</strong>：輸入一部分內容就會以灰字提示<strong>相同前綴的最後一個使用過的指令</strong>，超級方便。這或許就是<strong>最強的一項功能沒有之一</strong>。</li>
-<li><strong>zsh-history-substring-search</strong>：可視為「以方向鍵<code>↑</code>、<code>↓</code>取得與切換歷史指令」的強化版，差別在於你可以先輸入部分指令比如<code>docker container</code>，此時再按方向鍵就「只會限制搜尋<strong>以此前綴開頭</strong>」的歷史指令，大幅縮小搜尋範圍。輸入部分不需要是完整指令。</li>
+<li><strong>zsh-history-substring-search</strong>：可視為「以方向鍵 <code>↑</code>、<code>↓</code> 取得與切換歷史指令」的強化版，差別在於你可以先輸入部分指令比如 <code>docker container</code>，此時再按方向鍵就「只會限制搜尋<strong>以此前綴開頭</strong>」的歷史指令，大幅縮小搜尋範圍。輸入部分不需要是完整指令。</li>
 <li><strong>fast-syntax-highlighting</strong>：這個應該就比較不用解釋，指令、參數、有效無效的指令都會有自己的顏色。</li>
 </ol>
 <h3 id="重點展示"><a href="#重點展示" class="headerlink" title="重點展示"></a>重點展示</h3><p>主要展示上述第二、四項功能，尤其是第二項。</p>
@@ -270,21 +270,21 @@
 
 <p>這些算是 Oh My Zsh 內建的功能而非獨立外掛，以下是我實測後的功能介紹：</p>
 <ul>
-<li><strong>lib&#x2F;completion.zsh</strong>：類似前述的<code>zsh-completions</code>。一個特色是持續按<code>tab</code>會移動到命令列外的選單，此時可以用方向鍵選擇。</li>
-<li><strong>lib&#x2F;history.zsh</strong>：共用<code>history</code>指令的快取內容，我沒裝的話，一登出 zsh 就找不到原來的歷史紀錄了。</li>
-<li><strong>lib&#x2F;key-bindings.zsh</strong>：沒裝的話我<code>zsh-history-substring-search</code>的 key-binding 設定會無效，所以還是乖乖裝了。</li>
+<li><strong>lib&#x2F;completion.zsh</strong>：類似前述的 <code>zsh-completions</code>。一個特色是持續按 <code>tab</code> 會移動到命令列外的選單，此時可以用方向鍵選擇。</li>
+<li><strong>lib&#x2F;history.zsh</strong>：共用 <code>history</code> 指令的快取內容，我沒裝的話，一登出 zsh 就找不到原來的歷史紀錄了。</li>
+<li><strong>lib&#x2F;key-bindings.zsh</strong>：沒裝的話我 <code>zsh-history-substring-search</code> 的 key-binding 設定會無效，所以還是乖乖裝了。</li>
 <li><strong>lib&#x2F;theme-and-appearance.zsh</strong>：有裝的話終端機的佈景主題配色才會套用到 VM 上。</li>
 </ul>
-<h2 id="Key-bindings"><a href="#Key-bindings" class="headerlink" title="Key bindings"></a>Key bindings</h2><p>我只設了兩組而已，其中給<code>zsh-history-substring-search</code>的部分（即前兩行）是必要的。</p>
+<h2 id="Key-bindings"><a href="#Key-bindings" class="headerlink" title="Key bindings"></a>Key bindings</h2><p>我只設了兩組而已，其中給 <code>zsh-history-substring-search</code> 的部分（即前兩行）是必要的。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[A&#x27;</span> history-substring-search-up</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[B&#x27;</span> history-substring-search-down</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;,&#x27;</span> autosuggest-accept</span><br></pre></td></tr></table></figure>
 
-<p>前兩行：設定後才能用上下鍵來使用<code>zsh-history-substring-search</code>。</p>
-<p>第三行：<code>zsh-autosuggestions</code>在暗字提示出現後，要按方向鍵<code>→</code>來補完，新增此 key binding 後，按<code>,</code>也可以達成同樣效果了。需要這個設定的原因是：<code>,</code>鍵在整個鍵盤的位置上，<strong>離中心比較近</strong>，會比遠處的方向鍵更加方便操作。</p>
+<p>前兩行：設定後才能用上下鍵來使用 <code>zsh-history-substring-search</code>。</p>
+<p>第三行：<code>zsh-autosuggestions</code> 在暗字提示出現後，要按方向鍵 <code>→</code> 來補完，新增此 key binding 後，按 <code>,</code> 也可以達成同樣效果了。需要這個設定的原因是：<code>,</code> 鍵在整個鍵盤的位置上，<strong>離中心比較近</strong>，會比遠處的方向鍵更加方便操作。</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zinit load djui/alias-tips</span><br></pre></td></tr></table></figure>
 
-<p>從名稱就能看得出來，它的功能就是你明明設了<code>alias</code>卻打了完整的指令，會提示你<code>alias</code>的存在，讓你習慣多使用<code>alias</code>。這部分非必要，我只放在其他。</p>
+<p>從名稱就能看得出來，它的功能就是你明明設了 <code>alias</code> 卻打了完整的指令，會提示你 <code>alias</code> 的存在，讓你習慣多使用 <code>alias</code>。這部分非必要，我只放在其他。</p>
 <hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>以上這幾樣設定<strong>已經足夠覆蓋大部分的日常使用情境</strong>，最後附上設定檔，請將下列內容置於<code>.bashrc</code>或<code>.zshrc</code>並重新啟動 shell：</p>
+<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><p>以上這幾樣設定<strong>已經足夠覆蓋大部分的日常使用情境</strong>，最後附上設定檔，請將下列內容置於 <code>.bashrc</code> 或 <code>.zshrc</code> 並重新啟動 shell：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zsh 套件四天王</span></span><br><span class="line">zinit light zsh-users/zsh-completions</span><br><span class="line">zinit light zsh-users/zsh-autosuggestions</span><br><span class="line">zinit light zsh-users/zsh-history-substring-search</span><br><span class="line">zinit light zdharma-continuum/fast-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="comment"># Oh My Zsh 功能</span></span><br><span class="line">zinit snippet OMZ::lib/completion.zsh</span><br><span class="line">zinit snippet OMZ::lib/history.zsh</span><br><span class="line">zinit snippet OMZ::lib/key-bindings.zsh</span><br><span class="line">zinit snippet OMZ::lib/theme-and-appearance.zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># key binding</span></span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[A&#x27;</span> history-substring-search-up</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[[B&#x27;</span> history-substring-search-down</span><br><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;,&#x27;</span> autosuggest-accept</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他</span></span><br><span class="line">zinit load djui/alias-tips</span><br></pre></td></tr></table></figure>
 
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>

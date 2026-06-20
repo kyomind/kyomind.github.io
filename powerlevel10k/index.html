@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T01:54:57+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -123,13 +123,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -182,7 +182,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Powerlevel10k-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Powerlevel10k 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E9%87%8D%E9%BB%9E"><span class="toc-text">本篇重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%B6%E5%89%8D%E7%8B%80%E6%85%8B%EF%BC%9Azsh-zinit"><span class="toc-text">當前狀態：zsh + zinit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%9D-Nerd-Font"><span class="toc-text">第一步：安裝 Nerd Font</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%A8%AD%E5%AE%9A-zshrc"><span class="toc-text">第二步：設定.zshrc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A8%AD%E5%AE%9A-Powerlevel10k"><span class="toc-text">第三步：設定 Powerlevel10k</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Powerlevel10k-%E4%BB%8B%E7%B4%B9"><span class="toc-text">Powerlevel10k 介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E9%87%8D%E9%BB%9E"><span class="toc-text">本篇重點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%B6%E5%89%8D%E7%8B%80%E6%85%8B%EF%BC%9Azsh-zinit"><span class="toc-text">當前狀態：zsh + zinit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%9D-Nerd-Font"><span class="toc-text">第一步：安裝 Nerd Font</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%A8%AD%E5%AE%9A-zshrc"><span class="toc-text">第二步：設定 .zshrc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%A8%AD%E5%AE%9A-Powerlevel10k"><span class="toc-text">第三步：設定 Powerlevel10k</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/nLSjmnW.jpg" alt="by Niklas Jeromin"><span class="cap">by Niklas Jeromin</span></p>
 <blockquote>
@@ -204,7 +204,7 @@
 <p><img src="https://raw.githubusercontent.com/starship/starship/master/media/demo.gif" alt="starship.rs/guide"><span class="cap">starship.rs/guide</span></p>
 <p>只不過，在視覺上通常相對乏味的命令列界面下，能有如此華麗的外表，這種<strong>反差美</strong>，著實令人難以抵擋，所以我也只能成為 Powerlevel10k 的俘虜了。</p>
 <h2 id="本篇重點"><a href="#本篇重點" class="headerlink" title="本篇重點"></a>本篇重點</h2><p>網路上關於 Powerlevel10k 的教學已經很多，我無意再錦上添花。</p>
-<p>本文主要補足：當你看完<a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">上一篇</a>，也決定以 <a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a> 作為 zsh 套件管理器後，並打算使用 Powerlevel10k 作為佈景主題時，需要寫入的<code>.zshrc</code>設定——包括特殊字型的安裝。</p>
+<p>本文主要補足：當你看完<a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">上一篇</a>，也決定以 <a target="_blank" rel="noopener" href="https://github.com/zdharma-continuum/zinit">zinit</a> 作為 zsh 套件管理器後，並打算使用 Powerlevel10k 作為佈景主題時，需要寫入的 <code>.zshrc</code> 設定——包括特殊字型的安裝。</p>
 <p>希望你照著這兩篇文章，就能快速設定好「<strong>zsh + zinit + Powerlevel10k</strong>」生產環境。</p>
 <p>如同之前的 <a href="https://blog.kyomind.tw/ubuntu-pyenv/">pyenv 教學</a>，在寫作本文時，我也會使用手上這台全新 Macbook Air 跟著操作，以確保與讀者在體驗與除錯上的一致性。</p>
 <p>好，讓我們開始。</p>
@@ -214,7 +214,7 @@
 <ol>
 <li>zsh 是 macOS 預設，不必安裝。</li>
 <li>我安裝了 <a target="_blank" rel="noopener" href="https://iterm2.com/">iTerm2</a> CLI 客戶端。話說，有人不裝嗎？XD</li>
-<li>然後再依上述文章教學，安裝好了 zinit，目前<code>.zshrc</code>檔內只有 zinit 安裝時自動新增的內容，如下所示。</li>
+<li>然後再依上述文章教學，安裝好了 zinit，目前 <code>.zshrc</code> 檔內只有 zinit 安裝時自動新增的內容，如下所示。</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### Added by Zinit&#x27;s installer</span></span><br><span class="line"><span class="keyword">if</span> [[ ! -f <span class="variable">$HOME</span>/.local/share/zinit/zinit.git/zinit.zsh ]]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">print</span> -P <span class="string">&quot;%F&#123;33&#125; %F&#123;220&#125;Installing %F&#123;33&#125;ZDHARMA-CONTINUUM%F&#123;220&#125; Initiative Plugin Manager (%F&#123;33&#125;zdharma-continuum/zinit%F&#123;220&#125;)…%f&quot;</span></span><br><span class="line">    <span class="built_in">command</span> <span class="built_in">mkdir</span> -p <span class="string">&quot;<span class="variable">$HOME</span>/.local/share/zinit&quot;</span> &amp;&amp; <span class="built_in">command</span> <span class="built_in">chmod</span> g-rwX <span class="string">&quot;<span class="variable">$HOME</span>/.local/share/zinit&quot;</span></span><br><span class="line">    <span class="built_in">command</span> git <span class="built_in">clone</span> https://github.com/zdharma-continuum/zinit <span class="string">&quot;<span class="variable">$HOME</span>/.local/share/zinit/zinit.git&quot;</span> &amp;&amp; \</span><br><span class="line">        <span class="built_in">print</span> -P <span class="string">&quot;%F&#123;33&#125; %F&#123;34&#125;Installation successful.%f%b&quot;</span> || \</span><br><span class="line">        <span class="built_in">print</span> -P <span class="string">&quot;%F&#123;160&#125; The clone has failed.%f%b&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.local/share/zinit/zinit.git/zinit.zsh&quot;</span></span><br><span class="line"><span class="built_in">autoload</span> -Uz _zinit</span><br><span class="line">(( <span class="variable">$&#123;+_comps&#125;</span> )) &amp;&amp; _comps[zinit]=_zinit</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load a few important annexes, without Turbo</span></span><br><span class="line"><span class="comment"># (this is currently required for annexes)</span></span><br><span class="line">zinit light-mode <span class="keyword">for</span> \</span><br><span class="line">    zdharma-continuum/zinit-annex-as-monitor \</span><br><span class="line">    zdharma-continuum/zinit-annex-bin-gem-node \</span><br><span class="line">    zdharma-continuum/zinit-annex-patch-dl \</span><br><span class="line">    zdharma-continuum/zinit-annex-rust</span><br><span class="line"></span><br><span class="line"><span class="comment">### End of Zinit&#x27;s installer chunk</span></span><br></pre></td></tr></table></figure>
 
@@ -232,18 +232,18 @@
 <p>也可以<a target="_blank" rel="noopener" href="https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts">透過 Homebrew 安裝</a>，但我沒試過，這部分就不細說，想必大同小異。</p>
 <p>字型安裝完畢後，還要記得到你使用的 CLI 客戶端（在此為 iTerm2）去<strong>選用該字型</strong>：</p>
 <p><img src="https://i.imgur.com/tLGgxJc.png" alt="iTerm2 設定"><span class="cap">iTerm2 設定</span></p>
-<h2 id="第二步：設定-zshrc"><a href="#第二步：設定-zshrc" class="headerlink" title="第二步：設定.zshrc"></a>第二步：設定<code>.zshrc</code></h2><p>非常簡單，只要在 zinit 的設定內容後面，再加上這行即可：</p>
+<h2 id="第二步：設定-zshrc"><a href="#第二步：設定-zshrc" class="headerlink" title="第二步：設定 .zshrc"></a>第二步：設定 <code>.zshrc</code></h2><p>非常簡單，只要在 zinit 的設定內容後面，再加上這行即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Powerlevel10k</span></span><br><span class="line">zinit ice depth=1; zinit light romkatv/powerlevel10k</span><br></pre></td></tr></table></figure>
 
 <p>存檔，並重新啟動 shell，此時就會開始安裝 Powerlevel10k，隨即會進入「<strong>外觀樣式選擇與設定</strong>」畫面。</p>
 <h2 id="第三步：設定-Powerlevel10k"><a href="#第三步：設定-Powerlevel10k" class="headerlink" title="第三步：設定 Powerlevel10k"></a>第三步：設定 Powerlevel10k</h2><p>這部分就不多贅述，照著指示一步一步完成設定即可。</p>
-<p>第一次下載安裝完，就會進入設定畫面，之後如果要重新設定，需要使用指令<code>p10k configure</code>。</p>
+<p>第一次下載安裝完，就會進入設定畫面，之後如果要重新設定，需要使用指令 <code>p10k configure</code>。</p>
 <p>流程一開始就會問你要不要下載「Meslo Nerd Font」字型，如果前面你沒有自己下載 Nerd Font，就選擇 Yes，如果已經下載自己慣用的字型，就選擇 No。</p>
-<p>完成後，<code>.zshrc</code>會再自動增加下列內容，其實就是載入 Powerlevel10k 的樣式：</p>
+<p>完成後，<code>.zshrc</code> 會再自動增加下列內容，其實就是載入 Powerlevel10k 的樣式：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.</span></span><br><span class="line">[[ ! -f ~/.p10k.zsh ]] || <span class="built_in">source</span> ~/.p10k.zsh</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>建議先完成上述內容後，再把 <a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/#%E5%B0%8F%E7%B5%90">zinit 其餘設定</a>加入<code>.zshrc</code>中。</p>
+<p>建議先完成上述內容後，再把 <a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/#%E5%B0%8F%E7%B5%90">zinit 其餘設定</a>加入 <code>.zshrc</code> 中。</p>
 <p>最終，大功告成！</p>
 <p><img src="https://i.imgur.com/zDFTT8F.png" alt="Powerlevel10k 完成圖"><span class="cap">Powerlevel10k 完成圖</span></p>
 

@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:49:30+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -217,7 +217,7 @@
 <p>請務必熟悉。</p>
 <hr>
 <h2 id="理解反向關聯"><a href="#理解反向關聯" class="headerlink" title="理解反向關聯"></a>理解反向關聯</h2><p>我們可以從「正向關聯」來比較反向關聯，會更好理解。</p>
-<p>在 Django ORM 中，正向關聯指的是那些<strong>由我們「明示」定義的「關聯」欄位</strong>，比如<code>ForeignKey</code>、<code>OneToOneField</code>等欄位。</p>
+<p>在 Django ORM 中，正向關聯指的是那些<strong>由我們「明示」定義的「關聯」欄位</strong>，比如 <code>ForeignKey</code>、<code>OneToOneField</code> 等欄位。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Comment</span>(models.Model):</span><br><span class="line">    <span class="comment"># 這是一個正向關聯欄位</span></span><br><span class="line">    post = models.ForeignKey(</span><br><span class="line">        Post, on_delete=models.CASCADE, related_name=<span class="string">&#x27;comments&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>正向關聯屬性的<strong>最大特色</strong>是，它對應著資料庫 table 中的<strong>「外鍵」欄位</strong>。換句話說，它和 Django model 中的其它欄位一樣，都是「<strong>實體</strong>」的。</p>
@@ -227,7 +227,7 @@
 <p>換言之，即使沒有反向關聯，我們<strong>還是可以</strong>透過標準 ORM 語法，查詢想要的資料——<strong>只是比較麻煩！</strong></p>
 <p>反向關聯在「<strong>快速獲得關聯實例</strong>」這個需求場景，<strong>大大突顯</strong>了 ORM 查詢相對於原生 SQL 查詢的便利性。也讓你多增加了一個使用 ORM 的理由。</p>
 <h3 id="反向關聯屬性的返回值"><a href="#反向關聯屬性的返回值" class="headerlink" title="反向關聯屬性的返回值"></a><strong>反向關聯屬性的返回值</strong></h3><p>根據關聯的類型，反向關聯的「屬性值」會有所不同。</p>
-<p>在一對一關係中，反向關聯屬性返回的是一個的<strong>關聯模型實例</strong>。在一對多關係中，返回的是一個<code>QuerySet</code>（嚴格來說其實是<strong>關係管理器</strong>——<code>RelatedManager</code>），代表所有相關聯的模型實例集合。</p>
+<p>在一對一關係中，反向關聯屬性返回的是一個的<strong>關聯模型實例</strong>。在一對多關係中，返回的是一個 <code>QuerySet</code>（嚴格來說其實是<strong>關係管理器</strong>——<code>RelatedManager</code>），代表所有相關聯的模型實例集合。</p>
 <p>這種彈性使得反向關聯成為 Django ORM 中一個極其強大且靈活的存在。</p>
 <hr>
 <p>好，講完了定義，我們趕緊來看，反向關聯屬性在實務上究竟是<strong>如何被使用。以及使用上的注意事項。</strong></p>
@@ -247,7 +247,7 @@
 <p>如果你用過寫作平台 <a target="_blank" rel="noopener" href="https://medium.com/">Medium</a>，就知道它的文章正是「副標題可選」的設定。</p>
 <p>儘管新設計並非完美，但顯然比原來的設計更加合理。</p>
 <p>總之，我們只需知曉一件事：<strong>Post 可能有關聯的 Subtitle，也可能沒有。並且兩者是「一對一」關係。</strong></p>
-<h3 id="新模型關聯"><a href="#新模型關聯" class="headerlink" title="新模型關聯"></a>新模型關聯</h3><p>如上述修正後，新的<code>models.py</code>內容如下：</p>
+<h3 id="新模型關聯"><a href="#新模型關聯" class="headerlink" title="新模型關聯"></a>新模型關聯</h3><p>如上述修正後，新的 <code>models.py</code> 內容如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Post</span>(models.Model):</span><br><span class="line">    title = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    content = models.TextField()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;<span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span>&gt;: <span class="subst">&#123;self.title&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可選的副標題</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subtitle</span>(models.Model):</span><br><span class="line">    content = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    post = models.OneToOneField(Post,</span><br><span class="line">                                on_delete=models.CASCADE,</span><br><span class="line">                                related_name=<span class="string">&#x27;subtitle&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;<span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span>&gt;: <span class="subst">&#123;self.content&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 留言</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Comment</span>(models.Model):</span><br><span class="line">    content = models.TextField()</span><br><span class="line">    post = models.ForeignKey(Post,</span><br><span class="line">                             on_delete=models.CASCADE,</span><br><span class="line">                             related_name=<span class="string">&#x27;comments&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;&lt;<span class="subst">&#123;self.<span class="built_in">id</span>&#125;</span>&gt;: <span class="subst">&#123;self.content&#125;</span>&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>不知道你覺得如何？我感覺更加井然有序了！很適合用來作為教學文章解說的範例。</p>
@@ -255,9 +255,9 @@
 <p>接下來，我們就用上述的程式碼實例，來一一解說反向關聯。</p>
 <h2 id="一對一反向關聯"><a href="#一對一反向關聯" class="headerlink" title="一對一反向關聯"></a>一對一反向關聯</h2><p>請看 Post 與 Subtitle 這兩個模型，它們是典型的一對一關係。</p>
 <p>Subtitle 實例有著「正向關聯」屬性——<code>post</code>，關聯某個 Post 模型實例。</p>
-<p>Post 實例有著「反向關聯」屬性——<code>subtitle</code>，來自<code>related_name=&#39;subtitle&#39;</code>。不過，即使你沒有特別定義<code>related_name</code>，這裡的「預設」反向關聯屬性名稱，也是<code>subtitle</code>（即關聯模型名稱的「小寫」型態）。</p>
-<h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>假設 Post 模型的實例為<code>post_1</code>。</p>
-<p>想要查詢<code>post_1</code>所關聯的 Subtile 實例，有兩種方法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
+<p>Post 實例有著「反向關聯」屬性——<code>subtitle</code>，來自 <code>related_name=&#39;subtitle&#39;</code>。不過，即使你沒有特別定義 <code>related_name</code>，這裡的「預設」反向關聯屬性名稱，也是 <code>subtitle</code>（即關聯模型名稱的「小寫」型態）。</p>
+<h3 id="一對一反向關聯查詢重點"><a href="#一對一反向關聯查詢重點" class="headerlink" title="一對一反向關聯查詢重點"></a>一對一反向關聯查詢重點</h3><p>假設 Post 模型的實例為 <code>post_1</code>。</p>
+<p>想要查詢 <code>post_1</code> 所關聯的 Subtile 實例，有兩種方法，分別是<strong>一般查詢</strong>，與<strong>反向關聯查詢</strong>。</p>
 <p>一般查詢方式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subtitle = Subtitle.objects.<span class="built_in">filter</span>(post=post_1)</span><br></pre></td></tr></table></figure>
 
@@ -266,25 +266,25 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subtitle = post_1.subtitle</span><br></pre></td></tr></table></figure>
 
 <h3 id="一對一反向關聯不存在與錯誤錯理"><a href="#一對一反向關聯不存在與錯誤錯理" class="headerlink" title="一對一反向關聯不存在與錯誤錯理"></a>一對一反向關聯不存在與錯誤錯理</h3><p>一對一反向關聯有一個<strong>重點</strong>，那就是「關聯物件<strong>不存在</strong>時的<strong>錯誤處理</strong>」。</p>
-<p><code>post_1</code>的反向關聯屬性<code>.subtitle</code>，不一定總是對應著一個 Subtitle 實例——有可能<strong>關聯不存在</strong>。即該文章沒有副標題。</p>
-<p>當關聯不存在時，訪問<code>post_1.subtitle</code>會引發<code>RelatedObjectDoesNotExist</code>。</p>
+<p><code>post_1</code> 的反向關聯屬性 <code>.subtitle</code>，不一定總是對應著一個 Subtitle 實例——有可能<strong>關聯不存在</strong>。即該文章沒有副標題。</p>
+<p>當關聯不存在時，訪問 <code>post_1.subtitle</code> 會引發 <code>RelatedObjectDoesNotExist</code>。</p>
 <p>考慮到「關聯不存在」的可能，我們的程式常常會這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    subtitle = post_1.subtitle</span><br><span class="line"><span class="keyword">except</span> ObjectDoesNotExist:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>其中<code>ObjectDoesNotExist</code>是<code>RelatedObjectDoesNotExist</code>的父類別，因為你無法直接引用<code>RelatedObjectDoesNotExist</code>。</p>
+<p>其中 <code>ObjectDoesNotExist</code> 是 <code>RelatedObjectDoesNotExist</code> 的父類別，因為你無法直接引用 <code>RelatedObjectDoesNotExist</code>。</p>
 <p>這種寫法雖然不算優雅，但它<strong>明確地表達了你的意圖</strong>。</p>
 <hr>
 <h2 id="一對多反向關聯"><a href="#一對多反向關聯" class="headerlink" title="一對多反向關聯"></a>一對多反向關聯</h2><p>一對多關係，我們要把目光放到 Post 與 Comment 這兩個模型。</p>
 <p>其中 Post 是「<strong>一方</strong>」，而 Comment 則是「<strong>多方</strong>」：<strong>一篇文章可以有多則留言，但一則留言只能屬於某一篇文章。</strong></p>
-<p>一對多關係中，<code>ForeignKey</code>欄位<strong>肯定是實作在「多方」</strong>，所以上述程式碼，定義這個「外鍵」欄位的模型是 Comment：</p>
+<p>一對多關係中，<code>ForeignKey</code> 欄位<strong>肯定是實作在「多方」</strong>，所以上述程式碼，定義這個「外鍵」欄位的模型是 Comment：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Comment</span>(models.Model):</span><br><span class="line">    content = models.TextField()</span><br><span class="line">    post = models.ForeignKey(Post,</span><br><span class="line">                             on_delete=models.CASCADE,</span><br><span class="line">                             related_name=<span class="string">&#x27;comments&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>一樣，我們假設上述模型實例分別為<code>post_1</code>、<code>comment_1</code>，兩者相互獨立。</p>
-<p>其中<code>comment_1</code>有正向關聯屬性<code>.post</code>（即 ForeignKey）。</p>
-<p>而<code>post_1</code>有「一對多」反向關聯屬性<code>.comments</code>（從<code>related_name=&#39;comments&#39;</code>獲得）——<strong>注意這個複數</strong>。</p>
-<h3 id="多對一「正向」關聯"><a href="#多對一「正向」關聯" class="headerlink" title="多對一「正向」關聯"></a>多對一「正向」關聯</h3><p>對「多方」的<code>comment_1</code>來說，想知道它關聯的 Post 實例，只要呼叫它的<strong>正向關聯</strong>屬性<code>.post</code>即可：</p>
+<p>一樣，我們假設上述模型實例分別為 <code>post_1</code>、<code>comment_1</code>，兩者相互獨立。</p>
+<p>其中 <code>comment_1</code> 有正向關聯屬性 <code>.post</code>（即 ForeignKey）。</p>
+<p>而 <code>post_1</code> 有「一對多」反向關聯屬性 <code>.comments</code>（從 <code>related_name=&#39;comments&#39;</code> 獲得）——<strong>注意這個複數</strong>。</p>
+<h3 id="多對一「正向」關聯"><a href="#多對一「正向」關聯" class="headerlink" title="多對一「正向」關聯"></a>多對一「正向」關聯</h3><p>對「多方」的 <code>comment_1</code> 來說，想知道它關聯的 Post 實例，只要呼叫它的<strong>正向關聯</strong>屬性 <code>.post</code> 即可：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post = comment_1.post</span><br></pre></td></tr></table></figure>
 
 <p>但這其實也不是我們所謂的「反向關聯」，所以簡單提一下即可。</p>
-<h2 id="一對多反向關聯查詢重點"><a href="#一對多反向關聯查詢重點" class="headerlink" title="一對多反向關聯查詢重點"></a>一對多反向關聯查詢重點</h2><p>想獲得<code>post_1</code>所有關聯的 Comment 實例，一樣可以透過<strong>一般查詢</strong>和<strong>反向關聯查詢</strong>。</p>
+<h2 id="一對多反向關聯查詢重點"><a href="#一對多反向關聯查詢重點" class="headerlink" title="一對多反向關聯查詢重點"></a>一對多反向關聯查詢重點</h2><p>想獲得 <code>post_1</code> 所有關聯的 Comment 實例，一樣可以透過<strong>一般查詢</strong>和<strong>反向關聯查詢</strong>。</p>
 <p><strong>一般查詢：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments = Comment.objects.<span class="built_in">filter</span>(post=post_1)</span><br></pre></td></tr></table></figure>
 
@@ -294,12 +294,12 @@
 <h3 id="與一對一關係的「區別」"><a href="#與一對一關係的「區別」" class="headerlink" title="與一對一關係的「區別」"></a>與一對一關係的「區別」</h3><p>訪問一對一反向關聯屬性，會得到兩種可能：</p>
 <ol>
 <li>關聯物件。</li>
-<li><code>RelatedObjectDoesNotExist</code>例外。</li>
+<li><code>RelatedObjectDoesNotExist</code> 例外。</li>
 </ol>
 <p>而一對多的反向關聯，則<strong>只有一種可能：關係管理器物件</strong>（<code>RelatedManager</code>）。</p>
-<p><code>RelatedManager</code>和<code>Manager</code>（即<code>.objects</code>的屬性值）類似，都是獲取 QuerySet 的「入口」。所以上述的<code>post_1.comments.all()</code>需要最後的<code>all()</code>方法，透過「關係管理器」再獲取「由關聯實例組成的 QuerySet」。</p>
-<p>換句話說，光是呼叫<code>post_1.comments</code>本身，<strong>你只會得到「關係管理器」物件</strong>。記住這點，這將影響你對於「關聯不存在」時的處理。</p>
-<h3 id="一對多反向關聯不存在"><a href="#一對多反向關聯不存在" class="headerlink" title="一對多反向關聯不存在"></a>一對多反向關聯不存在</h3><p>如果<code>post_1</code><strong>有可能還沒有</strong>任何 Comment 關聯實例。那我們應該怎麼樣<strong>在程式中考慮進去</strong>呢？</p>
+<p><code>RelatedManager</code> 和 <code>Manager</code>（即 <code>.objects</code> 的屬性值）類似，都是獲取 QuerySet 的「入口」。所以上述的 <code>post_1.comments.all()</code> 需要最後的 <code>all()</code> 方法，透過「關係管理器」再獲取「由關聯實例組成的 QuerySet」。</p>
+<p>換句話說，光是呼叫 <code>post_1.comments</code> 本身，<strong>你只會得到「關係管理器」物件</strong>。記住這點，這將影響你對於「關聯不存在」時的處理。</p>
+<h3 id="一對多反向關聯不存在"><a href="#一對多反向關聯不存在" class="headerlink" title="一對多反向關聯不存在"></a>一對多反向關聯不存在</h3><p>如果 <code>post_1</code> <strong>有可能還沒有</strong>任何 Comment 關聯實例。那我們應該怎麼樣<strong>在程式中考慮進去</strong>呢？</p>
 <p>我們第一個想到的可能是這樣：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">comments = post_1.comments.<span class="built_in">all</span>()</span><br><span class="line"><span class="keyword">if</span> comments:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
@@ -309,7 +309,7 @@
 <p>然後，<strong>千萬不要寫：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">comments = post_1.comments</span><br><span class="line"><span class="keyword">if</span> comments:</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
-<p>因為此時的<code>comments</code>變數內容是一個<strong>關係管理器物件</strong>，它<strong>一定會被視為 truthy</strong>。意即這個判斷條件<strong>永遠會成立</strong>。</p>
+<p>因為此時的 <code>comments</code> 變數內容是一個<strong>關係管理器物件</strong>，它<strong>一定會被視為 truthy</strong>。意即這個判斷條件<strong>永遠會成立</strong>。</p>
 <hr>
 <h2 id="以「反向關聯是否存在」為查詢條件"><a href="#以「反向關聯是否存在」為查詢條件" class="headerlink" title="以「反向關聯是否存在」為查詢條件"></a>以「反向關聯是否存在」為查詢條件</h2><p>如果你想以「反向關聯是否存在」作為<strong>查詢的條件</strong>，比如我想查詢「<strong>沒有留言的文章</strong>」有哪些，要怎麼做呢？答案是——<code>isnull</code>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts_without_comments = Post.<span class="built_in">object</span>.<span class="built_in">filter</span>(comments__isnull=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
@@ -321,7 +321,7 @@
 <p>可以看到，上面兩個例子，都用透過 Post 的「反向關聯屬性」來進行過濾查詢——就像是一個普通的欄位一樣。</p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Django ORM 中的反向關聯，是 ORM 皇冠上的一顆明珠。</p>
-<p>為什麼說 ORM 相對於原生 SQL 查詢更加優雅？從上述程式碼範例中，反向關聯無疑是最好的答案——像<code>post_1.subtitle</code>和<code>post_1.comments.exists()</code>這樣的語句，<strong>不僅簡潔，且非常可讀。</strong></p>
+<p>為什麼說 ORM 相對於原生 SQL 查詢更加優雅？從上述程式碼範例中，反向關聯無疑是最好的答案——像 <code>post_1.subtitle</code> 和 <code>post_1.comments.exists()</code> 這樣的語句，<strong>不僅簡潔，且非常可讀。</strong></p>
 <p>善用反向關聯，你將成為更加道地、成熟的 Django 開發者。</p>
 <hr>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>我很少為自己的文章寫「後記」，不過仔細想想，為這篇好不容易才產出的文章寫點後記，也是值得的。</p>
@@ -361,8 +361,8 @@
     </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-models/" title="Django ORM 外鍵教學：設定一對一、一對多關聯" rel="bookmark">Django ORM 外鍵教學：設定一對一、一對多關聯</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-orm-query-relations/" title="Django ORM 外鍵查詢指南" rel="bookmark">Django ORM 外鍵查詢指南</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/django-tutorial/" title="Django Tutorial：系列介紹與導讀" rel="bookmark">Django Tutorial：系列介紹與導讀</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
-            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
             <a href="/tags/Django-ORM/">Django ORM</a>
+            <a href="/tags/Django-Tutorial/">Django Tutorial</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/four-thousand-weeks-01/">

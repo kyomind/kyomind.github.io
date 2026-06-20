@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -241,17 +241,17 @@
 <p>Django Ninja 有提供自己的 <a target="_blank" rel="noopener" href="https://github.com/vitalik/django-ninja/blob/master/ninja/testing/client.py">test client</a>，但我建議你先不要用，因為它還<strong>不夠健全</strong>。</p>
 <p>在範例專案中，我使用的是 Django 內建的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/testing/tools/#the-test-client">test client</a>——歷史悠久、穩定可靠。</p>
 <h3 id="pytest-簡介"><a href="#pytest-簡介" class="headerlink" title="pytest 簡介"></a>pytest 簡介</h3><p><a target="_blank" rel="noopener" href="https://docs.pytest.org/en/stable/">pytest</a>（對，它的 p 是小寫，同 <a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv">pyenv</a>）是一個廣受歡迎的 Python 測試框架，擁有自己的<strong>生態系</strong>——包含大量實用的外掛。</p>
-<p>相較於 Python 內建的<code>unittest</code>模組，pytest 的<strong>語法更直觀</strong>、使用上的靈活性更好。尤其是它的 <strong>fixtures</strong>、<strong>參數化測試</strong>等功能，讓測試的撰寫更加簡單、高效。</p>
+<p>相較於 Python 內建的 <code>unittest</code> 模組，pytest 的<strong>語法更直觀</strong>、使用上的靈活性更好。尤其是它的 <strong>fixtures</strong>、<strong>參數化測試</strong>等功能，讓測試的撰寫更加簡單、高效。</p>
 <h3 id="pytest-django"><a href="#pytest-django" class="headerlink" title="pytest-django"></a>pytest-django</h3><p><a target="_blank" rel="noopener" href="https://pytest-django.readthedocs.io/en/latest/">pytest-django</a> 是一個專為 Django 設計的 pytest 整合套件。它提供了豐富的 Django 整合功能，包括許多內建的 fixtures 和實用的裝飾器。</p>
-<p>其中又以<code>@pytest.mark.django_db</code>裝飾器最常用，它能自動管理測試過程中的<strong>資料庫狀態</strong>。</p>
+<p>其中又以 <code>@pytest.mark.django_db</code> 裝飾器最常用，它能自動管理測試過程中的<strong>資料庫狀態</strong>。</p>
 <p>它讓 pytest 在每次測試執行前自動建立一個全新的資料庫，並在測試結束後刪除。這確保每次測試的<strong>環境一致</strong>，防止<strong>資料殘留</strong>導致的測試結果不準確。</p>
 <h3 id="pytest-Fixtures-與測試函式"><a href="#pytest-Fixtures-與測試函式" class="headerlink" title="pytest Fixtures 與測試函式"></a>pytest Fixtures 與測試函式</h3><p><a target="_blank" rel="noopener" href="https://docs.pytest.org/en/stable/fixture.html">Fixtures</a> 是 pytest 提供的一種<strong>機制</strong>，用來<strong>設定</strong>測試所需的<strong>初始環境</strong>。它們本質上是<strong>函式</strong>，但用法卻不像一般的函式。只要事先定義好，即可在測試函式中<strong>作為參數引用</strong>。</p>
-<p>Fixtures 可以定義在 Django app 的<code>tests.py</code>中，但我們通常將它們放在可供全專案共用的<code>conftest.py</code>模組。</p>
+<p>Fixtures 可以定義在 Django app 的 <code>tests.py</code> 中，但我們通常將它們放在可供全專案共用的 <code>conftest.py</code> 模組。</p>
 <p>測試 API 時，我們經常需要一些初始資料，例如使用者、產品等。這些資料可以<strong>透過 fixtures 自動產生</strong>，無需每次手動重建。</p>
 <p>如此一來，撰寫測試的效率提高，還避免了重複的狀態設定。</p>
 <hr>
 <h2 id="五、測試程式碼實作與解說"><a href="#五、測試程式碼實作與解說" class="headerlink" title="五、測試程式碼實作與解說"></a>五、測試程式碼實作與解說</h2><p>本篇我實作 3 個 fixture 和 3 個測試函式，它們都與 user 有關，容我<strong>擇要</strong>解說其中的細節。</p>
-<h3 id="強大而靈活的-pytest-Fixtures"><a href="#強大而靈活的-pytest-Fixtures" class="headerlink" title="強大而靈活的 pytest Fixtures"></a>強大而靈活的 pytest Fixtures</h3><p>這是專案的 3 個 fixture，定義在<code>conftest.py</code>中：（為減少篇幅我省略了 docstring）</p>
+<h3 id="強大而靈活的-pytest-Fixtures"><a href="#強大而靈活的-pytest-Fixtures" class="headerlink" title="強大而靈活的 pytest Fixtures"></a>強大而靈活的 pytest Fixtures</h3><p>這是專案的 3 個 fixture，定義在 <code>conftest.py</code> 中：（為減少篇幅我省略了 docstring）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">from</span> django.test <span class="keyword">import</span> Client</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture(<span class="params">scope=<span class="string">&#x27;session&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">client</span>() -&gt; Client:</span><br><span class="line">    <span class="keyword">return</span> Client()</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">user</span>() -&gt; User:</span><br><span class="line">    <span class="keyword">return</span> User.objects.create_user(</span><br><span class="line">        username=<span class="string">&#x27;testuser&#x27;</span>,</span><br><span class="line">        email=<span class="string">&#x27;testuser@example.com&#x27;</span>,</span><br><span class="line">        password=<span class="string">&#x27;testpassword123&#x27;</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">authenticated_client</span>(<span class="params">client: Client, user: User</span>) -&gt; Client:</span><br><span class="line">    response = client.post(</span><br><span class="line">        <span class="string">&#x27;/users/login/&#x27;</span>,</span><br><span class="line">        &#123;<span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;testuser&#x27;</span>, <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;testpassword123&#x27;</span>&#125;,</span><br><span class="line">        content_type=<span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">assert</span> response.status_code == <span class="number">200</span></span><br><span class="line">    <span class="comment"># 設定登入後的 cookies</span></span><br><span class="line">    client.cookies.update(response.cookies)</span><br><span class="line">    <span class="keyword">return</span> client</span><br></pre></td></tr></table></figure>
 
 <p>在這段程式碼中：</p>
@@ -269,12 +269,12 @@
 
 <p>選擇這兩個函式是有<strong>教學用意</strong>的：</p>
 <ol>
-<li><code>test_login_user</code>函式測試「使用者登入」API，該 API 是給「<strong>未登入</strong>」的用戶存取，所以引用<strong>一般的 client</strong>（未認證）即可。<ul>
+<li><code>test_login_user</code> 函式測試「使用者登入」API，該 API 是給「<strong>未登入</strong>」的用戶存取，所以引用<strong>一般的 client</strong>（未認證）即可。<ul>
 <li>函式也引用了 user fixture，因為登入成功的前提是：該用戶已經「<strong>存在</strong>」。</li>
 <li>而 user fixture 的作用正是在測試開始前，<strong>先建立</strong>該用戶。</li>
 </ul>
 </li>
-<li><code>test_get_users</code>測試的是「<strong>有認證保護</strong>」的 API，需要登入才能存取，所以我們引用了<code>authenticated_client</code>。<ul>
+<li><code>test_get_users</code> 測試的是「<strong>有認證保護</strong>」的 API，需要登入才能存取，所以我們引用了 <code>authenticated_client</code>。<ul>
 <li>這個測試函式「<strong>只有</strong>」引用 authenticated_client，但實際的測試結果會是：清單中存在一個用戶。（程式碼不包含這部分）</li>
 <li>因為 authenticated_client 引用了 user 和 client 這兩個 fixture。所以<strong>只要</strong>引用了authenticated_client，<strong>就相當於引用了上述二者</strong>。</li>
 </ul>
@@ -283,7 +283,7 @@
 <p>該「<strong>引用</strong>」哪些 fixture，就看各函式需要什麼樣的<strong>測試狀態與條件</strong>。</p>
 <p>Fixtures 本身可以重複使用，這樣的設計讓測試本身也非常「<strong>模組化</strong>」——這是 pytest 如此受歡迎的原因之一。</p>
 <h3 id="執行單元測試"><a href="#執行單元測試" class="headerlink" title="執行單元測試"></a>執行單元測試</h3><p>最後，來跑一下測試！</p>
-<p>你可以在專案的根目錄直接使用<code>pytest</code>指令，或透過 VS Code 的 Testing UI 來執行單元測試：</p>
+<p>你可以在專案的根目錄直接使用 <code>pytest</code> 指令，或透過 VS Code 的 Testing UI 來執行單元測試：</p>
 <p><img src="https://i.imgur.com/OtM4FXn.png" alt="VS Code - Testing"><span class="cap">VS Code - Testing</span></p>
 <p>Beautiful！</p>
 <hr>

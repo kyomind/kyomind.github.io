@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-22T16:53:39+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:13:58+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -230,8 +230,8 @@
 <hr>
 <h2 id="yadm-Alt-Files-的三大重點"><a href="#yadm-Alt-Files-的三大重點" class="headerlink" title="yadm Alt Files 的三大重點"></a>yadm Alt Files 的三大重點</h2><p>我知道，光這樣講並不容易理解。</p>
 <p>簡單來說，我覺得這些 alt files 有三個學習重點。</p>
-<h3 id="一、「後綴」命名格式與樣式"><a href="#一、「後綴」命名格式與樣式" class="headerlink" title="一、「後綴」命名格式與樣式"></a>一、「後綴」命名格式與樣式</h3><p>在特殊標記<code>##</code>之後的「<strong>os 層級</strong>」命名格式是固定的！</p>
-<p>換言之，<code>os.Darwin</code>、<code>os.Darwin</code>這些「後綴」名稱<strong>不可自訂</strong>，千萬不要打錯了。</p>
+<h3 id="一、「後綴」命名格式與樣式"><a href="#一、「後綴」命名格式與樣式" class="headerlink" title="一、「後綴」命名格式與樣式"></a>一、「後綴」命名格式與樣式</h3><p>在特殊標記 <code>##</code> 之後的「<strong>os 層級</strong>」命名格式是固定的！</p>
+<p>換言之，<code>os.Darwin</code>、<code>os.Darwin</code> 這些「後綴」名稱<strong>不可自訂</strong>，千萬不要打錯了。</p>
 <p>事實上這類後綴可以有<strong>非常多樣</strong>的寫法，有些確實需要自定義，比如文件中的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##class.Work</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##class.Work,~os.Darwin</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##os.Darwin,hostname.host1</span></span><br><span class="line"><span class="variable">$HOME</span>/path/example.txt<span class="comment">##os.Darwin,hostname.host2</span></span><br></pre></td></tr></table></figure>
 
@@ -241,16 +241,16 @@
 <h3 id="二、路徑的尋找規則"><a href="#二、路徑的尋找規則" class="headerlink" title="二、路徑的尋找規則"></a>二、路徑的尋找規則</h3><p>在<strong>相同前綴不同後綴</strong>的一系列的檔名中，yadm 只會依照「尋找規則」，選取其中一個建立 Symbolic Link，讓它指向<strong>系統真正會讀取的檔案</strong>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── .zshrc<span class="comment">##default</span></span><br><span class="line">├── .zshrc<span class="comment">##os.Darwin</span></span><br><span class="line">└── .zshrc<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
 
-<p>以<code>.zshrc</code>為例，在 macOS 上，它會找到<code>.zshrc##os.Darwin</code>。</p>
-<p>而在 Linux 上則是<code>.zshrc##os.Linux</code>。</p>
+<p>以 <code>.zshrc</code> 為例，在 macOS 上，它會找到 <code>.zshrc##os.Darwin</code>。</p>
+<p>而在 Linux 上則是 <code>.zshrc##os.Linux</code>。</p>
 <p>透過這套尋找規則，yadm 就能在不同作業系統提供<strong>設定檔的差異化</strong>。</p>
-<h3 id="三、共用檔的角色"><a href="#三、共用檔的角色" class="headerlink" title="三、共用檔的角色"></a>三、共用檔的角色</h3><p>承上，熟悉 dotfiles 的你應該不難猜到，<code>.zshrc##default</code>要放的內容，就是兩邊都會「共用」的部分。</p>
-<p>然後，在「變體」檔的開頭，要去<code>source</code>共用檔的內容！</p>
-<p>以我的<code>.zshrc##os.Darwin</code>為例，開頭內容如下：</p>
+<h3 id="三、共用檔的角色"><a href="#三、共用檔的角色" class="headerlink" title="三、共用檔的角色"></a>三、共用檔的角色</h3><p>承上，熟悉 dotfiles 的你應該不難猜到，<code>.zshrc##default</code> 要放的內容，就是兩邊都會「共用」的部分。</p>
+<p>然後，在「變體」檔的開頭，要去 <code>source</code> 共用檔的內容！</p>
+<p>以我的 <code>.zshrc##os.Darwin</code> 為例，開頭內容如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS 專屬 zsh 設定</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 先載入共用設定</span></span><br><span class="line"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.zshrc##default&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Homebrew node@18 路徑（macOS 專屬）</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/opt/homebrew/opt/node@18/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>如果沒有共用檔，自然就不需要開頭的<code>source</code>。</p>
-<p>像<code>p10k.zsh</code>因為設定複雜，我直接區分兩種版本，根本沒有共用部分：</p>
+<p>如果沒有共用檔，自然就不需要開頭的 <code>source</code>。</p>
+<p>像 <code>p10k.zsh</code> 因為設定複雜，我直接區分兩種版本，根本沒有共用部分：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">├── .p10k.zsh<span class="comment">##os.Darwin</span></span><br><span class="line">├── .p10k.zsh<span class="comment">##os.Linux</span></span><br></pre></td></tr></table></figure>
 
 <hr>
@@ -270,15 +270,15 @@
 <hr>
 <h2 id="yadm-使用忠告"><a href="#yadm-使用忠告" class="headerlink" title="yadm 使用忠告"></a>yadm 使用忠告</h2><p>yadm 是 Git 的 wrapper，操作它等於在<strong>操作一個裸露的 Git repo</strong>——而且這個 repo 還是<strong>你的 Home 目錄</strong>😱</p>
 <p>這意味著，yadm 的操作<strong>會直接影響到你的系統設定檔</strong>。</p>
-<p>如果你太隨意下達像是<code>yadm reset</code>、<code>yadm add .</code>等指令，有可能會讓你的系統檔案直接損毀XD</p>
+<p>如果你太隨意下達像是 <code>yadm reset</code>、<code>yadm add .</code> 等指令，有可能會讓你的系統檔案直接損毀XD</p>
 <p>我就曾因為情急不慎操作，導致某台 VM 的設定變得半殘XD，只能砍掉重練。</p>
 <h3 id="安全使用法則"><a href="#安全使用法則" class="headerlink" title="安全使用法則"></a>安全使用法則</h3><p>因此，我歸納了一個更安全的使用之道：</p>
 <ul>
 <li>所有設定修改，都集中在本機上的 dotfiles repo 中，<strong>透過 VS Code 進行編輯</strong>。</li>
-<li>其他機器（包括本機）<strong>僅透過</strong><code>yadm pull</code><strong>同步修改後的結果</strong>，不進行任何<code>yadm commit</code>、<code>yadm push</code>等動作。</li>
+<li>其他機器（包括本機）<strong>僅透過</strong> <code>yadm pull</code> <strong>同步修改後的結果</strong>，不進行任何 <code>yadm commit</code>、<code>yadm push</code> 等動作。</li>
 </ul>
 <p>這樣的模式確保你的設定變動<strong>只從單一來源發出</strong>，降低毀損風險，也讓同步過程更安全可控。</p>
-<p>此外，如果我要做<code>yadm pull</code>、<code>yadm list</code>、<code>yadm status</code>三個指令（後兩者並不會改變檔案狀態，所以是安全的）<strong>以外</strong>的操作，<strong>我一定會先問 AI！</strong></p>
+<p>此外，如果我要做 <code>yadm pull</code>、<code>yadm list</code>、<code>yadm status</code> 三個指令（後兩者並不會改變檔案狀態，所以是安全的）<strong>以外</strong>的操作，<strong>我一定會先問 AI！</strong></p>
 <p>因為這工具看似簡單，但威力絕不容小覷。</p>
 <hr>
 <h2 id="結語：同步-dotfiles-真的非常愉快"><a href="#結語：同步-dotfiles-真的非常愉快" class="headerlink" title="結語：同步 dotfiles 真的非常愉快"></a>結語：同步 dotfiles 真的非常愉快</h2><p>不誇張，自從設好跨平台同步後，<strong>開發幸福感大幅提升</strong>！</p>
@@ -302,10 +302,10 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner-vm/" title="在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆" rel="bookmark">在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner/" title="Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？" rel="bookmark">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/mac-mini/" title="Mac mini 心得：寫程式的最佳選擇！" rel="bookmark">Mac mini 心得：寫程式的最佳選擇！</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/mac-mini/" title="Mac mini 心得：寫程式的最佳選擇！" rel="bookmark">Mac mini 心得：寫程式的最佳選擇！</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-16/" title="我的「價值觀層級」器物清單" rel="bookmark">我的「價值觀層級」器物清單</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner/" title="Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？" rel="bookmark">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
-            <a href="/tags/Linux/">Linux</a>
             <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/Linux/">Linux</a>
             <a href="/tags/Mac/">Mac</a>
             </div>
         

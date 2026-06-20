@@ -28,7 +28,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2025-08-31T01:54:57+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -124,13 +124,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -228,13 +228,13 @@
 <hr>
 <h2 id="安裝、設定-pyenv"><a href="#安裝、設定-pyenv" class="headerlink" title="安裝、設定 pyenv"></a>安裝、設定 pyenv</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
 
-<p>裝完之後要設定<code>.bashrc</code>或<code>.zshrc</code>，還有<code>.bash_profile</code>或<code>.zprofile</code>，端視你的 shell 是哪個。目前新版本的 macOS 預設 shell 為 <strong>zsh</strong>。</p>
+<p>裝完之後要設定 <code>.bashrc</code> 或 <code>.zshrc</code>，還有 <code>.bash_profile</code> 或 <code>.zprofile</code>，端視你的 shell 是哪個。目前新版本的 macOS 預設 shell 為 <strong>zsh</strong>。</p>
 <blockquote>
 <p>相關文章：<a href="https://blog.kyomind.tw/ubuntu-zsh-zinit/">Ubuntu 安裝使用 zsh + 輕量級套件管理器 zinit</a></p>
 </blockquote>
 <hr>
 <blockquote>
-<p><code>2023/04/07</code>重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>：</p>
+<p><code>2023/04/07</code> 重要更新：pyenv 2.3.0 以後，已經<a target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv">大幅簡化了設定操作</a>，本段內容在新版仍可適用，但<strong>建議直接升級最新版 pyenv 並直接改用以下設定</strong>：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line"><span class="built_in">command</span> -v pyenv &gt;/dev/null || <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>官方的 shell 指令版本（for zsh）：</p>
@@ -244,30 +244,30 @@
 <hr>
 <h3 id="zsh-使用者"><a href="#zsh-使用者" class="headerlink" title="zsh 使用者"></a>zsh 使用者</h3><p>設定的內容主要是提供正確的 Python PATH，這部分很關鍵。具體要新增什麼內容，各教學或官方的版本沒有完全一致，不過大同小異，在此提供我實際新增的部分，<strong>注意以下皆是以 Homebrew 安裝的 pyenv 為例：</strong></p>
 <ul>
-<li><code>.zprofile</code>新增</li>
+<li><code>.zprofile</code> 新增</li>
 </ul>
 <p>你可能跟我一樣一開始也沒有這個檔，直接用官方給的指令新增就好：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;eval &quot;$(pyenv init --path)&quot;&#x27;</span> &gt;&gt; ~/.zprofile</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><code>.zshrc</code>新增</li>
+<li><code>.zshrc</code> 新增</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">command</span> -v pyenv 1&gt;/dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
-<p>特別說明，官方教學只說需要新增中間的<code>eval &quot;$(pyenv init -)&quot;</code>，但我光這樣設定，會無法切換全域 Python 版本，看了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33321312/cannot-switch-python-with-pyenv">這篇</a>之後改成上述的版本。</p>
+<p>特別說明，官方教學只說需要新增中間的 <code>eval &quot;$(pyenv init -)&quot;</code>，但我光這樣設定，會無法切換全域 Python 版本，看了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33321312/cannot-switch-python-with-pyenv">這篇</a>之後改成上述的版本。</p>
 <p>設定好後記得要分別 source 一下。</p>
 <h3 id="bash-使用者"><a href="#bash-使用者" class="headerlink" title="bash 使用者"></a>bash 使用者</h3><p>如果是 bash 用戶，建議設定上<strong>一律直接使用</strong>官方提供的這兩段 script 就好了，最簡單無腦且不會出錯，記得兩個部分都要執行喔！</p>
 <p><strong>第一部分</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;if shopt -q login_shell; then&#x27;</span> \</span><br><span class="line">      <span class="string">&#x27;\n  export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span> \</span><br><span class="line">      <span class="string">&#x27;\n  export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span> \</span><br><span class="line">      <span class="string">&#x27;\n eval &quot;$(pyenv init --path)&quot;&#x27;</span> \</span><br><span class="line">      <span class="string">&#x27;\nfi&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="comment"># 注意檔名</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;if [ -z &quot;$BASH_VERSION&quot; ]; then&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  eval &quot;$(pyenv init --path)&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\nfi&#x27;</span> &gt;&gt;~/.profile</span><br></pre></td></tr></table></figure>
 
-<p>不過要稍為注意一下<code>.profile</code>名稱，在 macOS 上通常為<code>.bash_profile</code>：</p>
+<p>不過要稍為注意一下 <code>.profile</code> 名稱，在 macOS 上通常為 <code>.bash_profile</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;if [ -z &quot;$BASH_VERSION&quot; ]; then&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  export PYENV_ROOT=&quot;$HOME/.pyenv&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\n  eval &quot;$(pyenv init --path)&quot;&#x27;</span>\</span><br><span class="line">      <span class="string">&#x27;\nfi&#x27;</span> &gt;&gt;~/.bash_profile</span><br></pre></td></tr></table></figure>
 
 
 <p><strong>第二部分</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;if command -v pyenv &gt;/dev/null; then eval &quot;$(pyenv init -)&quot;; fi&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
 
-<p>上述設定完後記得要<code>source</code>或重啟 shell。</p>
+<p>上述設定完後記得要 <code>source</code> 或重啟 shell。</p>
 <h2 id="安裝-pyenv-virtualenv"><a href="#安裝-pyenv-virtualenv" class="headerlink" title="安裝 pyenv-virtualenv"></a>安裝 pyenv-virtualenv</h2><p>請直接參考<a href="https://blog.kyomind.tw/ubuntu-pyenv/#%E5%AE%89%E8%A3%9D%E8%88%87%E8%A8%AD%E5%AE%9A-pyenv-virtualenv">另一篇文章的內容</a>。</p>
 <hr>
 <h2 id="簡單使用案例"><a href="#簡單使用案例" class="headerlink" title="簡單使用案例"></a>簡單使用案例</h2><p>以我的例子：</p>
@@ -278,7 +278,7 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">pyenv install 3.7.11</span><br><span class="line">pyenv global 3.7.11  <span class="comment"># 將全域的 Python 版本設為 3.7.11</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2 非必要</span></span><br><span class="line">pyenv install 3.8.10</span><br><span class="line">pyenv shell 3.8.10  <span class="comment"># 將目前 shell 的 Python 版本設為 3.8.10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">pyenv virtualenv 3.7.11 my_venv&lt;自行命名&gt;</span><br></pre></td></tr></table></figure>
 
-<p>如果已經在 pyenv 的 3.7.11 環境下，則上述 #2 的<code>3.7.11</code>可以省略，只要<code>pyenv virtualenv my_venv</code>即可建立虛擬環境。</p>
+<p>如果已經在 pyenv 的 3.7.11 環境下，則上述 #2 的 <code>3.7.11</code> 可以省略，只要 <code>pyenv virtualenv my_venv</code> 即可建立虛擬環境。</p>
 <h3 id="啟用與停止虛擬環境"><a href="#啟用與停止虛擬環境" class="headerlink" title="啟用與停止虛擬環境"></a>啟用與停止虛擬環境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pyenv activate my_venv</span><br><span class="line">pyenv deactivate my_venv</span><br></pre></td></tr></table></figure>
 
 <h3 id="移除虛擬環境"><a href="#移除虛擬環境" class="headerlink" title="移除虛擬環境"></a>移除虛擬環境</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv uninstall my_venv</span><br></pre></td></tr></table></figure>
@@ -307,7 +307,7 @@
 
 <hr>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>使用 pyenv 建立不同 Python 版本並管理相對應的虛擬環境實在非常方便！</p>
-<p>附帶一提，雖然不一定要安裝  pyenv-virtualenv 而可以直接<code>pip virtualenv</code>即可，但後者的使用方式類似內建的 venv，比較沒有那麼彈性。</p>
+<p>附帶一提，雖然不一定要安裝  pyenv-virtualenv 而可以直接 <code>pip virtualenv</code> 即可，但後者的使用方式類似內建的 venv，比較沒有那麼彈性。</p>
 <p>此外，pyenv-virtualenv 在 3.3 版本以上的 Python，實際上就是調用內建的 venv 來建立虛擬環境，否則就是調用 virtualenv，總之就是多一層封裝讓使用變得更方便而已。</p>
 <h3 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://www.maxlist.xyz/2020/04/01/python-pyenv-virtualenv/">【Python教學】使用 pyenv 和 virtualenv 打造 Python 環境</a></li>

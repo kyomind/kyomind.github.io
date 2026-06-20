@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-18T18:12:05+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -191,10 +191,10 @@
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/vwMEGGb.jpg" alt="by Brian Gossett"><span class="cap">by Brian Gossett</span></p>
 <blockquote>
-<p><code>2024/12/11</code>更新：補充我對 One Dark Pro 主題的<a target="_blank" rel="noopener" href="https://gist.github.com/kyomind/0ef4a928dd9f5d94bbcd8f9655e6f645">客製化設定</a>內容。</p>
+<p><code>2024/12/11</code> 更新：補充我對 One Dark Pro 主題的<a target="_blank" rel="noopener" href="https://gist.github.com/kyomind/0ef4a928dd9f5d94bbcd8f9655e6f645">客製化設定</a>內容。</p>
 </blockquote>
 <blockquote>
-<p><code>2023/11/08</code>更新：<strong>全文重新編輯</strong>，<strong>刪除</strong>了部分套件，但<strong>沒有新增套件</strong>，只對既有套件補充了更多內容。可見原來的配置已經相當穩定，無須太多調整。</p>
+<p><code>2023/11/08</code> 更新：<strong>全文重新編輯</strong>，<strong>刪除</strong>了部分套件，但<strong>沒有新增套件</strong>，只對既有套件補充了更多內容。可見原來的配置已經相當穩定，無須太多調整。</p>
 </blockquote>
 <p>很久以前就想寫關於「VS Code 套件（extension）」的推薦文章了，畢竟我曾在不止一篇文章中表示自己就是一個 VS Code 工具控。</p>
 <p>話雖如此，卻遲遲沒有下筆，原因是這類文章網路上已經有不少，要怎麼寫得有個人特色，無疑是一大挑戰。所以我決定累積一定的 VS Code 使用經驗後，再來分享。</p>
@@ -277,7 +277,7 @@
 <p>對於極度重視編輯器外觀且龜毛的我，佈景主題我前前後後認真試過十幾個，最後還是情歸 One Dark Pro。</p>
 <p>雖然試了不少，但前期我主要還是使用 VS Code 的原生深色主題，並透過修改主題的樣式定義 JSON 檔，進一步自訂、客製我偏好的配色，就這樣用了一年半。</p>
 <p>後來發現 One Dark Pro，我覺得它的<strong>完成度更高</strong>！更適合用來作為「<strong>改造的基底</strong>」，所以改用它，但依舊又花了大量時間修改套件的 JSON 樣式設定檔。</p>
-<p>不過，現在已經不需要這麼做了！而是透過<code>editor.tokenColorCustomizations</code>這個<code>settings.json</code>中的設定，來進行<strong>編輯器外觀的顏色調整</strong>，語法格式大致如下：</p>
+<p>不過，現在已經不需要這麼做了！而是透過 <code>editor.tokenColorCustomizations</code> 這個 <code>settings.json</code> 中的設定，來進行<strong>編輯器外觀的顏色調整</strong>，語法格式大致如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;editor.tokenColorCustomizations&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;[One Dark Pro]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;textMateRules&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Classes與繼承類別&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;scope&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="string">&quot;support.class&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;entity.name.type.class&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;entity.other.inherited-class&quot;</span></span><br><span class="line">        <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;settings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;foreground&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#d78532&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 
 <p>更多資訊可參考官方文件：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/getstarted/themes#_customizing-a-color-theme">Customizing a Color Theme</a>。不得不提醒你，改這個真的很耗時！😂</p>
@@ -315,25 +315,25 @@
 </blockquote>
 <hr>
 <h2 id="後端與設定檔"><a href="#後端與設定檔" class="headerlink" title="後端與設定檔"></a>後端與設定檔</h2><p>後端作業相關套件，大部分是設定檔類的 syntax highlight 功能。所有套件中，最重要的無疑是 Remote - SSH。</p>
-<h3 id="5-ENV"><a href="#5-ENV" class="headerlink" title="5. ENV"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=IronGeek.vscode-env">5. ENV</a></h3><p>讓「<strong>環境變數設定檔</strong>」比如<code>.env</code>有 syntax highlight，後端開發肯定少不了。最多人下載的是 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv">DotENV</a>，而我選用 ENV 是因為它的渲染效果（顏色）比較符合我的期待。</p>
+<h3 id="5-ENV"><a href="#5-ENV" class="headerlink" title="5. ENV"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=IronGeek.vscode-env">5. ENV</a></h3><p>讓「<strong>環境變數設定檔</strong>」比如 <code>.env</code> 有 syntax highlight，後端開發肯定少不了。最多人下載的是 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv">DotENV</a>，而我選用 ENV 是因為它的渲染效果（顏色）比較符合我的期待。</p>
 <blockquote>
 <p>推薦度：⭐️<br> 重要性：⭐️</p>
 </blockquote>
-<h3 id="6-Better-DockerFile-Syntax"><a href="#6-Better-DockerFile-Syntax" class="headerlink" title="6. Better DockerFile Syntax"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-dockerfile-syntax">6. Better DockerFile Syntax</a></h3><p>看名字就知道是<code>Dockerfile</code>專用。</p>
-<p>安裝後，主要的差別為：對<code>Dockerfile</code>中的<strong>變數</strong>、<strong>shell 指令</strong>尤其是<strong>指令參數</strong>的顏色呈現優化，如下（可留意紫色部分）：</p>
+<h3 id="6-Better-DockerFile-Syntax"><a href="#6-Better-DockerFile-Syntax" class="headerlink" title="6. Better DockerFile Syntax"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-dockerfile-syntax">6. Better DockerFile Syntax</a></h3><p>看名字就知道是 <code>Dockerfile</code> 專用。</p>
+<p>安裝後，主要的差別為：對 <code>Dockerfile</code> 中的<strong>變數</strong>、<strong>shell 指令</strong>尤其是<strong>指令參數</strong>的顏色呈現優化，如下（可留意紫色部分）：</p>
 <p><img src="https://i.imgur.com/1DcODX9.png" alt="大致渲染效果"><span class="cap">大致渲染效果</span></p>
 <p>不過要特別注意，<strong>預設</strong>的佈景主題<strong>無法發揮它全部的渲染效果</strong>，所以最好自己設定一個佈景主題。</p>
 <blockquote>
 <p>推薦度：⭐️<br> 重要性：⭐️</p>
 </blockquote>
 <h3 id="補充說明"><a href="#補充說明" class="headerlink" title="補充說明"></a>補充說明</h3><p>微軟官方出的 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">Docker</a> 套件，個人並不常用，我操作 Docker 還是以 CLI 居多，所以未列入，只作為補充。</p>
-<p>但它有著對於內建的 IntelliSense 的語法加強：讓你在編寫<code>Dockerfile</code>與<code>docker-compose.yml</code>時，會出現更多相關語法提示。</p>
-<p>雖然我覺得不是特別必要，因為我通常得要一邊查閱 Docker 官方文件，才能撰寫比較複雜的<code>docker-compose.yml</code>內容，但可以依需求安裝。</p>
-<h3 id="7-YAML"><a href="#7-YAML" class="headerlink" title="7. YAML"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">7. YAML</a></h3><p>YAML 檔的 syntax highlight，主要是給<code>docker-compose.yml</code>使用，由 Red Hat 公司出品。</p>
+<p>但它有著對於內建的 IntelliSense 的語法加強：讓你在編寫 <code>Dockerfile</code> 與 <code>docker-compose.yml</code> 時，會出現更多相關語法提示。</p>
+<p>雖然我覺得不是特別必要，因為我通常得要一邊查閱 Docker 官方文件，才能撰寫比較複雜的 <code>docker-compose.yml</code> 內容，但可以依需求安裝。</p>
+<h3 id="7-YAML"><a href="#7-YAML" class="headerlink" title="7. YAML"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">7. YAML</a></h3><p>YAML 檔的 syntax highlight，主要是給 <code>docker-compose.yml</code> 使用，由 Red Hat 公司出品。</p>
 <blockquote>
 <p>推薦度：⭐️<br> 重要性：⭐️</p>
 </blockquote>
-<h3 id="8-TOML-Language-Support"><a href="#8-TOML-Language-Support" class="headerlink" title="8. TOML Language Support"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=be5invis.toml">8. TOML Language Support</a></h3><p>主要給 Poetry、Black 等開發工具作為設定檔的<code>pyproject.toml</code>使用。更多資訊可以參考這兩篇文章：</p>
+<h3 id="8-TOML-Language-Support"><a href="#8-TOML-Language-Support" class="headerlink" title="8. TOML Language Support"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=be5invis.toml">8. TOML Language Support</a></h3><p>主要給 Poetry、Black 等開發工具作為設定檔的 <code>pyproject.toml</code> 使用。更多資訊可以參考這兩篇文章：</p>
 <ul>
 <li><a href="https://blog.kyomind.tw/python-poetry/">Python 套件管理器——Poetry 完全入門指南</a></li>
 <li><a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a></li>
@@ -381,7 +381,7 @@
 <p>什麼？你說你們開發都靠 QA，沒在寫單元測試？😷</p>
 </blockquote>
 <p>執行完一輪單元測試後，我們肯定需要知曉「<strong>測試覆蓋率</strong>」這個最常見的量化指標。</p>
-<p>在 Python 中，我們有 <a target="_blank" rel="noopener" href="https://coverage.readthedocs.io/en/6.3.2/">Coverage.py</a> 這個套件可以協助產出測試覆蓋率報告：可直接標準輸出（stdout）到 CLI，或儲存為檔案，比如<code>html</code>或<code>xml</code>或<code>json</code>。</p>
+<p>在 Python 中，我們有 <a target="_blank" rel="noopener" href="https://coverage.readthedocs.io/en/6.3.2/">Coverage.py</a> 這個套件可以協助產出測試覆蓋率報告：可直接標準輸出（stdout）到 CLI，或儲存為檔案，比如 <code>html</code> 或 <code>xml</code> 或 <code>json</code>。</p>
 <p>測試覆蓋率的計算方式有很多種，在此以常見的「<a target="_blank" rel="noopener" href="https://www.froglogic.com/coco/line-coverage/">Line Coverage</a>」為例。</p>
 <p>輸出時通常需要一併記載「<strong>未被執行的程式碼行別</strong>」，以方便確認究竟是哪個檔案的哪幾行造成覆蓋率不足。</p>
 <p><img src="https://i.imgur.com/jqS3O8V.png" alt="測試覆蓋率報告的主角，無疑就是這些未被執行的程式行"><span class="cap">測試覆蓋率報告的主角，無疑就是這些未被執行的程式行</span></p>
@@ -463,7 +463,7 @@
 <hr>
 <h2 id="補充：曾經的輝煌"><a href="#補充：曾經的輝煌" class="headerlink" title="補充：曾經的輝煌"></a>補充：曾經的輝煌</h2><p>很長一段時間都是必裝套件，直到 VS Code 將其主要功能直接加以內建。</p>
 <h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a></h3><p>可參考〈<a href="https://blog.kyomind.tw/bracket-pair-colorization/">VS Code 開啟效能提升 1 萬倍的「內建」bracket pair colorization</a>〉。</p>
-<h3 id="Settings-Sync"><a href="#Settings-Sync" class="headerlink" title="Settings Sync"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">Settings Sync</a></h3><p>同步 VS Code 設定，包括安裝的套件以及<code>settings.json</code>等，超級重要！畢竟這些設定實在太多了，如果換台機器就要重新來過，真的會「起肖」。</p>
+<h3 id="Settings-Sync"><a href="#Settings-Sync" class="headerlink" title="Settings Sync"></a><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync">Settings Sync</a></h3><p>同步 VS Code 設定，包括安裝的套件以及 <code>settings.json</code> 等，超級重要！畢竟這些設定實在太多了，如果換台機器就要重新來過，真的會「起肖」。</p>
 <p>套件本身已不再更新，現在使用「<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/settings-sync">內建的 Settings Sync 功能</a>」即可。</p>
 
       </div>
@@ -481,11 +481,11 @@
 
     <b style="font-size:21px">
       相關文章
-    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-black/" title="Python Flake8 與 Black Formatter 擴充套件快速上手" rel="bookmark">Python Flake8 與 Black Formatter 擴充套件快速上手</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li></ul><footer class="post-footer">
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/cursor/" title="Cursor IDE 心得：三大亮點與三個阻礙" rel="bookmark">Cursor IDE 心得：三大亮點與三個阻礙</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/flake8-and-isort/" title="Flake8 與 isort in VS Code" rel="bookmark">Flake8 與 isort in VS Code</a></h3></div></li></ul><footer class="post-footer">
         <div class="post-tags">
+            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
             <a href="/tags/VS-Code/">VS Code</a>
             <a href="/tags/Python/">Python</a>
-            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/introducing-python/">

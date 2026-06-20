@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-03-20T00:56:15+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -211,7 +211,7 @@
 <hr>
 <h2 id="什麼是-Linter？"><a href="#什麼是-Linter？" class="headerlink" title="什麼是 Linter？"></a>什麼是 Linter？</h2><p>Linter 或 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Lint">lint</a>，主要功能是對程式進行<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9C%E6%85%8B%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90">靜態分析</a>——在程式未執行情況下檢查出潛在的<strong>語法錯誤</strong>。我直接引用<a href="/flake8-and-isort/">前文</a>的描述：</p>
 <blockquote>
-<p>Linter，就是協助你檢查程式語法正確性的工具，大部分程式語言都有屬於自己的 linter，而 Python 最常見的 linter 不外乎<code>pylint</code>、<code>pep8</code>（現為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>。</p>
+<p>Linter，就是協助你檢查程式語法正確性的工具，大部分程式語言都有屬於自己的 linter，而 Python 最常見的 linter 不外乎 <code>pylint</code>、<code>pep8</code>（現為 <a target="_blank" rel="noopener" href="https://github.com/PyCQA/pycodestyle">pycodestyle</a>） 和 <code>flake8</code>。</p>
 </blockquote>
 <p>上述 linter 都是 Python 的 package，同時也是 CLI 工具，皆可透過命令列，獨立執行與使用。</p>
 <p>而本文闡述的使用情境，是指<strong>整合在 VS Code 中</strong>，讓這些選定的 linter，在不需執行程式的情況下，自動幫你檢查程式碼、發現其中錯誤，並<strong>加以提示</strong>的功能。</p>
@@ -224,16 +224,16 @@
 <li>開啟 Flake8 Linting：<code>Python › Linting: Flake8 Enabled</code></li>
 <li>設定 Flake8 Args（非必要）：<code>Python › Linting: Flake8 Args</code></li>
 </ol>
-<p>以上幾個設定，都可以在 VS Code 左下角的「<strong>設定 UI</strong>（macOS 用戶可直接使用快捷鍵<code>cmd</code>+<code>,</code>開啟）」輸入關鍵字比如「Flake8」、「lint」搜尋找到。比如下圖就是 Flake8 的啟動開關：</p>
+<p>以上幾個設定，都可以在 VS Code 左下角的「<strong>設定 UI</strong>（macOS 用戶可直接使用快捷鍵 <code>cmd</code>+<code>,</code> 開啟）」輸入關鍵字比如「Flake8」、「lint」搜尋找到。比如下圖就是 Flake8 的啟動開關：</p>
 <p><img src="https://i.imgur.com/eZpPd9F.png" alt="VS Code Settings UI"><span class="cap">VS Code Settings UI</span></p>
-<p>如果覺得麻煩，可以直接在 VS Code 的<code>settings.json</code>加入以下內容，效果相同：</p>
+<p>如果覺得麻煩，可以直接在 VS Code 的 <code>settings.json</code> 加入以下內容，效果相同：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.linting.enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 預設值即為 true</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.linting.flake8Args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--max-line-length=100&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;--ignore=E402,F841,F401,E302,E305,W503&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Linter-重點說明"><a href="#Linter-重點說明" class="headerlink" title="Linter 重點說明"></a>Linter 重點說明</h3><ul>
 <li>VS Code 的 Python linting 在安裝完官方出品的 Python 套件後，預設就是開啟，所以不設定也沒差（除非你要關掉），通常第一次開啟 py 檔時會跳出提示讓你選擇想使用的 linter。</li>
 <li>VS Code <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/linting#_specific-linters">支援的 Python linter 不少</a>，有些是「<strong>通用</strong>」的，像本文的 Flake8，有些則著眼於<strong>局部的特性</strong>，比如 <a target="_blank" rel="noopener" href="https://github.com/python/mypy">Mypy</a> 著眼於 type hints，理論上它們可以<strong>全部同時開啟</strong>！只是同時使用太多 linter 可能會帶來大量的提醒，在視覺上大受干擾，建議功能相似的 linter 只需開啟一種即可。</li>
 <li>Args：實際上就是幫你把 args 字串轉換成命令列上的參數，在 VS Code 呼叫這些 linter 時使用，主要是為了依需求客製化。這裡要特別講究 args 字串的格式，不同的的工具在字串格式上可能大不相同。如果打錯，則整個 linting 功能會失效，而且<strong>不會有任何錯誤提示</strong>！要特別注意。<ul>
-<li>這裡的第一部分<code>&quot;--max-line-length=100&quot;</code>是設定單行字元上限，Flake8 預設的是 PEP 8 的 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length">79 字元</a>，從現代的角度來看可能常常容易超過，與團隊討論後，目前共識為 100 字元，所以必須加入 args。這可能是最常用的 args 設定。</li>
+<li>這裡的第一部分 <code>&quot;--max-line-length=100&quot;</code> 是設定單行字元上限，Flake8 預設的是 PEP 8 的 <a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#maximum-line-length">79 字元</a>，從現代的角度來看可能常常容易超過，與團隊討論後，目前共識為 100 字元，所以必須加入 args。這可能是最常用的 args 設定。</li>
 <li>第二部分就看你想忽略哪些提醒，雖然 Flake8 相較於 pylint 已經較為寬鬆，但也不一定要全部遵守。不同的錯誤有不同的代號，在提醒的說明內會標註代號，可以依需求忽略。</li>
 </ul>
 </li>
@@ -254,7 +254,7 @@
 <p>換句話說，formatter 就是<strong>自動幫你修正這些排版問題的工具</strong>！而這個過程，就是「<strong>格式化</strong>」。</p>
 <p>程式語法錯誤——比如使用未設定的變數——雖然也可能被 linter 檢測出並提示，但這部分的修正通常得手動為之。Formatter 只能協助處理排版風格上的缺失。</p>
 <p>雖然修正排版一樣也可以手動為之，但是一來麻煩，二來難免會有遺漏，還是靠機器比較實在，也輕鬆得多。</p>
-<h2 id="VS-Code-Python-Formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-Formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python Formatter 設定：以 yapf 為例"></a>VS Code Python Formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到<code>Python › Formatting: Provider</code>這項設定。有三種 formatter 可選：</p>
+<h2 id="VS-Code-Python-Formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-Formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python Formatter 設定：以 yapf 為例"></a>VS Code Python Formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到 <code>Python › Formatting: Provider</code> 這項設定。有三種 formatter 可選：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/hhatto/autopep8">autopep8</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/google/yapf">yapf</a></li>
@@ -262,8 +262,8 @@
 </ul>
 <p>不同於多個 linter 可以全部開啟，formatter 功能因具有「排他性」，<strong>只能擇一使用</strong>。預設為 autopep8，這裡我們改用 Google 出品的 yapf。</p>
 <p>Formatter 主要是為了讓你的 Python 程式碼可以<strong>最大限度遵守 PEP 8 及一般風格規範</strong>——這也是所有 Python 開發者都值得具備的良好習慣。</p>
-<p>Formatter 一樣可以設定 args：<code>Python › Formatting: Yapf Args</code>。而且 VS Code 本來就可以設定「<strong>存檔時自動格式化</strong>」，但有一個限制：<strong>afterDelay</strong> 模式的自動存檔（即<code>&quot;files.autoSave&quot;: &quot;afterDelay&quot;</code>）時不會格式化，只有其他模式的自動存檔及手動存檔有效。</p>
-<p>整體的<code>settings.json</code>設定如下：</p>
+<p>Formatter 一樣可以設定 args：<code>Python › Formatting: Yapf Args</code>。而且 VS Code 本來就可以設定「<strong>存檔時自動格式化</strong>」，但有一個限制：<strong>afterDelay</strong> 模式的自動存檔（即 <code>&quot;files.autoSave&quot;: &quot;afterDelay&quot;</code>）時不會格式化，只有其他模式的自動存檔及手動存檔有效。</p>
+<p>整體的 <code>settings.json</code> 設定如下：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;python.formatting.provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;yapf&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;python.formatting.yapfArgs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;--style=&#123;column_limit=100&#125;&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;editor.formatOnSave&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> <span class="comment">// 不支援 afterDelay 自動存檔</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="不同-Formatter-的差異"><a href="#不同-Formatter-的差異" class="headerlink" title="不同 Formatter 的差異"></a>不同 Formatter 的差異</h2><p>這些 formatter 的主要差別，主要是體現在<strong>格式化結果「彈性」上的差異</strong>。</p>

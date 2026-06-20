@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -193,7 +193,7 @@
 <p>這是 Django Ninja 系列教學的第 26 篇。</p>
 <p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
 <p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
-<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>
+<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用 <code>filter</code> 方法來根據特定條件篩選 QuerySet。</p>
 <p>這種方法簡單直接，適合基本的查詢需求。然而，它也有其<strong>局限性</strong>——隨著欄位與需求的增加，查詢條件可能變得<strong>越來越複雜</strong>，導致程式碼<strong>冗長</strong>且難以維護。</p>
 <p>為了解決這一問題，Django Ninja 提供了 FilterSchema，讓我們可以用更「<strong>結構化</strong>」的方式，定義並管理查詢條件。</p>
 <p>本文將介紹 FilterSchema，一步步實作與講解，讓你了解如何在 Django Ninja 中使用 FilterSchema，實現<strong>更加靈活、模組化</strong>的 API 查詢功能。</p>
@@ -202,13 +202,13 @@
 <h3 id="快速導覽"><a href="#快速導覽" class="headerlink" title="快速導覽"></a>快速導覽</h3><p>👉 <strong>完整系列目錄</strong>：<a href="/django-ninja/">點此查看</a><br>👉 <strong>程式碼範例</strong>：<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial">GitHub 範例專案</a></p>
 <hr>
 <h2 id="傳統查詢方法與問題"><a href="#傳統查詢方法與問題" class="headerlink" title="傳統查詢方法與問題"></a>傳統查詢方法與問題</h2><p>上一篇我們提到「取得文章列表」API，還記得我們在〈<a href="/django-ninja-11/">卷 11：請求（三）查詢參數 - Query Parameters</a>〉為它加上的「<strong>依文章標題查詢</strong>」功能嗎？</p>
-<p>這是目前程式碼的現況：（請留意<strong>查詢參數</strong>名稱<code>title</code>）</p>
+<p>這是目前程式碼的現況：（請留意<strong>查詢參數</strong>名稱 <code>title</code>）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    title: <span class="literal">None</span> | <span class="built_in">str</span> = Query(<span class="params"><span class="literal">None</span>, min_length=<span class="number">2</span>, max_length=<span class="number">10</span></span>),</span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">            title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
-<p>那時我們就是用了 Django ORM 的<code>filter</code>方法！</p>
+<p>那時我們就是用了 Django ORM 的 <code>filter</code> 方法！</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">posts.<span class="built_in">filter</span>(title__icontains=title).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>最後的<code>select_related(&#39;author&#39;)</code>是為了避免「N+1」問題，和查詢邏輯<strong>無關</strong>，可以先不管。</p>
+<p>最後的 <code>select_related(&#39;author&#39;)</code> 是為了避免「N+1」問題，和查詢邏輯<strong>無關</strong>，可以先不管。</p>
 <h3 id="潛在問題"><a href="#潛在問題" class="headerlink" title="潛在問題"></a>潛在問題</h3><p>這樣的寫法很直觀，對於<strong>簡單的查詢需求</strong>很有效。</p>
 <p>但隨著專案規模的擴大、查詢需求變得<strong>複雜</strong>時，就會產生以下<strong>困境</strong>：</p>
 <ul>
@@ -217,7 +217,7 @@
 <li><strong>資料驗證與轉換</strong>：你需要手動處理資料驗證和轉換的問題，這不僅增加了錯誤的可能性，也增加了開發的複雜度。</li>
 <li><strong>擴充性</strong>：當你需要支援更複雜的過濾條件，比如範圍查詢、多條件組合查詢時，<strong>手動組裝 ORM 查詢</strong>的方法可能會顯得<strong>非常笨重</strong>且難以管理。</li>
 </ul>
-<p>因此，我們並不推薦在<strong>複雜查詢</strong>的情況下，直接使用 ORM 的<code>filter</code>方法來<strong>組裝</strong>查詢條件。</p>
+<p>因此，我們並不推薦在<strong>複雜查詢</strong>的情況下，直接使用 ORM 的 <code>filter</code> 方法來<strong>組裝</strong>查詢條件。</p>
 <hr>
 <h2 id="新需求：同時查詢作者名字"><a href="#新需求：同時查詢作者名字" class="headerlink" title="新需求：同時查詢作者名字"></a>新需求：同時查詢作者名字</h2><p>新的需求是，用<strong>同一個關鍵字</strong>， 同時查詢<strong>文章的標題或作者的名字</strong>， 只要任一符合就顯示在結果中。（二者滿足其一即可，也可以<strong>都符合</strong>）</p>
 <p>這需求類似於 iThome 鐵人賽官網的<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/2024ironman/signup/list">這個查詢功能</a>：</p>
@@ -227,44 +227,44 @@
 <h3 id="用傳統方法-Q-物件實作"><a href="#用傳統方法-Q-物件實作" class="headerlink" title="用傳統方法 + Q 物件實作"></a>用傳統方法 + Q 物件實作</h3><p>如果用傳統方法 + Django 的 Q 物件實作，則查詢會長這樣：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    Q(title__icontains=title) | Q(author__name__icontains=title)</span><br><span class="line">).select_related(<span class="string">&#x27;author&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p>此時查詢參數不適合再叫<code>title</code>，因為它要查詢<strong>兩個欄位</strong>。沒關係，我們之後會改成<code>query</code>。</p>
+<p>此時查詢參數不適合再叫 <code>title</code>，因為它要查詢<strong>兩個欄位</strong>。沒關係，我們之後會改成 <code>query</code>。</p>
 <p>這段程式碼有兩個重點：</p>
 <ol>
 <li>查詢果然<strong>變長</strong>了！之後如果還有新的查詢條件，那豈不是……</li>
-<li>這個<code>Q</code>是什麼東西？</li>
+<li>這個 <code>Q</code> 是什麼東西？</li>
 </ol>
-<p><code>Q</code>則是 Django ORM 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/queries/#complex-lookups-with-q-objects">Q 物件</a>，它在<strong>複雜查詢邏輯</strong>中佔據了重要地位。因此，我們有必要先簡單介紹一下。</p>
+<p><code>Q</code> 則是 Django ORM 的 <a target="_blank" rel="noopener" href="https://docs.djangoproject.com/en/5.1/topics/db/queries/#complex-lookups-with-q-objects">Q 物件</a>，它在<strong>複雜查詢邏輯</strong>中佔據了重要地位。因此，我們有必要先簡單介紹一下。</p>
 <hr>
-<h2 id="Django-Q-物件簡介"><a href="#Django-Q-物件簡介" class="headerlink" title="Django Q 物件簡介"></a>Django Q 物件簡介</h2><p>為了改善<strong>多條件查詢</strong>時，程式<strong>結構複雜</strong>的問題，Django 提供了<code>Q</code>物件。</p>
-<p><code>Q</code>物件允許我們<strong>靈活地組織查詢條件</strong>，使用<strong>邏輯運算子</strong>（如<code>&amp;</code>、<code>|</code>）進行<strong>條件合併</strong>。在處理<strong>複雜條件過濾</strong>時非常有用。</p>
+<h2 id="Django-Q-物件簡介"><a href="#Django-Q-物件簡介" class="headerlink" title="Django Q 物件簡介"></a>Django Q 物件簡介</h2><p>為了改善<strong>多條件查詢</strong>時，程式<strong>結構複雜</strong>的問題，Django 提供了 <code>Q</code> 物件。</p>
+<p><code>Q</code> 物件允許我們<strong>靈活地組織查詢條件</strong>，使用<strong>邏輯運算子</strong>（如 <code>&amp;</code>、<code>|</code>）進行<strong>條件合併</strong>。在處理<strong>複雜條件過濾</strong>時非常有用。</p>
 <p>比如說，我們想要篩選出標題包含「Ninja」<strong>並且</strong>作者名稱包含「Alice」的文章，可以這樣寫：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    Q(title__icontains=<span class="string">&#x27;Ninja&#x27;</span>) &amp; Q(author__name__icontains=<span class="string">&#x27;Alice&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <p>上述寫法，其實就<strong>等價</strong>於我們常見的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    title__icontains=<span class="string">&#x27;Ninja&#x27;</span>, author__name__icontains=<span class="string">&#x27;Alice&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p>所以你通常不會在「AND」需求時使用<code>Q</code>物件。</p>
-<p>「OR」查詢條件才是<code>Q</code>的<strong>經典場景</strong>。</p>
-<p>現在條件改為——文章標題「<strong>或</strong>」作者名字有「Alice」就行。可以使用<code>|</code>：</p>
+<p>所以你通常不會在「AND」需求時使用 <code>Q</code> 物件。</p>
+<p>「OR」查詢條件才是 <code>Q</code> 的<strong>經典場景</strong>。</p>
+<p>現在條件改為——文章標題「<strong>或</strong>」作者名字有「Alice」就行。可以使用 <code>|</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">posts = posts.<span class="built_in">filter</span>(</span><br><span class="line">    Q(title__icontains=<span class="string">&#x27;Ninja&#x27;</span>) | Q(author__name__icontains=<span class="string">&#x27;Alice&#x27;</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p><code>Q</code>物件讓查詢更加靈活且清晰，特別是在面對<strong>多個可選條件</strong>時。</p>
+<p><code>Q</code> 物件讓查詢更加靈活且清晰，特別是在面對<strong>多個可選條件</strong>時。</p>
 <hr>
-<h2 id="使用-FilterSchema-改進查詢"><a href="#使用-FilterSchema-改進查詢" class="headerlink" title="使用 FilterSchema 改進查詢"></a>使用 FilterSchema 改進查詢</h2><p>了解傳統查詢方法容易造成<strong>程式冗長</strong>的問題，並學習了<code>Q</code>物件的基礎後，我們要開始介紹今天的主角——<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/filtering/">FilterSchema</a>。</p>
+<h2 id="使用-FilterSchema-改進查詢"><a href="#使用-FilterSchema-改進查詢" class="headerlink" title="使用 FilterSchema 改進查詢"></a>使用 FilterSchema 改進查詢</h2><p>了解傳統查詢方法容易造成<strong>程式冗長</strong>的問題，並學習了 <code>Q</code> 物件的基礎後，我們要開始介紹今天的主角——<a target="_blank" rel="noopener" href="https://django-ninja.dev/guides/input/filtering/">FilterSchema</a>。</p>
 <p>Django Ninja 提供的 FilterSchema，主要的功能是讓查詢語句更加<strong>結構化、模組化</strong>，避免 view 函式變得冗長、難讀。</p>
 <p>而且，與 Schema 中的驗證方法相同，它也一定程度實現了「<strong>關注點分離</strong>」原則——藉由將查詢邏輯從 view 函式中<strong>抽離</strong>出來。</p>
 <p>不過，我們先不急著一步到位，容我<strong>分階段地改進</strong>程式碼。</p>
 <p>這樣雖然有點笨拙，但你會對 FilterSchema 與複雜查詢的實作，有更深刻的了解。</p>
 <h2 id="第一版「改進」"><a href="#第一版「改進」" class="headerlink" title="第一版「改進」"></a>第一版「改進」</h2><p>我們先用 FilterSchema 實現上述的「新需求：同時查詢作者名字」。</p>
-<p>在<code>schemas.py</code>中建立新的 Schema，不過這次是 FilterSchema：</p>
+<p>在 <code>schemas.py</code> 中建立新的 Schema，不過這次是 FilterSchema：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># post/schemas.py</span></span><br><span class="line"><span class="keyword">from</span> ninja <span class="keyword">import</span> Field, FilterSchema, Schema</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostFilterSchema</span>(<span class="title class_ inherited__">FilterSchema</span>):</span><br><span class="line">    query: <span class="built_in">str</span> | <span class="literal">None</span> = Field(<span class="literal">None</span>, min_length=<span class="number">2</span>, max_length=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 
 <p>這個 FilterSchema，其實是給「<strong>查詢參數</strong>（query parameters）」使用的。所以它的欄位（屬性）名稱，就是你認為客戶端<strong>應該使用的查詢參數名稱</strong>。</p>
-<p>因為同時要查「文章標題」和「作者名字」，所以我命名為<code>query</code>。</p>
+<p>因為同時要查「文章標題」和「作者名字」，所以我命名為 <code>query</code>。</p>
 <p>接下來，我們在 view 函式中使用它：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">...</span>)</span></span><br><span class="line"><span class="meta">@paginate(<span class="params">CustomPagination</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params"></span></span><br><span class="line"><span class="params">    request: HttpRequest,</span></span><br><span class="line"><span class="params">    filters: PostFilterSchema = Query(<span class="params"></span>),  <span class="comment"># 使用 FilterSchema</span></span></span><br><span class="line"><span class="params"></span>) -&gt; QuerySet[Post]:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    取得文章列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> filters.query:</span><br><span class="line">        q = Q(title__icontains=filters.query) | \</span><br><span class="line">            Q(author__username__icontains=filters.query)</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(q)</span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
-<p>PS：這裡的<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/17/files">專案範例程式碼</a><strong>有誤</strong>，第二個<code>Q</code>查詢誤植為「<code>content__icontains</code>」，請讀者留意。我已在下一個分支中修復。</p>
+<p>PS：這裡的<a target="_blank" rel="noopener" href="https://github.com/kyomind/Django-Ninja-Tutorial/pull/17/files">專案範例程式碼</a><strong>有誤</strong>，第二個 <code>Q</code> 查詢誤植為「<code>content__icontains</code>」，請讀者留意。我已在下一個分支中修復。</p>
 <p>看完這個新的 view 函式，你可能不禁心想：</p>
 <blockquote>
 <p>這是在搞笑吧？完全沒有變簡單啊！</p>
@@ -274,20 +274,20 @@
 <hr>
 <h2 id="重點解析"><a href="#重點解析" class="headerlink" title="重點解析"></a>重點解析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">q = Q(title__icontains=filters.query) | \</span><br><span class="line">    Q(content__icontains=filters.query)</span><br><span class="line">posts = posts.<span class="built_in">filter</span>(q)</span><br></pre></td></tr></table></figure>
 
-<p>從這段能看出，<code>Q</code>物件可以<strong>單獨進行各種合併操作</strong>，最後再丟給 Django <code>filter</code>方法作為參數。</p>
+<p>從這段能看出，<code>Q</code> 物件可以<strong>單獨進行各種合併操作</strong>，最後再丟給 Django <code>filter</code> 方法作為參數。</p>
 <h3 id="Django-Ninja-常見句型"><a href="#Django-Ninja-常見句型" class="headerlink" title="Django Ninja 常見句型"></a>Django Ninja 常見句型</h3><p>本例中，這樣的 view <strong>函式參數</strong>「句型」在 Django Ninja 非常普遍：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filters: PostFilterSchema = Query()</span><br></pre></td></tr></table></figure>
 
 <p>而初學者看了會很容易「<strong>誤解</strong>」。</p>
-<p>為什麼？因為你可能會以為，<code>filters</code>的型別是<code>PostFilterSchema</code>（這沒問題），然後它的<strong>預設值</strong>是<code>Query()</code>，因為 Python 函式就是這樣定義的。</p>
+<p>為什麼？因為你可能會以為，<code>filters</code> 的型別是 <code>PostFilterSchema</code>（這沒問題），然後它的<strong>預設值</strong>是 <code>Query()</code>，因為 Python 函式就是這樣定義的。</p>
 <p>但並不是。</p>
-<p><code>Query()</code>並不是<code>filters</code>參數的預設值，否則它的型別不應該是<code>Query</code>嗎？</p>
-<p>事實上，<code>= Query()</code>這段標記<strong>不是給你看的</strong>，是給 Django Ninja 看的，它相當於是在告訴 Django Ninja：</p>
+<p><code>Query()</code> 並不是 <code>filters</code> 參數的預設值，否則它的型別不應該是 <code>Query</code> 嗎？</p>
+<p>事實上，<code>= Query()</code> 這段標記<strong>不是給你看的</strong>，是給 Django Ninja 看的，它相當於是在告訴 Django Ninja：</p>
 <blockquote>
 <p>這個參數內容應該從 HTTP 請求中的查詢參數（query parameters）中取得，而不是從 body 或 path。</p>
 </blockquote>
 <p>這樣想就很容易明白了。</p>
-<p>Django Ninja 會試圖從查詢參數獲取字串，拆解它們（如果有複數個查詢字串），然後一一丟給<code>PostFilterSchema</code>進行<strong>初始化與驗證：</strong></p>
+<p>Django Ninja 會試圖從查詢參數獲取字串，拆解它們（如果有複數個查詢字串），然後一一丟給 <code>PostFilterSchema</code> 進行<strong>初始化與驗證：</strong></p>
 <ol>
 <li>驗證失敗：回傳 422。</li>
 <li>驗證成功：將 Schema 物件傳入 view 函式作為<strong>函式的參數</strong>（<strong>區域變數</strong>）。</li>

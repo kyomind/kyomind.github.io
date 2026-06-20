@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-03-29T01:40:38+08:00" />
+  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
 
 
 
@@ -125,13 +125,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -184,7 +184,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Django-REST-framework-%E5%A5%97%E4%BB%B6"><span class="toc-text">安裝 Django REST framework 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Django-project-%E5%91%BD%E5%90%8D%E7%BF%92%E6%85%A3"><span class="toc-text">我的 Django project 命名習慣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9Asettings-py"><span class="toc-text">設定settings.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django 路由設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E7%AC%AC%E4%B8%80%E5%80%8B-API"><span class="toc-text">完成第一個 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%9F%E5%8B%95%E4%BC%BA%E6%9C%8D%E5%99%A8%EF%BC%8C%E6%B8%AC%E8%A9%A6-API"><span class="toc-text">啟動伺服器，測試 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">小結：路由很重要</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%BB%E6%97%A8"><span class="toc-text">本文主旨</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%9D-Django-REST-framework-%E5%A5%97%E4%BB%B6"><span class="toc-text">安裝 Django REST framework 套件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Django-project-%E5%91%BD%E5%90%8D%E7%BF%92%E6%85%A3"><span class="toc-text">我的 Django project 命名習慣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A-settings-py"><span class="toc-text">設定 settings.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A"><span class="toc-text">Django 路由設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E7%AC%AC%E4%B8%80%E5%80%8B-API"><span class="toc-text">完成第一個 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%9F%E5%8B%95%E4%BC%BA%E6%9C%8D%E5%99%A8%EF%BC%8C%E6%B8%AC%E8%A9%A6-API"><span class="toc-text">啟動伺服器，測試 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%B5%90%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%BE%88%E9%87%8D%E8%A6%81"><span class="toc-text">小結：路由很重要</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://i.imgur.com/lyxUZv1.png" alt="Let&#39;s Django！"><span class="cap">Let&#39;s Django！</span></p>
 <p>這是 <a href="/tags/Django-Tutorial/">Django Tutorial</a> 的第 6 篇、DRF 系列的第 2 篇。</p>
@@ -205,7 +205,7 @@
 <p>為了達到這個目標，我們需要完成以下三件事：</p>
 <ol>
 <li>安裝 Django REST framework 套件。</li>
-<li>設定 Django 的<code>settings.py</code>，並加入 Django REST framework 相關內容。</li>
+<li>設定 Django 的 <code>settings.py</code>，並加入 Django REST framework 相關內容。</li>
 <li>實作第一個路由（router）與 API。</li>
 </ol>
 <p>就這麼簡單，讓我們直接開始吧！</p>
@@ -232,7 +232,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├── django_project</span><br><span class="line">    ├── django_project</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── asgi.py</span><br><span class="line">    │   ├── settings.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── wsgi.py</span><br><span class="line">    ├── app1</span><br><span class="line">    │   ├── __init__.py</span><br><span class="line">    │   ├── admin.py</span><br><span class="line">    │   ├── models.py</span><br><span class="line">    │   ├── urls.py</span><br><span class="line">    │   └── views.py</span><br><span class="line">    ├── app2</span><br><span class="line">    ├── app3</span><br></pre></td></tr></table></figure>
 
 <p>最上層我稱為 repo 專案，也就是專案的<strong>根目錄</strong>。</p>
-<p>第二層的 <code>django_project</code> 即本段標題中所謂 Django project，裡面有<code>settings.py</code>等「面向整個專案」的設定。</p>
+<p>第二層的 <code>django_project</code> 即本段標題中所謂 Django project，裡面有 <code>settings.py</code> 等「面向整個專案」的設定。</p>
 <p>你可能注意到，我的 Django project 用的是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB">大駱峰式命名</a>（DjangoTutorial），而不是典型的小寫加底線（django_tutorial）。</p>
 <p>理由很簡單——為了<strong>快速區別</strong> Django project 和其它的 Django app 目錄。</p>
 <h3 id="區別-Django-project-和-Django-app"><a href="#區別-Django-project-和-Django-app" class="headerlink" title="區別 Django project 和 Django app"></a>區別 Django project 和 Django app</h3><p>畢竟它們都一起放在整個 repo 專案底下（這是 Django 預設的專案組織方式），隨著 Django app 愈來愈多，透過命名風格來區分二者，可能是最簡單且省力的方式。</p>
@@ -241,11 +241,11 @@
 <p>但如果是「認真的」開源專案，建議還是採用「<code>aa-bb-cc</code>」格式。</p>
 <hr>
 <p>講完命名，我們進入設定環節。</p>
-<h2 id="設定settings-py"><a href="#設定settings-py" class="headerlink" title="設定settings.py"></a>設定<code>settings.py</code></h2><p>打開 <code>DjangoTutorial/settings.py</code>，為 <code>INSTALLED_APPS</code> 新增以下內容：</p>
+<h2 id="設定-settings-py"><a href="#設定-settings-py" class="headerlink" title="設定 settings.py"></a>設定 <code>settings.py</code></h2><p>打開 <code>DjangoTutorial/settings.py</code>，為 <code>INSTALLED_APPS</code> 新增以下內容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;rest_framework&#x27;</span>,  <span class="comment"># 新增</span></span><br><span class="line">    <span class="string">&#x27;post&#x27;</span>,  <span class="comment"># 新增</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <p>新增部分是最後 2 行，其餘則是<strong>預設值</strong>。</p>
-<p>每一個我們建立的 Django app 都要加到這個<code>INSTALLED_APPS</code>，而 DRF 本身也要。</p>
+<p>每一個我們建立的 Django app 都要加到這個 <code>INSTALLED_APPS</code>，而 DRF 本身也要。</p>
 <hr>
 <h2 id="Django-路由設定"><a href="#Django-路由設定" class="headerlink" title="Django 路由設定"></a>Django 路由設定</h2><p><strong>端點</strong>（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Endpoint">endpoint</a>）代表特定的 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6">URL</a>，是 API 的「入口」。</p>
 <p><strong>路徑</strong>（path）是 URL 的一部分——而且是<strong>必要部分</strong>。圖解如下：</p>
@@ -256,26 +256,26 @@
 <li>建立 Django app 的二級路由。</li>
 <li>設定 Django project 的一級路由。</li>
 </ol>
-<p>我也看過把所有路由統一放到 Django project 的<code>urls.py</code>做法，但這屬少數。</p>
-<h3 id="App-二級路由"><a href="#App-二級路由" class="headerlink" title="App 二級路由"></a>App 二級路由</h3><p>首先，在 Django app 底下新增<code>urls.py</code>。這個檔案預設上沒有，我們要自行建立。</p>
-<p><code>post/urls.py</code>內容：</p>
+<p>我也看過把所有路由統一放到 Django project 的 <code>urls.py</code> 做法，但這屬少數。</p>
+<h3 id="App-二級路由"><a href="#App-二級路由" class="headerlink" title="App 二級路由"></a>App 二級路由</h3><p>首先，在 Django app 底下新增 <code>urls.py</code>。這個檔案預設上沒有，我們要自行建立。</p>
+<p><code>post/urls.py</code> 內容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> post.views <span class="keyword">import</span> hello_world  <span class="comment"># 這個 view 函式目前還沒寫</span></span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;hello/&#x27;</span>, hello_world),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p><code>path</code>是 Django 內建的路由函式，沒有它，你的請求就<strong>到不了</strong>負責處理請求的 view 函式。</p>
-<p><code>path</code>函式的第一個參數，是具體的 <strong>path 字串</strong>。如上圖，path 是端點的一部分，即上面程式碼中的<code>&#39;hello/&#39;</code></p>
-<p>每一個 app 級路由，都要指向特定的 view 函式，也就是<code>path</code>函式的第二個參數——<code>hello_world</code>，儘管我們實際上還沒有撰寫它的內容。</p>
-<h3 id="專案一級路由與前綴"><a href="#專案一級路由與前綴" class="headerlink" title="專案一級路由與前綴"></a>專案一級路由與前綴</h3><p><code>DjangoTutorial/urls.py</code>中的一級路由：</p>
+<p><code>path</code> 是 Django 內建的路由函式，沒有它，你的請求就<strong>到不了</strong>負責處理請求的 view 函式。</p>
+<p><code>path</code> 函式的第一個參數，是具體的 <strong>path 字串</strong>。如上圖，path 是端點的一部分，即上面程式碼中的 <code>&#39;hello/&#39;</code></p>
+<p>每一個 app 級路由，都要指向特定的 view 函式，也就是 <code>path</code> 函式的第二個參數——<code>hello_world</code>，儘管我們實際上還沒有撰寫它的內容。</p>
+<h3 id="專案一級路由與前綴"><a href="#專案一級路由與前綴" class="headerlink" title="專案一級路由與前綴"></a>專案一級路由與前綴</h3><p><code>DjangoTutorial/urls.py</code> 中的一級路由：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">&#x27;post/&#x27;</span>, include(<span class="string">&#x27;post.urls&#x27;</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p><code>&#39;post.urls&#39;</code>就是 post app 的<code>urls.py</code>。</p>
-<p>通常我們會對它加上一個 <strong>path 前綴</strong>，比如<code>&#39;post/&#39;</code>。</p>
-<p>有了<code>&#39;post/&#39;</code>這個前綴，在 post app 的所有路由設定中，都不必再一一加上，這做法有助於路由的管理與維護。</p>
+<p><code>&#39;post.urls&#39;</code> 就是 post app 的 <code>urls.py</code>。</p>
+<p>通常我們會對它加上一個 <strong>path 前綴</strong>，比如 <code>&#39;post/&#39;</code>。</p>
+<p>有了 <code>&#39;post/&#39;</code> 這個前綴，在 post app 的所有路由設定中，都不必再一一加上，這做法有助於路由的管理與維護。</p>
 <p>經過這些設定，我們第一個路由就完成了。</p>
 <p>更多 Django 路由的介紹，可參考〈<a href="/django-ninja-07/">路由（上）傳統 Django 路由做法</a>〉。</p>
 <hr>
 <p>但是，我們還沒有寫 API 的內部邏輯呢！</p>
 <h2 id="完成第一個-API"><a href="#完成第一個-API" class="headerlink" title="完成第一個 API"></a>完成第一個 API</h2><p>有了端點和路由，剩下的就是 view 函式。</p>
-<p>在<code>post/views.py</code>中建立一個新的 view 函式：</p>
+<p>在 <code>post/views.py</code> 中建立一個新的 view 函式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> JsonResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>(<span class="params">request</span>):</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, world!&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>這還不是一個 DRF 的 view 函式，但它可以正常運作。</p>

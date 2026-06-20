@@ -117,13 +117,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
-          
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+            <a href="/categories/DevOps/">DevOps (9)</a>
           
             <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -264,7 +264,7 @@
 
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
 <p>這是 Django Ninja 系列教學的第 27 篇。</p>
-<p>上篇中，我們學習了 Django ORM 的<code>Q</code>物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
+<p>上篇中，我們學習了 Django ORM 的 <code>Q</code> 物件和 Django Ninja 的 FilterSchema，但後者感覺只學了一半。</p>
 <p>討論比較多的是，view 函式中使用 FilterSchema 的<strong>參數定義方式</strong>——這確實很重要，但這只是 FilterSchema 的一部分。</p>
 <p>本篇要來補完剩下的內容：</p>
 <ol>
@@ -296,7 +296,7 @@
 <p>這是 Django Ninja 系列教學的第 26 篇。</p>
 <p>「<strong>查詢</strong>」是 API 中常見的附加需求，本質上是<strong>對資料的過濾（filtering）與篩選</strong>。</p>
 <p>無論是篩選文章、商品，還是查詢用戶，<strong>根據不同條件來過濾資料並獲得結果</strong>，可說是大部分專案的必備功能。</p>
-<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用<code>filter</code>方法來根據特定條件篩選 QuerySet。</p>
+<p>在 view 函式中，實作查詢<strong>最簡單</strong>的方式，就是使用 Django ORM 的過濾方法。例如，我們可以用 <code>filter</code> 方法來根據特定條件篩選 QuerySet。</p>
 <p>這種方法簡單直接，適合基本的查詢需求。然而，它也有其<strong>局限性</strong>——隨著欄位與需求的增加，查詢條件可能變得<strong>越來越複雜</strong>，導致程式碼<strong>冗長</strong>且難以維護。</p>
 <p>為了解決這一問題，Django Ninja 提供了 FilterSchema，讓我們可以用更「<strong>結構化</strong>」的方式，定義並管理查詢條件。</p>
 <p>本文將介紹 FilterSchema，一步步實作與講解，讓你了解如何在 Django Ninja 中使用 FilterSchema，實現<strong>更加靈活、模組化</strong>的 API 查詢功能。</p>
@@ -322,7 +322,7 @@
     <div class="post-content"><p><img src="https://i.imgur.com/5gGprsq.png" alt="2024 iThome 鐵人賽"></p>
 <p>這是 Django Ninja 系列教學的第 25 篇。</p>
 <p>上一篇我們介紹了 Django Ninja 的內建分頁器，並用它實作了簡單的分頁功能。</p>
-<p>雖然內建的<code>PageNumberPagination</code>確實方便，但在很多時候，我們仍需要一些<strong>客製化</strong>功能。</p>
+<p>雖然內建的 <code>PageNumberPagination</code> 確實方便，但在很多時候，我們仍需要一些<strong>客製化</strong>功能。</p>
 <p>為了實現這個目的，你需要<strong>自定義一個分頁類別</strong>。</p>
 <p>不過別擔心，這種自定義，<strong>並非從零開始</strong>。而是繼承 Django Ninja 所提供的基礎分頁類別，再進行自己的「<strong>加工</strong>」。</p>
 <p>這篇文章就要來教你怎麼做。</p>
