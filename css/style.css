@@ -1635,14 +1635,29 @@ h6 {
 .footer .social-links {
   text-align: center;
 }
-.footer .social-links .iconfont {
+.footer .social-links .iconfont,
+.footer .social-links .social-icon {
   font-size: 30px;
 }
-.footer .social-links .iconfont + .iconfont {
+.footer .social-links .iconfont:hover,
+.footer .social-links .social-icon:hover {
+  color: #c05b4d;
+}
+.footer .social-links .iconfont + .iconfont,
+.footer .social-links .iconfont + .social-icon,
+.footer .social-links .social-icon + .iconfont,
+.footer .social-links .social-icon + .social-icon {
   margin-left: 10px;
 }
-.footer .social-links .iconfont:hover {
-  color: #c05b4d;
+.footer .social-links .social-icon {
+  display: inline-block;
+}
+.footer .social-links .social-icon img {
+  display: block;
+  width: 29px;
+  height: 29px;
+  position: relative;
+  top: 3px;
 }
 .footer .copyright {
   margin: 10px 0;
