@@ -10,6 +10,7 @@
 
     this.navbar();
     this.responsiveTable();
+    this.codeBlockCopy();
 
     if (this.config.toc) {
       this.scrollToc();
@@ -226,6 +227,41 @@
           }, 100*(index++));     
       })
     }
+  };
+
+  Even.prototype.codeBlockCopy = function () {
+    var copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
+    var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+    $('.highlight').each(function () {
+      var $highlight = $(this);
+      var $button = $('<button class="code-copy-btn" title="複製程式碼"></button>');
+      $button.html(copyIcon);
+      $highlight.append($button);
+
+      $button.on('click', function () {
+        var $codeCell = $highlight.find('td.code');
+        var codeText = '';
+
+        if ($codeCell.length) {
+          $codeCell.find('.line').each(function () {
+            codeText += $(this).text() + '\n';
+          });
+          codeText = codeText.replace(/\n$/, '');
+        } else {
+          codeText = $highlight.find('code').text();
+        }
+
+        navigator.clipboard.writeText(codeText).then(function () {
+          $button.html(checkIcon);
+          $button.addClass('copied');
+          setTimeout(function () {
+            $button.html(copyIcon);
+            $button.removeClass('copied');
+          }, 2000);
+        });
+      });
+    });
   };
 
   Even.prototype.backToTop = function () {

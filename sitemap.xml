@@ -650,6 +650,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    
+    <lastmod>2026-06-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2026-06-20</lastmod>
@@ -668,15 +677,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/hexo-blog-reply/</loc>
     
     <lastmod>2026-06-20</lastmod>
@@ -686,7 +686,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
+    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -695,7 +695,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-markdown-writing-flow/</loc>
+    <loc>https://blog.kyomind.tw/notion-markdown/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -740,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
+    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -749,7 +749,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/my-own-blog-part-two/</loc>
+    <loc>https://blog.kyomind.tw/pyenv-setup/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -1415,7 +1415,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1424,7 +1424,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1505,7 +1505,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -1514,7 +1514,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -1631,7 +1631,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-01/</loc>
     
     <lastmod>2025-08-20</lastmod>
     
@@ -1640,7 +1640,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/django-ninja-01/</loc>
+    <loc>https://blog.kyomind.tw/django-ninja-02/</loc>
     
     <lastmod>2025-08-20</lastmod>
     
@@ -1930,7 +1930,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
