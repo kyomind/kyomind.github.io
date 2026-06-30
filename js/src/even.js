@@ -11,6 +11,7 @@
     this.navbar();
     this.responsiveTable();
     this.codeBlockCopy();
+    this.mobileHeaderAnchors();
 
     if (this.config.toc) {
       this.scrollToc();
@@ -261,6 +262,19 @@
           }, 2000);
         });
       });
+    });
+  };
+
+  Even.prototype.mobileHeaderAnchors = function () {
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile) return;
+
+    $('.post-content h2, .post-content h3').each(function () {
+      var $heading = $(this);
+      var $headerlink = $heading.find('.headerlink');
+      if ($headerlink.length) {
+        $headerlink.appendTo($heading);
+      }
     });
   };
 

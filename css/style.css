@@ -2129,9 +2129,17 @@ h6 {
   .mobile-navbar {
     display: block;
   }
+  .post-content h2,
+  .post-content h3 {
+    display: block !important;
+  }
+  .post-content h2 .headerlink,
+  .post-content h3 .headerlink {
+    display: inline !important;
+  }
   .post-content h2 .headerlink::after,
   .post-content h3 .headerlink::after {
-    display: none;
+    opacity: 1 !important;
   }
 }
 .back-to-top {
