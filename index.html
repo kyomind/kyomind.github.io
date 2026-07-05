@@ -178,10 +178,10 @@
 <p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 7 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
 </blockquote>
 <p><a href="/weamind/">WeaMind</a> 跑在什麼上面？</p>
-<p>最早是單一台 VM + 容器化部署，而現在就<strong>複雜多了</strong>——K3s cluster、多台 VM、Load Balancer。</p>
-<p>這篇要介紹 WeaMind 的基礎設施——<strong>cloud infra 層</strong>。後續會有好些 K8s 相關文章，都會以這個架構為基礎，所以先把前提講清楚。</p>
-<p>簡單來說是：4 台 VM + 1 個 Load Balancer，全部跑在 <a href="/hetzner/">Hetzner Cloud</a> 上，月費大約一千台幣。</p>
-<p>K8s 相關設定，都已公開在這個 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">weamind-infra</a>。歡迎參考、指教。</p>
+<p>最早是單一台 VM + 容器化部署，現在則<strong>複雜多了</strong>——K3s cluster、多台 VM、Load Balancer。</p>
+<p>這篇要介紹 WeaMind 的基礎設施——<strong>cloud infra 層</strong>。後續會有好些 K8s 相關文章，都會以這個架構為基礎，所以我們先把前提講清楚。</p>
+<p>簡單來說就是 4 台 VM + 1 個 Load Balancer，全部跑在 <a href="/hetzner/">Hetzner Cloud</a> 上，月費大約一千台幣。</p>
+<p>K8s 相關的部署設定（<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra/tree/main/manifests">manifests</a>），皆已公開在這個 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">weamind-infra</a>。歡迎參考、指教。</p>
           <div class="read-more">
             <a href="/weamind-infra/" class="read-more-link">閱讀更多</a>
           </div>
