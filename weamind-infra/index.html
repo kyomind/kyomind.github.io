@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-07-05T14:27:53+08:00" />
+  <meta property="article:modified_time" content="2026-07-05T14:33:58+08:00" />
 
 
 
@@ -184,7 +184,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E8%A6%BD%EF%BC%9AWeaMind-%E7%9A%84%E7%A1%AC%E9%AB%94%E7%B5%84%E6%88%90"><span class="toc-text">總覽：WeaMind 的硬體組成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%A1%E5%A3%98%E6%A9%9F%EF%BC%9A%E5%8E%9F%E6%9C%AC%E7%9A%84%E5%96%AE%E6%A9%9F%E7%89%88-VM"><span class="toc-text">堡壘機：原本的單機版 VM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K8s-%E5%8F%A2%E9%9B%86%EF%BC%9A%E4%B8%89%E5%8F%B0%E7%AF%80%E9%BB%9E"><span class="toc-text">K8s 叢集：三台節點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%B2%E8%B7%AF%E9%80%A3%E7%B7%9A%E8%88%87%E9%98%B2%E7%81%AB%E7%89%86"><span class="toc-text">網路連線與防火牆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E8%88%87%E9%81%B8%E5%9E%8B%E8%80%83%E9%87%8F"><span class="toc-text">成本與選型考量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%89%93%E9%96%8B%E6%96%B0%E4%B8%96%E7%95%8C%E7%9A%84%E5%A4%A7%E9%96%80"><span class="toc-text">結語：打開新世界的大門</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E8%A6%BD%EF%BC%9AWeaMind-%E7%9A%84%E7%A1%AC%E9%AB%94%E7%B5%84%E6%88%90"><span class="toc-text">總覽：WeaMind 的硬體組成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%A1%E5%A3%98%E6%A9%9F%EF%BC%9A%E5%8E%9F%E6%9C%AC%E7%9A%84%E5%96%AE%E6%A9%9F%E7%89%88-VM"><span class="toc-text">堡壘機：原本的單機版 VM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K8s-%E5%8F%A2%E9%9B%86%EF%BC%9A%E4%B8%89%E5%8F%B0%E7%AF%80%E9%BB%9E"><span class="toc-text">K8s 叢集：三台節點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%B2%E8%B7%AF%E9%80%A3%E7%B7%9A%E8%88%87%E9%98%B2%E7%81%AB%E7%89%86"><span class="toc-text">網路連線與防火牆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E8%88%87%E9%81%B8%E5%9E%8B%E8%80%83%E9%87%8F"><span class="toc-text">成本與選型考量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%96%B0%E4%B8%96%E7%95%8C%E7%9A%84%E5%A4%A7%E9%96%80"><span class="toc-text">結語：新世界的大門</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
 <blockquote>
@@ -316,7 +316,7 @@
 <p>至於為什麼選 Hetzner，我在〈<a href="/hetzner-vm/">在 Hetzner 開新 VM 指南</a>〉有比較詳細的說明。簡單講就是：<strong>便宜、穩定</strong>。</p>
 <p>但它的缺點是<strong>台灣連歐洲機房延遲偏高</strong>，對於重視用戶體驗的服務可能不適合。</p>
 <hr>
-<h2 id="結語：打開新世界的大門"><a href="#結語：打開新世界的大門" class="headerlink" title="結語：打開新世界的大門"></a>結語：打開新世界的大門</h2><p>這規模對 Side Project 來說，無疑是 overkill。要不是 Hetzner 的價格優勢（雖然漲了兩次價🥲），我大概也不會想自己維護一個 K8s cluster。</p>
+<h2 id="結語：新世界的大門"><a href="#結語：新世界的大門" class="headerlink" title="結語：新世界的大門"></a>結語：新世界的大門</h2><p>這規模對 Side Project 來說，無疑是 overkill。要不是 Hetzner 的價格優勢（雖然漲了兩次價🥲），我大概也不會想自己維護一個 K8s cluster。</p>
 <p>其實，大多數 Side Project 用一台 VM 就能搞定——但<strong>我選擇擁有叢集</strong>。</p>
 <p>不只為了磨練技術，更重要的是，當你<strong>真的</strong>擁有一個 cluster，你的角色將從此不同：你是這個系統的管理者，而不只是單純的開發者。</p>
 <p>這樣的心態轉變，對我而言，就像打開新世界的大門，再也回不去了。</p>
