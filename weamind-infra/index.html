@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-07-05T12:31:19+08:00" />
+  <meta property="article:modified_time" content="2026-07-05T12:52:12+08:00" />
 
 
 
@@ -269,6 +269,9 @@
 <p>至於為什麼選 K3s 而不是 kubeadm，我在〈<a href="/k3s-for-weamind/">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a>〉已有說明，這裡不重複。</p>
 <h2 id="網路連線與防火牆"><a href="#網路連線與防火牆" class="headerlink" title="網路連線與防火牆"></a>網路連線與防火牆</h2><p>安全設計上，這三台雖然有公網 IP（方便更新），但防火牆只允許內網流量，外部無法直接連入。</p>
 <p><img src="https://img.kyomind.tw/img-20260705-203044.png" alt="防火牆規則"><span class="cap">防火牆規則</span></p>
+<blockquote>
+<p>發文後重看，我才發現第一條規則其實是<strong>多餘</strong>的——因為第二條規則已經對整個 <code>10.0.0.0/16</code> 開放了所有 TCP port，SSH 自然也包含在內。這是典型的「先開 SSH、後來才加 Private Network 全開」的演進痕跡，留在這裡當作紀念。</p>
+</blockquote>
 <p>要管理它們，必須先 SSH 到堡壘機，再從內網連進去。而對外的流量入口只有一個：Hetzner Load Balancer。</p>
 <hr>
 <h2 id="成本與選型考量"><a href="#成本與選型考量" class="headerlink" title="成本與選型考量"></a>成本與選型考量</h2><p>Hetzner 在今年 4 月與 6 月連續兩次漲價，據官方公告，主因是記憶體供不應求，導致巨大成本壓力（AI 熱潮的連鎖效應）。</p>
@@ -310,7 +313,7 @@
 </tbody></table>
 <p>換算成台幣，大約是 NT$1,020 到 NT$1,260。</p>
 <p>至於為什麼選 Hetzner，我在〈<a href="/hetzner-vm/">在 Hetzner 開新 VM 指南</a>〉有比較詳細的說明。簡單講就是：<strong>便宜、穩定</strong>。</p>
-<p>但有一好沒兩好，它的缺點則是<strong>延遲偏高</strong>，對於重視用戶體驗的服務可能不適合。</p>
+<p>但它的缺點則是<strong>台灣連歐洲機房延遲偏高</strong>，對於重視用戶體驗的服務可能不適合。</p>
 <hr>
 <h2 id="結語：打開新世界的大門"><a href="#結語：打開新世界的大門" class="headerlink" title="結語：打開新世界的大門"></a>結語：打開新世界的大門</h2><p>這個規模對 Side Project 來說，無疑是 overkill 了。如果不是 Hetzner 的價格優勢（雖然不得已漲了兩次價），我大概也不會想自己維護一個 K8s cluster。</p>
 <p>其實，大多數 Side Project 用一台 VM 就能搞定——但<strong>我選擇擁有叢集</strong>。</p>
