@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/all-in-on-devops/</loc>
+    
+    <lastmod>2026-07-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind/</loc>
+    
+    <lastmod>2026-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/unsubscribe-github-copilot/</loc>
     
     <lastmod>2026-07-04</lastmod>
@@ -956,15 +974,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weamind/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/orange-days-02/</loc>
     
     <lastmod>2026-06-20</lastmod>
@@ -986,15 +995,6 @@
     <loc>https://blog.kyomind.tw/vibe-coding/</loc>
     
     <lastmod>2026-06-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/all-in-on-devops/</loc>
-    
-    <lastmod>2026-06-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1930,7 +1930,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

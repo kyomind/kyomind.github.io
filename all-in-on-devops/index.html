@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Self" />
             
 
-  <meta property="article:modified_time" content="2026-06-16T15:46:24+08:00" />
+  <meta property="article:modified_time" content="2026-07-05T03:11:28+08:00" />
 
 
 
@@ -241,9 +241,9 @@
 <p>這個問題，每個人有自己的答案。可以確定的是，從 2025 下半年開始，我已<a href="/about/#AI-%E6%99%82%E4%BB%A3%E7%9A%84%E9%96%8B%E7%99%BC%E8%80%85">不再自己動手寫程式</a>。</p>
 <hr>
 <h2 id="Application-的極限"><a href="#Application-的極限" class="headerlink" title="Application 的極限"></a>Application 的極限</h2><p>第三份工作，我首次進到了有完整 SRE 團隊的公司，開發 LLM App 專案，可以想成是企業內部版的 ChatGPT。</p>
-<p>我所在的後端團隊負責寫 application，SRE 則用 <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a> 部署與維運。彼此分工清晰，但也讓我看清一件事：application 寫好，<strong>不代表</strong>服務就會穩定運作。</p>
-<p>有些問題不一定是程式邏輯出錯，而是環境、部署、微服務之間的<strong>協調</strong>。甚至程式發生錯誤時，我無法直接在本地看 log，要先登入 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a>，再去 Pod 裡面撈資料。有時候則是 <a target="_blank" rel="noopener" href="https://ai.azure.com/">AI Foundry</a> 或其他 infra 組件出了狀況。</p>
-<p>這些東西——<strong>尤其是 Kubernetes</strong>——讓我覺得<strong>非常陌生</strong>。</p>
+<p>我所在的後端團隊負責寫 application，SRE 則用 <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a> 部署與維運。雖然分工明確，但後端也需要透過 Jenkins 觸發部署、登入 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a> 查看 Pod log 來排查問題。這讓我逐漸意識到：application 寫好，<strong>不代表</strong>服務就會穩定運作。</p>
+<p>有些時候不一定是程式邏輯出錯，而是環境、部署、微服務之間的<strong>協調</strong>問題。有時則是 <a target="_blank" rel="noopener" href="https://ai.azure.com/">AI Foundry</a> 或其他 infra 組件出了狀況。</p>
+<p>這些東西——<strong>尤其是 Kubernetes</strong>——我開始接觸，但理解仍然有限。</p>
 <p>以前都是 VM 部署，然後 <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">Docker Compose</a>，這是我第一次深深感受到，<strong>服務遠不止是寫程式而已</strong>。</p>
 <p>部署並不是配角。而當下的我只懂應用層，這是一個<strong>明顯的局限</strong>。</p>
 <h2 id="回到入職之前"><a href="#回到入職之前" class="headerlink" title="回到入職之前"></a>回到入職之前</h2><p>其實在 2025 年 3 月入職前，我就有考慮要學習 DevOps 相關技能。</p>
@@ -262,7 +262,7 @@
 <hr>
 <h2 id="收起「扮家家酒」的決心"><a href="#收起「扮家家酒」的決心" class="headerlink" title="收起「扮家家酒」的決心"></a>收起「扮家家酒」的決心</h2><p>這次聚會讓我意識到，原先那種「既要、又要」、「後端才是主體、DevOps 只是輔助」的心態，雖然不能說是錯，但它可能會讓我最終一事無成，依舊是個平庸的後端。</p>
 <p>這不是我想要的模樣。<strong>要玩，就要 all in</strong>。</p>
-<p>但此刻要做出重大改變，顯有困難，而且基於團隊與職責分工，身為後端人員，我無法接觸到太多 SRE 的 infra，自然也無法學習多少 DevOps 技能。</p>
+<p>但此刻要做出重大改變，顯有困難，而且基於團隊與職責分工，作為後端人員，我無法接觸到完整的 infra，這是一個瓶頸。</p>
 <blockquote>
 <p>那怎麼辦？</p>
 </blockquote>
