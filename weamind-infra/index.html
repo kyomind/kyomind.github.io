@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-07-05T07:17:16+08:00" />
+  <meta property="article:modified_time" content="2026-07-05T07:26:08+08:00" />
 
 
 
@@ -250,7 +250,10 @@
 </ul>
 <p>除了上述這些，我在這台 VM 還運行了好幾個<strong>開源服務</strong>，比如替代 GA4 的 <a href="/weekly-review-21/">Umami</a>；替代 WakaTime 的 <a target="_blank" rel="noopener" href="https://wakapi.dev/">Wakapi</a> 等。當然，還少不了負責流量轉發與 TLS 憑證的 Nginx 與 Certbot。</p>
 <p>儘管如此，它們總共也只佔了 1.2 GB 的 RAM，對於這台有 8 GB RAM 的機器，顯然還是浪費了！</p>
-<p>之後預計把 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10329845">kube-prometheus-stack</a> 中，前兩大吃資源的 Pod——Prometheus 與 Grafana——移到這台上。</p>
+<p>之後預計把 <a target="_blank" rel="noopener" href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">kube-prometheus-stack</a> 中，前兩大吃資源的 Pod——Prometheus 與 Grafana——移到這台上。</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10329845">可觀測性宇宙的第十三天 - Kube-Prometheus-Stack 實戰（一）</a></p>
+</blockquote>
 <h3 id="為什麼資料層不搬進-K8s？"><a href="#為什麼資料層不搬進-K8s？" class="headerlink" title="為什麼資料層不搬進 K8s？"></a>為什麼資料層不搬進 K8s？</h3><p>三個理由：</p>
 <ol>
 <li><strong>學習聚焦</strong>：K8s Stateful 管理是另一個大坑，不納入這次的範圍。</li>
