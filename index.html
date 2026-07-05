@@ -117,13 +117,13 @@
           </a>
         <div class="dropdown-content">
           
-            <a href="/categories/DevOps/">DevOps (9)</a>
+            <a href="/categories/DevOps/">DevOps (10)</a>
           
             <a href="/categories/Self/">Self (25)</a>
           
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
-          
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
           
             <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
           
@@ -160,6 +160,33 @@
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/weamind-infra/">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-07-05
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 7 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a href="/weamind/">WeaMind</a> 跑在什麼上面？</p>
+<p>最早是單一台 VM + 容器化部署，而現在就<strong>複雜多了</strong>——K3s cluster、多台 VM、Load Balancer。</p>
+<p>這篇要介紹 WeaMind 的基礎設施——<strong>cloud infra 層</strong>。後續會有好些 K8s 相關文章，都會以這個架構為基礎，所以先把前提講清楚。</p>
+<p>簡單來說是：4 台 VM + 1 個 Load Balancer，全部跑在 <a href="/hetzner/">Hetzner Cloud</a> 上，月費大約一千台幣。</p>
+<p>K8s 相關設定，都已公開在這個 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">weamind-infra</a>。歡迎參考、指教。</p>
+          <div class="read-more">
+            <a href="/weamind-infra/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
     <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/unsubscribe-github-copilot/">我退訂了 GitHub Copilot</a>
         </h1>
@@ -318,37 +345,6 @@
 <p>這是一個全新的開始。</p>
           <div class="read-more">
             <a href="/weamind/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/perplexity/">我可能「不會」付費 Perplexity</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2025-12-28
-        </span><span class="post-category">
-            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p><img src="https://img.kyomind.tw/img-20251221-160338.jpeg" alt="from Pixabay"></p>
-<blockquote>
-<p><code>2026/02/08</code> 新增段落：<a href="/perplexity/#2026-02-%E6%9B%B4%E6%96%B0%EF%BC%9AResearch-%E4%BD%BF%E7%94%A8%E9%A1%8D%E5%BA%A6%E5%A4%A7%E5%9C%B0%E9%9C%87">2026-02 更新：Research 使用額度大地震</a>。</p>
-</blockquote>
-<blockquote>
-<p><code>2026/02/05</code> 更新：今年 2 月初，<a href="/perplexity/#%E6%88%91%E6%9C%80%E5%96%9C%E6%AD%A1%E7%9A%84-Research-%E5%8A%9F%E8%83%BD">Research</a> 功能的使用次數被<a target="_blank" rel="noopener" href="https://www.reddit.com/r/perplexity_ai/comments/1qwhej3/9989_reduction_in_research_quota_over_night/">大幅削減</a>——從<strong>每天數百次</strong>降至每月僅 <strong>20 次</strong>（Pro 方案用戶）。這樣的額度對我來說幾乎<strong>不可用</strong>，如果該政策持續，我<strong>必不會考慮付費</strong>。</p>
-</blockquote>
-<p>我從來沒想有過自己會考慮為 Perplexity 付費。</p>
-<p>畢竟，我已經訂閱了好幾個 AI 聊天服務，對「又一個 AI 工具」著實沒有太多期待。</p>
-<p>但用了三個多禮拜之後，這個想法有點動搖了。</p>
-<h2 id="Perplexity-是什麼"><a href="#Perplexity-是什麼" class="headerlink" title="Perplexity 是什麼"></a>Perplexity 是什麼</h2><p>如果你還沒聽過 <a target="_blank" rel="noopener" href="https://www.perplexity.ai/">Perplexity</a>，簡單說，它是一個主打「<strong>AI 搜尋</strong>」的服務。當你丟出一個問題時，它會幫你搜尋網路上的大量資料，整理重點，給出給答案。同時把來源清楚列出來。</p>
-<p>它更像是一個<strong>被 AI 強化過的搜尋引擎</strong>，而不是單純的聊天機器人。</p>
-<p>有了這東西，你可以用自然語言問問題，然後它會幫你找出相關資訊，並且用 AI 幫你整理成一個流暢易讀的答案。</p>
-          <div class="read-more">
-            <a href="/perplexity/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

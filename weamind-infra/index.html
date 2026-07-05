@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="WeaMind Infra 介紹：VM、Load Balancer 與雲端架構">
+  <meta property="og:title" content="WeaMind Infra 介紹：VM、Load Balancer 與雲端架構"><meta name="twitter:description" content="介紹 WeaMind 在 Hetzner Cloud 上的 VM、Load Balancer 與 K3s 叢集配置，後續 K8s 文章都會以此為基礎。">
+  <meta property="og:description" content="介紹 WeaMind 在 Hetzner Cloud 上的 VM、Load Balancer 與 K3s 叢集配置，後續 K8s 文章都會以此為基礎。"><meta name="twitter:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+  <meta property="og:image" content="https://img.kyomind.tw/WeaMind-logo-min.png">
+<meta name="description" content="介紹 WeaMind 在 Hetzner Cloud 上的 VM、Load Balancer 與 K3s 叢集配置，後續 K8s 文章都會以此為基礎。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
+            
+
+  <meta property="article:modified_time" content="2026-07-05T07:17:16+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-07-05T06:29:12+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/weamind-infra/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>WeaMind Infra 介紹：VM、Load Balancer 與雲端架構 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/weamind/" class="">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/DevOps/">DevOps (10)</a>
+          
+            <a href="/categories/Self/">Self (25)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (39)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link subscribe-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/weamind/">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-07-05
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B8%BD%E8%A6%BD%EF%BC%9AWeaMind-%E7%9A%84%E7%A1%AC%E9%AB%94%E7%B5%84%E6%88%90"><span class="toc-text">總覽：WeaMind 的硬體組成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%A1%E5%A3%98%E6%A9%9F%EF%BC%9A%E5%8E%9F%E6%9C%AC%E7%9A%84%E5%96%AE%E6%A9%9F%E7%89%88-VM"><span class="toc-text">堡壘機：原本的單機版 VM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K8s-%E5%8F%A2%E9%9B%86%EF%BC%9A%E4%B8%89%E5%8F%B0%E7%AF%80%E9%BB%9E"><span class="toc-text">K8s 叢集：三台節點</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%B2%E8%B7%AF%E9%80%A3%E7%B7%9A%E8%88%87%E9%98%B2%E7%81%AB%E7%89%86"><span class="toc-text">網路連線與防火牆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E8%88%87%E9%81%B8%E5%9E%8B%E8%80%83%E9%87%8F"><span class="toc-text">成本與選型考量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E6%89%93%E9%96%8B%E6%96%B0%E4%B8%96%E7%95%8C%E7%9A%84%E5%A4%A7%E9%96%80"><span class="toc-text">結語：打開新世界的大門</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/WeaMind-logo-min.png"></p>
+<blockquote>
+<p>📌 這是 <a target="_blank" rel="noopener" href="https://github.com/kyomind/WeaMind/blob/main/blogs/README.md">WeaMind 系列</a> 的第 7 篇。<br>本系列以真實世界專案為背景，記錄重要技術實作與經驗分享。</p>
+</blockquote>
+<p><a href="/weamind/">WeaMind</a> 跑在什麼上面？</p>
+<p>最早是單一台 VM + 容器化部署，而現在就<strong>複雜多了</strong>——K3s cluster、多台 VM、Load Balancer。</p>
+<p>這篇要介紹 WeaMind 的基礎設施——<strong>cloud infra 層</strong>。後續會有好些 K8s 相關文章，都會以這個架構為基礎，所以先把前提講清楚。</p>
+<p>簡單來說是：4 台 VM + 1 個 Load Balancer，全部跑在 <a href="/hetzner/">Hetzner Cloud</a> 上，月費大約一千台幣。</p>
+<p>K8s 相關設定，都已公開在這個 GitHub 專案：<a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra">weamind-infra</a>。歡迎參考、指教。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="總覽：WeaMind-的硬體組成"><a href="#總覽：WeaMind-的硬體組成" class="headerlink" title="總覽：WeaMind 的硬體組成"></a>總覽：WeaMind 的硬體組成</h2><p>我們先看一下全貌：</p>
+<table>
+<thead>
+<tr>
+<th>元件</th>
+<th>規格</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>堡壘機</td>
+<td>CAX21（Arm，4C&#x2F;8GB）</td>
+<td>資料層 + SSH 跳板</td>
+</tr>
+<tr>
+<td>Control Plane</td>
+<td>CX23（x86，2C&#x2F;4GB）</td>
+<td>K8s API Server</td>
+</tr>
+<tr>
+<td>Worker × 2</td>
+<td>CX23（x86，2C&#x2F;4GB）</td>
+<td>跑應用 Pod</td>
+</tr>
+<tr>
+<td>Load Balancer</td>
+<td>LB11</td>
+<td>外部入口</td>
+</tr>
+</tbody></table>
+<p>這四台機器都在同一個 Hetzner Private Network 裡。內網 IP 分別是 <code>10.0.0.2</code> 至 <code>10.0.0.5</code>。</p>
+<p>K8s 三台 node 不暴露公網。平常操作是在本機或堡壘機（<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bastion_host">Bastion host</a>）用 <code>kubectl</code> 控制 cluster。這也是常見的小型 K8s 部署架構。</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.yangjerry.tw/posts/it2022-day02/">《關於我怎麼把一年內學到的新手 IT&#x2F;SRE 濃縮到 30 天筆記這檔事》 Day 02 基礎架構設定 - 網路架構</a></p>
+</blockquote>
+<p>實際上，我就是從上述這篇文章第一次認識到堡壘機的。</p>
+<p>整體呈現一個「<strong>混合架構</strong>」：應用層（LINE Bot）跑在 K8s 叢集，可以彈性擴充，資料層（PostgreSQL、Redis）則留在堡壘機。彼此透過內網連接。</p>
+<hr>
+<h2 id="堡壘機：原本的單機版-VM"><a href="#堡壘機：原本的單機版-VM" class="headerlink" title="堡壘機：原本的單機版 VM"></a>堡壘機：原本的單機版 VM</h2><p>這台機器的角色有點特別。</p>
+<p>最早的 WeaMind 是單機版，整個應用就跑在這台 VM 上——App、Nginx、Docker、PostgreSQL、Redis，全部塞在一起。</p>
+<p>後來把應用層搬進 K8s 叢集，這台就「退役」成堡壘機，但資料還是留在這裡。</p>
+<h3 id="什麼是堡壘機？"><a href="#什麼是堡壘機？" class="headerlink" title="什麼是堡壘機？"></a>什麼是堡壘機？</h3><p><strong>堡壘機</strong>（Bastion host）是內網中唯一暴露公網 IP 的機器，作為進入內部網路的<strong>跳板</strong>。</p>
+<p>所有 SSH 連線都必須先經過它，再從內網連到其他機器。這樣的設計<strong>減少了攻擊面</strong>——只需要守住一個入口，而不是讓每台機器都暴露在外。</p>
+<p>在 WeaMind 的架構中，堡壘機除了當跳板，還<strong>兼任資料層</strong>的角色。這不是標準做法，但對小型專案來說，把兩個功能放在同一台機器可以省下不少成本。</p>
+<h3 id="主要規格與運行中服務"><a href="#主要規格與運行中服務" class="headerlink" title="主要規格與運行中服務"></a>主要規格與運行中服務</h3><p>規格是 Hetzner 的 <a target="_blank" rel="noopener" href="https://www.hetzner.com/cloud/cost-optimized">CAX21</a>，Arm 架構，4 核 8GB。跑三個東西：</p>
+<ul>
+<li>PostgreSQL：存放天氣資料。</li>
+<li>Redis：分散式鎖、Rate Limiter。</li>
+<li>weamind-data：ETL daemon 程式，定期抓中央氣象署的天氣 API 資料，並更新至 PostgreSQL。</li>
+</ul>
+<p>除了上述這些，我在這台 VM 還運行了好幾個<strong>開源服務</strong>，比如替代 GA4 的 <a href="/weekly-review-21/">Umami</a>；替代 WakaTime 的 <a target="_blank" rel="noopener" href="https://wakapi.dev/">Wakapi</a> 等。當然，還少不了負責流量轉發與 TLS 憑證的 Nginx 與 Certbot。</p>
+<p>儘管如此，它們總共也只佔了 1.2 GB 的 RAM，對於這台有 8 GB RAM 的機器，顯然還是浪費了！</p>
+<p>之後預計把 <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10329845">kube-prometheus-stack</a> 中，前兩大吃資源的 Pod——Prometheus 與 Grafana——移到這台上。</p>
+<h3 id="為什麼資料層不搬進-K8s？"><a href="#為什麼資料層不搬進-K8s？" class="headerlink" title="為什麼資料層不搬進 K8s？"></a>為什麼資料層不搬進 K8s？</h3><p>三個理由：</p>
+<ol>
+<li><strong>學習聚焦</strong>：K8s Stateful 管理是另一個大坑，不納入這次的範圍。</li>
+<li><strong>成本考量</strong>：不需要額外搞 PV、StorageClass。</li>
+<li><strong>資源利用</strong>：堡壘機是最大台的 VM，不多跑點東西太浪費😎</li>
+</ol>
+<p>總之，堡壘機確實做了不少事情，但資源上還游刃有餘。如何有效利用剩下的空間，是我接下來的課題。</p>
+<hr>
+<h2 id="K8s-叢集：三台節點"><a href="#K8s-叢集：三台節點" class="headerlink" title="K8s 叢集：三台節點"></a>K8s 叢集：三台節點</h2><p>K8s 叢集的部署方案採用 <a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a>，配置為 1 Control Plane + 2 Worker。</p>
+<p>三台都是 <a target="_blank" rel="noopener" href="https://www.hetzner.com/cloud/cost-optimized">CX23</a>：x86 架構，2 核 4GB。</p>
+<p>這個規格對 K3s 來說綽綽有餘。K3s 本身很輕量，Control Plane 不需要太多資源；而 WeaMind 的 LINE Bot 本質上就是用 FastAPI 寫的 webhook server，也很輕量。</p>
+<p>為什麼要兩台 Worker 而不是一台？主要是為了高可用：如果一台 VM 掛了，Pod 可以在另一台重新調度，不會整個服務中斷。或者更簡單的理由——<strong>帥</strong>！</p>
+<p>至於為什麼選 K3s 而不是 kubeadm，我在〈<a href="/k3s-for-weamind/">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a>〉已有說明，這裡不重複。</p>
+<h2 id="網路連線與防火牆"><a href="#網路連線與防火牆" class="headerlink" title="網路連線與防火牆"></a>網路連線與防火牆</h2><p>安全設計上，這三台雖然有公網 IP（方便更新），但防火牆只允許內網流量，外部無法直接連入。</p>
+<p><img src="https://img.kyomind.tw/img-20260705-134013.png" alt="防火牆規則"><span class="cap">防火牆規則</span></p>
+<p>要管理它們，必須先 SSH 到堡壘機，再從內網連進去。而對外的流量入口只有一個：Hetzner Load Balancer。</p>
+<hr>
+<h2 id="成本與選型考量"><a href="#成本與選型考量" class="headerlink" title="成本與選型考量"></a>成本與選型考量</h2><p>Hetzner 在今年 4 月與 6 月連續兩次漲價，據官方公告，主因是記憶體供不應求，導致巨大成本壓力（AI 熱潮的連鎖效應）。</p>
+<p>我的機器是今年年初建立的，目前適用 4 月調整後的「舊」價格。如果你現在要開新機器，則會是 6&#x2F;15 後的新價格。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/">價格對照</a>：</p>
+<table>
+<thead>
+<tr>
+<th>元件</th>
+<th>舊價格（4 月後）</th>
+<th>新價格（6&#x2F;15 後）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CAX21</td>
+<td>€7.99</td>
+<td>€10.49</td>
+</tr>
+<tr>
+<td>CX23 × 3</td>
+<td>€11.97</td>
+<td>€16.47</td>
+</tr>
+<tr>
+<td>LB11</td>
+<td>€7.49</td>
+<td>€7.49</td>
+</tr>
+<tr>
+<td>固定 IP × 4</td>
+<td>€2.00</td>
+<td>€2.00</td>
+</tr>
+<tr>
+<td><strong>總計</strong></td>
+<td><strong>€29.45</strong></td>
+<td><strong>€36.45</strong></td>
+</tr>
+</tbody></table>
+<p>換算成台幣，大約是 NT$1,020 到 NT$1,260。</p>
+<p>至於為什麼選 Hetzner，我在〈<a href="/hetzner-vm/">在 Hetzner 開新 VM 指南</a>〉有比較詳細的說明。簡單講就是：<strong>便宜、穩定</strong>。</p>
+<p>但有一好沒兩好，它的缺點則是<strong>延遲偏高</strong>，對於重視用戶體驗的服務可能不適合。</p>
+<hr>
+<h2 id="結語：打開新世界的大門"><a href="#結語：打開新世界的大門" class="headerlink" title="結語：打開新世界的大門"></a>結語：打開新世界的大門</h2><p>這個規模對 Side Project 來說，無疑是 overkill 了。如果不是 Hetzner 的價格優勢（雖然不得已漲了兩次價），我大概也不會想自己維護一個 K8s cluster。</p>
+<p>其實，大多數 Side Project 用一台 VM 就能搞定——但<strong>我選擇擁有叢集</strong>。</p>
+<p>不只是為了磨練技術，而是當你<strong>真的</strong>擁有一個 cluster，你的角色就不一樣了——你是這個系統的管理者，不是單純的開發者。</p>
+<p>這樣的心態轉變，對我而言，就像打開新世界的大門——再也回不去了。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind/" title="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集" rel="bookmark">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/kubernetes-gui-tui-guide/" title="Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南" rel="bookmark">Kubernetes 視覺化工具怎麼選？初學者的 GUI、TUI 指南</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Kubernetes/">Kubernetes</a>
+            <a href="/tags/WeaMind/">WeaMind</a>
+            <a href="/tags/Hetzner/">Hetzner</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/unsubscribe-github-copilot/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">我退訂了 GitHub Copilot</span>
+        <span class="prev-text nav-mobile">我退訂了 GitHub Copilot</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">10</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">25</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">62</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">39</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="social-icon icon-x" title="X">
+            <img src="https://api.iconify.design/fa6-brands/x-twitter.svg?color=%2339495c" alt="X" />
+          </a>
+        <a target="_blank" rel="noopener" href="https://www.threads.net/@kyomind.tw" class="social-icon icon-threads" title="Threads">
+            <img src="https://api.iconify.design/fa6-brands/threads.svg?color=%2339495c" alt="Threads" />
+          </a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+    ⌬
+    </span>
+    <span class="author"><a class="theme-link" target="_blank" rel="noopener" href="https://kyomind.tw/">Kyo Huang</a></span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
