@@ -11,7 +11,6 @@ purpose: 技術部落格：Python / Django 教學、軟體開發、筆記軟體�
 entrypoints:
   - https://blog.kyomind.tw/
   - https://blog.kyomind.tw/series/
-  - https://blog.kyomind.tw/ranking/
   - https://blog.kyomind.tw/subscribe/
   - https://blog.kyomind.tw/about/
   - https://blog.kyomind.tw/archives/
@@ -23,7 +22,6 @@ docs:
   - https://blog.kyomind.tw/django-ninja/
   - https://blog.kyomind.tw/categories/
   - https://blog.kyomind.tw/tags/
-  - https://blog.kyomind.tw/ranking/
 
 # Discovery aids
 sitemap: https://blog.kyomind.tw/sitemap.xml
