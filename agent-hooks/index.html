@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-10T07:23:57+08:00" />
+  <meta property="article:modified_time" content="2026-07-10T08:09:26+08:00" />
 
 
 
@@ -235,7 +235,7 @@
 <h2 id="OpenAI-Codex-app"><a href="#OpenAI-Codex-app" class="headerlink" title="OpenAI Codex app"></a>OpenAI Codex app</h2><p>設定位置：<code>~/.codex/config.toml</code></p>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[hooks]</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.Stop]]</span></span><br><span class="line"><span class="attr">matcher</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.Stop.hooks]]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;command&quot;</span></span><br><span class="line"><span class="attr">command</span> = <span class="string">&quot;bash ~/scripts/mac/notify-agent-stop.sh&quot;</span></span><br><span class="line"><span class="attr">statusMessage</span> = <span class="string">&quot;Sending agent stop notification&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.PermissionRequest]]</span></span><br><span class="line"><span class="attr">matcher</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.PermissionRequest.hooks]]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;command&quot;</span></span><br><span class="line"><span class="attr">command</span> = <span class="string">&quot;bash ~/scripts/mac/notify-agent-permission-request.sh&quot;</span></span><br><span class="line"><span class="attr">statusMessage</span> = <span class="string">&quot;Sending agent permission request notification&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>Codex app 採用 <a target="_blank" rel="noopener" href="https://toml.io/en/">TOML</a> 格式，和 Claude Code 的 JSON 語法不同，但結構類似。</p>
+<p>Codex 設定檔採用 <a target="_blank" rel="noopener" href="https://toml.io/en/">TOML</a> 格式，和 Claude Code 的 JSON 語法不同，但結構類似。</p>
 <p>第一次設定，重啟 Codex app 時，會需要你確認 hooks 的內容與安全性。</p>
 <h2 id="OpenCode-CLI"><a href="#OpenCode-CLI" class="headerlink" title="OpenCode CLI"></a>OpenCode CLI</h2><p>OpenCode 比較特別：<strong>不能在設定檔裡寫 hooks，必須用 plugin。</strong></p>
 <p>而 <code>plugin/</code> 目錄要放在 opencode 設定檔（<code>opencode.json</code>）所在的目錄底下。即：</p>
