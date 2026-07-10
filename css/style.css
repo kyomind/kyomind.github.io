@@ -1091,9 +1091,29 @@ h6 {
 .post .post-content .highlight {
   margin: 1em 0;
   border-radius: 3px;
-  overflow-x: auto;
+  overflow-x: hidden;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
   position: relative;
+}
+.post .post-content .highlight::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  background: #e9e9d2;
+  content: "";
+  z-index: 5;
+}
+.post .post-content .highlight::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0px 7px;
+  font-size: 16px;
+  color: #a98080;
+  content: "Code";
+  z-index: 6;
 }
 .post .post-content .highlight .code-copy-btn {
   position: absolute;
@@ -1119,21 +1139,15 @@ h6 {
   display: block;
 }
 .post .post-content .highlight table {
+  display: block;
+  overflow-x: auto;
   position: relative;
   max-width: none;
 }
 .post .post-content .highlight table::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  padding: 0px 7px;
-  font-size: 16px;
-  color: #a98080;
-  background: #e9e9d2;
-  content: "Code";
+  display: none;
 }
-.post .post-content .highlight.html > table::after {
+.post .post-content .highlight.html::after {
   content: "HTML";
 }
 .post .post-content .highlight.html > figcaption > span::after {
@@ -1142,7 +1156,7 @@ h6 {
 .post .post-content .highlight.html figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.js > table::after {
+.post .post-content .highlight.js::after {
   content: "JavaScript";
 }
 .post .post-content .highlight.js > figcaption > span::after {
@@ -1151,7 +1165,7 @@ h6 {
 .post .post-content .highlight.js figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.bash > table::after {
+.post .post-content .highlight.bash::after {
   content: "Bash";
 }
 .post .post-content .highlight.bash > figcaption > span::after {
@@ -1160,7 +1174,7 @@ h6 {
 .post .post-content .highlight.bash figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.css > table::after {
+.post .post-content .highlight.css::after {
   content: "CSS";
 }
 .post .post-content .highlight.css > figcaption > span::after {
@@ -1169,7 +1183,7 @@ h6 {
 .post .post-content .highlight.css figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.scss > table::after {
+.post .post-content .highlight.scss::after {
   content: "Scss";
 }
 .post .post-content .highlight.scss > figcaption > span::after {
@@ -1178,7 +1192,7 @@ h6 {
 .post .post-content .highlight.scss figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.java > table::after {
+.post .post-content .highlight.java::after {
   content: "Java";
 }
 .post .post-content .highlight.java > figcaption > span::after {
@@ -1187,7 +1201,7 @@ h6 {
 .post .post-content .highlight.java figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.xml > table::after {
+.post .post-content .highlight.xml::after {
   content: "XML";
 }
 .post .post-content .highlight.xml > figcaption > span::after {
@@ -1196,7 +1210,7 @@ h6 {
 .post .post-content .highlight.xml figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.python > table::after {
+.post .post-content .highlight.python::after {
   content: "Python";
 }
 .post .post-content .highlight.python > figcaption > span::after {
@@ -1205,7 +1219,7 @@ h6 {
 .post .post-content .highlight.python figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.json > table::after {
+.post .post-content .highlight.json::after {
   content: "JSON";
 }
 .post .post-content .highlight.json > figcaption > span::after {
@@ -1214,7 +1228,7 @@ h6 {
 .post .post-content .highlight.json figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.swift > table::after {
+.post .post-content .highlight.swift::after {
   content: "Swift";
 }
 .post .post-content .highlight.swift > figcaption > span::after {
@@ -1223,7 +1237,7 @@ h6 {
 .post .post-content .highlight.swift figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.ruby > table::after {
+.post .post-content .highlight.ruby::after {
   content: "Ruby";
 }
 .post .post-content .highlight.ruby > figcaption > span::after {
@@ -1232,7 +1246,7 @@ h6 {
 .post .post-content .highlight.ruby figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.php > table::after {
+.post .post-content .highlight.php::after {
   content: "PHP";
 }
 .post .post-content .highlight.php > figcaption > span::after {
@@ -1241,7 +1255,7 @@ h6 {
 .post .post-content .highlight.php figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.c > table::after {
+.post .post-content .highlight.c::after {
   content: "C";
 }
 .post .post-content .highlight.c > figcaption > span::after {
@@ -1250,7 +1264,7 @@ h6 {
 .post .post-content .highlight.c figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.cpp > table::after {
+.post .post-content .highlight.cpp::after {
   content: "C++";
 }
 .post .post-content .highlight.cpp > figcaption > span::after {
@@ -1259,7 +1273,7 @@ h6 {
 .post .post-content .highlight.cpp figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.scheme > table::after {
+.post .post-content .highlight.scheme::after {
   content: "Scheme";
 }
 .post .post-content .highlight.scheme > figcaption > span::after {
@@ -1268,7 +1282,7 @@ h6 {
 .post .post-content .highlight.scheme figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.objectivec > table::after {
+.post .post-content .highlight.objectivec::after {
   content: "Objective-C";
 }
 .post .post-content .highlight.objectivec > figcaption > span::after {
@@ -1277,7 +1291,7 @@ h6 {
 .post .post-content .highlight.objectivec figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.yml > table::after {
+.post .post-content .highlight.yml::after {
   content: "YAML";
 }
 .post .post-content .highlight.yml > figcaption > span::after {
@@ -1286,7 +1300,7 @@ h6 {
 .post .post-content .highlight.yml figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.stylus > table::after {
+.post .post-content .highlight.stylus::after {
   content: "Stylus";
 }
 .post .post-content .highlight.stylus > figcaption > span::after {
@@ -1295,7 +1309,7 @@ h6 {
 .post .post-content .highlight.stylus figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.sql > table::after {
+.post .post-content .highlight.sql::after {
   content: "SQL";
 }
 .post .post-content .highlight.sql > figcaption > span::after {
@@ -1304,7 +1318,7 @@ h6 {
 .post .post-content .highlight.sql figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.http > table::after {
+.post .post-content .highlight.http::after {
   content: "HTTP";
 }
 .post .post-content .highlight.http > figcaption > span::after {
@@ -1313,7 +1327,7 @@ h6 {
 .post .post-content .highlight.http figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.go > table::after {
+.post .post-content .highlight.go::after {
   content: "Go";
 }
 .post .post-content .highlight.go > figcaption > span::after {
@@ -1322,7 +1336,7 @@ h6 {
 .post .post-content .highlight.go figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.kotlin > table::after {
+.post .post-content .highlight.kotlin::after {
   content: "Kotlin";
 }
 .post .post-content .highlight.kotlin > figcaption > span::after {
@@ -1331,7 +1345,7 @@ h6 {
 .post .post-content .highlight.kotlin figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.ts > table::after {
+.post .post-content .highlight.ts::after {
   content: "TypeScript";
 }
 .post .post-content .highlight.ts > figcaption > span::after {
@@ -1340,7 +1354,7 @@ h6 {
 .post .post-content .highlight.ts figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.toml > table::after {
+.post .post-content .highlight.toml::after {
   content: "TOML";
 }
 .post .post-content .highlight.toml > figcaption > span::after {
@@ -1349,7 +1363,7 @@ h6 {
 .post .post-content .highlight.toml figcaption + table::after {
   display: none;
 }
-.post .post-content .highlight.yaml > table::after {
+.post .post-content .highlight.yaml::after {
   content: "YAML";
 }
 .post .post-content .highlight.yaml > figcaption > span::after {
@@ -1983,7 +1997,7 @@ h6 {
   width: 100%;
   height: 50px;
   background: #f5f7f3;
-  border-bottom: 1px solid #cacaca;
+  border-bottom: 1px solid #e6e6e6;
   text-align: center;
   transition: transform 300ms ease;
   z-index: 99;
