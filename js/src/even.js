@@ -32,6 +32,8 @@
   Even.prototype.navbar = function () {
     var $nav = $('#mobile-navbar');
     var $navIcon = $('.mobile-navbar-icon');
+    var lastScrollTop = $(window).scrollTop();
+    var scrollDelta = 8;
 
     var slideout = new Slideout({
       'panel': document.getElementById('mobile-panel'),
@@ -46,7 +48,7 @@
     });
 
     slideout.on('beforeopen', function () {
-      $nav.addClass('fixed-open');
+      $nav.addClass('fixed-open').removeClass('auto-hidden');
       $navIcon.addClass('icon-click').removeClass('icon-out');
     });
 
@@ -57,6 +59,37 @@
 
     $('#mobile-panel').on('touchend', function () {
       slideout.isOpen() && $navIcon.click();
+    });
+
+    $(window).scroll(function () {
+      var scrollTop = $(window).scrollTop();
+
+      if ($nav.css('display') === 'none') {
+        $nav.removeClass('auto-hidden');
+        lastScrollTop = scrollTop;
+        return;
+      }
+
+      if (slideout.isOpen()) {
+        lastScrollTop = scrollTop;
+        return;
+      }
+
+      if (scrollTop <= 0) {
+        $nav.removeClass('auto-hidden');
+        lastScrollTop = 0;
+        return;
+      }
+
+      if (Math.abs(scrollTop - lastScrollTop) <= scrollDelta) return;
+
+      if (scrollTop > lastScrollTop && scrollTop > $nav.outerHeight()) {
+        $nav.addClass('auto-hidden');
+      } else {
+        $nav.removeClass('auto-hidden');
+      }
+
+      lastScrollTop = scrollTop;
     });
   };
 
