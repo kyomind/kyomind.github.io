@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="為你的 AI Agent 掛上 Hooks 吧！">
+  <meta property="og:title" content="為你的 AI Agent 掛上 Hooks 吧！"><meta name="twitter:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。">
+  <meta property="og:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
+<meta name="description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
+            
+
+  <meta property="article:modified_time" content="2026-07-10T03:11:26+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-07-10T02:16:55+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/agent-hooks/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>為你的 AI Agent 掛上 Hooks 吧！ - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/weamind/" class="">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/DevOps/">DevOps (10)</a>
+          
+            <a href="/categories/Self/">Self (25)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link subscribe-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/weamind/">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">為你的 AI Agent 掛上 Hooks 吧！
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-07-10
+        </span><span class="post-category">
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Agent-Hooks"><span class="toc-text">什麼是 Agent Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hook"><span class="toc-text">為什麼「通知」是最重要的 Hook</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%9A%84%E5%81%8F%E5%A5%BD"><span class="toc-text">通用性的偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Copilot%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%85%B1%E7%94%A8-Claude-Code-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Copilot：直接共用 Claude Code 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-text">Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-Codex-app"><span class="toc-text">OpenAI Codex app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCode-CLI"><span class="toc-text">OpenCode CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E7%94%A8%E7%9A%84%E9%80%9A%E7%9F%A5%E8%85%B3%E6%9C%AC"><span class="toc-text">共用的通知腳本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%9C%83%E6%8F%9B%EF%BC%8C%E9%9C%80%E6%B1%82%E4%B8%8D%E6%9C%83"><span class="toc-text">工具會換，需求不會</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+<p>Claude Code、Cursor、Codex，這些 AI coding agent，相信你已經耳熟能詳，甚至每天都在用了。</p>
+<p>那你聽過 <strong>agent hooks</strong> 嗎？</p>
+<p>本文將介紹我目前唯二使用的 agent hooks，並說明它們為何重要。</p>
+<p>涵蓋工具包括 GitHub Copilot、Claude Code、Codex 以及 OpenCode CLI。</p>
+<p>不過，僅限於 macOS，其餘平台，就靠大家努力了☺️</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="什麼是-Agent-Hooks"><a href="#什麼是-Agent-Hooks" class="headerlink" title="什麼是 Agent Hooks"></a>什麼是 Agent Hooks</h2><p>引領風騷的 Claude Code 最早發明了 <a target="_blank" rel="noopener" href="https://code.claude.com/docs/zh-TW/hooks-guide">agent hooks</a> 這個概念。因為太過實用，後來其它工具也競相模仿。</p>
+<p>簡單說，agent hooks 是這些 AI coding agent 提供的<strong>事件機制</strong>：當 agent 完成任務、需要確認，或發生特定事件時，<strong>自動執行你指定的腳本或指令</strong>。</p>
+<p>如果你用過 Git hooks，比如最常見的 pre-commit hooks——在 commit 前跑腳本，agent hooks 就是同樣的概念：<strong>事件發生，執行特定指令</strong>。</p>
+<p>只是觸發點從 Git 操作變成 <strong>agent 行為</strong>。</p>
+<h3 id="為什麼不能只靠指令遵循"><a href="#為什麼不能只靠指令遵循" class="headerlink" title="為什麼不能只靠指令遵循"></a>為什麼不能只靠指令遵循</h3><p>我們固然可以在 prompt 裡寫「產完程式碼要記得跑 lint」之類的要求，但 AI 不一定每次都會照做，尤其當<strong>上下文愈來愈長、指示愈來愈複雜</strong>時。</p>
+<p>至於「做完記得通知我」就更不用說了，AI 根本沒這能力——它沒辦法「主動」播放音效或彈系統通知。</p>
+<p>而 hooks 保證了<strong>確定性</strong>——事件發生，腳本執行，不依靠 AI 的自主判斷。甚至做到了 AI <strong>本來不能做的事</strong>，比如播放音效🔔</p>
+<h3 id="我只設兩種-hook"><a href="#我只設兩種-hook" class="headerlink" title="我只設兩種 hook"></a>我只設兩種 hook</h3><p>Agent hooks 能做的事很多，基本上能變成指令、腳本的內容都行，比如自動跑 lint、formatter、把結果寫進檔案等等。</p>
+<p>但這些並非本文重點——我自己只設兩種 hook：<strong>完成通知</strong>和<strong>權限請求通知</strong>，都是為了在 agent 停下來時即時提醒我。</p>
+<hr>
+<h2 id="為什麼「通知」是最重要的-Hook"><a href="#為什麼「通知」是最重要的-Hook" class="headerlink" title="為什麼「通知」是最重要的 Hook"></a>為什麼「通知」是最重要的 Hook</h2><p>沒有通知，AI 幹活時你只有兩種選擇：在前景盯著它，或不停切回來確認。顯然兩種都不太有效率😅</p>
+<p>有通知，我們才好真正「非同步」使用它：把任務交給 agent，去做別的事，聽到聲音再回來。</p>
+<p>至於 lint、formatter，另有替代方案——<a target="_blank" rel="noopener" href="https://pre-commit.com/">pre-commit</a> 這類工具、CI&#x2F;CD 都能做。但完成通知只能透過 agent hooks，沒有其他機制能在 agent 停下來的那一刻通知你。</p>
+<blockquote>
+<p>相關文章：<a href="/pre-commit/">Python 開發：pre-commit 設定 Git Hooks 教學</a></p>
+</blockquote>
+<p>所以，其他 hooks 可以不設，但這個<strong>必須有</strong>！</p>
+<hr>
+<h2 id="通用性的偏好"><a href="#通用性的偏好" class="headerlink" title="通用性的偏好"></a>通用性的偏好</h2><p>我總共幫四個 AI coding agent 設定過 hooks：GitHub Copilot、OpenAI Codex app、Claude Code、OpenCode CLI。</p>
+<p>至於 Google 的 <a target="_blank" rel="noopener" href="https://antigravity.google/product/antigravity-2">Antigravity 2.0</a> app，因為內建了通知機制，就不必設定了。</p>
+<p>我只寫全域 hooks，不寫 project-level。這些設定放在 home 目錄，透過 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a> 在不同機器之間同步。</p>
+<blockquote>
+<p>相關文章：<a href="/yadm-cross-platform/">yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步</a></p>
+</blockquote>
+<p>我的 agent skills 也是採取同樣策略——幾乎都是<strong>全域</strong>的，很少寫 project-level。關於「<a href="/unsubscribe-github-copilot/#%E9%80%9A%E7%94%A8-vs-%E5%B0%88%E7%94%A8">通用 vs 專用</a>」，之前文章有討論過。</p>
+<hr>
+<p>接下來直接看設定，腳本也一併附上。</p>
+<h2 id="GitHub-Copilot：直接共用-Claude-Code-設定"><a href="#GitHub-Copilot：直接共用-Claude-Code-設定" class="headerlink" title="GitHub Copilot：直接共用 Claude Code 設定"></a>GitHub Copilot：直接共用 Claude Code 設定</h2><p>GitHub Copilot 能讀取 Claude Code 的設定檔中，有關 hooks 的設定，所以可以直接共用，不用額外寫。</p>
+<p>不過目前 Copilot 支援的事件種類沒有 Claude Code 多——<code>Stop</code> 事件有支援；不支援的事件會跳過，不會出錯。</p>
+<p>考慮到我目前已經暫時棄用 GitHub Copilot 了，這部分請容我略過😆</p>
+<p>如有需求，可參考<a target="_blank" rel="noopener" href="https://docs.github.com/en/copilot/concepts/agents/hooks">官方文件</a>。</p>
+<h2 id="Claude-Code"><a href="#Claude-Code" class="headerlink" title="Claude Code"></a>Claude Code</h2><p>設定位置：<code>~/.claude/settings.json</code>，內容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Stop&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;matcher&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;command&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bash ~/scripts/mac/notify-agent-stop.sh&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;PermissionRequest&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;matcher&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;command&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bash ~/scripts/mac/notify-agent-permission-request.sh&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Stop</code> 是<strong>完成通知</strong>：agent 停下來了。</p>
+<p><code>PermissionRequest</code> 是<strong>權限請求通知</strong>：當 agent 執行到需要<strong>額外權限</strong>時，需要你<strong>確認</strong>才能繼續。這個很有用，因為有時候你離開太久，回來發現 agent 早就在等你，白白浪費了時間。</p>
+<p>上面的 <code>command</code> 的 path 請改成你放置腳本的地方，還有檔名。</p>
+<h2 id="OpenAI-Codex-app"><a href="#OpenAI-Codex-app" class="headerlink" title="OpenAI Codex app"></a>OpenAI Codex app</h2><p>設定位置：<code>~/.codex/config.toml</code></p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[hooks]</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.Stop]]</span></span><br><span class="line"><span class="attr">matcher</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.Stop.hooks]]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;command&quot;</span></span><br><span class="line"><span class="attr">command</span> = <span class="string">&quot;/bin/bash /Users/kyo/scripts/mac/notify-agent-stop.sh&quot;</span></span><br><span class="line"><span class="attr">statusMessage</span> = <span class="string">&quot;Sending agent stop notification&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.PermissionRequest]]</span></span><br><span class="line"><span class="attr">matcher</span> = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[hooks.PermissionRequest.hooks]]</span></span><br><span class="line"><span class="attr">type</span> = <span class="string">&quot;command&quot;</span></span><br><span class="line"><span class="attr">command</span> = <span class="string">&quot;/bin/bash /Users/kyo/scripts/mac/notify-agent-permission-request.sh&quot;</span></span><br><span class="line"><span class="attr">statusMessage</span> = <span class="string">&quot;Sending agent permission request notification&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Codex app 採用 TOML 格式，和 Claude Code 的 JSON 語法不同，但結構類似。</p>
+<p>第一次設定，重啟 Codex app 時，會需要你確認 hooks 的內容與安全性。</p>
+<h2 id="OpenCode-CLI"><a href="#OpenCode-CLI" class="headerlink" title="OpenCode CLI"></a>OpenCode CLI</h2><p>OpenCode 比較特別：<strong>不能在設定檔裡寫 hooks，必須用 plugin。</strong></p>
+<p>而 <code>plugin/</code> 目錄要放在 opencode 設定檔（<code>opencode.json</code>）所在的目錄底下。</p>
+<p>我的設定位置：<code>~/.config/opencode/plugin/notify.js</code>，如下（內容是我用 AI Vibe 的，你可以自行調整）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">NotifyPlugin</span> = <span class="keyword">async</span> (<span class="params">&#123; $ &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">event</span>: <span class="keyword">async</span> (&#123; event &#125;) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (process.<span class="property">platform</span> !== <span class="string">&quot;darwin&quot;</span>) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (event.<span class="property">type</span> === <span class="string">&quot;session.idle&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">await</span> $<span class="string">`bash ~/scripts/mac/notify-agent-stop.sh`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (event.<span class="property">type</span> === <span class="string">&quot;permission.asked&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">await</span> $<span class="string">`bash ~/scripts/mac/notify-agent-permission-request.sh`</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另一個要注意的是，event type 是 <code>session.idle</code>，不是 <code>Stop</code>。不過意思差不多啦！</p>
+<h3 id="透過-Attention-設定"><a href="#透過-Attention-設定" class="headerlink" title="透過 Attention 設定"></a>透過 Attention 設定</h3><p>其實，OpenCode CLI 還可以透過 <a target="_blank" rel="noopener" href="https://opencode.ai/docs/tui/#attention">Attention</a> 功能——需要另外寫 <code>tui.json</code>，方便你設定通知，不一定要靠 plugin。</p>
+<p>但我不確定它是否適用於「非互動模式」（即 <code>opencode run</code>），而且我感覺這做法的<strong>通用性，還不如直接寫 plugin</strong>。畢竟腳本可以共用。</p>
+<hr>
+<h2 id="共用的通知腳本"><a href="#共用的通知腳本" class="headerlink" title="共用的通知腳本"></a>共用的通知腳本</h2><p>上述三套工具的 hooks 都呼叫同一組 shell 腳本，程式碼如下：</p>
+<h3 id="notify-agent-stop-sh"><a href="#notify-agent-stop-sh" class="headerlink" title="notify-agent-stop.sh"></a>notify-agent-stop.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 播放 Glass 音效</span></span><br><span class="line">afplay /System/Library/Sounds/Glass.aiff &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示 Notification Center 通知</span></span><br><span class="line">osascript -e <span class="string">&#x27;display notification &quot;Agent 回合已停止&quot; with title &quot;Agent Stop&quot;&#x27;</span> &amp;</span><br></pre></td></tr></table></figure>
+
+<p><code>afplay</code> 是 macOS 內建的指令，而音效名稱 <code>Glass</code> 也是內建的。</p>
+<p>可以到系統的「設定 &gt; 聲音 &gt; 提示聲」去聆聽每一種內建音效，換成自己喜歡的。</p>
+<p>也可以用 <code>afplay</code> 播放任何路徑下的音效檔（如 mp3、wav），只要檔案存在，指令就能正常運作。</p>
+<p>而 <code>osascript</code> 則能在<strong>通知中心</strong>發出<strong>文字提醒</strong>。這兩個指令搭配起來，就能在任務完成時，同時播放音效和彈出通知，讓你知道 agent 已經處理完畢。</p>
+<p>覺得這樣有點吵的話，可以二選一就好。</p>
+<h3 id="notify-agent-permission-request-sh"><a href="#notify-agent-permission-request-sh" class="headerlink" title="notify-agent-permission-request.sh"></a>notify-agent-permission-request.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 播放 Funk 音效</span></span><br><span class="line">afplay /System/Library/Sounds/Funk.aiff &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示 Notification Center 通知</span></span><br><span class="line">osascript -e <span class="string">&#x27;display notification &quot;Agent 需要權限確認&quot; with title &quot;Agent Permission Request&quot;&#x27;</span> &amp;</span><br></pre></td></tr></table></figure>
+
+<p>我覺得 <code>Funk</code> 音效很適合當「確認」使用XD</p>
+<hr>
+<h2 id="工具會換，需求不會"><a href="#工具會換，需求不會" class="headerlink" title="工具會換，需求不會"></a>工具會換，需求不會</h2><p>儘管不同的工具有不同的設定，但「通知」這個需求是一樣的。</p>
+<p>所以我在每個工具中都實作了它，讓核心行為保持一致。</p>
+<p>如此一來，你想換工具或退掉其中一部分時，體驗不會受到太大影響。你只需要維護一組通知腳本，所有 agent 都能共用。</p>
+<p>畢竟，工具只是工具，<a href="/unsubscribe-github-copilot/#%E5%B7%A5%E5%85%B7%E5%8F%AA%E6%98%AF%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%BE%9D%E6%88%80%E5%AE%83">不要依戀它。</a></p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/github-copilot/" title="GitHub Copilot 心得——寫文章的利器？" rel="bookmark">GitHub Copilot 心得——寫文章的利器？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weekly-review-06/" title="十年後，還能繼續當軟體工程師嗎？" rel="bookmark">十年後，還能繼續當軟體工程師嗎？</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/unsubscribe-github-copilot/" title="我退訂了 GitHub Copilot" rel="bookmark">我退訂了 GitHub Copilot</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/GitHub-Copilot/">GitHub Copilot</a>
+            <a href="/tags/AI-%E5%B7%A5%E5%85%B7/">AI 工具</a>
+            <a href="/tags/Claude-Code/">Claude Code</a>
+            <a href="/tags/Codex/">Codex</a>
+            <a href="/tags/OpenCode/">OpenCode</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/weamind-infra/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構</span>
+        <span class="prev-text nav-mobile">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">10</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">25</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">62</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">40</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="social-icon icon-x" title="X">
+            <img src="https://api.iconify.design/fa6-brands/x-twitter.svg?color=%2339495c" alt="X" />
+          </a>
+        <a target="_blank" rel="noopener" href="https://www.threads.net/@kyomind.tw" class="social-icon icon-threads" title="Threads">
+            <img src="https://api.iconify.design/fa6-brands/threads.svg?color=%2339495c" alt="Threads" />
+          </a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+    ⌬
+    </span>
+    <span class="author"><a class="theme-link" target="_blank" rel="noopener" href="https://kyomind.tw/">Kyo Huang</a></span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
