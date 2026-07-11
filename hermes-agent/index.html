@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-11T17:15:06+08:00" />
+  <meta property="article:modified_time" content="2026-07-11T17:27:47+08:00" />
 
 
 
@@ -224,7 +224,7 @@
 <p>不推薦 <code>5.6 Terra</code>，中等 reasoning level 下，能力還不如 5.5，但 token 消耗相當。</p>
 <h3 id="OpenCode-Go-方案"><a href="#OpenCode-Go-方案" class="headerlink" title="OpenCode Go 方案"></a>OpenCode Go 方案</h3><p>因為我平常也會用 Codex 寫程式或處理專案，和 Hermes Agent 共用額度，難免還是會有 token 焦慮。</p>
 <p>後來我找到了一個便宜又大碗的替代方案——<a target="_blank" rel="noopener" href="https://opencode.ai/zht/go">OpenCode Go</a>。</p>
-<p>在此暫不詳細介紹，只要知道它也能作為 Hermes Agent 的 provider 即可。</p>
+<p>在此暫不詳述，只要知道它也能作為 Hermes Agent 的 provider 即可。</p>
 <p>我現在就是以 Go 方案作為主力，而 Codex 額度僅在必要時才用。</p>
 <p>如果你想試 OpenCode Go，可以考慮透過<a target="_blank" rel="noopener" href="https://opencode.ai/go?ref=W1961YHBF2">我的推廣連結</a>訂閱，我們將各獲得 $5 美元的 Go 優惠額度。</p>
 <p>推薦模型：</p>
@@ -245,7 +245,7 @@
 <h2 id="2-使用-Tavily-Web-Search"><a href="#2-使用-Tavily-Web-Search" class="headerlink" title="2. 使用 Tavily Web Search"></a>2. 使用 Tavily Web Search</h2><p>Hermes 內建的搜尋功能，就是透過 Python 程式碼，模擬人類操作瀏覽器進行查詢。</p>
 <p>做過 LLM app 的開發者都知道，這種做法不僅效率不佳，而且很耗 token XD</p>
 <p><a target="_blank" rel="noopener" href="https://www.tavily.com/">Tavily</a> 是專為 AI Agent 設計的搜尋 API 服務，而且每月有 1000 次的免費額度——我基本用不完。</p>
-<p>取得 API Key，在 <code>hermes tools</code> 裡設定就好，影片中有教，在此不贅。</p>
+<p>取得 API Key，在 <code>hermes tools</code> 裡設定就好，可參考影片中的教學，在此不贅。</p>
 <h2 id="3-上調-Memory-上限"><a href="#3-上調-Memory-上限" class="headerlink" title="3. 上調 Memory 上限"></a>3. 上調 Memory 上限</h2><p>Hermes 會記住與你的互動，讓你感覺愈來愈熟悉，其實本質上就是把一些互動記錄，寫在文字檔裡而已XD</p>
 <p>記憶主要有兩大部分：</p>
 <ul>
