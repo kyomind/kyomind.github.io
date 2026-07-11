@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="告別 ClickOps：用 Terraform 重建 GCP 免費 VM">
+  <meta property="og:title" content="告別 ClickOps：用 Terraform 重建 GCP 免費 VM"><meta name="twitter:description" content="介紹如何用 Terraform 重建 GCP Free Tier VM，從手動 ClickOps 轉向可追蹤、可重複執行的 IaC 流程。">
+  <meta property="og:description" content="介紹如何用 Terraform 重建 GCP Free Tier VM，從手動 ClickOps 轉向可追蹤、可重複執行的 IaC 流程。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
+<meta name="description" content="介紹如何用 Terraform 重建 GCP Free Tier VM，從手動 ClickOps 轉向可追蹤、可重複執行的 IaC 流程。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
+            
+
+  <meta property="article:modified_time" content="2026-07-11T00:24:43+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-07-10T12:31:15+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/terraform-gcp-free-tier-vm/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>告別 ClickOps：用 Terraform 重建 GCP 免費 VM - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/weamind/" class="">
+        <li class="mobile-menu-item">WeaMind
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/Self/">Self (25)</a>
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (40)</a>
+          
+            <a href="/categories/DevOps/">DevOps (11)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (62)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link subscribe-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/weamind/">
+          WeaMind
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">告別 ClickOps：用 Terraform 重建 GCP 免費 VM
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-07-10
+        </span><span class="post-category">
+            <a href="/categories/DevOps/">DevOps</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ClickOps-%E7%9A%84%E4%BB%A3%E5%83%B9"><span class="toc-text">ClickOps 的代價</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ClickOps-%E7%9A%84%E6%95%91%E6%98%9F%EF%BC%9AIaC"><span class="toc-text">ClickOps 的救星：IaC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Terraform-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-text">Terraform 是什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Terraform-%E8%A8%AD%E5%AE%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6"><span class="toc-text">Terraform 設定的基本元件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%81%B8-GCP-Free-Tier-VM-%E7%95%B6%E7%B7%B4%E7%BF%92%E5%B0%8D%E8%B1%A1"><span class="toc-text">為什麼選 GCP Free Tier VM 當練習對象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%80%8B-apply-%E5%B0%B1%E6%90%9E%E5%AE%9A%EF%BC%9ATerraform-%E7%9A%84%E7%88%BD%E5%BF%AB%E4%B9%8B%E8%99%95"><span class="toc-text">一個 apply 就搞定：Terraform 的爽快之處</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-Terraform-%E8%A8%AD%E5%AE%9A"><span class="toc-text">我的 Terraform 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH-%E9%80%A3%E7%B7%9A"><span class="toc-text">SSH 連線</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%83%BD%E5%80%92%E6%B5%81%E7%9A%84%E6%99%82%E5%85%89"><span class="toc-text">不能倒流的時光</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+<p>大家看過古古的這篇〈<a target="_blank" rel="noopener" href="https://kucw.io/blog/gcp-free-tier/">終身免費的 VM 服務！Google Cloud 免費方案分享</a>〉嗎？</p>
+<p>文中手把手教你設定並建立 GCP Free Tier VM。說真的，以三大雲端供應商的 VM 價格來看，這樣的免費 VM 絕對堪稱大方！</p>
+<p>去年，我照著做過一次，大概要花個十來分鐘。</p>
+<p>後來她更新文章說有個設定沒寫到，會扣一點錢——我有發現，就先把 VM 刪了。</p>
+<p>刪了之後，我就再也沒有重新建立過。</p>
+<p>一來是在 <a href="https://blog.kyomind.tw/hetzner/">Hetzner</a> 上已經有一台規格更高的 VM 在跑了，沒有急迫需求。二來則是……那些「click」實在太麻煩了，想想就有點懶。</p>
+<p>但現在不同了——因為我們有了 Terraform😎</p>
+<hr>
+<h2 id="ClickOps-的代價"><a href="#ClickOps-的代價" class="headerlink" title="ClickOps 的代價"></a>ClickOps 的代價</h2><p>在雲端平台的 console 上，透過大量手動操作，點來點去建立基礎設施，在圈子裡戲稱為 <a target="_blank" rel="noopener" href="https://dev.to/terraformmonkey/what-is-clickops-27f9">ClickOps</a>：</p>
+<blockquote>
+<p>ClickOps is when engineers make manual changes directly in the cloud provider’s console.</p>
+</blockquote>
+<p>那為什麼說是「戲稱」呢？</p>
+<p>因為一般而言，xxxOps（比如 <a target="_blank" rel="noopener" href="https://aws.amazon.com/tw/what-is/mlops/">MLOps</a>、<a target="_blank" rel="noopener" href="https://www.hwchiu.com/docs/2020/gitops">GitOps</a>）泛指某種流程透過<strong>程式碼自動化</strong>，但諷刺的是，ClickOps 裡沒有 code，只有 click😂</p>
+<p>這種做法的優點是<strong>直觀、低門檻</strong>，但壞處也不少。</p>
+<h3 id="一次性、不可重複"><a href="#一次性、不可重複" class="headerlink" title="一次性、不可重複"></a>一次性、不可重複</h3><p>ClickOps 最根本的問題是：做完就沒了，下次還得重來。</p>
+<p>你花十分鐘建好一台 VM，刪掉之後想再建一台？再花十分鐘。想建十台一樣的？那就是一百分鐘。</p>
+<p>沒有任何東西可以「重複使用」，每次都是從零開始。</p>
+<h3 id="手動操作的疲勞"><a href="#手動操作的疲勞" class="headerlink" title="手動操作的疲勞"></a>手動操作的疲勞</h3><p>回想當初手動建 VM 的過程：小心翼翼對照文章、盯著 console 怕點錯、一堆下拉選單要確認。</p>
+<p>Region 選對了嗎？machine type 符合免費條件嗎？disk type 要選 standard 還是 balanced？network tier 要 Premium 還是 Standard？</p>
+<p>每一個選項都要仔細核對，因為點錯就可能開始扣錢。</p>
+<h3 id="改動不可追溯"><a href="#改動不可追溯" class="headerlink" title="改動不可追溯"></a>改動不可追溯</h3><p>更麻煩的是，這些操作完全沒有紀錄——誰改了什麼、什麼時候改的、為什麼改，全都無從得知。</p>
+<p>即使你截圖紀錄，也很難保證不會漏掉某個設定。更別說想 rollback 到之前的狀態——根本沒有「之前的狀態」可以回復。</p>
+<hr>
+<p>以上就是 ClickOps 的三大代價。</p>
+<p>所以我刪掉那台 VM 後，就沒有動力重建了。光是想到要再點一次那些設定，就覺得心累。</p>
+<h2 id="ClickOps-的救星：IaC"><a href="#ClickOps-的救星：IaC" class="headerlink" title="ClickOps 的救星：IaC"></a>ClickOps 的救星：IaC</h2><p>ClickOps 的反面是 IaC——<a target="_blank" rel="noopener" href="https://aws.amazon.com/what-is/iac/">Infrastructure as Code</a>，用程式碼定義基礎設施。</p>
+<p>簡單說，就是把你在 console 上點的那些設定，全部寫成程式碼。</p>
+<p>這裡講的「程式碼」不一定是傳統程式語言，更常見的是<strong>設定檔格式</strong>——像 Terraform 用的就是 HCL（HashiCorp Configuration Language）。</p>
+<p>重點是：它是<strong>文字檔</strong>——能留下<strong>紀錄</strong>。</p>
+<p>下次要建同樣的東西？重跑一次就好。改壞了？Rollback 就好。想知道現在的設定是什麼？直接打開檔案看就好。</p>
+<p>IaC 工具有很多，Terraform、<a target="_blank" rel="noopener" href="https://www.pulumi.com/">Pulumi</a>、AWS CloudFormation 都是。</p>
+<p>本文使用最常見的——Terraform。</p>
+<hr>
+<h2 id="Terraform-是什麼"><a href="#Terraform-是什麼" class="headerlink" title="Terraform 是什麼"></a>Terraform 是什麼</h2><p><a target="_blank" rel="noopener" href="https://www.terraform.io/">Terraform</a> 是 HashiCorp 出的 IaC 工具。過去好段時間裡，它甚至是 IaC 的代名詞。</p>
+<p>它的核心概念是<strong>宣告式</strong>：你描述「我要什麼」，Terraform 幫你算出「要怎麼做」。</p>
+<p>換言之，就是把你在 console 點的東西寫成 <code>.tf</code> 檔案。</p>
+<p>這些 <code>.tf</code> 檔案，如上所述，都是文字檔——可以 commit 到 Git，可以 code review，可以重複執行。</p>
+<p>這就是 IaC 的價值。</p>
+<h2 id="Terraform-設定的基本元件"><a href="#Terraform-設定的基本元件" class="headerlink" title="Terraform 設定的基本元件"></a>Terraform 設定的基本元件</h2><p>一個 Terraform 專案通常會有這些 <code>.tf</code> 檔案：</p>
+<ul>
+<li><strong>versions.tf</strong>：指定 Terraform 版本與 provider 版本</li>
+<li><strong>provider.tf</strong>：設定雲端供應商（例如 GCP、AWS）</li>
+<li><strong>variables.tf</strong>：定義可調整的參數</li>
+<li><strong>main.tf</strong>：主要的資源定義</li>
+<li><strong>outputs.tf</strong>：定義執行完成後要輸出的資訊</li>
+</ul>
+<p>請注意，這些檔名只是<strong>慣例</strong>，而不是規則。但社群普遍採用這套命名慣例來組織檔案，方便閱讀和協作。</p>
+<h3 id="資源清單"><a href="#資源清單" class="headerlink" title="資源清單"></a>資源清單</h3><p>Terraform 會讀取目錄下所有 <code>.tf</code> 檔案並合併處理，檔名本身<strong>沒有特殊意義</strong>。</p>
+<p>這是因為 <code>.tf</code> 檔案的本質就是一份<strong>資源清單</strong>——你宣告「我要這些資源」，Terraform 負責建立。它不是從上到下執行的腳本，而是根據資源之間的<strong>依賴關係</strong>，自動決定建立順序。</p>
+<p>所以用一個檔案寫完，還是拆成五個檔案，對 Terraform 來說<strong>沒有區別</strong>。分檔純粹是為了人類好讀好維護。</p>
+<p>知道這些，當你看到別人的 Terraform 專案時，就能大致理解它的結構。後面會分享我實際用的設定，到時還可以對照著看。</p>
+<hr>
+<h2 id="為什麼選-GCP-Free-Tier-VM-當練習對象"><a href="#為什麼選-GCP-Free-Tier-VM-當練習對象" class="headerlink" title="為什麼選 GCP Free Tier VM 當練習對象"></a>為什麼選 GCP Free Tier VM 當練習對象</h2><p>Terraform 是 DevOps 必備技能，這點應該沒什麼爭議。</p>
+<p>但學 Terraform 要有練習對象。而我現有的 K3s cluster 並不適合拿來練手——就算用 Terraform 建好 VM，後面還有一堆 cluster 設定要手動處理，這部分我尚未自動化。</p>
+<p>我需要一個可以輕鬆玩、弄壞沒關係，<strong>隨時都能砍掉重練</strong>的練習環境。</p>
+<p>而 GCP Free Tier VM 剛好符合：</p>
+<ul>
+<li><strong>免費</strong>：符合條件就不用錢，練習零成本</li>
+<li><strong>獨立</strong>：跟現有的 K3s cluster 完全分開</li>
+<li><strong>可重來</strong>：隨時 destroy 重建，不怕搞壞</li>
+</ul>
+<p>這些特性，造就了一個得天獨厚的學習場景。</p>
+<hr>
+<h2 id="一個-apply-就搞定：Terraform-的爽快之處"><a href="#一個-apply-就搞定：Terraform-的爽快之處" class="headerlink" title="一個 apply 就搞定：Terraform 的爽快之處"></a>一個 apply 就搞定：Terraform 的爽快之處</h2><p>現在我用 Terraform 重建這台 VM，只需要不到 30 秒。</p>
+<p>Region、machine type、disk、network tier，全部寫在 <code>.tf</code> 檔裡。不用再對照文章、不用盯著 console 怕點錯或遺漏。</p>
+<p>想建立？一個 <code>terraform apply</code> 指令即可。</p>
+<p>想刪除？使用 <code>terraform destroy</code>。</p>
+<p>就這麼簡單！</p>
+<p>這種從 ClickOps 到 IaC 的落差與舒適感，親身經歷過的人更能體會。</p>
+<p>沒錯，瑞凡，我真的回不去了！</p>
+<hr>
+<h2 id="我的-Terraform-設定"><a href="#我的-Terraform-設定" class="headerlink" title="我的 Terraform 設定"></a>我的 Terraform 設定</h2><p>我用來建 GCP Free Tier VM 的 Terraform 設定，已經放在 GitHub 上，可自行參考：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra/tree/main/terraform/gcp-free-tier-vm">weamind-infra&#x2F;terraform&#x2F;gcp-free-tier-vm</a></p>
+</blockquote>
+<p>它主要做的事情：</p>
+<ul>
+<li>建立一台符合 Free Tier 條件的 GCE VM</li>
+<li>設定 network tier 為 STANDARD（Free Tier 必須）</li>
+<li>建立 HTTP&#x2F;HTTPS&#x2F;SSH 的 firewall 規則</li>
+<li>用 tags 讓 VM 套用這些 firewall 規則</li>
+<li>把 SSH key 寫進 instance metadata</li>
+</ul>
+<p>想試的人可以 clone 下來，填好 <code>terraform.tfvars</code>，然後 <code>terraform apply</code>。</p>
+<p>如果覺得不錯，歡迎幫我按個 ⭐️！</p>
+<hr>
+<h2 id="SSH-連線"><a href="#SSH-連線" class="headerlink" title="SSH 連線"></a>SSH 連線</h2><p>Terraform 建好 VM 之後，你還要能連進去。</p>
+<p>最簡單的方式是用 <code>gcloud compute ssh</code>——它會自動透過你的 GCP 身分認證，幫你處理 SSH key，不用額外設定。</p>
+<p>我的 Terraform 設定有另外寫 SSH key 進 instance metadata，但那需要使用者名稱、key path 完全對應，對一般人來說反而麻煩。</p>
+<p>如果你想了解更多，可以參考 <a target="_blank" rel="noopener" href="https://cloud.google.com/compute/docs/connect/standard-ssh">GCP 官方的 SSH 連線說明</a>。</p>
+<hr>
+<h2 id="不能倒流的時光"><a href="#不能倒流的時光" class="headerlink" title="不能倒流的時光"></a>不能倒流的時光</h2><p>由儉入奢易，由奢入儉難，我想這就是從 ClickOps 到 IaC 的心態轉變XD</p>
+<p>Terraform 是 DevOps 必備技能，而 GCP Free Tier VM 是一個低風險、零成本的練習場。對我來說，它更是轉職路上的一塊拼圖。</p>
+<p>如果你也想告別 ClickOps，不妨從這裡開始。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/k3s-for-weamind/" title="K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind" rel="bookmark">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind-infra/" title="WeaMind Infra 介紹：VM、Load Balancer 與雲端架構" rel="bookmark">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/weamind/" title="WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集" rel="bookmark">WeaMind 專案解析：從單機 LINE Bot 到 K8s 叢集</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Hetzner/">Hetzner</a>
+            <a href="/tags/GCP/">GCP</a>
+            <a href="/tags/Terraform/">Terraform</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/agent-hooks/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">為你的 AI Agent 掛上 Hooks 吧！</span>
+        <span class="prev-text nav-mobile">為你的 AI Agent 掛上 Hooks 吧！</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">11</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">25</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">62</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">40</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="social-icon icon-x" title="X">
+            <img src="https://api.iconify.design/fa6-brands/x-twitter.svg?color=%2339495c" alt="X" />
+          </a>
+        <a target="_blank" rel="noopener" href="https://www.threads.net/@kyomind.tw" class="social-icon icon-threads" title="Threads">
+            <img src="https://api.iconify.design/fa6-brands/threads.svg?color=%2339495c" alt="Threads" />
+          </a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+    ⌬
+    </span>
+    <span class="author"><a class="theme-link" target="_blank" rel="noopener" href="https://kyomind.tw/">Kyo Huang</a></span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

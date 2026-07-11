@@ -6,7 +6,7 @@
   <link href="https://blog.kyomind.tw/atom.xml" rel="self"/>
   
   <link href="https://blog.kyomind.tw/"/>
-  <updated>2026-07-10T08:09:26.256Z</updated>
+  <updated>2026-07-11T00:24:43.222Z</updated>
   <id>https://blog.kyomind.tw/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>告別 ClickOps：用 Terraform 重建 GCP 免費 VM</title>
+    <link href="https://blog.kyomind.tw/terraform-gcp-free-tier-vm/"/>
+    <id>https://blog.kyomind.tw/terraform-gcp-free-tier-vm/</id>
+    <published>2026-07-10T12:31:15.000Z</published>
+    <updated>2026-07-11T00:24:43.222Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://img.kyomind.tw/code-and-me.png"></p><p>大家看過古古的這篇〈<a href="https://kucw.io/blog/gcp-free-tier/">終身免費的 VM 服務！Google Cloud 免費方案分享</a>〉嗎？</p><p>文中手把手教你設定並建立 GCP Free Tier VM。說真的，以三大雲端供應商的 VM 價格來看，這樣的免費 VM 絕對堪稱大方！</p><p>去年，我照著做過一次，大概要花個十來分鐘。</p><p>後來她更新文章說有個設定沒寫到，會扣一點錢——我有發現，就先把 VM 刪了。</p><p>刪了之後，我就再也沒有重新建立過。</p><p>一來是在 <a href="https://blog.kyomind.tw/hetzner/">Hetzner</a> 上已經有一台規格更高的 VM 在跑了，沒有急迫需求。二來則是……那些「click」實在太麻煩了，想想就有點懶。</p><p>但現在不同了——因為我們有了 Terraform😎</p><hr><h2 id="ClickOps-的代價"><a href="#ClickOps-的代價" class="headerlink" title="ClickOps 的代價"></a>ClickOps 的代價</h2><p>在雲端平台的 console 上，透過大量手動操作，點來點去建立基礎設施，在圈子裡戲稱為 <a href="https://dev.to/terraformmonkey/what-is-clickops-27f9">ClickOps</a>：</p><blockquote><p>ClickOps is when engineers make manual changes directly in the cloud provider’s console.</p></blockquote><p>那為什麼說是「戲稱」呢？</p><p>因為一般而言，xxxOps（比如 <a href="https://aws.amazon.com/tw/what-is/mlops/">MLOps</a>、<a href="https://www.hwchiu.com/docs/2020/gitops">GitOps</a>）泛指某種流程透過<strong>程式碼自動化</strong>，但諷刺的是，ClickOps 裡沒有 code，只有 click😂</p><p>這種做法的優點是<strong>直觀、低門檻</strong>，但壞處也不少。</p><h3 id="一次性、不可重複"><a href="#一次性、不可重複" class="headerlink" title="一次性、不可重複"></a>一次性、不可重複</h3><p>ClickOps 最根本的問題是：做完就沒了，下次還得重來。</p><p>你花十分鐘建好一台 VM，刪掉之後想再建一台？再花十分鐘。想建十台一樣的？那就是一百分鐘。</p><p>沒有任何東西可以「重複使用」，每次都是從零開始。</p><h3 id="手動操作的疲勞"><a href="#手動操作的疲勞" class="headerlink" title="手動操作的疲勞"></a>手動操作的疲勞</h3><p>回想當初手動建 VM 的過程：小心翼翼對照文章、盯著 console 怕點錯、一堆下拉選單要確認。</p><p>Region 選對了嗎？machine type 符合免費條件嗎？disk type 要選 standard 還是 balanced？network tier 要 Premium 還是 Standard？</p><p>每一個選項都要仔細核對，因為點錯就可能開始扣錢。</p><h3 id="改動不可追溯"><a href="#改動不可追溯" class="headerlink" title="改動不可追溯"></a>改動不可追溯</h3><p>更麻煩的是，這些操作完全沒有紀錄——誰改了什麼、什麼時候改的、為什麼改，全都無從得知。</p><p>即使你截圖紀錄，也很難保證不會漏掉某個設定。更別說想 rollback 到之前的狀態——根本沒有「之前的狀態」可以回復。</p><hr><p>以上就是 ClickOps 的三大代價。</p><p>所以我刪掉那台 VM 後，就沒有動力重建了。光是想到要再點一次那些設定，就覺得心累。</p><h2 id="ClickOps-的救星：IaC"><a href="#ClickOps-的救星：IaC" class="headerlink" title="ClickOps 的救星：IaC"></a>ClickOps 的救星：IaC</h2><p>ClickOps 的反面是 IaC——<a href="https://aws.amazon.com/what-is/iac/">Infrastructure as Code</a>，用程式碼定義基礎設施。</p><p>簡單說，就是把你在 console 上點的那些設定，全部寫成程式碼。</p><p>這裡講的「程式碼」不一定是傳統程式語言，更常見的是<strong>設定檔格式</strong>——像 Terraform 用的就是 HCL（HashiCorp Configuration Language）。</p><p>重點是：它是<strong>文字檔</strong>——能留下<strong>紀錄</strong>。</p><p>下次要建同樣的東西？重跑一次就好。改壞了？Rollback 就好。想知道現在的設定是什麼？直接打開檔案看就好。</p><p>IaC 工具有很多，Terraform、<a href="https://www.pulumi.com/">Pulumi</a>、AWS CloudFormation 都是。</p><p>本文使用最常見的——Terraform。</p><hr><h2 id="Terraform-是什麼"><a href="#Terraform-是什麼" class="headerlink" title="Terraform 是什麼"></a>Terraform 是什麼</h2><p><a href="https://www.terraform.io/">Terraform</a> 是 HashiCorp 出的 IaC 工具。過去好段時間裡，它甚至是 IaC 的代名詞。</p><p>它的核心概念是<strong>宣告式</strong>：你描述「我要什麼」，Terraform 幫你算出「要怎麼做」。</p><p>換言之，就是把你在 console 點的東西寫成 <code>.tf</code> 檔案。</p><p>這些 <code>.tf</code> 檔案，如上所述，都是文字檔——可以 commit 到 Git，可以 code review，可以重複執行。</p><p>這就是 IaC 的價值。</p><h2 id="Terraform-設定的基本元件"><a href="#Terraform-設定的基本元件" class="headerlink" title="Terraform 設定的基本元件"></a>Terraform 設定的基本元件</h2><p>一個 Terraform 專案通常會有這些 <code>.tf</code> 檔案：</p><ul><li><strong>versions.tf</strong>：指定 Terraform 版本與 provider 版本</li><li><strong>provider.tf</strong>：設定雲端供應商（例如 GCP、AWS）</li><li><strong>variables.tf</strong>：定義可調整的參數</li><li><strong>main.tf</strong>：主要的資源定義</li><li><strong>outputs.tf</strong>：定義執行完成後要輸出的資訊</li></ul><p>請注意，這些檔名只是<strong>慣例</strong>，而不是規則。但社群普遍採用這套命名慣例來組織檔案，方便閱讀和協作。</p><h3 id="資源清單"><a href="#資源清單" class="headerlink" title="資源清單"></a>資源清單</h3><p>Terraform 會讀取目錄下所有 <code>.tf</code> 檔案並合併處理，檔名本身<strong>沒有特殊意義</strong>。</p><p>這是因為 <code>.tf</code> 檔案的本質就是一份<strong>資源清單</strong>——你宣告「我要這些資源」，Terraform 負責建立。它不是從上到下執行的腳本，而是根據資源之間的<strong>依賴關係</strong>，自動決定建立順序。</p><p>所以用一個檔案寫完，還是拆成五個檔案，對 Terraform 來說<strong>沒有區別</strong>。分檔純粹是為了人類好讀好維護。</p><p>知道這些，當你看到別人的 Terraform 專案時，就能大致理解它的結構。後面會分享我實際用的設定，到時還可以對照著看。</p><hr><h2 id="為什麼選-GCP-Free-Tier-VM-當練習對象"><a href="#為什麼選-GCP-Free-Tier-VM-當練習對象" class="headerlink" title="為什麼選 GCP Free Tier VM 當練習對象"></a>為什麼選 GCP Free Tier VM 當練習對象</h2><p>Terraform 是 DevOps 必備技能，這點應該沒什麼爭議。</p><p>但學 Terraform 要有練習對象。而我現有的 K3s cluster 並不適合拿來練手——就算用 Terraform 建好 VM，後面還有一堆 cluster 設定要手動處理，這部分我尚未自動化。</p><p>我需要一個可以輕鬆玩、弄壞沒關係，<strong>隨時都能砍掉重練</strong>的練習環境。</p><p>而 GCP Free Tier VM 剛好符合：</p><ul><li><strong>免費</strong>：符合條件就不用錢，練習零成本</li><li><strong>獨立</strong>：跟現有的 K3s cluster 完全分開</li><li><strong>可重來</strong>：隨時 destroy 重建，不怕搞壞</li></ul><p>這些特性，造就了一個得天獨厚的學習場景。</p><hr><h2 id="一個-apply-就搞定：Terraform-的爽快之處"><a href="#一個-apply-就搞定：Terraform-的爽快之處" class="headerlink" title="一個 apply 就搞定：Terraform 的爽快之處"></a>一個 apply 就搞定：Terraform 的爽快之處</h2><p>現在我用 Terraform 重建這台 VM，只需要不到 30 秒。</p><p>Region、machine type、disk、network tier，全部寫在 <code>.tf</code> 檔裡。不用再對照文章、不用盯著 console 怕點錯或遺漏。</p><p>想建立？一個 <code>terraform apply</code> 指令即可。</p><p>想刪除？使用 <code>terraform destroy</code>。</p><p>就這麼簡單！</p><p>這種從 ClickOps 到 IaC 的落差與舒適感，親身經歷過的人更能體會。</p><p>沒錯，瑞凡，我真的回不去了！</p><hr><h2 id="我的-Terraform-設定"><a href="#我的-Terraform-設定" class="headerlink" title="我的 Terraform 設定"></a>我的 Terraform 設定</h2><p>我用來建 GCP Free Tier VM 的 Terraform 設定，已經放在 GitHub 上，可自行參考：</p><blockquote><p><a href="https://github.com/kyomind/weamind-infra/tree/main/terraform/gcp-free-tier-vm">weamind-infra&#x2F;terraform&#x2F;gcp-free-tier-vm</a></p></blockquote><p>它主要做的事情：</p><ul><li>建立一台符合 Free Tier 條件的 GCE VM</li><li>設定 network tier 為 STANDARD（Free Tier 必須）</li><li>建立 HTTP&#x2F;HTTPS&#x2F;SSH 的 firewall 規則</li><li>用 tags 讓 VM 套用這些 firewall 規則</li><li>把 SSH key 寫進 instance metadata</li></ul><p>想試的人可以 clone 下來，填好 <code>terraform.tfvars</code>，然後 <code>terraform apply</code>。</p><p>如果覺得不錯，歡迎幫我按個 ⭐️！</p><hr><h2 id="SSH-連線"><a href="#SSH-連線" class="headerlink" title="SSH 連線"></a>SSH 連線</h2><p>Terraform 建好 VM 之後，你還要能連進去。</p><p>最簡單的方式是用 <code>gcloud compute ssh</code>——它會自動透過你的 GCP 身分認證，幫你處理 SSH key，不用額外設定。</p><p>我的 Terraform 設定有另外寫 SSH key 進 instance metadata，但那需要使用者名稱、key path 完全對應，對一般人來說反而麻煩。</p><p>如果你想了解更多，可以參考 <a href="https://cloud.google.com/compute/docs/connect/standard-ssh">GCP 官方的 SSH 連線說明</a>。</p><hr><h2 id="不能倒流的時光"><a href="#不能倒流的時光" class="headerlink" title="不能倒流的時光"></a>不能倒流的時光</h2><p>由儉入奢易，由奢入儉難，我想這就是從 ClickOps 到 IaC 的心態轉變XD</p><p>Terraform 是 DevOps 必備技能，而 GCP Free Tier VM 是一個低風險、零成本的練習場。對我來說，它更是轉職路上的一塊拼圖。</p><p>如果你也想告別 ClickOps，不妨從這裡開始。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.kyomind.tw/code-and-me.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;大家看過古古的這篇〈&lt;a href=&quot;https://kucw.io/blog/gcp-free-tier/&quot;&gt;終身免費的 VM 服務！Google Clou</summary>
+      
+    
+    
+    <content src="https://img.kyomind.tw/code-and-me.png" type="image"/>
+    
+    
+    <category term="DevOps" scheme="https://blog.kyomind.tw/categories/DevOps/"/>
+    
+    
+    <category term="Hetzner" scheme="https://blog.kyomind.tw/tags/Hetzner/"/>
+    
+    <category term="GCP" scheme="https://blog.kyomind.tw/tags/GCP/"/>
+    
+    <category term="Terraform" scheme="https://blog.kyomind.tw/tags/Terraform/"/>
+    
+  </entry>
   
   <entry>
     <title>為你的 AI Agent 掛上 Hooks 吧！</title>
@@ -332,47 +363,6 @@
     <category term="ChatGPT" scheme="https://blog.kyomind.tw/tags/ChatGPT/"/>
     
     <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2025 我離不開的 8 項付費訂閱</title>
-    <link href="https://blog.kyomind.tw/essential-subscriptions-2025/"/>
-    <id>https://blog.kyomind.tw/essential-subscriptions-2025/</id>
-    <published>2025-09-20T00:42:48.000Z</published>
-    <updated>2026-07-10T02:26:53.066Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://img.kyomind.tw/weekly-review.png"></p><p>2 年前，我寫下這篇〈<a href="/essential-subscriptions-2023/">2023 那些我已不可或缺的「付費訂閱」推薦</a>〉，分享了當時對我而言最重要的 12 項付費訂閱。</p><p>並說明了「不可或缺」的定義：</p><blockquote><p>所謂的「不可或缺」，意思是一旦我停止訂閱，我的工作和生活都會出現挑戰。而挑戰的大小，就是這些訂閱項目對我的影響力與價值。</p></blockquote><p>但回頭再看，有些其實<strong>沒那麼重要</strong>啦😅</p><p>所以這個 2025 年版本，要認真檢視，只列出那些「真的無法取消」的訂閱。</p><p>本文所列出的 8 項，即使多數和 2 年前相同，我也會補充它們對我的「<strong>重要性變化</strong>」與現況。</p><p>它們都很重要，很難說哪個更優先，以下排名<strong>不分先後</strong>。</p><p>此外，和 2023 版重複的基本使用情境介紹，就不再贅述，請參考前文。</p><span id="more"></span><hr><h2 id="一、Setapp"><a href="#一、Setapp" class="headerlink" title="一、Setapp"></a>一、Setapp</h2><p>像 Cleanshot X、Paste、PopClip、TablePlus、TextSniper 這些工具，早已是我每日必備——沒有一天不用的！</p><p>和 2 年前相比，我從每個月 10 美元的單機訂閱，變成 15 美元的 Power User 方案（4 台機器），因為我開始需要<strong>多裝置使用</strong>。</p><p>無論是 10 美元或 15 美元，都不能算是便宜。我個人訂閱它的核心判斷標準，是裡面只要有 3-4 個你每天都會用到的 app，就算值得了。</p><blockquote><p>有興趣可以使用<a href="https://go.setapp.com/invite/ga4xxrhb">我的邀請連結</a>註冊，你、我皆可<strong>額外獲得一個月訂閱</strong>。</p></blockquote><hr><h2 id="二、ChatGPT-Plus"><a href="#二、ChatGPT-Plus" class="headerlink" title="二、ChatGPT Plus"></a>二、ChatGPT Plus</h2><p>前文提到：</p><blockquote><p>如果你問我，我對這個服務目前為止的定價接受度上限為何？我可能會說是每月 40 美元——可見我確實離不開它。</p></blockquote><p>兩年前的 ChatGPT，對我而言猶如神一般的存在，重要性無可比擬。</p><p>兩年過去，AI 聊天服務的選擇越來越多，有力的競爭對手也更多了。</p><p>現在的我，確確實實「<strong>只願意</strong>」花 20 美元訂閱 ChatGPT Plus。</p><p>但平心而論，目前 AI 服務付費主流多是 20 美元一個月，而 OpenAI 給的運算資源與使用量，還是很慷慨的——畢竟它很有錢！</p><hr><h2 id="三、Claude-Pro"><a href="#三、Claude-Pro" class="headerlink" title="三、Claude Pro"></a>三、Claude Pro</h2><p>Claude Pro 方案一樣是每月 20 美元，因日前的「<a href="https://www.threads.com/@code.me.maybe/post/DONWdBWgJq_/">前 3 個月半價優惠</a>」吸引而訂閱；不過另一方面，也是為了使用 <a href="https://claude.com/product/claude-code">Claude Code</a>。</p><p>Claude Pro 和 ChatGPT Plus 對我而言，存在一定程度上的<strong>互補關係</strong>。雖然兩者疊加起來的費用實在不便宜😅</p><h3 id="Claude-的專案功能（Projects）"><a href="#Claude-的專案功能（Projects）" class="headerlink" title="Claude 的專案功能（Projects）"></a>Claude 的專案功能（Projects）</h3><p>簡單來說，<a href="https://www.ithome.com.tw/news/163666">專案功能</a>是我持續訂閱 Claude Pro 的主要原因。</p><p>雖然這功能 ChatGPT 也有（或者說大家都有XD），但我個人覺得 Claude 版的 UI&#x2F;UX 設計較佳，所以我都用它的專案。</p><p>我主要用它來建立關於個人的「知識庫」，附上 10 份精心準備的個人背景資料，和 AI 一起討論人生與職涯——這需求對我來說很重要。</p><p>而且，每家 AI 的「個性」不同，我覺得 Claude 模型對 prompt 的遵守程度較高，尤其是我要求 AI 必須<strong>直白回應</strong>時。</p><p>ChatGPT 基於某種「<strong>偶像包袱</strong>」，預設的口吻往往偏溫和。但你要求它直白又容易矯枉過正。</p><p>像職涯規劃這種關鍵議題，我需要 AI 先「電」我，然後再提供適量的<strong>情緒價值</strong>（自我 PUA！——你該不會也好這口吧？）。</p><p>我目前還未大量使用 Claude Code，習慣問題！還在學習中。</p><hr><h2 id="四、GitHub-Copilot-Pro"><a href="#四、GitHub-Copilot-Pro" class="headerlink" title="四、GitHub Copilot Pro+"></a>四、GitHub Copilot Pro+</h2><p>便宜又大碗的 AI 程式開發助理。</p><p>上個月<a href="https://www.threads.com/@kyomind.tw/post/DN9hbl1gU8m">我從 Pro 升級到 Pro+</a>，每月 39 美元，年付則為 390 美元。</p><p>GitHub Copilot 仗著微軟爸爸的 Azure 算力資源作為靠山，在 LLM token 成本上就與其它競爭對手——比如 Cursor 更具優勢。</p><p>去年此時，Cursor 正火，很多人擔心 GitHub Copilot 地位不保，連我自己都<a href="https://blog.kyomind.tw/cursor/#%E7%B5%90%E8%AA%9E%EF%BC%9A%E7%AB%B6%E7%88%AD%E6%98%AF%E5%A5%BD%E4%BA%8B">不禁有此疑慮</a>。</p><p>現在看來，GitHub Copilot 仍是我最常用的 AI 開發助理。而且此刻的我，對於任何其它「IDE 型態」的 AI 開發助手，<strong>都已顯得興趣缺缺</strong>。</p><hr><h2 id="五、Bear：反璞歸真的筆記軟體"><a href="#五、Bear：反璞歸真的筆記軟體" class="headerlink" title="五、Bear：反璞歸真的筆記軟體"></a>五、Bear：反璞歸真的筆記軟體</h2><p>在〈<a href="/noteless/">逐漸被我遺忘的卡片筆記</a>〉發表後，Bear 逐漸成為我筆記的主力。</p><p>在歷經 Notion、Logseq 等「全能型」筆記軟體的洗禮後，我回到了 Bear。</p><p>唉，事情真的<strong>不用那麼複雜</strong>，筆記甚至也<strong>不是</strong>學習的神兵利器——實作才是。雖然有人說自己「<a href="https://github.com/kyomind#%E7%B0%A1%E4%BB%8B">不做筆記便不會學習</a>」，但這八成是個誤解啦！</p><p>我該放下了。</p><blockquote><p>相關文章：<a href="/bear/">Evernote 替代方案——筆記軟體 Bear 2 升級心得</a></p></blockquote><hr><h2 id="六、YouTube-Premium：內容沉迷的稅金"><a href="#六、YouTube-Premium：內容沉迷的稅金" class="headerlink" title="六、YouTube Premium：內容沉迷的稅金"></a>六、YouTube Premium：內容沉迷的稅金</h2><p>我仍然是 YouTube 的重度使用者，尤其在限制自己少碰社群平台後，YouTube 幾乎成為我獲取資訊的主要來源。</p><p>我知道看多了不健康啦！我有控制少看短影片。</p><blockquote><p>相關文章：<a href="/weekly-review-19/">AI 時代的生存指南（二）數位斷捨離</a></p></blockquote><p>恩……顯然還不夠。</p><hr><h2 id="七、TPASS：城市移動的自由感"><a href="#七、TPASS：城市移動的自由感" class="headerlink" title="七、TPASS：城市移動的自由感"></a>七、TPASS：城市移動的自由感</h2><p>TPASS 依然是我最喜歡的「物理型訂閱」，它給我的不只是通勤折扣，而是一種<strong>城市間游走的機動性與自由感</strong>。</p><p>無需計算轉乘、無需考慮里程、無需遲疑是否要改搭捷運，它讓我更像是這座城市的使用者，而不只是過客。</p><p>我酷愛這種感覺。</p><hr><h2 id="八、Hetzner：你需要一台機器"><a href="#八、Hetzner：你需要一台機器" class="headerlink" title="八、Hetzner：你需要一台機器"></a>八、Hetzner：你需要一台機器</h2><p>我從 DigitalOcean 轉向 Hetzner，單純是因為——<strong>太便宜了</strong>。</p><p>之前已經寫過兩篇文章介紹 Hetzner：</p><ul><li><a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a></li><li><a href="/hetzner-vm/">在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆</a></li></ul><p>Hetzner 以相同的價格，提供更好的性能與資源，<strong>這無疑是一種自由</strong>。除了延遲較高，已然無可挑剔。</p><p>我目前在 VM 上部署了：</p><ul><li><a href="https://www.usememos.com/">Memos</a>：輕量級筆記系統，參考〈<a href="/memos/">開源工具 Memos 介紹：寫日記的好選擇</a>〉</li><li><a href="https://umami.is/">Umami</a>：網站分析工具、GA4 替代品，參考〈<a href="/weekly-review-21/">在 VM 上部署 Umami 替代 GA4</a>〉</li><li><a href="https://wakapi.dev/">Wakapi</a>：開發時間統計工具、<a href="https://medium.com/code-and-me/%E7%94%A8-wakatime-%E8%87%AA%E6%88%91%E7%9B%A3%E6%8E%A7-f59599144e28">Wakatime</a> 替代品</li><li><a href="https://github.com/kyomind/WeaMind">WeaMind</a>：個人專案</li><li>Nginx、Certbot、<a href="https://www.portainer.io/">Portainer</a> 等等</li></ul><p>上述服務總共才用了 1 GB RAM，我還有 7 GB 的餘裕。</p><p>這樣 4 CPU、8GB RAM 規格的 VM，每月竟然只要 6.5 歐元，實在太划算了。</p><p>對開發者而言，用來部署工具、服務的<strong>基礎設施</strong>顯然不可或缺。而 Hetzner，就是我最喜歡的選擇，沒有之一。</p><blockquote><p>歡迎使用<a href="https://hetzner.cloud/?ref=gD26JqrE8c9t">我的推薦連結</a>註冊，你可以直接獲得 20 歐元的使用額度。</p></blockquote><hr><h2 id="結語：那些留下來的"><a href="#結語：那些留下來的" class="headerlink" title="結語：那些留下來的"></a>結語：那些留下來的</h2><p>這篇文章不算推薦文，比較像是一份選擇紀錄。</p><p>這些訂閱不一定是「最潮」、「最便宜」或「最多功能」，而是經過時間淘選後，我仍願意花錢留下來的服務。</p><p>它們對我來說，有的是生產力的延伸、有的是生活的潤滑、有的是創作的媒介。</p><p>希望這份清單對你有用。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.kyomind.tw/weekly-review.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;2 年前，我寫下這篇〈&lt;a href=&quot;/essential-subscriptions-2023/&quot;&gt;2023 那些我已不可或缺的「付費訂閱」推薦&lt;/a&gt;〉，分享了當時對我而言最重要的 12 項付費訂閱。&lt;/p&gt;
-&lt;p&gt;並說明了「不可或缺」的定義：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;所謂的「不可或缺」，意思是一旦我停止訂閱，我的工作和生活都會出現挑戰。而挑戰的大小，就是這些訂閱項目對我的影響力與價值。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;但回頭再看，有些其實&lt;strong&gt;沒那麼重要&lt;/strong&gt;啦😅&lt;/p&gt;
-&lt;p&gt;所以這個 2025 年版本，要認真檢視，只列出那些「真的無法取消」的訂閱。&lt;/p&gt;
-&lt;p&gt;本文所列出的 8 項，即使多數和 2 年前相同，我也會補充它們對我的「&lt;strong&gt;重要性變化&lt;/strong&gt;」與現況。&lt;/p&gt;
-&lt;p&gt;它們都很重要，很難說哪個更優先，以下排名&lt;strong&gt;不分先後&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;此外，和 2023 版重複的基本使用情境介紹，就不再贅述，請參考前文。&lt;/p&gt;</summary>
-    
-    
-    <content src="https://img.kyomind.tw/weekly-review.png" type="image"/>
-    
-    
-    <category term="心得" scheme="https://blog.kyomind.tw/categories/%E5%BF%83%E5%BE%97/"/>
-    
-    
-    <category term="GitHub Copilot" scheme="https://blog.kyomind.tw/tags/GitHub-Copilot/"/>
-    
-    <category term="ChatGPT" scheme="https://blog.kyomind.tw/tags/ChatGPT/"/>
-    
-    <category term="付費訂閱" scheme="https://blog.kyomind.tw/tags/%E4%BB%98%E8%B2%BB%E8%A8%82%E9%96%B1/"/>
-    
-    <category term="筆記軟體" scheme="https://blog.kyomind.tw/tags/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/"/>
-    
-    <category term="Setapp" scheme="https://blog.kyomind.tw/tags/Setapp/"/>
     
   </entry>
   
