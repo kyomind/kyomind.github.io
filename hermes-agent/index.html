@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-12T06:39:47+08:00" />
+  <meta property="article:modified_time" content="2026-07-12T07:41:09+08:00" />
 
 
 
@@ -337,7 +337,9 @@
 <blockquote>
 <p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/github-fine-grained-pat/">筆記 - 可微調 Personal Access Token 讓 Github 存取更安全</a></p>
 </blockquote>
-<p>Token 取得後，可以直接在 gh 中操作認證，也可以放到前述的 <code>.hermes/.env</code> 中，讓 Hermes 自行取用。</p>
+<p>Token 取得後，可以直接在 gh 中操作認證，也可以放到前述的 <code>.hermes/.env</code> 中，讓 Hermes 自行取用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Hermes 功能繁多、複雜度高，以上 10 個設定是我用了一個多月後的經驗整理，供你作為入門參考。</p>
 <p>個人是覺得，這種 Personal Agent 的產品生態才剛剛起步，相信之後會有更多玩法與花樣，就讓我們繼續期待吧！</p>
