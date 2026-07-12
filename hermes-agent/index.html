@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-12T15:38:15+08:00" />
+  <meta property="article:modified_time" content="2026-07-12T15:42:08+08:00" />
 
 
 
@@ -261,7 +261,7 @@
 <hr>
 <p>沒想到，前言還是說了不少😅，我們進入設定環節吧！</p>
 <p>主要分成兩部分：<strong>入門</strong>與<strong>進階</strong>設定。後者可能需要一些開發經驗會比較容易上手。</p>
-<p>我們先從以下 6 個入門設定開始，它們大多可以叫 Hermes 直接幫你完成。</p>
+<p>我們先從以下 <strong>6 個入門設定</strong>開始，它們大多可以叫 Hermes 直接幫你完成。</p>
 <h2 id="1-設定-Telegram-Gateway"><a href="#1-設定-Telegram-Gateway" class="headerlink" title="1. 設定 Telegram Gateway"></a>1. 設定 Telegram Gateway</h2><p>Hermes Agent 可以搭配許多通訊 app，方便你用手機下指令或聊天，實際運行的地方則是你的本機或雲端。</p>
 <p>大多數人的選擇應該都是 Telegram。Telegram 在「AI agent 整合」這塊確實做了不少努力，早已不是單純的通訊軟體了。</p>
 <p>設定不難，跟著影片做就好。只有一點要注意：Allowlist 要填的是你的<strong>數字 ID</strong>，不是 username。</p>
@@ -302,7 +302,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hermes config <span class="built_in">set</span> compression.threshold 0.7</span><br></pre></td></tr></table></figure>
 
 <p>如果是大 context window 的模型（像 DeepSeek V4），預設的 50% 則綽綽有餘。</p>
-<h2 id="6-精簡預設的-Skills-Tools"><a href="#6-精簡預設的-Skills-Tools" class="headerlink" title="6. 精簡預設的 Skills &#x2F; Tools"></a>6. 精簡預設的 Skills &#x2F; Tools</h2><p>Hermes 預設上有 90 多個 skill、30 多個 tool。聽起來很強大，但實際上，選項太多不只燒 token，還會<strong>拖累 AI 的判斷</strong>——讓它<strong>變笨</strong>！</p>
+<h2 id="6-精簡預設的-Skills-Tools"><a href="#6-精簡預設的-Skills-Tools" class="headerlink" title="6. 精簡預設的 Skills &#x2F; Tools"></a>6. 精簡預設的 Skills &#x2F; Tools</h2><p>Hermes 預設上有 <strong>90 多個 skill、30 多個 tool</strong>。聽起來很強大，但實際上，選項太多不只燒 token，還會<strong>拖累 AI 的判斷</strong>——讓它<strong>變笨</strong>！</p>
 <p>換句話說，選項太多，AI 反而容易 miss、選錯、或乾脆跳過。仔細想想，其實人也是一樣的嘛！🤯</p>
 <p>我的做法是先大砍一輪。直接把用不到的 skill &#x2F; tool 關掉。</p>
 <p>不過其中 tool <strong>相對必要</strong>，能關的不多，初學者沒把握可以先按兵不動。</p>
@@ -310,7 +310,7 @@
 <p><img src="https://img.kyomind.tw/img-20260712-233453.png" alt="精簡後的 tool / skill 數量"><span class="cap">精簡後的 tool / skill 數量</span></p>
 <p>雖然 Hermes 有內建機制，久久不用它會自動停用這些工具，但我才不想等咧！</p>
 <hr>
-<p>剩下 4 個設定需要自己在 Hermes 外部實作，而且除了語音轉文字功能，其餘都比較偏開發者取向。對一般用戶僅供參考。</p>
+<p>剩下 <strong>4 個進階設定</strong>需要自己在 Hermes 外部實作，而且除了語音轉文字功能，其餘都比較偏<strong>開發者取向</strong>。對一般用戶僅供參考。</p>
 <h2 id="7-OrbStack-Isolated-VM"><a href="#7-OrbStack-Isolated-VM" class="headerlink" title="7. OrbStack Isolated VM"></a>7. OrbStack Isolated VM</h2><p>影片中雖然提到「本機安裝、家用網路背後很安全」，但作為一個開發者，我當然不會這麼想☺️</p>
 <p>我選擇用 <a target="_blank" rel="noopener" href="https://orbstack.dev/">OrbStack</a> 建立 Isolated VM（Ubuntu 24.04），讓 Hermes 跑在完全隔離的虛擬環境裡。</p>
 <p>這樣即使 Hermes 被惡意 prompt 入侵，它也碰不到我的本機檔案。</p>
@@ -341,7 +341,7 @@
 <p>Token 取得後，可以直接在 gh 中操作認證，也可以放到前述的 <code>.hermes/.env</code> 中，讓 Hermes 自行取用。</p>
 <hr>
 <h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Hermes 功能繁多、複雜度高，以上 10 個設定是我用了一個多月後的經驗整理，供你作為入門參考。</p>
-<p>個人是覺得，這種 Personal Agent 的產品生態才剛剛起步，相信之後會有更多玩法與花樣，就讓我們繼續期待吧！</p>
+<p>個人是覺得，這種 Personal Agent 的產品生態才剛剛起步，相信之後會有更多玩法與花樣，就讓我們繼續期待！</p>
 
       </div>
 
