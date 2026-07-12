@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-12T06:36:53+08:00" />
+  <meta property="article:modified_time" content="2026-07-12T06:39:47+08:00" />
 
 
 
@@ -332,7 +332,7 @@
 <p>GitHub CLI 直接透過 API 取得乾淨資料，比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gh issue list -R owner/repo</span><br><span class="line">gh api repos/owner/repo/contents/README.md --jq <span class="string">&#x27;.content&#x27;</span> | <span class="built_in">base64</span> -d</span><br></pre></td></tr></table></figure>
 
-<p>至於 gh 的認證方式主要有兩種。第一種是<strong>直接登入個人帳號</strong>使用，但這個<strong>權限過大</strong>，我只有在本機上使用 coding agent 時才會這麼做。</p>
+<p>GitHub CLI 的<strong>認證方式</strong>主要有兩種。第一種是<strong>直接登入個人帳號</strong>，但這個<strong>權限過大</strong>，我只有在本機上使用 coding agent 時才會這麼做。</p>
 <p>因此，建議採第二種：用 <strong>Fine-Grained PAT</strong>（Personal Access Token）認證，原則上只給公開 repo 讀取權限，不會洩露你的私人資訊。</p>
 <blockquote>
 <p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/github-fine-grained-pat/">筆記 - 可微調 Personal Access Token 讓 Github 存取更安全</a></p>
