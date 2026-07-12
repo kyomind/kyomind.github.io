@@ -17,10 +17,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kyomind">
 <meta property="og:type" content="article"><meta name="twitter:title" content="為你的 AI Agent 掛上 Hooks 吧！">
-  <meta property="og:title" content="為你的 AI Agent 掛上 Hooks 吧！"><meta name="twitter:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。">
-  <meta property="og:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
+  <meta property="og:title" content="為你的 AI Agent 掛上 Hooks 吧！"><meta name="twitter:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex、OpenCode 與 Antigravity CLI 的 macOS 設定方式。">
+  <meta property="og:description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex、OpenCode 與 Antigravity CLI 的 macOS 設定方式。"><meta name="twitter:image" content="https://img.kyomind.tw/code-and-me.png">
   <meta property="og:image" content="https://img.kyomind.tw/code-and-me.png">
-<meta name="description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex 與 OpenCode 的 macOS 設定方式。" />
+<meta name="description" content="介紹 AI coding agent hooks 的任務完成通知需求，並示範 Claude Code、Codex、OpenCode 與 Antigravity CLI 的 macOS 設定方式。" />
 
 
 <meta property="og:locale" content="zh-TW" />
@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-10T08:09:26+08:00" />
+  <meta property="article:modified_time" content="2026-07-12T14:56:43+08:00" />
 
 
 
@@ -183,7 +183,10 @@
       <div class="post-meta">
         <span class="post-time">
           2026-07-10
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2026-07-12
+          </span>
+        <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
             </span>
         </div>
@@ -192,13 +195,16 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Agent-Hooks"><span class="toc-text">什麼是 Agent Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hooks"><span class="toc-text">為什麼「通知」是最重要的 Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%9A%84%E5%81%8F%E5%A5%BD"><span class="toc-text">通用性的偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Copilot%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%85%B1%E7%94%A8-Claude-Code-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Copilot：直接共用 Claude Code 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-text">Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-Codex-app"><span class="toc-text">OpenAI Codex app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCode-CLI"><span class="toc-text">OpenCode CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E7%94%A8%E7%9A%84%E9%80%9A%E7%9F%A5%E8%85%B3%E6%9C%AC"><span class="toc-text">共用的通知腳本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%9C%83%E6%8F%9B%EF%BC%8C%E9%9C%80%E6%B1%82%E4%B8%8D%E6%9C%83"><span class="toc-text">工具會換，需求不會</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Agent-Hooks"><span class="toc-text">什麼是 Agent Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hooks"><span class="toc-text">為什麼「通知」是最重要的 Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%9A%84%E5%81%8F%E5%A5%BD"><span class="toc-text">通用性的偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Copilot%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%85%B1%E7%94%A8-Claude-Code-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Copilot：直接共用 Claude Code 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-text">Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-Codex-app"><span class="toc-text">OpenAI Codex app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCode-CLI"><span class="toc-text">OpenCode CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Antigravity-CLI"><span class="toc-text">Antigravity CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E7%94%A8%E7%9A%84%E9%80%9A%E7%9F%A5%E8%85%B3%E6%9C%AC"><span class="toc-text">共用的通知腳本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%9C%83%E6%8F%9B%EF%BC%8C%E9%9C%80%E6%B1%82%E4%B8%8D%E6%9C%83"><span class="toc-text">工具會換，需求不會</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
+<blockquote>
+<p><code>2026/07/12</code> 更新：新增 Antigravity CLI hooks 設定。</p>
+</blockquote>
 <p>Claude Code、<a href="/cursor/">Cursor</a>、Codex，這些 AI coding agent，相信你已經耳熟能詳，甚至每天都在用了。</p>
 <p>那你聽過 <strong>agent hooks</strong> 嗎？</p>
 <p>本文將介紹我目前「唯二」使用的 agent hooks，並說明它們為何重要。</p>
-<p>涵蓋工具包括 GitHub Copilot、Claude Code、Codex 以及 OpenCode CLI。</p>
+<p>涵蓋工具包括 GitHub Copilot、Claude Code、OpenAI Codex、OpenCode CLI 以及 Antigravity CLI。</p>
 <p>不過，僅限於 macOS，其餘平台，就靠大家努力了☺️</p>
 <span id="more"></span>
 
@@ -221,8 +227,8 @@
 </blockquote>
 <p>所以，其他 hooks 可以不設，但這個<strong>必須有</strong>！</p>
 <hr>
-<h2 id="通用性的偏好"><a href="#通用性的偏好" class="headerlink" title="通用性的偏好"></a>通用性的偏好</h2><p>我總共幫四個 AI coding agent 設定過 hooks：GitHub Copilot、OpenAI Codex app、Claude Code、OpenCode CLI。</p>
-<p>至於 Google 的 <a target="_blank" rel="noopener" href="https://antigravity.google/product/antigravity-2">Antigravity 2.0</a> app，因為內建了通知機制，就不必設定了。</p>
+<h2 id="通用性的偏好"><a href="#通用性的偏好" class="headerlink" title="通用性的偏好"></a>通用性的偏好</h2><p>我總共幫五個 AI coding agent 設定過 hooks：GitHub Copilot、OpenAI Codex app、Claude Code、OpenCode CLI、Antigravity CLI。</p>
+<p>至於 Google 的 <a target="_blank" rel="noopener" href="https://antigravity.google/product/antigravity-2">Antigravity 2.0</a> app，有內建通知機制，如果沒用 CLI 可以不必設定。如果同時設定了 hooks 通知，則都會觸發，建議關掉內建通知。</p>
 <p>我只寫全域 hooks，不寫 project-level。這些設定放在 home 目錄，透過 <a target="_blank" rel="noopener" href="https://yadm.io/">yadm</a> 在不同機器之間同步。</p>
 <blockquote>
 <p>相關文章：<a href="/yadm-cross-platform/">yadm 教學：實作 macOS 與 Linux 的 dotfiles 跨平台同步</a></p>
@@ -255,6 +261,17 @@
 <p>另外要注意的是，event type 是 <code>session.idle</code>，不是 <code>Stop</code>。不過意思差不多啦！</p>
 <h3 id="透過-Attention-設定"><a href="#透過-Attention-設定" class="headerlink" title="透過 Attention 設定"></a>透過 Attention 設定</h3><p>其實，OpenCode CLI 還可以透過 <a target="_blank" rel="noopener" href="https://opencode.ai/docs/tui/#attention">Attention</a> 功能——需要另外寫 <code>tui.json</code>，方便你設定通知，不一定要靠 plugin。</p>
 <p>但我不確定它是否適用於「非互動模式」（即 <code>opencode run</code>），而且我感覺這做法的<strong>通用性，還不如直接寫 plugin</strong>。畢竟通知腳本可以共用。</p>
+<h2 id="Antigravity-CLI"><a href="#Antigravity-CLI" class="headerlink" title="Antigravity CLI"></a>Antigravity CLI</h2><p>Antigravity CLI 是 Google 用來<strong>取代</strong> Gemini CLI 的命令列工具。所以它的部分設定檔位置，還是延用了  Gemini CLI。</p>
+<p>設定位置：<code>~/.gemini/config/hooks.json</code>，內容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;notify-stop&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Stop&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;command&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bash /Users/kyo/scripts/mac/notify-agent-stop.sh; echo &#x27;&#123;&#125;&#x27;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;timeout&quot;</span><span class="punctuation">:</span> <span class="number">30</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>幾個注意事項：</p>
+<ol>
+<li><strong>必須用絕對路徑</strong>：Antigravity 在 <code>-p</code> 模式下，相對路徑會失敗</li>
+<li><strong>腳本必須輸出合法 JSON</strong>：Antigravity 會檢查 stdout，所以結尾補上 <code>; echo &#39;&#123;&#125;&#39;</code></li>
+<li><strong>沒有 PermissionRequest</strong>：Antigravity 目前不支援這個事件</li>
+</ol>
+<p>Antigravity CLI 已將舊 Gemini CLI 的多個 hook，精簡成僅剩 <strong>5 個核心事件</strong>。所以沒有 <code>PermissionRequest</code>。</p>
 <hr>
 <h2 id="共用的通知腳本"><a href="#共用的通知腳本" class="headerlink" title="共用的通知腳本"></a>共用的通知腳本</h2><p>上述三套工具的 hooks 都呼叫同一組 shell 腳本，程式碼如下：</p>
 <h3 id="notify-agent-stop-sh"><a href="#notify-agent-stop-sh" class="headerlink" title="notify-agent-stop.sh"></a>notify-agent-stop.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 播放 Glass 音效</span></span><br><span class="line">afplay /System/Library/Sounds/Glass.aiff &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示 Notification Center 通知</span></span><br><span class="line">osascript -e <span class="string">&#x27;display notification &quot;Agent 回合已停止&quot; with title &quot;Agent Stop&quot;&#x27;</span> &amp;</span><br></pre></td></tr></table></figure>
