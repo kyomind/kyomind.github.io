@@ -2,6 +2,87 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind-infra/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/k3s-for-weamind/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind-ci/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/uv-dockerfile/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/github-actions/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/pyright/</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kyomind.tw/weamind-series/index.html</loc>
+    
+    <lastmod>2026-07-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2026-07-12</lastmod>
@@ -74,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/perplexity/</loc>
+    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
     
     <lastmod>2026-07-10</lastmod>
     
@@ -83,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
+    <loc>https://blog.kyomind.tw/perplexity/</loc>
     
     <lastmod>2026-07-10</lastmod>
     
@@ -146,36 +227,9 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
-    
-    <lastmod>2026-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weamind-infra/</loc>
-    
-    <lastmod>2026-07-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/all-in-on-devops/</loc>
     
     <lastmod>2026-07-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/weamind/</loc>
-    
-    <lastmod>2026-07-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -821,7 +875,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/introducing-python/</loc>
+    <loc>https://blog.kyomind.tw/isort/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -830,7 +884,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/isort/</loc>
+    <loc>https://blog.kyomind.tw/introducing-python/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -992,15 +1046,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/github-actions/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/openrouter-free-models/</loc>
     
     <lastmod>2026-06-20</lastmod>
@@ -1020,24 +1065,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/weekly-review-44/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/pyright/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/uv-dockerfile/</loc>
     
     <lastmod>2026-06-20</lastmod>
     
@@ -1073,15 +1100,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weamind-ci/</loc>
-    
-    <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/kubernetes-gui-tui-guide/</loc>
     
     <lastmod>2026-06-20</lastmod>
@@ -1094,15 +1112,6 @@
     <loc>https://blog.kyomind.tw/orange-days-02/</loc>
     
     <lastmod>2026-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/k3s-for-weamind/</loc>
-    
-    <lastmod>2026-06-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1577,7 +1586,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
+    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
@@ -1586,7 +1595,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/rusty-bullets/</loc>
+    <loc>https://blog.kyomind.tw/silver-bullets/</loc>
     
     <lastmod>2025-08-31</lastmod>
     
