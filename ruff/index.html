@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-14T08:04:00+08:00" />
 
 
 
@@ -272,9 +272,6 @@
 <li>還有更多！</li>
 </ul>
 <p>想想是不是有一點「<a href="https://blog.kyomind.tw/pyproject-toml/#pyproject-toml-%E4%BB%8B%E7%B4%B9">pyproject.toml</a>」企圖統一天下，整合眾多工具設定檔的味道呢？</p>
-<blockquote>
-<p>相關文章：Python 開發設定檔——pyproject.toml 的崛起（待發表）</p>
-</blockquote>
 <p>上述這些工具，尤其是最常用的 Flake8、isort、Black Formatter，如果現在只需要用一個工具就能實現，而且還更快、更好。</p>
 <p>那我們何樂而不為？</p>
 <hr>
@@ -395,6 +392,9 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/astral-sh/ruff-pre-commit</span></span><br><span class="line">  <span class="attr">rev:</span> <span class="string">v0.1.4</span></span><br><span class="line">  <span class="attr">hooks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--fix</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">ruff-format</span></span><br></pre></td></tr></table></figure>
 
 <p>這裡只要注意版本和 hook 的 id 即可。</p>
+<blockquote>
+<p>相關文章：<a href="/github-actions/">GitHub Actions 入門：自動化 Lint、Format 與 Type Check</a></p>
+</blockquote>
 <hr>
 <h2 id="Ruff-設定篇小結"><a href="#Ruff-設定篇小結" class="headerlink" title="Ruff 設定篇小結"></a>Ruff 設定篇小結</h2><p>Ruff 的設定真的滿多樣且<strong>可以很複雜</strong>。但是，如果你只是想要<strong>快速上手</strong>，其實只需要設定一些基本的項目。</p>
 <p>如果你不清楚究竟有哪些項目可以調整，又想了解更多。</p>

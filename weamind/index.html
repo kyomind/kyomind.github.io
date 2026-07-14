@@ -29,12 +29,12 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="DevOps" />
             
 
-  <meta property="article:modified_time" content="2026-07-12T04:59:54+08:00" />
+  <meta property="article:modified_time" content="2026-07-14T09:56:18+08:00" />
 
 
 
 
-  <meta property="article:published_time" content="2026-03-16T08:02:49+08:00" />
+  <meta property="article:published_time" content="2026-03-16T08:02:40+08:00" />
 
 
 
@@ -284,10 +284,16 @@
 <hr>
 <h2 id="Infra-關鍵架構決策"><a href="#Infra-關鍵架構決策" class="headerlink" title="Infra 關鍵架構決策"></a>Infra 關鍵架構決策</h2><p>叢集是 <strong>K3s 三節點</strong>（1 控制平面 + 2 工作節點），跑在 Hetzner 私有網路內；資料層（PostgreSQL + Redis）留在堡壘機，透過內網連接。</p>
 <p><strong>流量路徑</strong>：LINE Platform 的 webhook 請求會先到 Hetzner Load Balancer（TCP 443 passthrough），再由 Traefik Ingress Controller 完成 TLS 終止，最後轉送到 line-bot Service 與 line-bot Pod。</p>
+<blockquote>
+<p>相關文章：<a href="/weamind-infra/">WeaMind Infra 介紹：VM、Load Balancer 與雲端架構</a></p>
+</blockquote>
 <h3 id="為什麼選-K3s？"><a href="#為什麼選-K3s？" class="headerlink" title="為什麼選 K3s？"></a>為什麼選 K3s？</h3><p><a target="_blank" rel="noopener" href="https://k3s.io/">K3s</a> 是由 <a target="_blank" rel="noopener" href="https://www.rancher.com/">Rancher</a>（現為 SUSE）推出的<strong>輕量級 Kubernetes 發行版</strong>，專為<strong>資源受限</strong>的環境設計。</p>
 <p>K3s 這個名稱意味「<strong>比 K8s 少 5 個字元的複雜度</strong>」——本質上就是一個<strong>更精簡、更易部署</strong>的 Kubernetes。</p>
 <p>採單一 binary 檔、內建 Traefik Ingress Controller，並通過 <strong>CNCF 認證</strong>。</p>
 <p>對於單人維運的小型叢集，它可能是<strong>最接近真實環境</strong>（相比於 <a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/">Minikube</a>、<a target="_blank" rel="noopener" href="https://kind.sigs.k8s.io/">Kind</a>）而且<strong>最務實</strong>的選擇。</p>
+<blockquote>
+<p>相關文章：<a href="/k3s-for-weamind/">K3s 是什麼？為什麼我選擇用 K3s 部署 WeaMind</a></p>
+</blockquote>
 <h3 id="為什麼選-Hetzner？"><a href="#為什麼選-Hetzner？" class="headerlink" title="為什麼選 Hetzner？"></a>為什麼選 Hetzner？</h3><blockquote>
 <p>相關文章：<a href="/hetzner/">Hetzner VPS 實測：比 DigitalOcean 更划算的選擇？</a></p>
 </blockquote>
