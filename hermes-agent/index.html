@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-12T15:42:08+08:00" />
+  <meta property="article:modified_time" content="2026-07-14T13:49:01+08:00" />
 
 
 
@@ -231,22 +231,22 @@
 <li><strong>自我學習</strong>：每次任務完成後會回顧並優化，下次處理類似任務更熟練</li>
 <li><strong>可以執行指令</strong>：它能操作 terminal，幫你跑指令、改檔案、安裝套件等</li>
 </ul>
-<p>長期記憶與自我學習，是 Hermes 與一般 coding agent——比如 Claude Code——的不同之處。</p>
+<p>長期記憶與自我學習，是 Hermes 與一般 coding agent——比如 Claude Code——的<strong>不同之處</strong>。</p>
 <p>這讓 Hermes 能夠真正「成長」為你的專屬助理，而不是每次都從零開始。</p>
 <hr>
 <h2 id="Provider-推薦"><a href="#Provider-推薦" class="headerlink" title="Provider 推薦"></a>Provider 推薦</h2><p>和所有的 AI agent 相同，Hermes Agent 也需要接一個 LLM 作為大腦，設定上稱之為 provider。</p>
-<p>Provider 的具體設定，在影片中有教，這裡不展開。在此推薦兩個我有在用的 provider 選擇。</p>
-<h3 id="一、ChatGPT（Codex）"><a href="#一、ChatGPT（Codex）" class="headerlink" title="一、ChatGPT（Codex）"></a>一、ChatGPT（Codex）</h3><p>如同〈<a href="/unsubscribe-github-copilot/">我退訂了 GitHub Copilot</a>〉一文中提到的，如果只訂閱一個 AI 聊天服務，我會推薦 ChatGPT Plus。</p>
+<p>Provider 的具體設定，影片中有教。在此推薦<strong>兩個</strong>我服役中的 provider。</p>
+<h3 id="一、ChatGPT（Codex）"><a href="#一、ChatGPT（Codex）" class="headerlink" title="一、ChatGPT（Codex）"></a>一、ChatGPT（Codex）</h3><p>如同〈<a href="/unsubscribe-github-copilot/">我退訂了 GitHub Copilot</a>〉一文中提到的，如果只訂閱一個 AI 聊天服務，我會選擇 ChatGPT Plus。</p>
 <p>因為它不僅可以聊天、寫程式，還可以拿來「<a href="/unsubscribe-github-copilot/#%E9%A1%8D%E5%A4%96%E5%A5%BD%E8%99%95%EF%BC%9A%E5%8F%AF%E4%BB%A5%E9%A4%8A%E3%80%8C%E9%BE%8D%E8%9D%A6%E3%80%8D">養龍蝦</a>」。</p>
 <p>而和龍蝦屬於「同類」的 Hermes Agent，它也完全支援——消耗的是 Codex 的 token 額度。我一開始就是使用它，作為主要 provider。</p>
 <p>個人推薦模型：</p>
 <ul>
 <li><code>GPT 5.5</code>：兩個字——強大！但 token 燒比較快</li>
-<li><code>GPT 5.6 Luna</code>：全新模型，token 消耗較 5.5 少</li>
+<li><code>GPT 5.6 Luna</code>：全新模型，token 消耗較 5.5 少，實力不容小覷</li>
 <li><code>GPT 5.4 Mini</code>：token 消耗更少，日常任務足夠了</li>
 </ul>
-<p>不推薦 <code>5.6 Terra</code>，中等 reasoning level 下，能力還不如 5.5，但 token 消耗相當。</p>
-<h3 id="OpenCode-Go-方案"><a href="#OpenCode-Go-方案" class="headerlink" title="OpenCode Go 方案"></a>OpenCode Go 方案</h3><p>我平常也會用 Codex 寫程式或處理專案，和 Hermes Agent 共用額度，難免還是會有 <strong>token 焦慮</strong>。</p>
+<p>不推 <code>5.6 Terra</code>，中等 reasoning level 時，能力還不如 5.5，token 消耗卻差不多🥲</p>
+<h3 id="OpenCode-Go-方案"><a href="#OpenCode-Go-方案" class="headerlink" title="OpenCode Go 方案"></a>OpenCode Go 方案</h3><p>我平常也用 Codex 寫程式或處理專案，這樣和 Hermes Agent 共用額度，難免還是會有 <strong>token 焦慮</strong>。</p>
 <p>後來我找到了一個便宜又大碗的替代方案——<a target="_blank" rel="noopener" href="https://opencode.ai/zht/go">OpenCode Go</a>。</p>
 <p>在此暫不詳述，只要知道它可以作為 Hermes Agent 的 provider 即可。</p>
 <p>我現在就是以 Go 方案作為主力，而 Codex 額度僅在必要時才用。</p>
@@ -256,16 +256,17 @@
 <li><code>DeepSeek V4 Pro</code>：我的主力模型，個人對它的評價很高</li>
 <li><code>DeepSeek V4 Flash</code>：便宜！非常便宜XD</li>
 </ul>
-<p>我主要使用 DeepSeek V4 系列模型，但它們有一個共同「弱點」——沒有視覺能力。</p>
+<p>我主要使用 DeepSeek V4 系列模型，但它們有一個共同「弱點」——<strong>沒有視覺能力</strong>。</p>
 <p>所以需要視覺的時候，我會改用其它模型。</p>
 <hr>
 <p>沒想到，前言還是說了不少😅，我們進入設定環節吧！</p>
 <p>主要分成兩部分：<strong>入門</strong>與<strong>進階</strong>設定。後者可能需要一些開發經驗會比較容易上手。</p>
 <p>我們先從以下 <strong>6 個入門設定</strong>開始，它們大多可以叫 Hermes 直接幫你完成。</p>
 <h2 id="1-設定-Telegram-Gateway"><a href="#1-設定-Telegram-Gateway" class="headerlink" title="1. 設定 Telegram Gateway"></a>1. 設定 Telegram Gateway</h2><p>Hermes Agent 可以搭配許多通訊 app，方便你用手機下指令或聊天，實際運行的地方則是你的本機或雲端。</p>
+<p>App 只是一個指令入口，所以稱為「gateway」。</p>
 <p>大多數人的選擇應該都是 Telegram。Telegram 在「AI agent 整合」這塊確實做了不少努力，早已不是單純的通訊軟體了。</p>
 <p>設定不難，跟著影片做就好。只有一點要注意：Allowlist 要填的是你的<strong>數字 ID</strong>，不是 username。</p>
-<p>雖然設定的細節很多，但透過看影片或問 AI，應該都能順利解決。</p>
+<p>雖然設定上的細節不少，但透過看影片或問 AI，應該都能順利解決。</p>
 <h2 id="2-使用-Tavily-Web-Search"><a href="#2-使用-Tavily-Web-Search" class="headerlink" title="2. 使用 Tavily Web Search"></a>2. 使用 Tavily Web Search</h2><p>Hermes 內建的搜尋功能，就是透過 Python 程式碼，模擬人類操作瀏覽器進行查詢。</p>
 <p>做過 LLM app 的開發者都知道，這種做法不僅效率不佳，而且很耗 token XD</p>
 <p><a target="_blank" rel="noopener" href="https://www.tavily.com/">Tavily</a> 是專為 AI Agent 設計的搜尋 API 服務，而且每月有 1000 次的免費額度——我基本用不完。</p>
@@ -308,21 +309,21 @@
 <p>不過其中 tool <strong>相對必要</strong>，能關的不多，初學者沒把握可以先按兵不動。</p>
 <p>至於 skill，<strong>我關了一大堆</strong>，數量從預設的 9x 大幅降到 20 以下。至於哪些該關？就看你的使用場景了。</p>
 <p><img src="https://img.kyomind.tw/img-20260712-233453.png" alt="精簡後的 tool / skill 數量"><span class="cap">精簡後的 tool / skill 數量</span></p>
-<p>雖然 Hermes 有內建機制，久久不用它會自動停用這些工具，但我才不想等咧！</p>
+<p>雖然 Hermes 有<a target="_blank" rel="noopener" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/curator">內建機制</a>，會在一段時間後，自動停用<strong>長期未使用</strong>的 skill，但預設上相當保守，我才不想等咧！</p>
 <hr>
 <p>剩下 <strong>4 個進階設定</strong>需要自己在 Hermes 外部實作，而且除了語音轉文字功能，其餘都比較偏<strong>開發者取向</strong>。對一般用戶僅供參考。</p>
 <h2 id="7-OrbStack-Isolated-VM"><a href="#7-OrbStack-Isolated-VM" class="headerlink" title="7. OrbStack Isolated VM"></a>7. OrbStack Isolated VM</h2><p>影片中雖然提到「本機安裝、家用網路背後很安全」，但作為一個開發者，我當然不會這麼想☺️</p>
 <p>我選擇用 <a target="_blank" rel="noopener" href="https://orbstack.dev/">OrbStack</a> 建立 Isolated VM（Ubuntu 24.04），讓 Hermes 跑在完全隔離的虛擬環境裡。</p>
 <p>這樣即使 Hermes 被惡意 prompt 入侵，它也碰不到我的本機檔案。</p>
-<p>我一度還想用 Docker Backend 做第二層隔離，但 OrbStack VM 裡跑 Docker 會遇到 nested Docker 問題，最後決定放棄。</p>
-<p>個人是覺得，出於安全考量，這種東西盡量不要跑在本機比較好XD。畢竟 AI agent 要<strong>好用</strong>，給的<strong>權限就要大</strong>——這無疑是一把<strong>雙面刃</strong>。</p>
-<p>反正我是不會去冒這個險。</p>
+<p>我一度還想用 Docker backend 做第二層隔離，但 OrbStack VM 裡跑 Docker 會遇到 nested Docker 問題，最後決定放棄。</p>
+<p>出於安全考量，我是覺得這種東西盡量不要跑在本機 OS 比較好XD。畢竟 AI agent 要<strong>好用</strong>，給的<strong>權限就要大</strong>——這無疑是一把<strong>雙面刃</strong>。</p>
+<p>我是不會去冒這個險。</p>
 <h2 id="8-語音轉文字：本機或-Groq-Whisper"><a href="#8-語音轉文字：本機或-Groq-Whisper" class="headerlink" title="8. 語音轉文字：本機或 Groq Whisper"></a>8. 語音轉文字：本機或 Groq Whisper</h2><p>Hermes 支援<strong>語音轉文字</strong>（Speech to Text，STT），適合懶得打字或手機操作的時候。</p>
-<p>因為我 Hermes 沒裝在本機，所以這東西主要用於 <strong>Telegram 的語音輸入場景</strong>。但運算上仍是透過我的本機硬體。</p>
-<p>你可以跑本機 Whisper，隱私有保障，速度取決於你的 GPU！</p>
+<p>因為我 Hermes 沒裝在本機 OS，所以這東西主要用於 <strong>Telegram 的語音輸入場景</strong>。但運算上仍是透過我的本機硬體。</p>
+<p>你可以本機跑 Whisper，隱私有保障，速度取決於你的 GPU！我因為跑虛擬機，只能調用 CPU，但速度上還也行。</p>
 <p>我後來改用 <a target="_blank" rel="noopener" href="https://console.groq.com/docs/speech-to-text">Groq Whisper</a>，它是雲端 STT 服務，免費額度夠用，速度也快。當然，這就沒有隱私可言了XD</p>
 <p>Groq 需要申請 API Key，加到 <code>.hermes/.env</code> 裡即可。</p>
-<h2 id="9-提示音效：使用-Mac-iTerm2"><a href="#9-提示音效：使用-Mac-iTerm2" class="headerlink" title="9. 提示音效：使用 Mac + iTerm2"></a>9. 提示音效：使用 Mac + iTerm2</h2><p>這是 macOS + iTerm2 限定的技巧。而且只能作用於 TUI，桌面版應該就不需要了。</p>
+<h2 id="9-提示音效：使用-Mac-iTerm2"><a href="#9-提示音效：使用-Mac-iTerm2" class="headerlink" title="9. 提示音效：使用 Mac + iTerm2"></a>9. 提示音效：使用 Mac + iTerm2</h2><p>這是 macOS + iTerm2 限定的技巧。而且只能作用於 TUI，桌面版就不需要了。</p>
 <p>如〈<a href="/agent-hooks/">為你的 AI Agent 掛上 Hooks 吧！</a>〉所言，使用 AI agent 時，任務完成通知就是<a href="/agent-hooks/#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hooks">如此的重要</a>！</p>
 <p>所幸 Hermes Agent 不用你寫 agent hooks（也沒地方寫XD），用 iTerm2 就行。</p>
 <p>iTerm2 設定路徑：<strong>Settings → Profiles → Terminal → Bell</strong>，確保沒有勾選「Silence bell」即可。如圖：</p>
