@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-16T08:21:44+08:00" />
+  <meta property="article:modified_time" content="2026-07-16T11:00:46+08:00" />
 
 
 
@@ -313,7 +313,7 @@
 <hr>
 <p>剩下 <strong>4 個進階設定</strong>需要自己在 Hermes 外部實作，而且除了語音轉文字功能，其餘都比較偏<strong>開發者取向</strong>。對一般用戶僅供參考。</p>
 <h2 id="7-OrbStack-Isolated-VM"><a href="#7-OrbStack-Isolated-VM" class="headerlink" title="7. OrbStack Isolated VM"></a>7. OrbStack Isolated VM</h2><p>影片中雖然提到「本機安裝、家用網路背後很安全」，但作為一個開發者，我當然不會這麼想☺️</p>
-<p>我選擇用 <a target="_blank" rel="noopener" href="https://orbstack.dev/">OrbStack</a> 建立 Isolated VM（Ubuntu 24.04），讓 Hermes 跑在完全隔離的虛擬環境裡。</p>
+<p>我選擇用 <a target="_blank" rel="noopener" href="https://orbstack.dev/">OrbStack</a> 建立 <a target="_blank" rel="noopener" href="https://docs.orbstack.dev/machines/isolated">Isolated VM</a>（Ubuntu 24.04），讓 Hermes 跑在完全隔離的虛擬環境裡。</p>
 <p>這樣即使 Hermes 被惡意 prompt 入侵，它也碰不到我的本機檔案。</p>
 <p>我一度還想用 Docker backend 做第二層隔離，但 OrbStack VM 裡跑 Docker 會遇到 nested Docker 問題，最後決定放棄。</p>
 <p>出於安全考量，我是覺得這種東西盡量不要跑在本機 OS 比較好XD。畢竟 AI agent 要<strong>好用</strong>，給的<strong>權限就要大</strong>——這無疑是一把<strong>雙面刃</strong>。</p>
@@ -335,7 +335,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gh issue list -R owner/repo</span><br><span class="line">gh api repos/owner/repo/contents/README.md --jq <span class="string">&#x27;.content&#x27;</span> | <span class="built_in">base64</span> -d</span><br></pre></td></tr></table></figure>
 
 <p>GitHub CLI 的<strong>認證方式</strong>主要有兩種。第一種是<strong>直接登入個人帳號</strong>，但這個<strong>權限過大</strong>，我只有在本機上使用 coding agent 時才會這麼做。</p>
-<p>因此，建議採第二種：用 <strong>Fine-Grained PAT</strong>（Personal Access Token）認證，原則上只給公開 repo 讀取權限，不會洩露你的私人資訊。</p>
+<p>因此，建議採第二種：用 <a target="_blank" rel="noopener" href="https://github.blog/security/application-security/introducing-fine-grained-personal-access-tokens-for-github/">Fine-Grained PAT</a>（Personal Access Token）認證，原則上只給公開 repo 讀取權限，不會洩露你的私人資訊。</p>
 <blockquote>
 <p>延伸閱讀：<a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/github-fine-grained-pat/">筆記 - 可微調 Personal Access Token 讓 Github 存取更安全</a></p>
 </blockquote>
