@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-16T11:00:46+08:00" />
+  <meta property="article:modified_time" content="2026-07-17T03:23:05+08:00" />
 
 
 
@@ -183,7 +183,10 @@
       <div class="post-meta">
         <span class="post-time">
           2026-07-12
-        </span><span class="post-category">
+        </span><span class="post-update">
+            →  2026-07-17
+          </span>
+        <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
             </span>
         </div>
@@ -195,6 +198,9 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hermes-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-text">Hermes 是什麼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider-%E6%8E%A8%E8%96%A6"><span class="toc-text">Provider 推薦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A8%AD%E5%AE%9A-Telegram-Gateway"><span class="toc-text">1. 設定 Telegram Gateway</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-Tavily-Web-Search"><span class="toc-text">2. 使用 Tavily Web Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8A%E8%AA%BF-Memory-%E4%B8%8A%E9%99%90"><span class="toc-text">3. 上調 Memory 上限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%96%B0%E5%A2%9E%E3%80%8C%E6%A8%A1%E5%9E%8B%E5%88%A5%E5%90%8D%E3%80%8D"><span class="toc-text">4. 新增「模型別名」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Compression-%E9%96%80%E6%AA%BB%EF%BC%9A%E5%8F%AF%E8%AA%BF%E9%AB%98%EF%BC%8C%E4%BD%86%E4%BB%8D%E5%8F%96%E6%B1%BA%E6%96%BC%E6%A8%A1%E5%9E%8B"><span class="toc-text">5. Compression 門檻：可調高，但仍取決於模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%B2%BE%E7%B0%A1%E9%A0%90%E8%A8%AD%E7%9A%84-Skills-Tools"><span class="toc-text">6. 精簡預設的 Skills &#x2F; Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-OrbStack-Isolated-VM"><span class="toc-text">7. OrbStack Isolated VM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%AA%9E%E9%9F%B3%E8%BD%89%E6%96%87%E5%AD%97%EF%BC%9A%E6%9C%AC%E6%A9%9F%E6%88%96-Groq-Whisper"><span class="toc-text">8. 語音轉文字：本機或 Groq Whisper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%8F%90%E7%A4%BA%E9%9F%B3%E6%95%88%EF%BC%9A%E4%BD%BF%E7%94%A8-Mac-iTerm2"><span class="toc-text">9. 提示音效：使用 Mac + iTerm2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-GitHub-CLI%EF%BC%9A%E8%AE%93-Hermes-%E8%AE%80-GitHub-%E4%B8%8A%E7%9A%84%E5%85%AC%E9%96%8B%E5%85%A7%E5%AE%B9"><span class="toc-text">10. GitHub CLI：讓 Hermes 讀 GitHub 上的公開內容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E"><span class="toc-text">結語</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20260712-000922.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<blockquote>
+<p><code>2026/07/17</code> 更新：新增 <strong>Grok 4.5</strong> 模型推薦。（<a href="#OpenCode-Go-%E6%96%B9%E6%A1%88">OpenCode Go 方案</a>）</p>
+</blockquote>
 <p>最近 Hermes Agent 非常紅，熱度上似乎已經超越了俗稱「龍蝦」的 OpenClaw。</p>
 <p>我自己玩了一個多月，也累積了一些心得想要分享。</p>
 <p>如果你還不知道它是什麼，可以先參考 PAPAYA 的這支影片：</p>
@@ -242,7 +248,7 @@
 <p>個人推薦模型：</p>
 <ul>
 <li><code>GPT 5.5</code>：兩個字——強大！但 token 燒比較快</li>
-<li><code>GPT 5.6 Luna</code>：全新模型，token 消耗較 5.5 少，實力不容小覷</li>
+<li><code>GPT 5.6 Luna</code>：全新模型，token 消耗較 5.5 少，實力卻不容小覷</li>
 <li><code>GPT 5.4 Mini</code>：token 消耗更少，日常任務足夠了</li>
 </ul>
 <p>不推 <code>5.6 Terra</code>，中等 reasoning level 時，能力還不如 5.5，token 消耗卻差不多🥲</p>
@@ -250,14 +256,15 @@
 <p>後來我找到了一個便宜又大碗的替代方案——<a target="_blank" rel="noopener" href="https://opencode.ai/zht/go">OpenCode Go</a>。</p>
 <p>在此暫不詳述，只要知道它可以作為 Hermes Agent 的 provider 即可。</p>
 <p>我現在就是以 Go 方案作為主力，而 Codex 額度僅在必要時才用。</p>
-<p>如果你想試 OpenCode Go，可以考慮透過<a target="_blank" rel="noopener" href="https://opencode.ai/go?ref=W1961YHBF2">我的推廣連結</a>訂閱，我們將各獲得 $5 美元的 Go 方案使用量優惠額度。</p>
+<p>如果你想試 OpenCode Go，可以考慮透過<a target="_blank" rel="noopener" href="https://opencode.ai/go?ref=W1961YHBF2">我的推廣連結</a>訂閱，我們將各獲得 $5 美元的 Go 方案使用量額度。</p>
 <p>推薦模型：</p>
 <ul>
 <li><code>DeepSeek V4 Pro</code>：我的主力模型，個人對它的評價很高</li>
 <li><code>DeepSeek V4 Flash</code>：便宜！非常便宜XD</li>
+<li><code>Grok 4.5</code>：沒錯，這裡竟然也能用 Grok！而且 4.5 比 4.3 強上好一截🤩</li>
 </ul>
 <p>我主要使用 DeepSeek V4 系列模型，但它們有一個共同「弱點」——<strong>沒有視覺能力</strong>。</p>
-<p>所以需要視覺的時候，我會改用其它模型。</p>
+<p>所以需要視覺的時候，我會改用其它模型，比如 Grok。</p>
 <hr>
 <p>沒想到，前言還是說了不少😅，我們進入設定環節吧！</p>
 <p>主要分成兩部分：<strong>入門</strong>與<strong>進階</strong>設定。後者可能需要一些開發經驗會比較容易上手。</p>
