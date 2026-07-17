@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-17T07:43:09+08:00" />
+  <meta property="article:modified_time" content="2026-07-17T08:46:10+08:00" />
 
 
 
@@ -195,7 +195,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目錄</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Agent-Hooks"><span class="toc-text">什麼是 Agent Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hooks"><span class="toc-text">為什麼「通知」是最重要的 Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%9A%84%E5%81%8F%E5%A5%BD"><span class="toc-text">通用性的偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Copilot%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%85%B1%E7%94%A8-Claude-Code-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Copilot：直接共用 Claude Code 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-text">Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-Codex"><span class="toc-text">OpenAI Codex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCode-CLI"><span class="toc-text">OpenCode CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Antigravity-CLI"><span class="toc-text">Antigravity CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E7%94%A8%E7%9A%84%E9%80%9A%E7%9F%A5%E8%85%B3%E6%9C%AC"><span class="toc-text">共用的通知腳本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%9C%83%E6%8F%9B%EF%BC%8C%E9%9C%80%E6%B1%82%E4%B8%8D%E6%9C%83"><span class="toc-text">工具會換，需求不會</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Agent-Hooks"><span class="toc-text">什麼是 Agent Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E3%80%8C%E9%80%9A%E7%9F%A5%E3%80%8D%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84-Hooks"><span class="toc-text">為什麼「通知」是最重要的 Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E6%80%A7%E7%9A%84%E5%81%8F%E5%A5%BD"><span class="toc-text">通用性的偏好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub-Copilot%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%85%B1%E7%94%A8-Claude-Code-%E8%A8%AD%E5%AE%9A"><span class="toc-text">GitHub Copilot：直接共用 Claude Code 設定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Claude-Code"><span class="toc-text">Claude Code</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-Codex"><span class="toc-text">OpenAI Codex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenCode-CLI"><span class="toc-text">OpenCode CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Antigravity-CLI"><span class="toc-text">Antigravity CLI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B1%E7%94%A8%E7%9A%84%E9%80%9A%E7%9F%A5%E8%85%B3%E6%9C%AC"><span class="toc-text">共用的通知腳本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%9C%83%E6%8F%9B%EF%BC%8C%E9%9C%80%E6%B1%82%E9%95%B7%E5%AD%98"><span class="toc-text">工具會換，需求長存</span></a></li></ol>
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/code-and-me.png"></p>
 <blockquote>
@@ -293,7 +293,7 @@
 
 <p>我覺得 <code>Funk</code> 音效很適合當「確認」使用XD</p>
 <hr>
-<h2 id="工具會換，需求不會"><a href="#工具會換，需求不會" class="headerlink" title="工具會換，需求不會"></a>工具會換，需求不會</h2><p>儘管不同的工具有不同的設定，但「通知」這個需求是一樣的。</p>
+<h2 id="工具會換，需求長存"><a href="#工具會換，需求長存" class="headerlink" title="工具會換，需求長存"></a>工具會換，需求長存</h2><p>儘管不同的工具有不同的設定，但「通知」這個需求是一樣的。</p>
 <p>所以我在每個工具中都實作了它，讓<strong>核心行為保持一致</strong>。</p>
 <p>如此一來，你想換工具或退掉其中一部分時，體驗上不會受到太大影響。你只需要維護一組通知腳本，所有 agent 都能共用。</p>
 <p>畢竟，工具只是工具，<a href="/unsubscribe-github-copilot/#%E5%B7%A5%E5%85%B7%E5%8F%AA%E6%98%AF%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%B8%8D%E8%A6%81%E4%BE%9D%E6%88%80%E5%AE%83">不要依戀它</a>。</p>
