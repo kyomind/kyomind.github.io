@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-14T08:04:09+08:00" />
+  <meta property="article:modified_time" content="2026-07-22T06:10:45+08:00" />
 
 
 
@@ -449,21 +449,19 @@
 <blockquote>
 <p>推薦度：⭐️⭐️<br> 重要性：⭐️⭐️⭐️</p>
 </blockquote>
-<h3 id="Python-docstring-之我見"><a href="#Python-docstring-之我見" class="headerlink" title="Python docstring 之我見"></a>Python docstring 之我見</h3><p>我個人非常建議在一些重要的函式或類別，<strong>必須要有 docstring</strong>。</p>
-<p>換言之，在我看來，無論程式寫得如何簡潔易讀，對一些比較複雜的函式或類別而言，<strong>docstring 終究是不可少的</strong>。因為文字的<strong>詮釋能力</strong>和程式碼相比，<strong>絕不在同一個層次</strong>，相信這也是為何 docstring 會有屬於自己的獨立 PEP 加以規範的理由。</p>
-<p>不知道你怎麼看？我相信，寫好 docstring，是簡潔程式碼<strong>不可或缺的一環</strong>，更是優秀軟體工程師的必備條件——我對此深信不疑。</p>
+<h3 id="Python-Docstring-之我見"><a href="#Python-Docstring-之我見" class="headerlink" title="Python Docstring 之我見"></a>Python Docstring 之我見</h3><p>我個人非常建議，一些重要的函式或類別，<strong>必須要有 docstring</strong>。無論程式寫得如何簡潔易讀，對比較複雜的函式或類別而言，<strong>docstring 終究是不可少的</strong>。</p>
+<p>因為文字的<strong>詮釋能力</strong>和程式碼相比，<strong>絕不在同一個層次</strong>，這也是為何 docstring 會有屬於自己的獨立 PEP 加以規範的理由。寫好 docstring，是優秀軟體工程師的必備條件，我對此深信不疑。</p>
 <p>類似論點可參考下面這篇文章，雖然講的是「文件」，但 docstring 也是一種文件，因此可以套用其中的觀點：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://medium.com/geekculture/why-todays-code-documentation-is-a-heap-of-garbage-c66ac8aa6cb6">Why today’s code documentation is a heap of garbage</a></li>
 </ul>
-<h3 id="如何寫好-docstring？"><a href="#如何寫好-docstring？" class="headerlink" title="如何寫好 docstring？"></a>如何寫好 docstring？</h3><p>「如何寫好 docstring」絕對是一門學問，我認為其中最重要的是<strong>讀者意識</strong>。</p>
+<h3 id="如何寫好-Docstring？"><a href="#如何寫好-Docstring？" class="headerlink" title="如何寫好 Docstring？"></a>如何寫好 Docstring？</h3><p>「如何寫好 docstring」絕對是一門學問，我認為其中最重要的是<strong>讀者意識</strong>。</p>
 <p>就像我在〈<a href="https://blog.kyomind.tw/weekly-review-18/">論軟體工程師常見的「路徑依賴」問題（上）</a>〉一文中提到的：</p>
 <blockquote>
 <p>「<strong>讀者意識的欠缺</strong>」在軟體工程師中確實是一個<strong>普遍存在的問題</strong>。有時候，我們可能過於專注於自己的程式碼和技術細節，而忽略了將這些複雜的概念和思維以易於理解的方式傳達給他人。</p>
 </blockquote>
 <p>Docstring 的終極目標，就是要<strong>讓讀者快速理解程式碼的功能</strong>，而不必花大量時間去閱讀程式碼，才能看出程式的<strong>行為與意圖</strong>。</p>
-<p>這需要你同時扮演好<strong>作者（開發者）</strong>與<strong>讀者（函式、模組的調用者）</strong>兩種角色，透過身為作者對程式碼的熟悉，以及<strong>從讀者閱讀的角度</strong>，來撰寫 docstring。</p>
-<p>與寫文章相比，兩者的共通之處，都在於「<strong>讀者意識</strong>」——懷抱著「我希望寫出好讀又好懂的內容」的心態，才能寫出優秀的 docstring。</p>
+<p>這需要你同時扮演好<strong>作者（開發者）</strong>與<strong>讀者（函式、模組的調用者）</strong>兩種角色，透過身為作者對程式碼的熟悉，以及從讀者閱讀的角度，來撰寫 docstring——這一點和寫文章的道理相通。</p>
 <p>畢竟自己剛寫完程式的當下，對於所有實作的邏輯與細節，當然都記憶猶新，確實可以不靠 docstring 就明白程式大概在做什麼。</p>
 <p>但對於三個月後的你（如果是複雜的邏輯，則不出一個月），就難說了。而你的同事，就更難說了。</p>
 <blockquote>

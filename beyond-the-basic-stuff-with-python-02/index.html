@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-22T06:26:55+08:00" />
 
 
 
@@ -227,8 +227,7 @@
 <li><code>i + 1</code>。這寫法顯然是為了讓<strong>計數</strong>從 1 開始——而不是預設的 0。</li>
 <li><code>range(len(animals))</code> 寫法非常不直觀，多層的<strong>嵌套式呼叫</strong>讓人看了昏昏欲睡。</li>
 </ol>
-<p>這兩個地方充滿了「<strong>手刻</strong>」的<strong>僵化感</strong>，只是為了<strong>最快速達到開發者「當下目的」而強行採用的一種粗糙手段</strong>——但顯然不是最好的那個。</p>
-<p>雖然兩者都不難理解與推測，但除了寫這段程式的人，<strong>誰也無法 100% 確信作者的「意圖」</strong>——這是<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20107637/ironman/1927">糙 code</a> 的特色，它存在著<strong>大量且不必要的誤解空間</strong>。</p>
+<p>雖然兩者都不難理解與推測，但除了寫這段程式的人，<strong>誰也無法 100% 確信作者的「意圖」</strong>——這是充滿「<strong>手刻</strong>」僵化感的<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20107637/ironman/1927">糙 code</a> 特色，它存在著<strong>大量且不必要的誤解空間</strong>。</p>
 <p>這些<strong>不明確的誤解空間</strong>會造成別人閱讀本段程式碼時的「<strong>思考停頓</strong>」，更別說後續滋生 bug 的可能。所幸，它們是有可能被消除的。比如使用以下的 <code>enumerate</code>。</p>
 <h3 id="用-enumerate-重構"><a href="#用-enumerate-重構" class="headerlink" title="用 enumerate() 重構"></a>用 <code>enumerate()</code> 重構</h3><p>一言以蔽之，你只要<strong>在 <code>for</code> 迴圈內</strong>，看到以下這樣的寫作模式，那就是典型的 Python <a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/refactoring-notes-2-bad-smell/">壞味道</a>：</p>
 <blockquote>

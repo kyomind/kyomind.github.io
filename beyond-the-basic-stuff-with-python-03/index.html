@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-22T06:29:54+08:00" />
 
 
 
@@ -270,12 +270,11 @@
 </blockquote>
 <p>會寫出這樣的函式，原因諸多——工作很忙、重構太麻煩了，要新增什麼功能我直接「加上去」就好！</p>
 <p>這些無疑都是<strong>充滿了「技術債味」的做法。</strong></p>
-<h2 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h2><p>這類「<strong>雙型別 return</strong>」函式，對於<strong>函式使用者</strong>（比如你的同事）的認知與理解，有著「<strong>更高的要求</strong>」——呼叫方必須<strong>很了解</strong>這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題。</p>
+<h2 id="技術債與認知負擔"><a href="#技術債與認知負擔" class="headerlink" title="技術債與認知負擔"></a>技術債與認知負擔</h2><p>這類「<strong>雙型別 return</strong>」函式，對於<strong>函式使用者</strong>（比如你的同事）的認知與理解，有著「<strong>更高的要求</strong>」——呼叫方必須<strong>很了解</strong>這個函式的<strong>怪異行為</strong>，才能正確使用與處理後續衍生的問題，明顯增加了呼叫方的「<strong>認知負擔</strong>」。</p>
 <p>這在多行或有多個 return 值的<strong>複雜函式時，真是一場災難。</strong></p>
 <blockquote>
 <p>期望他人知道自己做了什麼「特別的事」，不是我所知曉的軟體開發之道。</p>
 </blockquote>
-<p>當函式具有這種「雙型別 return」的特性時，會明顯增加呼叫方的「<strong>認知負擔</strong>」。</p>
 <p>這使得程式<strong>不僅難以閱讀和維護，也容易出錯</strong>，因為未來的維護者或其他團隊成員<strong>很可能不知道</strong>這個函式的「獨特」行為。</p>
 <p>無論何時，我們都不應該寫這樣的程式。</p>
 <hr>

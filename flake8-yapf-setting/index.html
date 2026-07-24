@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-22T06:07:29+08:00" />
 
 
 
@@ -258,8 +258,7 @@
 </ol>
 <p>而本文著眼的是第二部分，也就是排版風格。在 linter 幫你檢測出排版風格有缺失後，接下來就輪到 formatter 登場了。</p>
 <hr>
-<h2 id="Formatter-簡介"><a href="#Formatter-簡介" class="headerlink" title="Formatter 簡介"></a>Formatter 簡介</h2><p>統一程式碼排版風格第一步是使用 linter，通用型 linter 會檢查（但不限於）程式碼風格上所有違反 PEP 8 的部分，發現風格不符後，接著就要用 formatter（格式化器）進行格式化！</p>
-<p>換句話說，formatter 就是<strong>自動幫你修正這些排版問題的工具</strong>！而這個過程，就是「<strong>格式化</strong>」。</p>
+<h2 id="Formatter-簡介"><a href="#Formatter-簡介" class="headerlink" title="Formatter 簡介"></a>Formatter 簡介</h2><p>Formatter（格式化器）就是<strong>自動幫你修正這些排版問題的工具</strong>！而這個過程，就是「<strong>格式化</strong>」。</p>
 <p>程式語法錯誤——比如使用未設定的變數——雖然也可能被 linter 檢測出並提示，但這部分的修正通常得手動為之。Formatter 只能協助處理排版風格上的缺失。</p>
 <p>雖然修正排版一樣也可以手動為之，但是一來麻煩，二來難免會有遺漏，還是靠機器比較實在，也輕鬆得多。</p>
 <h2 id="VS-Code-Python-Formatter-設定：以-yapf-為例"><a href="#VS-Code-Python-Formatter-設定：以-yapf-為例" class="headerlink" title="VS Code Python Formatter 設定：以 yapf 為例"></a>VS Code Python Formatter 設定：以 yapf 為例</h2><p>設定 formatter 比前述 linter 單純許多，一樣在設定 UI 輸入關鍵字查詢：formatting，就能找到 <code>Python › Formatting: Provider</code> 這項設定。有三種 formatter 可選：</p>
@@ -287,7 +286,7 @@
 <p>相關文章：<a href="/black-and-isort/">試用從 Python extension 拆分的 Black、isort 套件</a></p>
 </blockquote>
 <hr>
-<p>Args 的設定一樣要特別注意，這上述例子中就能看出，不同工具的 args 字串格式真的會有一定差異（這是當然的，畢竟不同 CLI 工具，參數 flag 的命名與風格本來就不會相同），千萬不要打錯，否則 formatter 也會無法作用。</p>
+<p>Formatter 的 args 一樣要留意格式，和前述 linter args 同理，打錯的話 formatter 也會無法作用。</p>
 <h2 id="VS-Code-使用-Formatter-小撇步"><a href="#VS-Code-使用-Formatter-小撇步" class="headerlink" title="VS Code 使用 Formatter 小撇步"></a>VS Code 使用 Formatter 小撇步</h2><p>和 linter 開啟後就會自動生效並顯示錯誤提示不同，格式化器需要你<strong>主動使用</strong>，或設定為<strong>存檔時自動格式化</strong>。以下說明「<strong>主動使用</strong>」上的方式差異與要點：</p>
 <ul>
 <li><strong>格式化文件：</strong>很簡單，在 VS Code 編輯器中打開文件後，按右鍵選單選擇「格式化文件」即可。這個功能我比較少直接使用，而且如果善用快捷鍵，它完全可以被下述的「格式化選取範圍」所取代。</li>

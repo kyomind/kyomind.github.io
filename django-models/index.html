@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-22T06:38:26+08:00" />
 
 
 
@@ -319,7 +319,7 @@
 <p>附帶一提，<code>RelatedObjectDoesNotExist</code> 其實就是 <code>ObjectDoesNotExist</code> 的子類別。所以如果你想要捕捉它，直接使用常見的 <code>ObjectDoesNotExist</code> 即可。比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    title_1.post</span><br><span class="line"><span class="keyword">except</span> ObjectDoesNotExist:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>上述 <code>post</code> 屬性並未在 model class 中明示（但物件有此屬性），資料表中也<strong>不存在相對應的欄位</strong>。它本質上只是一個「<strong>ORM 查詢捷徑</strong>」——但非常實用。</p>
+<h3 id="反向關聯屬性"><a href="#反向關聯屬性" class="headerlink" title="反向關聯屬性"></a>反向關聯屬性</h3><p>上述 <code>post</code> 屬性本質上只是一個「<strong>ORM 查詢捷徑</strong>」——但非常實用。</p>
 <p>這種隱式的設計讓我們<strong>更容易識別</strong>在外鍵關係中，哪些屬性是<strong>正向關聯</strong>，哪些則是<strong>反向關聯</strong>。</p>
 <p>反向關聯允許我們透過簡單的<strong>屬性呼叫</strong>，就能夠輕鬆地獲取相關資料，而不需要額外的操作和 ORM 查詢語句，真的很方便。</p>
 <hr>
@@ -368,9 +368,7 @@
 <p>這裡的 related_name 不再用死板板的 <code>projects</code> 來命名，因為當你透過 <code>Certificate</code> 物件要訪問「<strong>所有使用該憑證的專案</strong>」時，<code>certificate.used_by_projects</code> 顯然會比 <code>certificate.projects</code> <strong>更具描述性</strong>——尤其在 <code>Certificate</code> 還有<strong>更多其它關聯</strong>的時候，太多 <code>certificate.XXXs</code> 容易讓人混淆。</p>
 <p>簡言之，<code>used_by_projects</code> 命名<strong>讓程式更可讀</strong>，讓你一看就知道這個 <code>related_name</code> 所代表的<strong>意義與用途</strong>。</p>
 <hr>
-<h2 id="小結：關聯是-Django-Model-基石"><a href="#小結：關聯是-Django-Model-基石" class="headerlink" title="小結：關聯是 Django Model 基石"></a>小結：關聯是 Django Model 基石</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。</p>
-<p><strong>通過關聯，我們能夠模擬真實世界中的關係，使資料表之間建立起有意義的連結。</strong></p>
-<p>了解<strong>外鍵的關聯設定</strong>，以及<strong>反向關聯屬性的使用</strong>，我們能夠更好地應用 Django ORM，建構出高效且具有關聯性的資料模型。</p>
+<h2 id="小結：關聯是-Django-Model-基石"><a href="#小結：關聯是-Django-Model-基石" class="headerlink" title="小結：關聯是 Django Model 基石"></a>小結：關聯是 Django Model 基石</h2><p>耗費了如此多的幅篇，詳細講述關聯設定，都是為了強調一個重點：關聯是 Django ORM 的核心之一。<strong>了解外鍵的關聯設定與反向關聯屬性的使用，我們能夠模擬真實世界中的關係，建構出高效且具有關聯性的資料模型。</strong></p>
 <p>而辛苦建立這些模型與關聯，就是為了能夠充分利用它們！</p>
 <p>後續我們將探討，如何有效對這些關聯模型進行查詢，輕鬆地從模型中檢索和篩選所需資料。</p>
 <blockquote>
