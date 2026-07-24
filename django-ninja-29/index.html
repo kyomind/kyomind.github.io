@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-07-24T15:37:45+08:00" />
+  <meta property="article:modified_time" content="2026-07-24T15:58:43+08:00" />
 
 
 
@@ -284,7 +284,7 @@
 </li>
 <li><code>test_get_users</code> 測試的是「<strong>有認證保護</strong>」的 API，需要登入才能存取，所以我們引用了 <code>authenticated_client</code>。<ul>
 <li>這個測試函式「<strong>只有</strong>」引用 authenticated_client，但實際的測試結果會是：清單中存在一個用戶。（程式碼不包含這部分）</li>
-<li>因為 authenticated_client 引用了 user 和 client 這兩個 fixture。所以<strong>只要</strong>引用了authenticated_client，<strong>就相當於引用了上述二者</strong>。</li>
+<li>因為 authenticated_client 引用了 user 和 client 這兩個 fixture。所以<strong>只要</strong>引用了 authenticated_client，<strong>就相當於引用了上述二者</strong>。</li>
 </ul>
 </li>
 </ol>

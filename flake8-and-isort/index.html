@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-24T15:58:15+08:00" />
 
 
 
@@ -214,7 +214,7 @@
 </ul>
 <p>還有一個典型的情況就是<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chaojihexiang/p/6417835.html">這篇</a>所提及的和 Django 的不合拍：</p>
 <blockquote>
-<p>典型的就是集成了django.db.models.Model的模型層對象在編譯時沒有objects屬性，但是運行時卻有，造成我們在編寫代碼時pylint會報”has no objects attributes”之類的錯誤，雖然不影響程序運行，但是很影響心情啊</p>
+<p>典型的就是集成了 django.db.models.Model 的模型層對象在編譯時沒有 objects 屬性，但是運行時卻有，造成我們在編寫代碼時 pylint 會報”has no objects attributes”之類的錯誤，雖然不影響程序運行，但是很影響心情啊</p>
 </blockquote>
 <p>沒錯，每次看到 <code>.objects</code> 屬性底下的警告波浪線真的很心煩，哈哈！</p>
 <p>雖然可以使用 <code>.pylintrc</code> 文件或 IDE 的 <code>arguments setting</code> 來排除與客製化檢查規則，但就是麻煩，如本集 Podcast 來賓所言，調整起來費時費力，太辛苦了。</p>

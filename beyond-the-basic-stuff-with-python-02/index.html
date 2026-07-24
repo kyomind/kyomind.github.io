@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="書評" />
             
 
-  <meta property="article:modified_time" content="2026-07-22T06:26:55+08:00" />
+  <meta property="article:modified_time" content="2026-07-24T15:58:33+08:00" />
 
 
 
@@ -296,7 +296,7 @@
 <h2 id="不要使用「可變物件」作為「參數預設值」"><a href="#不要使用「可變物件」作為「參數預設值」" class="headerlink" title="不要使用「可變物件」作為「參數預設值」"></a>不要使用「可變物件」作為「參數預設值」</h2><p>這點你可能已經很熟悉了，因為幾乎每一本書都會強調。</p>
 <p>我們用下列兩段話（by ChatGPT）來回顧，<strong>為什麼不能這麼做</strong>：</p>
 <blockquote>
-<p>在Python 中，不應該用可變物件做預設參數（引數），因為這個可變物件在函式第一次<strong>被定義的時候</strong>就已經「<strong>固定</strong>」了。（<strong>只會建立一次</strong>）</p>
+<p>在 Python 中，不應該用可變物件做預設參數（引數），因為這個可變物件在函式第一次<strong>被定義的時候</strong>就已經「<strong>固定</strong>」了。（<strong>只會建立一次</strong>）</p>
 </blockquote>
 <blockquote>
 <p>以後每次呼叫這個函式但<strong>沒有提供這個引數</strong>的話，都會<strong>共用同一個物件</strong>。如果你在函式裡改變了這個物件，那麼下次呼叫時，<strong>這個改變就被保留下來了</strong>。這會讓程式的行為變得很難預測和控制。</p>

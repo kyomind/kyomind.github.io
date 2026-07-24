@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-22T06:07:29+08:00" />
+  <meta property="article:modified_time" content="2026-07-24T15:58:22+08:00" />
 
 
 
@@ -277,7 +277,7 @@
 <h3 id="一、autopep8"><a href="#一、autopep8" class="headerlink" title="一、autopep8"></a>一、autopep8</h3><p>就我的使用經驗，autopep8 要求較寬鬆，輸出結果彈性最大，如果一段程式碼有兩、三種排版方式皆合乎 PEP 8 風格，則對 autopep8 而言都算是「合法」的——因為它只要求不違背 PEP 8 即可。此時它便不會再對程式碼進行修正。所以使用 autopep8，程式碼的排版風格未必能統一，我覺得這是一大缺點，個人無法接受。</p>
 <h3 id="二、yapf"><a href="#二、yapf" class="headerlink" title="二、yapf"></a>二、yapf</h3><p>yapf 是由 Google 推出的 formatter。</p>
 <p>和前述 autopep8 相比，大部分的時候格式化結果都是一致的，因為它會從兩、三種都合乎 PEP 8 的風格中，<strong>讓演算法依具體情況</strong>進一步<strong>選擇其中一種</strong>作為格式化結果（儘管可能未必是你最認同的那種），我覺得<strong>更適合團隊協作</strong>。</p>
-<p>更多介紹可參考 yapf 的<a target="_blank" rel="noopener" href="https://github.com/google/yapf#introduction">GitHub 頁面</a>：</p>
+<p>更多介紹可參考 yapf 的 <a target="_blank" rel="noopener" href="https://github.com/google/yapf#introduction">GitHub 頁面</a>：</p>
 <blockquote>
 <p>YAPF takes a different approach. It’s based off of ‘clang-format’, developed by Daniel Jasper. In essence, the algorithm takes the code and <strong>reformats it to the best formatting that conforms to the style guide, even if the original code didn’t violate the style guide.</strong></p>
 </blockquote>
