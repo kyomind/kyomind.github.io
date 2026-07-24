@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:18:11+08:00" />
+  <meta property="article:modified_time" content="2026-07-24T15:37:26+08:00" />
 
 
 
@@ -210,7 +210,7 @@
 <span id="more"></span>
 
 <h2 id="二、範例專案改動"><a href="#二、範例專案改動" class="headerlink" title="二、範例專案改動"></a>二、範例專案改動</h2><p>為了更真實地介紹<strong>查詢參數</strong>，我們需要修改原先的「取得所有文章」API，加入簡單的「<strong>過濾</strong>」功能。</p>
-<p>附帶一提，複雜的過濾功能，我們會在〈卷 23：過濾（Filtering）〉進行介紹。</p>
+<p>附帶一提，複雜的過濾功能，我們會在<a href="/django-ninja-26/">卷 26：資料查詢與過濾（上）FilterSchema 介紹</a>和<a href="/django-ninja-27/">卷 27：資料查詢與過濾（下）FilterSchema 多欄位查詢</a>進行介紹。</p>
 <p>修改後，當請求帶有查詢參數時，API 就能透過這些參數來<strong>限制查詢結果</strong>。如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@router.get(<span class="params">path=<span class="string">&#x27;/posts/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_posts</span>(<span class="params">request: HttpRequest, title: <span class="literal">None</span> | <span class="built_in">str</span> = <span class="literal">None</span></span>):</span><br><span class="line">    posts = Post.objects.<span class="built_in">all</span>()</span><br><span class="line">    <span class="keyword">if</span> title:</span><br><span class="line">        posts = posts.<span class="built_in">filter</span>(title__icontains=title)  <span class="comment"># 實現過濾邏輯</span></span><br><span class="line">    <span class="keyword">return</span> posts</span><br></pre></td></tr></table></figure>
 
