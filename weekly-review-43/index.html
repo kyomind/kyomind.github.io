@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
             
 
-  <meta property="article:modified_time" content="2025-08-11T15:34:59+08:00" />
+  <meta property="article:modified_time" content="2026-07-29T04:05:31+08:00" />
 
 
 
@@ -194,7 +194,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8B%E6%89%BE%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="toc-text">尋找替代方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AA%8D%E8%AD%98-Cloudflare"><span class="toc-text">認識 Cloudflare</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%B7%E7%A7%BB%E7%9A%84%E5%A4%A7%E7%B6%B1%E8%88%87%E6%8C%91%E6%88%B0"><span class="toc-text">遷移的大綱與挑戰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%A4%B1%E4%B9%8B%E6%9D%B1%E9%9A%85%EF%BC%8C%E6%94%B6%E4%B9%8B%E6%A1%91%E6%A6%86"><span class="toc-text">結語：失之東隅，收之桑榆</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p><img src="https://img.kyomind.tw/weekly-review.png">  </p>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/weekly-review.png"></p>
 <p>上個月中，我在寫部落格時，突然發現圖片上傳失敗，無論怎麼嘗試都無法成功。</p>
 <p>我的寫作流程是用 VS Code 的 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/languages/markdown">Markdown Image</a> 外掛，透過鍵盤快捷鍵，直接把圖片傳到 Imgur 上，這個流程已經持續了好幾年，非常方便、順手。</p>
 <p>但這次踢到鐵板了。</p>
@@ -227,7 +227,7 @@
 </blockquote>
 <hr>
 <h2 id="遷移的大綱與挑戰"><a href="#遷移的大綱與挑戰" class="headerlink" title="遷移的大綱與挑戰"></a>遷移的大綱與挑戰</h2><p>這個圖床遷移實際上花了我好一些功夫才完成，其中的細節頗多，無法在本文詳述。</p>
-<p>但我們可以簡單講講，讓你有個方向。 </p>
+<p>但我們可以簡單講講，讓你有個方向。</p>
 <h3 id="一、域名托管"><a href="#一、域名托管" class="headerlink" title="一、域名托管"></a>一、域名托管</h3><p>我希望圖片網址是以我自己的網域開頭，而不是 Cloudflare 給的預設網址。這樣網址比較乾淨、也容易管理。</p>
 <p>為此，我得先把 DNS 託管給 Cloudflare，接著才能用自定義網域綁定 R2 的 Bucket。</p>
 <p>這個部分花了一點時間摸索，好在有 AI，最後順利完成。</p>
@@ -244,7 +244,7 @@
 <p>感覺收獲良多耶XD！</p>
 <h3 id="三、Markdown-Image-外掛設定"><a href="#三、Markdown-Image-外掛設定" class="headerlink" title="三、Markdown Image 外掛設定"></a>三、Markdown Image 外掛設定</h3><p>完成前兩步後，你便能透過 Cloudflare 官網的 UI 來上傳圖片並<strong>取得網址</strong>：</p>
 <!-- ![](https://img.kyomind.tw/20250607-112306-wr43.png)   -->
-<p><img src="https://img.kyomind.tw/20250607-131952-1312-min.png">  </p>
+<p><img src="https://img.kyomind.tw/20250607-131952-1312-min.png"></p>
 <p>但這樣做<strong>非常不方便</strong>！</p>
 <p>所以我們還要設定 Markdown Image，讓它可以成功支援 R2 上傳。</p>
 <p>這過程我進行得不太順利，在 Google + AI 的協作下，花了快兩個小時才成功。（明明應該是很簡單的事😅）</p>
@@ -276,6 +276,7 @@
         <div class="post-tags">
             <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
             <a href="/tags/%E5%AF%AB%E4%BD%9C/">寫作</a>
+            <a href="/tags/Cloudflare/">Cloudflare</a>
             </div>
         
         <nav class="post-nav"><a class="prev" href="/pyright/">
