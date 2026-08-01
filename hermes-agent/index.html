@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-24T03:36:40+08:00" />
+  <meta property="article:modified_time" content="2026-08-01T12:39:09+08:00" />
 
 
 
@@ -184,7 +184,7 @@
         <span class="post-time">
           2026-07-12
         </span><span class="post-update">
-            →  2026-07-17
+            →  2026-08-01
           </span>
         <span class="post-category">
             <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發</a>
@@ -199,7 +199,10 @@
     </div>
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20260712-000922.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <blockquote>
-<p><code>2026/07/17</code> 更新：新增 <strong>Grok 4.5</strong> 模型推薦。（<a href="#OpenCode-Go-%E6%96%B9%E6%A1%88">OpenCode Go 方案</a>）</p>
+<p><code>2026/08/01</code> 更新：新增 <strong>GPT 5.6 Luna</strong> 模型推薦。 (<a href="#%E4%B8%80%E3%80%81ChatGPT%EF%BC%88Codex%EF%BC%89">ChatGPT Plus</a>)</p>
+</blockquote>
+<blockquote>
+<p><code>2026/07/17</code> 更新：新增 <strong>Grok 4.5</strong> 模型推薦。（<a href="#%E4%BA%8C%E3%80%81OpenCode-Go-%E6%96%B9%E6%A1%88">OpenCode Go 方案</a>）</p>
 </blockquote>
 <p>最近 Hermes Agent 非常紅，熱度上似乎已經超越了俗稱「龍蝦」的 OpenClaw。</p>
 <p>我自己玩了一個多月，也累積了一些心得想要分享。</p>
@@ -247,12 +250,11 @@
 <p>而和龍蝦屬於「同類」的 Hermes Agent，它也完全支援——消耗的是 Codex 的 token 額度。我一開始就是使用它，作為主要 provider。</p>
 <p>個人推薦模型：</p>
 <ul>
-<li><code>GPT 5.5</code>：兩個字——強大！但 token 燒比較快</li>
-<li><code>GPT 5.6 Luna</code>：全新模型，token 消耗較 5.5 少，實力卻不容小覷</li>
-<li><code>GPT 5.4 Mini</code>：token 消耗更少，日常任務足夠了</li>
+<li><code>GPT 5.6 Sol</code>：兩個字——強大！但 token 燒比較快</li>
+<li><code>GPT 5.6 Luna</code>：2026 年 7 月底<a target="_blank" rel="noopener" href="https://www.ithome.com.tw/news/177789">大幅降價 80%</a>，競爭力大幅增加！</li>
 </ul>
-<p>不推 <code>5.6 Terra</code>，中等 reasoning level 時，能力還不如 5.5，token 消耗卻差不多🥲</p>
-<h3 id="OpenCode-Go-方案"><a href="#OpenCode-Go-方案" class="headerlink" title="OpenCode Go 方案"></a>OpenCode Go 方案</h3><p>我平常也用 Codex 寫程式或處理專案，這樣和 Hermes Agent 共用額度，難免還是會有 <strong>token 焦慮</strong>。</p>
+<p><code>5.6 Terra</code> 定位相對尷尬：難題用 Sol，日常任務用 Luna。</p>
+<h3 id="二、OpenCode-Go-方案"><a href="#二、OpenCode-Go-方案" class="headerlink" title="二、OpenCode Go 方案"></a>二、OpenCode Go 方案</h3><p>我平常也用 Codex 寫程式或處理專案，這樣和 Hermes Agent 共用額度，難免還是會有 <strong>token 焦慮</strong>。</p>
 <p>後來我找到了一個便宜又大碗的替代方案——<a target="_blank" rel="noopener" href="https://opencode.ai/zht/go">OpenCode Go</a>。</p>
 <p>在此暫不詳述，只要知道它可以作為 Hermes Agent 的 provider 即可。</p>
 <p>我現在就是以 Go 方案作為主力，而 Codex 額度僅在必要時才用。</p>
