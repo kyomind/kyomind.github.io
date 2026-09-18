@@ -533,6 +533,15 @@
   </url>
   
   <url>
+    <loc>https://blog.kyomind.tw/weamind-infra/</loc>
+    
+    <lastmod>2026-07-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/ruff/</loc>
     
     <lastmod>2026-07-14</lastmod>
@@ -569,7 +578,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/series/index.html</loc>
+    <loc>https://blog.kyomind.tw/terraform-gcp-free-tier-vm/</loc>
     
     <lastmod>2026-07-12</lastmod>
     
@@ -578,7 +587,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weamind-infra/</loc>
+    <loc>https://blog.kyomind.tw/series/index.html</loc>
     
     <lastmod>2026-07-12</lastmod>
     
@@ -614,15 +623,6 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/terraform-gcp-free-tier-vm/</loc>
-    
-    <lastmod>2026-07-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.kyomind.tw/weekly-review-17/</loc>
     
     <lastmod>2026-07-10</lastmod>
@@ -632,7 +632,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
+    <loc>https://blog.kyomind.tw/perplexity/</loc>
     
     <lastmod>2026-07-10</lastmod>
     
@@ -641,7 +641,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/perplexity/</loc>
+    <loc>https://blog.kyomind.tw/stop-trial-and-error/</loc>
     
     <lastmod>2026-07-10</lastmod>
     
@@ -1271,7 +1271,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
     
     <lastmod>2026-03-29</lastmod>
     
@@ -1280,7 +1280,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/python-craftsman-03/</loc>
+    <loc>https://blog.kyomind.tw/python-craftsman-02/</loc>
     
     <lastmod>2026-03-29</lastmod>
     
@@ -1568,7 +1568,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1577,7 +1577,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-09/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-08/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1975,7 +1975,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

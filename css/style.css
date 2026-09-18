@@ -1999,7 +1999,7 @@ h6 {
   background: #f5f7f3;
   border-bottom: 1px solid #d8d8d8;
   text-align: center;
-  transition: transform 300ms ease;
+  transition: transform 200ms ease;
   z-index: 99;
 }
 .mobile-navbar.fixed-open {
