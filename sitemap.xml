@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/less-is-more/</loc>
+    
+    <lastmod>2026-09-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/about/index.html</loc>
     
     <lastmod>2026-09-07</lastmod>
@@ -480,15 +489,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/hetzner-vm/</loc>
-    
-    <lastmod>2026-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/less-is-more/</loc>
     
     <lastmod>2026-07-14</lastmod>
     
@@ -1975,7 +1975,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
