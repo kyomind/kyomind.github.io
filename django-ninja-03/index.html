@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2025-08-20T15:08:50+08:00" />
+  <meta property="article:modified_time" content="2026-10-01T17:39:57+08:00" />
 
 
 
@@ -220,6 +220,9 @@
 <p><img src="https://i.imgur.com/3teW1L4.png" alt="django-ninja.dev"><span class="cap">django-ninja.dev</span></p>
 <p>從上圖中可知，在<strong>相對高</strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%B9%B6%E5%8F%91%E6%80%A7">並行</a>（concurrency&#x3D;50）的網路請求情境下，Django Ninja 的處理能力明顯優於 Flask + Marshmallow 和 Django REST framework。</p>
 <p>非同步的好處在<strong>只有 1 個 worker 時</strong>更加明顯，這對於<strong>節省資源</strong>和<strong>提高效能</strong>都有著重要意義。</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/django-async-evolution/">Django 非同步演進：六年改造、架構瓶頸與 No-GIL 翻盤</a></p>
+</blockquote>
 <hr>
 <p>了解了 Django Ninja，我們來比較它和 Django REST Framework 的差異。</p>
 <h2 id="Django-Ninja-與-Django-REST-framework-的主要區別"><a href="#Django-Ninja-與-Django-REST-framework-的主要區別" class="headerlink" title="Django Ninja 與 Django REST framework 的主要區別"></a>Django Ninja 與 Django REST framework 的主要區別</h2><p>剛進入 Python 後端開發領域的讀者，可能未必熟悉 <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">Django REST framework</a>，可以參考我寫過的這篇〈<a href="/django-rest-framework-01/">Django REST framework 教學（一）前言篇</a>〉介紹。</p>

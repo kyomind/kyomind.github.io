@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Django" />
             
 
-  <meta property="article:modified_time" content="2026-06-20T07:13:46+08:00" />
+  <meta property="article:modified_time" content="2026-10-01T17:36:07+08:00" />
 
 
 
@@ -223,6 +223,9 @@
 <li><strong>Volume</strong>：容器的持久化儲存空間，可將資料獨立存放在主機上（而不是直接置於容器中），避免容器刪除時資料遺失。使用 <code>-v</code> 參數來設定。</li>
 </ul>
 <p>這些概念環環相扣，形成了一個完整的 <strong>Docker 容器生態系統</strong>。</p>
+<blockquote>
+<p>延伸閱讀：<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/open-container-initiative/">OCI 入門：容器世界的共同語言</a></p>
+</blockquote>
 <p>接下來，讓我們實際動手，將這些概念應用在我們的 Django 專案中。</p>
 <hr>
 <h2 id="為-Django-專案建立-Dockerfile"><a href="#為-Django-專案建立-Dockerfile" class="headerlink" title="為 Django 專案建立 Dockerfile"></a>為 Django 專案建立 Dockerfile</h2><p>想要將現有的 Django 專案容化器，就要從建立自己的 Docker Image 開始。</p>
