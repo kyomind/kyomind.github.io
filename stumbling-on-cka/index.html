@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Self" />
             
 
-  <meta property="article:modified_time" content="2026-10-03T16:37:54+08:00" />
+  <meta property="article:modified_time" content="2026-10-03T16:46:12+08:00" />
 
 
 
@@ -189,20 +189,20 @@
   </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20261004-002239.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
 <p><a target="_blank" rel="noopener" href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/">CKA</a>（Certified Kubernetes Administrator）是 Kubernetes 的管理員認證。</p>
 <p>考試時間 2 小時，你要連進一個遠端桌面，在真實的 Kubernetes 環境裡，用指令一題一題把答案敲出來；全程線上，由監考人員透過 webcam 盯著你。</p>
-<p>而且，不像 <a target="_blank" rel="noopener" href="https://aws.amazon.com/certification/certified-solutions-architect-associate/">AWS SAA</a> 可以去特約考場考，CKA 在台灣需要你自備場地！我住的地方太亂、不符合要求，只好另外找地方考——感謝多次幫我搬 27 吋螢幕到考場的女友🥹</p>
+<p>不像 <a target="_blank" rel="noopener" href="https://aws.amazon.com/certification/certified-solutions-architect-associate/">AWS SAA</a> 可以去特約考場考，CKA 在台灣你要自備場地！我住的地方雜物太多不符合要求，只好另外找地方考——感謝多次幫我搬 27 吋螢幕到考場的女友🥹</p>
 <p>我會去考它，一方面因為<a href="/all-in-on-devops/">轉職 DevOps</a> 的這一年，Kubernetes 無疑是我投入最多時間的一塊，前前後後超過 400 小時——我都有計時。我想拿它來當作 Kubernetes 自學的驗收。</p>
 <p>另一方面，這張證照對有 DevOps 經驗的人來說，可能只是錦上添花，但對正在求職的我而言，卻是少數能從外部證明自己的東西。</p>
 <p>那就來考吧！</p>
 <span id="more"></span>
 
 <hr>
-<p>本以為，有了從 3 月開始陸續打下的 Kubernetes 基礎，再準備個一、兩個月應該就能考過。結果今年 5 月第一次做 Udemy 課程附贈的 CKA 模擬考時，才第一題就傻住了。</p>
+<p>本以為，有了從 3 月開始陸續打下的 Kubernetes 基礎，再準備個一、兩個月應該就能通過。結果 5 月第一次做 Udemy 課程附贈的 CKA 模擬考時，才第一題就傻住了。</p>
 <p>題目要我建立一個 Pod（Kubernetes 裡最基本的運行單位），裡面要有 3 個容器，而且每個容器的規格要求都不同——我竟完全不知道從何下手🤯</p>
 <p><code>kubectl run</code>（建立 Pod 的指令）能帶哪些參數？為什麼要加 <code>--dry-run=client</code>？我全都不熟。</p>
 <blockquote>
 <p>看樣子，這 CKA，沒有想像中的容易！</p>
 </blockquote>
-<p>這就是我 CKA 之旅的起點。後來的發展，只能用「一波三折」形容。雖然最後還是過了，但不得不好好記錄一下這其中「壯烈」的過程。</p>
+<p>這就是我 CKA 之旅的起點。後來的發展，只能用「一波三折」形容。雖然最終還是通過了，但值得好好記錄一下這其中「壯烈」的過程。</p>
 <h2 id="本文並非備考攻略"><a href="#本文並非備考攻略" class="headerlink" title="本文並非備考攻略"></a>本文並非備考攻略</h2><p>如果你想知道 CKA 該怎麼準備，網路上已經有寫得很好的心得，我自己也受益良多。推薦這兩篇：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Soft_Job/M.1740370039.A.FD8.html">[心得] CKA、CKAD 證照準備心得</a></li>
@@ -211,11 +211,11 @@
 <p>這篇想分享的是另一個角度：一個沒有 DevOps 實務經驗的人，考 CKA 的真實過程。</p>
 <p>當然，準備方式還是會簡單帶到，畢竟它也是這段經歷的一部分。</p>
 <hr>
-<h2 id="學了-9-週，仍一知半解"><a href="#學了-9-週，仍一知半解" class="headerlink" title="學了 9 週，仍一知半解"></a>學了 9 週，仍一知半解</h2><p>在開始準備 CKA 之前，我已經跑完一輪為期 9 週的自學計畫，其中 6 週 focus 在 Kubernetes。</p>
+<h2 id="學了-9-週，仍一知半解"><a href="#學了-9-週，仍一知半解" class="headerlink" title="學了 9 週，仍一知半解"></a>學了 9 週，仍一知半解</h2><p>在開始準備 CKA 之前，我已經跑完一輪為期 9 週的自學計畫，其中前 6 週 focus 在 Kubernetes。</p>
 <p>學習的過程與紀錄，都放在 <a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra/tree/main/learning">GitHub</a> 上了。</p>
-<p>那段時間我學了很多概念：Pod、Deployment、Service、Ingress，也真的把 <a href="/weamind/">WeaMind</a> 部署上去，至今仍跑得好好的😇</p>
+<p>這段時間我學了很多概念：Pod、Deployment、Service、Ingress，也有把 <a href="/weamind/">WeaMind</a> 實際部署到叢集，運行至今。</p>
 <p>但這些概念，當時在我腦中，只是一個個獨立的點。</p>
-<p>我知道它們各自是什麼，卻很少從零開始，親手用指令把它們建出來。就算給我一份現成的 YAML 檔讓我改，我也還是很生疏。</p>
+<p>我知道它們各自是什麼，卻很少從零開始，親手用指令把它們建出來。就算給我一份現成的 YAML 檔讓我改，也還是很生疏。</p>
 <p>再加上，一個人維護的 side project，有些東西很難碰到：只有我一個人用，無須權限控管；我用的 <a href="/k3s-for-weamind/">K3s</a> 是輕量版 Kubernetes，連整個叢集的「記憶」——<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/etcd-explained/">etcd</a>——都簡化了。</p>
 <p>所以除了 Pod、Deployment、Service、Ingress 這些基本元件，CKA 考的東西，大多是我自學時沒機會實際操作的範圍。</p>
 <h2 id="刷完-74-題，才發現是舊考綱"><a href="#刷完-74-題，才發現是舊考綱" class="headerlink" title="刷完 74 題，才發現是舊考綱"></a>刷完 74 題，才發現是舊考綱</h2><p>大家普遍推薦 KodeKloud，我原本也打算照做，但 Udemy 課程的模擬題就跑在 KodeKloud 上，做的時候常常斷線。一氣之下，我改用 <a target="_blank" rel="noopener" href="https://killercoda.com/">Killercoda</a> 這個免費練習平台，刷一位叫 Sachin 的作者整理的 <a target="_blank" rel="noopener" href="https://killercoda.com/sachin/course/CKA">74 題題庫</a>。</p>
