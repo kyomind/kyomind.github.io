@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="robots" content="max-image-preview:large" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kyomind">
+<meta property="og:type" content="article"><meta name="twitter:title" content="一波三折的 CKA 之旅">
+  <meta property="og:title" content="一波三折的 CKA 之旅"><meta name="twitter:description" content="記錄一個沒有 DevOps 實務經驗的人，從刷錯考綱、監考驗證危機到遠端桌面故障，三次應考才通過 CKA 的真實過程。">
+  <meta property="og:description" content="記錄一個沒有 DevOps 實務經驗的人，從刷錯考綱、監考驗證危機到遠端桌面故障，三次應考才通過 CKA 的真實過程。"><meta name="twitter:image" content="https://img.kyomind.tw/img-20261004-002239.jpg">
+  <meta property="og:image" content="https://img.kyomind.tw/img-20261004-002239.jpg">
+<meta name="description" content="記錄一個沒有 DevOps 實務經驗的人，從刷錯考綱、監考驗證危機到遠端桌面故障，三次應考才通過 CKA 的真實過程。" />
+
+
+<meta property="og:locale" content="zh-TW" />
+<meta property="og:site_name" content="Code and Me" />
+<meta property="article:publisher" content="https://blog.kyomind.tw" />
+<meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="心得" />
+            
+
+  <meta property="article:modified_time" content="2026-10-03T16:31:14+08:00" />
+
+
+
+
+  <meta property="article:published_time" content="2026-10-03T16:31:50+08:00" />
+
+
+
+<meta name="author" content="Kyo Huang" />
+<meta http-equiv="content-language" content="zh-TW" />
+<link rel="alternate" href="/atom.xml" title="Code and Me" type="application/atom+xml">
+ 
+ 
+
+
+
+
+
+<link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+
+<link rel="canonical" href="https://blog.kyomind.tw/stumbling-on-cka/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NL7WVE1X7Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NL7WVE1X7Z');
+
+</script><script defer src="https://umami.kyomind.tw/script.js" data-website-id="95c335c2-7917-4f3a-9638-a1b8cf36523f"></script><script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":false,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>一波三折的 CKA 之旅 - Code and Me</title>
+  <meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Code and Me</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/" class="">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/" class="">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/categories/DevOps/" class="">
+        <li class="mobile-menu-item">DevOps
+          </li>
+      </a><a href="/series/" class="">
+        <li class="mobile-menu-item">系列
+          </li>
+      </a><a href="/subscribe/" class="subscribe-link">
+        <li class="mobile-menu-item">訂閱
+          </li>
+      </a><a href="/about/" class="">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Code and Me</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu"><li class="menu-item">
+        <a class="menu-item-link " href="/archives/">
+          文章列表
+          </a>
+      </li>
+    <li class="dropdown">
+        <a class="menu-item-link" href="/categories/">
+          分類 <b><span style="position: relative; top: -3px;">⌵</span></b>
+          </a>
+        <div class="dropdown-content">
+          
+            <a href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發 (41)</a>
+          
+            <a href="/categories/Self/">Self (25)</a>
+          
+            <a href="/categories/DevOps/">DevOps (11)</a>
+          
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得 (63)</a>
+          
+            <a href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體 (15)</a>
+          
+            <a href="/categories/Django/">Django (43)</a>
+          
+            <a href="/categories/%E6%9B%B8%E8%A9%95/">書評 (14)</a>
+          
+        </div>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/categories/DevOps/">
+          DevOps
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/series/">
+          系列
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link subscribe-link" href="/subscribe/">
+          訂閱
+          </a>
+      </li>
+    <li class="menu-item">
+        <a class="menu-item-link " href="/about/">
+          關於我
+          </a>
+      </li>
+    </ul>
+</nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">一波三折的 CKA 之旅
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2026-10-04
+        </span><span class="post-category">
+            <a href="/categories/%E5%BF%83%E5%BE%97/">心得</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E4%B8%A6%E9%9D%9E%E5%82%99%E8%80%83%E6%94%BB%E7%95%A5"><span class="toc-text">本文並非備考攻略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%B8%E4%BA%86-9-%E9%80%B1%EF%BC%8C%E4%BB%8D%E4%B8%80%E7%9F%A5%E5%8D%8A%E8%A7%A3"><span class="toc-text">學了 9 週，仍一知半解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E5%AE%8C-74-%E9%A1%8C%EF%BC%8C%E6%89%8D%E7%99%BC%E7%8F%BE%E6%98%AF%E8%88%8A%E8%80%83%E7%B6%B1"><span class="toc-text">刷完 74 題，才發現是舊考綱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%EF%BC%9A%E8%A2%AB%E6%96%B0%E8%80%83%E7%B6%B1%E7%AA%81%E8%A5%B2"><span class="toc-text">第一次：被新考綱突襲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%EF%BC%9A%E4%BE%86%E8%87%AA%E6%9D%B1%E6%96%B9%E7%9A%84%E7%A5%9E%E7%A7%98%E5%8A%9B%E9%87%8F"><span class="toc-text">第二次：來自東方的神秘力量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%EF%BC%9A%E7%A5%9E%E6%98%8E%E4%BF%9D%E4%BD%91"><span class="toc-text">第三次：神明保佑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B5%90%E8%AA%9E%EF%BC%9A%E5%BE%9E%E4%B8%80%E7%9F%A5%E5%8D%8A%E8%A7%A3%E5%88%B0%E5%88%9D%E7%AA%BA%E9%96%80%E5%BE%91"><span class="toc-text">結語：從一知半解到初窺門徑</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p><img src="https://img.kyomind.tw/img-20261004-002239.jpg" alt="from Pixabay"><span class="cap">from Pixabay</span></p>
+<p><a target="_blank" rel="noopener" href="https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/">CKA</a>（Certified Kubernetes Administrator）是 Kubernetes 的管理員認證。</p>
+<p>考試時間 2 小時，你要連進一個遠端桌面，在真實的 Kubernetes 環境裡，用指令一題一題把答案敲出來；全程線上，由監考人員透過 webcam 盯著你。</p>
+<p>而且，不像 <a target="_blank" rel="noopener" href="https://aws.amazon.com/certification/certified-solutions-architect-associate/">AWS SAA</a> 可以去特約考場考，CKA 在台灣需要你自備場地！我住的地方太亂、不符合要求，只好另外找地方考——感謝多次幫我搬 27 吋螢幕到考場的女友🥹</p>
+<p>我會去考它，一方面因為<a href="/all-in-on-devops/">轉職 DevOps</a> 的這一年，Kubernetes 無疑是我投入最多時間的一塊，前前後後超過 400 小時——我都有計時。我想拿它來當作 Kubernetes 自學的驗收。</p>
+<p>另一方面，這張證照對有 DevOps 經驗的人來說，可能只是錦上添花，但對正在求職的我而言，卻是少數能從外部證明自己的東西。</p>
+<p>那就來考吧！</p>
+<span id="more"></span>
+
+<hr>
+<p>本以為，有了從 3 月開始陸續打下的 Kubernetes 基礎，再準備個一、兩個月應該就能考過。結果今年 5 月第一次做 Udemy 課程附贈的 CKA 模擬考時，才第一題就傻住了。</p>
+<p>題目要我建立一個 Pod（Kubernetes 裡最基本的運行單位），裡面要有 3 個容器，而且每個容器的規格要求都不同——我竟完全不知道從何下手🤯</p>
+<p><code>kubectl run</code>（建立 Pod 的指令）能帶哪些參數？為什麼要加 <code>--dry-run=client</code>？我全都不熟。</p>
+<blockquote>
+<p>看樣子，這 CKA，沒有想像中的容易！</p>
+</blockquote>
+<p>這就是我 CKA 之旅的起點。後來的發展，只能用「一波三折」形容。雖然最後還是過了，但不得不好好記錄一下這其中「壯烈」的過程。</p>
+<hr>
+<h2 id="本文並非備考攻略"><a href="#本文並非備考攻略" class="headerlink" title="本文並非備考攻略"></a>本文並非備考攻略</h2><p>如果你想知道 CKA 該怎麼準備，網路上已經有寫得很好的心得，我自己也受益良多。推薦這兩篇：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/Soft_Job/M.1740370039.A.FD8.html">〈[心得] CKA、CKAD 證照準備心得〉</a></li>
+<li><a target="_blank" rel="noopener" href="https://blueswen.com/blog/2026/02/20/kubernetes-cka-%E8%88%87-cks-%E8%AA%8D%E8%AD%89%E8%80%83%E8%A9%A6%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/">〈Kubernetes CKA 與 CKS 認證考試心得分享〉</a></li>
+</ul>
+<p>這篇想分享的是另一個角度：一個沒有 DevOps 實務經驗的人，考 CKA 的真實過程。</p>
+<p>當然，準備方式還是會簡單帶到，畢竟它也是這段經歷的一部分。</p>
+<h2 id="學了-9-週，仍一知半解"><a href="#學了-9-週，仍一知半解" class="headerlink" title="學了 9 週，仍一知半解"></a>學了 9 週，仍一知半解</h2><p>在開始準備 CKA 之前，我已經跑完一輪為期 9 週的自學計畫，其中 6 週 focus 在 Kubernetes。</p>
+<p>學習的過程與紀錄，都放在 <a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra/tree/main/learning">GitHub</a> 上了。</p>
+<p>那段時間我學了很多概念：Pod、Deployment、Service、Ingress，也真的把 <a href="/weamind/">WeaMind</a> 部署上去，至今仍跑得好好的😇</p>
+<p>但這些概念，當時在我腦中，只是一個個獨立的點。</p>
+<p>我知道它們各自是什麼，卻很少從零開始，親手用指令把它們建出來。就算給我一份現成的 YAML 檔讓我改，我也還是很生疏。</p>
+<p>再加上，一個人維護的 side project，有些東西很難碰到：只有我一個人用，無須權限控管；我用的 <a href="/k3s-for-weamind/">K3s</a> 是輕量版 Kubernetes，連整個叢集的「記憶」——<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/etcd-explained/">etcd</a>——都簡化了。</p>
+<p>所以除了 Pod、Deployment、Service、Ingress 這些基本元件，CKA 考的東西，大多是我自學時沒機會實際操作的範圍。</p>
+<h2 id="刷完-74-題，才發現是舊考綱"><a href="#刷完-74-題，才發現是舊考綱" class="headerlink" title="刷完 74 題，才發現是舊考綱"></a>刷完 74 題，才發現是舊考綱</h2><p>大家普遍推薦 KodeKloud，我原本也打算照做，但 Udemy 課程的模擬題就跑在 KodeKloud 上，做的時候常常斷線。一氣之下，我改用 <a target="_blank" rel="noopener" href="https://killercoda.com/">Killercoda</a> 這個免費練習平台，刷一位叫 Sachin 的作者整理的 <a target="_blank" rel="noopener" href="https://killercoda.com/sachin/course/CKA">74 題題庫</a>。</p>
+<h3 id="練習-Killercoda"><a href="#練習-Killercoda" class="headerlink" title="練習 Killercoda"></a>練習 Killercoda</h3><p>第一輪我做得很慢，很多新內容要花時間理解，比如儲存相關的 PV、PVC，只能一邊跟 AI 討論，一邊做筆記。不少題都得靠它幫忙才解得出來。</p>
+<p>第二輪就好多了，在複習過筆記後，大部分題目 3 到 5 分鐘就能完成，而且不需要頻繁求助於 AI。</p>
+<p>那時候我真心覺得：我變強了！（也沒有變禿）</p>
+<p>然而，在原定考試日的三天前，我才發現——<strong>這 74 題，全部是舊考綱。</strong></p>
+<p>2025 年 CKA 改版，新增了 Helm、Kustomize、Gateway API 等一整批新內容，而我花了兩個月練的，一題都沒有涵蓋到。</p>
+<p>這是我整個準備過程中，最大的失誤。</p>
+<h3 id="臨時抱佛腳"><a href="#臨時抱佛腳" class="headerlink" title="臨時抱佛腳"></a>臨時抱佛腳</h3><p>我趕緊去做官方附贈的 Killer Shell 模擬考。做完的感想只有一個：這跟 Killercoda 簡直是<strong>兩個世界</strong>。</p>
+<p>幾乎沒有單純建 Pod、建 Service 的題目，大多是往叢集管理靠攏，讓我非常挫敗。</p>
+<p>最後我決定把考試延後幾天。那些新東西需要時間消化，而我也需要休息。</p>
+<p>儘管如此，我對第一次考試還是有點信心——我覺得有一半的機會能過。</p>
+<p>然後我就接連吃癟了🥲</p>
+<hr>
+<h2 id="第一次：被新考綱突襲"><a href="#第一次：被新考綱突襲" class="headerlink" title="第一次：被新考綱突襲"></a>第一次：被新考綱突襲</h2><p>8 月 3 日，第一次上考場。</p>
+<h3 id="開考前的插曲"><a href="#開考前的插曲" class="headerlink" title="開考前的插曲"></a>開考前的插曲</h3><p>CKA 是線上監考，開考前要先核對身分。監考人員覺得我上傳的證件照不清楚，要我用 webcam 直接拍證件給他看——偏偏我的 webcam 無法近距離對焦，證件怎麼拍都是糊的。</p>
+<p>就這樣來回了半小時，後來好像換了一位監考人員，反正就通過驗證了。我表定 14:00 開考，13:35 就進場，結果直到 14:15 才開始考試，有驚無險。</p>
+<h3 id="我還是太天真了"><a href="#我還是太天真了" class="headerlink" title="我還是太天真了"></a>我還是太天真了</h3><p>一看到題目，就有一種強烈的「突襲感」。舊考綱範圍的題目還應付得來，但新考綱的部分，我交了兩三題白卷。</p>
+<p>走出考場時，我回想大概有五題沒寫完，心裡更沒底了。考完 24 小時內會公布成績，這 24 小時真的是度日如年，覺都睡不好。</p>
+<p>隔天起來，光 email 就反覆確認了十幾次，內心的焦躁感可想而知，最後成績出來：<strong>55 分</strong>。及格線是 66 分。</p>
+<p>當下的第一個想法是：天啊！又要再來一次了，好累喔。</p>
+<h3 id="反省與檢討"><a href="#反省與檢討" class="headerlink" title="反省與檢討"></a>反省與檢討</h3><p>休息 5 天後（準備這考試讓我身心俱疲），冷靜下來回頭檢視，失分主要集中在新考綱，我想情況還不算太糟。</p>
+<p>所幸 CKA 可以免費重考一次。接下來將近兩週，我專心補新考綱。</p>
+<p>我把 5 月沒做完的 Udemy 模擬考重新做完——這次終於不再頻繁斷線了😂，然後再把附贈的第二份 Killer Shell 模擬考題做一做，我覺得這樣就差不多了。</p>
+<hr>
+<h2 id="第二次：來自東方的神秘力量"><a href="#第二次：來自東方的神秘力量" class="headerlink" title="第二次：來自東方的神秘力量"></a>第二次：來自東方的神秘力量</h2><p>8 月 20 日，第二次考試。</p>
+<p>補完新考綱之後，我進考場前信心滿滿，跟女友表示：「這次我有八成把握！」沒想到，考試還沒開始就先出狀況。</p>
+<h3 id="差點失去資格"><a href="#差點失去資格" class="headerlink" title="差點失去資格"></a>差點失去資格</h3><p>第一次考完後，我查到可以用手機檢查考試環境，心想這次證件總能拍清楚了吧，所以除了 webcam，也帶了手機。結果真的又要驗證證件時，監考人員表示：手機只能用來檢查環境，不能拿來給他看證件。我差點暈過去🫠</p>
+<p>後來回去查，還真的是這樣，只是那段說明的字很小，沒實際試過根本不會知道。附帶一提，webcam 全程都必須接著。</p>
+<p>所以這次，我只能在監考人員進來之前，反覆用手機重拍證件、重新上傳，但只要上傳的照片不被接受，監考人員就會要求我改用 webcam 出示證件，而 webcam 一定拍不清楚，那就得整個重來。到第 4 次時，再失敗一次，我就沒有時間了。</p>
+<p>其實我本來已經放棄了，準備出門跟女友說「對不起」，沒想到柳暗花明，又重獲了新生！但此時背後已經嚇出一身冷汗。</p>
+<p>14:28 終於開考，前後總共花了 50 分鐘。</p>
+<p>CKA 的規定是，表定開考時間過了 30 分鐘還沒開始，就會失去考試資格。我表定 14:00 開考，只差 2 分鐘。</p>
+<h3 id="失控的右鍵"><a href="#失控的右鍵" class="headerlink" title="失控的右鍵"></a>失控的右鍵</h3><p>好不容易進了考試的遠端桌面，我以為一切終於要苦盡甘來。沒想到，來的是第二個挑戰：滑鼠右鍵在終端機和瀏覽器裡嚴重失控，切換視窗卡頓，連複製貼上都很困難。</p>
+<p>奇怪的是，只有這兩塊有問題，旁邊的題目區卻一切正常。</p>
+<p>當下我懷疑是滑鼠壞了，內心還在自責：「可惡，早知道該檢查的！」但又覺得不太對勁，在考試壓力下，也不敢貿然做什麼。</p>
+<p>那種感覺，就像一位鋼琴家在比賽時，發現鋼琴有一個琴鍵壞了，只能在彈奏時盡量避開那個琴鍵。我也只能盡量避免複製這類操作，效率下降很多，但勉強還是可以做題。</p>
+<p>就這樣持續了 70 分鐘，直到一次編輯指令直接當掉，我被迫重開終端機——它竟然好了！</p>
+<p>但這時只剩 50 分鐘。時間結束時，有兩題我明明會寫，卻來不及做完。</p>
+<p>我又度過了漫長的一夜。最後成績出來：<strong>62 分</strong>。</p>
+<p>真的是要氣死我。</p>
+<h3 id="提出申訴"><a href="#提出申訴" class="headerlink" title="提出申訴"></a>提出申訴</h3><p>絕望的我打算再買一次考試資格，不過在此之前，我決定向 Linux Foundation 提出申訴，說明考試過程中遇到的系統問題。</p>
+<p>4 個小時後就收到回覆：同意讓我免費再考一次。</p>
+<p>我立刻預約了下週四。</p>
+<hr>
+<h2 id="第三次：神明保佑"><a href="#第三次：神明保佑" class="headerlink" title="第三次：神明保佑"></a>第三次：神明保佑</h2><p>第二次考完後，我和 AI 一起整理了一套應變步驟：如果右鍵又失控，先關掉終端機重開；還是不行，就按工具列上的 Reset Desktop。</p>
+<p>8 月 27 日，第三次考試。</p>
+<p>一開考沒多久，同樣的故障又出現了。</p>
+<p>我照著步驟做。重開終端機，<strong>沒用</strong>。Reset Desktop，<strong>也沒用</strong>。</p>
+<blockquote>
+<p>完蛋了，這次到底會不會過？</p>
+</blockquote>
+<p>那一刻我真的很害怕。想起了當年在律師考場上的<a href="/orange-days-02/#%E8%80%83%E5%A0%B4%E4%B8%8A%E7%9A%84%E5%8D%81%E4%BA%94%E5%88%86%E9%90%98">絕望感</a>。</p>
+<p>接下來 10 分鐘，我只能胡亂嘗試。然後，它就好了。怎麼好的，我到現在都不知道。也許是因為我有去拜拜吧。</p>
+<p>剩下 110 分鐘，我埋頭把所有題目寫完。</p>
+<p>隔天，成績出來：<strong>93 分</strong>，終於通過了。法克。</p>
+<hr>
+<h2 id="結語：從一知半解到初窺門徑"><a href="#結語：從一知半解到初窺門徑" class="headerlink" title="結語：從一知半解到初窺門徑"></a>結語：從一知半解到初窺門徑</h2><p>5 月時的我，雖然已經學習一段時間，但對 Kubernetes 這頭巨獸，依舊只能算一知半解。</p>
+<p>在超乎預期漫長的 3 個月 CKA 準備中，又一步步補上了這些重要拼圖：PV、PVC、StorageClass、RBAC、etcd 備份與還原、Helm、Kustomize、Gateway API、CNI，以及各種 troubleshooting。</p>
+<p>如果可以重來，我還是希望自己一次就能通過 CKA，但無論如何，我相信現在的自己，已經算是初窺門徑了。</p>
+
+      </div>
+
+      
+
+      
+      
+
+<div class="article-cta">
+
+    喜歡這篇文章？歡迎<a href="/subscribe/">訂閱本站</a>，或<a href="https://portaly.cc/kyomind/support" target="_blank">支持我的創作</a>。
+
+</div>
+
+    <b style="font-size:21px">
+      相關文章
+    </b><ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/all-in-on-devops/" title="我 40 歲，主動離職，All in DevOps" rel="bookmark">我 40 歲，主動離職，All in DevOps</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/bbc-6-minute-english/" title="BBC 6 Minute English：提升英文聽力的好夥伴" rel="bookmark">BBC 6 Minute English：提升英文聽力的好夥伴</a></h3></div></li><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/hetzner-vm/" title="在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆" rel="bookmark">在 Hetzner 開新 VM 指南：選機房、SSH 連線、設定防火牆</a></h3></div></li></ul><footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/%E8%BB%9F%E9%AB%94%E5%B7%A5%E7%A8%8B%E5%B8%AB/">軟體工程師</a>
+            <a href="/tags/Kubernetes/">Kubernetes</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/hermes-agent/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Hermes Agent 新手指南：從入門到進階的 10 個設定</span>
+        <span class="prev-text nav-mobile">Hermes Agent 新手指南：從入門到進階的 10 個設定</span>
+      </a>
+    </nav></footer>
+    
+      
+
+<div class="post-categories-box" style="background-color: #e7e9ec; border-radius: 5px;">
+  <div class="categories">
+    <div class="categories-tags">
+      <a class="category-link" href="/categories/DevOps/">DevOps<span class="category-count">11</span></a> <a class="category-link" href="/categories/Django/">Django<span class="category-count">43</span></a> <a class="category-link" href="/categories/Self/">Self<span class="category-count">25</span></a> <a class="category-link" href="/categories/%E5%BF%83%E5%BE%97/">心得<span class="category-count">63</span></a> <a class="category-link" href="/categories/%E6%9B%B8%E8%A9%95/">書評<span class="category-count">14</span></a> <a class="category-link" href="/categories/%E7%AD%86%E8%A8%98%E8%BB%9F%E9%AB%94/">筆記軟體<span class="category-count">15</span></a> <a class="category-link" href="/categories/%E8%BB%9F%E9%AB%94%E9%96%8B%E7%99%BC/">軟體開發<span class="category-count">41</span></a>
+    </div>
+  </div>
+</div>
+</article></div><div class="comments" id="comments"><div id="utterances-container"></div>
+    </div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a target="_blank" rel="noopener" href="https://github.com/kyomind" class="iconfont icon-github" title="github"></a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/kyo-huang/" class="iconfont icon-linkedin" title="linkedin"></a>
+        <a target="_blank" rel="noopener" href="https://x.com/kyomind" class="social-icon icon-x" title="X">
+            <img src="https://api.iconify.design/fa6-brands/x-twitter.svg?color=%2339495c" alt="X" />
+          </a>
+        <a target="_blank" rel="noopener" href="https://www.threads.net/@kyomind.tw" class="social-icon icon-threads" title="Threads">
+            <img src="https://api.iconify.design/fa6-brands/threads.svg?color=%2339495c" alt="Threads" />
+          </a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">and</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2021 - 2026<span class="heart">
+    ⌬
+    </span>
+    <span class="author"><a class="theme-link" target="_blank" rel="noopener" href="https://kyomind.tw/">Kyo Huang</a></span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script>
+    var container = document.getElementById('utterances-container')
+    var script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.setAttribute('repo', 'kyomind/blog-reply')
+    script.setAttribute('issue-term', 'title')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('label', 'utterances')
+    script.crossorigin = 'anonymous'
+    script.async = true
+
+    container.appendChild(script)
+  </script><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
