@@ -29,7 +29,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="Self" />
             
 
-  <meta property="article:modified_time" content="2026-10-04T08:57:50+08:00" />
+  <meta property="article:modified_time" content="2026-10-06T08:26:53+08:00" />
 
 
 
@@ -213,10 +213,10 @@
 <hr>
 <h2 id="學了-9-週，仍一知半解"><a href="#學了-9-週，仍一知半解" class="headerlink" title="學了 9 週，仍一知半解"></a>學了 9 週，仍一知半解</h2><p>在開始準備 CKA 之前，我已經跑完一輪為期 9 週的自學計畫，其中前 6 週 focus 在 Kubernetes。</p>
 <p>學習的過程與紀錄，都放在 <a target="_blank" rel="noopener" href="https://github.com/kyomind/weamind-infra/tree/main/learning">GitHub</a> 上了。</p>
-<p>這段時間我學了很多概念：Pod、Deployment、Service、Ingress，也有把 <a href="/weamind/">WeaMind</a> 實際部署到叢集，運行至今。</p>
-<p>但這些概念，當時在我腦中，只是一個個獨立的點。</p>
-<p>我知道它們各自是什麼，卻很少從零開始，親手用指令把它們建出來。就算給我一份現成的 YAML 檔讓我改，也還是很生疏。</p>
-<p>而且，單人維護的 side project，有些東西很難碰到：我一個人用，無須權限控管；用的 <a href="/k3s-for-weamind/">K3s</a> 是輕量版 Kubernetes，把整個叢集的「記憶」——<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/etcd-explained/">etcd</a>——簡化了。</p>
+<p>這段期間我學到了很多概念：Pod、Deployment、Service、Ingress，也把 <a href="/weamind/">WeaMind</a> 實際部署到叢集，運行至今。</p>
+<p>但這些概念，當時在我腦中，只是<strong>一個個獨立的點</strong>。</p>
+<p>我知道它們各自是什麼，卻很少從零開始，親手用指令把它們建出來。就算給我一份現成的 YAML 檔讓我改，也還是感到很生疏。</p>
+<p>而且，單人維護的 side project，有些東西很難碰到：一個人用，無須權限控管；<a href="/k3s-for-weamind/">K3s</a> 則是輕量版 Kubernetes，把整個叢集的「記憶」——<a target="_blank" rel="noopener" href="https://digest.kyomind.tw/etcd-explained/">etcd</a>——簡化了。</p>
 <p>所以除了 Pod、Deployment、Service、Ingress、ConfigMap 這些基本元件，CKA 考的東西，還有很多是我自學時沒機會實際操作的範圍。</p>
 <h2 id="刷完-74-題，才發現是舊考綱"><a href="#刷完-74-題，才發現是舊考綱" class="headerlink" title="刷完 74 題，才發現是舊考綱"></a>刷完 74 題，才發現是舊考綱</h2><p>提到備考，大家普遍推薦 KodeKloud，我原本也打算照做，但 Udemy 課程的模擬題就跑在 KodeKloud 上，做的時候常常斷線。一氣之下，我改用 <a target="_blank" rel="noopener" href="https://killercoda.com/">Killercoda</a> 這個免費練習平台，刷一位叫 Sachin 的作者整理的 <a target="_blank" rel="noopener" href="https://killercoda.com/sachin/course/CKA">74 題題庫</a>。</p>
 <h3 id="練習-Killercoda"><a href="#練習-Killercoda" class="headerlink" title="練習 Killercoda"></a>練習 Killercoda</h3><p>第一輪我做得很慢，很多新內容要花時間理解，比如儲存相關的 PV、PVC，只能一邊跟 AI 討論，一邊做筆記。不少題都得靠它幫忙才解得出來。</p>
@@ -224,7 +224,7 @@
 <p>那時我真心覺得：我變強了！（也沒有變禿）</p>
 <p>然而，在原定考試日的三天前，我才發現——<strong>這 74 題，全是舊考綱。</strong></p>
 <p>2025 年 CKA 改版，新增了 Helm、Kustomize、Gateway API 等一整批新內容，而我花了兩個月練的，一題都沒有涵蓋到。</p>
-<p>這是我整個準備過程中，<strong>最大的失誤</strong>。</p>
+<p>這無疑是我整個準備過程中，<strong>最大的失誤</strong>。</p>
 <h3 id="臨時抱佛腳"><a href="#臨時抱佛腳" class="headerlink" title="臨時抱佛腳"></a>臨時抱佛腳</h3><p>我趕緊去做官方附贈的 Killer Shell 模擬考。做完的感想只有一個：這跟 Killercoda 簡直是<strong>兩個世界</strong>。</p>
 <p>幾乎沒有單純建 Pod、建 Service 的題目，大多是往<strong>叢集管理</strong>靠攏，讓我非常挫敗。</p>
 <p>最後我決定把考試延後幾天。那些新東西需要時間消化，而我也需要休息。</p>
@@ -247,22 +247,22 @@
 <hr>
 <h2 id="第二次：來自東方的神秘力量"><a href="#第二次：來自東方的神秘力量" class="headerlink" title="第二次：來自東方的神秘力量"></a>第二次：來自東方的神秘力量</h2><p>8 月 20 日，第二次考試。</p>
 <p>補完新考綱之後，我進考場前信心滿滿，還跟女友表示：「這次我有八成把握！」，沒想到，考試還沒開始就先出狀況。</p>
-<h3 id="差點失去資格"><a href="#差點失去資格" class="headerlink" title="差點失去資格"></a>差點失去資格</h3><p>第一次考完後，我查到可以用手機檢查考試環境，心想這次證件總能拍清楚了吧！所以除了 webcam，還帶了手機。結果真的又要驗證證件時，監考人員表示：手機<strong>只能用來檢查環境</strong>，不能拿來給他看證件。我差點暈過去🫠</p>
-<p>後來回去查，還真的是這樣，只是那段說明的字很小，沒實際試過根本不會知道。附帶一提，無論有沒有帶手機，webcam 都必須全程開著。</p>
-<p>所以這次，我只能在監考人員進來之前，反覆用手機重拍證件、重新上傳，但只要上傳的照片不被接受，監考人員就會要求我再用 webcam 出示證件，而 webcam 一定拍不清楚，那驗證流程就得<strong>整個重來</strong>。</p>
+<h3 id="差點失去資格"><a href="#差點失去資格" class="headerlink" title="差點失去資格"></a>差點失去資格</h3><p>第一次考完後，我查到可以用手機檢查考試環境，心想這次證件總能拍清楚了吧！所以除了 webcam，還帶了手機。結果真的又要驗證證件時，監考人員表示：手機<strong>只能用來檢查環境</strong>，不能拿來給他看證件。我差點沒暈過去🫠</p>
+<p>後來查，還真是這樣，只是那段說明的字很小，沒實際試過根本不會知道。附帶一提，無論有沒有帶手機，webcam 都必須全程開著。</p>
+<p>所以，我只能在監考人員進來之前，反覆用手機重拍證件、重新上傳，但只要上傳的照片不被接受，監考人員就會要求我用 webcam 出示證件，而 webcam 一定拍不清楚，此時驗證流程就得<strong>整個重來</strong>。</p>
 <p>直到第 4 次時，再失敗我就沒有時間了——還好這次終於通過驗證！</p>
-<p>其實我本來已經放棄了，準備走出考場跟女友說「對不起」，沒想到柳暗花明，又重獲新生！但此時背後已經嚇出一身冷汗。</p>
+<p>其實我本來已經放棄了，準備走出考場跟女友說「對不起」，沒想到柳暗花明，又重獲新生！但背後已經嚇出一身冷汗。</p>
 <p>14:28 終於開考，前後總共花了 50 分鐘。</p>
 <p>CKA 的規定是，表定開考的時間過了 30 分鐘還沒開始，就會「<strong>視為缺席</strong>」，直接失去本次考試資格。等於白白消耗了一次機會。我表定 14:00 開考，只差 2 分鐘。</p>
 <h3 id="失控的左鍵"><a href="#失控的左鍵" class="headerlink" title="失控的左鍵"></a>失控的左鍵</h3><p>好不容易進了考試的遠端桌面，我以為一切終於要苦盡甘來。沒想到，來的是第二個挑戰：<strong>滑鼠左鍵在終端機和瀏覽器裡嚴重失控</strong>，切換視窗卡頓，連複製貼上都有困難。</p>
 <p>奇怪的是，只有這兩塊區域有問題，旁邊的題目區卻一切正常。</p>
-<p>當下我懷疑是滑鼠壞了，內心還在自責：「可惡，早知道該檢查的！」，但考前操作並沒有什麼異常呀？</p>
-<p>面對這個問題，我只能盡力「避開」。就像一位鋼琴家在表演時，發現鋼琴有一個琴鍵壞了，只能在彈奏時盡量避開那個琴鍵。我只能盡量避免反白、複製等左鍵操作，效率下降很多，但勉強還是可以做題。</p>
+<p>當下我懷疑是滑鼠壞了，內心還在自責：「可惡，早知道該檢查的！」——但考前操作並沒有什麼異常呀？</p>
+<p>面對這個問題，我只能盡力「避開」。就像一位鋼琴家在表演時，發現鋼琴有一個琴鍵壞了，只能在彈奏時盡量避開那個琴鍵。我只能<strong>盡量避免反白、複製等左鍵操作</strong>，效率下降很多，但勉強還是可以做題。</p>
 <p>就這樣持續了 70 分鐘，直到一次偶然的 vim 指令操作不慎，直接當掉，我被迫重開終端機——它竟然好了！</p>
 <p>但這時只剩 50 分鐘。考試時間結束時，有兩題我明明會寫，卻來不及做完。</p>
 <p>於是，我又度過了漫長的一夜。最後成績出來：<strong>62 分</strong>。</p>
 <p>真的是要氣死我🤬</p>
-<h3 id="提出申訴"><a href="#提出申訴" class="headerlink" title="提出申訴"></a>提出申訴</h3><p>絕望的我打算再買一次 CKA 應考資格，不過在此之前，我決定向 Linux Foundation 提出申訴，說明考試過程中遇到的系統問題。</p>
+<h3 id="提出申訴"><a href="#提出申訴" class="headerlink" title="提出申訴"></a>提出申訴</h3><p>絕望的我只能摸摸鼻子，打算再買一次 CKA 應考資格，不過在此之前，我決定先向主辦方 Linux Foundation 提出申訴，說明考試過程中遇到的系統問題。</p>
 <p>所幸 4 個小時後就收到回覆：同意讓我免費再考一次。</p>
 <p>我立刻預約了下週四。</p>
 <hr>
@@ -274,14 +274,14 @@
 <p>完蛋了，不會又要來了吧？</p>
 </blockquote>
 <p>那一刻我很害怕，不禁想起了當年在律師考場上的<a href="/orange-days-02/#%E8%80%83%E5%A0%B4%E4%B8%8A%E7%9A%84%E5%8D%81%E4%BA%94%E5%88%86%E9%90%98">絕望感</a>。</p>
-<p>接下來 10 分鐘，我只能胡亂嘗試。然後，它就好了！怎麼好的，我到現在都不知道。也許是因為我有去拜拜吧。</p>
+<p>接下來 10 分鐘，我只能胡亂嘗試。然後，<strong>它就好了</strong>！怎麼好的，我到現在都不知道。也許是因為我有去拜拜吧。</p>
 <p>剩下 110 分鐘，我埋頭把所有題目做完。</p>
 <p>隔天，成績出來：<strong>93 分</strong>，終於通過了。法克。</p>
 <hr>
 <h2 id="結語：從一知半解到初窺門徑"><a href="#結語：從一知半解到初窺門徑" class="headerlink" title="結語：從一知半解到初窺門徑"></a>結語：從一知半解到初窺門徑</h2><p>5 月的我，雖然已經學習一段時間，但面對 Kubernetes 這頭巨獸，只能算一知半解。</p>
 <p>在超乎預期漫長的 3 個月 CKA 準備中，又一步步補上了這些重要拼圖：PV、PVC、StorageClass、RBAC、etcd 備份與還原、Helm、Kustomize、Gateway API、CNI，以及各種 troubleshooting。</p>
 <p>投入了超過 100 小時，累積了數萬字的 CKA 筆記與 1500 張 <a target="_blank" rel="noopener" href="https://www.threads.com/@kyomind.tw/post/DYWMCPvgSi2/">Logseq 閃卡</a>。</p>
-<p>如果可以重來，我還是希望自己一次就通過 CKA，但無論如何，我相信現在的自己，已經算是初窺門徑了。</p>
+<p>如果可以重來，我還是希望自己一次就通過 CKA，但無論如何，我相信現在的自己，已算是初窺門徑了。</p>
 
       </div>
 
