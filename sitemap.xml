@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.kyomind.tw/coffee-chat/index.html</loc>
+    
+    <lastmod>2026-10-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kyomind.tw/stumbling-on-cka/</loc>
     
     <lastmod>2026-10-06</lastmod>
@@ -39,15 +48,6 @@
   
   <url>
     <loc>https://blog.kyomind.tw/orange-days-02/</loc>
-    
-    <lastmod>2026-10-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.kyomind.tw/coffee-chat/index.html</loc>
     
     <lastmod>2026-10-02</lastmod>
     
@@ -1550,7 +1550,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-33/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1559,7 +1559,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kyomind.tw/weekly-review-34/</loc>
+    <loc>https://blog.kyomind.tw/weekly-review-33/</loc>
     
     <lastmod>2026-03-18</lastmod>
     
@@ -1993,7 +1993,7 @@
 
   <url>
     <loc>https://blog.kyomind.tw/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
