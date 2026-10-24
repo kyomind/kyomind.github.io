@@ -27,7 +27,7 @@
 <meta property="article:author" content="Kyo Huang" /><meta property="article:section" content="軟體開發" />
             
 
-  <meta property="article:modified_time" content="2026-07-24T15:58:35+08:00" />
+  <meta property="article:modified_time" content="2026-10-24T00:15:00+08:00" />
 
 
 
@@ -281,7 +281,7 @@
 <p>一樣特別注意 <code>args</code>，尤其像 isort、yapf 這類「<strong>formatter</strong>」，設定不一致會直接造成「在編輯器中格式化符合規範，但 commit 時卻被 hook 擋下來」的<strong>窘境</strong>。</p>
 <h3 id="yapf"><a href="#yapf" class="headerlink" title="yapf"></a>yapf</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repos:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line"></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">repo:</span> <span class="string">https://github.com/pre-commit/mirrors-yapf</span></span><br><span class="line">    <span class="attr">rev:</span> <span class="string">v0.32.0</span></span><br><span class="line">    <span class="attr">hooks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">yapf</span></span><br><span class="line">        <span class="attr">exclude:</span> <span class="string">migrations/</span></span><br><span class="line">        <span class="attr">args:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">column_limit</span> <span class="string">=</span> <span class="number">100</span></span><br><span class="line">        <span class="attr">additional_dependencies:</span> [<span class="string">toml</span>]</span><br></pre></td></tr></table></figure>
 
-<p>yapf 有一個<a href="https://blog.kyomind.tw/pyproject-toml/#VS-Code-%E6%95%B4%E5%90%88%E6%99%82%E5%8F%AF%E8%83%BD%E7%9A%84-bug">很常見的問題</a>，之前在〈<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a>〉中已提過。</p>
+<p>yapf 有一個<a href="https://blog.kyomind.tw/pyproject-toml/">很常見的問題</a>，之前在〈<a href="https://blog.kyomind.tw/pyproject-toml/">Python 開發：pyproject.toml 介紹 + 使用教學</a>〉中已提過。</p>
 <p>簡言之，只要你的專案中有 <code>pyproject.toml</code>，無論裡面是否有關於 yapf 的設定項，yapf 都會試圖去解析（parse）它，此時 <code>toml</code> 套件就成了必不可少的一環。如果沒有 <code>toml</code>，將進一步導致 yapf 無法正常運作。</p>
 <p>這個問題在 pre-commit 同樣會發生，所以如果專案中有 <code>pyproject.toml</code>，就要額外設定 <code>additional_dependencies: [toml]</code>，方能功德圓滿🙏</p>
 <hr>
